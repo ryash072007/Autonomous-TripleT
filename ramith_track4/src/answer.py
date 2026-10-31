@@ -82,7 +82,10 @@ def rare_query_tokens(C, q):
     if not hasattr(C, "_df"):
         from collections import Counter
         C._df = Counter(t for c in C.chunks for t in set(tokenize(c["index"])))
-    return [t for t in set(tokenize(q)) if len(t) >= 4 and 1 <= C._df.get(t, 0) <= 25 and not t.isdigit()]
+    caps = {w.lower() for w in re.findall(r"\b[A-Z][a-z]+\b", q)}
+    # entity-like = has a digit, is capitalised in the question, or is very rare; a plain English verb with df 9 ("complete") is not an entity
+    return [t for t in set(tokenize(q)) if len(t) >= 4 and 1 <= C._df.get(t, 0) <= 25 and not t.isdigit()
+            and (re.search(r"\d", t) or t in caps or C._df.get(t, 0) <= 5)]
 
 
 def unknown_entities(C, q):
