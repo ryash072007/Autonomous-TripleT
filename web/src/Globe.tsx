@@ -323,22 +323,15 @@ export default function Globe(props: Props) {
 
     let dragging = false, moved = 0, lx = 0, ly = 0, hover: number | null = null;
     const ray = new THREE.Raycaster();
-    ray.params.Points = { threshold: 0.025 };
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    ray.params.Points = { threshold: coarse ? 0.07 : 0.025 };
+    let lastTap: number | null = null;
     const canvas = renderer.domElement;
-    canvas.style.touchAction = "none";
+    canvas.style.touchAction = "pan-y"; // vertical swipes scroll the page; horizontal drags rotate the globe
     canvas.style.cursor = "grab";
     const down = (e: PointerEvent) => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing"; };
-    const move = (e: PointerEvent) => {
+    const hoverAt = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
-      if (dragging) {
-        const dx = e.clientX - lx, dy = e.clientY - ly;
-        moved += Math.abs(dx) + Math.abs(dy);
-        root.rotation.y += dx * 0.006;
-        root.rotation.x = Math.max(-1.2, Math.min(1.2, root.rotation.x + dy * 0.006));
-        lx = e.clientX; ly = e.clientY;
-        setTip(null);
-        return;
-      }
       if (markers.length) {
         let found: { text: string; x: number; y: number } | null = null;
         for (const mk of markers) {
@@ -346,7 +339,7 @@ export default function Globe(props: Props) {
           root.localToWorld(v);
           v.project(camera);
           const sx = ((v.x + 1) / 2) * rect.width, sy = ((1 - v.y) / 2) * rect.height;
-          if (Math.hypot(sx - (e.clientX - rect.left), sy - (e.clientY - rect.top)) < 16) found = { text: mk.text, x: sx, y: sy };
+          if (Math.hypot(sx - (e.clientX - rect.left), sy - (e.clientY - rect.top)) < (coarse ? 30 : 16)) found = { text: mk.text, x: sx, y: sy };
         }
         setLab(found);
         return;
@@ -365,16 +358,39 @@ export default function Globe(props: Props) {
       canvas.style.cursor = hover != null ? "pointer" : "grab";
       setTip(best ? { id: (best as { id: number }).id, tier: (best as { tier: number }).tier, alt: (best as { alt: number }).alt, x: e.clientX - rect.left, y: e.clientY - rect.top } : null);
     };
-    const up = () => {
+    const move = (e: PointerEvent) => {
+      if (dragging) {
+        const dx = e.clientX - lx, dy = e.clientY - ly;
+        moved += Math.abs(dx) + Math.abs(dy);
+        root.rotation.y += dx * 0.006;
+        root.rotation.x = Math.max(-1.2, Math.min(1.2, root.rotation.x + dy * 0.006));
+        lx = e.clientX; ly = e.clientY;
+        setTip(null);
+        return;
+      }
+      hoverAt(e);
+    };
+    const up = (e: PointerEvent) => {
       dragging = false;
       canvas.style.cursor = "grab";
       const pr = propsRef.current;
-      if (moved < 5 && hover != null && pr.kind === "fleet") pr.onPick(hover);
+      if (moved >= 5) return;
+      if (e.pointerType === "touch") {
+        // tap equivalent of hover: first tap shows the label, a second tap on the same point opens it
+        hoverAt(e);
+        if (pr.kind === "fleet" && hover != null) {
+          if (lastTap === hover) pr.onPick(hover);
+          lastTap = hover;
+        }
+        return;
+      }
+      if (hover != null && pr.kind === "fleet") pr.onPick(hover);
     };
     canvas.addEventListener("pointerdown", down);
     canvas.addEventListener("pointermove", move);
     canvas.addEventListener("pointerup", up);
     canvas.addEventListener("pointerleave", () => setTip(null));
+    canvas.addEventListener("pointercancel", () => { dragging = false; });
 
     let raf = 0;
     const t0 = performance.now();

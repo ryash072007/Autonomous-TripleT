@@ -65,6 +65,7 @@ export default function Queue(p: Props) {
   }, [visible, p.selected, p.onSelect]);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 860px)").matches) return; // on a phone the list is the page; do not jump
     listRef.current?.querySelector(".qcard.sel")?.scrollIntoView({ block: "nearest" });
   }, [p.selected]);
 

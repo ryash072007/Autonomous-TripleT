@@ -63,18 +63,37 @@ export type Hl = "rule" | "forecast" | "flags" | "collide" | null;
 export const demoHighlight = (key?: string): Hl =>
   key === "clear_critical" ? "rule" : key === "caught_early" ? "forecast" : key === "model_wrong" ? "flags" : key === "worst_consequence" ? "collide" : null;
 
-export function DemoBar({ step, setStep, demo, onExit, onFailures }: {
+export function DemoBar({ step, setStep, demo, onExit, onFailures, hidden, setHidden }: {
   step: number; setStep: (n: number) => void; demo: DemoResp | null; onExit: () => void; onFailures: () => void;
+  hidden: boolean; setHidden: (h: boolean) => void;
 }) {
+  const [collapsed, setCollapsed] = useState(false);
   if (!demo) return null;
   const it = demo.items[step];
   if (!it) return null;
-  const last = step + 1 >= demo.items.length;
+  const n = demo.items.length;
+  const last = step + 1 >= n;
+  const title = DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ");
+  if (hidden)
+    return <button className="tour-chip" onClick={() => setHidden(false)} aria-label="Resume the tour">Tour {step + 1}/{n}</button>;
+  if (collapsed)
+    return (
+      <div className="demo-bar card collapsed" role="region" aria-label="Guided tour">
+        <button className="demo-slim" onClick={() => setCollapsed(false)}>Step {step + 1}/{n} · {title} ▸</button>
+        <button className="link-btn" onClick={() => setHidden(true)}>Hide</button>
+      </div>
+    );
   return (
     <div className="demo-bar card" role="region" aria-label="Guided tour">
-      <div className="tour-progress" aria-hidden="true"><i style={{ width: `${((step + 1) / demo.items.length) * 100}%` }} /></div>
-      <div className="label">Guided tour · step {step + 1} of {demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}</div>
-      <div className="display demo-title">{DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ")}</div>
+      <div className="tour-progress" aria-hidden="true"><i style={{ width: `${((step + 1) / n) * 100}%` }} /></div>
+      <div className="demo-head">
+        <div className="label">Guided tour · step {step + 1} of {n} {demo.provisional && <span className="flag">provisional picks</span>}</div>
+        <span className="demo-ctl">
+          <button className="link-btn" onClick={() => setCollapsed(true)} aria-label="Collapse the tour card">Collapse ▾</button>
+          <button className="link-btn" onClick={() => setHidden(true)}>Hide tour</button>
+        </span>
+      </div>
+      <div className="display demo-title">{title}</div>
       <div className="small">Event #{it.event_id}</div>
       <div className="small demo-reason">{it.reason}</div>
       <div className="small dim">{DEMO_LOOK[it.key]}</div>

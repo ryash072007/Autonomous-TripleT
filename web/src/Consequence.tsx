@@ -143,7 +143,7 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
           ) : (
             <div className="sim-cta">
               <p className="small dim">{od && cloud ? "See where the debris would go." : "The simulation is available for the top events by harm and the demo events; this one has no cloud file."}</p>
-              <button className="btn primary" disabled={!od || !cloud} onClick={() => { setOn(true); setLogT(0); setPlay(true); }}>Simulate collision</button>
+              <button className="btn primary sim-btn" disabled={!od || !cloud} onClick={() => { setOn(true); setLogT(0); setPlay(true); }}>▶ Simulate collision</button>
             </div>
           )}
         </div>

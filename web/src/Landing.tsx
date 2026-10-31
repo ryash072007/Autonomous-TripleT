@@ -77,7 +77,15 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
               }}
               onMouseLeave={() => setTip(null)}
               onBlur={() => setTip(null)}
-              onClick={() => onOpen(e.event_id)}
+              onClick={(ev) => {
+                // touch: the first tap shows the label, the second opens the event
+                if (window.matchMedia("(pointer: coarse)").matches && tip?.e.event_id !== e.event_id) {
+                  const r = ev.currentTarget.getBoundingClientRect();
+                  setTip({ e, x: r.left, y: r.top });
+                  return;
+                }
+                onOpen(e.event_id);
+              }}
             >
               <span className="dot" />
             </button>

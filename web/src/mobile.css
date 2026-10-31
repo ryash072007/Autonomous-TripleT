@@ -1,0 +1,143 @@
+/* Phone and small-tablet layout. Desktop (above 860 px) is untouched; the rules below only add controls that are hidden there. */
+.menu-btn { display: none; }
+.m-tabs { display: none; }
+.tour-chip { display: none; }
+.strip-scroll { width: 100%; }
+.demo-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.demo-ctl { display: inline-flex; gap: 10px; white-space: nowrap; }
+.demo-bar.collapsed { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 14px; }
+.demo-slim { background: none; border: 0; font-weight: 700; font-size: 14px; text-align: left; padding: 6px 0; }
+.tour-chip { position: fixed; right: 12px; bottom: 14px; z-index: 70; background: var(--rock); color: var(--paper); border: 0; border-radius: 999px; padding: 10px 18px; font-weight: 700; box-shadow: 0 8px 24px rgba(90, 58, 51, 0.35); }
+.tour-chip { display: inline-flex; }
+.menu-sheet { position: fixed; top: 54px; left: 10px; right: 10px; z-index: 70; display: grid; gap: 6px; padding: 10px; }
+.menu-item { background: rgba(248, 228, 207, 0.7); border: 0; border-radius: 12px; padding: 14px 16px; font-size: 16px; font-weight: 700; text-align: left; }
+.menu-item.on { background: var(--rock); color: var(--paper); }
+.menu-item.primary { background: var(--rock); color: var(--paper); text-align: center; }
+.menu-seg { display: flex; width: 100%; }
+.menu-seg button { flex: 1; padding: 12px; font-size: 15px; }
+
+@media (pointer: coarse) {
+  .light { width: 34px; height: 34px; margin: -17px 0 0 -17px; }
+}
+
+@media (max-width: 860px) {
+  html { overflow-x: hidden; }
+  body { overflow-x: clip; max-width: 100%; }
+  .card, .tile, .tiles > *, .detail, .page, .queue { min-width: 0; max-width: 100%; }
+  p, li, .hero-sentence, .names, .telemetry span, .rule, .src { overflow-wrap: anywhere; }
+
+  /* top bar becomes wordmark + menu button */
+  .topbar { padding: 8px 12px 10px; gap: 8px; background: rgba(239, 195, 168, 0.97); }
+  .touring .main { padding-bottom: 55vh; }
+  .wordmark { font-size: 24px; }
+  .topbar > .tabs, .topbar > .seg, .topbar > .tour-btn { display: none; }
+  .menu-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 40px; border-radius: 12px; border: 1px solid rgba(192, 141, 120, 0.5);
+    background: rgba(255, 248, 241, 0.9); font-size: 20px; margin-left: auto; }
+  .menu-btn.attn { animation: attn 1.4s ease-out infinite; }
+  .banner { font-size: 12px; padding: 6px 12px; }
+
+  /* two screens: the list, then the event */
+  .main { display: block; padding: 0 10px 150px; }
+  .queue { position: static; height: auto; overflow: visible; }
+  .q-list { max-height: none; overflow: visible; }
+  .qcount { font-size: 38px; min-width: 56px; }
+  .main.show-detail .queue { display: none; }
+  .main:not(.show-detail) .detail { display: none; }
+  .detail { gap: 10px; }
+  .back { display: flex; align-items: center; position: sticky; top: 50px; z-index: 12; width: 100%; padding: 10px 14px; font-size: 15px; font-weight: 700; text-decoration: none; color: var(--rock);
+    background: rgba(255, 248, 241, 0.96); border-radius: 14px; box-shadow: 0 4px 14px rgba(90, 58, 51, 0.12); }
+
+  /* event hero */
+  .hero-card { padding: 14px; }
+  .hero-row { gap: 6px 12px; }
+  .hero-id { font-size: clamp(34px, 12vw, 58px); overflow-wrap: anywhere; line-height: 1; }
+  .hero-tier { font-size: clamp(24px, 8vw, 36px); }
+  .hero-tier svg { width: 26px; height: 26px; }
+  .hero-sentence { font-size: 15px; }
+  .decision-row { padding: 10px; }
+  .decision-line { flex-direction: column; align-items: stretch; gap: 8px; }
+  .decision-line .btn { width: 100%; padding: 11px; font-size: 15px; }
+  .decision-line input[type="text"] { width: 100%; min-width: 0; padding: 12px; }
+
+  /* sections as tabs */
+  .m-tabs { display: flex; position: sticky; top: 100px; z-index: 11; gap: 4px; padding: 5px; overflow-x: auto; background: rgba(255, 248, 241, 0.96);
+    border-radius: 14px; box-shadow: 0 4px 14px rgba(90, 58, 51, 0.12); scrollbar-width: none; }
+  .m-tabs button { flex: 1 0 auto; border: 0; background: none; padding: 9px 8px; border-radius: 10px; font-weight: 700; font-size: 13.5px; color: var(--ink-soft); white-space: nowrap; }
+  .m-tabs button.on { background: var(--rock); color: var(--paper); }
+  .tiles { display: block; }
+  .detail [data-tab] { display: none; }
+  .detail[data-mtab="overview"] [data-tab="overview"], .detail[data-mtab="trend"] [data-tab="trend"], .detail[data-mtab="where"] [data-tab="where"] { display: flex; }
+  .detail[data-mtab="collide"] [data-tab="collide"], .detail[data-mtab="details"] [data-tab="details"] { display: block; }
+  .tile { padding: 14px; }
+  .tile .globe-wrap, .collide-sim .globe-wrap, .ins .globe-wrap { height: 70vw !important; max-height: 440px; min-height: 240px; }
+  .ins .globe-wrap { height: 85vw !important; }
+  .hl { scroll-margin-top: 150px; }
+  .hero-card > p.small { display: none; }
+
+  /* collide */
+  .collide { grid-template-columns: 1fr; gap: 12px; }
+  .collide-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat { padding: 8px 10px; }
+  .stat .label { font-size: 9.5px; letter-spacing: 0.12em; }
+  .stat-n { font-size: 30px; }
+  .sim-cta { min-height: 150px; padding: 14px; }
+  .sim-btn { width: 100%; padding: 18px; font-size: 18px; }
+  .sim-legend { position: static; display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; padding: 0; background: none; border: 0; }
+  .sim-count { flex: 1 0 100%; }
+  .scrub-ticks { padding: 0 24px 0 40px; font-size: 11px; }
+  .drawer { padding: 14px; }
+  .rtn-row { justify-content: center; }
+  .whatif input[type="range"] { width: 100%; }
+  .actions input { min-width: 0; }
+
+  /* tour as a bottom sheet */
+  .demo-bar { left: 0; right: 0; bottom: 0; width: auto; max-height: 38vh; overflow-y: auto; border-radius: 18px 18px 0 0; padding: 10px 14px 12px; z-index: 75; }
+  .demo-bar.collapsed { max-height: none; }
+  .demo-title { font-size: 24px; }
+  .demo-reason { font-size: 12.5px; }
+  .demo-actions .btn { padding: 10px 16px; }
+  .welcome { padding: 22px 18px; max-height: 92dvh; overflow-y: auto; }
+  .welcome-actions { flex-direction: column; }
+  .btn.big { width: 100%; padding: 16px; font-size: 17px; }
+
+  /* pages */
+  .page { padding: 8px 12px 110px; max-width: 100%; }
+  .page-h { font-size: clamp(38px, 12vw, 56px); }
+  .page .card { overflow-x: auto; }
+  .ins-grid { grid-template-columns: 1fr; }
+  .n24-head { grid-template-columns: 1fr; padding: 12px; gap: 10px; }
+  .n24-count { gap: 10px; }
+  .n24-num { font-size: 64px; min-width: 0; }
+  .spark { width: 100%; max-width: 320px; }
+  .n24-ctl { justify-content: flex-start; gap: 8px; }
+  .n24-ctl input[type="range"] { flex: 1 1 100%; width: 100%; order: 5; }
+  .n24-strip { padding: 10px; overflow: hidden; }
+  .strip-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .strip { min-width: 700px; }
+  .n24-tbl th, .n24-tbl td { white-space: nowrap; }
+  .snap-badge { top: 4px; font-size: 11px; padding: 2px 10px; }
+
+  /* landing */
+  .hero { top: 9%; padding: 0 12px; }
+  .hero h1 { font-size: clamp(44px, 16vw, 90px); }
+  .subtitle { letter-spacing: 0.3em; }
+  .cta-row { gap: 12px; }
+  .land-foot { font-size: 10.5px; padding: 8px 12px; }
+}
+
+@media (max-width: 860px) and (max-height: 480px) {
+  /* phone in landscape */
+  .landing { min-height: 0; }
+  .hero { top: 3%; }
+  .hero h1 { font-size: min(14vw, 24vh); }
+  .arc-rule { margin-top: 2px; }
+  .hook { margin: 8px auto 8px; font-size: 14px; }
+  .cta { padding: 10px 22px; }
+  .demo-bar { max-height: 60vh; }
+  .m-tabs { top: 96px; }
+}
+@media (max-width: 400px) {
+  .collide-stats { gap: 6px; }
+  .stat-n { font-size: 26px; }
+  .hero-id { font-size: clamp(30px, 11.5vw, 50px); }
+}

@@ -46,7 +46,7 @@ const GLOSSARY: Record<string, string> = {
 
 export function Term({ k, children }: { k: keyof typeof GLOSSARY | string; children?: ReactNode }) {
   return (
-    <span className="term" tabIndex={0} data-tip={GLOSSARY[k] ?? k}>
+    <span className="term" tabIndex={0} data-tip={GLOSSARY[k] ?? k} onClick={(e) => e.currentTarget.focus()}>
       {children ?? k}
     </span>
   );
@@ -101,4 +101,17 @@ export function useSnapshotMode(): boolean {
   const [s, set] = useState(isSnapshot());
   useEffect(() => { set(isSnapshot()); return onMode((m) => set(m === "snapshot")); }, []);
   return s;
+}
+
+/** True on phone-sized screens (matches the CSS breakpoint). */
+export function useIsMobile(): boolean {
+  const q = "(max-width: 860px)";
+  const [m, set] = useState(typeof window !== "undefined" && window.matchMedia(q).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(q);
+    const f = () => set(mq.matches);
+    mq.addEventListener("change", f);
+    return () => mq.removeEventListener("change", f);
+  }, []);
+  return m;
 }

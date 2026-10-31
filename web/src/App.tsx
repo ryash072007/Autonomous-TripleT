@@ -34,7 +34,7 @@ export default function App() {
   const [apiErr, setApiErr] = useState(false);
   const [reload, setReload] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
-  const [mobileDetail, setMobileDetail] = useState(false);
+  const [mobileDetail, setMobileDetail] = useState(() => /[#&]e=\d+/.test(window.location.hash)); // deep link to an event
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
 
 
@@ -45,6 +45,8 @@ export default function App() {
   const [fullFor, setFullFor] = useState<Dataset | null>(null);
   const tourTried = useRef(false);
   const snap = useSnapshotMode();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [tourHidden, setTourHidden] = useState(false);
   const [welcome, setWelcome] = useState(false);
   const [attn, setAttn] = useState(false);
   const pulse = () => { setAttn(true); window.setTimeout(() => setAttn(false), 10000); };
@@ -96,6 +98,8 @@ export default function App() {
       if (!d.items.length) return;
       setDemo(d);
       setDemoStep(0);
+      setTourHidden(false);
+      setMenuOpen(false);
       setView("queue");
       setMobileDetail(true);
     } catch {
@@ -134,7 +138,7 @@ export default function App() {
 
   const key = demo?.items[demoStep]?.key;
   return (
-    <div className="console">
+    <div className={"console" + (demo && !tourHidden ? " touring" : "")}>
       {snapBadge}
       <div className="sky-fixed" />
       <Backdrop sky={sky} />
@@ -150,8 +154,21 @@ export default function App() {
           <button className={dataset === "test" ? "on" : ""} onClick={() => setDataset("test")}>Test dataset</button>
           <button className={dataset === "live" ? "on" : ""} onClick={() => setDataset("live")}>Live</button>
         </div>
-        <button className={"btn" + (attn ? " attn" : "")} onClick={startTour}>Guided tour</button>
+        <button className={"btn tour-btn" + (attn ? " attn" : "")} onClick={startTour}>Guided tour</button>
+        <button className={"menu-btn" + (attn ? " attn" : "")} aria-label="Menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>{menuOpen ? "✕" : "☰"}</button>
       </header>
+      {menuOpen && (
+        <div className="menu-sheet card" role="menu">
+          {([["queue", "Events"], ["next24", "Next 24 h"], ["insights", "Insights"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
+            <button key={v} className={"menu-item" + (view === v ? " on" : "")} onClick={() => { setView(v); setMenuOpen(false); if (v === "queue") setMobileDetail(false); }}>{l}</button>
+          ))}
+          <div className="seg menu-seg" role="group" aria-label="Data source">
+            <button className={dataset === "test" ? "on" : ""} onClick={() => { setDataset("test"); setMenuOpen(false); }}>Test dataset</button>
+            <button className={dataset === "live" ? "on" : ""} onClick={() => { setDataset("live"); setMenuOpen(false); }}>Live</button>
+          </div>
+          <button className="menu-item primary" onClick={startTour}>Guided tour</button>
+        </div>
+      )}
 
       {dataset === "live" && (
         <div className="banner">
@@ -173,7 +190,7 @@ export default function App() {
         </main>
       )}
       <main className={"main" + (mobileDetail ? " show-detail" : "")} style={apiErr ? { display: "none" } : undefined}>
-        {demo && view === "queue" && <div className="spot-dim" />}
+        {demo && view === "queue" && !tourHidden && <div className="spot-dim" />}
         {view === "queue" && (
           <>
             <Queue events={shown} message={message} loading={loading} selected={selected}
@@ -182,7 +199,7 @@ export default function App() {
               types={summary?.object_types ?? []} forecastFlag={summary?.forecast_flag} />
             <EventPage id={dataset === "live" && events.length === 0 ? null : selected} dataset={dataset}
               modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} forecastFlag={summary?.forecast_flag}
-              highlight={demo ? demoHighlight(key) : null} autoSim={key === "worst_consequence"} fleet={events}
+              highlight={demo && !tourHidden ? demoHighlight(key) : null} autoSim={key === "worst_consequence"} fleet={events}
               onBack={() => setMobileDetail(false)} />
           </>
         )}
@@ -207,7 +224,7 @@ export default function App() {
         </div>
       )}
       {demo && view === "queue" && (
-        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={endTour}
+        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={endTour} hidden={tourHidden} setHidden={setTourHidden}
           onFailures={() => { endTour(); setView("evidence"); setAnchor("where-it-fails"); }} />
       )}
     </div>

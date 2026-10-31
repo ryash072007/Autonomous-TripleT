@@ -160,7 +160,7 @@ export default function Next24({ events, summary, onOpen }: { events: EventLight
 
       <div className="card n24-strip">
         <div className="label">Hours to <Term k="TCA">closest approach</Term></div>
-        <svg viewBox={`0 0 ${W} ${H}`} className="strip" role="img" aria-label="24 hour timeline">
+        <div className="strip-scroll" ref={(el) => { if (el && !el.dataset.init && el.scrollWidth > el.clientWidth) { el.dataset.init = "1"; el.scrollLeft = el.scrollWidth; } }}><svg viewBox={`0 0 ${W} ${H}`} className="strip" role="img" aria-label="24 hour timeline">
           {[0, 6, 12, 18, 24].map((h) => (
             <g key={h}>
               <line x1={xOf(h)} x2={xOf(h)} y1="14" y2={H - 26} stroke="var(--ridge-far)" strokeWidth={h === 0 ? 2 : 1} strokeDasharray={h === 0 ? "" : "3 4"} />
@@ -184,7 +184,7 @@ export default function Next24({ events, summary, onOpen }: { events: EventLight
               </g>
             );
           })}
-        </svg>
+        </svg></div>
         <div className="small dim">Marker size grows with the debris a collision would release. Halo: dangerous. Circle: Safe, triangle: Elevated, octagon: Critical. Click a marker to open the event.</div>
       </div>
 

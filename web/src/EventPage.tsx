@@ -6,7 +6,7 @@ import { AuditRec, Dataset, EventFull, EventLight, api } from "./api";
 import { CollidePanel } from "./Consequence";
 import { CostSlider, Geometry, WhatIf } from "./EventDetail";
 import {
-  ForecastFlag, RecChip, useSnapshotMode, TIER_NAMES, TIER_VAR, Term, TierIcon, flagSentence, fmtMiss, fmtPc, fmtTtca, isThresholdFlag, sigmaUnusable,
+  ForecastFlag, RecChip, useIsMobile, useSnapshotMode, TIER_NAMES, TIER_VAR, Term, TierIcon, flagSentence, fmtMiss, fmtPc, fmtTtca, isThresholdFlag, sigmaUnusable,
 } from "./ui";
 
 const Globe = lazy(() => import("./Globe"));
@@ -89,7 +89,7 @@ function Trajectory({ ev }: { ev: EventFull }) {
 function TrendTile({ ev }: { ev: EventFull }) {
   const [tab, setTab] = useState<"trend" | "traj">(() => (window.location.hash.includes("tab=traj") ? "traj" : "trend"));
   return (
-    <div className="card tile">
+    <div className="card tile" data-tab="trend">
       <div className="tile-tabs">
         <button className={"label tab" + (tab === "trend" ? " on" : "")} onClick={() => setTab("trend")}>Trend</button>
         <button className={"label tab" + (tab === "traj" ? " on" : "")} onClick={() => setTab("traj")}>Trajectory</button>
@@ -185,6 +185,27 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
     api.brief(id, dataset).then(setBrief).catch(() => {});
   }, [id, dataset]);
 
+  const mobile = useIsMobile();
+  // On a phone, switching tabs brings the content to the top of the screen, just under the sticky bars.
+  const toTabs = () => {
+    if (!window.matchMedia("(max-width: 860px)").matches) return;
+    window.setTimeout(() => {
+      const el = document.querySelector(".m-tabs");
+      if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 100), behavior: "auto" });
+    }, 30);
+  };
+  type MTab = "overview" | "trend" | "where" | "collide" | "details";
+  const hashTab = (/mtab=(\w+)/.exec(window.location.hash)?.[1] as MTab | undefined) ?? "overview";
+  const [mTab, setMTab] = useState<MTab>(hashTab);
+  useEffect(() => { setMTab(hashTab); }, [id]);
+  useEffect(() => { if (ev && /mtab=/.test(window.location.hash)) window.setTimeout(toTabs, 700); }, [ev?.event_id]);
+  // Tour: show the tab that holds the highlighted panel and scroll it to the top part of the screen.
+  useEffect(() => {
+    if (!highlight || !ev) return;
+    setMTab(highlight === "collide" ? "collide" : "overview");
+    const t = window.setTimeout(() => document.querySelector(".detail .hl")?.scrollIntoView({ block: "start", behavior: "auto" }), 450);
+    return () => window.clearTimeout(t);
+  }, [highlight, ev?.event_id]);
   useEffect(() => {
     if (ev && window.location.hash.includes("focus=collide")) window.setTimeout(() => document.getElementById("collide")?.scrollIntoView({ block: "start" }), 600);
   }, [ev?.event_id]);
@@ -201,9 +222,10 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
   if (sigmaUnusable(L.c_sigma_r)) flags.unshift("Uncertainty data unusable");
   const od = ev.orbit_display;
 
+  const TABS: ["overview" | "trend" | "where" | "collide" | "details", string][] = [["overview", "Overview"], ["trend", "Trend"], ["where", "Where"], ["collide", "Collide"], ["details", "Details"]];
   return (
-    <section className="detail">
-      <button className="link-btn back" onClick={onBack}>← List</button>
+    <section className="detail" data-mtab={mTab}>
+      <button className="link-btn back" onClick={onBack}>← Events</button>
 
       <div className={"card hero-card" + hl("rule")}>
         <div className="label">Collision triage</div>
@@ -220,8 +242,12 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
         </p>
       </div>
 
+      <div className="m-tabs" role="tablist" aria-label="Event sections">
+        {TABS.map(([k, l]) => <button key={k} role="tab" aria-selected={mTab === k} className={mTab === k ? "on" : ""} onClick={() => { setMTab(k); toTabs(); }}>{l}</button>)}
+      </div>
+
       <div className="tiles">
-        <div className="card tile">
+        <div className="card tile" data-tab="where">
           <div className="label">Where</div>
           {od ? (
             <Suspense fallback={<div className="empty">Loading globe...</div>}>
@@ -231,7 +257,7 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
           <p className="small dim">The orbit drawing uses the orbital-element columns in the CDMs (semi-major axis, eccentricity, inclination, apogee and perigee height). They are display only and never a model input. The orbit orientation (RAAN) is not in the data, so both orbits are drawn through the conjunction point (pulsing).</p>
         </div>
         <TrendTile ev={ev} />
-        <div className={"card tile" + hl("forecast") + hl("flags")}>
+        <div className={"card tile" + hl("forecast") + hl("flags")} data-tab="overview">
           <div className="label">How sure</div>
           {ev.p_tier ? (
             <>
@@ -255,11 +281,11 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
         </div>
       </div>
 
-      <div className={"card" + hl("collide")} id="collide">
+      <div className={"card" + hl("collide")} id="collide" data-tab="collide">
         <CollidePanel ev={ev} fleet={fleet} autoPlay={autoSim} />
       </div>
 
-      <details className="card drawer">
+      <details className="card drawer" data-tab="details" open={mobile ? true : undefined}>
         <summary className="label">Specialist detail</summary>
         <div className="drawer-body">
           {brief && (
