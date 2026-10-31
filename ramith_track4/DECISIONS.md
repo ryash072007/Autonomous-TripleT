@@ -12,3 +12,9 @@
    - **Codes added beyond the control prompt:** `EXCLUSION_UNVERIFIABLE` (AD excludes airplanes meeting a maintenance-programme condition the user didn't state), `INSUFFICIENT_EVIDENCE` as a refusal code.
    - **Refusal scoring:** refusal precision/recall count any refusal; refusal-code accuracy is reported separately.
    - Where a model appears in several NPRMs, questions are anchored by docket, superseded AD number, or bulletin so the gold doc is unique. The gold doc for a revised docket is the **latest** entry.
+
+6. **Doc-number resolution widened.** Link regex now handles `/documents/YYYY/MM/DD/N`, `/documents/N`, `/d/N`, `/a/N` and `R1-YYYY-N` forms: 237 rows resolve (229 unique FR documents), up from 216 in scoping. All 229 fetched, 0 errors.
+7. **Embedded text discovered.** 169 rows (the ones without a URL) carry the notice's own regulatory text in the spreadsheet's `Link for Submitting Public Comment` column. Used as text source `embedded` (some cells had literal `\n`/`\t`, normalised once). Full-text coverage: fr_text 237 + embedded 169 = **406/431 (94.2%)**; 25 rows summary_only.
+8. **Three source formats parsed** (modern lettered, old lettered, oldest unlettered/inline "Applicability:"). Applicability section found in 304 rows; 65 are withdrawal notices; 37 full-text rows lack an applicability section (extension/correction notices or partial text).
+9. **Full-corpus applicability patterns** (regex hits on 304 parsed sections, see `data/processed/coverage_report.md`): model list 96%, "all" 35%, EASA/TCCA/ANAC AD 11%, "as identified in" 24%, part number 10%, serial number 18% (includes "all serial numbers" phrasing), "except" 3%, CofA date cutoff 1%. These correct the 30-document sample from scoping (serial 3%).
+10. `data/processed/docs.jsonl` (full text) is git-ignored; regenerate with `python src/ingest.py && python src/build_corpus.py && python src/coverage_patterns.py`.
