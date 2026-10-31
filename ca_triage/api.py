@@ -14,9 +14,11 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from ca_triage import storage
+from ca_triage.env import load_env
 from ca_triage.tiers import TIER_NAMES, Tier, rule_fired, tier as tier_fn
 
 ROOT = Path(__file__).resolve().parents[1]
+load_env()
 ART = Path(os.environ.get("ORBITGUARD_ARTIFACTS", ROOT / "artifacts"))
 DIST = ROOT / "web" / "dist"
 LIVE_MSG = "Live mode not yet available"

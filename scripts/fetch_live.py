@@ -1,7 +1,7 @@
 """Fetch Space-Track public CDMs once and write the live scored file.
 
 One login+query request per run (ajaxauth/login with `query`), no loops, User-Agent set, per Space-Track terms.
-Needs SPACETRACK_USER and SPACETRACK_PASS. Without them it prints a message and exits 0.
+Needs SPACETRACK_USER and SPACETRACK_PASS (environment or the repo's .env). Without them it prints a message and exits 0.
 `--fixture FILE` maps a local JSON file instead (for tests/dev); point --out at a scratch directory for that.
 """
 
@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from ca_triage.env import load_env  # noqa: E402
 from ca_triage.live import map_cdms  # noqa: E402
 
 LOGIN = "https://www.space-track.org/ajaxauth/login"
@@ -36,6 +37,7 @@ def main() -> int:
     ap.add_argument("--fixture", help="map this JSON file instead of calling Space-Track")
     ap.add_argument("--out", default=str(ROOT / "artifacts"), help="artifacts directory to write into")
     a = ap.parse_args()
+    load_env()
     if a.fixture:
         rows = json.loads(Path(a.fixture).read_text(encoding="utf-8"))
     else:
