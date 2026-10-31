@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Embraer EMB-545 and EMB-550 airplanes that requires a flight control computer software update and a new AFM revision to end the angle of attack limiter airspeed and approach restrictions?"}

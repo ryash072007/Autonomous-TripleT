@@ -1,0 +1,1 @@
+{"question": "What are some tips for finding cheap airline tickets for a summer vacation in Europe?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,592 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 225 (Tuesday, November 25, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 225 (Tuesday, November 25, 2025)]
+[Proposed Rules]
+[Pages 53238-53242]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-20852]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-5032; Project Identifier AD-2025-01042-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2025-06-04, which applies to all Airbus Helicopters Model AS350B, 
+AS350B1, AS350B2, AS350B3, AS350BA,
+
+[[Page 53239]]
+
+AS350D, AS355E, AS355F, AS355F1, AS355F2, AS355N, AS355NP, EC130B4, and 
+EC130T2 helicopters. AD 2025-06-04 requires repetitively inspecting the 
+main gearbox (MGB) bevel wheel and the MGB magnetic plug for particles 
+and performing corrective actions if applicable and prohibits 
+installing an affected MGB unless certain requirements are met. Since 
+the FAA issued AD 2025-06-04, the FAA determined that AD 2025-06-04 
+contains errors in the interval compliance times. This proposed AD 
+would continue to require the actions of AD 2025-06-04 and revise the 
+interval compliance times. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by January 9, 
+2026.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-5032; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; phone: +49 221 8999 000; email: 
+<a href="/cdn-cgi/l/email-protection#aaebeed9eacfcbd9cb84cfdfd8c5dacb84cfdf"><span class="__cf_email__" data-cfemail="a9e8eddae9ccc8dac887ccdcdbc6d9c887ccdc">[email&#160;protected]</span></a>; website easa.europa.eu. You may find this material 
+on the EASA website at ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Dan McCully, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (404) 
+474-5548; email: <a href="/cdn-cgi/l/email-protection#b6c1dfdadadfd7db98dbd5d5c3dadacff6d0d7d798d1d9c0"><span class="__cf_email__" data-cfemail="16617f7a7a7f777b387b7575637a7a6f5670777738717960">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-5032; 
+Project Identifier AD-2025-01042-R'' at the beginning of your comments. 
+The most helpful comments reference a specific portion of the proposal, 
+explain the reason for any recommended change, and include supporting 
+data. The FAA will consider all comments received by the closing date 
+and may revise this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Dan 
+McCully, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued AD 2025-06-04, Amendment 39-22992 (90 FR 14723, 
+April 4, 2025) (AD 2025-06-04), for all Airbus Helicopters Model 
+AS350B, AS350B1, AS350B2, AS350B3, AS350BA, AS350D, AS355E, AS355F, 
+AS355F1, AS355F2, AS355N, AS355NP, EC130B4, and EC130T2 helicopters. AD 
+2025-06-04 was prompted by EASA AD 2023-0044, dated February 28, 2023 
+(EASA AD 2023-0044) (also referred to as the MCAI), issued by EASA, 
+which is the Technical Agent for the Member States of the European 
+Union. The MCAI states that after a fleet design review for detection 
+of particles in the MGB, it was determined that additional maintenance 
+actions are necessary to improve detection of particles in MGB that 
+have certain part-numbered planet gear bearings installed. AD 2025-06-
+04 requires repetitively inspecting the MGB bevel wheel and the MGB 
+magnetic plug for the presence of particles, close monitoring of the 
+MGB magnetic plug if particles are detected, and replacing the 
+epicyclic module if necessary. The AD also prohibits installing an 
+affected MGB unless certain requirements are met. The agency issued AD 
+2025-06-04 to detect and correct the presence of particles in the MGB 
+which, if not addressed, could result in reduced or loss of control of 
+the helicopter.
+
+Actions Since AD 2025-06-04 Was Issued
+
+    Since the FAA issued AD 2025-06-04, the FAA determined that there 
+are errors in the interval compliance times in Table 1 to paragraph 
+(h)(6)(i) of AD 2025-06-04. Airbus Helicopters Model AS350B, AS350B1, 
+AS350BA, AS350D, AS355E, AS355F, AS355F1, AS355F2, AS355N, and AS355NP 
+helicopters should have an interval compliance time of 100 hours time-
+in-service (TIS) instead of 30 hours TIS. Also, Airbus Helicopters 
+Model EC130B4 helicopters should have an interval compliance time of 
+100 hours TIS instead of 150 hours TIS.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2023-0044, which specifies procedures for 
+repetitive borescope visual inspections of the bevel wheel of the 
+affected MGB for particles, collecting and analyzing any particles 
+detected, and depending on the results, accomplishing further actions, 
+accomplishing corrective action in accordance with the ASB, or 
+contacting AH [Airbus Helicopters] for further corrective action. EASA 
+AD 2023-0044 also specifies procedures for accomplishing a borescope 
+visual
+
+[[Page 53240]]
+
+inspection of the bevel wheel of the affected MGB for particles 
+following the detection of any particles at the MGB magnetic plug 
+during accomplishment of certain maintenance tasks and depending on the 
+results, taking corrective action. EASA AD 2023-0044 also prohibits 
+installing an affected MGB on any helicopter unless certain 
+requirements are met.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would continue to require the actions of AD 2025-
+06-04, except that this proposed AD would revise the interval 
+compliance times. The actions proposed in this AD are specified in EASA 
+AD 2023-0044, described previously, as incorporated by reference, 
+except for any differences identified as exceptions in the regulatory 
+text of this proposed AD. See ``Differences Between this Proposed AD 
+and the MCAI'' for a discussion of the general differences included in 
+this proposed AD.
+
+Differences Between This Proposed AD and the MCAI
+
+    The MCAI applies to Model AS350BB helicopters, whereas this 
+proposed AD would not because that model does not have an FAA type 
+certificate.
+    Where Note 1 in the material referenced in the MCAI specifies the 
+option of 1 mechanical technician and 1 crew member, for this proposed 
+AD, the pilot is only permitted to turn the tail rotor (b) because the 
+other actions specified in the note must be accomplished by persons 
+authorized under 14 CFR 43.3. Therefore, for the purposes of this 
+proposed AD, the owner/operator (pilot) may turn the tail rotor (b) and 
+must enter compliance with the applicable paragraph of this proposed AD 
+in the helicopter maintenance records in accordance with 14 CFR 43.9(a) 
+and 91.417(a)(2)(v). The pilot may perform this action because it only 
+involves turning the tail rotor (b). This action can be performed 
+equally well by a pilot or a mechanic. This action is an exception to 
+the FAA's standard maintenance regulations.
+    This proposed AD would not require complying with paragraph (2) of 
+the MCAI. Instead, this proposed AD would require repetitively 
+inspecting the MGB magnetic plug for particles and, if there is any 
+particle, accomplishing a borescope visual inspection, as specified in 
+paragraphs (h)(6)(i) and (ii) of this proposed AD.
+    Where the material referenced in the MCAI specifies contacting 
+Airbus Helicopters for a certain action, this proposed AD would require 
+accomplishing action in accordance with a method approved by the FAA, 
+EASA, or Airbus Helicopters' EASA Design Organization Approval.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2023-0044 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2023-0044 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2023-0044 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2023-
+0044. Material required by EASA AD 2023-0044 for compliance will be 
+available at <a href="http://www.regulations.gov">www.regulations.gov</a> by searching for and locating Docket 
+No. FAA-2025-5032 after the FAA final rule is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 522 helicopters of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                     Cost per      Cost on U.S.
+               Action                         Labor cost            Parts cost        product        operators
+----------------------------------------------------------------------------------------------------------------
+Visually inspect MGB bevel wheel...  1 work-hour x $85 per hour               $0             $85         $44,370
+                                      = $85.
+Repetitively inspect magnetic plugs  1 work-hour x $85 per hour                0              85          44,370
+ of the MGB.                          = $85.
+----------------------------------------------------------------------------------------------------------------
+
+    The new requirements of this proposed AD add no additional economic 
+burden.
+    The FAA estimates the following costs to do any on-condition 
+actions that would be required based on the results of the proposed 
+inspections. The agency has no way of determining the number of 
+helicopters that might need these on-condition actions:
+
+                                               On-Condition Costs
+----------------------------------------------------------------------------------------------------------------
+                Action                        Labor cost               Parts cost            Cost per product
+----------------------------------------------------------------------------------------------------------------
+Collect particles and perform          6 work-hours x $85 per   $0.....................  $510.
+ metallurgical analysis.                hour = $510.
+Close monitoring.....................  2 work-hours x $85 per   $0.....................  $170 per close
+                                        hour = $170.                                      monitoring cycle.
+Perform visual borescope inspection    1 work-hour x $85 per    $0.....................  $85.
+ of MGB bevel wheel.                    hour = $85.
+Replace epicyclic module.............  56 work-hours x $85 per  $50,524 (overhauled)...  $55,284 per module.
+                                        hour = $4,760.
+
+[[Page 53241]]
+
+ 
+Replace bevel reduction module.......  56 work-hours x $85 per  $18,500 (overhauled)...  $23,260 per module.
+                                        hour = $4,760.
+----------------------------------------------------------------------------------------------------------------
+
+    Certain corrective action could vary significantly from helicopter 
+to helicopter. The FAA has no data to determine the costs to accomplish 
+the corrective action.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2025-06-04, Amendment 39-22992 (90 
+FR 14723, April 4, 2025); and
+0
+b. Adding the following new airworthiness directive:
+
+Airbus Helicopters: Docket No. FAA-2025-5032; Project Identifier AD-
+2025-01042-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by January 9, 2026.
+
+(b) Affected ADs
+
+    This AD replaces AD 2025-06-04, Amendment 39-22992 (90 FR 14723, 
+April 4, 2025) (AD 2025-06-04).
+
+(c) Applicability
+
+    This AD applies to all Airbus Helicopters Model AS350B, AS350B1, 
+AS350B2, AS350B3, AS350BA, AS350D, AS355E, AS355F, AS355F1, AS355F2, 
+AS355N, AS355NP, EC130B4, and EC130T2 helicopters, certificated in 
+any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6320, Main Rotor 
+Gearbox.
+
+(e) Unsafe Condition
+
+    This AD was prompted by an assessment performed by the 
+manufacturer which determined that additional maintenance actions 
+are necessary to improve detection of particles in the main gearbox 
+(MGB) with certain part-numbered planet gear bearings installed. The 
+FAA is issuing this AD to detect and correct particles in the MGB. 
+The unsafe condition, if not addressed, could result in reduced or 
+loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency AD 2023-0044, 
+dated February 28, 2023 (EASA AD 2023-0044).
+
+(h) Exceptions to EASA AD 2023-0044
+
+    (1) Where EASA AD 2023-0044 defines ``serviceable MGB'' as ``An 
+affected MGB which has accumulated less than 330 flight hours (FH) 
+since new (first installation on a helicopter), or since an 
+overhaul, or since an inspection in accordance with the instructions 
+of the ASB'', this AD requires replacing that text with ``An 
+affected MGB which has accumulated less than 330 total hours time-
+in-service (TIS) since new (zero total hours TIS), since last 
+overhaul if an overhaul has been accomplished, or since last 
+inspection and any specified corrective action in accordance with 
+the instructions of the ASB if an inspection and any specified 
+corrective action by following the instructions of the ASB have been 
+accomplished''.
+    (2) Where EASA AD 2023-0044 requires compliance in terms of 
+flight hours, this AD requires using TIS.
+    (3) Where EASA AD 2023-0044 refers to its effective date, this 
+AD requires using May 9, 2025 (the effective date of AD 2025-06-04).
+    (4) Where Note 1 in the material referenced in paragraph (1) of 
+EASA AD 2023-0044 specifies the option of 1 mechanical technician 
+and 1 crew member, for this AD, the pilot is only permitted to turn 
+the tail rotor (b). The owner/operator (pilot) holding at least a 
+private pilot certificate may turn the tail rotor (b) and must enter 
+compliance with paragraph (g) of this AD in the helicopter 
+maintenance records in accordance with 14 CFR 43.9(a) and 
+91.417(a)(2)(v). The record must be maintained as required by 14 CFR 
+91.417, 121.380, or 135.43. All other actions specified in Note 1 in 
+the material referenced in paragraph (1) of EASA AD 2023-0044 must 
+be accomplished by persons authorized under 14 CFR 43.3.
+    (5) Where Note 2 in the material referenced in paragraph (1) of 
+EASA AD 2023-0044 specifies contacting Airbus Helicopters [AH] for 
+further instructions if the bottom of the radius (a6) of the bevel 
+wheel (a3) or head screws (a4) (see Figure 2) are not clearly 
+visible, this AD requires, before further flight, accomplishing 
+action in accordance with a method approved by the FAA, EASA, or 
+Airbus Helicopters' EASA Design Organization Approval (DOA). If 
+approved by the DOA, the approval must include the DOA-authorized 
+signature.
+    (6) Instead of complying with paragraph (2) of EASA AD 2023-
+0044, comply with the actions required by paragraphs (h)(6)(i) and 
+(ii) of this AD.
+
+[[Page 53242]]
+
+    (i) After May 9, 2025 (the effective date of AD 2025-06-04), and 
+within the compliance time intervals specified in table 1 to 
+paragraph (h)(6)(i) of this AD, visually inspect the MGB magnetic 
+plug for particles.
+
+    Note 1 to paragraph (h)(6)(i): Aircraft Maintenance Manual (AMM) 
+task 60-00-00, 6-2A, or AMM task 60-00-00, 6-2, or Work Card 60-00-
+00-602, as applicable, provides information regarding inspecting the 
+MGB magnetic plug.
+
+                          Table 1 to paragraph (h)(6)(i)--MGB Magnetic Plug Inspections
+----------------------------------------------------------------------------------------------------------------
+                                                             Initial compliance times
+                                                             (after May 9, 2025, the   Interval compliance times
+                    Helicopter model(s)                     effective date of AD 2025-  (thereafter) (hours TIS)
+                                                                06-04) (hours TIS)
+----------------------------------------------------------------------------------------------------------------
+AS350B, AS350B1, AS350BA, and AS350D......................                          5                        100
+AS355E, AS355F, AS355F1, AS355F2, AS355N, and AS355NP.....                          5                        100
+AS350B2 and AS350B3.......................................                         10                        100
+EC130B4...................................................                          5                        100
+EC130T2...................................................                          5                        150
+----------------------------------------------------------------------------------------------------------------
+
+    (ii) If there is any particle as a result of any MGB magnetic 
+plug inspection required by paragraph (h)(6)(i) of this AD, before 
+further flight, borescope inspect the bevel wheel of the affected 
+MGB for particles as required by paragraph (1) of EASA AD 2023-0044. 
+If there is any particle as a result of the borescope inspection of 
+the bevel wheel, before further flight, collect and analyze the 
+particles as required by paragraph (3) of EASA AD 2023-0044.
+    (7) Where paragraph (3) of EASA AD 2023-0044 specifies ``If, 
+during any inspection as required by paragraph (1) or (2) of this 
+AD'', this AD requires replacing that text with ``If, during any 
+inspection as required by paragraph (1) of this AD''.
+    (8) Where the material referenced in paragraph (3) of EASA AD 
+2023-0044 specifies performing a metallurgical analysis and 
+contacting Airbus Helicopters if collected particles cannot be 
+characterized with Work Card 20-08-01-601, this AD does not require 
+contacting Airbus Helicopter but does require performing the 
+metallurgical analysis.
+    (9) Where the material referenced in paragraph (3) of EASA AD 
+2023-0044 contains a special flight permit provision, this AD does 
+not allow that provision but instead requires the special flight 
+permit limitations in paragraph (j) of this AD.
+    (10) Where the material referenced in paragraph (3) of EASA AD 
+2023-0044 specifies contacting Airbus Helicopters if the damaged 
+module cannot be identified, this AD requires, before further 
+flight, accomplishing action in accordance with a method approved by 
+the FAA, EASA, or Airbus Helicopters' EASA DOA. If approved by the 
+DOA, the approval must include the DOA-authorized signature.
+    (11) Where paragraph (5) of EASA AD 2023-0044 states ``to 
+contact AH for corrective action(s) instructions, and within the 
+compliance time specified therein, to accomplish those instructions 
+accordingly'', this AD requires replacing that text with 
+``accomplishing corrective actions in accordance with a method 
+approved by the FAA, EASA, or Airbus Helicopters' EASA DOA. If 
+approved by the DOA, the approval must include the DOA-authorized 
+signature''.
+    (12) Where paragraph (7) of EASA AD 2023-0044 states ``since new 
+(first installation a helicopter), or since an overhaul, or since an 
+inspection in accordance with the instructions of the ASB, as 
+applicable, and, thereafter, as required by this AD'', this AD 
+requires replacing that text with ``since new (zero total hours 
+time-in-service), or since last overhaul if an overhaul has been 
+accomplished, or since last inspection and any specified corrective 
+action in accordance with the instructions of the ASB if an 
+inspection and any specified corrective action by following the 
+instructions of the ASB have been accomplished, and thereafter as 
+required by this AD''.
+    (13) This AD does not adopt the ``Remarks'' section of EASA AD 
+2023-0044.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2023-0044 specifies 
+to submit certain information to the manufacturer, this AD does not 
+require that action.
+
+(j) Special Flight Permit
+
+    A special flight permit may be issued in accordance with 14 CFR 
+21.197 and 21.199 to permit a one-time, non-revenue flight to a 
+location where the actions required by this AD can be accomplished. 
+This flight must be performed with only essential flight crew.
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (l) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#9bdad6d4d8dbfdfafab5fcf4ed"><span class="__cf_email__" data-cfemail="6c2d21232f2c0a0d0d420b031a">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(l) Additional Information
+
+    For more information about this AD, contact Dan McCully, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (404) 474-5548; email: 
+<a href="/cdn-cgi/l/email-protection#483f21242421292566252b2b3d242431082e2929662f273e"><span class="__cf_email__" data-cfemail="aed9c7c2c2c7cfc380c3cdcddbc2c2d7eec8cfcf80c9c1d8">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (3) The following material was approved for IBR on May 9, 2025 
+(90 FR 14723; April 4, 2025).
+    (i) European Union Aviation Safety Agency (EASA) AD 2023-0044, 
+dated February 28, 2023.
+    (ii) [Reserved]
+    (4) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#58191c2b183d392b39763d2d2a372839763d2d"><span class="__cf_email__" data-cfemail="6a2b2e192a0f0b190b440f1f18051a0b440f1f">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find the EASA material on the EASA website at ad.easa.europa.eu.
+    (5) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (6) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#7513075b1c1b06051016011c1a1b351b1407145b121a03"><span class="__cf_email__" data-cfemail="e98f9bc780879a998c8a9d808687a987889b88c78e869f">[email&#160;protected]</span></a>.
+
+    Issued on November 20, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-20852 Filed 11-24-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

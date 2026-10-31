@@ -1,0 +1,1 @@
+{"question": "What is the proposed AD for PW1500G and PW1900G geared turbofan engines requiring borescope inspections of HPC 1st, 2nd, and 3rd stage rotor rear rims for clashing with variable stator vanes, and replacement of the VSV bushing set?"}

@@ -1,0 +1,5 @@
+The applicability paragraph reads "all Embraer S.A. Model EMB-545 and EMB-550 airplanes, certificated in any category." It has no date limit, serial range, part-number condition, or exclusion. Any listed model therefore APPLIES, and any unlisted model DOES_NOT_APPLY. The applicability does not depend on anything the configuration leaves unstated, and it is not defined in an external document. ANAC AD 2024-08-02 only supplies the required actions, not the applicability. A CANNOT_DETERMINE configuration is therefore not feasible.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "AMBIGUOUS_SCOPE", "evidence_quote": "This AD applies to all Embraer S.A. Model EMB-545 and EMB-550 airplanes, certificated in any category.", "notes": "Applicability depends only on model (all serials, all dates, any category); the ANAC AD supplies actions, not applicability, so a model-only config always resolves to APPLIES or DOES_NOT_APPLY."}
+```

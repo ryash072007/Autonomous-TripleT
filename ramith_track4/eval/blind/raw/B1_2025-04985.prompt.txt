@@ -1,0 +1,597 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 60 (Monday, March 31, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 60 (Monday, March 31, 2025)]
+[Proposed Rules]
+[Pages 14213-14217]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-04985]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0473; Project Identifier AD-2024-00281-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; The Boeing Company Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2018-26-03, which applies to all The Boeing Company Model 757-200 
+series airplanes. AD 2018-26-03 requires, for the Captain's and First 
+Officer's seats, repetitive horizontal actuator identifications, 
+repetitive checks of the horizontal movement system (HMS), a detailed 
+inspection of the HMS, as applicable, and applicable on-condition 
+actions. AD 2018-26-03 also requires a general visual inspection to 
+determine the seat part numbers of the Captain's and First Officer's 
+seats, a cable adjustment check on seats with certain seat part 
+numbers, and applicable on-condition actions. Since the FAA issued AD 
+2018-26-03, the FAA has determined that additional seats are affected 
+by the unsafe condition. This proposed AD would retain the actions 
+required by AD 2018-26-03 and add an inspection for previously omitted 
+part numbers. The FAA is proposing this AD to address the unsafe 
+condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by May 15, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0473; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Boeing material identified in this proposed AD, 
+contact Boeing Commercial Airplanes, Attention: Contractual & Data 
+Services (C&DS), 2600 Westminster Blvd., MC 110-SK57, Seal Beach, CA 
+90740-5600; telephone 562-797-1717; website <a href="http://myboeingfleet.com">myboeingfleet.com</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195. It is also available at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0473.
+
+FOR FURTHER INFORMATION CONTACT: Courtney Tuck, Aviation Safety 
+Engineer, FAA, 2200 South 216th St., Des Moines, WA 98198; phone: 206-
+231-3986; email: <a href="/cdn-cgi/l/email-protection#15567a6067617b706c3b5e3b4160767e557374743b727a63"><span class="__cf_email__" data-cfemail="02416d7770766c677b2c492c56776169426463632c656d74">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include
+
+[[Page 14214]]
+
+``Docket No. FAA-2025-0473; Project Identifier AD-2024-00281-T'' at the 
+beginning of your comments. The most helpful comments reference a 
+specific portion of the proposal, explain the reason for any 
+recommended change, and include supporting data. The FAA will consider 
+all comments received by the closing date and may amend the proposal 
+because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this proposed AD.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Courtney Tuck, Aviation Safety Engineer, FAA, 2200 South 216th St., Des 
+Moines, WA 98198; phone: 206-231-3986; email: <a href="/cdn-cgi/l/email-protection#5a19352f282e343f237411740e2f39311a3c3b3b743d352c"><span class="__cf_email__" data-cfemail="9eddf1ebeceaf0fbe7b0d5b0caebfdf5def8ffffb0f9f1e8">[email&#160;protected]</span></a>. 
+Any commentary that the FAA receives that is not specifically 
+designated as CBI will be placed in the public docket for this 
+rulemaking.
+
+Background
+
+    The FAA issued AD 2018-26-03, Amendment 39-19533 (83 FR 66612, 
+December 27, 2018) (AD 2018-26-03), for all The Boeing Company Model 
+757-200 series airplanes. AD 2018-26-03 was prompted by reports of 
+uncommanded movement of the Captain's and First Officer's seats. AD 
+2018-26-03 requires, for the Captain's and First Officer's seats, 
+repetitive horizontal actuator identifications, repetitive checks of 
+the HMS, a detailed inspection of the HMS, as applicable, and 
+applicable on-condition actions. AD 2018-26-03 also requires a general 
+visual inspection to determine the seat part numbers of the Captain's 
+and First Officer's seats, a cable adjustment check on seats with 
+certain seat part numbers, and applicable on-condition actions. The 
+agency issued AD 2018-26-03 to address uncommanded movement of the 
+Captain's and First Officer's seat, which could lead to reduced 
+controllability of the airplane.
+
+Actions Since AD 2018-26-03 Was Issued
+
+    Since the FAA issued AD 2018-26-03, Boeing and the seat supplier 
+(Ipeco) determined that certain seat part numbers were inadvertently 
+omitted from the service information required by AD 2018-26-03. Ipeco 
+subsequently updated their service information to include the 
+additional part numbers, and Boeing updated their service information 
+as well. Based on this, the FAA has determined that additional seats 
+are affected by the unsafe condition.
+    In addition, the effectivity of Boeing Special Attention Service 
+Bulletin 757-25-0308, Revision 2, dated June 12, 2023; and Boeing 
+Special Attention Service Bulletin 757-25-0309, Revision 2, dated June 
+12, 2023; are limited to The Boeing Company Model 757-200 series 
+airplanes having certain line numbers. However, the applicability of 
+this proposed AD includes all The Boeing Company Model 757-200 series 
+airplanes. Because the affected parts are rotable parts, the FAA has 
+determined that these parts could later be installed on airplanes that 
+were initially delivered with acceptable parts, thereby subjecting 
+those airplanes to the unsafe condition.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Boeing Special Attention Service Bulletin 757-25-
+0308, Revision 2, dated June 12, 2023. This material specifies 
+procedures for repetitive horizontal actuator identifications, 
+repetitive checks of the HMS, a detailed inspection of the HMS, as 
+applicable, and applicable on-condition actions including an overhaul 
+and checks of the HMS, with the option to install a serviceable seat 
+under certain conditions, which terminates the repetitive checks.
+    The FAA reviewed Boeing Special Attention Service Bulletin 757-25-
+0309, Revision 2, dated June 12, 2023. This material specifies 
+procedures for a general visual inspection to determine the seat part 
+numbers on the Captain's and First Officer's seats, and, for seats with 
+certain part numbers, a manual override cable adjustment check of the 
+Captain's and First Officer's seats, and applicable on-condition 
+actions including moving the adjustment nut, tightening the lock nut, 
+and readjusting the control lever.
+    This proposed AD would also require Boeing Special Attention 
+Service Bulletin 757-25-0308, Revision 1, dated June 7, 2018, which the 
+Director of the Federal Register approved for incorporation by 
+reference as of January 31, 2019 (83 FR 66612, December 27, 2018).
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+Proposed AD Requirements in This NPRM
+
+    Although this proposed AD does not explicitly restate the 
+requirements of AD 2018-26-03, this proposed AD would retain all of the 
+requirements of AD 2018-26-03. Those requirements are referenced in the 
+material identified previously, which, in turn, is referenced in 
+paragraphs (g) and (h) of this proposed AD.
+    This proposed AD would retain all of the requirements of AD 2018-
+26-03 and add actions for certain airplanes. This proposed AD would 
+also require accomplishment of the actions identified as ``RC'' 
+(required for compliance) in the Accomplishment Instructions of Boeing 
+Special Attention Service Bulletins 757-25-0308 and 757-25-0309, both 
+Revision 2, dated June 12, 2023, described previously, except for any 
+differences identified as exceptions in the regulatory text of this 
+proposed AD. For information on the procedures and compliance times, 
+see this material at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0473.
+
+Acceptable Methods of Compliance
+
+    The FAA has determined that the actions required by paragraphs (g) 
+and (h) of this proposed AD are not required under specific conditions, 
+e.g., if it can be shown through maintenance records that the required 
+actions have already been accomplished by the previous revision of the 
+service information and specific conditions have been met. Table 1 to 
+paragraph (j) of this proposed AD identifies these conditions. 
+Complying with these conditions adequately addresses the unsafe
+
+[[Page 14215]]
+
+condition identified in this proposed AD.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 484 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                                 Cost on U.S.
+              Action                    Labor cost        Parts cost      Cost per product        operators
+----------------------------------------------------------------------------------------------------------------
+Identification/check (retained     Up to 11 work-hours          $4,820  $5,755 per           $2,785,420 per
+ actions from AD 2018-26-03).       x $85 per hour =                     identification/      identification/
+                                    $935 per                             check cycle.         check cycle.
+                                    identification/
+                                    check cycle.
+Inspection (retained action from   Up to 1 work-hour x               0  Up to $85..........  $41,140.
+ AD 2018-26-03).                    $85 per hour = $85.
+Part identification (new proposed  1 work-hour x $85                 0  $85................  $41,140.
+ action).                           per hour = $85.
+----------------------------------------------------------------------------------------------------------------
+
+    Certain configurations of the Captain's and First Officer's seats 
+may require special tooling to test the seats. Special tooling for one 
+set of Captain's and First Officer's seats will cost $30,000, and a 
+certain other set will cost $32,500. If an operator owns both 
+combinations of seats, the special tooling will cost up to $62,500 per 
+operator.
+    We have received no definitive data that would enable us to provide 
+the remaining cost estimates for the on-condition actions specified in 
+this AD.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701, General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA has determined that this proposed AD would not have 
+federalism implications under Executive Order 13132. This proposed AD 
+would not have a substantial direct effect on the States, on the 
+relationship between the national government and the States, or on the 
+distribution of power and responsibilities among the various levels of 
+government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive (AD) 2018-26-03, Amendment 39-19533 
+(83 FR 66612, December 27, 2018), and
+0
+b. Adding the following new AD:
+
+The Boeing Company: Docket No. FAA-2025-0473; Project Identifier AD-
+2024-00281-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by May 15, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2018-26-03, Amendment 39-19533 (83 FR 66612, 
+December 27, 2018) (AD 2018-26-03).
+
+(c) Applicability
+
+    This AD applies to all The Boeing Company Model 757-200 series 
+airplanes, certificated in any category.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 25, Equipment/
+furnishings.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of uncommanded movement of the 
+Captain's and First Officer's seats. The FAA is issuing this AD to 
+address uncommanded movement of the Captain's or First Officer's 
+seat, which could lead to reduced controllability of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Identification, Checks and Inspection of Horizontal Movement 
+System, and On-Condition Actions
+
+    For airplanes identified in Boeing Special Attention Service 
+Bulletin 757-25-0308, Revision 2, dated June 12, 2023: Except as 
+required by paragraphs (i) and (m) of this AD, at the applicable 
+times specified in paragraph 1.E., ``Compliance,'' of Boeing Special 
+Attention Service Bulletin 757-25-0308, Revision 1, dated June 7, 
+2018, or Revision 2, dated June 12, 2023, do all applicable actions 
+identified as ``RC'' (required for compliance) in, and in accordance 
+with, the Accomplishment Instructions of Boeing Special Attention 
+Service Bulletin 757-25-0308, Revision 1, dated June 7, 2018, or 
+Revision 2, dated June 12, 2023. As of the effective date of this 
+AD, only Boeing Special Attention Service Bulletin 757-25-0308, 
+Revision 2, dated June 12, 2023, may be used.
+
+(h) Seat Identification, Cable Adjustment, and On-Condition Actions
+
+    For airplanes identified in Boeing Special Attention Service 
+Bulletin 757-25-0309, Revision 2, dated June 12, 2023: Except as 
+specified by paragraphs (i) and (m) of this AD, at the applicable 
+times specified in the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023, do an inspection to determine the part number of the Captain's 
+and First Officer's seats, and all
+
+[[Page 14216]]
+
+applicable on-condition actions identified in, and in accordance 
+with, the Accomplishment Instructions of Boeing Special Attention 
+Service Bulletin 757-25-0309, Revision 2, dated June 12, 2023. A 
+review of airplane maintenance records is acceptable in lieu of this 
+inspection if the part number and serial number of the Captain's and 
+First Officer's seats can be conclusively determined from that 
+review.
+
+(i) Exceptions to Service Bulletin Specifications for Paragraphs (g) 
+and (h) of This AD
+
+    (1) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0308, Revision 1, dated June 7, 
+2018, refers to ``the original issue date of this service 
+bulletin,'' this AD requires using ``January 31, 2019 (the effective 
+date of AD 2018-26-03).''
+    (2) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0308, Revision 2, dated June 12, 
+2023, refers to ``the original issue date of this service 
+bulletin,'' this AD requires using ``January 31, 2019 (the effective 
+date of AD 2018-26-03).''
+    (3) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023, refers to ``72 months after the original issue date of this 
+service bulletin,'' this AD requires using ``36 months after January 
+31, 2019 (the effective date of AD 2018-26-03).''
+    (4) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023, refers to ``the Revision 2 date of this service bulletin,'' 
+this AD requires using ``the effective date of this AD.''
+
+(j) Identification, Checks and Inspection of Horizontal Movement 
+System, and On-Condition Actions for Additional Airplanes
+
+    For airplanes other than those identified in Boeing Special 
+Attention Service Bulletin 757-25-0308, Revision 2, dated June 12, 
+2023: Except as required by paragraphs (l) and (m) of this AD, at 
+the applicable times specified in paragraph 1.E., ``Compliance,'' of 
+Boeing Special Attention Service Bulletin 757-25-0308, Revision 2, 
+dated June 12, 2023, do all applicable actions identified as ``RC'' 
+(required for compliance) in, and in accordance with, the 
+Accomplishment Instructions of Boeing Special Attention Service 
+Bulletin 757-25-0308, Revision 2, dated June 12, 2023.
+
+(k) Seat Identification, Cable Adjustment, and On-Condition Actions for 
+Additional Airplanes
+
+    For airplanes other than those identified in Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023: Except as specified by paragraphs (l) and (m) of this AD, at 
+the applicable times specified in the ``Compliance'' paragraph of 
+Boeing Special Attention Service Bulletin 757-25-0309, Revision 2, 
+dated June 12, 2023, do an inspection to determine the part number 
+of the Captain's and First Officer's seats, and all applicable on-
+condition actions identified in, and in accordance with, the 
+Accomplishment Instructions of Boeing Special Attention Service 
+Bulletin 757-25-0309, Revision 2, dated June 12, 2023. A review of 
+airplane maintenance records is acceptable in lieu of this 
+inspection if the part number and serial number of the Captain's and 
+First Officer's seats can be conclusively determined from that 
+review.
+
+(l) Exceptions to Service Bulletin Specifications for Paragraphs (j) 
+and (k) of This AD
+
+    (1) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0308, Revision 2, dated June 12, 
+2023, refers to ``the original issue date of this service 
+bulletin,'' this AD requires using ``the effective date of this 
+AD.''
+    (2) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023, refers to ``72 months after the original issue date of this 
+service bulletin,'' this AD requires using ``36 months after the 
+effective date of this AD.''
+    (3) Where the ``Compliance'' paragraph of Boeing Special 
+Attention Service Bulletin 757-25-0309, Revision 2, dated June 12, 
+2023, refers to ``the Revision 2 date of this service bulletin,'' 
+this AD requires using ``the effective date of this AD.''
+
+(m) Acceptable Conditions for Compliance
+
+    If the airplane records show that an Ipeco Captain's or First 
+Officer's seat meets all conditions in a given row in table 1 to 
+paragraph (m) of this AD, then the actions specified in paragraphs 
+(g), (h), (j), and (k) as applicable, of this AD are not required 
+for that seat.
+
+                             Table 1 to Paragraph (m)--Alternative Acceptable Seats
+----------------------------------------------------------------------------------------------------------------
+   Actions done in accordance with         Actions done in
+   Boeing Special Attention Service     accordance with Ipeco      Having Ipeco part     And additional required
+              Bulletin--                  Service Bulletin--         number (P/N)--            conditions--
+----------------------------------------------------------------------------------------------------------------
+757-25-0308, Revision 1, dated June    None...................  3A258-0007-01-2, 3A258-  No additional
+ 7, 2018, or Revision 2, dated June                              0007-01-1Z, 3A258-0008-  conditions required.
+ 12, 2023.                                                       01-2, or 3A258-0008-01-
+                                                                 1Z.
+757-25-0308, Revision 1, dated June    258-25-15 Issue 4,       3A258-0007-01-1 or       Has a horizontal
+ 7, 2018, or Revision 2, dated June     dated February 16,       3A258-0008-01-1.         actuator with Artus
+ 12, 2023.                              2018; or Issue 5,                                 part number AD8650503
+                                        dated April 29, 2020;                             at ``Amendment C'' or
+                                        or Issue 6, dated                                 later.
+                                        November 1, 2021.
+777-25-0309, Revision 1, dated July    None...................  3A258-0007-01-2 or       No additional
+ 2, 2018, or Revision 2, dated June                              3A258-0008-01-2.         conditions required.
+ 12, 2023.
+777-25-0309, Revision 1, dated July    258-25-08, Issue 4,      3A258-0007-01-1, 3A258-  The manual override
+ 2, 2018, or Revision 2, dated June     dated April 25, 2014;    0007-01-1Z, 3A258-0008-  cable maintenance has
+ 12, 2023.                              or Issue 5, dated        01-1, or 3A258-0008-01-  been completed on the
+                                        March 4, 2020; or        1Z.                      seat in accordance
+                                        Issue 6, dated January                            with the Ipeco
+                                        28, 2021.                                         Component Maintenance
+                                                                                          Manual 25-11-26,
+                                                                                          Revision 16, dated
+                                                                                          September 12, 2013, or
+                                                                                          subsequent revisions
+                                                                                          up to and including
+                                                                                          Revision 40, dated
+                                                                                          December 4, 2023.
+777-25-0309, Revision 1, dated July    210-25-04, Issue 2,      3A090-0077-01-1 or       The manual override
+ 2, 2018, or Revision 2, dated June     dated March 28, 2014;    3A090-0078-01-1.         cable maintenance has
+ 12, 2023.                              or Issue 3, dated                                 been completed on the
+                                        March 3, 2020.                                    seat in accordance
+                                                                                          with the Ipeco
+                                                                                          Component Maintenance
+                                                                                          Manual 25-10-78,
+                                                                                          Revision 20, dated
+                                                                                          September 12, 2013, or
+                                                                                          subsequent revisions
+                                                                                          up to and including
+                                                                                          Revision 29, dated
+                                                                                          October 13, 2023.
+----------------------------------------------------------------------------------------------------------------
+
+
+[[Page 14217]]
+
+(n) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, AIR-520, Continued Operational Safety Branch, 
+FAA, has the authority to approve AMOCs for this AD, if requested 
+using the procedures found in 14 CFR 39.19. In accordance with 14 
+CFR 39.19, send your request to your principal inspector or 
+responsible Flight Standards Office, as appropriate. If sending 
+information directly to the manager of the certification office, 
+send it to the attention of the person identified in paragraph (o) 
+of this AD. Information may be emailed to <a href="/cdn-cgi/l/email-protection#6d2c20222e2d0b0c0c430a021b"><span class="__cf_email__" data-cfemail="1455595b57547275753a737b62">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the responsible Flight Standards Office.
+    (3) An AMOC that provides an acceptable level of safety may be 
+used for any repair, modification, or alteration required by this AD 
+if it is approved by The Boeing Company Organization Designation 
+Authorization (ODA) that has been authorized by the Manager, AIR-
+520, Continued Operational Safety Branch, FAA, to make those 
+findings. To be approved, the repair method, modification deviation, 
+or alteration deviation must meet the certification basis of the 
+airplane, and the approval must specifically refer to this AD.
+    (4) AMOCs approved for AD 2018-26-03 are approved as AMOCs for 
+the corresponding provisions of this AD.
+    (5) For material that contains steps that are labeled as 
+Required for Compliance (RC), the provisions of paragraphs (n)(5)(i) 
+and (ii) of this AD apply.
+    (i) The steps labeled as RC, including substeps under an RC step 
+and any figures identified in an RC step, must be done to comply 
+with the AD. If a step or substep is labeled ``RC Exempt,'' then the 
+RC requirement is removed from that step or substep. An AMOC is 
+required for any deviations to RC steps, including substeps and 
+identified figures.
+    (ii) Steps not labeled as RC may be deviated from using accepted 
+methods in accordance with the operator's maintenance or inspection 
+program without obtaining approval of an AMOC, provided the RC 
+steps, including substeps and identified figures, can still be done 
+as specified, and the airplane can be put back in an airworthy 
+condition.
+
+(o) Related Information
+
+    For more information about this AD, contact Courtney Tuck, 
+Aviation Safety Engineer, FAA, 2200 South 216th St., Des Moines, WA 
+98198; phone: 206-231-3986; email: <a href="/cdn-cgi/l/email-protection#23604c5651574d465a0d680d77564048634542420d444c55"><span class="__cf_email__" data-cfemail="23604c5651574d465a0d680d77564048634542420d444c55">[email&#160;protected]</span></a>.
+
+(p) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (3) The following material was approved for IBR on [DATE 35 DAYS 
+AFTER PUBLICATION OF THE FINAL RULE].
+    (i) Boeing Special Attention Service Bulletin 757-25-0308, 
+Revision 2, dated June 12, 2023.
+    (ii) Boeing Special Attention Service Bulletin 757-25-0309, 
+Revision 2, dated June 12, 2023.
+    (4) The following material was approved for IBR on January 31, 
+2019 (83 FR 66612, December 27, 2018).
+    (i) Boeing Special Attention Service Bulletin 757-25-0308, 
+Revision 1, dated June 7, 2018.
+    (ii) [Reserved]
+    (5) For the material identified in this AD, contact Boeing 
+Commercial Airplanes, Attention: Contractual & Data Services (C&DS), 
+2600 Westminster Blvd., MC 110-SK57, Seal Beach, CA 90740-5600; 
+telephone 562-797-1717; website <a href="http://myboeingfleet.com">myboeingfleet.com</a>.
+    (6) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (7) You may view this material at the National Archives and 

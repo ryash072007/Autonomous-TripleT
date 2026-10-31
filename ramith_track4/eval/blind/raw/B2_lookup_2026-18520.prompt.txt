@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Dassault Aviation Airplanes
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) for all Dassault Aviation Model FALCON 7X, MYSTERE-FALCON 900, FALCON 900EX, FALCON 2000, and FALCON 2000EX airplanes. This proposed AD was prompted by reported occurrences of seats sliding without passenger input. The cabin seat track locking mechanism was found to jam in isolated conditions during taxi, take-off, and landing (TTOL). This proposed AD would require modifying or replacing each affected seat. This proposed AD would also prohibit the installation of affected seats. The FAA is proposing this AD to address the unsafe condition on these products.

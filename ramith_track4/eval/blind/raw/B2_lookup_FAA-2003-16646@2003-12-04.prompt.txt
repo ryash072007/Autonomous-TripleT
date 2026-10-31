@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Boeing Model 757-200 Series Airplanes
+SUMMARY: This document proposes the adoption of a new airworthiness directive (AD) that is applicable to certain Boeing Model 757-200 series airplanes. This proposal would require repetitive inspections of the intercostals that back up the door stops and hinges at door 2 left and door 2 right for cracks, and corrective action, if necessary. This proposal also would provide for an optional terminating action for the repetitive inspections. This action is necessary to prevent fatigue cracks from propagating in the intercostals, which could lead to the loss of a door in flight and subsequent rapid decompression. This action is intended to address the identified unsafe condition.

@@ -1,0 +1,1 @@
+{"question": "Was the proposed AD for EMBRAER EMB-145 airplanes requiring modification of the IC-600 integrated computer strap configuration to disable CAT II flight director operations withdrawn?"}

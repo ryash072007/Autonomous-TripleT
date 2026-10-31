@@ -1,0 +1,1 @@
+{"question": "What is the estimated per-engine cost in U.S. dollars for replacing the HPT inner stationary seal under this proposed AD, and how many engines does the FAA estimate are affected on U.S.-registered aircraft?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

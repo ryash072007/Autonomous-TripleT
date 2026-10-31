@@ -1,0 +1,1 @@
+{"question": "What specific inspections, corrective actions, and compliance times does Transport Canada AD CF-2025-39, dated August 7, 2025, require for Bombardier BD-700-2A12 airplanes, and which service bulletin does it reference?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,1 @@
+{"question": "Was the proposed rule on DC-10 and MD-11 airplanes requiring more frequent inspections of the auxiliary hydraulic pump electric motors (resistance, continuity, rotation, and wiring) withdrawn?"}

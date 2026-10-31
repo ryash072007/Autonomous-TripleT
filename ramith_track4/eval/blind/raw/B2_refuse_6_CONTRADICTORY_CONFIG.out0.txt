@@ -1,0 +1,1 @@
+{"question": "Does the FAA propose any airworthiness directive requiring repetitive inspections of the elevator trim system on the Boeing 172S?", "config": {"make": "Boeing", "model": "172S", "cofa_date": null, "serial": null, "part_numbers": []}}

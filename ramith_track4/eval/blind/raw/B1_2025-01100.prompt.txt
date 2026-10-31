@@ -1,0 +1,402 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 11 (Friday, January 17, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 11 (Friday, January 17, 2025)]
+[Proposed Rules]
+[Pages 5748-5751]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-01100]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0007; Project Identifier MCAI-2023-00998-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all
+
+[[Page 5749]]
+
+Airbus Helicopters Model SA341G and SA342J helicopters. This proposed 
+AD was prompted by reports of corrosion on the contact surfaces of the 
+tail rotor inclined and horizontal drive shaft flanges. This proposed 
+AD would require repetitively inspecting the inclined and horizontal 
+drive shaft flanges and, depending on the results, replacing the 
+inclined or horizontal drive shaft. This proposed AD would also 
+prohibit installing certain inclined and horizontal drive shafts unless 
+certain requirements are met, as specified in a European Union Aviation 
+Safety Agency (EASA) AD, which is proposed for incorporation by 
+reference. The FAA is proposing this AD to address the unsafe condition 
+on these products.
+
+DATES: The FAA must receive comments on this NPRM by March 3, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0007; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For EASA material identified in this proposed AD, contact 
+EASA, Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 
+8999 000; email: <a href="/cdn-cgi/l/email-protection#3d7c794e7d585c4e5c1358484f524d5c135848"><span class="__cf_email__" data-cfemail="3d7c794e7d585c4e5c1358484f524d5c135848">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find the EASA material on the EASA website at ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110. It is also available at 
+<a href="http://regulation.gov">regulation.gov</a> under Docket No. FAA-2025-0007.
+
+FOR FURTHER INFORMATION CONTACT: Evan Weaver, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (316) 
+946-4152; email: <a href="/cdn-cgi/l/email-protection#76330017185826582113170013043610171758111900"><span class="__cf_email__" data-cfemail="c386b5a2aded93ed94a6a2b5a6b183a5a2a2eda4acb5">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0007; 
+Project Identifier MCAI-2023-00998-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Evan 
+Weaver, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (316) 946-4152; email: 
+<a href="/cdn-cgi/l/email-protection#b9fccfd8d797e997eedcd8cfdccbf9dfd8d897ded6cf"><span class="__cf_email__" data-cfemail="692c1f08074739473e0c081f0c1b290f0808470e061f">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    EASA, which is the Technical Agent for the Member States of the 
+European Union, has issued EASA AD 2023-0168, dated August 31, 2023 
+(EASA AD 2023-0168) (also referred to as the MCAI), to correct an 
+unsafe condition on all Airbus Helicopters Model SA 341 G and SA 342 J 
+(Gazelle) helicopters. The MCAI states that there have been several 
+reports of corrosion on the contact surfaces of the tail rotor inclined 
+and horizontal drive shaft flanges. More detailed non-destructive 
+testing indicated pitting corrosion on the mating faces of several 
+flanges and further investigation revealed various regions of 
+intergranular failure beneath the surface of corrosion pits. The unsafe 
+condition, if not addressed, could result in the failure of the tail 
+rotor drive and subsequent loss of control of the helicopter.
+    The FAA is issuing this proposed AD to address the unsafe condition 
+on these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0007.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2023-0168, which requires repetitively 
+inspecting the flanges of certain part-numbered inclined and horizontal 
+drive shafts for corrosion. If corrosion is found, EASA AD 2023-0168 
+requires replacing the affected inclined or horizontal drive shaft. 
+EASA AD 2023-0168 also prohibits installing an affected inclined or 
+horizontal drive shaft on any helicopter unless it is a serviceable 
+part as defined within. This material is reasonably available because 
+the interested parties have access to it through their normal course of 
+business or by the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in EASA AD 2023-0168, described previously, as incorporated by 
+reference, except for any differences
+
+[[Page 5750]]
+
+identified as exceptions in the regulatory text of this proposed AD and 
+except as discussed under ``Differences Between This NPRM and the 
+MCAI.''
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2023-0168 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2023-0168 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2023-0168 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2023-
+0168. Material required by EASA AD 2023-0168 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0007 after the 
+FAA final rule is published.
+
+Differences Between This NPRM and the MCAI
+
+    The material referenced in the MCAI specifies sending corroded 
+parts to Airbus Helicopters, whereas this proposed AD would not require 
+that action.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 63 helicopters of U.S. registry. Labor rates are estimated at 
+$85 per work-hour. Based on these numbers, the FAA estimates the 
+following costs to comply with this proposed AD.
+    Visually inspecting the inclined and horizontal drive shaft flanges 
+would take 4 work-hours for an estimated cost of $340 per helicopter 
+and $21,420 for the U.S. fleet, per inspection cycle. If required, 
+replacing the inclined or horizontal drive shaft would take 4 work-
+hours and parts would cost $17,900 (inclined drive shaft) or $35,500 
+(horizontal drive shaft), for an estimated cost of $18,240 or $35,840 
+per helicopter.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus Helicopters: Docket No. FAA-2025-0007; Project Identifier 
+MCAI-2023-00998-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by March 3, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model SA341G and SA342J 
+helicopters, certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6510, Tail Rotor 
+Drive Shaft.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of corrosion on the contact 
+surfaces of the tail rotor inclined and horizontal drive shaft 
+flanges. The FAA is issuing this AD to detect and address corrosion 
+on the inclined and horizontal drive shaft flanges. The unsafe 
+condition, if not addressed, could result in the failure of the tail 
+rotor drive and subsequent loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency AD 2023-0168, 
+dated August 31, 2023 (EASA AD 2023-0168).
+
+(h) Exceptions to EASA AD 2023-0168
+
+    (1) Where EASA AD 2023-0168 requires compliance in terms of 
+flight hours, this AD requires using hours time-in-service.
+    (2) Where EASA AD 2023-0168 refers to its effective date, this 
+AD requires using the effective date of this AD.
+    (3) Where the material referenced in paragraph (2) of EASA 2023-
+0168 specifies sending corroded inclined or horizontal drive shaft 
+to Airbus Helicopters, this AD does not require that action.
+    (4) This AD does not adopt the ``Remarks'' section of EASA AD 
+2023-0168.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2023-0168 specifies 
+to submit certain information to the manufacturer, this AD does not 
+require that action.
+
+(j) Special Flight Permits
+
+    Special flight permits are prohibited.
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve
+
+[[Page 5751]]
+
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or local Flight Standards District Office, as 
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (l) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#591814161a193f3838773e362f"><span class="__cf_email__" data-cfemail="aaebe7e5e9eacccbcb84cdc5dc">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(l) Additional Information
+
+    For more information about this AD, contact Evan Weaver, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (316) 946-4152; email: 
+<a href="/cdn-cgi/l/email-protection#c782b1a6a9e997e990a2a6b1a2b587a1a6a6e9a0a8b1"><span class="__cf_email__" data-cfemail="a0e5d6c1ce8ef08ef7c5c1d6c5d2e0c6c1c18ec7cfd6">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2023-0168, 
+dated August 31, 2023.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#4405003704212537256a2131362b34256a2131"><span class="__cf_email__" data-cfemail="5c1d182f1c393d2f3d7239292e332c3d723929">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find this EASA material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#e68094c88f8895968385928f8988a688879487c8818990"><span class="__cf_email__" data-cfemail="88eefaa6e1e6fbf8edebfce1e7e6c8e6e9fae9a6efe7fe">[email&#160;protected]</span></a>.
+
+    Issued on January 13, 2025.
+Victor Wicklund,
+Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-01100 Filed 1-16-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

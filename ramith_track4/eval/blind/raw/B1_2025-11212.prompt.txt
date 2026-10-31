@@ -1,0 +1,415 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 116 (Wednesday, June 18, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 116 (Wednesday, June 18, 2025)]
+[Proposed Rules]
+[Pages 25906-25909]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-11212]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-1102; Project Identifier MCAI-2024-00183-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; H[eacute]licopt[egrave]res Guimbal 
+Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+[[Page 25907]]
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all H[eacute]licopt[egrave]res Guimbal (HG) Model Cabri G2 
+helicopters. This proposed AD was prompted by reports of cracked main 
+rotor swashplates (swashplates). This proposed AD would require 
+repetitively inspecting certain swashplates for cracks and, depending 
+on the results, removing and replacing each cracked swashplate. This 
+proposed AD would also prohibit installing an affected swashplate 
+unless it has passed the proposed inspection requirements. The FAA is 
+proposing this AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by August 4, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1102; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Guimbal material identified in this proposed AD, 
+contact H[eacute]licopt[egrave]res Guimbal, 1070, rue du Lieutenant 
+Parayre, A[eacute]rodrome d'Aix-en-Provence, 13290 Les Milles, France; 
+phone: 33-04-42-39-10-88; email: <a href="/cdn-cgi/l/email-protection#fd8e888d8d928f89bdc19cdd958f989bc0" http: guimbal.com">guimbal.com</a>">support@<a href="http://guimbal.com">guimbal.com</a></a>; or at 
+<a href="http://guimbal.com">guimbal.com</a>.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: George Weir, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (817) 
+222-4045; email: <a href="/cdn-cgi/l/email-protection#a6c1c3c9d4c1c388c788d1c3cfd4e6c0c7c788c1c9d0"><span class="__cf_email__" data-cfemail="b8dfddd7cadfdd96d996cfddd1caf8ded9d996dfd7ce">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-1102; 
+Project Identifier MCAI-2024-00183-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+George Weir, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 
+410, Westbury, NY 11590. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The European Union Aviation Safety Agency (EASA), which is the 
+Technical Agent for the Member States of the European Union, has issued 
+EASA AD 2024-0071, dated March 14, 2024 (EASA AD 2024-0071) (also 
+referred to as ``the MCAI''), to correct an unsafe condition on HG 
+Model Cabri G2 helicopters, all serial numbers. The MCAI states that 
+occurrences were reported where, during maintenance, cracks were found 
+on the rotating and non-rotating part of the swashplates of two HG 
+Model Cabri G2 helicopters. HG concluded that the cracks were likely 
+caused by aging and corrosion.
+    The MCAI states that this condition, if not detected and corrected, 
+could lead to failure of the swashplate, which could result in loss of 
+control of the helicopter. The MCAI requires inspecting each swashplate 
+and, if there are any cracks, replacing each cracked swashplate before 
+the next flight. The MCAI allows installing an affected swashplate on a 
+helicopter provided that, before installation, it is inspected and no 
+cracks are found.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1102.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Guimbal Mandatory Service Bulletin SB 24-001, 
+Revision C, dated March 20, 2024 (Guimbal SB 24-001 C), which specifies 
+procedures for performing repetitive inspections of the six arms from 
+both the rotating and non-rotating swashplate part number G41-00-000 
+for cracks, replacing any cracked swashplate, and contacting HG 
+support. If there is doubt about the existence of a crack or if there 
+is paint damage or peeling, Guimbal SB 24-001 C specifies removing the 
+paint and further inspecting for cracks. If no crack is found, Guimbal 
+SB 24-001 C specifies touching up the paint in areas where paint was 
+removed before approving the helicopter for return to service.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI and material referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require removing the paint on each 
+swashplate and performing repetitive visual
+
+[[Page 25908]]
+
+inspections of the six arms of the rotating and non-rotating 
+swashplates for a crack. Depending on the results, this proposed AD 
+would require removing any cracked swashplate from service and 
+replacing the swashplate with an airworthy part, or repainting the 
+swashplate. This proposed AD would also prohibit installing an affected 
+swashplate unless the part is inspected prior to installation and 
+thereafter as identified in the proposed AD.
+
+Differences Between This Proposed AD and the MCAI
+
+    The material referenced in the MCAI specifies removing paint if 
+there is doubt regarding if there is a crack or if there is paint 
+damage, and this proposed AD requires removing the paint before 
+performing each inspection.
+    The material referenced in the MCAI specifies contacting HG support 
+after replacing the swashplate, whereas this proposed AD would not 
+require that action.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 59 helicopters of U.S. registry. Labor rates are estimated at 
+$85 per hour. The FAA estimates the following costs to comply with this 
+proposed AD.
+    Inspecting a swashplate would take .25 work-hour for an estimated 
+cost of $22 per helicopter and $1,298 for the U.S. fleet, per 
+inspection cycle. Removing the paint and repainting the swashplate 
+would take .5 work-hour for an estimated cost of $43 per helicopter and 
+$2,537 for the U.S. fleet, per inspection cycle. If required, replacing 
+a swashplate would take 6 work-hours and parts would cost about $7,066 
+for an estimated cost of $7,576 per helicopter.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+H[eacute]licopt[egrave]res Guimbal: Docket No. FAA-2025-1102; 
+Project Identifier MCAI-2024-00183-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by August 4, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to H[eacute]licopt[egrave]res Guimbal Model 
+Cabri G2 helicopters, certificated in any category, with a main 
+rotor swashplate part number (P/N) G41-00-000 installed.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6230, Main Rotor 
+Mast/Swashplate.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of cracks on the rotating and 
+non-rotating parts of the swashplates. The FAA is issuing this AD to 
+detect and correct a cracked swashplate. The unsafe condition, if 
+not addressed, could lead to failure of a cracked swashplate, which 
+could result in loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    (1) Within the compliance time listed in table 1 to paragraph 
+(g)(1) of this AD and thereafter at intervals not to exceed 60 hours 
+time in service (TIS) or 14 months, whichever occurs first, remove 
+the paint on each swashplate using P600 GRIT or equivalent abrasive 
+and visually inspect with a flashlight all six arms of both the 
+rotating and non-rotating swashplates for a crack, paying particular 
+attention to each face of each clevis arm as shown in the picture 
+under paragraph (a) of Guimbal Mandatory Service Bulletin SB 24-001, 
+Revision C, dated March 20, 2024 (Guimbal SB 24-001 C).
+
+                       Table 1 to Paragraph (g)(1)
+------------------------------------------------------------------------
+         Swashplate serial No.               Initial compliance time
+------------------------------------------------------------------------
+801 through 1077 inclusive.............  Within 30 hours TIS or 4
+                                          months, whichever occurs
+                                          first, after the effective
+                                          date of this AD.
+1078 and higher........................  Within 60 hours TIS or 6
+                                          months, whichever occurs
+                                          first, after the effective
+                                          date of this AD.
+------------------------------------------------------------------------
+
+    (2) If a crack is found on a swashplate during any inspection 
+required by paragraph (g)(1) of this AD, before further flight, 
+remove the cracked swashplate from service and install an airworthy 
+swashplate.
+    (3) If no crack is found on any swashplate during an inspection 
+required by paragraph (g)(1) of this AD, retouch all areas of each 
+swashplate where paint was removed by following paragraph (d) of 
+Guimbal SB 24-001 C.
+
+(h) Parts Installation Limitation
+
+    As of the effective date of this AD, do not install a swashplate 
+having P/N G41-00-000 on any helicopter, unless it has been 
+inspected in accordance with paragraph (g)(1) of this AD.
+
+(i) Credit for Previous Actions
+
+    You may take credit for any inspection and associated actions 
+required by paragraph (g) of this AD if you performed that 
+inspection before the effective date of this AD using Guimbal 
+Mandatory Service Bulletin SB 24-001, Revision A, dated February 7, 
+2024, or Guimbal Mandatory Service Bulletin SB 24-001, Revision B, 
+dated March 13, 2024.
+
+(j) Special Flight Permits
+
+    Special flight permits are prohibited.
+
+[[Page 25909]]
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (l)(1) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#eaaba7a5a9aa8c8b8bc48d859c"><span class="__cf_email__" data-cfemail="5a1b1715191a3c3b3b743d352c">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(l) Additional Information
+
+    (1) For more information about this AD, contact George Weir, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (817) 222-4045; email: 
+<a href="/cdn-cgi/l/email-protection#4621232934212368276831232f340620272768212930"><span class="__cf_email__" data-cfemail="e285878d908587cc83cc95878b90a2848383cc858d94">[email&#160;protected]</span></a>.
+    (2) Guimbal material identified in this AD that is not 
+incorporated by reference is available at the addresses specified in 
+paragraph (m)(3) of this AD.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) Guimbal Mandatory Service Bulletin SB 24-001, Revision C, 
+dated March 20, 2024.
+    (ii) [Reserved]
+    (3) For Guimbal material identified in this AD, contact 
+H[eacute]licopt[egrave]res Guimbal, 1070, rue du Lieutenant Parayre, 
+A[eacute]rodrome d'Aix-en-Provence, 13290 Les Milles, France; phone: 
+33-04-42-39-10-88; email: <a href="/cdn-cgi/l/email-protection#0c7f797c7c637e784c306d2c647e696a31" http: guimbal.com">guimbal.com</a>">support@<a href="http://guimbal.com">guimbal.com</a></a>; or at <a href="http://guimbal.com">guimbal.com</a>.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#f89e8ad691968b889d9b8c919796b896998a99d69f978e"><span class="__cf_email__" data-cfemail="0167732f686f7271646275686e6f416f6073602f666e77">[email&#160;protected]</span></a>.
+
+    Issued on June 13, 2025.
+Christopher R. Parker,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-11212 Filed 6-17-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

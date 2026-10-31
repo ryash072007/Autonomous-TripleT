@@ -1,0 +1,473 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 108 (Friday, June 6, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 108 (Friday, June 6, 2025)]
+[Proposed Rules]
+[Pages 24085-24087]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-10332]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0923; Project Identifier AD-2024-00529-E]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Pratt & Whitney Division Engines
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Pratt & Whitney Division (PW) Model PW4074, PW4074D, 
+PW4077, PW4077D, PW4084D, PW4090, and PW4090-3 engines. This proposed 
+AD was prompted by an analysis of an event involving an International 
+Aero Engines, LLC (IAE LLC) Model PW1127GA-JM engine, which experienced 
+a high-pressure compressor (HPC) 7th-stage integrally bladed rotor 
+(IBR-7) separation that resulted in an aborted takeoff. This proposed 
+AD would require repetitive angle ultrasonic scan inspections (AUSIs) 
+of the HPC 15th-stage disks, front turbine hubs, high pressure turbine 
+(HPT) 1st-stage air seals, and HPT 2nd-stage hubs for crack 
+indications, and removal from service and replacement if necessary, and 
+for certain serial numbers, removal from service and replacement of the 
+HPT 1st-stage air seal. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by July 21, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0923; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For PW material identified in this proposed AD, contact 
+PW, 400 Main Street, East Hartford, CT 06118; phone: (800) 565-0140; 
+email: <a href="/cdn-cgi/l/email-protection#137b767f632127536361726767647b7a677d766a3d707c7e"><span class="__cf_email__" data-cfemail="e38b868f93d1d7a39391829797948b8a978d869acd808c8e">[email&#160;protected]</span></a>; website: <a href="http://connect.prattwhitney.com">connect.prattwhitney.com</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Molly Sturgis, Aviation Safety 
+Engineer, FAA, 2200 South 216th Street, Des Moines, WA 98198; phone: 
+(562) 627-5373; email: <a href="/cdn-cgi/l/email-protection#ef8280838396c18ec19c9b9a9d88869caf898e8ec1888099"><span class="__cf_email__" data-cfemail="e68b898a8a9fc887c895929394818f95a6808787c8818990">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0923; 
+Project Identifier AD-2024-00529-E'' at the beginning of your comments. 
+The most helpful comments reference a specific portion of the proposal, 
+explain the reason for any recommended change, and include supporting 
+data. The FAA will consider all comments received by the closing date 
+and may revise this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Molly 
+Sturgis, Aviation Safety Engineer, FAA, 2200 South 216th Street, Des 
+Moines, WA 98198. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    On December 24, 2022, an Airbus Model A320neo airplane powered by 
+IAE LLC Model PW1127GA-JM engines, experienced a failure of the HPC 
+IBR-7 that resulted in an engine shutdown and aborted take-off. 
+Following this event, the manufacturer conducted a records review of 
+production and field-returned parts and re-evaluated their engineering 
+analysis methodology. The new analysis found that the failure of the 
+HPC IBR-7 was caused by a nickel powdered metal anomaly, similar in 
+nature to an anomaly previously observed. The analysis also concluded 
+that there is an increased risk of failure for additional nickel 
+powdered metal parts in certain nickel powdered metal production 
+campaigns, and these parts are susceptible to failure much earlier than 
+previously determined. As a result, the FAA is proposing additional 
+AUSIs for certain affected nickel powdered metal parts and removal from 
+service of certain affected nickel powdered metal parts. Certain PW 
+Model PW4074, PW4074D, PW4077, PW4077D, PW4084D, PW4090, and PW4090-3 
+engines are among the products affected by this condition. This 
+condition, if not addressed, could result in uncontained disk failure, 
+release of high energy debris, damage to the engine, damage to the 
+airplane, and possible loss of the airplane.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed the following service information:
+
+[[Page 24086]]
+
+    <bullet> PW Alert Service Bulletin (ASB) PW4G-112-A72-365, Revision 
+No. 1, dated June 20, 2024, which specifies procedures for performing 
+repetitive AUSIs on affected HPC 15th-stage disks.
+    <bullet> PW ASB PW4G-112-A72-366, dated June 20, 2024, which 
+specifies procedures for performing repetitive AUSIs on affected HPT 
+1st-stage air seals.
+    <bullet> PW ASB PW4G-112-A72-367, dated June 20, 2024, which 
+specifies procedures for performing repetitive AUSIs on affected front 
+turbine hubs.
+    <bullet> PW ASB PW4G-112-A72-368, dated June 20, 2024, which 
+specifies procedures for performing repetitive AUSIs on affected HPT 
+2nd-stage hubs.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require repetitive AUSIs of the HPC 15th-
+stage disks, front turbine hubs, HPT 1st-stage air seals, and HPT 2nd-
+stage hubs for crack indications, and removal from service and 
+replacement if necessary. This proposed AD would also require, for 
+certain serial numbers, removal from service and replacement of the HPT 
+1st-stage air seal.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 124 engines installed on airplanes of U.S. registry. The FAA 
+estimates that 124 engines will need AUSIs of the HPC 15th-stage disk, 
+front turbine hub, HPT 2nd-stage hub, and HPT 1st-stage air seal; and 6 
+engines will need replacement of the HPT 1st-stage air seals.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                       Cost per    Cost on U.S.
+                  Action                            Labor cost           Parts cost    product       operators
+----------------------------------------------------------------------------------------------------------------
+AUSI of HPC 15th-stage disk..............  4 work-hours x $85 per hour           $0         $340         $42,160
+                                            = $340.
+AUSI of front turbine hub................  5 work-hours x 85 per hour             0          425          52,700
+                                            = 425.
+AUSI of HPT 2nd-stage hub................  5 work-hours x 85 per hour             0          425          52,700
+                                            = 425.
+AUSI of HPT 1st-stage air seal...........  5 work-hours x 85 per hour             0          425          52,700
+                                            = 425.
+Replace certain HPT 1st-stage air seals    1 work-hours x 85 per hour       763,000      763,085       4,578,510
+ (6 engines).                               = 85.
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary 
+replacements that would be required based on the results of the 
+proposed inspection. The agency has no way of determining the number of 
+engines that might need these replacements:
+
+                                               On-Condition Costs
+----------------------------------------------------------------------------------------------------------------
+                    Action                                Labor cost              Parts cost   Cost per product
+----------------------------------------------------------------------------------------------------------------
+Replace HPC 15th-stage disk..................  10 work-hours x $85 per hour =       $312,000            $312,850
+                                                $850.
+Replace front turbine hub....................  10 work-hours x 85 per hour =         910,000             910,850
+                                                850.
+Replace HPT 2nd-stage hub....................  10 work-hours x 85 per hour =         816,000             816,850
+                                                850.
+Replace HPT 1st-stage air seals..............  10 work-hours x 85 per hour =         763,000             763,850
+                                                850.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Pratt & Whitney Division: Docket No. FAA-2025-0923; Project 
+Identifier AD-2024-00529-E.
+
+[[Page 24087]]
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by July 21, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Pratt & Whitney Division (PW) Model PW4074, 
+PW4074D, PW4077, PW4077D, PW4084D, PW4090, and PW4090-3 engines.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 7250, Turbine 
+Section; 7230, Turbine Engine Compressor Section.
+
+(e) Unsafe Condition
+
+    This AD was prompted by an analysis of an event involving an 
+International Aero Engines, LLC Model PW1127GA-JM engine, which 
+experienced a high-pressure compressor (HPC) 7th-stage integrally 
+bladed rotor separation that resulted in an engine shutdown and 
+aborted takeoff. The FAA is issuing this AD to prevent failure of 
+the HPC 15th-stage disk, front turbine hub, high pressure turbine 
+(HPT) 1st-stage air seal, and HPT 2nd-stage hub. The unsafe 
+condition, if not addressed, could result in uncontained disk 
+failure, release of high energy debris, damage to the engine, damage 
+to the airplane, and possible loss of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    (1) For HPT 1st-stage air seals with a serial number identified 
+in table 1 to paragraph (g)(1) of this AD: At the next piece part 
+opportunity after the effective date of this AD, remove the HPT 1st-
+stage air seal from service and replace with a part eligible for 
+installation.
+
+  Table 1 to Paragraph (g)(1)--HPT 1st-Stage Air Seals Affected Serial
+                                 Numbers
+------------------------------------------------------------------------
+                                                                Part No.
+                          Serial No.                             (P/N)
+------------------------------------------------------------------------
+CKLBME2702...................................................     50L663
+CKLBME2703...................................................     50L663
+CKLBME2704...................................................     50L663
+CKLBME2705...................................................     50L663
+CKLBME2711...................................................     50L663
+CKLBMS8019...................................................     50L959
+------------------------------------------------------------------------
+
+    (2) At the next piece part opportunity after the effective date 
+of this AD, and thereafter at every piece part opportunity, perform 
+angle ultrasonic scan inspections (AUSIs) of the HPC 15th-stage 
+disk, front turbine hub, HPT 1st-stage air seal, and HPT 2nd-stage 
+hub for crack indications in accordance with the applicable service 
+information specified in paragraph (g)(2)(i) through (iv) of this 
+AD.
+    (i) For HPC 15th-stage disks: Accomplishment Instructions, 
+paragraph 4.A or 4.B., of PW Alert Service Bulletin (ASB) PW4G-112-
+A72-365, Revision No. 1, dated June 20, 2024.
+    (ii) For front turbine hubs: Accomplishment Instructions, 
+paragraph 4.A or 4.B., of PW ASB PW4G-112-A72-367, dated June 20, 
+2024.
+    (iii) For HPT 1st-stage air seals: Accomplishment Instructions, 
+paragraph 4.A or 4.B., of PW ASB PW4G-112-A72-366, dated June 20, 
+2024.
+    (iv) For HPT 2nd-stage hubs: Accomplishment Instructions, 
+paragraph 4.A or 4.B., of PW ASB PW4G-112-A72-368, dated June 20, 
+2024.
+    (3) If during any inspection required by paragraph (g)(2) of 
+this AD, any crack indication is found, before further flight, 
+remove the part from service and replace with a part eligible for 
+installation.
+
+(h) Definitions
+
+    For the purposes of this AD:
+    (1) A ``piece part opportunity'' is one of the conditions 
+specified in paragraph (h)(1)(i) through (iv).
+    (i) The HPC 15th-stage disk is removed from the engine and all 
+blades are removed.
+    (ii) The front turbine hub is removed from the engine and all 
+blades are removed.
+    (iii) The HPT 2nd-stage hub is removed from the engine and all 
+blades are removed.
+    (iv) The HPT 1st-stage air seal is fully disassembled from the 
+engine.
+    (2) A ``part eligible for installation'' is:
+    (i) An HPC 15th-stage disk having P/N 51S115, 51S315, 55H615, or 
+56H015 that has passed the AUSI required by paragraph (g)(2)(i) of 
+this AD.
+    (ii) An HPC 15th-stage disk having P/N 51S115 or 56H015 that has 
+a certificate of conformance that shows compliance with Non-
+Destructive Inspection Procedure (NDIP) NDIP-1276.
+    (iii) An HPC 15th-stage disk having P/N 51S315 or 55H615 that 
+has a certificate of conformance that shows compliance with NDIP-
+1289.
+    (iv) A front turbine hub having P/N 55L801 or 55L901 that has 
+passed the AUSI required by paragraph (g)(2)(ii) of this AD.
+    (v) A front turbine hub having P/N 55L801 that has a certificate 
+of conformance that shows compliance with NDIP-1273.
+    (vi) A front turbine hub having P/N 55L901 that has a 
+certificate of conformance that shows compliance with NDIP-1288.
+    (vii) An HPT 1st-stage air seal having P/N 50L663 or 50L959 that 
+has passed the AUSI required by paragraph (g)(2)(iii) of this AD.
+    (viii) An HPT 1st-stage air seal having P/N 50L663 that has a 
+certificate of conformance that shows compliance with NDIP-1286.
+    (ix) An HPT 1st-stage air seal having P/N 50L959 that has a 
+certificate of conformance that shows compliance with NDIP-1287.
+    (x) An HPT 2nd-stage hub having P/N 53L202 or 54L802 that has 
+passed the AUSI required by paragraph (g)(2)(iv) of this AD.
+    (xi) An HPT 2nd-stage hub having P/N 53L202 that has a 
+certificate of conformance that shows compliance with NDIP-1274.
+    (xii) An HPT 2nd-stage hub having P/N 54L802 that has a 
+certificate of conformance that shows compliance with NDIP-1275.
+    (xiii) Any HPC 15th-stage disk, front turbine hub, HPT 1st-stage 
+air seal, or HPT 2nd-stage hub that is new, zero-time, and has 
+passed an AUSI at new part production.
+
+(i) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, AIR-520 Continued Operational Safety Branch, 
+FAA, has the authority to approve AMOCs for this AD, if requested 
+using the procedures found in 14 CFR 39.19. In accordance with 14 
+CFR 39.19, send your request to your principal inspector or local 
+Flight Standards District Office, as appropriate. If sending 
+information directly to the manager of the AIR-520 Continued 
+Operational Safety Branch, send it to the attention of the person 
+identified in paragraph (j) of this AD. Information may be emailed 
+to: <a href="/cdn-cgi/l/email-protection#61202c2e22210700004f060e17"><span class="__cf_email__" data-cfemail="afeee2e0ecefc9cece81c8c0d9">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(j) Additional Information
+
+    For more information about this AD, contact Molly Sturgis, 
+Aviation Safety Engineer, FAA, 2200 South 216th Street, Des Moines, 
+WA 98198; phone: (562) 627-5373; email: <a href="/cdn-cgi/l/email-protection#5b3634373722753a75282f2e293c32281b3d3a3a753c342d"><span class="__cf_email__" data-cfemail="87eae8ebebfea9e6a9f4f3f2f5e0eef4c7e1e6e6a9e0e8f1">[email&#160;protected]</span></a>.
+
+(k) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) Pratt & Whitney (PW) Alert Service Bulletin (ASB) PW4G-112-
+A72-365, Revision No. 1, dated June 20, 2024.
+    (ii) PW ASB PW4G-112-A72-366, dated June 20, 2024.
+    (iii) PW ASB PW4G-112-A72-367, dated June 20, 2024.
+    (iv) PW ASB PW4G-112-A72-368, dated June 20, 2024.
+    (3) For PW material identified in this AD, contact PW, 400 Main 
+Street, East Hartford, CT 06118; phone: (800) 565-0140; email: 
+<a href="/cdn-cgi/l/email-protection#264e434a561412665654475252514e4f5248435f0845494b"><span class="__cf_email__" data-cfemail="c2aaa7aeb2f0f682b2b0a3b6b6b5aaabb6aca7bbeca1adaf">[email&#160;protected]</span></a>; website: <a href="http://connect.prattwhitney.com">connect.prattwhitney.com</a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#8ceafea2e5e2fffce9eff8e5e3e2cce2edfeeda2ebe3fa"><span class="__cf_email__" data-cfemail="eb8d99c58285989b8e889f828485ab858a998ac58c849d">[email&#160;protected]</span></a>.
+
+    Issued on June 3, 2025.
+Lona C. Saccomando,
+Acting Deputy Director, Integrated Certificate Management Division, 
+Aircraft Certification Service.
+[FR Doc. 2025-10332 Filed 6-5-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

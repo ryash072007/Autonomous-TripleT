@@ -1,0 +1,636 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 158 (Tuesday, August 19, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 158 (Tuesday, August 19, 2025)]
+[Proposed Rules]
+[Pages 40262-40266]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-15776]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-1736; Project Identifier MCAI-2024-00435-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2020-06-12, which applies to certain Airbus Helicopters Model AS 332L2 
+and EC 225LP helicopters. AD 2020-06-12 requires determining the 
+accumulated hours time-in-service (TIS) of certain part-numbered main 
+gearbox (MGB) suspension bar attachment bolts (bolt) and certain part-
+numbered MGB suspension bar attachment fittings (fitting), applying a 
+life limit add-on factor, and inspecting the torque of certain MGB 
+suspension bar attachment nuts (nuts). Since the FAA issued AD 2020-06-
+12, the manufacturer developed a design improvement, and the FAA 
+determined modifying the helicopter is necessary. This proposed AD 
+would retain the actions required by AD 2020-06-12 and would also 
+require modification of the MGB suspension bar, inspection of the 
+torque, and corrective actions. This proposed AD would also allow 
+credit for the initial service life calculations if certain 
+requirements are met and would prohibit installing a certain bolt after 
+the modification is accomplished on any helicopter. The FAA is 
+proposing this AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by October 3, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1736; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Airbus Helicopters material identified in this 
+proposed AD, contact Airbus Helicopters, 2701 North Forum Drive, Grand 
+Prairie, TX 75052; phone: (972) 641-0000 or (800) 232-0323; fax: (972) 
+641-3775; website: <a href="http://airbus.com/en/products-services/helicopters/hcare-services/airbusworld">airbus.com/en/products-services/helicopters/hcare-services/airbusworld</a>. It is also available at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1736.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Dan McCully, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (781) 
+238-7244; email: <a href="/cdn-cgi/l/email-protection#6b1c020707020a06450608081e0707122b0d0a0a450c041d"><span class="__cf_email__" data-cfemail="3b4c525757525a56155658584e5757427b5d5a5a155c544d">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+[[Page 40263]]
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-1736; 
+Project Identifier MCAI-2024-00435-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Dan 
+McCully, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued AD 2020-06-12, Amendment 39-19881 (85 FR 19077, 
+April 6, 2020) (AD 2020-06-12), for Airbus Helicopters Model AS 332L2 
+and EC 225LP helicopters with a MGB suspension bar front bolt part 
+number (P/N) 332A22-1613-21 or 332A22-1613-20, MGB suspension bar rear 
+bolt P/N 332A22-1614-20, MGB suspension bar front fitting P/N 332A22-
+1623-01, MGB suspension bar rear left-hand fitting P/N 332A22-1624-02 
+or 332A22-1624-04, or MGB suspension bar rear right-hand fitting P/N 
+332A22-1624-03 or 332A22-1624-05 installed. AD 2020-06-12 was prompted 
+by MCAI originated by the European Union Aviation Safety Agency (EASA), 
+which is the Technical Agent for the Member States of the European 
+Union. EASA issued AD 2017-0189, dated September 22, 2017 (EASA AD 
+2017-0189), after finding the installation of the MGB upper deck 
+fittings of the three MGB suspension bars could lead to tightening 
+torque loss on the fittings' attachment bolts. EASA determined the life 
+limits in the Airworthiness Limitations Sections for the bolts and 
+fittings are valid if an ``add-on penalty factor'' is applied.
+    AD 2020-06-12 requires determining the accumulated hours TIS of the 
+affected bolts and fittings, applying a life limit add-on factor, and 
+inspecting the torque of the MGB suspension bar attachment nuts. The 
+FAA issued AD 2020-06-12 to address MGB suspension bar bolts and 
+fittings remaining in service beyond their fatigue life and loose MGB 
+suspension bar bolts and fittings, which could result in structural 
+failure of the MGB suspension bar and loss of helicopter control.
+
+Actions Since AD 2020-06-12 Was Issued
+
+    Since the FAA issued AD 2020-06-12, EASA issued a series of ADs 
+related to this unsafe condition. EASA AD 2022-0021, dated February 1, 
+2022 (EASA AD 2022-0021), superseded EASA AD 2017-0189 due to Airbus 
+Helicopters developing a design improvement consisting of installing 
+new links on the fittings of the MGB suspension bars through 
+modifications 0728521, 0728904, 0728496 and 0729044. EASA AD 2022-0021 
+introduced new service life limits (SLL) for certain post-modification 
+parts and a new tightening torque check.
+    EASA AD 2022-0021 was subsequently superseded by EASA AD 2023-0147, 
+dated July 19, 2023 (EASA AD 2023-0147), after EASA determined that, 
+for helicopters modified with the new links on the fittings of the MGB 
+suspension bars using earlier revisions of the service information, 
+installing shims on the rear cooling rails of the MGB compartment was 
+necessary. EASA revised AD 2023-0147 and issued EASA AD 2023-0147R1, 
+dated March 12, 2025 (EASA AD 2023-0147R1) (also referred to as ``the 
+MCAI'') to address a difficulty with the installation of modification 
+kits for EC 225LP helicopters. This condition, if not addressed, could 
+lead to structural failure of the bolts or fittings, and consequent 
+loss of control of the helicopter.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1736.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Airbus Helicopters Emergency Alert Service 
+Bulletin (EASB) No. 01.00.86, Revision 4, dated January 6, 2022 (EASB 
+01.00.86 Rev 4), for Model AS 332L2 helicopters and Airbus Helicopters 
+EASB No. 04A013, Revision 4, dated January 6, 2022 (EASB 04A013 Rev 4), 
+for Model EC 225LP helicopters. This material specifies procedures for 
+applying an add-on factor to the flying hours logged by the pins 
+(bolts) and fittings and replacing them if the SLL is exceeded.
+    The FAA also reviewed Airbus Helicopters Alert Service Bulletin 
+(ASB) No. AS332-53.02.03, Revision 2, dated June 15, 2023, for Model AS 
+332LP helicopters and Airbus Helicopters ASB No. EC225-53A065, Revision 
+4, dated May 28, 2024 (ASB EC225-53A065 Rev 4), for Model EC 225LP 
+helicopters. This material specifies procedures to install new links on 
+the attachment brackets of the MGB suspension bars and corresponds to 
+Airbus Helicopters modification 0728496, 0728521, 0728904, and 0729044.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by civil aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would retain the following actions of AD 2020-06-
+12, using updated service information: determining the accumulated 
+hours TIS of certain part-numbered bolts and certain part-numbered 
+fittings; applying a life limit add-on penalty factor; removing any 
+bolt that has reached or exceeded its life limit; inspecting the
+
+[[Page 40264]]
+
+torque of certain nuts and, depending on the inspection, removing the 
+bolt and nut from service. This proposed AD would also require 
+modification of the MGB suspension bar, additional life limit 
+calculations, a tightening torque inspection with new torque values, 
+and removal and replacement of certain affected parts. Modification of 
+the MGB suspension bar is considered terminating action for the 
+proposed life limit calculations if certain requirements are met. This 
+proposed AD would also prohibit installing a certain bolt after the 
+modification is accomplished on any helicopter.
+
+Differences Between This Proposed AD and the MCAI
+
+    The MCAI allows a 150-hour extension to the life limit of a fitting 
+for Model AS 332L2 helicopters if a dye-penetrant inspection is 
+performed on the fitting and no cracks are found. This proposed AD 
+would not allow this option.
+    For Model AS 332L2 helicopters, the MCAI requires replacing bolts 
+installed with an incorrect torque value applied before the effective 
+date of the MCAI. This proposed AD would require inspecting the torque 
+of each nut instead, and depending on the outcome, removing the nut and 
+its bolt from service.
+    The MCAI refers to the front and rear attachment bolts as ``pins,'' 
+whereas this proposed AD would not.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 30 helicopters (2 Model AS 332L2 helicopters and 28 Model EC 
+225LP helicopters) of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD. Labor costs are estimated at $85 
+per hour.
+    For Model AS 332L2 helicopters only:
+    Determining the adjusted life limit for the fittings would take 0.5 
+work-hour for an estimated cost of $43 per helicopter and $86 for the 
+U.S. fleet.
+    If required, replacing a fitting (including associated hardware) 
+and applying torque would take 8 work-hours and parts would cost $7,000 
+for an estimated cost of $7,680 per helicopter.
+    For all applicable helicopters:
+    Determining the adjusted life limit for the bolts would take 0.5 
+work-hour for an estimated cost of $43 per helicopter and $1,290 for 
+the U.S. fleet.
+    If required, replacing a bolt (including associated hardware) would 
+take 4 work-hours and parts would cost about $89 for an estimated cost 
+of $429 per bolt.
+    Modifying each MGB suspension bar would take up to 40 work-hours 
+and parts would cost up to $54,445 for an estimated cost of up to 
+$57,845 (depending on helicopter configuration) per modification (up to 
+four modifications per helicopter).
+    Performing a tightening torque inspection would take 4 hours for an 
+estimated cost of $340 per inspection.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national Government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2020-06-12, Amendment 39-19881 (85 
+FR 19077, April 6, 2020); and
+0
+b. Adding the following new airworthiness directive:
+
+Airbus Helicopters: Docket No. FAA-2025-1736; Project Identifier 
+MCAI-2024-00435-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by October 3, 2025.DOA
+
+(b) Affected ADs
+
+    This AD replaces AD 2020-06-12, Amendment 39-19881 (85 FR 19077, 
+April 6, 2020).
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters, certificated in any 
+category, identified in paragraphs (c)(1) and (2) of this AD.
+    (1) Model AS 332L2 helicopters with a main gearbox (MGB) 
+suspension bar front attachment bolt part number (P/N) 332A22-1613-
+20 or 332A22-1613-21, MGB suspension bar rear attachment bolt P/N 
+332A22-1614-20, MGB suspension bar front attachment fitting P/N 
+332A22-1623-01, MGB suspension bar rear left-hand attachment fitting 
+P/N 332A22-1624-02 or 332A22-1624-04, or MGB suspension bar rear 
+right-hand attachment fitting P/N 332A22-1624-03 or 332A22-1624-05 
+installed.
+    (2) Model EC 225LP helicopters with MGB suspension bar front 
+attachment bolt P/N 332A22-1613-21 or MGB suspension bar rear 
+attachment bolt P/N 332A22-1614-20 installed.
+    Note 1 to paragraph (c): Airbus Helicopters refers to MGB 
+suspension bar attachment bolts as ``pins.''
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6330, Main Rotor 
+Transmission Mount.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of torque loss on a MGB 
+suspension bar attachment bolt (bolt). The FAA is issuing this AD to 
+prevent MGB suspension bar attachment fittings and bolts remaining 
+in service beyond their fatigue life. The unsafe condition, if not 
+addressed, could result in structural failure of an MGB attachment 
+assembly, detachment of an MGB suspension bar, and consequent loss 
+of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+[[Page 40265]]
+
+(g) Required Actions for Bolts
+
+    For helicopters identified in paragraphs (c)(1) and (2) of this 
+AD without Airbus Helicopters modifications 0728521, 0728904, 
+0728496, and 0729044 installed, within 30 hours time-in-service 
+(TIS) after the effective date of this AD, review records to 
+determine the total hours TIS of each MGB suspension bar attachment 
+bolt (bolt).
+    (1) Determine the life limit of each bolt by applying its total 
+hours TIS by the add-on factor listed in Table No. 1 of Airbus 
+Helicopters Emergency Alert Service Bulletin (EASB) No. 01.00.86, 
+Revision 4, dated January 6, 2022 (EASB 01.00.86 Rev 4), or Airbus 
+Helicopters EASB No. 04A013, Revision 4, and both dated January 6, 
+2022, as applicable to your model helicopter.
+    (i) Before further flight, remove from service any bolt that has 
+reached or exceeded its life limit, and remove its associated MGB 
+suspension bar attachment nut (nut) and cotter pins from service. 
+Remove the associated convex and concave washers. Thereafter, before 
+each flight, continue to calculate and record the life limit of each 
+bolt on its component history card or equivalent record by applying 
+the add-on factor each time the helicopter accumulates hours TIS and 
+remove from service any bolt before reaching its life limit, along 
+with its associated nut and cotter pins. Remove its associated 
+convex and concave washers.
+    (ii) For each bolt that has not exceeded its life limit, before 
+each flight, continue to calculate and record the life limit on its 
+component history card or equivalent record by applying the add-on 
+factor each time the helicopter accumulates hours TIS and remove 
+from service any bolt before reaching its life limit, along with its 
+associated nut and cotter pins. Remove the associated convex and 
+concave washers.
+    (2) Before further flight, if any nut, bolt, or cotter pin was 
+removed from service as a result of the actions in paragraph (g)(1) 
+of this AD, replace those parts with airworthy parts, and install 
+new (never installed) convex and concave washers or reinstall the 
+convex and concave washers that were removed (if washers are 
+airworthy). Torque each newly-installed nut to the minimum allowable 
+torque value of: 735-840 lbf. in (8.3 daN.m to 9.5 daN.m) on the 
+front nuts of the fittings, and 496-566 lbf. in (5.6 daN.m to 6.4 
+daN.m) on the rear nuts of the fittings.
+
+(h) Required Actions for Fittings
+
+    For helicopters identified in paragraph (c)(1) of this AD 
+without Airbus Helicopters modification 0728521, 0728904, 0728496, 
+and 0729044 installed, within 30 hours TIS after the effective date 
+of this AD, review records to determine the total hours TIS of each 
+MGB suspension bar attachment fitting (fitting).
+    (1) Determine the life limit of each fitting by applying its 
+total hours TIS by the add-on factor listed in Table No. 1 of EASB 
+01.00.86 Rev 4.
+    (i) Before further flight, remove from service any fitting that 
+has reached or exceeded its life limit, and remove its associated 
+nuts, and cotter pins from service. Remove its associated convex and 
+concave washers and bolts. Thereafter, before each flight, continue 
+to calculate and record the life limit of each fitting on its 
+component history card or equivalent record by applying the add-on 
+factor each time the helicopter accumulates hours TIS and remove 
+from service any fitting before reaching its life limit, along with 
+its associated, nuts, and cotter pins. Remove its associated convex 
+and concave washers and bolt.
+    (ii) For each fitting that has not exceeded its life limit, 
+before each flight, continue to calculate and record the life limit 
+of each fitting on its component history card or equivalent record 
+by applying the add-on factor each time the helicopter accumulates 
+hours TIS and remove from service any fitting before reaching its 
+life limit, along with its associated, nuts and cotter pins from 
+service. Remove its associated bolts, convex and concave washers.
+    (2) Before further flight, if any fitting or its associated nut, 
+or cotter pin was removed from service as a result of the actions in 
+paragraph (h)(1) of this AD, replace those parts with airworthy 
+parts, and install new (never installed) convex and concave washers 
+and bolt or reinstall the convex and concave washers and bolt that 
+were removed (if the washers and bolt are airworthy). Torque each 
+newly-installed nut using the allowable torque value in paragraph 
+(g)(2) of this AD.
+
+(i) Required Actions for Torque Values
+
+    For helicopters identified in paragraph (c)(1) of this AD 
+without Airbus Helicopters modification 0728521, 0728904, 0728496, 
+and 0729044 installed, within 150 hours TIS (without the add-on 
+factor) after the effective date of this AD, inspect the torque of 
+each nut.
+    (1) If the torque on any nut is higher than the maximum 
+allowable torque stated in paragraph (g)(2) of this AD, before 
+further flight, remove the nut, its associated bolt, and its cotter 
+pins from service.
+    (2) If the torque on any nut is lower than the minimum allowable 
+torque value stated in paragraph (g)(2) of this AD, before further 
+flight, tighten the nut to the allowable torque stated in paragraph 
+(g)(2) of this AD.
+    (3) Within 150 hours TIS (without the add-on factor), remove 
+from service any nut its associated bolt, and its cotter pins that 
+were tightened as required by paragraph (i)(2) of this AD, and 
+torque each newly-installed nut using the allowable torque value in 
+paragraph (g)(2) of this AD.
+
+(j) Required Actions for Links
+
+    (1) For helicopters identified in paragraph (c)(1) of this AD 
+without Airbus Helicopters modification 0728521, 0728904, 0728496, 
+and 0729044 installed, within 825 hours TIS or 27 months after the 
+effective date of this AD, whichever occurs first, modify the 
+helicopter by installing attachment bracket links for the MGB 
+suspension bars in accordance with the Accomplishment Instructions, 
+paragraphs 3.B.2.a through 3.B.3.i., of Airbus Helicopters Alert 
+Service Bulletin (ASB) No. AS332-53.02.03, Revision 2, dated June 
+15, 2023 (ASB AS332-53.02.03 Rev 2), except as provided in 
+paragraphs (j)(1)(i) through (ix) of this AD.
+    Note 2 to paragraph (j)(1): Airbus refers to the installation of 
+the attachment bracket links for the MGB suspension bar as 
+modification 0728496, 0728521, 0728904, and 0729044.
+    (i) Instead of discarding parts, you must remove those parts 
+from service.
+    (ii) Where ASB AS332-53.02.03 Rev 2 uses the term check, this AD 
+requires doing an inspection.
+    (iii) You are not required to define or record the thickness of 
+the peel shims.
+    (iv) Instead of contacting Airbus Helicopters if there is damage 
+after removing corrosion, this AD requires that you remove the 
+affected part from service before further flight.
+    (v) Instead of contacting Airbus Helicopters if there are any 
+cracks on the frames at the attachment bracket fixations, this AD 
+requires that you remove the affected part from service before 
+further flight.
+    (vi) For purposes of this AD, ``correctly stacked'' as used in 
+ASB AS332-53.02.03 Rev 2 means the concave washers are installed 
+with the flat side towards the front bracket, and the convex washers 
+are installed with the flat side towards the nuts.
+    (vii) For purposes of this AD, ``correctly engaged'' as used in 
+ASB AS332-53.02.03 Rev 2 means the centering pin is engaged on the 
+front plate.
+    (viii) Instead of contacting Airbus Helicopters if the clearance 
+of J1 or J2 is less than 0.5 mm (0.0196 in) after inspecting the new 
+links of the rear brackets, you must take corrective action until 
+the clearance is at least 0.5 mm using a method approved by the 
+Manager, General Aviation & Rotorcraft Section, International 
+Validation Branch, FAA; or European Union Aviation Safety Agency 
+(EASA); or Airbus Helicopters EASA Design Organization Approval 
+(DOA). If approved by the DOA, the approval must include the DOA-
+authorized signature.
+    (ix) For the purposes of this AD, new as used in ASB AS332-
+53.02.03 Rev 2 means the part has never been installed on a 
+helicopter.
+    (2) For helicopters identified in paragraph (c)(2) of this AD 
+without Airbus Helicopters modification 0728521, 0728904, 0728496, 
+and 0729044 installed, within 1,320 hours TIS or 40 months after the 
+effective date of this AD, whichever occurs first, modify the 
+helicopter by installing bracket links for the MGB suspension bars 
+in accordance with the Accomplishment Instructions, paragraphs 
+3.B.2. through 3.B.3.i, of Airbus Helicopters ASB No. EC225-53A065, 
+Revision 4, dated May 28, 2024 (ASB EC225-53A065 Rev 4), except as 
+provided in paragraphs (j)(2)(i) through (ix) of this AD.
+    (i) Instead of discarding parts, you must remove those parts 
+from service.
+    (ii) Where ASB EC225-53A065 Rev 4 uses the term check, this AD 
+requires doing an inspection.
+    (iii) You are not required to define or record the thickness of 
+the peel shims.
+    (iv) Instead of contacting Airbus Helicopters if there is damage 
+after removing corrosion, this AD requires that you remove the 
+affected part from service before further flight.
+    (v) Instead of contacting Airbus Helicopters if there are any 
+cracks on the frames at the attachment bracket fixations, this AD
+
+[[Page 40266]]
+
+requires that you remove the affected part from service before 
+further flight.
+    (vi) For the purposes of this AD, ``correctly stacked'' as used 
+in ASB EC225-53A065 Rev 4 means the concave washers are installed 
+with the flat side towards the bracket, and the convex washers are 
+installed with the flat side towards the nuts.
+    (vii) For purposes of this AD, ``correctly engaged'' as used in 
+ASB EC225-53A065 Rev 4 means the centering pin is engaged on the 
+front plate.
+    (viii) Instead of contacting Airbus Helicopters if the clearance 
+of J1 or J2 is less than 0.5 mm (0.0196 in) after inspecting the new 
+links of the rear brackets, you must take corrective action until 
+the clearance is at least 0.5 mm using a method approved by the 
+Manager, General Aviation & Rotorcraft Section, International 
+Validation Branch, FAA; or EASA; or Airbus Helicopters EASA Design 
+Organization Approval (DOA). If approved by the DOA, the approval 
+must include the DOA-authorized signature.
+    (ix) Where ASB EC225-53A065 Rev 4 uses the phrase ``if 
+necessary'', this AD requires replacing that text with ``if 
+applicable''.
+    (3) For helicopters identified in paragraphs (c)(1) and (2) of 
+this AD that have Airbus Helicopter modification 0728521, 0728904, 
+0728496, and 0729044 installed before the effective date of this AD, 
+within 27 months for Model AS 332L2 helicopters, and within 40 
+months for Model EC 225LP helicopters, after the effective date of 
+this AD, modify the helicopter in accordance with the Accomplishment 
+Instructions, paragraphs 3.B.2.c.1.b through 3.B.2.c.2.b of ASB 
+AS332-53.02.03 Rev 2 or ASB EC225-53A065 Rev 4, as applicable to 
+your model helicopter, and tighten to the standard torque value, 
+except instead of discarding parts, you must remove those parts from 
+service.
+    (4) Modifying the helicopter as required by paragraphs (j)(1) or 
+(2) of this AD terminates the life limit required by paragraphs (g) 
+and (h) of this AD.
+
+(k) Installation Prohibition
+
+    As of the effective date of this AD, do not install front bolt 
+P/N 332A22-1613-20 or 332A22-1613-21, rear bolt P/N 332A22-1614-20, 
+front fitting P/N 332A22-1623-01, rear left-hand fitting P/N 332A22-
+1624-02 or 332A22-1624-04, or rear right-hand fitting P/N 332A22-
+1624-03 or 332A22-1624-05 on any helicopter, unless:
+    (1) The part has not exceeded the applicable service life limit 
+after accomplishing the actions required by paragraphs (g)(1) or 
+(h)(1) of this AD, as applicable; and
+    (2) After installation of the part, the life limit is calculated 
+in accordance with paragraph (g)(1) or (h)(1) of this AD and all 
+other applicable requirements of this AD are accomplished.
+
+(l) Credit for Previous Actions
+
+    (1) For Model AS 332L2 helicopters, paragraph (l)(1) of this AD 
+provides credit for the initial life limit calculations required by 
+paragraphs (g)(1) and (h)(1) of this AD, if those calculations were 
+performed before the effective date of this AD using the service 
+information identified in paragraphs (l)(1)(i) through (iv) of this 
+AD.
+    (i) Airbus Helicopters EASB No. 01.00.86, Revision 0, dated July 
+27, 2017.
+    (ii) Airbus Helicopters EASB No. 01.00.86, Revision 1, dated 
+August 25, 2017.
+    (iii) Airbus Helicopters EASB No. 01.00.86, Revision 2, dated 
+March 2, 2020.
+    (iv) Airbus Helicopters EASB No. 01.00.86, Revision 3, dated 
+August 19, 2021.
+    (2) For Model EC 225LP helicopters, paragraph (l)(2) of this AD 
+provides credit for the initial life limit calculations required by 
+paragraph (g)(1) of this AD, if those calculations were performed 
+before the effective date of this AD using the service information 
+identified in paragraphs (l)(2)(i) through (iv) of this AD.
+    (i) Airbus Helicopters EASB No. 04A013, Revision 0, dated July 
+27, 2017.
+    (ii) Airbus Helicopters EASB No. 04A013, Revision 1, dated 
+August 25, 2017.
+    (iii) Airbus Helicopters EASB No. 04A013, Revision 2, dated 
+March 2, 2020.
+    (iv) Airbus Helicopters EASB No. 04A013, Revision 3, dated 
+August 19, 2021.
+
+(m) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Vali

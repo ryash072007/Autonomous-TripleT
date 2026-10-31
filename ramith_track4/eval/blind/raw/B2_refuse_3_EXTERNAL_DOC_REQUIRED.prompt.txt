@@ -1,0 +1,11 @@
+We are testing a question-answering tool over a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026. The tool should REFUSE to answer some questions.
+TASK: write ONE realistic question that asks for the content of the foreign-authority AD or manufacturer bulletin that the context notice refers to, which is not in the collection.
+CONTEXT NOTICE TITLE: Airworthiness Directives; Bombardier, Inc. Airplanes
+CONTEXT APPLICABILITY: This AD applies to Bombardier, Inc., Model BD-700-2A12 
+airplanes, certificated
+
+[[Page 57281]]
+
+in any category, as identified in Transport Canada AD CF-2025-39, 
+dated August 7, 2025 (Transport Canada AD CF-2025-39).
+Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,12 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Empresa Brasileira de Aeronautica S.A. (EMBRAER) Model EMB-135 and EMB-145 Series Airplanes
+SUMMARY: This action withdraws a notice of proposed rulemaking (NPRM) that proposed a new airworthiness directive (AD), applicable to certain 
+EMBRAER Model EMB-135 and EMB-145 series airplanes. That action would have required an inspection of the base and support surfaces of the 
+glide slope antenna and of certain electrical connectors of the navigation system, and applicable corrective actions if necessary. 
+Since the issuance of the NPRM, we have received new data showing that the proposed inspection and corrective actions will not eliminate the 
+display of erroneous or misleading information to the flightcrew in the cockpit. However, we have been informed that the navigation system 
+manufacturer has developed effective corrective actions to address the unsafe condition identified in the NPRM. Since we issued the NPRM, we 
+have issued other rulemaking, which provides corrective actions for the identified unsafe condition. Accordingly, the proposed rule is 
+withdrawn.

@@ -1,0 +1,532 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 120 (Wednesday, June 25, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 120 (Wednesday, June 25, 2025)]
+[Proposed Rules]
+[Pages 26951-26955]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-11697]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0922; Project Identifier MCAI-2024-00650-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2021-26-07, which applies to all Airbus Helicopters Model EC120B 
+helicopters. AD 2021-26-07 requires performing repetitive inspections 
+of the tail rotor (TR) hub body and, depending on the inspection 
+results, replacing certain parts, and accomplishing further 
+inspections. AD 2021-26-07 also requires for certain helicopters 
+removing from service any bolt, washer, and nut installed on the TR hub 
+body at certain life limits and replacing them with airworthy parts and 
+accomplishing further inspections. Additionally, AD 2021-26-07 
+prohibits the installation of a certain part-numbered TR hub body 
+unless certain requirements are met. Since the FAA issued AD 2021-26-
+07, it was determined that modifying the link of the TR hub body and 
+splined flange by adding red paint marks is necessary to enable the 
+detection of any loss of tightening torque. This proposed AD would 
+require the same repetitive inspections and corrective actions as AD 
+2021-26-07 and would require modification of the link of the TR hub 
+body, which would be a terminating action for the repetitive 
+inspections. The proposed AD would also require repetitive inspections 
+of the red paint line added during the modification of the link of the 
+TR hub body for alignment. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by August 11, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0922; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI) any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Airbus Helicopters material identified in this 
+proposed AD, contact Airbus Helicopters, 2701 North Forum Drive, Grand 
+Prairie, TX 75052; phone: (972) 641-0000 or: (800) 232-0323; fax: (972) 
+641-3775; website: <a href="http://airbus.com/en/products-services/helicopters/hcare-services/airbusworld">airbus.com/en/products-services/helicopters/hcare-services/airbusworld</a>.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110. It is also available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0922.
+
+FOR FURTHER INFORMATION CONTACT: Camille Seay, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (817) 222-5149; email: <a href="/cdn-cgi/l/email-protection#751614181c1919105b195b0610140c351314145b121a03"><span class="__cf_email__" data-cfemail="3e5d5f535752525b1052104d5b5f477e585f5f10595148">[email&#160;protected]</span></a>.
+
+[[Page 26952]]
+
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0922; 
+Project Identifier MCAI-2024-00650-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Camille Seay, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 
+410, Westbury, NY 11590. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The FAA issued AD 2021-26-07, Amendment 39-21866 (86 FR 72829, 
+December 23, 2021) (AD 2021-26-07), for Airbus Helicopters Model EC120B 
+helicopters. AD 2021-26-07 was prompted by European Union Aviation 
+Safety Agency (EASA) AD 2021-0069, dated March 11, 2021 (EASA AD 2021-
+0069), issued by EASA, which is the Technical Agent for the Member 
+States of the European Union, to address loss of tightening torque in 
+the interface between the TR hub body and splined flange, which creates 
+the risk of crack initiation from a fretting area located on the TR hub 
+body and splined flange or on the TR hub body and flange bolts.
+    AD 2021-26-07 requires performing repetitive inspections of the TR 
+hub body for a crack, and depending on the inspection results, removing 
+the affected parts from service and inspecting the TR spline flange 
+and, depending on those inspection results, removing an affected 
+splined flange from service. AD 2021-26-07 also requires, for certain 
+helicopters, removing from service any bolt, washer, and nut installed 
+on the TR hub body that has exceeded a certain life limit, and 
+thereafter removing these parts from service within specific intervals 
+and accomplishing further inspections and corrective actions.
+    Additionally, AD 2021-26-07 prohibits installing a certain part-
+numbered TR hub body unless certain requirements are met. The FAA 
+issued AD 2021-26-07 to detect cracking and fretting, which if not 
+addressed, could result in potential loss of the TR drive and 
+consequent loss of yaw control of the helicopter.
+
+Actions Since AD 2021-26-07 Was Issued
+
+    Since the FAA issued AD 2021-26-07, EASA superseded EASA AD 2021-
+0069 with EASA AD 2024-0209, dated October 28, 2024 (EASA AD 2024-0209) 
+(also referred to as the MCAI), to address an unsafe condition on all 
+Airbus Helicopters Model EC 120 B helicopters. The MCAI states that, 
+Airbus Helicopters developed a modification, which consists of adding a 
+line of red paint on each bolt and each nut of the link between the TR 
+hub and the splined flange. The MCAI further states that an 
+Airworthiness Limitations Section task was published for checking 
+alignment of the marks.
+    The FAA is proposing this AD to detect cracking and fretting of the 
+TR hub body, which, if not addressed, could lead to loss of the TR 
+drive, and consequent loss of yaw control of the helicopter.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0922.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Airbus Helicopters Emergency Alert Service 
+Bulletin 05A020, Revision 3, dated September 19, 2024 (EASB 05A0020 Rev 
+3), which specifies procedures for repetitive inspections of the TR hub 
+body for cracks and the TR spline flange for cracks and fretting and 
+the appropriate corrective actions to include replacing the hub body 
+and the splined flange. EASB 05A0020 Rev 3 also excludes helicopters 
+that have complied with Airbus Helicopters Alert Service Bulletin 
+EC120-64-21-0001, Issue 001, dated September 19, 2024 (ASB EC120-64-21-
+0001) from its effectivity and limits the effectivity for ``non 
+installed equipment or parts''.
+    The FAA also reviewed ASB EC120-64-21-0001, which specifies 
+procedures for inspecting the torque applied on the nut of the link 
+between the TR hub and the splined flange, and depending on the 
+inspection results, applying torque and replacing parts. ASB EC120-64-
+21-0001 also specifies procedures for applying a red paint line on the 
+screw, nut, washer, TR hub, and splined flange.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require some of the same repetitive 
+inspections and corrective actions as AD 2021-26-07 and would also 
+require modifying the helicopter by applying torque and adding a red 
+paint mark on each bolt and nut on the link between the TR hub and the 
+splined flange after applying torque, which would be a terminating 
+action for the repetitive inspection requirements. The proposed AD 
+would also require repetitive inspections of the red paint line added 
+during the modification of the link of the TR hub body for alignment.
+
+Differences Between This Proposed AD and the MCAI
+
+    EASA AD 2024-0209 allows a non-cumulative tolerance of 100 FH 
+[flight hours] to be applied to the compliance times to allow for 
+synchronization of the required inspections with other
+
+[[Page 26953]]
+
+maintenance tasks, whereas this proposed AD would not allow a non-
+cumulative tolerance to be applied to the compliance times.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 70 helicopters of U.S. registry. Labor rates are estimated at 
+$85 per hour. Based on these numbers, the FAA estimates the following 
+costs to comply with this proposed AD.
+    Visually inspecting a TR hub body for a crack would take 0.25 work-
+hour for an estimated cost of $22 per helicopter and $1,540 for the 
+U.S. fleet.
+    Visually inspecting a TR spline flange for corrosion, impacts, 
+fretting, wear, and a crack would take 0.25 work-hour for an estimated 
+cost of $22 per helicopter and $1,540 for the U.S. fleet.
+    Replacing a T/R hub body bolt, washer, and nut would take 0.5 work-
+hour and parts would cost $25 (per hardware set) for an estimated cost 
+of $68 per helicopter.
+    Inspecting torque and adding a red paint line on each bolt and each 
+nut would take 4 work-hours for an estimated cost of $340 per 
+helicopter and $23,800 for the U.S. fleet.
+    If required, replacing a TR hub body would take 2 work-hours and 
+parts would cost $16,485 for an estimated cost of $16,655 per 
+helicopter.
+    If required, replacing a TR spline flange would take 0.5 work-hour 
+and parts would cost $2,950 for an estimated cost of $2,993 per 
+helicopter.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national Government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2021-26-07, Amendment 39-21866 (86 
+FR 72829, December 23, 2021); and
+0
+b. Adding the following new airworthiness directive:
+
+Airbus Helicopters: Docket No. FAA-2025-0922; Project Identifier 
+MCAI-2024-00650-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by August 11, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2021-26-07, Amendment 39-21866 (86 FR 72829, 
+December 23, 2021).
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model EC120B helicopters, 
+certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6422, Tail rotor 
+system.
+
+(e) Unsafe Condition
+
+    This AD was prompted by analysis of recurrent loss of tightening 
+torque on several attachment bolts on the tail rotor (TR) hub body. 
+The FAA is issuing this AD to detect cracking and fretting of the TR 
+hub body. The unsafe condition, if not addressed, could lead to loss 
+of the TR drive, and consequent loss of yaw control of the 
+helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    (1) Within 15 hours time-in-service (TIS) or 7 days, whichever 
+occurs first after the effective date of this AD, and thereafter at 
+intervals not to exceed 15 hours TIS, using a light source and 
+mirror, visually inspect TR hub body part number (P/N) C642A0100103 
+for a crack in the entire inspection area depicted in Figure 1 of 
+Airbus Helicopters Emergency Alert Service Bulletin 05A020 Revision 
+3, dated September 19, 2024. If any crack is found, before further 
+flight, perform the actions in paragraphs (g)(1)(i) and (ii) of this 
+AD.
+    (i) Remove the TR hub body and each bolt, washer, and nut 
+installed on the TR hub body from service and replace with airworthy 
+parts.
+    (ii) Inspect the TR splined flange for corrosion, impacts, 
+fretting, wear, and a crack in the areas identified in Figure 2 to 
+paragraph (g)(1)(ii) of this AD. If the condition of the part 
+(including corrosion, impacts, fretting, wear, or cracks) exceeds 
+the criteria as specified in Figure 1 to paragraph (g)(1)(ii) of 
+this AD, before further flight, remove the splined flange from 
+service and replace with an airworthy part.
+    Note 1 to paragraph (g)(1)(ii): You may refer to ``Detailed 
+Check-Splined Flange,'' Task 64-21-00, 6-5, Airbus Aircraft 
+Maintenance Manual (AMM), dated October 15, 2020, which pertains to 
+the TR splined flange inspection.
+
+Figure 1 to Paragraph (g)(1)(ii)--Inspection Criteria for TR Splined 
+Flange
+
+------------------------------------------------------------------------
+                                           Maximum damage, which causes
+                                          replacement (E1, Dia. 2, Dia.
+  Location as specified in Figure 2 to      3, and Dia. 4 are shown in
+    paragraph (g)(1)(ii) of this AD           Figure 2 to paragraph
+                                              (g)(1)(ii) of this AD)
+------------------------------------------------------------------------
+Zone A.................................  Scratch depth >0.2 mm (0.008
+                                          in.).
+                                         Crack.
+                                         E1 <2.75 mm (0.108 in.).
+                                         Dia. 3 >6.02 mm (0.2371 in.).
+                                         Dia. 2 >33.03 mm (1.3004 in.).
+
+[[Page 26954]]
+
+ 
+Zone B.................................  Touch-up depth >0.1 mm (0.004
+                                          in.).
+                                         Crack.
+Zone C.................................  Crack.
+                                         Scratch depth >0.2 mm (0.008
+                                          in.).
+Zone D [Dia. 4 = 14 mm <plus-minus>0.1   Touch-up depth >0.1 mm (0.004
+ mm (0.548; 0.555in.)].                   in.).
+                                         Crack.
+                                         E1 <2.75 mm (0.108 in.).
+------------------------------------------------------------------------
+
+Figure 2 to Paragraph (g)(1)(ii)--Inspection Areas of Tail Rotor 
+Splined Flange
+
+BILLING CODE 4910-13-P
+[GRAPHIC] [TIFF OMITTED] TP25JN25.000
+
+
+[[Page 26955]]
+
+
+BILLING CODE 4910-13-C
+    (2) For helicopters with 9,000 or more total hours TIS or with 
+unknown total hours TIS, within 15 hours TIS or 7 days, whichever 
+occurs first after the effective date of this AD, and thereafter at 
+intervals not to exceed 1,000 hours TIS, remove each bolt washer, 
+and nut installed on the TR hub body from service and replace with 
+airworthy parts and perform the actions in paragraph (g)(1)(ii) of 
+this AD.
+    (3) For helicopters with less than 9,000 total hours TIS, within 
+1,000 hours TIS or before accumulating 9,000 total hours TIS, 
+whichever occurs first after the effective date of this AD, and 
+thereafter at intervals not to exceed 1,000 hours TIS, remove each 
+bolt, washer, and nut installed on the TR hub body from service and 
+replace with airworthy parts and perform the actions in paragraph 
+(g)(1)(ii) of this AD.
+    (4) Within 24 months after the effective date of this AD, 
+inspect the torque on the nut of the TR hub body in accordance with 
+paragraph 4.1.2 of Airbus Helicopters Alert Service Bulletin ASB 
+EC120-64-21-0001, dated September 19, 2024.
+    (i) If the torque is not within allowable limits, before further 
+flight, remove the nut on the TR hub body from service and replace 
+it with an airworthy nut; and accomplish the actions in paragraph 
+(g)(4)(ii) of this AD.
+    (ii) If the torque is within allowable limits, before further 
+flight, using polyurethane paint, apply a red paint line to the bolt 
+and washer on the TR hub body; and apply a red paint line to the nut 
+and washer on the splined flange. These actions terminate the 
+repetitive inspections and replacements required by paragraphs 
+(g)(1) through (3) of this AD.
+    (5) Within 100 hours TIS or 12 months, whichever occurs first 
+after the action required in paragraph (g)(4)(ii) of this AD, and 
+thereafter at intervals not to exceed 100 hours TIS or 12 months, 
+whichever occurs first, inspect the red paint line for alignment. If 
+the red paint line is misaligned, before further flight, perform the 
+actions as specified in paragraphs (g)(4)(i) of this AD.
+
+(h) Parts Installation Limitations
+
+    As of the effective date of this AD, do not install on any 
+helicopter a TR hub body P/N C642A0100103 or a splined flange unless 
+the part is new (zero hours TIS) or has passed the inspection 
+requirements required by paragraph (g)(1) of this AD.
+
+(i) Credit for Previous Actions
+
+    This paragraph provides credit for the initial instance of the 
+actions required by paragraphs (g)(1) through (3) of this AD, if 
+those actions were performed before the effective date of this AD in 
+accordance with Airbus Helicopters Emergency Alert Service Bulletin 
+05A020 Revision 0, dated October 29, 2019; Revision 1, dated 
+November 8, 2019; or Revision 2, dated February 8, 2021.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or responsible Flight 
+Standards Office, as appropriate. If sending information directly to 
+the manager of the International Validation Branch, send it to the 
+attention of the person identified in paragraph (k)(1) of this AD 
+and email to: <a href="/cdn-cgi/l/email-protection#bafbf7f5f9fadcdbdb94ddd5cc"><span class="__cf_email__" data-cfemail="57161a18141731363679303821">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the responsible Flight Standards Office. The following provisions 
+also apply to this AD.
+
+(k) Additional Information
+
+    (1) For more information about this AD, contact Camille Seay, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (817) 222-5149; email: 
+<a href="/cdn-cgi/l/email-protection#a6c5c7cbcfcacac388ca88d5c3c7dfe6c0c7c788c1c9d0"><span class="__cf_email__" data-cfemail="086b69656164646d2664267b6d6971486e6969266f677e">[email&#160;protected]</span></a>.
+    (2) For Airbus Helicopters material identified in this AD that 
+is not incorporated by reference, can be found at the contact 
+information identified in paragraph (m)(3) of this AD.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) Airbus Helicopters Emergency Alert Service Bulletin 05A020, 
+Revision 3, dated September 19, 2024.
+    (ii) Airbus Helicopters Alert Service Bulletin EC120-64-21-0001, 
+dated September 19, 2024.
+    (3) For Airbus Helicopters material identified in this AD, 
+contact Airbus Helicopters, 2701 North Forum Drive, Grand Prairie, 
+TX 75052; phone: (972) 641-0000 or: (800) 232-0323; fax: (972) 641-
+3775; website: <a href="http://airbus.com/en/products-services/helicopters/hcare-services/airbusworld">airbus.com/en/products-services/helicopters/hcare-services/airbusworld</a>.
+    (4) You may view this material at FAA, Office of the Regional 
+Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-321, Fort 
+Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#5036227e393e2320353324393f3e103e3122317e373f26"><span class="__cf_email__" data-cfemail="e98f9bc780879a998c8a9d808687a987889b88c78e869f">[email&#160;protected]</span></a>.
+
+    Issued on June 20, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-11697 Filed 6-24-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

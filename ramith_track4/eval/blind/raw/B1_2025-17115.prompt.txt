@@ -1,0 +1,430 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 171 (Monday, September 8, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 171 (Monday, September 8, 2025)]
+[Proposed Rules]
+[Pages 43162-43165]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-17115]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-2273; Project Identifier MCAI-2024-00689-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all Airbus Helicopters Model H160-B helicopters. This proposed AD 
+was prompted by a determination that new or more restrictive 
+airworthiness limitations are necessary. This proposed AD would require 
+revising the existing maintenance manual or instructions for continued 
+airworthiness and the existing approved maintenance or inspection 
+program, as applicable, by incorporating new or more restrictive 
+airworthiness limitations. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by October 23, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-2273; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; phone: +49 221 8999 000; email: 
+<a href="/cdn-cgi/l/email-protection#e3a2a790a386829082cd8696918c9382cd8696"><span class="__cf_email__" data-cfemail="84c5c0f7c4e1e5f7e5aae1f1f6ebf4e5aae1f1">[email&#160;protected]</span></a>; website: easa.europa.eu. You may find the EASA 
+material on the EASA website at ad.easa.europa.eu. It is also available 
+at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-2273.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Yves Petiote, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (202) 975-4867; email: <a href="/cdn-cgi/l/email-protection#93eae5f6e0bde3f6e7fafce7f6d3f5f2f2bdf4fce5"><span class="__cf_email__" data-cfemail="a5dcd3c0d68bd5c0d1cccad1c0e5c3c4c48bc2cad3">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under ADDRESSES. Include ``Docket No. FAA-2025-2273; Project Identifier 
+MCAI-2024-00689-R'' at the beginning of your comments. The most helpful 
+comments reference a specific portion of the proposal, explain the 
+reason for any recommended change, and include supporting data. The FAA 
+will consider all comments received by the closing date and may amend 
+this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act
+
+[[Page 43163]]
+
+(FOIA) (5 U.S.C. 552), CBI is exempt from public disclosure. If your 
+comments responsive to this NPRM contain commercial or financial 
+information that is customarily treated as private, that you actually 
+treat as private, and that is relevant or responsive to this NPRM, it 
+is important that you clearly designate the submitted comments as CBI. 
+Please mark each page of your submission containing CBI as ``PROPIN.'' 
+The FAA will treat such marked submissions as confidential under the 
+FOIA, and they will not be placed in the public docket of this NPRM. 
+Submissions containing CBI should be sent to Yves Petiote, Aviation 
+Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 
+11590. Any commentary that the FAA receives which is not specifically 
+designated as CBI will be placed in the public docket for this 
+rulemaking.
+
+Background
+
+    EASA, which is the Technical Agent for the Member States of the 
+European Union, has issued EASA AD 2024-0223, dated November 26, 2024 
+(EASA AD 2024-0223) (also referred to as the MCAI), to correct an 
+unsafe condition on Airbus Helicopters Model H160-B helicopters. The 
+MCAI states that the airworthiness limitations for the Airbus 
+Helicopters Model H160-B helicopters, which are approved by EASA, are 
+currently defined and published in the AH [Airbus Helicopters] H160-B 
+Airworthiness Limitations Section (ALS) document. EASA advises that 
+these instructions have been identified as mandatory for continued 
+airworthiness and that Revision 16 of Airbus Helicopters Model H160-B, 
+dated May 27, 2024, has been issued to introduce new or more 
+restrictive airworthiness limitations. The FAA is issuing this proposed 
+AD to prevent failure of certain parts, which, if not addressed, could 
+result in loss of control of the helicopter. You may examine the MCAI 
+in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-2273.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2024-0223, which specifies procedures for 
+replacing components before exceeding their life limits and 
+accomplishing all applicable maintenance tasks within thresholds and 
+intervals specified in the ALS. Depending on the results of the 
+maintenance tasks, EASA AD 2024-0223 specifies procedures for 
+accomplishing corrective action(s) or contacting Airbus Helicopters for 
+approved instructions and accomplishing those instructions.
+    Additionally, EASA AD 2024-0223 specifies procedures for revising 
+the Aircraft Maintenance Programme (AMP) by incorporating the 
+limitations, tasks, and associated thresholds and intervals described 
+in the specified ALS, as applicable. Revising the AMP constitutes 
+terminating action for the requirement to record accomplishment of the 
+actions of replacing components before exceeding their life limits and 
+accomplishing maintenance tasks within thresholds and intervals 
+specified in the applicable ALS as specified in EASA AD 2024-0223 for 
+demonstration of AD compliance on a continued basis.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+its AD referenced above. The FAA is issuing this NPRM after determining 
+that the unsafe condition described previously is likely to exist or 
+develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require revising the existing maintenance 
+manual or instructions for continued airworthiness and the existing 
+approved maintenance or inspection program, as applicable, by 
+incorporating new or more restrictive actions and associated thresholds 
+and intervals, including any life limits, specified in EASA AD 2024-
+0223, described previously, as incorporated by reference, except for 
+any differences identified as exceptions in the regulatory text of this 
+proposed AD. See ``Differences Between this Proposed AD and the MCAI'' 
+for a discussion of the general differences included in this AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2024-0223 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2024-0223 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2024-0223 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2024-
+0223. Material referenced in EASA AD 2024-0223 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-2273 after the 
+FAA final rule is published.
+
+Differences Between This Proposed AD and the MCAI
+
+    The MCAI requires, as individual tasks, replacing certain 
+components before exceeding applicable life limits, accomplishing 
+certain maintenance tasks within thresholds and intervals as specified 
+in the ALS, as defined within, and depending on the results, 
+accomplishing corrective action, whereas this proposed AD would not. 
+The MCAI also requires revising the approved AMP by incorporating the 
+limitations, tasks, and associated thresholds and intervals described 
+in that ALS within 12 months, whereas this proposed AD would require 
+revising the existing maintenance manual or instructions for continued 
+airworthiness and the existing approved maintenance or inspection 
+program, as applicable, by incorporating the limitations, tasks, and 
+associated thresholds and intervals described in that ALS within 30 
+days, and clarifies that if the initial instance of an incorporated 
+limitation or threshold therein is reached before 30 days after the 
+effective date of the final rule of this proposed AD, you still have up 
+to 30 days after the effective date of the final rule of this proposed 
+AD to accomplish the corresponding task.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect four helicopters of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+[[Page 43164]]
+
+
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                     Cost per      Cost on U.S.
+                Action                         Labor cost           Parts cost        product        operators
+----------------------------------------------------------------------------------------------------------------
+Revise ALS............................  1 work-hour x $85 per                 $0             $85            $340
+                                         hour = $85.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus Helicopters: Docket No. FAA-2025-2273; Project Identifier 
+MCAI-2024-00689-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by October 23, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model H160-B helicopters, 
+certificated in any category.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 05, Time Limits/
+Maintenance Checks.
+
+(e) Unsafe Condition
+
+    This AD was prompted by new or more restrictive airworthiness 
+limitations. The FAA is issuing this AD to prevent failure of 
+certain parts which, if not addressed, could result in loss of 
+control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency (EASA) AD 
+2024-0223, dated November 26, 2024 (EASA AD 2024-0223).
+
+(h) Exceptions to EASA AD 2024-0223
+
+    (1) Where EASA AD 2024-0223 refers to its effective date, this 
+AD requires using the effective date of this AD.
+    (2) This AD does not adopt the requirements specified in 
+paragraphs (1), (2), (4), and (5) of EASA AD 2024-0223.
+    (3) Where paragraph (3) of EASA AD 2024-0223 specifies ``Within 
+12 months after the effective date of this AD, revise the approved 
+AMP'', this AD requires replacing that text with ``Within 30 days 
+after the effective date of this AD, revise the airworthiness 
+limitations section of the existing maintenance manual or 
+instructions for continued airworthiness and the existing approved 
+maintenance or inspection program, as applicable''.
+    (4) The initial compliance time for doing the tasks specified in 
+paragraph (3) of EASA AD 2024-0223 is on or before the applicable 
+``limitations'' and ``associated thresholds'' as incorporated by the 
+requirements of paragraph (3) of EASA AD 2024-0223 or within 30 days 
+after the effective date of this AD, whichever occurs later.
+    (5) This AD does not adopt the ``Remarks'' section of EASA AD 
+2024-0223.
+
+(i) Provisions for Alternative Actions and Intervals
+
+    No alternative actions and associated thresholds and intervals, 
+including life limits, are allowed for compliance with paragraph (g) 
+of this AD unless they are approved as specified in the provisions 
+of the ``Ref. Publications'' section of EASA AD 2024-0223.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (k) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#9cddd1d3dfdcfafdfdb2fbf3ea"><span class="__cf_email__" data-cfemail="185955575b587e7979367f776e">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(k) Additional Information
+
+    For more information about this AD, contact Yves Petiote, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (202) 975-4867; email: 
+<a href="/cdn-cgi/l/email-protection#b2cbc4d7c19cc2d7c6dbddc6d7f2d4d3d39cd5ddc4"><span class="__cf_email__" data-cfemail="d6afa0b3a5f8a6b3a2bfb9a2b396b0b7b7f8b1b9a0">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2024-0223, 
+dated November 26, 2024.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221
+
+[[Page 43165]]
+
+8999 000; email: <a href="/cdn-cgi/l/email-protection#4a0b0e390a2f2b392b642f3f38253a2b642f3f"><span class="__cf_email__" data-cfemail="a2e3e6d1e2c7c3d1c38cc7d7d0cdd2c38cc7d7">[email&#160;protected]</span></a>; website: easa.europa.eu. You 
+may find the EASA material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#5f392d7236312c2f3a3c2b3630311f313e2d3e71383029"><span class="__cf_email__" data-cfemail="5d3b2f7034332e2d383e293432331d333c2f3c733a322b">[email&#160;protected]</span></a>.
+
+    Issued on August 29, 2025.
+Paul R. Bernado,
+Acting Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-17115 Filed 9-5-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

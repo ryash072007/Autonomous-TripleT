@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Rolls-Royce Deutschland Ltd & Co KG Engines
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) for all Rolls-Royce Deutschland Ltd & Co KG (RRD) Model Trent XWB-75, XWB-79, XWB-79B, and XWB-84 engines. This proposed AD was prompted by reports of differential oil pressure measurements that were lower than expected on in-service engines. This proposed AD would require modification of the engine with an improved front bearing housing oil feed tube assembly. This proposed AD would also prohibit the installation of an affected front bearing housing oil feed tube assembly on any engine. The FAA is proposing this AD to address the unsafe condition on these products.

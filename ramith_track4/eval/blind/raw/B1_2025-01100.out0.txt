@@ -1,0 +1,7 @@
+The applicability paragraph reads: "This AD applies to Airbus Helicopters Model SA341G and SA342J helicopters, certificated in any category." Applicability depends only on the model, so it is fully determinable from the model alone. The part-numbered drive shafts matter only for the actions required by the EASA AD, not for applicability. No cutoff date, serial range, part number or exclusion appears in the applicability paragraph. Any listed model gives APPLIES and any other model gives DOES_NOT_APPLY, so no configuration produces CANNOT_DETERMINE.
+
+One possible route is an ambiguous model designation, such as "SA 342" with no suffix. That would be contrived, because a real owner knows the exact model, and I judge it not a legitimate construction. A second route is the external EASA AD, but it governs the required actions and not applicability. The notice's own applicability paragraph is self-contained.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "AMBIGUOUS_SCOPE", "evidence_quote": "This AD applies to Airbus Helicopters Model SA341G and SA342J helicopters, certificated in any category.", "notes": "Applicability depends only on model (all serials, any category, no dates or part numbers), so a real owner's config always yields APPLIES or DOES_NOT_APPLY; CANNOT_DETERMINE is not constructible."}
+```
