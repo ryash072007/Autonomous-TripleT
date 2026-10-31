@@ -1,0 +1,402 @@
+{
+ "name": "OrbitGuard LightGBM tier models",
+ "version": "de1e221ca98d-df9e2d21f6fc",
+ "trained_utc": "2026-10-31T03:13:18Z",
+ "git_commit": "d8f665c+dirty",
+ "command": "python scripts/train.py final",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
+ },
+ "seed": 42,
+ "task_a": {
+  "features_raw": [
+   "time_to_tca",
+   "miss_distance",
+   "relative_speed",
+   "relative_position_r",
+   "relative_position_t",
+   "relative_position_n",
+   "c_object_type",
+   "c_sigma_r",
+   "t_sigma_r",
+   "max_risk_estimate",
+   "F10",
+   "AP"
+  ],
+  "features_model": [
+   "time_to_tca",
+   "miss_distance",
+   "relative_speed",
+   "relative_position_r",
+   "relative_position_t",
+   "relative_position_n",
+   "c_object_type",
+   "c_sigma_r",
+   "t_sigma_r",
+   "max_risk_estimate",
+   "F10",
+   "AP",
+   "log_sigma_c",
+   "log_sigma_t",
+   "log_miss",
+   "rel_pos_norm",
+   "miss_over_sigma_c",
+   "miss_over_sigma_t",
+   "abs_r",
+   "abs_t",
+   "abs_n",
+   "mre_minus_logmiss",
+   "miss_tier",
+   "b0_tier"
+  ],
+  "params": {
+   "objective": "multiclass",
+   "num_class": 3,
+   "n_estimators": 300,
+   "learning_rate": 0.05,
+   "num_leaves": 31,
+   "min_child_samples": 40,
+   "subsample": 0.8,
+   "subsample_freq": 1,
+   "colsample_bytree": 0.8,
+   "reg_lambda": 1.0,
+   "random_state": 42,
+   "verbose": -1,
+   "n_jobs": 4
+  },
+  "class_weights": {
+   "0": 1.0,
+   "1": 2.0,
+   "2": 6.0
+  },
+  "thresholds": {
+   "t_critical": 0.005,
+   "t_alert": 0.07,
+   "chosen_on": "OOF predictions, train CDMs with time_to_tca >= 2",
+   "rule": "t_critical: largest keeping critical_recall >= B0 - 0.001; t_alert: largest keeping alert_recall >= 0.99"
+  },
+  "floor": "final tier = max(model tier, miss-distance-only tier)",
+  "cv_cdms_ge_2d": {
+   "critical_recall": {
+    "mean": 0.99976,
+    "std": 0.00048,
+    "per_fold": [
+     1.0,
+     1.0,
+     0.9988,
+     1.0,
+     1.0
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.94181,
+    "std": 0.00775,
+    "per_fold": [
+     0.95718,
+     0.9387,
+     0.93902,
+     0.93608,
+     0.93806
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.9485,
+    "std": 0.0038,
+    "per_fold": [
+     0.95337,
+     0.95051,
+     0.94714,
+     0.94944,
+     0.94203
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.90525,
+    "std": 0.00815,
+    "per_fold": [
+     0.91228,
+     0.91136,
+     0.90208,
+     0.90988,
+     0.89063
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.97035,
+    "std": 0.00163,
+    "per_fold": [
+     0.96969,
+     0.97178,
+     0.97136,
+     0.97147,
+     0.96743
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 33.2065,
+    "std": 1.0321,
+    "per_fold": [
+     34.83552,
+     33.99684,
+     32.38897,
+     32.62522,
+     32.18595
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.05453,
+    "std": 0.00361,
+    "per_fold": [
+     0.05521,
+     0.05255,
+     0.05336,
+     0.05045,
+     0.06106
+    ]
+   },
+   "alert_recall": {
+    "mean": 0.9923,
+    "std": 0.00274,
+    "per_fold": [
+     0.99155,
+     0.99438,
+     0.99389,
+     0.98724,
+     0.99444
+    ]
+   },
+   "critical_missed": {
+    "mean": 0.4,
+    "std": 0.8,
+    "per_fold": [
+     0.0,
+     0.0,
+     2.0,
+     0.0,
+     0.0
+    ]
+   },
+   "brier_critical": {
+    "mean": 0.00168,
+    "std": 0.00065,
+    "per_fold": [
+     0.00239,
+     0.00137,
+     0.00248,
+     0.0013,
+     0.00084
+    ]
+   }
+  },
+  "cv_evidence": "artifacts/evidence/task_a_cv.json"
+ },
+ "task_b": {
+  "features_model": [
+   "n_cdms",
+   "tte_last",
+   "tte_first",
+   "span",
+   "last_miss_distance",
+   "last_relative_speed",
+   "last_relative_position_r",
+   "last_relative_position_t",
+   "last_relative_position_n",
+   "last_c_object_type",
+   "last_c_sigma_r",
+   "last_t_sigma_r",
+   "last_max_risk_estimate",
+   "last_F10",
+   "last_AP",
+   "last_log_sigma_c",
+   "last_log_sigma_t",
+   "last_log_miss",
+   "last_rel_pos_norm",
+   "last_miss_over_sigma_c",
+   "last_miss_over_sigma_t",
+   "last_mre_minus_logmiss",
+   "last_miss_tier",
+   "last_b0_tier",
+   "min_log_miss",
+   "max_log_miss",
+   "mean_log_miss",
+   "slope_log_miss",
+   "d1_log_miss",
+   "first_log_miss",
+   "min_max_risk_estimate",
+   "max_max_risk_estimate",
+   "mean_max_risk_estimate",
+   "slope_max_risk_estimate",
+   "d1_max_risk_estimate",
+   "first_max_risk_estimate",
+   "min_log_sigma_c",
+   "max_log_sigma_c",
+   "mean_log_sigma_c",
+   "slope_log_sigma_c",
+   "d1_log_sigma_c",
+   "first_log_sigma_c",
+   "min_log_sigma_t",
+   "max_log_sigma_t",
+   "mean_log_sigma_t",
+   "slope_log_sigma_t",
+   "d1_log_sigma_t",
+   "first_log_sigma_t",
+   "min_b0_tier",
+   "max_b0_tier",
+   "mean_b0_tier",
+   "slope_b0_tier",
+   "d1_b0_tier",
+   "first_b0_tier",
+   "min_miss_tier",
+   "max_miss_tier",
+   "mean_miss_tier",
+   "slope_miss_tier",
+   "d1_miss_tier",
+   "first_miss_tier",
+   "min_relative_speed",
+   "max_relative_speed",
+   "mean_relative_speed",
+   "slope_relative_speed",
+   "d1_relative_speed",
+   "first_relative_speed",
+   "n_b0_critical",
+   "n_b0_alert",
+   "tte_gap_last"
+  ],
+  "params": {
+   "objective": "multiclass",
+   "num_class": 3,
+   "n_estimators": 250,
+   "learning_rate": 0.04,
+   "num_leaves": 15,
+   "min_child_samples": 30,
+   "subsample": 0.8,
+   "subsample_freq": 1,
+   "colsample_bytree": 0.7,
+   "reg_lambda": 2.0,
+   "random_state": 42,
+   "verbose": -1,
+   "n_jobs": 4
+  },
+  "thresholds": {
+   "t_critical": 0.02,
+   "t_alert": 0.1,
+   "rule": "largest threshold with OOF Critical recall >= 0.95 / alert recall >= 0.95"
+  },
+  "n_train_events": 8293,
+  "cv": {
+   "critical_recall": {
+    "mean": 0.95101,
+    "std": 0.0284,
+    "per_fold": [
+     0.90678,
+     0.9322,
+     0.98113,
+     0.97917,
+     0.95575
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.44857,
+    "std": 0.03892,
+    "per_fold": [
+     0.46522,
+     0.48673,
+     0.40945,
+     0.39496,
+     0.48649
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.73125,
+    "std": 0.01445,
+    "per_fold": [
+     0.7353,
+     0.74821,
+     0.70613,
+     0.7262,
+     0.74042
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.64242,
+    "std": 0.02568,
+    "per_fold": [
+     0.64643,
+     0.66032,
+     0.59929,
+     0.67395,
+     0.63212
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.94335,
+    "std": 0.00148,
+    "per_fold": [
+     0.94452,
+     0.94478,
+     0.94133,
+     0.94178,
+     0.94435
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 31.81875,
+    "std": 0.99213,
+    "per_fold": [
+     32.71971,
+     32.32078,
+     31.31868,
+     32.63221,
+     30.10235
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.09384,
+    "std": 0.00465,
+    "per_fold": [
+     0.09202,
+     0.09053,
+     0.0978,
+     0.10065,
+     0.08821
+    ]
+   },
+   "alert_recall": {
+    "mean": 0.95714,
+    "std": 0.00899,
+    "per_fold": [
+     0.96053,
+     0.95701,
+     0.9562,
+     0.96991,
+     0.94203
+    ]
+   },
+   "critical_missed": {
+    "mean": 5.6,
+    "std": 3.49857,
+    "per_fold": [
+     11.0,
+     8.0,
+     2.0,
+     2.0,
+     5.0
+    ]
+   },
+   "brier_critical": {
+    "mean": 0.01902,
+    "std": 0.00465,
+    "per_fold": [
+     0.0234,
+     0.02147,
+     0.01671,
+     0.01096,
+     0.02256
+    ]
+   }
+  },
+  "cv_evidence": "artifacts/evidence/task_b_cv.json"
+ },
+ "allowed_columns_only": true,
+ "released_test_labels_opened": false
+}

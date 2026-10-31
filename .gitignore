@@ -25,3 +25,8 @@ __pycache__/
 .claude/settings.local.json
 .DS_Store
 *.log
+
+# web
+web/node_modules/
+web/dist/
+!artifacts/model_card.json

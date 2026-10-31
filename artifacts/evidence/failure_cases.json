@@ -1,0 +1,652 @@
+{
+ "generated_utc": "2026-10-31T03:14:33Z",
+ "git_commit": "d8f665c+dirty",
+ "command": "python scripts/failure_cases.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
+ },
+ "seed": 42,
+ "note": "OOF predictions from 5-fold grouped CV at the shipped thresholds; `risk` is shown for the reader only.",
+ "task_a_missed_critical_cdms": [
+  {
+   "row": 14568,
+   "event_id": 1176,
+   "p_model": [
+    0.1387,
+    0.8591,
+    0.0023
+   ],
+   "predicted": 1,
+   "cdm": {
+    "time_to_tca": 4.748,
+    "miss_distance": 11780.0,
+    "max_risk_estimate": -3.9614,
+    "c_sigma_r": 2208.4414,
+    "t_sigma_r": 8.4216,
+    "relative_speed": 14354.0,
+    "c_object_type": "ROCKET BODY",
+    "risk": -3.9706
+   }
+  },
+  {
+   "row": 143291,
+   "event_id": 11573,
+   "p_model": [
+    0.0003,
+    0.9982,
+    0.0015
+   ],
+   "predicted": 1,
+   "cdm": {
+    "time_to_tca": 2.0646,
+    "miss_distance": 1559.0,
+    "max_risk_estimate": -3.8333,
+    "c_sigma_r": 47.2356,
+    "t_sigma_r": 1.3662,
+    "relative_speed": 9260.0,
+    "c_object_type": "UNKNOWN",
+    "risk": -3.8867
+   }
+  }
+ ],
+ "task_a_false_critical_cdms": [
+  {
+   "row": 122198,
+   "event_id": 9886,
+   "p_critical": 0.9967,
+   "true_tier": 1,
+   "cdm": {
+    "time_to_tca": 4.6974,
+    "miss_distance": 1919.0,
+    "max_risk_estimate": -3.123,
+    "c_sigma_r": 15.2432,
+    "t_sigma_r": 6.0009,
+    "relative_speed": 11306.0,
+    "c_object_type": "ROCKET BODY",
+    "risk": -5.0047
+   }
+  },
+  {
+   "row": 134626,
+   "event_id": 10880,
+   "p_critical": 0.9947,
+   "true_tier": 1,
+   "cdm": {
+    "time_to_tca": 4.8061,
+    "miss_distance": 4591.0,
+    "max_risk_estimate": -3.7397,
+    "c_sigma_r": 27.4187,
+    "t_sigma_r": 11.9616,
+    "relative_speed": 964.0,
+    "c_object_type": "UNKNOWN",
+    "risk": -4.6692
+   }
+  },
+  {
+   "row": 147768,
+   "event_id": 11950,
+   "p_critical": 0.9947,
+   "true_tier": 1,
+   "cdm": {
+    "time_to_tca": 6.6662,
+    "miss_distance": 1006.0,
+    "max_risk_estimate": -3.2349,
+    "c_sigma_r": 29.0621,
+    "t_sigma_r": 2.9921,
+    "relative_speed": 7991.0,
+    "c_object_type": "DEBRIS",
+    "risk": -4.2061
+   }
+  }
+ ],
+ "task_b_missed_critical_events": [
+  {
+   "event_id": 8732,
+   "p_forecast": [
+    0.9987,
+    0.0011,
+    0.0002
+   ],
+   "forecast": 0,
+   "final_tier": 2,
+   "why": [
+    "very large sigma (covariance-dominated Pc)",
+    "miss distance collapses 28737 m -> 829 m"
+   ],
+   "early_cdms": [
+    {
+     "time_to_tca": 6.7169,
+     "miss_distance": 42922.0,
+     "max_risk_estimate": -6.3191,
+     "c_sigma_r": 6.635,
+     "t_sigma_r": 10.4823,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 6.3949,
+     "miss_distance": 42863.0,
+     "max_risk_estimate": -6.3185,
+     "c_sigma_r": 6.6127,
+     "t_sigma_r": 9.6582,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 5.9172,
+     "miss_distance": 42823.0,
+     "max_risk_estimate": -6.3759,
+     "c_sigma_r": 6.6277,
+     "t_sigma_r": 8.7463,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 5.6665,
+     "miss_distance": 42788.0,
+     "max_risk_estimate": -6.4255,
+     "c_sigma_r": 7.034,
+     "t_sigma_r": 9.4014,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 5.4172,
+     "miss_distance": 29069.0,
+     "max_risk_estimate": -6.1549,
+     "c_sigma_r": 7.1772,
+     "t_sigma_r": 33.2969,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 5.0807,
+     "miss_distance": 28825.0,
+     "max_risk_estimate": -6.0961,
+     "c_sigma_r": 7.5919,
+     "t_sigma_r": 6.1131,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 4.7661,
+     "miss_distance": 28786.0,
+     "max_risk_estimate": -6.1501,
+     "c_sigma_r": 6.6965,
+     "t_sigma_r": 3.5795,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 4.4334,
+     "miss_distance": 28757.0,
+     "max_risk_estimate": -6.2175,
+     "c_sigma_r": 7.0401,
+     "t_sigma_r": 2.7462,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 4.0894,
+     "miss_distance": 28736.0,
+     "max_risk_estimate": -6.2016,
+     "c_sigma_r": 6.5088,
+     "t_sigma_r": 1.9352,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 3.6872,
+     "miss_distance": 28631.0,
+     "max_risk_estimate": -6.274,
+     "c_sigma_r": 5.6161,
+     "t_sigma_r": 1.6698,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 3.3311,
+     "miss_distance": 28637.0,
+     "max_risk_estimate": -6.3406,
+     "c_sigma_r": 5.4641,
+     "t_sigma_r": 1.5556,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 3.092,
+     "miss_distance": 28631.0,
+     "max_risk_estimate": -6.3468,
+     "c_sigma_r": 5.3837,
+     "t_sigma_r": 1.4568,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 2.7207,
+     "miss_distance": 28637.0,
+     "max_risk_estimate": -7.1894,
+     "c_sigma_r": 5.6264,
+     "t_sigma_r": 63781363.0,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -13.7349
+    },
+    {
+     "time_to_tca": 2.3392,
+     "miss_distance": 28737.0,
+     "max_risk_estimate": -6.497,
+     "c_sigma_r": 5.3141,
+     "t_sigma_r": 1.2842,
+     "relative_speed": 14428.0,
+     "c_object_type": "PAYLOAD",
+     "risk": -30.0
+    }
+   ],
+   "final_cdm": {
+    "time_to_tca": 0.0679,
+    "miss_distance": 829.0,
+    "max_risk_estimate": -4.1695,
+    "c_sigma_r": 4.6777,
+    "t_sigma_r": 1.8846,
+    "relative_speed": 14428.0,
+    "c_object_type": "PAYLOAD",
+    "risk": -30.0
+   }
+  },
+  {
+   "event_id": 11790,
+   "p_forecast": [
+    0.9982,
+    0.0015,
+    0.0003
+   ],
+   "forecast": 0,
+   "final_tier": 2,
+   "why": [
+    "miss distance collapses 19708 m -> 776 m"
+   ],
+   "early_cdms": [
+    {
+     "time_to_tca": 6.8018,
+     "miss_distance": 25209.0,
+     "max_risk_estimate": -5.9311,
+     "c_sigma_r": 289.9666,
+     "t_sigma_r": 4.1019,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -8.4046
+    },
+    {
+     "time_to_tca": 6.515,
+     "miss_distance": 24709.0,
+     "max_risk_estimate": -5.9226,
+     "c_sigma_r": 290.0309,
+     "t_sigma_r": 3.5903,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -8.3627
+    },
+    {
+     "time_to_tca": 6.134,
+     "miss_distance": 23404.0,
+     "max_risk_estimate": -6.0391,
+     "c_sigma_r": 340.005,
+     "t_sigma_r": 2.7519,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -12.1555
+    },
+    {
+     "time_to_tca": 5.8726,
+     "miss_distance": 25247.0,
+     "max_risk_estimate": -6.0722,
+     "c_sigma_r": 339.8823,
+     "t_sigma_r": 2.5321,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -12.0989
+    },
+    {
+     "time_to_tca": 5.4951,
+     "miss_distance": 23189.0,
+     "max_risk_estimate": -6.0353,
+     "c_sigma_r": 340.0434,
+     "t_sigma_r": 2.1803,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -12.1896
+    },
+    {
+     "time_to_tca": 5.1508,
+     "miss_distance": 22266.0,
+     "max_risk_estimate": -6.0981,
+     "c_sigma_r": 338.9303,
+     "t_sigma_r": 1.8625,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -16.9245
+    },
+    {
+     "time_to_tca": 4.5307,
+     "miss_distance": 21978.0,
+     "max_risk_estimate": -6.0983,
+     "c_sigma_r": 338.9813,
+     "t_sigma_r": 1.5443,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -17.2971
+    },
+    {
+     "time_to_tca": 4.138,
+     "miss_distance": 21233.0,
+     "max_risk_estimate": -6.1302,
+     "c_sigma_r": 274.9507,
+     "t_sigma_r": 2.178,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -29.6562
+    },
+    {
+     "time_to_tca": 3.8425,
+     "miss_distance": 21311.0,
+     "max_risk_estimate": -6.1303,
+     "c_sigma_r": 275.0298,
+     "t_sigma_r": 1.9499,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -29.516
+    },
+    {
+     "time_to_tca": 3.5298,
+     "miss_distance": 21419.0,
+     "max_risk_estimate": -6.1302,
+     "c_sigma_r": 275.0372,
+     "t_sigma_r": 1.9786,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -29.2525
+    },
+    {
+     "time_to_tca": 3.2106,
+     "miss_distance": 20664.0,
+     "max_risk_estimate": -6.3066,
+     "c_sigma_r": 297.441,
+     "t_sigma_r": 2.0084,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 2.7803,
+     "miss_distance": 20071.0,
+     "max_risk_estimate": -6.3275,
+     "c_sigma_r": 297.4581,
+     "t_sigma_r": 2.1032,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 2.5008,
+     "miss_distance": 20087.0,
+     "max_risk_estimate": -6.3293,
+     "c_sigma_r": 297.4548,
+     "t_sigma_r": 2.1974,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -30.0
+    },
+    {
+     "time_to_tca": 2.1779,
+     "miss_distance": 19708.0,
+     "max_risk_estimate": -6.4851,
+     "c_sigma_r": 260.0334,
+     "t_sigma_r": 2.0,
+     "relative_speed": 14342.0,
+     "c_object_type": "DEBRIS",
+     "risk": -30.0
+    }
+   ],
+   "final_cdm": {
+    "time_to_tca": 0.2167,
+    "miss_distance": 776.0,
+    "max_risk_estimate": -5.6008,
+    "c_sigma_r": 418.8619,
+    "t_sigma_r": 2.3451,
+    "relative_speed": 14342.0,
+    "c_object_type": "DEBRIS",
+    "risk": -30.0
+   }
+  },
+  {
+   "event_id": 11623,
+   "p_forecast": [
+    0.989,
+    0.0105,
+    0.0006
+   ],
+   "forecast": 0,
+   "final_tier": 2,
+   "why": [
+    "miss distance collapses 8731 m -> 509 m"
+   ],
+   "early_cdms": [
+    {
+     "time_to_tca": 6.1669,
+     "miss_distance": 3315.0,
+     "max_risk_estimate": -6.7364,
+     "c_sigma_r": 538.8123,
+     "t_sigma_r": 13.017,
+     "relative_speed": 12607.0,
+     "c_object_type": "DEBRIS",
+     "risk": -14.5913
+    },
+    {
+     "time_to_tca": 4.1971,
+     "miss_distance": 28250.0,
+     "max_risk_estimate": -6.6149,
+     "c_sigma_r": 254.5809,
+     "t_sigma_r": 8.2343,
+     "relative_speed": 12608.0,
+     "c_object_type": "DEBRIS",
+     "risk": -28.4505
+    },
+    {
+     "time_to_tca": 3.1392,
+     "miss_distance": 28663.0,
+     "max_risk_estimate": -6.4707,
+     "c_sigma_r": 152.3556,
+     "t_sigma_r": 6.149,
+     "relative_speed": 12608.0,
+     "c_object_type": "DEBRIS",
+     "risk": -28.7033
+    },
+    {
+     "time_to_tca": 2.1533,
+     "miss_distance": 8731.0,
+     "max_risk_estimate": -6.3889,
+     "c_sigma_r": 54.3176,
+     "t_sigma_r": 6.104,
+     "relative_speed": 12607.0,
+     "c_object_type": "DEBRIS",
+     "risk": -30.0
+    }
+   ],
+   "final_cdm": {
+    "time_to_tca": 0.1707,
+    "miss_distance": 509.0,
+    "max_risk_estimate": -5.2004,
+    "c_sigma_r": 19.9823,
+    "t_sigma_r": 4.1783,
+    "relative_speed": 12607.0,
+    "c_object_type": "DEBRIS",
+    "risk": -30.0
+   }
+  },
+  {
+   "event_id": 2958,
+   "p_forecast": [
+    0.9818,
+    0.0174,
+    0.0008
+   ],
+   "forecast": 0,
+   "final_tier": 2,
+   "why": [
+    "only 1 CDM(s) >= 2 d",
+    "miss distance collapses 34514 m -> 346 m"
+   ],
+   "early_cdms": [
+    {
+     "time_to_tca": 2.5424,
+     "miss_distance": 34514.0,
+     "max_risk_estimate": -6.6694,
+     "c_sigma_r": 11661.7066,
+     "t_sigma_r": 8.5815,
+     "relative_speed": 8968.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -6.9083
+    }
+   ],
+   "final_cdm": {
+    "time_to_tca": 0.5498,
+    "miss_distance": 346.0,
+    "max_risk_estimate": -3.9367,
+    "c_sigma_r": 830.867,
+    "t_sigma_r": 5.689,
+    "relative_speed": 8970.0,
+    "c_object_type": "UNKNOWN",
+    "risk": -4.4905
+   }
+  },
+  {
+   "event_id": 2734,
+   "p_forecast": [
+    0.1228,
+    0.875,
+    0.0022
+   ],
+   "forecast": 1,
+   "final_tier": 2,
+   "why": [
+    "no single cause found; late change not visible in early CDMs"
+   ],
+   "early_cdms": [
+    {
+     "time_to_tca": 5.6981,
+     "miss_distance": 8340.0,
+     "max_risk_estimate": -7.9598,
+     "c_sigma_r": 2881.8735,
+     "t_sigma_r": 4.5642,
+     "relative_speed": 8056.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -10.7496
+    },
+    {
+     "time_to_tca": 5.0366,
+     "miss_distance": 1022.0,
+     "max_risk_estimate": -6.7111,
+     "c_sigma_r": 1980.8862,
+     "t_sigma_r": 4.9213,
+     "relative_speed": 8056.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -6.7104
+    },
+    {
+     "time_to_tca": 4.74,
+     "miss_distance": 1246.0,
+     "max_risk_estimate": -7.2837,
+     "c_sigma_r": 1583.8415,
+     "t_sigma_r": 4.9482,
+     "relative_speed": 8056.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -10.5844
+    },
+    {
+     "time_to_tca": 3.9738,
+     "miss_distance": 4850.0,
+     "max_risk_estimate": -6.4443,
+     "c_sigma_r": 1773.3057,
+     "t_sigma_r": 5.0001,
+     "relative_speed": 8055.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -6.4738
+    },
+    {
+     "time_to_tca": 3.3664,
+     "miss_distance": 4547.0,
+     "max_risk_estimate": -6.5309,
+     "c_sigma_r": 1759.3908,
+     "t_sigma_r": 4.1944,
+     "relative_speed": 8055.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -6.6119
+    },
+    {
+     "time_to_tca": 2.7666,
+     "miss_distance": 2382.0,
+     "max_risk_estimate": -6.6649,
+     "c_sigma_r": 714.85,
+     "t_sigma_r": 3.9889,
+     "relative_speed": 8055.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -8.8179
+    },
+    {
+     "time_to_tca": 2.41,
+     "miss_distance": 2501.0,
+     "max_risk_estimate": -6.6511,
+     "c_sigma_r": 720.5017,
+     "t_sigma_r": 3.2684,
+     "relative_speed": 8055.0,
+     "c_object_type": "UNKNOWN",
+     "risk": -8.6931
+    }
+   ],
+   "final_cdm": {
+    "time_to_tca": 0.0153,
+    "miss_distance": 438.0,
+    "max_risk_estimate": -5.9076,
+    "c_sigma_r": 83.578,
+    "t_sigma_r": 2.7682,
+    "relative_speed": 8056.0,
+    "c_object_type": "UNKNOWN",
+    "risk": -13.8499
+   }
+  }
+ ],
+ "task_b_missed_vs_caught_critical": {
+  "n_missed": 28,
+  "n_caught": 523,
+  "median_n_cdms": [
+   13.5,
+   14.0
+  ],
+  "median_last_log_miss": [
+   3.411926302377327,
+   2.7701152947871015
+  ],
+  "median_last_max_risk_estimate": [
+   -6.221980767006595,
+   -4.935542010773082
+  ],
+  "median_tte_last": [
+   2.2726594328703706,
+   2.1801336342592594
+  ],
+  "order": "[missed, caught]"
+ }
+}

@@ -1,0 +1,584 @@
+{
+ "generated_utc": "2026-10-31T03:09:39Z",
+ "git_commit": "d8f665c+dirty",
+ "command": "python scripts/evaluate.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
+ },
+ "seed": 42,
+ "task_a_b0_all_cdms": {
+  "folds": {
+   "critical_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "per_fold": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.92781,
+    "std": 0.00897,
+    "per_fold": [
+     0.94345,
+     0.93055,
+     0.92256,
+     0.91696,
+     0.92555
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.84276,
+    "std": 0.00722,
+    "per_fold": [
+     0.84219,
+     0.84577,
+     0.83981,
+     0.85403,
+     0.83201
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.70341,
+    "std": 0.01674,
+    "per_fold": [
+     0.70589,
+     0.71087,
+     0.69449,
+     0.728,
+     0.6778
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.86234,
+    "std": 0.0092,
+    "per_fold": [
+     0.84977,
+     0.86243,
+     0.86521,
+     0.8774,
+     0.85689
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 46.00992,
+    "std": 1.4887,
+    "per_fold": [
+     48.5192,
+     46.72543,
+     45.13371,
+     44.22447,
+     45.44681
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.2419,
+    "std": 0.01425,
+    "per_fold": [
+     0.26122,
+     0.24187,
+     0.23757,
+     0.21843,
+     0.25039
+    ]
+   },
+   "alert_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "per_fold": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "critical_missed": {
+    "mean": 0.0,
+    "std": 0.0,
+    "per_fold": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "pooled": {
+   "n": 162634,
+   "confusion_matrix": [
+    [
+     87793,
+     28012,
+     7
+    ],
+    [
+     0,
+     34299,
+     893
+    ],
+    [
+     0,
+     0,
+     11630
+    ]
+   ],
+   "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+   "safe_precision": 1.0,
+   "safe_recall": 0.75806,
+   "safe_f1": 0.86239,
+   "elevated_precision": 0.55045,
+   "elevated_recall": 0.97462,
+   "elevated_f1": 0.70355,
+   "critical_precision": 0.92817,
+   "critical_recall": 1.0,
+   "critical_f1": 0.96275,
+   "macro_f1": 0.84289,
+   "critical_missed": 0,
+   "critical_total": 11630,
+   "critical_flagged_critical": 12530,
+   "alerts": 74841,
+   "alerts_per_100": 46.01805,
+   "safe_flagged_as_alert": 28019,
+   "safe_false_alarm_rate": 0.24194,
+   "alert_recall": 1.0
+  }
+ },
+ "task_a_b0_cdms_ge_2d": {
+  "folds": {
+   "critical_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "per_fold": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.92483,
+    "std": 0.01292,
+    "per_fold": [
+     0.94946,
+     0.92105,
+     0.92449,
+     0.91579,
+     0.91335
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.83466,
+    "std": 0.00728,
+    "per_fold": [
+     0.83623,
+     0.837,
+     0.83332,
+     0.8446,
+     0.82216
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.69442,
+    "std": 0.01593,
+    "per_fold": [
+     0.69946,
+     0.70223,
+     0.68627,
+     0.71556,
+     0.66856
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.84866,
+    "std": 0.0091,
+    "per_fold": [
+     0.83516,
+     0.84986,
+     0.85292,
+     0.86218,
+     0.8432
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 48.08973,
+    "std": 1.50421,
+    "per_fold": [
+     50.74963,
+     48.65719,
+     47.0318,
+     46.53399,
+     47.47605
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.26278,
+    "std": 0.01374,
+    "per_fold": [
+     0.28303,
+     0.26108,
+     0.25645,
+     0.24225,
+     0.2711
+    ]
+   },
+   "alert_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "per_fold": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "critical_missed": {
+    "mean": 0.0,
+    "std": 0.0,
+    "per_fold": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "pooled": {
+   "n": 111939,
+   "confusion_matrix": [
+    [
+     58100,
+     20703,
+     7
+    ],
+    [
+     0,
+     24290,
+     654
+    ],
+    [
+     0,
+     0,
+     8185
+    ]
+   ],
+   "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+   "safe_precision": 1.0,
+   "safe_recall": 0.73722,
+   "safe_f1": 0.84873,
+   "elevated_precision": 0.53986,
+   "elevated_recall": 0.97378,
+   "elevated_f1": 0.69463,
+   "critical_precision": 0.92528,
+   "critical_recall": 1.0,
+   "critical_f1": 0.96119,
+   "macro_f1": 0.83485,
+   "critical_missed": 0,
+   "critical_total": 8185,
+   "critical_flagged_critical": 8846,
+   "alerts": 53839,
+   "alerts_per_100": 48.09673,
+   "safe_flagged_as_alert": 20710,
+   "safe_false_alarm_rate": 0.26278,
+   "alert_recall": 1.0
+  }
+ },
+ "task_b_n_events": 8293,
+ "task_b_label_counts": [
+  6138,
+  1604,
+  551
+ ],
+ "task_b_persistence_true_risk": {
+  "folds": {
+   "critical_recall": {
+    "mean": 0.82372,
+    "std": 0.04916,
+    "per_fold": [
+     0.75424,
+     0.81356,
+     0.85849,
+     0.89583,
+     0.79646
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.8004,
+    "std": 0.01123,
+    "per_fold": [
+     0.81651,
+     0.79339,
+     0.7913,
+     0.81132,
+     0.78947
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.86847,
+    "std": 0.01508,
+    "per_fold": [
+     0.85921,
+     0.86898,
+     0.86981,
+     0.89478,
+     0.84959
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.82785,
+    "std": 0.02334,
+    "per_fold": [
+     0.82778,
+     0.83929,
+     0.81951,
+     0.86181,
+     0.79085
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.96649,
+    "std": 0.00239,
+    "per_fold": [
+     0.96572,
+     0.9643,
+     0.96639,
+     0.97106,
+     0.96496
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 27.16119,
+    "std": 1.41429,
+    "per_fold": [
+     29.15677,
+     28.49332,
+     25.94628,
+     26.6226,
+     25.587
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.04125,
+    "std": 0.0054,
+    "per_fold": [
+     0.04805,
+     0.04651,
+     0.03912,
+     0.03328,
+     0.03929
+    ]
+   },
+   "alert_recall": {
+    "mean": 0.92756,
+    "std": 0.01363,
+    "per_fold": [
+     0.94737,
+     0.93439,
+     0.91727,
+     0.93056,
+     0.90821
+    ]
+   },
+   "critical_missed": {
+    "mean": 19.8,
+    "std": 6.61513,
+    "per_fold": [
+     29.0,
+     22.0,
+     15.0,
+     10.0,
+     23.0
+    ]
+   }
+  },
+  "pooled": {
+   "n": 8293,
+   "confusion_matrix": [
+    [
+     5885,
+     235,
+     18
+    ],
+    [
+     145,
+     1364,
+     95
+    ],
+    [
+     10,
+     89,
+     452
+    ]
+   ],
+   "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+   "safe_precision": 0.97434,
+   "safe_recall": 0.95878,
+   "safe_f1": 0.9665,
+   "elevated_precision": 0.80806,
+   "elevated_recall": 0.85037,
+   "elevated_f1": 0.82868,
+   "critical_precision": 0.8,
+   "critical_recall": 0.82033,
+   "critical_f1": 0.81004,
+   "macro_f1": 0.8684,
+   "critical_missed": 99,
+   "critical_total": 551,
+   "critical_flagged_critical": 565,
+   "alerts": 2253,
+   "alerts_per_100": 27.16749,
+   "safe_flagged_as_alert": 253,
+   "safe_false_alarm_rate": 0.04122,
+   "alert_recall": 0.92807
+  }
+ },
+ "task_b_b0_at_2d": {
+  "folds": {
+   "critical_recall": {
+    "mean": 0.83477,
+    "std": 0.05129,
+    "per_fold": [
+     0.75424,
+     0.81356,
+     0.86792,
+     0.90625,
+     0.83186
+    ]
+   },
+   "critical_precision": {
+    "mean": 0.74759,
+    "std": 0.01318,
+    "per_fold": [
+     0.74167,
+     0.74419,
+     0.73016,
+     0.76991,
+     0.752
+    ]
+   },
+   "macro_f1": {
+    "mean": 0.71583,
+    "std": 0.01739,
+    "per_fold": [
+     0.69902,
+     0.71458,
+     0.71077,
+     0.74901,
+     0.70577
+    ]
+   },
+   "elevated_f1": {
+    "mean": 0.5508,
+    "std": 0.0257,
+    "per_fold": [
+     0.55399,
+     0.56369,
+     0.52991,
+     0.5898,
+     0.51661
+    ]
+   },
+   "safe_f1": {
+    "mean": 0.80853,
+    "std": 0.00979,
+    "per_fold": [
+     0.79516,
+     0.80273,
+     0.8093,
+     0.82468,
+     0.81079
+    ]
+   },
+   "alerts_per_100": {
+    "mean": 47.26075,
+    "std": 1.91944,
+    "per_fold": [
+     50.29691,
+     48.72418,
+     46.2149,
+     45.49279,
+     45.57495
+    ]
+   },
+   "safe_false_alarm_rate": {
+    "mean": 0.30767,
+    "std": 0.01593,
+    "per_fold": [
+     0.33143,
+     0.31728,
+     0.30481,
+     0.28409,
+     0.30072
+    ]
+   },
+   "alert_recall": {
+    "mean": 0.94237,
+    "std": 0.01461,
+    "per_fold": [
+     0.96491,
+     0.95023,
+     0.93187,
+     0.94213,
+     0.92271
+    ]
+   },
+   "critical_missed": {
+    "mean": 18.6,
+    "std": 6.82935,
+    "per_fold": [
+     29.0,
+     22.0,
+     14.0,
+     9.0,
+     19.0
+    ]
+   }
+  },
+  "pooled": {
+   "n": 8293,
+   "confusion_matrix": [
+    [
+     4250,
+     1870,
+     18
+    ],
+    [
+     113,
+     1354,
+     137
+    ],
+    [
+     10,
+     83,
+     458
+    ]
+   ],
+   "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+   "safe_precision": 0.97187,
+   "safe_recall": 0.69241,
+   "safe_f1": 0.80868,
+   "elevated_precision": 0.40943,
+   "elevated_recall": 0.84414,
+   "elevated_f1": 0.55142,
+   "critical_precision": 0.74715,
+   "critical_recall": 0.83122,
+   "critical_f1": 0.78694,
+   "macro_f1": 0.71568,
+   "critical_missed": 93,
+   "critical_total": 551,
+   "critical_flagged_critical": 613,
+   "alerts": 3920,
+   "alerts_per_100": 47.26878,
+   "safe_flagged_as_alert": 1888,
+   "safe_false_alarm_rate": 0.30759,
+   "alert_recall": 0.94292
+  }
+ },
+ "notes": "persistence_true_risk uses the observed risk of the last CDM >= 2 d (an analyst reading Pc); b0_at_2d uses only allowed columns (max_risk_estimate). Task B label = tier of final CDM."
+}

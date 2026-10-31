@@ -1,0 +1,93 @@
+{
+ "generated_utc": "2026-10-31T03:14:47Z",
+ "git_commit": "d8f665c+dirty",
+ "command": "python scripts/predict.py --score",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6",
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "task": "A on test_data.csv rows, label = tier(risk, miss_distance); measured once",
+ "model_version": "de1e221ca98d-df9e2d21f6fc",
+ "model": {
+  "n": 24484,
+  "confusion_matrix": [
+   [
+    14703,
+    1045,
+    8
+   ],
+   [
+    34,
+    6355,
+    112
+   ],
+   [
+    0,
+    0,
+    2227
+   ]
+  ],
+  "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+  "safe_precision": 0.99769,
+  "safe_recall": 0.93317,
+  "safe_f1": 0.96435,
+  "elevated_precision": 0.85878,
+  "elevated_recall": 0.97754,
+  "elevated_f1": 0.91432,
+  "critical_precision": 0.94887,
+  "critical_recall": 1.0,
+  "critical_f1": 0.97376,
+  "macro_f1": 0.95081,
+  "critical_missed": 0,
+  "critical_total": 2227,
+  "critical_flagged_critical": 2347,
+  "alerts": 9747,
+  "alerts_per_100": 39.80967,
+  "safe_flagged_as_alert": 1053,
+  "safe_false_alarm_rate": 0.06683,
+  "alert_recall": 0.9961,
+  "brier_multiclass": 0.03484,
+  "brier_critical": 0.00148
+ },
+ "b0": {
+  "n": 24484,
+  "confusion_matrix": [
+   [
+    11222,
+    4526,
+    8
+   ],
+   [
+    0,
+    6336,
+    165
+   ],
+   [
+    0,
+    0,
+    2227
+   ]
+  ],
+  "confusion_axes": "rows=true, cols=pred, order Safe/Elevated/Critical",
+  "safe_precision": 1.0,
+  "safe_recall": 0.71224,
+  "safe_f1": 0.83194,
+  "elevated_precision": 0.58332,
+  "elevated_recall": 0.97462,
+  "elevated_f1": 0.72983,
+  "critical_precision": 0.92792,
+  "critical_recall": 1.0,
+  "critical_f1": 0.96261,
+  "macro_f1": 0.84146,
+  "critical_missed": 0,
+  "critical_total": 2227,
+  "critical_flagged_critical": 2400,
+  "alerts": 13262,
+  "alerts_per_100": 54.16599,
+  "safe_flagged_as_alert": 4534,
+  "safe_false_alarm_rate": 0.28776,
+  "alert_recall": 1.0
+ },
+ "note": "Brier uses floor-adjusted probabilities."
+}
