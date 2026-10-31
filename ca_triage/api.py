@@ -285,16 +285,10 @@ def demo(dataset: Literal["test", "live"] = "test"):
 
 
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "").strip()
+# API-only by default; SERVE_WEB=1 (or `python scripts/serve.py --with-web`) also serves the built console locally.
+SERVE_WEB = os.environ.get("SERVE_WEB", "").strip() == "1"
 
-if FRONTEND_URL:
-    # API-only deployment: the console is hosted elsewhere (e.g. Vercel); send browsers there.
-    from fastapi.responses import RedirectResponse
-
-    @app.get("/", include_in_schema=False)
-    def to_frontend():
-        return RedirectResponse(FRONTEND_URL)
-
-elif DIST.exists():
+if SERVE_WEB and DIST.exists():
     if (DIST / "assets").exists():
         app.mount("/assets", StaticFiles(directory=DIST / "assets"), name="assets")
 
@@ -304,3 +298,12 @@ elif DIST.exists():
         if path and f.is_file() and DIST in f.parents:
             return FileResponse(f)
         return FileResponse(DIST / "index.html")
+
+else:
+    from fastapi.responses import RedirectResponse
+
+    @app.get("/", include_in_schema=False)
+    def root():
+        if FRONTEND_URL:
+            return RedirectResponse(FRONTEND_URL)
+        return {"service": "OrbitGuard API", "health": "/api/health", "docs": "/docs"}

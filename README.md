@@ -225,7 +225,7 @@ Needs Python 3.11+ and Node 20+.
 python -m pip install -e ".[dev]"
 python scripts/fetch_data.py      # dataset/ from the organisers' Drive folder
 python -m pytest -q
-python scripts/serve.py           # builds web/ on first run, then http://localhost:8000
+python scripts/serve.py --with-web   # API + console on http://localhost:8000 (API only without the flag)
 ```
 
 Rebuild every model and evidence file: `sh scripts/rerun_evidence.sh` (the two one-shot test scores are not re-run).
@@ -247,7 +247,7 @@ Tunnel. The front end finds it through `VITE_API_BASE`, so the two can live on d
    FRONTEND_URL=https://<your-custom-domain>
    ```
 
-   With `FRONTEND_URL` set the PC serves the API only, and `/` redirects to the console on Vercel.
+   The PC serves the API only (the default); with `FRONTEND_URL` set, `/` redirects to the console on Vercel.
 
    and run `python scripts/serve.py` (port 8000). `GET /api/health` returns `{ok, dataset_generated_utc,
    model_version}`. Without `ALLOWED_ORIGINS` the API only answers same-origin requests.

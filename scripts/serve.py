@@ -1,10 +1,10 @@
-"""Serve the API (and, for local use, the console) on http://localhost:8000.
+"""Serve the OrbitGuard API on http://localhost:8000 (API only by default).
 
-With FRONTEND_URL set (e.g. in .env), only the API is served and / redirects to that URL.
+`--with-web` also builds (if needed) and serves the console at the same address, for local use.
+With FRONTEND_URL set in .env, / redirects to the hosted console.
 """
 
 import os
-
 import shutil
 import subprocess
 import sys
@@ -18,7 +18,9 @@ def main() -> None:
     from ca_triage.env import load_env
 
     load_env()
-    if not os.environ.get("FRONTEND_URL") and not (WEB / "dist").exists():
+    if "--with-web" in sys.argv[1:]:
+        os.environ["SERVE_WEB"] = "1"
+    if os.environ.get("SERVE_WEB") == "1" and not (WEB / "dist").exists():
         npm = shutil.which("npm")
         if npm is None:
             print("npm not found; serving API only", file=sys.stderr)
