@@ -121,6 +121,24 @@ A post-hoc breakdown, with no changes to the model ([`task_b_test_breakdown.json
   both to "Analyst decides", because their current-CDM tier set was {Elevated, Critical} (the forecast sets alone
   missed them).
 
+### Some collisions are worse: consequence and expected harm
+
+Pc says how likely a collision is, not how much damage it would do. For each test event, OrbitGuard estimates the
+debris a collision would create and how many active satellites sit in that debris band
+([ca_triage/consequence.py](ca_triage/consequence.py), [`consequence.json`](artifacts/evidence/consequence.json)).
+- **Masses** come from the CDM's radar cross-section and area-to-mass ratio, with a typical mass by object type as
+  the fallback. **Fragments ≥ 10 cm** come from a simplified NASA Standard Breakup Model.
+- **Exposure** counts active satellites in the affected altitude band. The count uses a 25 km binned table built
+  from CelesTrak's public active-satellite list ([population_by_altitude.json](artifacts/population_by_altitude.json)),
+  combined with a kinetic-gas flux proxy over 30 days.
+- **Check against real breakups.** Predicted / catalogued fragments are 0.51 for Iridium–Cosmos, 0.35 for
+  Fengyun-1C and 0.77 for Cosmos 1408. The model undercounts, so treat it as an order-of-magnitude estimate and use
+  it for ranking only.
+- **Ranking by expected harm (Pc × consequence) instead of Pc** keeps the order broadly (Spearman 0.86), but 9 of
+  the top 20 events by Pc move 5 or more places. Event 1983 ranks 110th by Pc and 17th by harm: a collision at 779 km
+  would put about 2,800 fragments into a band holding about 400 active satellites.
+- This is **display and prioritisation only**. It never changes the tier or the model, and a test checks that.
+
 ## Where it fails
 
 From held-out folds ([`failure_cases.json`](artifacts/evidence/failure_cases.json)), shown in the console under
