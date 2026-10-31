@@ -136,7 +136,8 @@ debris a collision would create and how many active satellites sit in that debri
   it for ranking only.
 - **Ranking by expected harm (Pc × consequence) instead of Pc** keeps the order broadly (Spearman 0.86), but 9 of
   the top 20 events by Pc move 5 or more places. Event 1983 ranks 110th by Pc and 17th by harm: a collision at 779 km
-  would put about 2,800 fragments into a band holding about 400 active satellites.
+  would put about 2,800 fragments into a band holding about 400 active satellites
+([demo.json](artifacts/demo.json), `worst_consequence`).
 - This is **display and prioritisation only**. It never changes the tier or the model, and a test checks that.
 
 ## Where it fails
