@@ -208,7 +208,7 @@ scripts/     fetch, evaluate, train, conformal, decision, freeze, predict, serve
 web/         React + Vite console (landing, queue, event detail with globe, next 24 h, insights, results)
 artifacts/   evidence/*.json (committed), scored/*.json (committed), model_card.json
 submission/  test predictions
-docs/        PLAN, DESIGN, CONTRACT, EXPERIMENTS, REFERENCE_REPO_ANALYSIS
+docs/        DESIGN, PITCH, CONTRACT, EXPERIMENTS, REFERENCE_REPO_ANALYSIS
 ```
 
 ## Team

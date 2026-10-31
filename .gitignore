@@ -22,7 +22,7 @@ __pycache__/
 .env
 .env.*
 !.env.example
-.claude/settings.local.json
+
 .DS_Store
 *.log
 
@@ -31,3 +31,9 @@ web/node_modules/
 web/dist/
 !artifacts/model_card.json
 !artifacts/population_by_altitude.json
+
+# local tooling and internal planning (not published)
+.claude/
+CLAUDE.md
+docs/PLAN.md
+.impeccable/
