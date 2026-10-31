@@ -62,7 +62,8 @@ From the problem statement, implemented once in [ca_triage/tiers.py](ca_triage/t
 ## Results
 
 Every number below is copied from a JSON file under [artifacts/evidence/](artifacts/evidence/) that a script
-wrote. The console's Results page reads the same files and shows the source path under each figure.
+wrote. The two one-shot test scores (`task_a_test.json`, `task_b_test.json`) and the post-hoc breakdown keep the
+commit stamp from when they were measured, because re-running them would mean scoring the test set again. The console's Results page reads the same files and shows the source path under each figure.
 
 ### Per-CDM tier, organiser test set (24,484 CDMs, scored once) · [`task_a_test.json`](artifacts/evidence/task_a_test.json)
 
