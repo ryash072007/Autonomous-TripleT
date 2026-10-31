@@ -1,0 +1,9 @@
+The applicability covers Boeing 787-8, 787-9 and 787-10 airplanes "as identified in" a service bulletin. To get DOES_NOT_APPLY, the question needs a model that is not listed. A Boeing 777-300ER fits, since the model is not listed and the notice is clearly about 787s.
+
+The question has to identify the notice by its subject, which is the low range radio altimeter non-computed data problem and the coaxial cable replacement. It should not give an AD number. The configuration is a Boeing 777-300ER.
+
+A 787-8 would not work. Whether it is covered would depend on the bulletin, so the verdict would be CANNOT_DETERMINE. The 777 avoids that, and the reason code is MODEL_NOT_LISTED.
+
+```json
+{"feasible": true, "question": "I operate a Boeing 777-300ER. I saw a proposed AD about the low range radio altimeter system giving more non-computed data outputs at low altitude during approach and landing, with a fix of replacing the left and right LRRA transmit and receive coaxial cables with larger gauge cables. Does this proposed AD apply to my airplane?", "config": {"make": "The Boeing Company", "model": "777-300ER", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "DOES_NOT_APPLY", "gold_reason": "MODEL_NOT_LISTED"}
+```

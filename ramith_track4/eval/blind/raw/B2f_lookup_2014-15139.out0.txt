@@ -1,1 +1,1 @@
-{"question": "Was the proposed AD for Piper PA-28 Cherokee airplanes requiring replacement of the fuel selector valve cover withdrawn?"}
+{"question": "Was the proposed AD for Piper PA-28 and PA-28R airplanes requiring replacement of the fuel selector valve cover withdrawn?"}

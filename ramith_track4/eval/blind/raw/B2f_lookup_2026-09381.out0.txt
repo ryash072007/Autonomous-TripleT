@@ -1,1 +1,1 @@
-{"question": "Is there a proposed AD for Airbus Canada BD-500-1A10 and BD-500-1A11 airplanes requiring repeated slat track cleaning, greasing and inspection, plus an NDT rework inspection on slat tracks previously repaired with the wrong method?"}
+{"question": "Is there a proposed AD for Airbus Canada BD-500-1A10 and BD-500-1A11 airplanes that adds an NDT rework inspection for slat tracks previously repaired with the wrong method, superseding the earlier slat track cleaning and greasing requirements?"}

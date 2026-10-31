@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-600/-700/-800/-900 airplanes requiring repetitive inspections for fuselage skin cracks along chem-milled steps, with shorter compliance times than the earlier AD?"}

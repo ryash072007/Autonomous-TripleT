@@ -1,0 +1,1 @@
+{"question": "Has the FAA issued a final airworthiness directive for the Boeing 737-800 wing-to-body fairing bracket cracking problem described in the proposed rule, and is that AD now in force and mandatory for operators?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

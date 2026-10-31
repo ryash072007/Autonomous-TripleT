@@ -1,1 +1,1 @@
-{"question": "Is there a proposed AD requiring replacement of safety belts and restraint systems on SOCATA TB series and Rallye airplanes because they can open inadvertently?"}
+{"question": "Is there a proposed AD requiring replacement of certain safety belts and restraint systems on SOCATA TB series and Rallye airplanes because they can inadvertently open?"}

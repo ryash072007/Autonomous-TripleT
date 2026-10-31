@@ -229,7 +229,9 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
                            "Give a make and model, a docket / AD number, or describe the unsafe condition.", p, t0)
         unk, n_caps = unknown_entity_ratio(C, query)
         # unknown product words ("King" in "King Air 350") refuse even when a number was read as a model, unless that model IS in the corpus
-        if unk and len(unk) / max(n_caps, 1) >= 0.5:   # most capitalised product words appear nowhere in the corpus ("Beechcraft King Air"); a lone nickname does not trigger it
+        # a corpus-known designation with letters AND digits ("SA-365N") outweighs a nickname the notices never use ("Dauphin"); a bare number does not
+        strong_known = any(re.fullmatch(r"[A-Z]{1,4}-?\d{2,4}[A-Z0-9-]*", m.upper()) and C.model_known(m) for m in p["model_candidates"])
+        if unk and len(unk) / max(n_caps, 1) >= 0.5 and not strong_known:   # most capitalised product words appear nowhere in the corpus ("Beechcraft King Air"); a lone nickname does not trigger it
             return refusal("OUT_OF_CORPUS", f"Nothing in the corpus mentions: {', '.join(unk)}.",
                            "Check the spelling, or the product may have no NPRM in this corpus.", p, t0)
     bad = config_contradiction(AircraftConfig(make=cfg.get("make"), model=cfg.get("model")), C.model_index)

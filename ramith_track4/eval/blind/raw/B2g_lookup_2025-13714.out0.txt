@@ -1,0 +1,1 @@
+{"question": "Is there a proposed rule for Boeing 737-800 airplanes that shortens the repetitive inspection intervals for fuselage crown skin cracking along chem-mill steps and shear wrinkle areas, and adds post-modification inspections after the optional terminating action?"}

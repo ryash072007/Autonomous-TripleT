@@ -1,0 +1,1 @@
+{"question": "Was the proposed AD for Airbus A310 and A300-600 airplanes requiring flight manual revisions for flightcrew procedures to keep control during an in-flight thrust reverser deployment withdrawn?"}

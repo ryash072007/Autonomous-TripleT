@@ -1,0 +1,1 @@
+{"question": "What is the proposed AD for CFM56-7B engines requiring repetitive ultrasonic or eddy current inspections of fan blades for cracks, superseding the earlier 2018 AD with updated inspection procedures and a larger inspection area?"}

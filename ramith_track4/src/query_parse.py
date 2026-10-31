@@ -41,7 +41,8 @@ EXT_SUBJECT_RE = re.compile(
     r"\b(?:listed|included|identified|specified|covered|named)\s+in\s+(?:the\s+)?(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada|[\w .-]{0,40}\bbulletin)\b|"
     r"\bwhat\b[^?]{0,60}\b(?:does|do)\s+(?:the\s+)?(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)\b|"
     r"\b(?:EASA|TCCA|ANAC|CASA)\s+AD\s+[\w-]+[^?]{0,80}\b(?:say|specif\w+|require\w*|state\w*)\b|"
-    r"\bwhat\b[^?]{0,140}\b(?:does|do)\s+(?:the|that|this)\s+(?:(?:service|alert|requirements?)\s+)*(?:bulletin|SB|service\s+information)\s+(?:specify|require|say|state|contain|describe)\w*", re.I)
+    r"\bwhat\b[^?]{0,140}\b(?:does|do)\s+(?:the|that|this)\s+(?:(?:service|alert|requirements?)\s+)*(?:bulletin|SB|service\s+information)\s+(?:specify|require|say|state|contain|describe)\w*|"
+    r"\b(?:procedures|compliance\s+times?|requirements|actions|instructions|corrective\s+actions)\b[^?]{0,80}\b(?:given|specified|stated|contained|described|listed|set\s+out)\s+in\s+the\s+(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)", re.I)
 # estimated cost / labour / work-hour questions: the figures sit in the notice's "Costs of Compliance" table, which this tool does not extract
 COST_Q_RE = re.compile(
     r"\b(?:labou?r|parts|total|estimated)\s+costs?\b|\bper[- ](?:helicopter|airplane|aircraft|engine|product)\s+cost\b|\bcosts?\s+(?:to|for|of)\s+(?:comply|compliance|(?:U\.?S\.?\s+)?operators)\b|"
@@ -168,7 +169,8 @@ def parse_query(q: str, known_makes=None) -> dict:
     if JUDGEMENT_RE.search(q):
         out["flags"].append("judgement")
     # "is it still moving toward a final rule?" asks about the NPRM's status, not whether a final AD exists
-    if FINAL_RE.search(q) and not re.search(r"\b(?:toward|towards|pending|awaiting|moving|progress\w*|heading)\b[^?.]{0,25}\bfinal\b", q, re.I):
+    # "Transport Canada has already issued an AD" is about a foreign AD, not an FAA final rule
+    if FINAL_RE.search(q) and not re.search(r"\b(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)\b[^.?]{0,40}\b(?:already|has|have)\s+(?:issued|published)\b", q, re.I) and not re.search(r"\b(?:toward|towards|pending|awaiting|moving|progress\w*|heading)\b[^?.]{0,25}\bfinal\b", q, re.I):
         out["flags"].append("final_rule")
     # a user who states their own aircraft and points at a bulletin wants a verdict (CANNOT_DETERMINE, bulletin quoted), not a refusal
     own_given = bool(out["own_models"]) and out["intent"] == "applicability"

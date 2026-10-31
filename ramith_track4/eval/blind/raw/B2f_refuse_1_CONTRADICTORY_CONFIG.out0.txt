@@ -1,1 +1,1 @@
-{"question": "Which proposed airworthiness directive covers inspection of the elevator trim tab actuator on the Boeing 172S, and what is the compliance time?", "config": {"make": "Boeing", "model": "172S", "cofa_date": null, "serial": null, "part_numbers": []}}
+{"question": "Is there an FAA proposed airworthiness directive covering inspection of the wing spar on the Boeing A320-214, and what is the compliance time?", "config": {"make": "Boeing", "model": "A320-214", "cofa_date": null, "serial": null, "part_numbers": []}}

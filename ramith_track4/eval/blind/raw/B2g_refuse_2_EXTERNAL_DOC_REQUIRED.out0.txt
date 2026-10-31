@@ -1,0 +1,1 @@
+{"question": "What corrective actions and compliance times does Transport Canada AD CF-2025-64, dated December 1, 2025, require for Bell Model 429 helicopters, and which specific parts or serial numbers does it identify as affected?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

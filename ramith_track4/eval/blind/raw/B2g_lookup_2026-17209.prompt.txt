@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Airbus Helicopters
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 2025-17-03, which applies to all Airbus Helicopters Model AS332L, AS332L1, AS332L2, and EC225LP helicopters. AD 2025-17-03 requires inspecting the emergency sea anchor and, depending on the result, replacing the emergency sea anchor. Since the FAA issued AD 2025-17-03, it has been determined that an additional inspection of an affected emergency sea anchor must be accomplished. This proposed AD would retain all of the requirements of AD 2025-17-03, would also require an additional inspection, and depending on the result, replacing the emergency sea anchor. The FAA is proposing this AD to address the unsafe condition on these products.

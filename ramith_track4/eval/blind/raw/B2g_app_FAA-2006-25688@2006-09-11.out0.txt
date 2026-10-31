@@ -1,0 +1,9 @@
+The applicability covers all BN-2, BN-2A, BN-2B, BN-2T and BN-2T-4R series airplanes in any category. To get DOES_NOT_APPLY through a model that isn't listed, I need a different airplane. The Pilatus PC-12 is a clear example, and so would be a Cessna 208 or any other make.
+
+An alternative would be a different manufacturer's model that is similar in role to the BN-2, such as the Short SC.7 Skyvan. Its model clearly isn't listed, so the notice does not apply.
+
+The question has to identify the notice by its problem, which is the horizontal stabilizer attachment bolts and anchor nuts on the Britten-Norman Islander series. I will state the configuration as a Short Brothers SC.7 Skyvan Series 3.
+
+```json
+{"feasible": true, "question": "I operate a Short Brothers SC.7 Skyvan Series 3, serial number SH1900. I saw a proposed AD from the FAA, based on a UK CAA mandatory continuing airworthiness action, that requires inspecting the horizontal stabilizer attachment bolts and anchor nuts for damage and wear on B-N Group Islander and Trislander-type airplanes (BN-2, BN-2A, BN-2B, BN-2T, BN-2T-4R series). Does this proposed AD apply to my airplane?", "config": {"make": "Short Brothers", "model": "SC.7 Skyvan Series 3", "cofa_date": null, "serial": "SH1900", "part_numbers": []}, "gold_verdict": "DOES_NOT_APPLY", "gold_reason": "MODEL_NOT_LISTED"}
+```

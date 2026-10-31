@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Leonardo S.p.a. Helicopters
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 2022-02-12, which applies to all Leonardo S.p.a. Model AB139 and AW139 helicopters. AD 2022-02-12 requires incorporating airworthiness limitations into maintenance records. Since the FAA issued AD 2022-02- 12, it was determined that new or more restrictive airworthiness limitations were necessary. This proposed AD would require revising the airworthiness limitations section (ALS) of the existing maintenance manual or instructions for continued airworthiness (ICA) and the existing approved maintenance or inspection program, as applicable. The FAA is proposing this AD to address the unsafe condition on these products.

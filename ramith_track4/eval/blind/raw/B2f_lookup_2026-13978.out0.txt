@@ -1,1 +1,1 @@
-{"question": "Is there a proposed AD that updates the airworthiness limitations section and life limits for Safran Arrius 2B2 helicopter engines, superseding the earlier 2023 requirement?"}
+{"question": "Is there a proposed AD that updates the airworthiness limitations section and life limits for Safran Arrius 2B2 helicopter engines, superseding the earlier 2023 ALS revision requirement?"}

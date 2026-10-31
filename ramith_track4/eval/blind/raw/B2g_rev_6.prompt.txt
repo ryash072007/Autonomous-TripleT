@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2022-1401 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2023-12695 issued 2023-06-08: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to adopt a new airworthiness directive (AD) for certain General Electric Company (GE) CF6-80E1A2, CF6-80E1A3, CF6-80E1A4, and CF6-80E1A4/B model turbofan engines. The NPRM was prompted by a manufacturer investigation that revealed that certain compressor discharge pressure seals (CDP seals) and forward outer seals were manufactured from powde | spreadsheet note: None

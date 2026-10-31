@@ -1,0 +1,1 @@
+{"question": "Does the proposed AD covering Boeing A320-214 airplanes require repetitive inspections of the main landing gear retraction actuator, and what is the initial compliance time?", "config": {"make": "Boeing", "model": "A320-214", "cofa_date": null, "serial": null, "part_numbers": []}}

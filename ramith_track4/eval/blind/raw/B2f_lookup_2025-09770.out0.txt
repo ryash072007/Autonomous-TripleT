@@ -1,1 +1,1 @@
-{"question": "Is there a proposed AD for Boeing 737-600 airplanes requiring shorter inspection intervals for fuselage skin cracking at chem-mill steps, with post-modification inspections?"}
+{"question": "Is there a proposed AD for Boeing 737-600 airplanes that shortens inspection intervals for fuselage skin cracking at chem-mill steps and requires post-modification inspections?"}
