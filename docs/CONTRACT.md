@@ -34,7 +34,15 @@ updating this file. Version bumps go in `schema_version`.
       "p_forecast": [0.05, 0.15, 0.80], // null until S3 lands
       "forecast_tier_set": [1, 2],      // conformal set for the Task B forecast (D1)
       "forecast_abstain": true,         // forecast set has >1 tier -> analyst decides
-      "recommendation": null,           // D2: "Act" | "Wait" | "Dismiss"
+      "recommendation": "Act",          // D2 at the default ratio 100: "Act" | "Dismiss" | "Analyst decides" ("Wait" only if decision.json wait_shipped; it is not)
+      "recommendation_reason": "P(Critical at TCA) = 0.800 x ratio 100 >= 1 and the forecast set is {Critical}",
+      "recommendation_by_ratio": {"10": "Act", "20": "Act", "50": "Act", "100": "Act", "200": "Act", "500": "Act", "1000": "Act"},
+      "decision_inputs": {"p_critical_at_tca": 0.8, "p_change_next_cdm": 0.03, "forecast_tier_set": [2],
+                          "time_to_tca_latest": 2.13, "default_ratio": 100, "wait_enabled": false},
+      "orbit_display": {                // DISPLAY ONLY, from the latest CDM; never a model input (ca_triage/display.py)
+        "t": {"sma_km": 7084.7, "ecc": 0.0037, "inc_deg": 98.2, "h_apo_km": 733.1, "h_per_km": 680.0},   // target
+        "c": {"sma_km": 7082.3, "ecc": 0.0041, "inc_deg": 74.1, "h_apo_km": 733.2, "h_per_km": 675.1}    // chaser
+      },
       "flags": [],                      // "covariance_fragile", "out_of_distribution", "short_history", "missing_sigma"
       "cdms": [                         // full history, sorted by time_to_tca descending
         {"time_to_tca": 6.9, "miss_distance": 2400.0, "risk": -9.3, "max_risk_estimate": -6.0,

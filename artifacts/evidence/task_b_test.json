@@ -1,0 +1,114 @@
+{
+ "generated_utc": "2026-10-31T03:30:31Z",
+ "git_commit": "bc996ba+dirty",
+ "command": "python scripts/score_test_b.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6",
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "scope": "Task B, Pc branch only (final miss distance is not released). Scored once, nothing tuned afterwards.",
+ "n_events": 2167,
+ "true_critical_events": 17,
+ "true_elevated_or_above_events": 150,
+ "critical": {
+  "model_forecast_critical": {
+   "flagged": 408,
+   "flagged_per_100": 18.828,
+   "tp": 15,
+   "fp": 393,
+   "fn": 2,
+   "recall": 0.88235,
+   "precision": 0.03676,
+   "f2": 0.15756
+  },
+  "persistence_observed_risk_ge_-4": {
+   "flagged": 23,
+   "flagged_per_100": 1.061,
+   "tp": 9,
+   "fp": 14,
+   "fn": 8,
+   "recall": 0.52941,
+   "precision": 0.3913,
+   "f2": 0.49451
+  },
+  "b0_at_2d_max_risk_estimate_ge_-4": {
+   "flagged": 61,
+   "flagged_per_100": 2.815,
+   "tp": 12,
+   "fp": 49,
+   "fn": 5,
+   "recall": 0.70588,
+   "precision": 0.19672,
+   "f2": 0.46512
+  },
+  "model_top_n_by_p_critical_at_persistence_budget": {
+   "flagged": 23,
+   "flagged_per_100": 1.061,
+   "tp": 0,
+   "fp": 23,
+   "fn": 17,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f2": 0.0,
+   "budget": 23
+  }
+ },
+ "elevated_or_above": {
+  "model_forecast_alert": {
+   "flagged": 801,
+   "flagged_per_100": 36.964,
+   "tp": 128,
+   "fp": 673,
+   "fn": 22,
+   "recall": 0.85333,
+   "precision": 0.1598,
+   "f2": 0.45682
+  },
+  "persistence_observed_risk_ge_-6": {
+   "flagged": 178,
+   "flagged_per_100": 8.214,
+   "tp": 115,
+   "fp": 63,
+   "fn": 35,
+   "recall": 0.76667,
+   "precision": 0.64607,
+   "f2": 0.73907
+  },
+  "b0_at_2d_max_risk_estimate_ge_-6": {
+   "flagged": 918,
+   "flagged_per_100": 42.363,
+   "tp": 134,
+   "fp": 784,
+   "fn": 16,
+   "recall": 0.89333,
+   "precision": 0.14597,
+   "f2": 0.44137
+  }
+ },
+ "note_f2": "F2 is the 2019 challenge's classification half (high risk = true_risk >= -6). The MSE half needs a regression output, which this tier model does not produce, so the combined loss L = MSE / F2 is not computed.",
+ "conformal_forecast_set": {
+  "alpha": 0.05,
+  "critical_miss_rate_critical_not_in_set": 0.11765,
+  "critical_missed_by_set": 2,
+  "abstain_rate_set_size_gt_1": 0.19151,
+  "critical_in_set_flagged_events": 494,
+  "note": "Critical coverage is measured on the Pc branch (true_risk >= -4) only; CV figure is in conformal.json."
+ },
+ "brier_critical_pc_branch": 0.07041,
+ "mean_p_critical_vs_observed_rate": [
+  0.08987,
+  0.00784
+ ],
+ "decision_layer_default_ratio_100": {
+  "act_per_100": 7.568,
+  "analyst_per_100": 17.628,
+  "dismiss_per_100": 74.804,
+  "critical_among_act": 9,
+  "act": 164,
+  "critical_missed_by_dismiss": 0,
+  "critical_in_analyst_queue": 8,
+  "persistence_manoeuvres_per_100": 1.061,
+  "persistence_critical_missed": 8
+ }
+}

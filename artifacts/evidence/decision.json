@@ -1,0 +1,691 @@
+{
+ "generated_utc": "2026-10-31T03:29:16Z",
+ "git_commit": "4980e35+dirty",
+ "command": "python scripts/decision.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
+ },
+ "seed": 42,
+ "units": "costs in C_man; ratio = C_miss / C_man",
+ "default_ratio": 100,
+ "ratios": [
+  10,
+  20,
+  50,
+  100,
+  200,
+  500,
+  1000
+ ],
+ "n_events": 8293,
+ "voi_min": 0.02,
+ "wait_min_tte": 2.05,
+ "conformal_lambda": 0.01,
+ "rules": "Wait if latest CDM > 2.05 d out and expected saving from one more CDM > 0.02 C_man; else Act if P(Critical) x ratio >= 1 and set == {Critical}; else Analyst decides if P x ratio >= 1; Dismiss if P x ratio < 1 and Critical is outside the forecast set; otherwise Wait (> 2 d) or Analyst decides.",
+ "analyst_assumption": "'analyst_follows_rule' = analyst manoeuvres iff P x ratio >= 1; 'analyst_oracle' = analyst always right (lower bound)",
+ "curve_over_ratios": [
+  {
+   "ratio": 10,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 12.034,
+     "unnecessary_manoeuvres_per_100": 5.957,
+     "missed_critical_per_100": 0.567,
+     "missed_critical": 47,
+     "expected_cost_per_event": 0.177
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 11.082,
+     "unnecessary_manoeuvres_per_100": 4.727,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.1398
+    },
+    "analyst_reviews_per_100": 7.235,
+    "act_per_100": 10.503,
+    "dismiss_per_100": 82.262,
+    "median_tte_at_decision": 4.365
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 13.626,
+     "unnecessary_manoeuvres_per_100": 7.512,
+     "missed_critical_per_100": 0.531,
+     "missed_critical": 44,
+     "expected_cost_per_event": 0.1893
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.866,
+     "unnecessary_manoeuvres_per_100": 6.512,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.1576
+    },
+    "analyst_reviews_per_100": 6.403,
+    "act_per_100": 12.444,
+    "dismiss_per_100": 81.153,
+    "median_tte_at_decision": 4.53
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 9.55,
+     "unnecessary_manoeuvres_per_100": 3.557,
+     "missed_critical_per_100": 0.651,
+     "missed_critical": 54,
+     "expected_cost_per_event": 0.1606
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.657,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.0983
+    },
+    "analyst_reviews_per_100": 11.142,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 82.154,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.1875
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.1861
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 20,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 13.686,
+     "unnecessary_manoeuvres_per_100": 7.512,
+     "missed_critical_per_100": 0.47,
+     "missed_critical": 39,
+     "expected_cost_per_event": 0.2309
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.07,
+     "unnecessary_manoeuvres_per_100": 5.716,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.1786
+    },
+    "analyst_reviews_per_100": 6.873,
+    "act_per_100": 11.528,
+    "dismiss_per_100": 81.599,
+    "median_tte_at_decision": 4.312
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 14.362,
+     "unnecessary_manoeuvres_per_100": 8.176,
+     "missed_critical_per_100": 0.458,
+     "missed_critical": 38,
+     "expected_cost_per_event": 0.2353
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.866,
+     "unnecessary_manoeuvres_per_100": 6.512,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.1865
+    },
+    "analyst_reviews_per_100": 6.403,
+    "act_per_100": 12.444,
+    "dismiss_per_100": 81.153,
+    "median_tte_at_decision": 4.53
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 10.901,
+     "unnecessary_manoeuvres_per_100": 4.727,
+     "missed_critical_per_100": 0.47,
+     "missed_critical": 39,
+     "expected_cost_per_event": 0.2031
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.657,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.12
+    },
+    "analyst_reviews_per_100": 11.142,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 82.154,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.3069
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.2982
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 50,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 16.375,
+     "unnecessary_manoeuvres_per_100": 10.057,
+     "missed_critical_per_100": 0.326,
+     "missed_critical": 27,
+     "expected_cost_per_event": 0.3265
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.553,
+     "unnecessary_manoeuvres_per_100": 6.15,
+     "missed_critical_per_100": 0.241,
+     "missed_critical": 20,
+     "expected_cost_per_event": 0.2461
+    },
+    "analyst_reviews_per_100": 7.018,
+    "act_per_100": 12.07,
+    "dismiss_per_100": 80.912,
+    "median_tte_at_decision": 3.41
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 16.351,
+     "unnecessary_manoeuvres_per_100": 10.081,
+     "missed_critical_per_100": 0.374,
+     "missed_critical": 31,
+     "expected_cost_per_event": 0.3504
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.866,
+     "unnecessary_manoeuvres_per_100": 6.512,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.2734
+    },
+    "analyst_reviews_per_100": 6.403,
+    "act_per_100": 12.444,
+    "dismiss_per_100": 81.153,
+    "median_tte_at_decision": 4.53
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 14.108,
+     "unnecessary_manoeuvres_per_100": 7.802,
+     "missed_critical_per_100": 0.338,
+     "missed_critical": 28,
+     "expected_cost_per_event": 0.3099
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.657,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.1851
+    },
+    "analyst_reviews_per_100": 11.142,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 82.154,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.665
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 0.6346
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 100,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 19.691,
+     "unnecessary_manoeuvres_per_100": 13.264,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.414
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.697,
+     "unnecessary_manoeuvres_per_100": 6.27,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.344
+    },
+    "analyst_reviews_per_100": 7.488,
+    "act_per_100": 12.203,
+    "dismiss_per_100": 80.309,
+    "median_tte_at_decision": 2.379
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 18.847,
+     "unnecessary_manoeuvres_per_100": 12.492,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.4779
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.866,
+     "unnecessary_manoeuvres_per_100": 6.512,
+     "missed_critical_per_100": 0.289,
+     "missed_critical": 24,
+     "expected_cost_per_event": 0.4181
+    },
+    "analyst_reviews_per_100": 6.403,
+    "act_per_100": 12.444,
+    "dismiss_per_100": 81.153,
+    "median_tte_at_decision": 4.53
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 17.846,
+     "unnecessary_manoeuvres_per_100": 11.419,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.3955
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.657,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.217,
+     "missed_critical": 18,
+     "expected_cost_per_event": 0.2936
+    },
+    "analyst_reviews_per_100": 11.142,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 82.154,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 1.2619
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 1.1953
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 200,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 25.395,
+     "unnecessary_manoeuvres_per_100": 18.859,
+     "missed_critical_per_100": 0.109,
+     "missed_critical": 9,
+     "expected_cost_per_event": 0.471
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 12.878,
+     "unnecessary_manoeuvres_per_100": 6.343,
+     "missed_critical_per_100": 0.109,
+     "missed_critical": 9,
+     "expected_cost_per_event": 0.3458
+    },
+    "analyst_reviews_per_100": 13.083,
+    "act_per_100": 12.312,
+    "dismiss_per_100": 74.605,
+    "median_tte_at_decision": 2.28
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 24.515,
+     "unnecessary_manoeuvres_per_100": 17.979,
+     "missed_critical_per_100": 0.109,
+     "missed_critical": 9,
+     "expected_cost_per_event": 0.4622
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 13.119,
+     "unnecessary_manoeuvres_per_100": 6.584,
+     "missed_critical_per_100": 0.109,
+     "missed_critical": 9,
+     "expected_cost_per_event": 0.3482
+    },
+    "analyst_reviews_per_100": 11.962,
+    "act_per_100": 12.553,
+    "dismiss_per_100": 75.485,
+    "median_tte_at_decision": 3.325
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 23.948,
+     "unnecessary_manoeuvres_per_100": 17.4,
+     "missed_critical_per_100": 0.096,
+     "missed_critical": 8,
+     "expected_cost_per_event": 0.4324
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.778,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.096,
+     "missed_critical": 8,
+     "expected_cost_per_event": 0.2707
+    },
+    "analyst_reviews_per_100": 17.243,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 76.052,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 2.4557
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 2.3168
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 500,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 37.067,
+     "unnecessary_manoeuvres_per_100": 30.459,
+     "missed_critical_per_100": 0.036,
+     "missed_critical": 3,
+     "expected_cost_per_event": 0.5515
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 13.071,
+     "unnecessary_manoeuvres_per_100": 6.463,
+     "missed_critical_per_100": 0.036,
+     "missed_critical": 3,
+     "expected_cost_per_event": 0.3116
+    },
+    "analyst_reviews_per_100": 24.623,
+    "act_per_100": 12.444,
+    "dismiss_per_100": 62.933,
+    "median_tte_at_decision": 2.235
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 36.657,
+     "unnecessary_manoeuvres_per_100": 30.061,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.6077
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 13.204,
+     "unnecessary_manoeuvres_per_100": 6.608,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.3732
+    },
+    "analyst_reviews_per_100": 24.068,
+    "act_per_100": 12.589,
+    "dismiss_per_100": 63.343,
+    "median_tte_at_decision": 2.298
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 36.091,
+     "unnecessary_manoeuvres_per_100": 29.495,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.6021
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.826,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.3194
+    },
+    "analyst_reviews_per_100": 29.386,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 63.909,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 6.037
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 5.6811
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  },
+  {
+   "ratio": 1000,
+   "wait_voi": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 48.619,
+     "unnecessary_manoeuvres_per_100": 42.011,
+     "missed_critical_per_100": 0.036,
+     "missed_critical": 3,
+     "expected_cost_per_event": 0.8479
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 13.204,
+     "unnecessary_manoeuvres_per_100": 6.596,
+     "missed_critical_per_100": 0.036,
+     "missed_critical": 3,
+     "expected_cost_per_event": 0.4938
+    },
+    "analyst_reviews_per_100": 36.042,
+    "act_per_100": 12.577,
+    "dismiss_per_100": 51.381,
+    "median_tte_at_decision": 2.221
+   },
+   "no_wait": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 48.426,
+     "unnecessary_manoeuvres_per_100": 41.83,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.9666
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 13.204,
+     "unnecessary_manoeuvres_per_100": 6.608,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.6144
+    },
+    "analyst_reviews_per_100": 35.837,
+    "act_per_100": 12.589,
+    "dismiss_per_100": 51.574,
+    "median_tte_at_decision": 2.235
+   },
+   "decide_last": {
+    "events": 8293,
+    "analyst_follows_rule": {
+     "manoeuvres_per_100": 48.004,
+     "unnecessary_manoeuvres_per_100": 41.408,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.9624
+    },
+    "analyst_oracle": {
+     "manoeuvres_per_100": 7.826,
+     "unnecessary_manoeuvres_per_100": 1.23,
+     "missed_critical_per_100": 0.048,
+     "missed_critical": 4,
+     "expected_cost_per_event": 0.5606
+    },
+    "analyst_reviews_per_100": 41.3,
+    "act_per_100": 6.704,
+    "dismiss_per_100": 51.996,
+    "median_tte_at_decision": 2.186
+   },
+   "baselines": {
+    "persistence_observed_risk": {
+     "manoeuvres_per_100": 6.813,
+     "unnecessary_manoeuvres_per_100": 1.363,
+     "missed_critical_per_100": 1.194,
+     "missed_critical": 99,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 12.0059
+    },
+    "b0_at_2d": {
+     "manoeuvres_per_100": 7.392,
+     "unnecessary_manoeuvres_per_100": 1.869,
+     "missed_critical_per_100": 1.121,
+     "missed_critical": 93,
+     "analyst_reviews_per_100": 0.0,
+     "expected_cost_per_event": 11.2882
+    },
+    "review_every_event": {
+     "analyst_reviews_per_100": 100.0,
+     "note": "workload bound: every event read by an analyst; cost depends on the analyst, oracle lower bound = 0.0664 manoeuvres per event, 0 missed"
+    }
+   }
+  }
+ ],
+ "default_ratio_fold_costs": {
+  "wait_voi": {
+   "expected_cost_per_event_by_fold": [
+    0.5558,
+    0.5516,
+    0.2674,
+    0.3287,
+    0.3636
+   ],
+   "mean": 0.4134,
+   "std": 0.1186
+  },
+  "no_wait": {
+   "expected_cost_per_event_by_fold": [
+    0.7274,
+    0.5456,
+    0.3187,
+    0.3185,
+    0.4744
+   ],
+   "mean": 0.4769,
+   "std": 0.1534
+  },
+  "decide_last": {
+   "expected_cost_per_event_by_fold": [
+    0.5938,
+    0.4204,
+    0.2485,
+    0.3059,
+    0.4046
+   ],
+   "mean": 0.3946,
+   "std": 0.118
+  }
+ },
+ "wait_value": {
+  "mean_cost_gain_vs_no_wait": 0.0635,
+  "fold1_gain": -0.006,
+  "wait_shipped": false
+ },
+ "p_change_mean_by_tte_bucket": {
+  "2": 0.0926,
+  "3": 0.0672,
+  "4": 0.0755,
+  "5": 0.09,
+  "6": 0.1104
+ }
+}

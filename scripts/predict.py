@@ -15,11 +15,13 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, __file__.rsplit("scripts", 1)[0] + "scripts")
+from decision import RATIOS, decide_one, gating_frame  # noqa: E402
 from conformal import floor_sets, sets_ltt  # noqa: E402
 from score_baseline import CDM_FIELDS, LATEST_FIELDS, _clean  # noqa: E402
 
 from ca_triage.data import ROOT, load
 from ca_triage.evaluation import cv_summary, metrics, write_evidence
+from ca_triage.display import load_display_orbits, orbit_block
 from ca_triage.ood import ood_score
 from ca_triage.physics import fragility
 from ca_triage.models import cdm_features, decide, event_features, floor_by_miss, miss_tier
@@ -76,6 +78,12 @@ def main() -> None:
                        "p_elevated": PB[:, 1].round(5), "p_critical": PB[:, 2].round(5)})
     fc.to_csv(ROOT / "submission/test_event_forecasts.csv", index=False)
     fmap = {int(e): i for i, e in enumerate(EF.index)}
+    dec = joblib.load(MODELS / "decision.joblib")
+    dcfg = json.loads((MODELS / "decision.json").read_text())
+    GB = EF.copy()
+    for c in range(3):
+        GB[f"p{c}"] = PB[:, c]
+    p_change = dec["models"]["change"].predict_proba(GB[dec["feature_cols"]])[:, 1]
 
     # ---- conformal tier sets, OOD flag, covariance-fragility flag
     conf = json.loads((MODELS / "conformal.json").read_text())
@@ -87,6 +95,7 @@ def main() -> None:
     last_cdm = te.sort_values(["event_id", "time_to_tca"]).groupby("event_id").head(1)
     ood_flag = dict(zip(last_cdm.event_id, ood_score(ood["model"], last_cdm) > ood["threshold"]))
     frag = fragility(te)
+    disp = load_display_orbits("test")  # display only, never a model input
 
     # ---- artifacts/scored/test_events.json
     tes = te.assign(_i=np.arange(len(te))).sort_values(["event_id", "time_to_tca"], ascending=[True, False])
@@ -105,6 +114,15 @@ def main() -> None:
         if frag.phys_fragile.iat[i] > 0:
             flags.append("covariance_fragile")
         tset = [int(k) for k in np.where(SA[i])[0]]
+        abst = len(tset) > 1 or is_ood
+        fset = [int(k) for k in np.where(SB[j])[0]]
+        recs = {}
+        for r in RATIOS:
+            if abst:
+                recs[r] = ("Analyst decides", "Model abstains: " + ("out of distribution" if is_ood else f"tier set {tset}"))
+            else:
+                recs[r] = decide_one(float(PB[j, 2]), fset, float(last.time_to_tca), 0.0, r, wait_enabled=dcfg["wait_shipped"])
+        rec_default, reason_default = recs[dcfg["default_ratio"]]
         events.append({
             "event_id": int(eid), "c_object_type": str(last.c_object_type), "n_cdms": len(g),
             "latest": {k: _clean(last[k]) for k in LATEST_FIELDS if k in last.index},
@@ -113,7 +131,13 @@ def main() -> None:
             "tier_set": tset, "abstain": len(tset) > 1 or is_ood,
             "forecast_tier_set": [int(k) for k in np.where(SB[j])[0]], "forecast_abstain": int(SB[j].sum()) > 1, "rule": rules[i],
             "forecast_tier_at_tca": int(fb[j]), "p_forecast": [round(float(x), 4) for x in PB[j]],
-            "recommendation": None, "flags": flags,
+            "recommendation": rec_default, "recommendation_reason": reason_default,
+            "recommendation_by_ratio": {str(r): v[0] for r, v in recs.items()},
+            "decision_inputs": {"p_critical_at_tca": round(float(PB[j, 2]), 4), "p_change_next_cdm": round(float(p_change[j]), 4),
+                                "forecast_tier_set": [int(k) for k in np.where(SB[j])[0]], "time_to_tca_latest": round(float(last.time_to_tca), 3),
+                                "default_ratio": dcfg["default_ratio"], "wait_enabled": dcfg["wait_shipped"]},
+            "orbit_display": orbit_block(disp.iloc[i]),
+            "flags": flags,
             "cdms": [{k: _clean(r[k]) for k in CDM_FIELDS if k in r.index} for _, r in g.iterrows()],
         })
     out = {"schema_version": 1, "dataset": "test",

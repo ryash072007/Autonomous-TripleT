@@ -82,39 +82,58 @@ def _slope(t: np.ndarray, v: np.ndarray) -> float:
     return float(np.polyfit(t[ok], v[ok], 1)[0])
 
 
-def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS, physics: bool = False) -> pd.DataFrame:
-    """One row per event from CDMs with time_to_tca >= cutoff only. Index = event_id."""
+def _prep(df: pd.DataFrame, cutoff: float, physics: bool) -> pd.DataFrame:
     d = df[df.time_to_tca >= cutoff].copy()
     F = cdm_features(d, physics)
     F["event_id"] = d["event_id"].to_numpy()
     F["time_to_tca"] = d["time_to_tca"].to_numpy()
     order = np.lexsort((-F["time_to_tca"].to_numpy(), F["event_id"].to_numpy()))  # by event, tte descending
-    F = F.iloc[order]
-    series = ["log_miss", "max_risk_estimate", "log_sigma_c", "log_sigma_t", "b0_tier", "miss_tier", "relative_speed"]
-    extra_last = []
+    return F.iloc[order]
+
+
+_SERIES = ["log_miss", "max_risk_estimate", "log_sigma_c", "log_sigma_t", "b0_tier", "miss_tier", "relative_speed"]
+
+
+def _event_row(eid, g: pd.DataFrame, physics: bool) -> dict:
+    series, extra_last = list(_SERIES), []
     if physics:
         series += ["phys_log10_pc", "phys_log10_pc_max"]
         extra_last = PHYS_COLS
+    t = g["time_to_tca"].to_numpy()
+    last = g.iloc[-1]
+    r = {"event_id": eid, "n_cdms": len(g), "tte_last": last.time_to_tca, "tte_first": t[0], "span": t[0] - t[-1]}
+    for c in FEATURE_COLUMNS + ["log_sigma_c", "log_sigma_t", "log_miss", "rel_pos_norm", "miss_over_sigma_c",
+                                "miss_over_sigma_t", "mre_minus_logmiss", "miss_tier", "b0_tier"] + extra_last:
+        if c not in ("time_to_tca",):
+            r[f"last_{c}"] = last[c]
+    for c in series:
+        v = g[c].to_numpy(dtype=float)
+        r[f"min_{c}"], r[f"max_{c}"], r[f"mean_{c}"] = np.nanmin(v), np.nanmax(v), np.nanmean(v)
+        r[f"slope_{c}"] = _slope(t, v)
+        r[f"d1_{c}"] = v[-1] - v[-2] if len(v) >= 2 else 0.0
+        r[f"first_{c}"] = v[0]
+    if physics:
+        r["n_fragile"] = float(g["phys_fragile"].sum())
+    r["n_b0_critical"] = int((g["b0_tier"] == 2).sum())
+    r["n_b0_alert"] = int((g["b0_tier"] >= 1).sum())
+    r["tte_gap_last"] = t[-2] - t[-1] if len(t) >= 2 else 0.0
+    return r
+
+
+def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS, physics: bool = False) -> pd.DataFrame:
+    """One row per event from CDMs with time_to_tca >= cutoff only. Index = event_id."""
+    F = _prep(df, cutoff, physics)
+    rows = [_event_row(eid, g, physics) for eid, g in F.groupby("event_id", sort=True)]
+    return pd.DataFrame(rows).set_index("event_id")
+
+
+def prefix_event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS) -> pd.DataFrame:
+    """One row per (event, k): features from the first k CDMs (>= cutoff) of each event. Columns event_id, k added."""
+    F = _prep(df, cutoff, False)
     rows = []
     for eid, g in F.groupby("event_id", sort=True):
-        t = g["time_to_tca"].to_numpy()
-        last = g.iloc[-1]
-        r = {"event_id": eid, "n_cdms": len(g), "tte_last": last.time_to_tca, "tte_first": t[0],
-             "span": t[0] - t[-1]}
-        for c in FEATURE_COLUMNS + ["log_sigma_c", "log_sigma_t", "log_miss", "rel_pos_norm", "miss_over_sigma_c",
-                                    "miss_over_sigma_t", "mre_minus_logmiss", "miss_tier", "b0_tier"] + extra_last:
-            if c not in ("time_to_tca",):
-                r[f"last_{c}"] = last[c]
-        for c in series:
-            v = g[c].to_numpy(dtype=float)
-            r[f"min_{c}"], r[f"max_{c}"], r[f"mean_{c}"] = np.nanmin(v), np.nanmax(v), np.nanmean(v)
-            r[f"slope_{c}"] = _slope(t, v)
-            r[f"d1_{c}"] = v[-1] - v[-2] if len(v) >= 2 else 0.0
-            r[f"first_{c}"] = v[0]
-        if physics:
-            r["n_fragile"] = float(g["phys_fragile"].sum())
-        r["n_b0_critical"] = int((g["b0_tier"] == 2).sum())
-        r["n_b0_alert"] = int((g["b0_tier"] >= 1).sum())
-        r["tte_gap_last"] = t[-2] - t[-1] if len(t) >= 2 else 0.0
-        rows.append(r)
-    return pd.DataFrame(rows).set_index("event_id")
+        for k in range(1, len(g) + 1):
+            r = _event_row(eid, g.iloc[:k], False)
+            r["k"] = k
+            rows.append(r)
+    return pd.DataFrame(rows)

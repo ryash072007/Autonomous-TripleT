@@ -398,5 +398,72 @@
   "cv_evidence": "artifacts/evidence/task_b_cv.json"
  },
  "allowed_columns_only": true,
- "released_test_labels_opened": false
+ "released_test_labels_opened": true,
+ "conformal": {
+  "method": "Learn-then-Test on Critical miss rate (Clopper-Pearson, delta 0.1), set = argmax tier + Critical if p_critical >= lambda",
+  "task_a": {
+   "alpha": 0.05,
+   "ltt_lambda": 0.006812920690579608,
+   "mondrian_q": [
+    0.08423942272230944,
+    0.5175978030507014,
+    0.9871367992054186
+   ]
+  },
+  "task_b": {
+   "alpha": 0.05,
+   "ltt_lambda": 0.01,
+   "mondrian_q": [
+    0.2530649321262157,
+    0.9550711620955356,
+    0.9818071977856693
+   ],
+   "ltt_lambda_alpha_0.05": 0.01,
+   "ltt_lambda_alpha_0.1": 0.07
+  },
+  "evidence": "artifacts/evidence/conformal.json"
+ },
+ "decision_layer": {
+  "default_ratio": 100,
+  "ratios": [
+   10,
+   20,
+   50,
+   100,
+   200,
+   500,
+   1000
+  ],
+  "voi_min": 0.02,
+  "wait_min_tte": 2.05,
+  "wait_shipped": false,
+  "conformal_lambda_task_b": 0.01,
+  "trained_utc": "2026-10-31T03:29:21Z",
+  "evidence": "artifacts/evidence/decision.json",
+  "note": "Wait is not shipped unless wait_shipped is true; recommendations are Act / Dismiss / Analyst decides"
+ },
+ "ood": {
+  "method": "IsolationForest on latest CDM, allowed columns",
+  "threshold": 0.6060780894011741,
+  "quantile": 0.99,
+  "evidence": "artifacts/evidence/drift.json"
+ },
+ "physics_flag": {
+  "assumption": "isotropic encounter-plane Gaussian, s = sqrt(c_sigma_r^2 + t_sigma_r^2), R = 10 m",
+  "evidence": "artifacts/evidence/fragility.json"
+ },
+ "model_files_sha256": {
+  "conformal.json": "c86abc9a4a1bc2c79c65958cf44bd35970e0efd9254f87573ca59c1c7d870d4d",
+  "decision.joblib": "2dc5c915076f675c251c6f0f6ae8de492be3d015a3106a11ab15b9ab6901b664",
+  "decision.json": "f1fc28f40a3743c000dbc88faea22d99f81d33fd595aace30587c9f295ca1b6e",
+  "ood.joblib": "bce575e34fc4bb0be22ca5fdf8e79bb98a82738ef572b3dc6b8ca936844dee91",
+  "task_a.joblib": "de1e221ca98d76f13f32310425c4e2b037d3f61d419389115e6ab4a250827d32",
+  "task_b.joblib": "df9e2d21f6fcda6b77f67e8919c4aeb1d88c6162f258c74eed8b8a3583fa9595",
+  "thresholds.json": "bb4c56c8cfb123e75ed222ab8f0233aaefe9bb3fe6d33b143b3bdaae9be4874a"
+ },
+ "frozen_utc": "2026-10-31T03:30:00Z",
+ "frozen_git_commit": "bc996ba+dirty",
+ "frozen": true,
+ "released_test_labels_scored_utc": "2026-10-31T03:30:37Z",
+ "released_test_labels_evidence": "artifacts/evidence/task_b_test.json"
 }
