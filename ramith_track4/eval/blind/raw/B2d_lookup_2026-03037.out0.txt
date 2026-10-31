@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Airbus A350-941 and A350-1041 requiring repeated inspections for bushing migration in the horizontal stabilizer lateral load fittings, since some repairs no longer count as terminating action?"}

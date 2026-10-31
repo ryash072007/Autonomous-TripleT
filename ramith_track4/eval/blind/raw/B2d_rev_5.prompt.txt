@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2025-0341 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2025-11665 issued 2025-06-18: The FAA is withdrawing an NPRM that proposed to adopt a new airworthiness directive (AD) that would have applied to all Safran Helicopter Engines, S.A. (Safran) Model ARRIUS 2F and ARRIUS 2R engines. The NPRM was prompted by a manufacturer investigation that revealed certain high-pressure (HP) turbine blades may contain non- compliant porosity rates due to a change in the manufacturing process. The NPRM would have re | spreadsheet note: None

@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2023-1211 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2023-26090 issued 2023-11-20: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to adopt a new airworthiness directive (AD) that would have applied to all Rolls-Royce Deutschland Ltd & Co KG (RRD) Model BR700-715A1-30, BR700-715B1-30, and BR700-715C1-30 engines. The NPRM would have required repetitive fluorescent penetrant inspections (FPIs) of the front flange scallops of the LPC booster rotor for any cracks, replacemen | spreadsheet note: None

@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2023-2237 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2023-28703 issued 2023-12-21: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to supersede Airworthiness Directive (AD) 2022-19-15, which applies to certain International Aero Engines, LLC (IAE LLC) Model PW1100G series engines; and AD 2023-16-07, which applies to certain IAE LLC Model PW1100G series engines and PW1400G series engines. AD 2022-19-15 requires an angled ultrasonic inspection (AUSI) of the high-pressure t | spreadsheet note: None

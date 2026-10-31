@@ -1,0 +1,469 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 91 Issue 206 (Tuesday, October 27, 2026)</title>
+</head>
+<body><pre>
+[Federal Register Volume 91, Number 206 (Tuesday, October 27, 2026)]
+[Proposed Rules]
+[Pages 67532-67535]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2026-21852]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2026-11817; Project Identifier AD-2026-01020-E]
+RIN 2120-AA64
+
+
+Airworthiness Directives; CFM International, S.A. Engines
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all CFM International, S.A. (CFM) Model CFM56-7B engines. This 
+proposed AD was prompted by an event involving a CFM Model CFM56-7B26/3 
+engine where a fan blade separated and resulted in an engine in-flight 
+shutdown (IFSD) with debris penetrating the fuselage, which caused a 
+loss of pressurization and prompted an emergency descent. This proposed 
+AD would require a visual inspection of the fan blades for findings 
+considered not serviceable and, depending on the results of the 
+inspection, replacement with a serviceable part and additional fan 
+blade inspections. This proposed AD would also require sending the 
+inspection results to CFM if any finding considered not serviceable is 
+found. The FAA is proposing this AD to address the unsafe condition on 
+these products.
+
+DATES: The FAA must receive comments on this proposed AD by November 
+27, 2026.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2026-11817; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For CFM material identified in this proposed AD, contact 
+CFM, GE Aviation Fleet Support, 1 Neumann Way, M/D Room 285, 
+Cincinnati, OH 45215; phone: (877) 432-3272; email: 
+<a href="/cdn-cgi/l/email-protection#91f0e7f8f0e5f8feffbff7fdf4f4e5e2e4e1e1fee3e5d1f6f4bff2fefc"><span class="__cf_email__" data-cfemail="afced9c6cedbc6c0c181c9c3cacadbdcdadfdfc0dddbefc8ca81ccc0c2">[email&#160;protected]</span></a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Alexei Marqueen, Aviation Safety 
+Engineer, FAA, 2200 South 216th Street, Des Moines, WA 98198; phone: 
+(781) 238-7178; email: <a href="/cdn-cgi/l/email-protection#e58489809d808ccb91cb888497949080808ba5838484cb828a93"><span class="__cf_email__" data-cfemail="7a1b161f021f13540e54171b080b0f1f1f143a1c1b1b541d150c">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2026-11817; 
+Project Identifier AD-2026-01020-E'' at the beginning of your comments. 
+The most helpful comments reference a specific portion of the proposal, 
+explain the reason for any recommended change, and include supporting 
+data. The FAA will consider all comments received by the closing date 
+and may revise this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Alexei Marqueen, Aviation Safety Engineer, FAA, 2200 South 216th 
+Street, Des Moines, WA 98198. Any commentary that the FAA receives 
+which is not specifically designated as CBI will be placed in the 
+public docket for this rulemaking.
+
+Background
+
+    The FAA received a report that a Boeing 737-800 Model airplane 
+powered by CFM56-7B26/3 engines experienced a fan blade separation 
+during flight that resulted in an engine IFSD with debris penetrating 
+the fuselage, which caused a loss of pressurization and prompted an 
+emergency descent. The manufacturer investigation into the root cause 
+of the fan blade failure is ongoing, but preliminary investigation 
+indicates deformation to the fan blades induced a localized vibratory 
+response in the failed blade. This condition, if not addressed, could 
+result in debris penetrating the fuselage and cause a loss of 
+pressurization and prompt an emergency descent.
+    On April 17, 2018, a Southwest Airlines flight experienced a CFM56-
+7B engine failure due to a fractured fan blade that led to the engine 
+inlet cowl
+
+[[Page 67533]]
+
+disintegrating and debris penetrating the fuselage. The FAA has 
+received no factual information that indicates that the April 17, 2018 
+incident on a Southwest Airlines flight is related to the unsafe 
+condition addressed by this proposed AD. It is noted here for 
+completeness only.
+    The FAA is providing a 30-day comment period for this NPRM instead 
+of the standard 45-day comment period. This shortened timeframe is 
+necessary to align the effective implementation of this safety action 
+with the European Union Aviation Safety Agency (EASA), which is the 
+Technical Agent for the Member States of the European Union, and in 
+consideration of the recent in-service engine event. The FAA has 
+determined that a 30-day comment period provides sufficient opportunity 
+for public input while ensuring harmonization with EASA.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed CFM Service Bulletin CFM56-7B S/B 72-1119, dated 
+September 8, 2026, which specifies procedures for visual inspection of 
+the fan blades for findings considered not serviceable (cracks, tears, 
+tip curls, local distortion on leading edge), and additional 
+inspections of adjacent (forward looking aft) fan blades. This material 
+is reasonably available because the interested parties have access to 
+it through their normal course of business or by the means identified 
+in the ADDRESSES section.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require a visual inspection of the fan 
+blades for findings considered not serviceable (cracks, tears, tip 
+curls, local distortion on leading edge) and, depending on the results 
+of the inspection, replacement with a serviceable part and additional 
+fan blade inspections. This proposed AD would also require sending the 
+inspection results to CFM if any unserviceable finding is found.
+
+Interim Action
+
+    This AD is considered to be interim action. The inspection reports 
+that are required by this AD will enable the manufacturer to obtain 
+better insight into the nature, cause, and extent of the fan blade 
+failure, and eventually allow the manufacturer to develop final action 
+to address the unsafe condition. Once final action has been identified, 
+the FAA might consider further rulemaking.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 3,450 engines installed on airplanes of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                       Cost per    Cost on U.S.
+                  Action                            Labor cost           Parts cost    product       operators
+----------------------------------------------------------------------------------------------------------------
+Visually inspect fan blades..............  1 work-hour x $85 per hour            $0          $85        $293,250
+                                            = $85.
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary 
+replacements and additional inspections that would be required based on 
+the results of the proposed inspection. The agency has no way of 
+determining the number of engines that might need these replacements 
+and additional inspections:
+
+                                               On-Condition Costs
+----------------------------------------------------------------------------------------------------------------
+                    Action                                Labor cost              Parts cost   Cost per product
+----------------------------------------------------------------------------------------------------------------
+Remove and replace fan blade.................  1 work-hour x $85 per hour = $85      $51,400             $51,485
+Inspect adjacent fan blade...................  2 work-hours x $85 per hour =               0                 170
+                                                $170.
+Report inspection results....................  1 work-hour x $85 per hour = $85            0                  85
+----------------------------------------------------------------------------------------------------------------
+
+Paperwork Reduction Act
+
+    A federal agency may not conduct or sponsor, and a person is not 
+required to respond to, nor shall a person be subject to a penalty for 
+failure to comply with a collection of information subject to the 
+requirements of the Paperwork Reduction Act unless that collection of 
+information displays a currently valid OMB Control Number. The OMB 
+Control Number for this information collection is 2120-0056. Public 
+reporting for this collection of information is estimated to be 
+approximately 1 hour per response, including the time for reviewing 
+instructions, searching existing data sources, gathering and 
+maintaining the data needed, and completing and reviewing the 
+collection of information. All responses to this collection of 
+information are mandatory. Send comments regarding this burden estimate 
+or any other aspect of this collection of information, including 
+suggestions for reducing this burden, to: Information Collection 
+Clearance Officer, Federal Aviation Administration, 10101 Hillwood 
+Parkway, Fort Worth, TX 76177-1524.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order
+
+[[Page 67534]]
+
+13132. This proposed AD would not have a substantial direct effect on 
+the States, on the relationship between the national government and the 
+States, or on the distribution of power and responsibilities among the 
+various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+CFM International, S.A.: Docket No. FAA-2026-11817; Project 
+Identifier AD-2026-01020-E.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by November 27, 2026.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to all CFM International, S.A. (CFM) Model 
+CFM56-7B20, CFM56-7B20/2, CFM56-7B20/3, CFM56-7B20E, CFM56-7B22, 
+CFM56-7B22/2, CFM56-7B22/3, CFM56-7B22/3B1, CFM56-7B22/B1, CFM56-
+7B22E, CFM56-7B22E/B1, CFM56-7B24, CFM56-7B24/2, CFM56-7B24/3, 
+CFM56-7B24/3B1, CFM56-7B24/B1, CFM56-7B24E, CFM56-7B24E/B1, CFM56-
+7B26, CFM56-7B26/2, CFM56-7B26/3, CFM56-7B26/3B1, CFM56-7B26/3B2, 
+CFM56-7B26/3B2F, CFM56-7B26/3F, CFM56-7B26/B1, CFM56-7B26/B2, CFM56-
+7B26E, CFM56-7B26E/B1, CFM56-7B26E/B2, CFM56-7B26E/B2F, CFM56-7B26E/
+F, CFM56-7B27, CFM56-7B27/2, CFM56-7B27/3, CFM56-7B27/3B1, CFM56-
+7B27/3B1F, CFM56-7B27/3B3, CFM56-7B27/3F, CFM56-7B27/B1, CFM56-7B27/
+B3, CFM56-7B27A, CFM56-7B27A/3, CFM56-7B27AE, CFM56-7B27E, CFM56-
+7B27E/B1, CFM56-7B27E/B1F, CFM56-7B27E/B3, and CFM56-7B27E/F 
+engines.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 7230, Turbine Engine 
+Compressor Section.
+
+(e) Unsafe Condition
+
+    This AD was prompted by an event involving a CFM Model CFM56-
+7B26/3 engine, which experienced a fan blade separation that 
+resulted in an in-flight engine shutdown and debris penetrating the 
+fuselage, causing a loss of pressurization and prompting an 
+emergency descent. The FAA is issuing this AD to prevent failure of 
+the fan blade. The unsafe condition, if not addressed, could result 
+in debris penetrating the fuselage and cause a loss of 
+pressurization and prompt an emergency descent.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Definition
+
+    For the purpose of this AD, a ``serviceable fan blade'' is a 
+new, zero-hour fan blade or a fan blade that has passed the 
+inspections required by paragraph (h)(1) of this AD.
+
+(h) Required Actions
+
+    (1) Perform a visual inspection of the fan blades in accordance 
+with the Accomplishment Instructions, paragraph 3.C., of CFM Service 
+Bulletin (SB) CFM56-7B S/B 72-1119, dated September 8, 2026 (CFM56-
+7B S/B 72-1119), as follows:
+    (i) For engines installed on aircraft as of the effective date 
+of this AD, within 400 flight cycles or within 90 days after the 
+effective date of this AD, whichever occurs first.
+    (ii) For engines not installed on aircraft as of the effective 
+date of this AD, before further flight.
+    (2) If any findings considered not serviceable are detected, 
+before further flight, do the following:
+    (i) Remove the fan blade from service and replace with a 
+serviceable fan blade.
+    (ii) Perform an inspection of the adjacent clockwise (forward 
+looking aft) fan blade for findings considered not serviceable in 
+accordance with the Accomplishment Instructions, paragraph 3.D.(2), 
+of CFM56-7B S/B 72-1119.
+    (iii) If any unserviceable finding is found during the 
+inspection required by paragraph (h)(2)(ii) of this AD, before 
+further flight, remove the fan blade from service and replace with a 
+serviceable fan blade.
+
+(i) Credit for Previous Actions
+
+    This paragraph provides credit for actions required by paragraph 
+(h) of this AD, if those actions were performed prior to the 
+effective date of this AD using the material identified in, and 
+meeting the applicable conditions specified in, paragraphs (i)(1) 
+through (3) of this AD.
+    (1) Credit is allowed for the actions required by paragraph (h) 
+of this AD if an engine shop manual piece-part inspection was 
+performed on each fan blade in the set within 100 flight cycles 
+prior to the effective date of this AD; or
+    (2) Credit is allowed if the actions required by paragraph (h) 
+of this AD were performed within 100 flight cycles prior to the 
+effective date of this AD using CFM SB CFM56-7B S/B 72-1033, 
+Revision 3, dated November 6, 2018; CFM56-7B S/B 72-1033, Revision 
+4, dated September 12, 2019; CFM56-7B S/B 72-1033, Revision 5, dated 
+July 28, 2026; or CFM56-7B S/B 72-1033, Revision 6, dated August 14, 
+2026; or
+    (3) Credit is allowed if the actions required by paragraph (h) 
+of this AD were performed using CFM SB CFM56-7B S/B 72-1118, dated 
+June 1, 2026.
+
+(j) Reporting Requirement
+
+    Report the results of the inspections required by paragraph (h) 
+of this AD to CFM within 30 days after the inspection or within 30 
+days after the effective date of this AD, whichever occurs later, in 
+accordance with the Accomplishment Instructions, paragraph 3.D.(3), 
+of CFM56-7B S/B 72-1119.
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    The Manager, AIR-520 Continued Operational Safety Branch, FAA, 
+has the authority to approve AMOCs for this AD, if requested using 
+the procedures found in 14 CFR 39.19. In accordance with 14 CFR 
+39.19, send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the AIR-520 Continued Operational Safety 
+Branch, send it to the attention of the person identified in 
+paragraph (l)(1) of this AD and email to: <a href="/cdn-cgi/l/email-protection#f4b5b9bbb7b4929595da939b82"><span class="__cf_email__" data-cfemail="3e7f73717d7e585f5f10595148">[email&#160;protected]</span></a>. Before using 
+any approved AMOC, notify your appropriate principal inspector, or 
+lacking a principal inspector, the manager of the local flight 
+standards district office/certificate holding district office.
+
+(l) Additional Information
+
+    (1) For more information about this AD, contact Alexei Marqueen, 
+Aviation Safety Engineer, FAA, 2200 South 216th Street, Des Moines, 
+WA 98198; phone: (781) 238-7178; email: <a href="/cdn-cgi/l/email-protection#4928252c312c20673d6724283b383c2c2c27092f2828672e263f"><span class="__cf_email__" data-cfemail="47262b223f222e6933692a263536322222290721262669202831">[email&#160;protected]</span></a>.
+    (2) For material identified in this AD that is not incorporated 
+by reference, contact CFM International, S.A., GE Aviation Fleet 
+Support, 1 Neumann Way, M/D Room 285, Cincinnati, OH 45215; phone: 
+(877) 432-3272; email: <a href="/cdn-cgi/l/email-protection#ea8b9c838b9e838584c48c868f8f9e999f9a9a85989eaa8d8fc4898587"><span class="__cf_email__" data-cfemail="3c5d4a555d48555352125a505959484f494c4c534e487c5b59125f5351">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) CFM Service Bulletin CFM56-7B S/B 72-1119, dated September 
+8, 2026.
+    (ii) [Reserved]
+    (3) For CFM material identified in this AD, contact CFM 
+International, S.A., GE Aviation Fleet Support, 1 Neumann Way, M/D 
+Room 285, Cincinnati, OH 45215; phone: (877)
+
+[[Page 67535]]
+
+432-3272; email: <a href="/cdn-cgi/l/email-protection#1a7b6c737b6e737574347c767f7f6e696f6a6a75686e5a7d7f34797577"><span class="__cf_email__" data-cfemail="5637203f37223f393878303a333322252326263924221631337835393b">[email&#160;protected]</span></a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#88eefaa6e1e6fbf8edebfce1e7e6c8e6e9fae9a6efe7fe"><span class="__cf_email__" data-cfemail="90f6e2bef9fee3e0f5f3e4f9fffed0fef1e2f1bef7ffe6">[email&#160;protected]</span></a>.
+
+    Issued on October 22, 2026.
+Brian Knaup,
+Acting Deputy Director, Integrated Certificate Management Division, 
+Aircraft Certification Service.
+[FR Doc. 2026-21852 Filed 10-26-26; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

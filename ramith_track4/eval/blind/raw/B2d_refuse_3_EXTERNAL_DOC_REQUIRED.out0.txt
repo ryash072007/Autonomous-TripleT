@@ -1,0 +1,1 @@
+{"question": "What specific inspection requirements, compliance times, and corrective actions are set out in Transport Canada AD CF-2025-64, dated December 1, 2025, for the Bell Textron Canada Model 429 helicopters?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

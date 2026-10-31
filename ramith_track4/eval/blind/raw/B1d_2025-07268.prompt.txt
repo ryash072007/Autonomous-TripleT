@@ -1,0 +1,387 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 81 (Tuesday, April 29, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 81 (Tuesday, April 29, 2025)]
+[Proposed Rules]
+[Pages 17746-17749]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-07268]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0739; Project Identifier AD-2025-00196-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; The Boeing Company Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all The Boeing Company Model 717-200 airplanes. This proposed AD 
+was prompted by a report of a nose landing gear-up landing caused by 
+the failure of the upper lock link assembly. This proposed AD would 
+require repetitive inspections for cracking of the upper lock link 
+assembly and applicable on-condition actions. The FAA is proposing this 
+AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by June 13, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0739; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For the Boeing material identified in this proposed AD, 
+contact Boeing Commercial Airplanes, Attention: Contractual & Data 
+Services (C&DS), 2600 Westminster Blvd., MC 110-SK57, Seal Beach, CA 
+90740-5600; telephone 562-797-1717; website <a href="http://myboeingfleet.com">myboeingfleet.com</a>.
+
+[[Page 17747]]
+
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195. It is also available at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0739.
+
+FOR FURTHER INFORMATION CONTACT: Wayne Ha, Aviation Safety Engineer, 
+FAA, 2200 South 216th St., Des Moines, WA 98198; phone: 562-627-5238; 
+email: <a href="/cdn-cgi/l/email-protection#592e3820373c773138193f3838773e362f"><span class="__cf_email__" data-cfemail="205741594e450e4841604641410e474f56">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0739; 
+Project Identifier AD-2025-00196-T'' at the beginning of your comments. 
+The most helpful comments reference a specific portion of the proposal, 
+explain the reason for any recommended change, and include supporting 
+data. The FAA will consider all comments received by the closing date 
+and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Wayne 
+Ha, Aviation Safety Engineer, FAA, 2200 South 216th St., Des Moines, WA 
+98198; phone: 562-627-5238; email: <a href="/cdn-cgi/l/email-protection#f483958d9a91da9c95b4929595da939b82"><span class="__cf_email__" data-cfemail="4334223a2d266d2b22032522226d242c35">[email&#160;protected]</span></a>. Any commentary 
+that the FAA receives that is not specifically designated as CBI will 
+be placed in the public docket for this rulemaking.
+
+Background
+
+    The FAA has received a report indicating a Boeing Model 717-200 
+operator experienced a nose landing gear-up landing. During approach, 
+the flightcrew received an unsafe gear indication, the two main landing 
+gear deployed, but the nose landing gear (NLG) stayed retracted. An 
+alternative landing gear extension was attempted, but the NLG stayed in 
+the up position, and the airplane landed with the NLG retracted. A 
+report released by the National Transportation Safety Board (NTSB) 
+identified that a failure of the upper lock link assembly caused the 
+lower lock link assembly to swing down to a vertical position which 
+contacted the NLG assembly. The contact restricted the movement of the 
+NLG and prevented it from moving out of the retracted position. The 
+root cause of the upper lock link assembly failure was found to be non-
+conforming surface roughness, due to tool marks on the surface. This 
+condition, if not addressed, could result in failure of the NLG to 
+fully extend during landing or cause the nose gear to remain retracted 
+while the main gear deploys. Additionally, this condition could 
+restrict ground maneuverability, increasing the risk of a runway 
+excursion.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Boeing Alert Requirements Bulletin 717-32A0043 RB, 
+dated February 12, 2025. This material specifies procedures for 
+repetitive eddy current high frequency (ETHF) inspections of the top 
+and bottom surfaces of the upper lock link assembly for any crack, and 
+replacement of any cracked upper lock link assembly with a serviceable 
+upper lock link assembly. This material also specifies that replacement 
+of the upper lock link assembly terminates the repetitive inspections.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+Proposed AD Requirements in this NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in the material already described, except for any differences 
+identified as exceptions in the regulatory text of this proposed AD. 
+For information on the procedures and compliance times, see this 
+material at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0739.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 117 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                                 Cost on U.S.
+             Action                   Labor cost          Parts cost       Cost per  product       operators
+----------------------------------------------------------------------------------------------------------------
+Eddy current high frequency       5 work-hours x $85  $0................  $425 per            $49,725 per
+ inspection.                       per hour = $425                         inspection cycle.   inspection cycle.
+                                   per inspection
+                                   cycle.
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary 
+replacement that would be required based on the results of the proposed 
+inspection. The agency has no way of determining the number of aircraft 
+that might need these replacements:
+
+[[Page 17748]]
+
+
+
+                                               On-Condition Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                                     Cost per
+                    Action                                 Labor cost               Parts cost        product
+----------------------------------------------------------------------------------------------------------------
+Replacement...................................  9 work-hours x $85 per hour =            $17,819         $18,584
+                                                 $765.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+The Boeing Company: Docket No. FAA-2025-0739; Project Identifier AD-
+2025-00196-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by June 13, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to all The Boeing Company Model 717-200 
+airplanes, certificated in any category, as identified in Boeing 
+Alert Requirements Bulletin 717-32A0043 RB, dated February 12, 2025.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 32, Landing 
+Gear.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of a Boeing Model 717-200 
+operator that experienced a nose landing gear-up landing caused by 
+the failure of the upper lock link assembly. The unsafe condition, 
+if not addressed, could result in a failure of the nose landing gear 
+(NLG) to fully extend during landing or cause the nose gear to 
+remain retracted while the main gear deploys. Additionally, it could 
+restrict ground maneuverability, increasing the risk of a runway 
+excursion.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    Except as specified by paragraph (h) of this AD: At the 
+applicable times specified in the ``Compliance'' paragraph of Boeing 
+Alert Requirements Bulletin 717-32A0043 RB, dated February 12, 2025, 
+do all applicable actions identified in, and in accordance with, the 
+Accomplishment Instructions of Boeing Alert Requirements Bulletin 
+717-32A0043 RB, dated February 12, 2025.
+
+    Note 1 to paragraph (g): Guidance for accomplishing the actions 
+required by this AD can be found in Boeing Alert Service Bulletin 
+717-32A0043, dated February 12, 2025, which is referred to in Boeing 
+Alert Requirements Bulletin 717-32A0043 RB, dated February 12, 2025.
+
+(h) Exception to Requirements Bulletin Specifications
+
+    Where the Condition and Compliance Time columns of the tables in 
+the ``Compliance'' paragraph of Boeing Alert Requirements Bulletin 
+717-32A0043 RB, dated February 12, 2025, refer to the original issue 
+date of Requirements Bulletin 717-32A0043 RB, this AD requires using 
+the effective date of this AD.
+
+(i) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, AIR-520, Continued Operational Safety Branch, 
+FAA, has the authority to approve AMOCs for this AD, if requested 
+using the procedures found in 14 CFR 39.19. In accordance with 14 
+CFR 39.19, send your request to your principal inspector or 
+responsible Flight Standards Office, as appropriate. If sending 
+information directly to the manager of the certification office, 
+send it to the attention of the person identified in paragraph 
+(j)(1) of this AD. Information may be emailed to: <a href="/cdn-cgi/l/email-protection#c0818d8f8380a6a1a1eea7afb6"><span class="__cf_email__" data-cfemail="fdbcb0b2bebd9b9c9cd39a928b">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the responsible Flight Standards Office.
+    (3) An AMOC that provides an acceptable level of safety may be 
+used for any repair, modification, or alteration required by this AD 
+if it is approved by The Boeing Company Organization Designation 
+Authorization (ODA) that has been authorized by the Manager, AIR-
+520, Continued Operational Safety Branch, FAA, to make those 
+findings. To be approved, the repair method, modification deviation, 
+or alteration deviation must meet the certification basis of the 
+airplane, and the approval must specifically refer to this AD.
+
+(j) Related Information
+
+    (1) For more information about this AD, contact Wayne Ha, 
+Aviation Safety Engineer, FAA, 2200 South 216th St., Des Moines, WA 
+98198; phone: 562-627-5238; email: <a href="/cdn-cgi/l/email-protection#0e796f77606b20666f4e686f6f20696178"><span class="__cf_email__" data-cfemail="7d0a1c04131853151c3d1b1c1c531a120b">[email&#160;protected]</span></a>.
+    (2) Material identified in this AD that is not incorporated by 
+reference is available at the address specified in paragraph (k)(3) 
+this AD.
+
+(k) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+
+[[Page 17749]]
+
+    (i) Boeing Alert Requirements Bulletin 717-32A0043 RB, dated 
+February 12, 2025.
+    (ii) [Reserved]
+    (3) For the Boeing material identified in this AD, contact 
+Boeing Commercial Airplanes, Attention: Contractual & Data Services 
+(C&DS), 2600 Westminster Blvd., MC 110-SK57, Seal Beach, CA 90740-
+5600; telephone 562-797-1717; website <a href="http://myboeingfleet.com">myboeingfleet.com</a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a>, or email <a href="/cdn-cgi/l/email-protection#86e0f4a8efe8f5f6e3e5f2efe9e8c6e8e7f4e7a8e1e9f0"><span class="__cf_email__" data-cfemail="573125793e3924273234233e3839173936253679303821">[email&#160;protected]</span></a>.
+
+    Issued on April 21, 2025.
+Peter A. White,
+Deputy Director, Integrated Certificate Management Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-07268 Filed 4-28-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

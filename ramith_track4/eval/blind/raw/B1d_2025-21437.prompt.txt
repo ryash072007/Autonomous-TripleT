@@ -1,0 +1,437 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 227 (Friday, November 28, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 227 (Friday, November 28, 2025)]
+[Proposed Rules]
+[Pages 54596-54599]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-21437]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-5034; Project Identifier MCAI-2025-00951-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all Airbus Helicopters Model AS332C, AS332C1, AS332L, AS332L1, and 
+AS332L2 helicopters. This proposed AD was prompted by a report of 
+rupture of the scissors link of the rotating swashplate assembly due to 
+a seized ball joint-cups assembly. This proposed AD would require 
+replacing the rotor shaft assembly, modifying the rotating swashplate 
+assembly to replace each of the three ball joint-cups assemblies with 
+one-piece self-lubricated spherical bearings, and modifying the 
+scissors hinges and swashplate trunnions on the main rotor, as 
+applicable, and applying an anti-corrosion agent, if applicable. This 
+proposed AD would prohibit installing a main rotor hub (MRH) assembly 
+or rotor shaft assembly on a helicopter unless certain requirements are 
+met. The FAA is proposing this AD to address the unsafe condition on 
+these products.
+
+DATES: The FAA must receive comments on this NPRM by January 12, 2026
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-5034; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; phone: +49 221 8999 000; email: 
+<a href="/cdn-cgi/l/email-protection#e2a3a691a287839183cc8797908d9283cc8797"><span class="__cf_email__" data-cfemail="c58481b685a0a4b6a4eba0b0b7aab5a4eba0b0">[email&#160;protected]</span></a>; website: easa.europa.eu. You may find the EASA 
+material on the EASA website at ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Adam Hein, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (316) 
+946-4116; email: <a href="/cdn-cgi/l/email-protection#d1b0b5b0bcffb9b4b8bf91b7b0b0ffb6bea7"><span class="__cf_email__" data-cfemail="315055505c1f5954585f715750501f565e47">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-5034; 
+Project Identifier MCAI-2025-00951-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or
+
+[[Page 54597]]
+
+responsive to this NPRM, it is important that you clearly designate the 
+submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this NPRM. Submissions containing CBI should be 
+sent to Adam Hein, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, 
+Suite 410, Westbury, NY 11590. Any commentary that the FAA receives 
+which is not specifically designated as CBI will be placed in the 
+public docket for this rulemaking.
+
+Background
+
+    EASA, which is the Technical Agent for the Member States of the 
+European Union, issued EASA AD 2024-0168, dated August 22, 2024 (EASA 
+AD 2024-0168), to correct an unsafe condition on Airbus Helicopters 
+Model AS 332 C, AS 332 C1, AS 332 L, AS 332 L1, and AS 332 L2 
+helicopters. The MCAI states that an occurrence was reported of rupture 
+of the scissors link of the rotating swashplate assembly resulting from 
+a seized ball joint-cups assembly. Subsequent investigation revealed 
+the following probable causes: the cups and ball joint that are 
+normally paired were unpaired or mixed during an overhaul; and the cups 
+and ball joint assembly had not been properly lubricated during 
+overhaul. In addition, the cups and the ball joint are made of tungsten 
+carbide, whose failure mode can cause a sudden seizure of the assembly. 
+This condition, if not addressed, could lead to loss of connection 
+between rotor shaft and rotating swashplate and consequent loss of 
+control of the helicopter.
+    EASA AD 2024-0168 specified a modification to replace the ball 
+joint-cups assembly with a one-piece self-lubricated spherical bearing 
+and specified modification instructions for in-service helicopters. 
+EASA then superseded EASA AD 2024-0168 and issued EASA AD 2025-0116, 
+dated May 19, 2025 (EASA AD 2025-0116) (also referred to as the MCAI). 
+The MCAI states that since EASA AD 2024-0168 was issued, it was 
+identified that the original service information did not provide 
+instructions to apply anti-corrosion agent on the parts during 
+installation, and Airbus Helicopters revised the service information to 
+address that omission. The MCAI partially retains the requirements of 
+EASA AD 2024-0168 and specifies additional work.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-5034.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2025-0116, which specifies procedures for 
+replacing the rotor shaft assembly, modifying the rotating swashplate 
+assembly, or replacing the MRH assembly as an alternative action for 
+certain helicopters, as applicable. EASA AD 2025-0116 specifies 
+procedures for certain helicopters to incorporate modification 0743046 
+either before or concurrently with the modification of the rotating 
+swashplate assembly. EASA AD 2025-0116 also specifies procedures for 
+applying anti-corrosion agent on the parts, as applicable. EASA AD 
+2025-0116 prohibits installing a MRH assembly or a rotor shaft assembly 
+unless it is a post-mod 0728849 configuration.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require Group 1 helicopters (as defined in 
+the MCAI) to replace the rotor shaft assembly, Group 2 helicopters (as 
+defined in the MCAI) to modify the rotating swashplate assembly to 
+replace each of the three ball joint-cups assemblies with one-piece 
+self-lubricated spherical bearings or replace the MRH assembly with an 
+MRH assembly in post-mod 0728849 and post-mod 0743046 configurations, 
+and AS332C and AS332L helicopters to modify the scissors hinges and 
+swashplate trunnions on the main rotor, as applicable. This proposed AD 
+would also require Group 3 helicopters (as defined in the MCAI) to 
+apply an anti-corrosion agent, if applicable. This proposed AD would 
+prohibit installing a main rotor hub (MRH) assembly or rotor shaft 
+assembly on a helicopter unless certain requirements are met.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA incorporates EASA AD 2025-0116 by reference in the FAA final rule. 
+This proposed AD would, therefore, require compliance with EASA AD 
+2025-0116 in its entirety through that incorporation, except for any 
+differences identified as exceptions in the regulatory text of this 
+proposed AD. Using common terms that are the same as the heading of a 
+particular section in EASA AD 2025-0116 does not mean that operators 
+need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2025-
+0116. Material referenced in EASA AD 2025-0116 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-5034 after the 
+FAA final rule is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 12 helicopters of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                          Cost per
+              Action                      Labor cost        Parts cost    product       Cost on U.S. operators
+----------------------------------------------------------------------------------------------------------------
+Replace three ball joint-cups       3 work-hours x $85          $9,861      $10,116  $121,392.
+ assemblies.                         per hour = $255.
+Apply anti-corrosion agent........  3 work-hours x $85               0            0  Up to $3,060.
+                                     per hour = $255.
+----------------------------------------------------------------------------------------------------------------
+
+
+[[Page 54598]]
+
+    The FAA has received no definitive data on which to base the cost 
+estimates for replacing the rotor shaft assembly with a rotor shaft 
+assembly that has incorporated modifications 0743714 and 0728849, 
+modifying the rotating swashplate assembly to incorporate modification 
+0743046, or for the optional action of replacing the MRH assembly with 
+an MRH assembly that has incorporated modifications 0728849 and 0743046 
+specified in this proposed AD.
+    The FAA has included all known costs in its cost estimate. 
+According to the manufacturer, however, some of the costs of this 
+proposed AD may be covered under warranty, thereby reducing the cost 
+impact on affected operators.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus Helicopters: Docket No. FAA-2025-5034; Project Identifier 
+MCAI-2025-00951-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by January 12, 2026.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model AS332C, AS332C1, 
+AS332L, AS332L1, and AS332L2 helicopters, certificated in any 
+category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6230, Main Rotor 
+Mast/Swashplate.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of the rupture of the scissors 
+link of the rotating swashplate assembly due to a seized ball joint-
+cups assembly. The FAA is issuing this AD to prevent the ball joint-
+cups assembly from seizing. This condition, if not addressed, could 
+lead to loss of connection between rotor shaft and rotating 
+swashplate and consequent loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency AD 2025-0116, 
+dated May 19, 2025 (EASA AD 2025-0116).
+
+(h) Exceptions to EASA AD 2025-0116
+
+    (1) Where EASA AD 2025-0116 refers to September 5, 2024 (the 
+effective date of EASA AD 2024-0168), this AD requires using the 
+effective date of this AD.
+    (2) Where EASA AD 2025-0116 refers to its effective date, this 
+AD requires using the effective date of this AD.
+    (3) Where paragraph (3) of EASA AD 2025-0116 refers to ``modify 
+that helicopter in accordance with the instructions of the Airbus 
+Helicopter SB 62.00.05'', this AD replaces that text with ``modify 
+that helicopter in accordance with the instructions of the Societe 
+Nationale Industrielle Aerospatiale Service Bulletin No. 62.05, 
+Revision 2''.
+    (4) This AD does not adopt the ``Remarks'' section of EASA AD 
+2025-0116.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2025-0116 specifies 
+to submit certain information to the manufacturer, this AD does not 
+require that action.
+
+(j) Special Flight Permits
+
+    Special flight permits are prohibited.
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (l) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#acede1e3efeccacdcd82cbc3da"><span class="__cf_email__" data-cfemail="51101c1e12113730307f363e27">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(l) Additional Information
+
+    For more information about this AD, contact Adam Hein, Aviation 
+Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 
+11590; phone: (316) 946-4116; email: <a href="/cdn-cgi/l/email-protection#92f3f6f3ffbcfaf7fbfcd2f4f3f3bcf5fde4"><span class="__cf_email__" data-cfemail="305154515d1e5855595e705651511e575f46">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2025-0116, 
+dated May 19, 2025.
+    (ii) Reserved
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#bbfaffc8fbdedac8da95decec9d4cbda95dece"><span class="__cf_email__" data-cfemail="da9b9ea99abfbba9bbf4bfafa8b5aabbf4bfaf">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find the EASA material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records
+
+[[Page 54599]]
+
+Administration (NARA). For information on the availability of this 
+material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#563024783f3825263335223f3938163837243778313920"><span class="__cf_email__" data-cfemail="97f1e5b9fef9e4e7f2f4e3fef8f9d7f9f6e5f6b9f0f8e1">[email&#160;protected]</span></a>.
+
+    Issued on November 24, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-21437 Filed 11-26-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

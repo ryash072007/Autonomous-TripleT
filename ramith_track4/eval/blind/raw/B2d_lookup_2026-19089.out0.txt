@@ -1,0 +1,1 @@
+{"question": "What is the proposed AD for ATR42 and ATR72 airplanes requiring a leakage test and possible replacement of landing gear selector valves because of uncommanded nose landing gear retraction?"}

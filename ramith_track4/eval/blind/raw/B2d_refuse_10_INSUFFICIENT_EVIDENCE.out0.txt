@@ -1,0 +1,1 @@
+{"question": "What is the estimated labor cost per airplane, in dollars, for the proposed repetitive ultrasonic inspection of the main cargo door cam support assemblies on Boeing Model 727 airplanes?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

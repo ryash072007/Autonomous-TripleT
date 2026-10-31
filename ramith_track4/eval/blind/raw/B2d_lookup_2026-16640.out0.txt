@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Airbus Helicopters H160-B requiring inspection for missing fire-resistant sealant in the cargo bay near the fuel segregation box?"}

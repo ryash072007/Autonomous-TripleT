@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Pacific Aerospace Limited Airplanes
+SUMMARY: We propose to supersede Airworthiness Directive (AD) 2015-23- 03 for Pacific Aerospace Limited Model 750XL airplanes. This proposed AD results from mandatory continuing airworthiness information (MCAI) originated by an aviation authority of another country to identify and correct an unsafe condition on an aviation product. The MCAI describes the unsafe condition as fatigue cracks on the fin forward pickup plates. We are issuing this proposed AD to require actions to address the unsafe condition on these products.

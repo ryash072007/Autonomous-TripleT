@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Airbus A318, A319, A320 and A321 airplanes that supersedes the earlier AD on affected galley part numbers, with repetitive inspections and a revised parts list?"}

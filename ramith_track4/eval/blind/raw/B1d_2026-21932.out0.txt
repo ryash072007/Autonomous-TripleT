@@ -1,0 +1,9 @@
+The applicability paragraph covers all EC130B4 helicopters, certificated in any category, with no exclusions. Choosing that model therefore gives a clean APPLIES result.
+
+The AS350B3 would carry an ARRIEL 2D engine exclusion, which a real owner would know. The EC130B4 avoids that issue entirely.
+
+The starter generator part number appears in the required actions (g), not in applicability, so it does not affect the verdict.
+
+```json
+{"feasible":true,"config":{"make":"Airbus Helicopters","model":"EC130B4","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"APPLIES","gold_reason":"MODEL_LISTED","evidence_quote":"This AD applies to Airbus Helicopters Model AS350B3 helicopters, except those equipped with an ARRIEL 2D engine, and all Model EC130B4 helicopters, certificated in any category.","notes":"All EC130B4 helicopters are covered with no exclusions; the starter generator P/N only affects required actions (para g), not applicability."}
+```
