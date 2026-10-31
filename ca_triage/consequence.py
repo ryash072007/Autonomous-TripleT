@@ -135,56 +135,41 @@ def exposure_for(alt_km: float, n_ge10: float, counts: np.ndarray, per: np.ndarr
     return {"exposure_30d": expected, "band_km": band, "active_sats_in_band": in_band}
 
 
-CLOUD_NOTE = "illustrative two-body spread of >=10 cm fragments, no drag/J2; offsets are [along-track phase rad, radial km, cross-track km], null = unbound fragment"
+CLOUD_DV_MAX_KMS = 0.5  # linear relative motion is only valid for kicks well below the orbital speed
+CLOUD_NOTE = ("illustrative spread of >= 10 cm fragments with Delta-v <= 500 m/s (about 70% of them) by Clohessy-Wiltshire linear relative motion "
+              "on a circular orbit, no drag/J2; offsets are [along-track phase rad (wrapped to +-pi), radial km, cross-track km]; null = none")
 
 
-def cloud_offsets(*args, **kw) -> dict:
-    with np.errstate(invalid="ignore", divide="ignore"):
-        return _cloud_offsets(*args, **kw)
+def cloud_offsets(alt_km: float, dv_kms: np.ndarray, dirs: np.ndarray, hours=(0, 1, 6, 24, 168)) -> dict:
+    """Fragment positions relative to the collision point in the rotating (radial, along-track, cross-track) frame.
 
-
-def _cloud_offsets(alt_km: float, dv_kms: np.ndarray, dirs: np.ndarray, hours=(0, 1, 6, 24, 168)) -> dict:
-    """Fragment positions relative to the collision point in the rotating reference frame, by two-body propagation.
-
-    Each offset = [along-track phase (rad), radial km, cross-track km]. No drag, no J2.
+    Clohessy-Wiltshire closed form with zero initial offset and kick (u, v, w) = dv * (radial, along-track, cross-track):
+        x(t) = u sin(nt)/n + 2v (1 - cos nt)/n                      radial, bounded and oscillating
+        y(t) = -2u (1 - cos nt)/n + v (4 sin nt - 3 nt)/n           along-track, secular drift -3 v t
+        z(t) = w sin(nt)/n                                          cross-track
+    Phase = y / r0 wrapped to (-pi, pi]. Display only: valid for small kicks, so callers pass dv <= CLOUD_DV_MAX_KMS.
+    The exposure numbers do NOT use this; they use the full Keplerian altitude extent (`post_kick_extent`).
     """
     r0 = RE + alt_km
-    vc = np.sqrt(MU / r0)
-    w_ref = np.sqrt(MU / r0**3)
-    n = len(dv_kms)
-    r = np.tile([r0, 0.0, 0.0], (n, 1))
-    v = np.stack([dv_kms * dirs[:, 0], vc + dv_kms * dirs[:, 1], dv_kms * dirs[:, 2]], axis=1)
-    rn = np.linalg.norm(r, axis=1)
-    v2 = (v**2).sum(1)
-    h = np.cross(r, v)
-    ev = ((v2 - MU / rn)[:, None] * r - (r * v).sum(1)[:, None] * v) / MU
-    e = np.linalg.norm(ev, axis=1)
-    a = -MU / (2 * (0.5 * v2 - MU / rn))
-    bound = (a > 0) & (e < 1)
-    P = np.where((e < 1e-9)[:, None], r / rn[:, None], ev / np.maximum(e, 1e-12)[:, None])
-    W = h / np.linalg.norm(h, axis=1, keepdims=True)
-    Q = np.cross(W, P)
-    nu = np.arctan2((r * Q).sum(1) / rn, (r * P).sum(1) / rn)
-    E0 = 2 * np.arctan2(np.sqrt(1 - e) * np.sin(nu / 2), np.sqrt(1 + e) * np.cos(nu / 2))
-    M0 = E0 - e * np.sin(E0)
-    n_mean = np.sqrt(MU / np.where(bound, a, 1.0) ** 3)
+    n = np.sqrt(MU / r0**3)
+    u, v, w = (dv_kms * dirs[:, k] for k in range(3))
     out = []
     for hr in hours:
         t = hr * 3600.0
-        M = M0 + n_mean * t
-        E = np.where(e < 0.8, M, np.pi)
-        for _ in range(15):
-            E = E - (E - e * np.sin(E) - M) / (1 - e * np.cos(E))
-        pos = (a * (np.cos(E) - e))[:, None] * P + (a * np.sqrt(1 - e**2) * np.sin(E))[:, None] * Q
-        ang = -w_ref * t
-        c, s = np.cos(ang), np.sin(ang)
-        x, y = c * pos[:, 0] - s * pos[:, 1], s * pos[:, 0] + c * pos[:, 1]
-        phase = np.arctan2(y, x)
-        radial = np.hypot(x, y) - r0
-        cross = pos[:, 2]
-        out.append([[round(float(p), 3) + 0.0, round(float(rd), 0) + 0.0, round(float(cz), 0) + 0.0] if b else None
-                    for p, rd, cz, b in zip(phase, radial, cross, bound)])
+        nt = n * t
+        x = (u * np.sin(nt) + 2 * v * (1 - np.cos(nt))) / n
+        y = (-2 * u * (1 - np.cos(nt)) + v * (4 * np.sin(nt) - 3 * nt)) / n
+        z = w * np.sin(nt) / n
+        phase = (y / r0 + np.pi) % (2 * np.pi) - np.pi
+        out.append([[round(float(p), 3) + 0.0, round(float(a), 0) + 0.0, round(float(c), 0) + 0.0] for p, a, c in zip(phase, x, z)])
     return {"t_hours": list(hours), "offsets": out}
+
+
+def cloud_samples(n: int = 150) -> tuple[np.ndarray, np.ndarray]:
+    """n fragment kicks (km/s) and directions from the breakup distribution, restricted to the linear regime."""
+    dv, dirs = standard_samples(4 * n * 2)
+    keep = dv <= CLOUD_DV_MAX_KMS
+    return dv[keep][:n], dirs[keep][:n]
 
 
 def consequence_score(exposure_30d: float) -> float:

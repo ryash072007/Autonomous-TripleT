@@ -57,3 +57,20 @@ def test_breakup_basics():
     assert mass_estimate(float("nan"), 0.1, "ROCKET BODY", False) == (1500.0, "fallback:rocket body")
     assert mass_estimate(1.0, 0.01, "DEBRIS", True)[1] == "rcs/area"
     assert n_fragments(1000.0) > n_fragments(10.0) > 0
+
+
+def test_debris_cloud_is_bounded_and_wraps():
+    import numpy as np
+
+    from ca_triage.consequence import cloud_offsets, cloud_samples
+    dv, dirs = cloud_samples(150)
+    assert len(dv) == 150 and dv.max() <= 0.5
+    for alt in (350.0, 550.0, 800.0, 1400.0):
+        c = cloud_offsets(alt, dv, dirs)
+        arr = np.array(c["offsets"], float)  # (times, fragments, 3)
+        assert np.abs(arr[:, :, 1]).max() < 2000, "radial offset must stay bounded (CW linear motion)"
+        assert np.abs(arr[:, :, 2]).max() < 2000
+        assert np.abs(arr[:, :, 0]).max() <= np.pi + 1e-6
+    assert np.allclose(np.array(cloud_offsets(550.0, dv, dirs)["offsets"][0]), 0)  # t = 0: all at the collision point
+    spread = lambda h: np.ptp(np.array(cloud_offsets(550.0, dv, dirs, hours=(h,))["offsets"][0], float)[:, 0])  # noqa: E731
+    assert spread(168) > spread(1)  # the cloud smears along the ring

@@ -52,7 +52,7 @@ updating this file. Version bumps go in `schema_version`.
         "consequence_score": 55.2,      // 0-100 log index of exposure_30d
         "pc_display": 0.004, "expected_harm": 9.1e-5,   // Pc = max_risk_estimate (display); harm = Pc x exposure_30d
         "pc_rank": 1, "harm_rank": 4,   // 1 = highest, among the 2,167 test events
-        "debris_cloud": null            // top ~90 events by harm/Pc and the demo events only: {"t_hours": [0,1,6,24,168], "offsets": [[[phase_rad, radial_km, cross_km] | null x150] per time]} (top-level `debris_cloud_note`)
+        "debris_cloud": null            // top ~90 events by harm/Pc and the demo events only: {"t_hours": [0,1,6,24,168], "offsets": [per time: [[phase_rad, radial_km, cross_km] x150]]}. Clohessy-Wiltshire linear relative motion for fragments with dv <= 500 m/s (about 70% of fragments): radial and cross-track bounded (< 2,000 km, oscillating), along-track drifts secularly and phase wraps to +-pi. Not used for exposure (top-level `debris_cloud_note`)
       },
       "orbit_display": {                // DISPLAY ONLY, from the latest CDM; never a model input (ca_triage/display.py)
         "t": {"sma_km": 7084.7, "ecc": 0.0037, "inc_deg": 98.2, "h_apo_km": 733.1, "h_per_km": 680.0},   // target
