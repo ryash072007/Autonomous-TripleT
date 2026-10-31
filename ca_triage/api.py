@@ -297,7 +297,7 @@ if SERVE_WEB and DIST.exists():
         f = (DIST / path).resolve()
         if path and f.is_file() and DIST in f.parents:
             return FileResponse(f)
-        return FileResponse(DIST / "index.html")
+        return FileResponse(DIST / "index.html", headers={"Cache-Control": "no-cache"})
 
 else:
     from fastapi.responses import RedirectResponse

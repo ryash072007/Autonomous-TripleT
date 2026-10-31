@@ -117,9 +117,8 @@ export interface EvidenceResp {
 }
 
 const RAW_BASE = ((import.meta.env.VITE_API_BASE as string | undefined) ?? "").trim();
-const onLocalhost = typeof window !== "undefined" && ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
-/** Snapshot is forced with VITE_API_BASE=snapshot, or when no backend is configured and we are not on localhost. */
-const FORCED = RAW_BASE === "snapshot" || (RAW_BASE === "" && !onLocalhost);
+/** Snapshot is forced only with VITE_API_BASE=snapshot. An empty base means "same origin": try it, fall back if it fails. */
+const FORCED = RAW_BASE === "snapshot";
 export const BASE = RAW_BASE === "snapshot" ? "" : RAW_BASE.replace(/\/$/, "");
 
 // ---- data source: the live API, or the read-only snapshot under /snapshot ----
