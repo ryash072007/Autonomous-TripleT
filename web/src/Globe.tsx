@@ -147,7 +147,7 @@ export default function Globe(props: Props) {
       return;
     }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+    renderer.setPixelRatio(Math.min(1.5, window.devicePixelRatio));
     el.appendChild(renderer.domElement);
     renderer.domElement.style.display = "block";
     const scene = new THREE.Scene();
@@ -394,12 +394,21 @@ export default function Globe(props: Props) {
 
     let raf = 0;
     const t0 = performance.now();
-    const loop = () => {
+    let visible = true;
+    const io = new IntersectionObserver((es) => { visible = es[0]?.isIntersecting ?? true; }, { rootMargin: "120px" });
+    io.observe(el);
+    let lastHrs = -1, lastFrame = 0;
+    const loop = (now: number) => {
       raf = requestAnimationFrame(loop);
+      if (!visible || document.hidden) return; // render only what is on screen
+      if (now - lastFrame < 33) return; // 30 fps is plenty for a slow globe
+      lastFrame = now;
       const t = (performance.now() - t0) / 1000;
       if (!reduce && !dragging) root.rotation.y += 0.0016;
-      if (frag && props.kind === "collide") {
-        const hrs = (propsRef.current as { hours: number }).hours;
+      const hrsNow = props.kind === "collide" ? (propsRef.current as { hours: number }).hours : 0;
+      if (frag && props.kind === "collide" && hrsNow !== lastHrs) {
+        lastHrs = hrsNow;
+        const hrs = hrsNow;
         const f = frag;
         const T = f.times;
         let k = 0;
@@ -457,10 +466,11 @@ export default function Globe(props: Props) {
       }
       renderer.render(scene, camera);
     };
-    loop();
+    raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       ro.disconnect();
       disposables.forEach((d) => d.dispose());
       renderer.dispose();

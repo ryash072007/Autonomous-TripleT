@@ -263,7 +263,7 @@ details.raw summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 @media (max-width: 520px) { .ins-grid { grid-template-columns: 1fr; } }
 
 .names { color: var(--ink-soft); font-size: 11.5px; }
-.hl { outline: 2px solid var(--abstain); outline-offset: 4px; border-radius: 6px; background: rgba(91, 95, 143, 0.07); }
+
 .demo-reason { margin: 4px 0; }
 .demo-bar { max-height: 70vh; overflow-y: auto; }
 

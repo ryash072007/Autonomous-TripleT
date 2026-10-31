@@ -36,6 +36,7 @@ export default function Next24({ events, summary, onOpen }: { events: EventLight
   const [playing, setPlaying] = useState(true);
   const [speed, setSpeed] = useState(0.05); // days of replay per real second
   const elRef = useRef(min);
+  const lastSet = useRef(0);
   useEffect(() => {
     const m = /rt=([\d.]+)/.exec(window.location.hash); // screenshot helper: start the replay part-way
     const t0 = min + (m ? +m[1] : 0);
@@ -49,7 +50,8 @@ export default function Next24({ events, summary, onOpen }: { events: EventLight
       let n = elRef.current + dd;
       if (n > max) n = min;
       elRef.current = n;
-      setElapsed(n);
+      const nowT = performance.now();
+      if (nowT - lastSet.current > 80) { lastSet.current = nowT; setElapsed(n); }
     };
     if (reduced) {
       const id = setInterval(() => advance(speed), 1000);

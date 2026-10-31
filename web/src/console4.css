@@ -4,16 +4,11 @@
 .lg.ember { opacity: var(--ember, 0.9); }
 
 /* Welcome card and tour spotlight */
-.welcome-back { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px;
-  background: rgba(90, 58, 51, 0.38); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); }
-.welcome { max-width: 560px; width: 100%; padding: 28px 30px; text-align: center; background: rgba(255, 248, 241, 0.96); animation: welcome-in 0.4s ease-out; }
 @keyframes welcome-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
 .welcome-h { font-size: clamp(36px, 6vw, 56px); color: var(--rock); margin: 6px 0 20px; }
 .welcome-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .btn.big { padding: 12px 26px; font-size: 16px; border-radius: 999px; }
 .welcome-steps { margin: 18px 0 0; letter-spacing: 0.02em; }
-.spot-dim { position: fixed; inset: 0; z-index: 50; background: rgba(90, 58, 51, 0.5); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); pointer-events: none; }
-.hl { position: relative; z-index: 60; outline: 3px solid var(--abstain); outline-offset: 4px; border-radius: 18px; background: rgba(255, 248, 241, 0.97); }
 .tour-progress { height: 4px; background: rgba(192, 141, 120, 0.25); border-radius: 2px; margin: -4px 0 10px; overflow: hidden; }
 .tour-progress i { display: block; height: 100%; background: var(--rock); transition: width 0.4s ease; }
 @keyframes attn { 0%, 100% { box-shadow: 0 0 0 0 rgba(91, 95, 143, 0.55); } 50% { box-shadow: 0 0 0 9px rgba(91, 95, 143, 0); } }
@@ -39,7 +34,7 @@
 @media (max-width: 860px) { .n24-head { grid-template-columns: 1fr; } .n24-ctl { justify-content: flex-start; } .n24-num { font-size: 64px; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .lg.hot, .btn.attn, .welcome, .n24-num.tick, .n24-tbl tr.flash td { animation: none !important; }
+  .lg.hot, .btn.attn, .n24-num.tick, .n24-tbl tr.flash td { animation: none !important; }
   .tour-progress i { transition: none; }
 }
 
@@ -58,3 +53,23 @@
   border: 1px solid rgba(192, 141, 120, 0.4); border-radius: 999px; padding: 3px 14px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 14px rgba(90, 58, 51, 0.15); pointer-events: none; white-space: nowrap; }
 @media (max-width: 700px) { .snap-badge { font-size: 11px; white-space: normal; text-align: center; width: max-content; max-width: 92vw; } }
 .decision-row button:disabled { cursor: not-allowed; }
+
+/* Tour: no overlay and no blur. The target gets a crisp ring, and the rest of the page is dimmed only slightly. */
+.hl { position: relative; z-index: 60; outline: 2px solid var(--abstain); outline-offset: 3px; border-radius: 18px;
+  box-shadow: 0 0 0 4px rgba(91, 95, 143, 0.22), 0 0 22px 4px rgba(91, 95, 143, 0.35), 0 0 0 100vmax rgba(40, 25, 20, 0.18); }
+.demo-bar.callout { background: #fff8f1; z-index: 75; width: 340px; padding: 12px 14px; animation: callout-in 0.12s ease-out; }
+@keyframes callout-in { from { opacity: 0; } to { opacity: 1; } }
+.demo-bar.callout.anchored { position: fixed; max-height: none; }
+.demo-bar.callout:not(.anchored) { left: 16px; bottom: 16px; }
+.callout .demo-title { font-size: 24px; margin: 2px 0; }
+.callout .demo-reason { max-height: 7.5em; overflow-y: auto; }
+.callout.anchored::before { content: ""; position: absolute; width: 14px; height: 14px; background: inherit; border: inherit; transform: rotate(45deg); }
+.callout.side-right::before { left: -8px; top: var(--arrow); border-right: 0; border-top: 0; }
+.callout.side-left::before { right: -8px; top: var(--arrow); border-left: 0; border-bottom: 0; }
+.callout.side-below::before { top: -8px; left: var(--arrow); border-bottom: 0; border-right: 0; }
+.callout.side-above::before { bottom: -8px; left: var(--arrow); border-top: 0; border-left: 0; }
+.mobile-only { display: none; }
+.welcome-mini { background: #fff8f1; position: fixed; right: 18px; bottom: 18px; width: 300px; z-index: 80; padding: 14px 16px; animation: callout-in 0.12s ease-out; }
+.welcome-q { font-size: 28px; margin: 2px 0 6px; color: var(--rock); }
+.welcome-mini .welcome-actions { justify-content: flex-start; margin-top: 10px; }
+@media (prefers-reduced-motion: reduce) { .demo-bar.callout, .welcome-mini { animation: none !important; } }

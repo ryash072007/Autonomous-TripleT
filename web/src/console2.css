@@ -9,8 +9,8 @@
 .ridges-small .mound-dish { bottom: calc(32% - 4px); width: 56px; height: 56px; }
 .console { background: transparent; position: relative; z-index: 1; min-height: 100dvh; }
 .card {
-  background: rgba(255, 248, 241, 0.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  border: 1px solid rgba(192, 141, 120, 0.22); border-radius: 18px; box-shadow: 0 10px 34px rgba(90, 58, 51, 0.12);
+  background: rgba(255, 248, 241, 0.95);
+  border: 1px solid rgba(192, 141, 120, 0.22); border-radius: 18px; box-shadow: 0 6px 18px rgba(90, 58, 51, 0.12);
 }
 .mono { font-family: var(--font-ui); font-variant-numeric: tabular-nums; font-size: 12px; }
 .num { font-variant-numeric: tabular-nums; }
@@ -73,7 +73,7 @@
 .drawer-body { display: grid; gap: 18px; margin-top: 14px; }
 .decision-bar { position: fixed; left: 422px; right: 16px; bottom: 16px; z-index: 20; pointer-events: none; }
 .decision-in { pointer-events: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 14px; border-radius: 18px;
-  background: rgba(255, 248, 241, 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 10px 34px rgba(90, 58, 51, 0.25); border: 1px solid rgba(192, 141, 120, 0.25); }
+  background: rgba(255, 248, 241, 0.94); box-shadow: 0 10px 34px rgba(90, 58, 51, 0.25); border: 1px solid rgba(192, 141, 120, 0.25); }
 .decision-in input[type="text"] { flex: 1; min-width: 140px; border: 1px solid rgba(192, 141, 120, 0.4); border-radius: 10px; padding: 7px 10px; font: inherit; background: #fff; }
 .trail-d { position: relative; font-size: 12px; }
 .trail-d summary { cursor: pointer; color: var(--ink-soft); }
@@ -94,3 +94,7 @@
   .collide { grid-template-columns: 1fr; }
   .hero-card { padding: 16px; }
 }
+
+/* Console performance: the backdrop stays still (the landing keeps its animation), cards are solid paper */
+.backdrop .light, .backdrop .light .dot, .ridges-small .ridge { animation: none !important; }
+.backdrop { contain: strict; }

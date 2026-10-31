@@ -218,6 +218,8 @@ async function fromChunk<T>(kind: "events" | "briefs", id: number): Promise<T> {
   return chunk[String(id)] as T;
 }
 
+const evCache = new Map<string, Promise<EventFull>>();
+
 const emptyLive: Summary = {
   dataset: "live", total: 0, counts: { Safe: 0, Elevated: 0, Critical: 0 }, n_critical: 0, model: null, generated_utc: null,
   has_model_probs: false, max_time_to_tca: 0, min_time_to_tca: 0, object_types: [], message: LIVE_MSG, n_abstain: 0,
@@ -248,8 +250,17 @@ export const api = {
   events: (dataset: Dataset, tier?: number | null, object_type?: string | null, fields?: string) =>
     read<{ events: EventLight[]; message: string | null }>("/api/events" + q({ dataset, tier, object_type, fields }), () =>
       dataset === "live" ? Promise.resolve({ events: [], message: LIVE_MSG }) : sjson(fields === "sky" ? "sky.json" : "events.json")),
-  event: (id: number, dataset: Dataset) =>
-    read<EventFull>(`/api/events/${id}` + q({ dataset }), () => (dataset === "live" ? Promise.reject(new Error("404")) : fromChunk("events", id))),
+  event: (id: number, dataset: Dataset) => {
+    const k = `${dataset}:${id}`;
+    let p = evCache.get(k);
+    if (!p) {
+      p = read<EventFull>(`/api/events/${id}` + q({ dataset }), () => (dataset === "live" ? Promise.reject(new Error("404")) : fromChunk("events", id)));
+      p.catch(() => evCache.delete(k));
+      evCache.set(k, p);
+      if (evCache.size > 40) evCache.delete(evCache.keys().next().value as string);
+    }
+    return p;
+  },
   window: (elapsed_days: number, dataset: Dataset) =>
     read<WindowResp>("/api/window" + q({ elapsed_days: elapsed_days.toFixed(3), dataset }), () => Promise.reject(new Error("window needs the backend"))),
   score: async (body: { miss_distance: number; max_risk_estimate: number }): Promise<ScoreResp> => {

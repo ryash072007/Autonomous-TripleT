@@ -203,7 +203,7 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
   useEffect(() => {
     if (!highlight || !ev) return;
     setMTab(highlight === "collide" ? "collide" : "overview");
-    const t = window.setTimeout(() => document.querySelector(".detail .hl")?.scrollIntoView({ block: "start", behavior: "auto" }), 450);
+    const t = window.setTimeout(() => document.querySelector(".detail .hl")?.scrollIntoView({ block: "center", behavior: window.matchMedia("(max-width: 860px)").matches ? "auto" : "smooth" }), 120);
     return () => window.clearTimeout(t);
   }, [highlight, ev?.event_id]);
   useEffect(() => {

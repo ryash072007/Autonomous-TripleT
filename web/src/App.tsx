@@ -96,6 +96,7 @@ export default function App() {
     try {
       const d = await api.demo();
       if (!d.items.length) return;
+      d.items.forEach((it) => { api.event(it.event_id, dataset).catch(() => {}); api.brief(it.event_id, dataset).catch(() => {}); }); // warm the cache so steps switch instantly
       setDemo(d);
       setDemoStep(0);
       setTourHidden(false);
@@ -105,7 +106,7 @@ export default function App() {
     } catch {
       /* tour unavailable */
     }
-  }, []);
+  }, [dataset]);
   const endTour = () => { setDemo(null); markTourDone(); pulse(); };
   const explore = () => { setWelcome(false); markTourDone(); pulse(); };
   const begin = () => { setWelcome(false); startTour(); };
@@ -117,6 +118,19 @@ export default function App() {
     if (window.location.hash.includes("notour") || window.location.hash.includes("demo=") || tourDone()) return;
     setWelcome(true);
   }, [view, startTour]);
+
+  useEffect(() => {
+    if (!demo || tourHidden) return;
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (t.tagName === "INPUT" || t.tagName === "TEXTAREA") return;
+      if (e.key === "Escape") endTour();
+      else if (e.key === "ArrowRight") setDemoStep((x) => Math.min(demo.items.length - 1, x + 1));
+      else if (e.key === "ArrowLeft") setDemoStep((x) => Math.max(0, x - 1));
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [demo, tourHidden]);
 
   useEffect(() => {
     if (demo && demo.items[demoStep]) {
@@ -190,8 +204,7 @@ export default function App() {
         </main>
       )}
       <main className={"main" + (mobileDetail ? " show-detail" : "")} style={apiErr ? { display: "none" } : undefined}>
-        {demo && view === "queue" && !tourHidden && <div className="spot-dim" />}
-        {view === "queue" && (
+                {view === "queue" && (
           <>
             <Queue events={shown} message={message} loading={loading} selected={selected}
               onSelect={(id) => { setSelected(id); setMobileDetail(true); }}
@@ -211,15 +224,13 @@ export default function App() {
       </main>
 
       {welcome && (
-        <div className="welcome-back" role="dialog" aria-modal="true" aria-label="Welcome">
-          <div className="card welcome">
-            <div className="label">Collision triage</div>
-            <h2 className="display welcome-h">New here? Take the 60-second tour</h2>
-            <div className="welcome-actions">
-              <button className="btn primary big" onClick={begin} autoFocus>Start tour</button>
-              <button className="btn big" onClick={explore}>Explore on my own</button>
-            </div>
-            <p className="small dim welcome-steps">Clear Critical → Caught early → Where it fails → If they collide</p>
+        <div className="welcome-mini card" role="dialog" aria-label="Tour offer">
+          <div className="label">Collision triage</div>
+          <div className="display welcome-q">Take the 60-second tour?</div>
+          <p className="small dim">Clear Critical → Caught early → Where it fails → If they collide</p>
+          <div className="welcome-actions">
+            <button className="btn primary" onClick={begin} autoFocus>Start</button>
+            <button className="btn" onClick={explore}>No thanks</button>
           </div>
         </div>
       )}
