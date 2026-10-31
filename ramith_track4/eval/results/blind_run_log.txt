@@ -18,3 +18,5 @@
 20261031_124945 commit e0903c5 src_hash e9d6d5f5b1ab sets b2,b2b,b2c,b2d systems full
 20261031_125421 commit e0903c5 src_hash c38be35b87b3 sets b2,b2b,b2c,b2d systems full
 20261031_125715 commit e0903c5 src_hash 768ec9cd65ca sets b1,b1b,b1c,b1d,b2,b2b,b2c,b2d systems full
+20261031_130302 commit b75366d src_hash 768ec9cd65ca sets b1e,b2e systems full
+20261031_130424 commit b75366d src_hash 768ec9cd65ca sets b1e,b2c,b2e systems naive_summary,fulltext_bm25,llm_only,llm_forced

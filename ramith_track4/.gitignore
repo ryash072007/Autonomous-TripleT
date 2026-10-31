@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 data/processed/docs.jsonl
 eval/results/*/answers.json
+eval/results/*/*_answers.json

@@ -136,7 +136,7 @@ function trace(c){
 async function loadResults(){
   const b = $('resbody'); const r = await (await fetch('/results')).json(); b.textContent = ''; b.appendChild(el('h2', null, 'Evaluation results'));
   if(r.available === false){ b.appendChild(el('div','mute','No evaluation run has been saved yet.')); return; }
-  const pre = el('pre','src', JSON.stringify(r, null, 2)); b.appendChild(pre);
+  const pre = el('pre','src', r.markdown ? r.markdown : JSON.stringify(r, null, 2)); b.appendChild(pre);
 }
 </script>
 </body>

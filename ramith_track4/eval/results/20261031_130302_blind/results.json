@@ -1,0 +1,779 @@
+{
+ "meta": {
+  "timestamp": "20261031_130302",
+  "git_commit": "b75366d",
+  "src_hash": "768ec9cd65ca",
+  "sets": [
+   "b1e",
+   "b2e"
+  ],
+  "systems": [
+   "full"
+  ],
+  "testset_v1_sha": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "B1_sha": "974ffd54bfa1f7d8cad1b6f03891c1221696a48ffcc952ac848c5e58a16f78f9",
+  "B2_sha": "3e37d24fa7333bc4b1662882ef6ac954b154eeaaf27f9c7f7f92c1129b0bc8c3"
+ },
+ "results": {
+  "b1e/full": {
+   "summary": {
+    "system": "full",
+    "n": 19,
+    "verdict_accuracy": 89.5,
+    "reason_accuracy": 78.9,
+    "confusion": {
+     "DOES_NOT_APPLY->DOES_NOT_APPLY": 9,
+     "CANNOT_DETERMINE->CANNOT_DETERMINE": 3,
+     "APPLIES->APPLIES": 5,
+     "DOES_NOT_APPLY->CANNOT_DETERMINE": 1,
+     "CANNOT_DETERMINE->DOES_NOT_APPLY": 1
+    },
+    "per_gold": {
+     "APPLIES": 100.0,
+     "DOES_NOT_APPLY": 90.0,
+     "CANNOT_DETERMINE": 75.0
+    }
+   },
+   "rows": [
+    {
+     "id": "B1e-01",
+     "doc": "2025-10934",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus",
+      "model": "A220-300",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-02",
+     "doc": "2025-03081",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "787-9",
+      "cofa_date": "2016-08-12",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-05",
+     "doc": "2025-06062",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "SERIAL_OUT_OF_RANGE",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "SERIAL_OUT_OF_RANGE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Bombardier, Inc.",
+      "model": "CL-600-2B16 (604 Variant)",
+      "cofa_date": null,
+      "serial": "6200",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-08",
+     "doc": "2025-20093",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "MD Helicopters, LLC",
+      "model": "369E",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-09",
+     "doc": "2025-03526",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Bombardier",
+      "model": "CL-600-2B19 (Regional Jet Series 200)",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-10",
+     "doc": "2025-02016",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "General Electric Company",
+      "model": "GEnx-1B58",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-11",
+     "doc": "2025-09896",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Pratt & Whitney",
+      "model": "PW2040",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-12",
+     "doc": "2025-08502",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Gulfstream Aerospace LP",
+      "model": "Gulfstream G280",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-13",
+     "doc": "2025-16319",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "ATR--GIE Avions de Transport R\u00e9gional",
+      "model": "ATR72-500",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-15",
+     "doc": "2025-19128",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "CERT_DATE_BEFORE_CUTOFF",
+     "ok": true,
+     "reason_ok": false,
+     "config": {
+      "make": "ATR--GIE Avions de Transport R\u00e9gional",
+      "model": "ATR72-212A",
+      "cofa_date": "2008-06-12",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-16",
+     "doc": "2025-07269",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "AMBIGUOUS_SCOPE",
+     "ok": true,
+     "reason_ok": false,
+     "config": {
+      "make": "Airbus",
+      "model": "A350-941",
+      "cofa_date": "2019-03-15",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-19",
+     "doc": "2025-12555",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "SERIAL_OUT_OF_RANGE",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "AMBIGUOUS_SCOPE",
+     "ok": false,
+     "reason_ok": false,
+     "config": {
+      "make": "Honda Aircraft Company LLC",
+      "model": "HA-420",
+      "cofa_date": null,
+      "serial": "42000266",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-21",
+     "doc": "2025-23101",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "AS355N",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-22",
+     "doc": "2025-08075",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters Deutschland GmbH",
+      "model": "MBB-BK 117 C-2",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-23",
+     "doc": "2025-16263",
+     "gold": "APPLIES",
+     "gold_reason": "SERIAL_IN_RANGE",
+     "got": "APPLIES",
+     "got_reason": "SERIAL_IN_RANGE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "DAHER AEROSPACE (SOCATA)",
+      "model": "TBM 700",
+      "cofa_date": null,
+      "serial": "150",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-24",
+     "doc": "2025-11417",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": false,
+     "reason_ok": false,
+     "config": {
+      "make": "De Havilland Aircraft of Canada Limited",
+      "model": "DHC-8-402",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-26",
+     "doc": "2025-02746",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "CERT_DATE_AFTER_CUTOFF",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "CERT_DATE_AFTER_CUTOFF",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A350-1041",
+      "cofa_date": "2024-10-15",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-27",
+     "doc": "2025-09080",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Canada Limited Partnership",
+      "model": "BD-500-1A11",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1e-30",
+     "doc": "2025-04983",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "BAE Systems (Operations) Limited",
+      "model": "Jetstream 3101",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    }
+   ]
+  },
+  "b2e/full": {
+   "summary": {
+    "system": "full",
+    "n": 37,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 8,
+     "pct": 88.9,
+     "reason_accuracy": 88.9
+    },
+    "revision": {
+     "n": 6,
+     "ok": 5,
+     "pct": 83.3
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 9,
+     "pct": 90.0
+    },
+    "refusal": {
+     "precision": 90.0,
+     "recall": 90.0,
+     "code_accuracy": 70.0,
+     "n_refused": 10,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 92.6,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 100.9,
+     "p95": 468.8
+    }
+   },
+   "rows": [
+    {
+     "id": "B2e-L01",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring inspection for fatigue cracks, corrosion, or loose hardware in the fuselage and vertical stabilizer, including fasteners at the FS 386 diagonal braces, on Twin Commander 690 and 695 series airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L02",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bombardier DHC-8-400 airplanes requiring inspection of laminated shims for cracking or extrusion at the horizontal stabilizer forward attachment fittings and a torque check of the spar attachment bolts?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L03",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-600/700/800/900 series airplanes requiring a maintenance records review for under-torqued or missing nuts on the horizontal stabilizer trim actuator lower gimbal assembly after overhaul?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L04",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Airbus A330 and A340 main landing gear retraction actuator piston rod cracking \u2013 inspections for water in piston rod and ultrasonic checks, with terminating modification",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L05",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring helicopter flight manual limitations on operations that need radio altimeter data in Canadian airspace because of 5G C-Band interference?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L06",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-900 and -900ER airplanes requiring repetitive inspections for fuselage skin cracking along chem-mill steps at the crown skin and shear wrinkle areas, with shorter compliance times?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L07",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Embraer EMB-545 and EMB-550 airplanes requiring replacement of the Ram Air Turbine compartment door seal because it could peel off and get tangled in the RAT rotor?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L08",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections and flight manual changes are proposed for Diamond DA 40, DA 40 F, and DA 40 NG airplanes after reports of the passenger door coming off in flight?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L09",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bell 429 helicopters that shortens the repetitive inspection interval for the tail rotor gearbox support assembly and tail boom rivets?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L10",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-700, -800, and -900ER airplanes requiring inspection of the form-in-place gasket and a leak test at the engine fuel shutoff valve access panel?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L11",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bombardier BD-700-2A12 airplanes requiring inspection of secondary power distribution assemblies (SPDA) for a protective film cover that was not removed?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L12",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bell 429 helicopters requiring inspection of the lower aft bracket and rail and modification of the roller assembly because the sliding doors jam when opened from inside?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-A01",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "I operate a Boeing Model 727-200F freighter, certificated in the transport category. I'm reading the proposed AD that would require repetitive ultrasonic inspections of the main cargo door cam support assemblies. It would replace the HFEC inspections in the existing maintenance program, which were found inadequate to catch cracking. Does this proposed AD apply to my airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A02",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "The FAA has proposed an AD about fuselage skin cracks found near the aft drain mast, requiring inspection of the drain mast area and repetitive inspections of the skin and structure for cracks and corrosion. Does it apply to my Boeing 737-300 (serial 25000, manufactured in the 1990s)?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A03",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate an Airbus A340-541 (A340-500 series). Does the proposed AD that would supersede the earlier AD requiring the trimmable horizontal stabilizer actuator (THSA) modification and electrical load sensing device (ELSD) installation, with added work after the modification on certain A330/A340 airplanes, apply to our aircraft?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A04",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate a Boeing 737-800 (certificated in the transport category). I read that the FAA has proposed an AD after reports of cracks in the outboard lower wing skin at the outboard end of a certain stringer, which would require inspecting the outboard lower wing skin on both wings for prior repairs, repetitive crack inspections, and on-condition actions. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A05",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "I operate a Boeing 737-800 (not a -700 or -700C). Does the proposed AD that would supersede the earlier AD requiring repetitive inspections for fuselage skin cracking at chem-mill areas on 737-700 and -700C airplanes, with reduced compliance times and post-modification inspections, apply to my aircraft?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A06",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "We operate an Embraer EMB-145LR, serial number 145612, and I'm reading the supplemental proposed AD that revises the earlier proposal on undertorqued screws attaching the seat tracks to the airplane structure. I haven't got Embraer Service Bulletin 145-53-0049 Revision 03 or 145LEG-53-0015 Revision 02 in front of me, so I don't know whether our serial number is on their effectivity lists. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A07",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate an Airbus A300 B4-622R (certified in the transport category). I'm looking at the proposed AD that addresses cracking of the main landing gear two-piece cages caused by incorrect machining, and requires replacing an affected MLG with a serviceable one. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A08",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "We operate a Rolls-Royce Deutschland Trent 1000-G engine on a 787. I'm trying to work out whether the proposed AD that would supersede the earlier one requiring repetitive borescope inspections of the HPC rear drum cavity and the cavities between the HPC rotor discs, and that adds a revised bolting arrangement at the HPC rotor shaft to HPT disc interface as terminating action, applies to us. I don't have a copy of the EASA AD it references and don't know which engines that AD identifies. Does the proposed AD apply to our engine?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A09",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "We operate a Boeing 767-300 passenger airplane, line number 512, certificated in the transport category and fitted with the standard door-mounted escape slide systems. Does the proposed AD that revises the earlier NPRM on 767-200/-300 escape slides and slide-rafts (extending the compliance time, adding a longer firing cable and an inflation trigger valve test, and addressing the extreme tip-back condition) apply to our airplane?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-R01",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposal under docket FAA-2012-0859 to rescind the AD on Boeing 737 and 757 fuel tank shutoff valve actuators still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R02",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed AD under docket FAA-2018-0548 for Bombardier DHC-8-400 series airplanes (fuel tank P-clamp and motive flow line issue) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R03",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the proposed airworthiness directive for Boeing DC-10, MD-10 and MD-11 airplanes under docket FAA-2016-6417, and is it still open for comment?"
+    },
+    {
+     "id": "B2e-R04",
+     "set": "b2e",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "status None",
+     "query": "What is the current status of the proposed airworthiness directive for AlliedSignal and Rajay oil scavenge pumps under docket FAA-2015-0909 \u2014 is it still moving toward a final rule, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R05",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA's proposed AD for Fokker Services B.V. F.28 Mark 0070 and 0100 airplanes under docket FAA-2013-0629 (Max Level sensor wiring fuses)? Is it still open for comment or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R06",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposed airworthiness directive for Boeing 787-8, 787-9, and 787-10 airplanes (docket FAA-2022-0876), concerning door assist handles pulling loose from their lower attachment point, still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-X01",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, with a Lycoming IO-360-L2A engine. According to the proposed airworthiness directives in your collection, is my aircraft airworthy right now, and am I legally allowed to fly it this weekend without having done any of the inspections or modifications described in those notices?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X02",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing fitting inspection, and is that AD currently in force and mandatory for operators?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X03",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 concerning wing spar inspections, and what was the proposed compliance time?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X04",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the compliance time for the inspection required by the proposed airworthiness directive, and do I have to repeat it?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X05",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "In Boeing Alert Requirements Bulletin 757-53A0128 RB, dated September 17, 2025, which is referenced for the Model 757-200 applicability in this AD, what specific inspection procedures and compliance times does the bulletin specify for the affected fuselage structure?",
+     "code_ok": false
+    },
+    {
+     "id": "B2e-X06",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the estimated cost in dollars per airplane to replace the affected hydraulic pump motor under this proposed AD, and how many labor hours does the FAA estimate the replacement will take?",
+     "code_ok": false
+    },
+    {
+     "id": "B2e-X07",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval and corrective action did the FAA's 1997 airworthiness directive require for cracking in the wing spar lower cap on Boeing 737-300 series airplanes?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X08",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, with a Lycoming IO-360-L2A engine. I've read the proposed AD notices in your collection that might apply to my airplane. Based on those, can you confirm that my aircraft is airworthy and legal to fly this weekend, and that I am fully in compliance with every applicable AD?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X09",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What are some tips for finding cheap airline tickets when traveling during the holiday season?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X10",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval does the FAA propose in the NPRM for the elevator trim tab actuator on the Airbus 737-800, and what is the compliance deadline after the final rule takes effect?",
+     "code_ok": false
+    }
+   ]
+  }
+ }
+}
