@@ -39,3 +39,7 @@ docs/PLAN.md
 .impeccable/
 artifacts/live_snapshot.json
 artifacts/scored/live_events.json
+
+# secrets
+*.env
+*token*
