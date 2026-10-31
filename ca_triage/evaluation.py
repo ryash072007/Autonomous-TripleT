@@ -110,7 +110,9 @@ def event_labels(df: pd.DataFrame) -> pd.Series:
 def git_commit() -> str:
     try:
         sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
-        dirty = subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip()
+        # Generated outputs don't count: the rerun script rewrites artifacts/ as it goes.
+        dirty = subprocess.check_output(["git", "status", "--porcelain", "--", ".", ":(exclude)artifacts", ":(exclude)submission"],
+                                        cwd=ROOT, text=True).strip()
         return sha + ("+dirty" if dirty else "")
     except Exception:
         return "unknown"
