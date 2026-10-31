@@ -15,10 +15,13 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, __file__.rsplit("scripts", 1)[0] + "scripts")
+from conformal import floor_sets, sets_ltt  # noqa: E402
 from score_baseline import CDM_FIELDS, LATEST_FIELDS, _clean  # noqa: E402
 
 from ca_triage.data import ROOT, load
 from ca_triage.evaluation import cv_summary, metrics, write_evidence
+from ca_triage.ood import ood_score
+from ca_triage.physics import fragility
 from ca_triage.models import cdm_features, decide, event_features, floor_by_miss, miss_tier
 from ca_triage.tiers import TIER_NAMES, Tier, rule_fired, tier
 
@@ -74,6 +77,17 @@ def main() -> None:
     fc.to_csv(ROOT / "submission/test_event_forecasts.csv", index=False)
     fmap = {int(e): i for i, e in enumerate(EF.index)}
 
+    # ---- conformal tier sets, OOD flag, covariance-fragility flag
+    conf = json.loads((MODELS / "conformal.json").read_text())
+    SA = floor_sets(sets_ltt(P, conf["task_a"]["ltt_lambda"]), mt)
+    SA[np.arange(len(pred)), pred] = True  # the tier we report is always in its own set
+    SB = sets_ltt(PB, conf["task_b"]["ltt_lambda"])
+    SB[np.arange(len(fb)), fb] = True
+    ood = joblib.load(MODELS / "ood.joblib")
+    last_cdm = te.sort_values(["event_id", "time_to_tca"]).groupby("event_id").head(1)
+    ood_flag = dict(zip(last_cdm.event_id, ood_score(ood["model"], last_cdm) > ood["threshold"]))
+    frag = fragility(te)
+
     # ---- artifacts/scored/test_events.json
     tes = te.assign(_i=np.arange(len(te))).sort_values(["event_id", "time_to_tca"], ascending=[True, False])
     events = []
@@ -85,12 +99,19 @@ def main() -> None:
         flags = ["short_history"] if len(g) <= 2 else []
         if not np.isfinite(last.c_sigma_r):
             flags.append("missing_sigma")
+        is_ood = bool(ood_flag[eid])
+        if is_ood:
+            flags.append("out_of_distribution")
+        if frag.phys_fragile.iat[i] > 0:
+            flags.append("covariance_fragile")
+        tset = [int(k) for k in np.where(SA[i])[0]]
         events.append({
             "event_id": int(eid), "c_object_type": str(last.c_object_type), "n_cdms": len(g),
             "latest": {k: _clean(last[k]) for k in LATEST_FIELDS if k in last.index},
             "tier": t, "tier_name": TIER_NAMES[Tier(t)],
             "p_tier": [round(float(x), 4) for x in Pf[i]],
-            "tier_set": [t], "abstain": False, "rule": rules[i],
+            "tier_set": tset, "abstain": len(tset) > 1 or is_ood,
+            "forecast_tier_set": [int(k) for k in np.where(SB[j])[0]], "forecast_abstain": int(SB[j].sum()) > 1, "rule": rules[i],
             "forecast_tier_at_tca": int(fb[j]), "p_forecast": [round(float(x), 4) for x in PB[j]],
             "recommendation": None, "flags": flags,
             "cdms": [{k: _clean(r[k]) for k in CDM_FIELDS if k in r.index} for _, r in g.iterrows()],
@@ -101,6 +122,8 @@ def main() -> None:
            "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "events": events}
     path = ROOT / "artifacts/scored/test_events.json"
     path.write_text(json.dumps(out, separators=(",", ":")))
+    print("abstain events", sum(e["abstain"] for e in events), "of", len(events), "forecast_abstain", sum(e["forecast_abstain"] for e in events),
+          "ood", sum("out_of_distribution" in e["flags"] for e in events), "fragile", sum("covariance_fragile" in e["flags"] for e in events))
     print(f"{len(sub)} CDM rows, {len(fc)} events; test_events.json {path.stat().st_size / 1e6:.1f} MB")
     print("CDM tier counts", np.bincount(pred, minlength=3).tolist(), "event forecast counts", np.bincount(fb, minlength=3).tolist())
 

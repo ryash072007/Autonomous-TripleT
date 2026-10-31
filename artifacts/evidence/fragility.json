@@ -1,0 +1,52 @@
+{
+ "generated_utc": "2026-10-31T03:20:01Z",
+ "git_commit": "44a68ee+dirty",
+ "command": "python scripts/fragility.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6",
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "assumptions": "isotropic Gaussian, s = sqrt(c_sigma_r^2 + t_sigma_r^2), R = 10.0 m, k in [0.1, 10] x25, fragile = dPc/dk < 0 at k=1 and Pc_max >= 1e-06",
+ "task_b_features_experiment": {
+  "without_physics": {
+   "n_features": 69,
+   "critical_recall_at_persistence_budget_pooled": 0.8294,
+   "per_fold": [
+    0.7797,
+    0.7966,
+    0.8774,
+    0.9167,
+    0.7788
+   ],
+   "mean": 0.8298,
+   "std": 0.0566
+  },
+  "with_physics": {
+   "n_features": 86,
+   "critical_recall_at_persistence_budget_pooled": 0.8294,
+   "per_fold": [
+    0.7797,
+    0.8051,
+    0.8679,
+    0.9271,
+    0.7699
+   ],
+   "mean": 0.8299,
+   "std": 0.0594
+  }
+ },
+ "flag_vs_final_tier": {
+  "fragile_events": 43,
+  "events": 8293,
+  "p_final_critical_if_fragile": 0.3488,
+  "p_final_critical_if_not": 0.065,
+  "p_final_ge_elevated_if_fragile": 0.7674,
+  "p_final_ge_elevated_if_not": 0.2572
+ },
+ "share_fragile_cdms": {
+  "train": 0.0072,
+  "test": 0.0097
+ },
+ "decision": "see docs/EXPERIMENTS.md: physics features are not added to the models; the fragile flag is shown on events only"
+}

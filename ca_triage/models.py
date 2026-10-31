@@ -30,8 +30,15 @@ def _cat_code(s: pd.Series) -> np.ndarray:
     return pd.Categorical(s.astype(str), categories=OBJECT_TYPES).codes.astype(float)
 
 
-def cdm_features(df: pd.DataFrame) -> pd.DataFrame:
+PHYS_COLS = ["phys_log10_pc", "phys_log10_pc_max", "phys_dilution", "phys_fragile"]
+
+
+TASK_A_PHYSICS = False  # D3 physics Pc features in the per-CDM model (see docs/EXPERIMENTS.md)
+
+
+def cdm_features(df: pd.DataFrame, physics: bool | None = None) -> pd.DataFrame:
     """Per-CDM features from the allowed columns only (plus transforms of them)."""
+    physics = TASK_A_PHYSICS if physics is None else physics
     X = df[FEATURE_COLUMNS].copy()
     X["c_object_type"] = _cat_code(df["c_object_type"])
     ls_c = np.log10(df["c_sigma_r"].astype(float).clip(lower=1e-3))
@@ -47,6 +54,9 @@ def cdm_features(df: pd.DataFrame) -> pd.DataFrame:
     X["mre_minus_logmiss"] = df["max_risk_estimate"] - np.log10(miss)
     X["miss_tier"] = miss_tier(df["miss_distance"])
     X["b0_tier"] = tier(df["max_risk_estimate"], df["miss_distance"])
+    if physics:
+        from .physics import fragility
+        X = X.join(fragility(df))
     return X
 
 
@@ -72,15 +82,19 @@ def _slope(t: np.ndarray, v: np.ndarray) -> float:
     return float(np.polyfit(t[ok], v[ok], 1)[0])
 
 
-def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS) -> pd.DataFrame:
+def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS, physics: bool = False) -> pd.DataFrame:
     """One row per event from CDMs with time_to_tca >= cutoff only. Index = event_id."""
     d = df[df.time_to_tca >= cutoff].copy()
-    F = cdm_features(d)
+    F = cdm_features(d, physics)
     F["event_id"] = d["event_id"].to_numpy()
     F["time_to_tca"] = d["time_to_tca"].to_numpy()
     order = np.lexsort((-F["time_to_tca"].to_numpy(), F["event_id"].to_numpy()))  # by event, tte descending
     F = F.iloc[order]
     series = ["log_miss", "max_risk_estimate", "log_sigma_c", "log_sigma_t", "b0_tier", "miss_tier", "relative_speed"]
+    extra_last = []
+    if physics:
+        series += ["phys_log10_pc", "phys_log10_pc_max"]
+        extra_last = PHYS_COLS
     rows = []
     for eid, g in F.groupby("event_id", sort=True):
         t = g["time_to_tca"].to_numpy()
@@ -88,7 +102,7 @@ def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS) -> pd
         r = {"event_id": eid, "n_cdms": len(g), "tte_last": last.time_to_tca, "tte_first": t[0],
              "span": t[0] - t[-1]}
         for c in FEATURE_COLUMNS + ["log_sigma_c", "log_sigma_t", "log_miss", "rel_pos_norm", "miss_over_sigma_c",
-                                    "miss_over_sigma_t", "mre_minus_logmiss", "miss_tier", "b0_tier"]:
+                                    "miss_over_sigma_t", "mre_minus_logmiss", "miss_tier", "b0_tier"] + extra_last:
             if c not in ("time_to_tca",):
                 r[f"last_{c}"] = last[c]
         for c in series:
@@ -97,6 +111,8 @@ def event_features(df: pd.DataFrame, cutoff: float = DECISION_CUTOFF_DAYS) -> pd
             r[f"slope_{c}"] = _slope(t, v)
             r[f"d1_{c}"] = v[-1] - v[-2] if len(v) >= 2 else 0.0
             r[f"first_{c}"] = v[0]
+        if physics:
+            r["n_fragile"] = float(g["phys_fragile"].sum())
         r["n_b0_critical"] = int((g["b0_tier"] == 2).sum())
         r["n_b0_alert"] = int((g["b0_tier"] >= 1).sum())
         r["tte_gap_last"] = t[-2] - t[-1] if len(t) >= 2 else 0.0

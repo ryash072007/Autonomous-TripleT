@@ -32,8 +32,10 @@ updating this file. Version bumps go in `schema_version`.
       "rule": "Critical: miss distance 0.81 km < 1.0 km",
       "forecast_tier_at_tca": 2,        // Task B; null until S3 lands
       "p_forecast": [0.05, 0.15, 0.80], // null until S3 lands
+      "forecast_tier_set": [1, 2],      // conformal set for the Task B forecast (D1)
+      "forecast_abstain": true,         // forecast set has >1 tier -> analyst decides
       "recommendation": null,           // D2: "Act" | "Wait" | "Dismiss"
-      "flags": [],                      // e.g. "covariance_fragile", "out_of_distribution", "short_history"
+      "flags": [],                      // "covariance_fragile", "out_of_distribution", "short_history", "missing_sigma"
       "cdms": [                         // full history, sorted by time_to_tca descending
         {"time_to_tca": 6.9, "miss_distance": 2400.0, "risk": -9.3, "max_risk_estimate": -6.0,
          "relative_position_r": 0, "relative_position_t": 0, "relative_position_n": 0,

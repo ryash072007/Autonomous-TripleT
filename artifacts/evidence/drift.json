@@ -1,0 +1,140 @@
+{
+ "generated_utc": "2026-10-31T03:20:36Z",
+ "git_commit": "b091cc7+dirty",
+ "command": "python scripts/drift.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6",
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "adversarial_validation": {
+  "auc_grouped_cv_mean": 0.5535,
+  "auc_std": 0.0074,
+  "auc_per_fold": [
+   0.5564,
+   0.5546,
+   0.5402,
+   0.5627,
+   0.5539
+  ],
+  "n_train_cdms_ge_2d": 111939,
+  "n_test_cdms": 24484,
+  "reading": "0.5 = indistinguishable; higher = test differs from train on allowed columns",
+  "top_features_by_gain": {
+   "relative_speed": 0.1952,
+   "F10": 0.0831,
+   "relative_position_r": 0.0822,
+   "relative_position_t": 0.0751,
+   "c_sigma_r": 0.0746,
+   "relative_position_n": 0.0731,
+   "abs_r": 0.0636,
+   "max_risk_estimate": 0.0542,
+   "abs_t": 0.0488,
+   "miss_over_sigma_c": 0.0481
+  }
+ },
+ "univariate_shift_ks": [
+  {
+   "feature": "max_risk_estimate",
+   "ks": 0.0665,
+   "median_train": -6.2813322646837895,
+   "median_test": -6.106682188383888
+  },
+  {
+   "feature": "miss_distance",
+   "ks": 0.0649,
+   "median_train": 12412.0,
+   "median_test": 10179.5
+  },
+  {
+   "feature": "c_sigma_r",
+   "ks": 0.0574,
+   "median_train": 86.06639006798048,
+   "median_test": 74.64940407239972
+  },
+  {
+   "feature": "relative_position_t",
+   "ks": 0.0439,
+   "median_train": 0.2,
+   "median_test": 58.75
+  },
+  {
+   "feature": "relative_position_r",
+   "ks": 0.0395,
+   "median_train": -26.1,
+   "median_test": -28.55
+  },
+  {
+   "feature": "relative_position_n",
+   "ks": 0.0383,
+   "median_train": 49.5,
+   "median_test": -135.95
+  },
+  {
+   "feature": "relative_speed",
+   "ks": 0.0333,
+   "median_train": 12256.0,
+   "median_test": 12566.0
+  },
+  {
+   "feature": "t_sigma_r",
+   "ks": 0.0327,
+   "median_train": 5.7868359230239115,
+   "median_test": 5.56725560269002
+  },
+  {
+   "feature": "time_to_tca",
+   "ks": 0.0302,
+   "median_train": 4.3995259375,
+   "median_test": 4.263230885416668
+  },
+  {
+   "feature": "F10",
+   "ks": 0.0154,
+   "median_train": 72.0,
+   "median_test": 72.0
+  },
+  {
+   "feature": "AP",
+   "ks": 0.0147,
+   "median_train": 6.0,
+   "median_test": 6.0
+  }
+ ],
+ "object_type_share": {
+  "train": {
+   "DEBRIS": 0.5816,
+   "UNKNOWN": 0.3148,
+   "PAYLOAD": 0.0905,
+   "ROCKET BODY": 0.0121,
+   "TBA": 0.001
+  },
+  "test": {
+   "DEBRIS": 0.6103,
+   "UNKNOWN": 0.2905,
+   "PAYLOAD": 0.0854,
+   "ROCKET BODY": 0.0127,
+   "TBA": 0.0012
+  }
+ },
+ "event_ood": {
+  "method": "IsolationForest on latest CDM >= 2 d (log miss, log sigmas, log speed, max_risk_estimate, log |rel pos|)",
+  "threshold_rule": "0.99 quantile of out-of-fold train event scores",
+  "threshold": 0.60608,
+  "train_events": 11942,
+  "test_events": 2167,
+  "test_flagged": 25,
+  "test_flagged_share": 0.0115,
+  "train_flagged_share_by_construction": 0.01,
+  "task_b_critical_recall_train_ood": {
+   "events": 78,
+   "final_critical": 34,
+   "critical_recall": 1.0
+  },
+  "task_b_critical_recall_train_in_dist": {
+   "events": 8215,
+   "final_critical": 517,
+   "critical_recall": 0.9458
+  }
+ }
+}

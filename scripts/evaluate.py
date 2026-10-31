@@ -6,6 +6,7 @@ import numpy as np
 
 from ca_triage.data import DECISION_CUTOFF_DAYS, load
 from ca_triage.evaluation import cv_summary, event_labels, fold_of_events, folds_for, test_like_events, write_evidence
+from ca_triage.physics import HARD_BODY_RADIUS_M, fragility
 from ca_triage.tiers import tier
 
 
@@ -31,6 +32,11 @@ def main() -> None:
         "task_a_b0_all_cdms": cv_summary(tr.tier, b0, folds),
         "task_a_b0_cdms_ge_2d": cv_summary(tr.tier, b0, folds, mask=early),
     }
+    # B1: physics Pc (isotropic encounter-plane Gaussian, k = 1, R = 10 m) through the same tier rule
+    b1 = tier(fragility(tr).phys_log10_pc, tr.miss_distance)
+    res["task_a_b1_physics_cdms_ge_2d"] = cv_summary(tr.tier, b1, folds, mask=early)
+    res["task_a_b1_physics_all_cdms"] = cv_summary(tr.tier, b1, folds)
+    res["b1_assumptions"] = f"s = sqrt(c_sigma_r^2 + t_sigma_r^2), isotropic, R = {HARD_BODY_RADIUS_M} m, miss distance as offset"
     tb = task_b_frame(tr)
     f = tb.index.to_series().map(fold_of_events(tr.event_id)).to_numpy()
     res["task_b_n_events"] = int(len(tb))
@@ -40,7 +46,7 @@ def main() -> None:
     res["notes"] = ("persistence_true_risk uses the observed risk of the last CDM >= 2 d (an analyst reading Pc); "
                     "b0_at_2d uses only allowed columns (max_risk_estimate). Task B label = tier of final CDM.")
     print(write_evidence("baselines.json", res))
-    for k in ("task_a_b0_all_cdms", "task_a_b0_cdms_ge_2d", "task_b_persistence_true_risk", "task_b_b0_at_2d"):
+    for k in ("task_a_b0_all_cdms", "task_a_b0_cdms_ge_2d", "task_a_b1_physics_cdms_ge_2d", "task_b_persistence_true_risk", "task_b_b0_at_2d"):
         p = res[k]["pooled"]
         print(k, "critRecall", p["critical_recall"], "macroF1", p["macro_f1"], "alerts/100", p["alerts_per_100"],
               "missed", p["critical_missed"], "/", p["critical_total"])
