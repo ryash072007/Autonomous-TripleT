@@ -1,0 +1,11 @@
+The applicability paragraph covers all airplanes of five listed models, with no date, serial, or part-number conditions and no exclusions. Applicability therefore depends only on the model. A configuration with a listed model gives APPLIES, and one with an unlisted model gives DOES_NOT_APPLY. The applicability paragraph never refers to an external document, so no real configuration would leave the verdict undetermined.
+
+I considered two possible routes to CANNOT_DETERMINE and rejected both:
+- **External document:** Transport Canada AD CF-2024-41 is referenced only for the compliance actions, not for applicability.
+- **Missing information:** The notice requires no certificate date, serial number, or part number, so leaving those out would not change the verdict.
+
+The only remaining route is an ambiguous model designation, but that would be an artificial construction rather than a realistic owner configuration. I therefore set feasible=false.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "AMBIGUOUS_SCOPE", "evidence_quote": "This AD applies to all MHI RJ Aviation ULC (Type Certificate Previously Held by Bombardier, Inc.) airplanes, certificated in any category, identified in paragraphs (c)(1) through (5) of this AD.", "notes": "Applicability is model-only (all airplanes of five listed models) with no date, serial, part-number or exclusion conditions, so the verdict is always APPLIES or DOES_NOT_APPLY; CANNOT_DETERMINE cannot be realistically constructed."}
+```

@@ -1,0 +1,5 @@
+The applicability paragraph covers all BAE Systems (Operations) Limited Model 4101 airplanes, in any category. A configuration that fails it is any other model, for example a BAE Systems Jetstream 3101. The notice names only the 4101, so a different model clearly fails the condition.
+
+```json
+{"feasible":true,"config":{"make":"BAE Systems (Operations) Limited","model":"Jetstream 3101","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"DOES_NOT_APPLY","gold_reason":"MODEL_NOT_LISTED","evidence_quote":"This AD applies to all BAE Systems (Operations) Limited Model 4101 airplanes, certificated in any category.","notes":"Applicability is limited to Model 4101; a Jetstream 3101 is not listed, so the AD does not apply."}
+```

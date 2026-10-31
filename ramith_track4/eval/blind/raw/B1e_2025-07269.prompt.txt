@@ -1,0 +1,469 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 81 (Tuesday, April 29, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 81 (Tuesday, April 29, 2025)]
+[Proposed Rules]
+[Pages 17743-17746]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-07269]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0742; Project Identifier MCAI-2024-00682-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus SAS Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2020-02-14, which applies to certain Airbus SAS Model A350-941 and -
+1041 airplanes. AD 2020-02-14 requires a one-time inspection of the 
+oxygen containers and adjacent panels and applicable corrective 
+actions. Since the FAA issued AD 2020-02-14, it was determined that 
+additional airplanes may be affected by the same unsafe condition. This 
+proposed AD would continue to require the actions in AD 2020-02-14 and 
+would require expanding the applicability to include additional 
+airplanes, as specified in a European Union Aviation Safety Agency 
+(EASA) AD, which is proposed for incorporation by reference (IBR). The 
+FAA is proposing this AD to address the unsafe condition on these 
+products.
+
+DATES: The FAA must receive comments on this proposed AD by June 13, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0742; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+
+[[Page 17744]]
+
+    Material Incorporated by Reference:
+    <bullet> For Airbus material identified in this AD, contact Airbus 
+SAS, Airworthiness Office--EAL, Rond-Point Emile Dewoitine No: 2, 31700 
+Blagnac Cedex, France; telephone +33 5 61 93 36 96; fax +33 5 61 93 45 
+80; email <a href="/cdn-cgi/l/email-protection#482b27263c21263d2d2c6529213a3f273a3c2021262d3b3b66297b7d7808742968203a2d2e75" http: airbus.com">airbus.com</a>">continued-airworthiness.a350@<a href="http://airbus.com">airbus.com</a></a>; website <a href="http://airbus.com">airbus.com</a>.
+    <bullet> For EASA material identified in this proposed AD, contact 
+EASA, Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; telephone +49 221 
+8999 000; email <a href="/cdn-cgi/l/email-protection#cf8e8bbc8faaaebcaee1aababda0bfaee1aaba"><span class="__cf_email__" data-cfemail="4d0c093e0d282c3e2c6328383f223d2c632838">[email&#160;protected]</span></a>. You may find this material on the 
+EASA website at ad.easa.europa.eu. It is also available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0742.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Nicole Tsang, Aviation Safety 
+Engineer, FAA, 2200 South 216th St., Des Moines, WA 98198; phone: 206-
+231-3959; email: <a href="/cdn-cgi/l/email-protection#3b75525854575e1568156f485a555c7b5d5a5a155c544d"><span class="__cf_email__" data-cfemail="de90b7bdb1b2bbf08df08aadbfb0b99eb8bfbff0b9b1a8">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0742; 
+Project Identifier MCAI-2024-00682-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Nicole Tsang, Aviation Safety Engineer, FAA, 2200 South 216th St., Des 
+Moines, WA 98198; phone: 206-231-3959; email: <a href="/cdn-cgi/l/email-protection#430d2a202c2f266d106d1730222d24032522226d242c35"><span class="__cf_email__" data-cfemail="95dbfcf6faf9f0bbc6bbc1e6f4fbf2d5f3f4f4bbf2fae3">[email&#160;protected]</span></a>. 
+Any commentary that the FAA receives which is not specifically 
+designated as CBI will be placed in the public docket for this 
+rulemaking.
+
+Background
+
+    The FAA issued AD 2020-02-14, Amendment 39-19828 (85 FR 6757, 
+February 6, 2020) (AD 2020-02-14), for certain Airbus SAS Model A350-
+941 and -1041 airplanes. AD 2020-02-14 was prompted by an MCAI 
+originated by EASA, which is the Technical Agent for the Member States 
+of the European Union. EASA issued AD 2019-0210, dated August 26, 2019 
+(EASA AD 2019-0210), to correct an unsafe condition.
+    AD 2020-02-14 requires a one-time inspection of the oxygen 
+containers and adjacent panels, and applicable corrective actions. The 
+FAA issued AD 2020-02-14 to address damaged and unlocked fasteners of 
+the oxygen containers and adjacent panels in the passenger supply 
+channels (PSCs), which could result in insufficient clearance between 
+the oxygen container and adjacent panels and prevent the opening of the 
+oxygen containers, and consequent failure of the oxygen masks to deploy 
+and provide supplemental oxygen in case of an in-flight decompression, 
+possibly resulting in injury to cabin occupants.
+
+Actions Since AD 2020-02-14 Was Issued
+
+    Since the FAA issued AD 2020-02-14, EASA superseded EASA AD 2019-
+0210 and issued EASA AD 2024-0220, dated November 20, 2024 (EASA AD 
+2024-0220) (also referred to as the MCAI), to correct an unsafe 
+condition for certain Airbus SAS Model A350-941 and -1041 airplanes. 
+The MCAI states that since EASA AD 2019-0210 was issued, it was 
+determined that additional A350 manufacturer serial numbers (airplanes) 
+may be affected by the same unsafe condition.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products. You may examine the MCAI in the AD docket at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0742.
+
+Explanation of Retained Requirements
+
+    Although this proposed AD does not explicitly restate the 
+requirements of AD 2020-02-14, this proposed AD would retain all of the 
+requirements of AD 2020-02-14. Those requirements are referenced in 
+EASA AD 2024-0220, which, in turn, is referenced in paragraph (g) of 
+this proposed AD.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    EASA AD 2024-0220 specifies procedures for inspecting the oxygen 
+containers and the installation of adjacent panels located in all PSCs, 
+to check that each fastener of each panel/component is locked and to 
+measure the clearance between the oxygen container door lid and the 
+adjacent panel/component. EASA AD 2024-0220 also describes procedures 
+for applicable corrective actions, including attaining minimum 
+clearance, locking any unlocked fasteners, and replacing damaged parts.
+    The FAA reviewed Airbus Alert Operators Transmission (AOT) A35P015-
+19, Revision 01, dated June 19, 2019. This material identifies affected 
+airplanes for the Group 1 airplanes specified in EASA AD 2024-0220.
+    The FAA also reviewed Airbus AOT A35P023-24, Revision 01, dated 
+July 25, 2024. This material identifies affected airplanes for the 
+Group 2 airplanes specified in EASA AD 2024-0220.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in the MCAI 
+referenced above. The FAA is issuing this NPRM after determining that 
+the unsafe condition described previously is likely to exist or develop 
+in other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in EASA AD 2024-0220 described previously, except for any differences
+
+[[Page 17745]]
+
+identified as exceptions in the regulatory text of this proposed AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2024-0220 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2024-0220 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2024-0220 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2024-
+0220. Material required by EASA AD 2024-0220 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0742 after the 
+FAA final rule is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 19 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                                                                    Cost per
+             Action                  Labor cost       Parts cost    product          Cost on U.S. operators
+----------------------------------------------------------------------------------------------------------------
+Retained actions from AD 2020-   4 work-hours x $85           $0         $340  $5,440 (16 airplanes).
+ 02-14.                           per hour = $340.
+New proposed actions...........  4 work-hours x $85            0          340  1,020 (3 airplanes).
+                                  per hour = $340.
+----------------------------------------------------------------------------------------------------------------
+
+
+                 Estimated Costs of On-Condition Actions
+------------------------------------------------------------------------
+                                                             Cost per
+               Labor cost                   Parts cost        product
+------------------------------------------------------------------------
+1 work-hour x $85 per hour = $85........            * $0             $85
+------------------------------------------------------------------------
+* The FAA has received no definitive data on the parts costs for the on-
+  condition actions.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive (AD) 2020-02-14, Amendment 39-19828 
+(85 FR 6757, February 6, 2020); and
+0
+b. Adding the following new AD:
+
+Airbus SAS: Docket No. FAA-2025-0742; Project Identifier MCAI-2024-
+00682-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by June 13, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2020-02-14, Amendment 39-19828 (85 FR 6757, 
+February 6, 2020) (AD 2020-02-14).
+
+(c) Applicability
+
+    This AD applies to Airbus SAS Model A350-941 and -1041 
+airplanes, certificated in any category, having manufacturer serial 
+numbers listed in Airbus Alert Operators Transmission (AOT) A35P015-
+19, Revision 01, dated June 19, 2019; and Airbus AOT A35P023-24, 
+Revision 01, dated July 25, 2024.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 35, Oxygen.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report that during inspection of the 
+installation of oxygen containers, certain fasteners of the oxygen 
+containers and adjacent panels in the passenger supply channels 
+(PSCs) were found damaged or unlocked; which could result in 
+insufficient clearance between the oxygen container and adjacent 
+panels. This
+
+[[Page 17746]]
+
+AD was also prompted by a determination that additional airplanes 
+may be affected by the same unsafe condition. The FAA is issuing 
+this AD to address damaged and unlocked fasteners of the oxygen 
+containers and adjacent panels in the PSCs, which could result in 
+insufficient clearance between the oxygen container and adjacent 
+panels. The unsafe condition, if not addressed, could prevent the 
+opening of the oxygen containers and result in failure of oxygen 
+masks to deploy and provide supplemental oxygen supply in case of an 
+in-flight decompression, possibly resulting in injury to cabin 
+occupants.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency (EASA) AD 
+2024-0220, dated November 20, 2024 (EASA AD 2024-0220).
+
+(h) Exceptions to EASA AD 2024-0220
+
+    (1) Where EASA AD 2024-0220 refers to ``September 9, 2019 [the 
+effective date of EASA AD 2019-0210],'' this AD requires using March 
+12, 2020 (the effective date of AD 2020-02-14).
+    (2) Where EASA AD 2024-0220 refers to its effective date, this 
+AD requires using the effective date of this AD.
+    (3) Where the ``Groups'' definition in EASA AD 2024-0220 
+specifies ``Group 1 aeroplanes are those having an MSN as listed in 
+the AOT1'' this AD requires replacing that text with ``Group 1 
+airplanes are those having an MSN as listed in Airbus AOT A35P015-
+19, Revision 01, dated June 19, 2019.''
+    (4) Where the ``Groups'' definition in EASA AD 2024-0220 
+specifies ``Group 2 aeroplanes are those having an MSN as listed in 
+the AOT2'' this AD requires replacing that text with ``Group 2 
+airplanes are those having an MSN as listed in Airbus AOT A35P023-
+24, Revision 01, dated July 25, 2024.''
+    (5) This AD does not adopt the ``Remarks'' section of EASA AD 
+2024-0220.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2024-0220 specifies 
+to submit certain information to the manufacturer, this AD does not 
+include that requirement.
+
+(j) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager AIR-
+520, Continued Operational Safety Branch, FAA, has the authority to 
+approve AMOCs for this AD, if requested using the procedures found 
+in 14 CFR 39.19. In accordance with 14 CFR 39.19, send your request 
+to your principal inspector or responsible Flight Standards Office, 
+as appropriate. If sending information directly to the manager of 
+AIR-520, Continued Operational Safety Branch, send it to the 
+attention of the person identified in paragraph (k) of this AD and 
+email to: <a href="/cdn-cgi/l/email-protection#db9a9694989bbdbabaf5bcb4ad"><span class="__cf_email__" data-cfemail="2d6c60626e6d4b4c4c034a425b">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, AIR-520, 
+Continued Operational Safety Branch, FAA; or EASA; or Airbus SAS's 
+EASA Design Organization Approval (DOA). If approved by the DOA, the 
+approval must include the DOA-authorized signature.
+
+(k) Additional Information
+
+    For more information about this AD, contact Nicole Tsang, 
+Aviation Safety Engineer, FAA, 2200 South 216th St., Des Moines, WA 
+98198; phone: 206-231-3959; email: <a href="/cdn-cgi/l/email-protection#a7e9cec4c8cbc289f489f3d4c6c9c0e7c1c6c689c0c8d1"><span class="__cf_email__" data-cfemail="753b1c161a19105b265b2106141b12351314145b121a03">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Airbus Alert Operators Transmission (AOT) A35P015-19, 
+Revision 01, dated June 19, 2019.
+    (ii) Airbus AOT A35P023-24, Revision 01, dated July 25, 2024.
+    (iii) European Union Aviation Safety Agency (EASA) AD 2024-0220, 
+dated November 20, 2024.
+    (3) For Airbus material identified in this AD, contact Airbus 
+SAS, Airworthiness Office--EAL, Rond-Point Emile Dewoitine No: 2, 
+31700 Blagnac Cedex, France; telephone +33 5 61 93 36 96; fax +33 5 
+61 93 45 80; email <a href="/cdn-cgi/l/email-protection#a3c0cccdd7cacdd6c6c78ec2cad1d4ccd1d7cbcacdc6d0d08dc2909693e39fc283cbd1c6c59e" http: airbus.com">airbus.com</a>">continued-airworthiness.a350@<a href="http://airbus.com">airbus.com</a></a>; website 
+<a href="http://airbus.com">airbus.com</a>.
+    (4) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; telephone +49 221 
+8999 000; email <a href="/cdn-cgi/l/email-protection#0e4f4a7d4e6b6f7d6f206b7b7c617e6f206b7b"><span class="__cf_email__" data-cfemail="06474275466367756728637374697667286373">[email&#160;protected]</span></a>. You may find this material on 
+the EASA website at ad.easa.europa.eu.
+    (5) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (6) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#3553471b5c5b46455056415c5a5b755b5447541b525a43"><span class="__cf_email__" data-cfemail="066074286f6875766365726f6968466867746728616970">[email&#160;protected]</span></a>.
+
+    Issued on April 22, 2025.
+Peter A. White,
+Deputy Director, Integrated Certificate Management Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-07269 Filed 4-28-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

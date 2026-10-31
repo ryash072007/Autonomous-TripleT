@@ -1,0 +1,9 @@
+The applicability paragraph covers all Robinson R44 and R44 II helicopters, certificated in any category, with no serial, date, or part-number conditions. A model-only configuration therefore always gives either APPLIES or DOES_NOT_APPLY. Nothing in the applicability text is defined in an external document, and there are no exclusions. The part-number and threshold conditions appear only in the compliance paragraphs, which the verdict definitions leave out of scope.
+
+One argument for CANNOT_DETERMINE is that "R44 and R44 II" could be ambiguous for sub-variants such as R44 Raven I or Astro. These are all R44 type-certificate models, so the paragraph still covers them. A configuration with a vague model name would be unrealistic for an owner to supply, so that route is not a sound basis for the verdict.
+
+The notice therefore cannot support a realistic CANNOT_DETERMINE configuration, and I have set feasible=false.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "APPLIES", "gold_reason": "MODEL_LISTED", "evidence_quote": "This AD applies to Robinson Helicopter Company Model R44 and R44 II helicopters, certificated in any category.", "notes": "Applicability is model-only with no date, serial, PN, or external-document conditions, so no realistic config yields CANNOT_DETERMINE; every listed model APPLIES and any other model DOES_NOT_APPLY."}
+```

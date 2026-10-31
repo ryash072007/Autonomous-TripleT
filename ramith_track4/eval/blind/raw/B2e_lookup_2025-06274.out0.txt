@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-600/700/800/900 series airplanes requiring a maintenance records review for under-torqued or missing nuts on the horizontal stabilizer trim actuator lower gimbal assembly after overhaul?"}

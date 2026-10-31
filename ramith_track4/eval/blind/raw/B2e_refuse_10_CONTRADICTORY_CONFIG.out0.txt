@@ -1,0 +1,1 @@
+{"question": "What inspection interval does the FAA propose in the NPRM for the elevator trim tab actuator on the Airbus 737-800, and what is the compliance deadline after the final rule takes effect?", "config": {"make": "Airbus", "model": "737-800", "cofa_date": null, "serial": null, "part_numbers": []}}

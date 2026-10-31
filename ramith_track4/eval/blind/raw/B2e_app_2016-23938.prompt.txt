@@ -1,0 +1,14 @@
+Below is the applicability paragraph of one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: write a natural question from an aircraft owner/engineer asking whether a proposed AD applies to their aircraft, with the configuration stated inside the question text, so that the correct determination for THIS notice is APPLIES. Identify the notice by describing what it is about (the problem or the AD it supersedes), NOT by docket, Federal Register or AD number. If impossible, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "question": "...", "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "...", "gold_reason": "<code>"}
+
+TITLE: Airworthiness Directives; The Boeing Company Airplanes
+SUMMARY: We propose to adopt a new airworthiness directive (AD) for all The Boeing Company Model 727 airplanes. This proposed AD was prompted by analysis of the cam support assemblies of the main cargo door that indicated the repetitive high frequency eddy current (HFEC) inspections required by the existing maintenance program are not adequate to detect cracks before two adjacent cam support assemblies of the main cargo door could fail. This proposed AD would require repetitive ultrasonic inspections for cracking of the cam support assemblies of the main cargo door and replacement if necessary. We are proposing this AD to detect and correct cracking of the cam support assemblies of the main cargo door. Such cracking could result in reduced structural integrity of the main cargo door and consequent rapid decompression of the airplane.
+APPLICABILITY PARAGRAPH:
+This AD applies to all The Boeing Company Model 727, 727C, 727-
+100, 727-100C, 727-200, and 727-200F series airplanes, certificated 
+in any category,

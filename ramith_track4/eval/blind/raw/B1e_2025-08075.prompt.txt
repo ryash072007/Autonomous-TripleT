@@ -1,0 +1,406 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 89 (Friday, May 9, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 89 (Friday, May 9, 2025)]
+[Proposed Rules]
+[Pages 19662-19664]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-08075]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0750; Project Identifier MCAI-2022-01325-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters Deutschland GmbH 
+Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Airbus Helicopters Deutschland GmbH (AHD) Model MBB-BK 117 
+D-3 helicopters. This proposed AD was prompted by reports of momentary 
+direct current (DC) power interruption in flight of both essential 
+busses. This proposed AD would require revising the existing rotorcraft 
+flight manual (RFM) for your helicopter, as specified in a European 
+Union Aviation Safety Agency (EASA) AD, which is proposed for 
+incorporation by reference. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by June 23, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0750; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#3a7b7e497a5f5b495b145f4f48554a5b145f4f"><span class="__cf_email__" data-cfemail="4405003704212537256a2131362b34256a2131">[email&#160;protected]</span></a>; website: easa.europa.eu. You may find 
+the EASA material on the EASA website ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110. It is also available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0750.
+
+FOR FURTHER INFORMATION CONTACT: Dan McCully, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (303) 
+342-1080; email: <a href="/cdn-cgi/l/email-protection#3e49575252575f5310535d5d4b5252477e585f5f10595148"><span class="__cf_email__" data-cfemail="2f58464343464e4201424c4c5a4343566f494e4e01484059">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0750; 
+Project Identifier MCAI-2022-01325-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to
+
+[[Page 19663]]
+
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Dan 
+McCully, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590. Any commentary that the FAA receives that is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    EASA, which is the Technical Agent for the Member States of the 
+European Union, has issued EASA AD 2022-0208, dated October 11, 2022 
+(EASA AD 2022-0208) (also referred to as the MCAI), to correct an 
+unsafe condition on certain serial-numbered AHD Model MBB-BK117 D-3 and 
+D-3m helicopters. This proposed AD was prompted by reports of momentary 
+DC power interruption in flight of both essential busses. The 
+investigation is still ongoing to identify the root cause of this 
+occurrence. In the interim, AHD developed emergency and malfunction 
+procedures to address this issue. The FAA is proposing this AD to 
+address DC power interruption, which could result in loss of control of 
+the helicopter or reduced situational awareness.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0750.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2022-0208, which specifies procedures for 
+revising the RFM by incorporating an emergency and malfunction 
+procedure, informing all flight crews, and thereafter, operating the 
+helicopter accordingly. This material provides updated battery 
+discharging procedures, which includes a warning in case of total 
+electrical failure.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in EASA AD 2022-0208, described previously, as incorporated by 
+reference, except for any differences identified as exceptions in the 
+regulatory text of this proposed AD. See ``Differences Between this AD 
+and the MCAI'' for a discussion of the general differences included in 
+this AD. The owner/operator (pilot) holding at least a private pilot 
+certificate may revise the existing RFM for your helicopter and must 
+enter compliance with the applicable paragraph of the proposed AD into 
+the helicopter maintenance records in accordance with 14 CFR 43.9(a) 
+and 91.417(a)(2)(v).
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2022-0208 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2022-0208 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Material required by EASA AD 2022-0208 for compliance 
+will be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0750 
+after the FAA final rule is published.
+
+Differences Between This NPRM and the EASA AD
+
+    EASA AD 2022-0208 applies to Model MBB-BK117 D-3m helicopters, 
+whereas this proposed AD would not because that model is not FAA type-
+certificated.
+    The MCAI requires operators to ``inform all flight crew'' of the 
+revisions to the RFM, and thereafter to ``operate the helicopter 
+accordingly.'' However, this AD does not require those actions as those 
+actions are already required by FAA regulations. FAA regulations 
+require operators furnish to pilots any changes to the RFM (for 
+example, 14 CFR 135.21) and to ensure the pilots are familiar with the 
+RFM (for example, 14 CFR 91.505). As with any other flight crew 
+training requirement, training on the updated RFM content is tracked by 
+the operators and recorded in each pilot's training record, which is 
+available for the FAA to review. FAA regulations also require pilots to 
+follow the procedures in the existing RFM including all updates. 
+Therefore, including a requirement in this AD to inform the flight crew 
+and operate the helicopter according to the revised RFM would be 
+redundant and unnecessary.
+
+Interim Action
+
+    The FAA considers this proposed AD would be an interim action. If 
+final action is later identified, the FAA might consider further 
+rulemaking then.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 27 helicopters of U.S. Registry. Labor rates are estimated at 
+$85 per hour. Based on these numbers, the FAA estimates the following 
+costs to comply with this proposed AD.
+    Revising the existing RFM for your helicopter would take 1 work-
+hour for an estimated cost of $85 per helicopter and $2,295 for the 
+U.S. fleet.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil
+
+[[Page 19664]]
+
+aircraft in air commerce by prescribing regulations for practices, 
+methods, and procedures the Administrator finds necessary for safety in 
+air commerce. This regulation is within the scope of that authority 
+because it addresses an unsafe condition that is likely to exist or 
+develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus Helicopters Deutschland GmbH (AHD): Docket No. FAA-2025-0750; 
+Project Identifier MCAI-2022-01325-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by June 23, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Deutschland GmbH (AHD) 
+Model MBB-BK 117 D-3 helicopters, certificated in any category, as 
+identified in European Union Aviation Safety Agency AD 2022-0208, 
+dated October 11, 2022 (EASA AD 2022-0208).
+
+(d) Subject
+
+    Joint Aircraft Service Component (JASC) Code: 2432, Battery/
+Charger System.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of momentary direct current (DC) 
+power interruption in flight of both essential busses. The FAA is 
+issuing this AD to address DC power interruption through updated 
+procedures. The unsafe condition, if not addressed, could result in 
+loss of control of the helicopter or reduced situational awareness.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraph (h) of this AD: Comply with all 
+required actions and compliance times specified in, and in 
+accordance with, EASA AD 2022-0208. The owner/operator (pilot) 
+holding at least a private pilot certificate may revise the existing 
+RFM for your helicopter and must enter compliance with this 
+paragraph of the AD into the helicopter maintenance records in 
+accordance with 14 CFR 43.9(a) and 91.417(a)(2)(v). The record must 
+be maintained as required by 14 CFR 91.417, 121.380, or 135.439.
+
+(h) Exceptions to EASA AD 2022-0208
+
+    (1) Where paragraph (1) of EASA AD 2022-0208 specifies to inform 
+all flight crews and operate the helicopter accordingly, this AD 
+does not require those actions.
+    (2) Where paragraph (2) of EASA AD 2022-0208 specifies ``the RFM 
+emergency and malfunction procedure, is an acceptable method'' this 
+AD requires replacing that text with ``the RFM emergency and 
+malfunction procedure, as defined in this AD, is an acceptable 
+method.''
+    (3) This AD does not adopt the ``Remarks'' section of EASA AD 
+2022-0208.
+
+(i) Special Flight Permit
+
+    Special flight permits are prohibited.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (k) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#2d6c60626e6d4b4c4c034a425b"><span class="__cf_email__" data-cfemail="ca8b8785898aacababe4ada5bc">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(k) Related Information
+
+    For more information about this AD, contact Dan McCully, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (303) 342-1080; email: 
+<a href="/cdn-cgi/l/email-protection#a7d0cecbcbcec6ca89cac4c4d2cbcbdee7c1c6c689c0c8d1"><span class="__cf_email__" data-cfemail="2156484d4d48404c0f4c4242544d4d58614740400f464e57">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2022-0208, 
+dated October 11, 2022.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#9edfdaeddefbffedffb0fbebecf1eeffb0fbeb"><span class="__cf_email__" data-cfemail="08494c7b486d697b69266d7d7a677869266d7d">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find the EASA material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#1f796d3176716c6f7a7c6b7670715f717e6d7e31787069"><span class="__cf_email__" data-cfemail="690f1b4700071a190c0a1d0006072907081b08470e061f">[email&#160;protected]</span></a>.
+
+    Issued on May 5, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-08075 Filed 5-8-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

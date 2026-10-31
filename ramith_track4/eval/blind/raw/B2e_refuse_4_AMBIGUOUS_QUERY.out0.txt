@@ -1,0 +1,1 @@
+{"question": "What is the compliance time for the inspection required by the proposed airworthiness directive, and do I have to repeat it?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

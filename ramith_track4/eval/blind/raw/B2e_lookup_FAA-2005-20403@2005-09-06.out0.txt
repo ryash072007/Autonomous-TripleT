@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Bombardier DHC-8-400 airplanes requiring inspection of laminated shims for cracking or extrusion at the horizontal stabilizer forward attachment fittings and a torque check of the spar attachment bolts?"}

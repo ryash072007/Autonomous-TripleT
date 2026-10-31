@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring helicopter flight manual limitations on operations that need radio altimeter data in Canadian airspace because of 5G C-Band interference?"}

@@ -1,0 +1,1 @@
+{"feasible": false, "question": "", "config": {"make": "Airbus SAS", "model": "A330-841 / A330-941", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "APPLIES", "gold_reason": "MODEL_LISTED"}

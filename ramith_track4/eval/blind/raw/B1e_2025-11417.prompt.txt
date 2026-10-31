@@ -1,0 +1,529 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 118 (Monday, June 23, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 118 (Monday, June 23, 2025)]
+[Proposed Rules]
+[Pages 26466-26469]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-11417]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0482; Project Identifier MCAI-2024-00152-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; De Havilland Aircraft of Canada Limited 
+(Type Certificate Previously Held by Bombardier, Inc.) Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2019-16-09, which applies to certain De Havilland Aircraft of Canada 
+Limited Model DHC-8-400 series airplanes. AD 2019-16-09 requires one-
+time inspections for cracks and damage of the elevator power control 
+unit (PCU) brackets and surrounding area, horizontal stabilizer rear 
+spar, and elevator front spar, and related investigative and corrective 
+actions if necessary. Since the FAA issued AD 2019-16-09, new findings 
+have been reported as a result of maintenance activities and/or 
+inspections. This proposed AD would continue to require certain actions 
+in AD 2019-16-09, and would also require repeating the inspections one 
+time and performing applicable on-condition actions, remove an airplane 
+from the applicability, and provide optional terminating action for the 
+repetitive inspections. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by August 7, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0482; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Transport Canada material identified in this proposed 
+AD, contact Transport Canada, Transport Canada National Aircraft 
+Certification, 159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; 
+telephone 888-663-3639; email <a href="/cdn-cgi/l/email-protection#e7b3a4c9a68e95908895938f8e89829494a38e958284938e918294caa48889948e8089829483828986918e8086858e8b8e9382c9b3a4a79384c98084c98486"><span class="__cf_email__" data-cfemail="97c3d4b9d6fee5e0f8e5e3fffef9f2e4e4d3fee5f2f4e3fee1f2e4bad4f8f9e4fef0f9f2e4f3f2f9f6e1fef0f6f5fefbfee3f2b9c3d4d7e3f4b9f0f4b9f4f6">[email&#160;protected]</span></a>. You may find this material on the 
+Transport Canada website at tc.canada.ca/en/aviation. It is also 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0482.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Yaser Osman, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; telephone 516-
+228-7300; email <a href="/cdn-cgi/l/email-protection#c5fce8a4b3b6e8abbca4a6aae8a6aab685a3a4a4eba2aab3"><span class="__cf_email__" data-cfemail="bc8591ddcacf91d2c5dddfd391dfd3cffcdadddd92dbd3ca">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION: 
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0482; 
+Project Identifier MCAI-2024-00152-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change,
+
+[[Page 26467]]
+
+and include supporting data. The FAA will consider all comments 
+received by the closing date and may amend this proposal because of 
+those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Yaser 
+Osman, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#91a8bcf0e7e2bcffe8f0f2febcf2fee2d1f7f0f0bff6fee7"><span class="__cf_email__" data-cfemail="477e6a2631346a293e2624286a2428340721262669202831">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued AD 2019-16-09, Amendment 39-19712 (84 FR 46434, 
+September 4, 2019) (AD 2019-16-09), for certain De Havilland Aircraft 
+of Canada Limited Model DHC-8-400, -401, and -402 airplanes. AD 2019-
+16-09 was prompted by an MCAI originated by Transport Canada, which is 
+the aviation authority for Canada. Transport Canada issued AD CF-2018-
+34, dated December 17, 2018 (Transport Canada AD CF-2018-34), to 
+correct an unsafe condition.
+    AD 2019-16-09 requires one-time inspections for cracks and damage 
+of the elevator PCU fittings (brackets) and surrounding area, 
+horizontal stabilizer rear spar, and elevator front spar, and related 
+investigative and corrective actions if necessary. The FAA issued AD 
+2019-16-09 to address failure of an elevator PCU fitting (bracket) or 
+fracture of the front spar into two segments; either structural failure 
+may cause a jam in one elevator or a loss of airplane pitch control if 
+both elevators are affected.
+
+Actions Since AD 2019-16-09 Was Issued
+
+    Since the FAA issued AD 2019-16-09, Transport Canada superseded AD 
+CF-2018-34 and issued Transport Canada AD CF-2024-10, dated March 1, 
+2024 (Transport Canada AD CF-2024-10), to correct an unsafe condition 
+for certain De Havilland Aircraft of Canada Limited Model DHC-8-401 and 
+-402 airplanes. Transport Canada AD CF-2024-10 states that new findings 
+have been reported as a result of maintenance activities and/or 
+inspections performed in accordance with De Havilland Aircraft of 
+Canada Limited Service Bulletin 84-55-09, dated June 7, 2018 (the 
+service information required by FAA AD 2019-16-09). Transport Canada AD 
+CF-2024-10 requires repeating the inspections one time and performing 
+applicable on-condition actions, while maintaining the requirements of 
+AD 2019-16-09. Transport Canada AD CF-2024-10 also removes the 
+requirement to report findings to the manufacturer.
+    Transport Canada also issued AD CF-2025-19, dated March 24, 2025 
+(Transport Canada AD CF-2025-19), which provides a new design solution 
+to address the unsafe condition identified in this NPRM and terminates 
+the actions specified in Transport Canada AD CF-2024-10.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products. You may examine Transport Canada ADs CF-2024-10 and CF-
+2025-19 in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-
+0482.
+
+Explanation of Retained Requirements
+
+    Although this proposed AD does not explicitly restate the 
+requirements of AD 2019-16-09, this proposed AD would retain certain 
+requirements of AD 2019-16-09. Those requirements are referenced in 
+Transport Canada AD CF-2024-10, which, in turn, is referenced in 
+paragraph (g) of this proposed AD.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    Transport Canada AD CF-2024-10 specifies procedures for performing 
+detailed visual and fluorescent penetrant inspections for cracks and 
+damage of the elevator PCU fittings (brackets), horizontal stabilizer 
+rear spar, and elevator front spar; repeating the inspections one time; 
+rectifying any cracked or damaged elevator PCU fitting (bracket) (which 
+includes replacing the elevator PCU fitting (bracket) and performing 
+related investigative and corrective actions including performing an 
+eddy current inspection for cracking of certain mating holes of the 
+horizontal stabilizer rear spar); and repairing any cracked or damaged 
+horizontal stabilizer rear spar assembly.
+    Transport Canada AD CF-2025-19 specifies procedures for, among 
+other actions, replacement of existing PCU fittings with redesigned PCU 
+fittings. The replacement includes detailed inspections for damage and 
+eddy current inspections for cracking, repair, installation of new 
+bushings, and installation of doublers.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in Transport 
+Canada AD CF-2024-10 referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop in other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would retain certain requirements of AD 2019-16-
+09. This proposed AD would remove an airplane from the applicability 
+and require accomplishing the actions specified in Transport Canada AD 
+CF-2024-10 described previously, except for any differences identified 
+as exceptions in the regulatory text of this proposed AD. This proposed 
+AD would also provide optional terminating action for the repetitive 
+inspections, as specified in Transport Canada AD CF-2025-19.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to
+
+[[Page 26468]]
+
+incorporate Transport Canada ADs CF-2024-10 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+Transport Canada AD CF-2024-10 in its entirety through that 
+incorporation, except for any differences identified as exceptions in 
+the regulatory text of this proposed AD. Material required by Transport 
+Canada ADs CF-2024-10 for compliance will be available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0482 after the FAA final rule 
+is published.
+
+Interim Action
+
+    The FAA considers that this proposed AD would be an interim action. 
+The FAA is considering mandating the optional terminating action 
+specified in Transport Canada AD CF-2025-19.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 54 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                Labor cost                  Parts cost        Cost per product          Cost on U.S. operators
+----------------------------------------------------------------------------------------------------------------
+13 work-hours x $85 per hour = $1,105....           $0  Up to $1,105...............  Up to $59,670.
+----------------------------------------------------------------------------------------------------------------
+
+
+                  Estimated Costs for Optional Actions
+------------------------------------------------------------------------
+            Labor cost                 Parts cost      Cost per product
+------------------------------------------------------------------------
+48 work-hours x $85 per hour =             $16,343              $20,423
+ $4,080...........................
+------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary on-
+condition actions that would be required based on the results of any 
+required actions. The FAA has no way of determining the number of 
+aircraft that might need this on-condition action:
+
+                 Estimated Costs of On-Condition Actions
+------------------------------------------------------------------------
+            Labor cost                 Parts cost      Cost per product
+------------------------------------------------------------------------
+18 work-hours x $85 per hour =             $14,233              $15,763
+ $1,530...........................
+------------------------------------------------------------------------
+
+    The FAA has received no definitive data on which to base the cost 
+estimates for the on-condition repairs specified in this proposed AD.
+    According to the manufacturer, some or all of the costs of this 
+proposed AD may be covered under warranty, thereby reducing the cost 
+impact on affected individuals. The FAA does not control warranty 
+coverage for affected individuals. As a result, the FAA has included 
+all known costs in the cost estimate.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive (AD) 2019-16-09, Amendment 39-19712 
+(84 FR 46434, September 4, 2019); and
+0
+b. Adding the following new AD:
+
+De Havilland Aircraft of Canada Limited (Type Certificate Previously 
+Held by Bombardier, Inc.): Docket No. FAA-2025-0482; Project 
+Identifier MCAI-2024-00152-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by August 7, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2019-16-09, Amendment 39-19712 (84 FR 46434, 
+September 4, 2019) (AD 2019-16-09).
+
+[[Page 26469]]
+
+(c) Applicability
+
+    This AD applies to De Havilland Aircraft of Canada Limited (type 
+certificate previously held by Bombardier, Inc.) Model DHC-8-401 and 
+-402 airplanes, certificated in any category, as identified in 
+Transport Canada AD CF-2024-10, dated March 1, 2024 (Transport 
+Canada AD CF-2024-10).
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 27, Flight 
+controls.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of cracked elevator power 
+control unit (PCU) fittings (brackets) on the horizontal stabilizer 
+rear spar and cracking on the elevator front spar. The FAA is 
+issuing this AD to address this condition, which, if not detected 
+and corrected, may cause failure of an elevator PCU fitting 
+(bracket) or fracture the front spar into two segments; either 
+structural failure may cause a jam in one elevator or a loss of 
+airplane pitch control if both elevators are affected.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraph (h) of this AD: Comply with all 
+required actions and compliance times specified in, and in 
+accordance with, Transport Canada AD CF-2024-10.
+
+(h) Exceptions to Transport Canada AD CF-2024-10
+
+    (1) Where Transport Canada AD CF-2024-10 refers to ``the 
+effective date of AD CF-2018-34 (31 December 2018),'' this AD 
+requires using October 8, 2019 (the effective date of AD 2019-16-
+09).
+    (2) Where Transport Canada AD CF-2024-10 refers to hours air 
+time, this AD requires using flight hours.
+    (3) Where Transport Canada AD CF-2024-10 refers to ``if cracks 
+or damage'', this AD requires replacing that text with ``if any 
+crack or damage''.
+    (4) Where Transport Canada AD CF-2024-10 specifies actions if 
+certain conditions are found on ``rear spar assembly P/N 85517044 
+and/or elevator assembly P/N 85527021'', this AD requires replacing 
+that text with ``rear spar assembly P/N 85517044 or elevator 
+assembly P/N 85527021''.
+    (5) Where Transport Canada AD CF-2024-10 specifies ``after 
+inspecting as required by AD CF-2018-34'', this AD requires 
+replacing that text with ``after inspecting as specified in 
+Bombardier Service Bulletin 84-55-09 or de Havilland Aircraft of 
+Canada Limited Service Bulletin 84-55-09''.
+    (6) Where paragraph B. of Part I and paragraph A. of Part II of 
+Transport Canada AD CF-2024-10 specify a compliance time to do a 
+repeat inspection, this AD allows the inspection to be done within 
+90 days after the effective date of this AD.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in Transport Canada AD CF-2024-
+10 specifies to submit certain information to the manufacturer, this 
+AD does not include that requirement.
+
+(j) Optional Terminating Action for Repetitive Inspections
+
+    (1) For airplane serial numbers 4001 and 4003 through 4058 
+inclusive on which any inspection specified in Section 3.B. of the 
+Accomplishment Instructions of Bombardier Service Bulletin 84-55-09 
+or de Havilland Aircraft of Canada Limited Service Bulletin 84-55-09 
+has been done: Replacement of existing PCU fittings with redesigned 
+PCU fittings in accordance with Part I, paragraph B., of Transport 
+Canada AD CF-2025-19, dated March 24, 2025, terminates the 
+requirements of paragraph (g) of this AD.
+    (2) For airplane serial numbers 4059 through 4580 inclusive on 
+which any inspection specified in Section 3.B. of the Accomplishment 
+Instructions of Bombardier Service Bulletin 84-55-09 or de Havilland 
+Aircraft of Canada Limited Service Bulletin 84-55-09 has been done: 
+Replacement of existing PCU fittings with redesigned PCU fittings in 
+accordance with Part II, paragraphs B. and C., of Transport Canada 
+AD CF-2025-19, dated March 24, 2025, terminates the requirements of 
+paragraph (g) of this AD.
+
+(k) Credit for Previous Actions
+
+    This paragraph provides credit for the actions specified in 
+paragraph A. of Part I of Transport Canada AD CF-2024-10, as 
+required by paragraph (g) of this AD, if those actions were 
+performed before the effective date of this AD using Bombardier 
+Service Bulletin 84-55-09, dated June 7, 2018; or de Havilland 
+Aircraft of Canada Limited Service Bulletin 84-55-09, Revision A, 
+dated January 10, 2020.
+
+(l) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, 
+International Validation Branch, FAA, has the authority to approve 
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or responsible Flight Standards Office, as 
+appropriate. If sending information directly to the Manager, 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (m)(1) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#b6f7fbf9f5f6d0d7d798d1d9c0"><span class="__cf_email__" data-cfemail="c1808c8e8281a7a0a0efa6aeb7">[email&#160;protected]</span></a>.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, International 
+Validation Branch, FAA; or Transport Canada; or De Havilland 
+Aircraft of Canada Limited's Transport Canada Design Approval 
+Organization (DAO). If approved by the DAO, the approval must 
+include the DAO-authorized signature.
+
+(m) Additional Information
+
+    (1) For more information about this AD, contact Yaser Osman, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#3c05115d4a4f1152455d5f53115f534f7c5a5d5d125b534a"><span class="__cf_email__" data-cfemail="f0c9dd918683dd9e8991939fdd939f83b0969191de979f86">[email&#160;protected]</span></a>.
+    (2) For Bombardier or De Havilland Aircraft of Canada Limited 
+material identified in this AD that is not incorporated by 
+reference, contact De Havilland Aircraft of Canada Limited, Dash 8 
+Series Customer Response Centre, 5800 Explorer Drive, Mississauga, 
+Ontario, L4W 5K9, Canada; telephone North America (toll-free): 855-
+310-1013, Direct: 647-277-5820; email <a href="/cdn-cgi/l/email-protection#e2968a86a2de83c28a908784df" http: dehavilland.com">dehavilland.com</a>">thd@<a href="http://dehavilland.com">dehavilland.com</a></a>; website 
+<a href="http://dehavilland.com">dehavilland.com</a>.
+
+(n) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Transport Canada AD CF-2024-10, dated March 1, 2024.
+    (ii) Transport Canada AD CF-2025-19, dated March 24, 2025.
+    (3) For Transport Canada material identified in this AD, contact 
+Transport Canada, Transport Canada National Aircraft Certification, 
+159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; telephone 888-
+663-3639; email <a href="/cdn-cgi/l/email-protection#a2f6e18ce3cbd0d5cdd0d6cacbccc7d1d1e6cbd0c7c1d6cbd4c7d18fe1cdccd1cbc5ccc7d1c6c7ccc3d4cbc5c3c0cbcecbd6c78cf6e1e2d6c18cc5c18cc1c3"><span class="__cf_email__" data-cfemail="085c4b2649617a7f677a7c6061666d7b7b4c617a6d6b7c617e6d7b254b67667b616f666d7b6c6d66697e616f696a6164617c6d265c4b487c6b266f6b266b69">[email&#160;protected]</span></a>. You may find this material on 
+the Transport Canada website at tc.canada.ca/en/aviation.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a>, or email <a href="/cdn-cgi/l/email-protection#8bedf9a5e2e5f8fbeee8ffe2e4e5cbe5eaf9eaa5ece4fd"><span class="__cf_email__" data-cfemail="5c3a2e7235322f2c393f283533321c323d2e3d723b332a">[email&#160;protected]</span></a>.
+
+    Issued on June 16, 2025.
+Paul R. Bernado,
+Acting Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-11417 Filed 6-20-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

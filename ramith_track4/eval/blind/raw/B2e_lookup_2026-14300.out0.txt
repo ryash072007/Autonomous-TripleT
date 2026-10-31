@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Bombardier BD-700-2A12 airplanes requiring inspection of secondary power distribution assemblies (SPDA) for a protective film cover that was not removed?"}

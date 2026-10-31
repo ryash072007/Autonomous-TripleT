@@ -1,0 +1,423 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 42 (Wednesday, March 5, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 42 (Wednesday, March 5, 2025)]
+[Proposed Rules]
+[Pages 11239-11241]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-03526]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0336; Project Identifier MCAI-2022-00194-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; MHI RJ Aviation ULC (Type Certificate 
+Previously Held by Bombardier, Inc.) Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all MHI RJ Aviation ULC Model CL-600-2C10 (Regional Jet Series 700, 
+701, and 702), CL-600-2C11 (Regional Jet Series 550), CL-600-2D15 
+(Regional Jet Series 705), CL-600-2D24 (Regional Jet Series 900), and 
+CL-600-2E25 (Regional Jet Series 1000) airplanes. This proposed AD was 
+prompted by a determination that new or more restrictive aircraft 
+maintenance manual (AMM) tasks are necessary. This proposed AD would 
+require revising the existing maintenance or inspection program, as 
+applicable, to incorporate new or more restrictive AMM tasks, as 
+specified in a Transport Canada AD, which is proposed for incorporation 
+by reference (IBR). The FAA is proposing this AD to address the unsafe 
+condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by April 21, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0336; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Transport Canada material identified in this proposed 
+AD, contact Transport Canada, Transport Canada National Aircraft 
+Certification, 159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; 
+telephone 888-663-3639; email <a href="/cdn-cgi/l/email-protection#e1b5a2cfa08893968e939589888f849292a5889384829588978492cca28e8f9288868f849285848f809788868083888d889584cfb5a2a19582cf8682cf8280"><span class="__cf_email__" data-cfemail="693d2a4728001b1e061b1d0100070c1a1a2d001b0c0a1d001f0c1a442a06071a000e070c1a0d0c07081f000e080b0005001d0c473d2a291d0a470e0a470a08">[email&#160;protected]</span></a>; website at tc.canada.ca/en/
+aviation. It is also available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-
+2025-0336.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Christopher Spencer, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: 516-228-7300; email: <a href="/cdn-cgi/l/email-protection#fcc5d19d8a8fd192859d9f93d19f938fbc9a9d9dd29b938a"><span class="__cf_email__" data-cfemail="20190d4156530d4e5941434f0d434f53604641410e474f56">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0336; 
+Project Identifier MCAI-2022-00194-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Christopher Spencer, Aviation Safety Engineer, FAA, 1600 Stewart 
+Avenue, Suite 410, Westbury, NY 11590; phone: 516-228-7300; email: <a href="/cdn-cgi/l/email-protection#e9d0c4889f9ac48790888a86c48a869aa98f8888c78e869f"><span class="__cf_email__" data-cfemail="9fa6b2fee9ecb2f1e6fefcf0b2fcf0ecdff9fefeb1f8f0e9">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is 
+not specifically designated as
+
+[[Page 11240]]
+
+CBI will be placed in the public docket for this rulemaking.
+
+Background
+
+    Transport Canada, which is the aviation authority for Canada, has 
+issued Transport Canada AD CF-2019-44, dated December 9, 2019 
+(Transport Canada AD CF-2019-44) (also referred to as the MCAI), to 
+correct an unsafe condition on all MHI RJ Aviation ULC (Type 
+Certificate Previously Held by Bombardier, Inc.) Model CL-600-2C10 
+(Regional Jet Series 700, 701, and 702), CL-600-2C11 (Regional Jet 
+Series 550), CL-600-2D15 (Regional Jet Series 705), CL-600-2D24 
+(Regional Jet Series 900), and CL-600-2E25 (Regional Jet Series 1000) 
+airplanes. The MCAI states the manufacturer developed a new appendix 
+for candidate certification maintenance requirement (CCMR) interval 
+limitations that are airworthiness limitations. The FAA has determined 
+failure to adhere to the interval limitations specified in the appendix 
+can lead reduced structural integrity and reduced controllability of 
+the airplane.
+    The FAA is proposing this AD to address reduced structural 
+integrity and reduced controllability of the airplane.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0336.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in the MCAI 
+referenced above. The FAA is issuing this NPRM after determining that 
+the unsafe condition described previously is likely to exist or develop 
+on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require revising the existing maintenance or 
+inspection program, as applicable, to incorporate new or more 
+restrictive AMM tasks, which are specified in Transport Canada AD CF-
+2019-44 described previously, as incorporated by reference. Any 
+differences with Transport Canada AD CF-2019-44 are identified as 
+exceptions in the regulatory text of this proposed AD and discussed 
+under ``Differences Between This Proposed AD and the MCAI or Referenced 
+Material.''
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate Transport Canada AD CF-2019-44 by reference 
+in the FAA final rule. This proposed AD would, therefore, require 
+compliance with Transport Canada AD CF-2019-44 through that 
+incorporation, except for any differences identified as exceptions in 
+the regulatory text of this proposed AD. Material required by Transport 
+Canada AD CF-2019-44 for compliance will be available at 
+<a href="http://regulations.gov">regulations.gov</a> by searching for and locating Docket No. FAA-2025-0336 
+after the FAA final rule is published.
+
+Differences Between This Proposed AD and the MCAI or Referenced 
+Material
+
+    Transport Canada AD CF-2019-44 introduces new CCMR intervals that 
+the FAA cannot mandate as CCMRs as specified in the MCAI. Instead of 
+mandating the CCMRs as done in the Transport Canada AD, the FAA, after 
+coordination with Transport Canada, determined the corresponding AMM 
+task numbers will be used. Therefore, the FAA proposes to mandate the 
+AMM tasks as specified in paragraph (h)(2) of this proposed AD.
+    Transport Canada AD CF-2019-44 refers to ``Temporary Revision (TR) 
+ALI-0716, dated September 13, 2019, or later revisions'' for the 
+airworthiness limitation tasks. Since that TR was issued, TR ALI-0735, 
+dated April 15, 2020, has been published. The FAA has referred to TR 
+ALI-0735, dated April 15, 2020, in paragraph (h)(2) of this proposed 
+AD.
+
+Costs of Compliance
+
+    The FAA estimates that this proposed AD affects 556 airplanes of 
+U.S. registry. The FAA estimates the following costs to comply with 
+this proposed AD:
+    The FAA has determined that revising the maintenance or inspection 
+program takes an average of 90 work-hours per operator, although the 
+agency recognizes that this number may vary from operator to operator. 
+Since operators incorporate maintenance or inspection program changes 
+for their affected fleet(s), the FAA has determined that a per-operator 
+estimate is more accurate than a per-airplane estimate. Therefore, the 
+agency estimates the average total cost per operator to be $7,650 (90 
+work-hours x $85 per work-hour).
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+ List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+
+[[Page 11241]]
+
+
+    Authority: 49 U.S.C. 106(f), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+MHI RJ Aviation ULC (Type Certificate Previously Held by Bombardier, 
+Inc.): Docket No. FAA-2025-0336; Project Identifier MCAI-2022-00194-
+T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by April 21, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to all MHI RJ Aviation ULC (Type Certificate 
+Previously Held by Bombardier, Inc.) airplanes, certificated in any 
+category, identified in paragraphs (c)(1) through (5) of this AD.
+    (1) Model CL-600-2C10 (Regional Jet Series 700, 701, and 702) 
+airplanes.
+    (2) Model CL-600-2C11 (Regional Jet Series 550) airplanes.
+    (3) Model CL-600-2D15 (Regional Jet Series 705) airplanes.
+    (4) Model CL-600-2D24 (Regional Jet Series 900) airplanes.
+    (5) Model CL-600-2E25 (Regional Jet Series 1000) airplanes.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 05, Time Limits/
+Maintenance Checks.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a determination that new or more 
+restrictive aircraft maintenance manual (AMM) tasks are necessary 
+because failure to adhere to the interval limitations can lead to 
+reduced structural integrity and reduced controllability of the 
+airplane. The FAA is issuing this AD to address reduced structural 
+integrity and reduced controllability of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Maintenance or Inspection Program Revision
+
+    Except as specified in paragraph (h) of this AD: Comply with all 
+required actions and compliance times specified in, and in 
+accordance with, Transport Canada AD CF-2019-44, dated December 9, 
+2019 (Transport Canada AD CF-2019-44).
+
+(h) Exception to Transport Canada AD CF-2019-44
+
+    (1) Where Transport Canada AD CF-2019-44 refers to its effective 
+date, this AD requires using the effective date of this AD.
+    (2) Where paragraph 1. of Transport Canada AD CF-2019-44 
+specifies to ``incorporate the revised Appendix, A2-00, into Part 2 
+ALI as introduced by Temporary Revision (TR) ALI-0716, dated 13 
+September 2019, or later revisions of these tasks approved by 
+Transport Canada,'' this AD requires replacing that text with 
+``revise the existing maintenance or inspection program, as 
+applicable, by incorporating the AMM tasks, including the interval 
+limitation, specified in the revised Appendix, A2-00, as introduced 
+by Temporary Revision (TR) ALI-0735, dated April 15, 2020, or later 
+revisions of these tasks approved by Transport Canada. Only the AMM 
+tasks and intervals must be incorporated.''
+    (3) The initial compliance time for doing the AMM tasks 
+specified in the TR identified in paragraph (h)(2) of this AD is at 
+the later of the times specified in paragraphs (h)(3)(i) and (ii) of 
+this AD.
+    (i) Before the applicable interval limitation specified in the 
+TR identified in paragraph (h)(2) of this AD since entry into 
+service.
+    (ii) Within 30 days after the effective date of this AD.
+    (4) This AD does not adopt paragraphs 2. and 3. of Transport 
+Canada AD CF-2019-44.
+
+(i) No Alternative Actions or Intervals
+
+    After the existing maintenance or inspection program has been 
+revised as required by paragraph (g) of this AD, no alternative 
+actions (e.g., inspections) or intervals may be used unless the 
+actions and intervals are approved as an alternative method of 
+compliance (AMOC) in accordance with the procedures specified in 
+paragraph (j) of this AD.
+
+(j) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, 
+International Validation Branch, FAA, has the authority to approve 
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or responsible Flight Standards Office, as 
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (k) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#46070b09050620272768212930"><span class="__cf_email__" data-cfemail="b3f2fefcf0f3d5d2d29dd4dcc5">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, International 
+Validation Branch, FAA; or Transport Canada; or MHI RJ Aviation 
+ULC's Transport Canada Design Approval Organization (DAO). If 
+approved by the DAO, the approval must include the DAO-authorized 
+signature.
+
+(k) Additional Information
+
+    For more information about this AD, contact Christopher Spencer, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: 516-228-7300; email: <a href="/cdn-cgi/l/email-protection#5d64703c2b2e7033243c3e32703e322e1d3b3c3c733a322b"><span class="__cf_email__" data-cfemail="ae9783cfd8dd83c0d7cfcdc183cdc1ddeec8cfcf80c9c1d8">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Transport Canada AD CF-2019-44, dated December 9, 2019.
+    (ii) [Reserved]
+    (3) For Transport Canada material identified in this AD, contact 
+Transport Canada, Transport Canada National Aircraft Certification, 
+159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; telephone 888-
+663-3639; email <a href="/cdn-cgi/l/email-protection#792d3a5738100b0e160b0d1110171c0a0a3d100b1c1a0d100f1c0a543a16170a101e171c0a1d1c17180f101e181b1015100d1c572d3a390d1a571e1a571a18"><span class="__cf_email__" data-cfemail="e0b4a3cea18992978f929488898e859393a4899285839489968593cda38f8e9389878e859384858e819689878182898c899485ceb4a3a09483ce8783ce8381">[email&#160;protected]</span></a>; website tc.canada.ca/en/
+aviation.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#83e5f1adeaedf0f3e6e0f7eaecedc3ede2f1e2ade4ecf5"><span class="__cf_email__" data-cfemail="fc9a8ed295928f8c999f88959392bc929d8e9dd29b938a">[email&#160;protected]</span></a>.
+
+    Issued on February 27, 2025.
+Victor Wicklund,
+Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-03526 Filed 3-4-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

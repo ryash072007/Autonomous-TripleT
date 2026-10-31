@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Bell 429 helicopters that shortens the repetitive inspection interval for the tail rotor gearbox support assembly and tail boom rivets?"}

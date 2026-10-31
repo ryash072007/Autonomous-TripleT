@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-900 and -900ER airplanes requiring repetitive inspections for fuselage skin cracking along chem-mill steps at the crown skin and shear wrinkle areas, with shorter compliance times?"}
