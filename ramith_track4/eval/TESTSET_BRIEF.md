@@ -1,3 +1,5 @@
+> **Update 11:12:** the assistant wrote and froze the test set (see DECISIONS.md #5). Ramith: please spot-check 10 labels instead of writing questions.
+
 # Test set brief (for Ramith). 40 questions, write them from the documents, NOT from system output.
 
 Sources: the xlsx (`data/raw/ad_nprm.xlsx`, Summary column) and the FR full text. Example full text:
