@@ -63,7 +63,7 @@ One screen, no scrolling required, one obvious action.
 
 ## Console
 
-Top bar: OrbitGuard wordmark, replay clock, counts per tier, "Guided demo" button. A thin ridge silhouette strip at
+Top bar: OrbitGuard wordmark, **data toggle `Test dataset | Live`** (Test is default; Live shows a banner: "Space-Track public CDMs, tiered by rule only, model inputs not published" and the snapshot time), replay clock, counts per tier, "Guided demo" button. A thin ridge silhouette strip at
 the bottom of the page keeps the scene.
 
 1. **Queue** (left, ~360 px): events sorted by tier then time to TCA. Each row: tier icon + label, event ID, time to

@@ -5,6 +5,9 @@ dataset/
 # generated; evidence JSON and the submission are committed on purpose
 artifacts/*
 !artifacts/evidence/
+!artifacts/scored/
+!artifacts/demo.json
+!artifacts/live_snapshot.json
 *.joblib
 *.pkl
 
