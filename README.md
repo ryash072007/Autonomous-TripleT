@@ -147,6 +147,9 @@ python scripts/serve.py           # builds web/ on first run, then http://localh
 ```
 
 Rebuild every model and evidence file: `sh scripts/rerun_evidence.sh` (the two one-shot test scores are not re-run).
+Model binaries are not committed. A retrain on a fresh clone is accepted only if its predictions match the reference
+sample stored in the frozen [model card](artifacts/model_card.json) within 1e-6. LightGBM pickles are not
+byte-identical across runs, so the file hashes can differ while the predictions match.
 Optional: `ANTHROPIC_API_KEY` for LLM briefs, and `SPACETRACK_USER` / `SPACETRACK_PASS` for live mode. See
 `.env.example`.
 
