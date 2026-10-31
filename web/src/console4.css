@@ -53,3 +53,8 @@
 .offline-h { font-size: clamp(32px, 5vw, 52px); color: var(--rock); margin: 4px 0 12px; }
 
 .offline a { color: var(--rock); font-weight: 700; }
+
+.snap-badge { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); z-index: 90; background: rgba(255, 248, 241, 0.95); color: var(--rock);
+  border: 1px solid rgba(192, 141, 120, 0.4); border-radius: 999px; padding: 3px 14px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 14px rgba(90, 58, 51, 0.15); pointer-events: none; white-space: nowrap; }
+@media (max-width: 700px) { .snap-badge { font-size: 11px; white-space: normal; text-align: center; width: max-content; max-width: 92vw; } }
+.decision-row button:disabled { cursor: not-allowed; }

@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { isSnapshot, onMode } from "./api";
 
 export const TIER_NAMES = ["Safe", "Elevated", "Critical"];
 export const TIER_VAR = ["var(--safe)", "var(--elevated)", "var(--critical)"];
@@ -93,4 +94,11 @@ export function RecChip({ rec, reason }: { rec?: string | null; reason?: string 
       {rec}
     </span>
   );
+}
+
+/** True while the app is showing the saved read-only snapshot instead of the live API. */
+export function useSnapshotMode(): boolean {
+  const [s, set] = useState(isSnapshot());
+  useEffect(() => { set(isSnapshot()); return onMode((m) => set(m === "snapshot")); }, []);
+  return s;
 }

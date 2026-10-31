@@ -5,6 +5,8 @@ import Queue from "./Queue";
 import EventPage from "./EventPage";
 import Backdrop from "./Backdrop";
 import { DemoBar, demoHighlight } from "./Panels";
+import { useSnapshotMode } from "./ui";
+import { snapshotForced } from "./api";
 import Next24 from "./Next24";
 import Results from "./Results";
 import Insights from "./Insights";
@@ -42,6 +44,7 @@ export default function App() {
   const [sky, setSky] = useState<EventLight[]>([]);
   const [fullFor, setFullFor] = useState<Dataset | null>(null);
   const tourTried = useRef(false);
+  const snap = useSnapshotMode();
   const [welcome, setWelcome] = useState(false);
   const [attn, setAttn] = useState(false);
   const pulse = () => { setAttn(true); window.setTimeout(() => setAttn(false), 10000); };
@@ -125,11 +128,14 @@ export default function App() {
     api.demo().then((d) => { setDemo(d); setDemoStep(Math.min(d.items.length, +m[1]) - 1); }).catch(() => {});
   }, []);
 
-  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={0} windowCount={0} onOpen={open} offline={apiErr} />;
+  const snapBadge = snap ? <div className="snap-badge" role="status">{snapshotForced() ? "Showing a saved snapshot" : "Showing a saved snapshot (backend offline)"} · read-only</div> : null;
+
+  if (view === "landing") return <>{snapBadge}<Landing summary={summary} events={sky} clockDays={0} windowCount={0} onOpen={open} offline={apiErr} /></>;
 
   const key = demo?.items[demoStep]?.key;
   return (
     <div className="console">
+      {snapBadge}
       <div className="sky-fixed" />
       <Backdrop sky={sky} />
       <header className="topbar">

@@ -6,7 +6,7 @@ import { AuditRec, Dataset, EventFull, EventLight, api } from "./api";
 import { CollidePanel } from "./Consequence";
 import { CostSlider, Geometry, WhatIf } from "./EventDetail";
 import {
-  ForecastFlag, RecChip, TIER_NAMES, TIER_VAR, Term, TierIcon, flagSentence, fmtMiss, fmtPc, fmtTtca, isThresholdFlag, sigmaUnusable,
+  ForecastFlag, RecChip, useSnapshotMode, TIER_NAMES, TIER_VAR, Term, TierIcon, flagSentence, fmtMiss, fmtPc, fmtTtca, isThresholdFlag, sigmaUnusable,
 } from "./ui";
 
 const Globe = lazy(() => import("./Globe"));
@@ -122,36 +122,39 @@ function DecisionRow({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
     try { await api.postAudit(ev.event_id, action, [text, note].filter(Boolean).join(": "), dataset); setNote(""); setErr(""); setDone(label); load(); }
     catch { setErr("Could not write the audit record."); }
   };
+  const snap = useSnapshotMode();
+  const off = "Decisions are logged by the backend; offline snapshot is read-only";
   const rec = ev.recommendation;
   const decided = rec === "Act" || rec === "Dismiss";
   const other = rec === "Act" ? "Dismiss" : "Act";
   return (
-    <div className="decision-row" title="Your decision is logged with a tamper-evident hash chain; the tool never acts on its own">
+    <div className="decision-row" title={snap ? off : "Your decision is logged with a tamper-evident hash chain; the tool never acts on its own"}>
       <div className="decision-line">
         <span className="decision-q">OrbitGuard recommends: <b>{rec ?? "no recommendation"}</b>. <b>Your call:</b></span>
         {decided ? (
           <>
-            <button className="btn primary" onClick={() => act("Accept", `agreed with ${rec}`, "Agree")}>Agree</button>
-            <button className="btn warn" onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
-            <button className="btn" onClick={() => act("Override", `override ${rec} to ${other}`, `Override to ${other}`)}>Override → {other}</button>
+            <button className="btn primary" disabled={snap} onClick={() => act("Accept", `agreed with ${rec}`, "Agree")}>Agree</button>
+            <button className="btn warn" disabled={snap} onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
+            <button className="btn" disabled={snap} onClick={() => act("Override", `override ${rec} to ${other}`, `Override to ${other}`)}>Override → {other}</button>
           </>
         ) : (
           <>
-            <button className="btn primary" onClick={() => act("Accept", "decided Act", "Act")}>Act</button>
-            <button className="btn warn" onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
-            <button className="btn" onClick={() => act("Dismiss", "decided Dismiss", "Dismiss")}>Dismiss</button>
+            <button className="btn primary" disabled={snap} onClick={() => act("Accept", "decided Act", "Act")}>Act</button>
+            <button className="btn warn" disabled={snap} onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
+            <button className="btn" disabled={snap} onClick={() => act("Dismiss", "decided Dismiss", "Dismiss")}>Dismiss</button>
           </>
         )}
-        <input type="text" placeholder="Note (optional)" value={note} maxLength={400} onChange={(e) => setNote(e.target.value)} aria-label="Decision note" />
+        <input type="text" placeholder="Note (optional)" disabled={snap} value={note} maxLength={400} onChange={(e) => setNote(e.target.value)} aria-label="Decision note" />
       </div>
       <button className="link-btn small trail-toggle" onClick={() => setShowTrail((x) => !x)} aria-expanded={showTrail}>
-        {trail.length} decision{trail.length === 1 ? "" : "s"} on record {showTrail ? "▾" : "▸"}{done ? ` · just logged: ${done}` : ""}
+        {snap ? "audit trail unavailable offline" : `${trail.length} decision${trail.length === 1 ? "" : "s"} on record`} {showTrail ? "▾" : "▸"}{done ? ` · just logged: ${done}` : ""}
       </button>
       {err && <div className="err">{err}</div>}
       {showTrail && (
         <div className="trail-inline">
           <ol className="trail">
-            {trail.length === 0 && <li className="dim">No decisions recorded for this event.</li>}
+            {snap && <li className="dim">Unavailable offline: the audit log lives on the backend.</li>}
+            {!snap && trail.length === 0 && <li className="dim">No decisions recorded for this event.</li>}
             {trail.map((r) => (
               <li key={r.seq}><b>{r.action}</b> <span className="dim small">{r.ts.replace("T", " ").replace("Z", " UTC")}</span>
                 {r.note && <span> "{r.note}"</span>}<span className="mono hash" title={`prev ${r.prev_hash}`}>{r.hash.slice(0, 8)}</span></li>
