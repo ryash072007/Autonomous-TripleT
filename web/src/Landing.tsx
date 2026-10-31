@@ -40,9 +40,10 @@ interface Props {
   clockDays: number;
   windowCount: number;
   onOpen: (id?: number) => void;
+  offline?: boolean;
 }
 
-export default function Landing({ summary, events, clockDays, windowCount, onOpen }: Props) {
+export default function Landing({ summary, events, clockDays, windowCount, onOpen, offline }: Props) {
   const [how, setHow] = useState(false);
   const [tip, setTip] = useState<{ e: EventLight; x: number; y: number } | null>(null);
   const sky = useMemo(() => sampleSky(events), [events]);
@@ -115,8 +116,12 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
         <p className="hook">
           {summary ? (
             <>
-              <b>{summary.total.toLocaleString()}</b> close approaches. <b>{summary.n_critical.toLocaleString()}</b> need a
-              decision. You have two days.
+              <b>{summary.total.toLocaleString()}</b> close approaches. <b>{summary.n_critical.toLocaleString()}</b> need a decision. You have two days.
+            </>
+          ) : offline ? (
+            <>
+              Live data is offline right now. The full walkthrough is in the{" "}
+              <a className="hook-link" href="https://github.com/ryash072007/Autonomous-TripleT#readme" target="_blank" rel="noreferrer">README</a>.
             </>
           ) : (
             <span className="dim">Loading events...</span>
@@ -138,7 +143,7 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
         <span>
           {summary?.model
             ? `Model: ${summary.model.name.replace(/\s*\(.*\)/, "")} · scored ${(summary.generated_utc ?? "").slice(0, 10)} · ${summary.dataset} dataset`
-            : "Loading model info..."}
+            : offline ? "Backend offline" : "Loading model info..."}
         </span>
         <span>Data: ESA CAC (CC BY 4.0)</span>
       </div>

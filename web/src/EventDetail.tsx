@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import {
   CartesianGrid, Legend, Line, LineChart, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
-import { AuditRec, Cdm, Dataset, EventFull, ScoreResp, api } from "./api";
+import { BASE, AuditRec, Cdm, Dataset, EventFull, ScoreResp, api } from "./api";
 import {
   AbstainBadge, RecChip, Sigma, flagSentence, isThresholdFlag, ForecastFlag, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
 } from "./ui";
@@ -284,7 +284,7 @@ function Brief({ id, dataset }: { id: number; dataset: Dataset }) {
   const [b, setB] = useState<{ text: string; source: string; fallback_reason: string | null } | null>(null);
   useEffect(() => {
     setB(null);
-    fetch(`${(import.meta.env.VITE_API_BASE as string | undefined) ?? ""}/api/events/${id}/brief?dataset=${dataset}`)
+    fetch(`${BASE}/api/events/${id}/brief?dataset=${dataset}`)
       .then((r) => r.json()).then(setB).catch(() => setB(null));
   }, [id, dataset]);
   return (

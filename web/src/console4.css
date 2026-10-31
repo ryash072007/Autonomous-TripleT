@@ -46,3 +46,10 @@
 .tile-tabs { display: flex; gap: 14px; }
 .tile-tabs .tab { background: none; border: 0; border-bottom: 2px solid transparent; padding: 0 0 4px; margin: 0 0 6px; cursor: pointer; }
 .tile-tabs .tab.on { color: var(--rock); border-bottom-color: var(--rock); }
+
+.hook-link { color: var(--rock); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.offline-main { display: block; max-width: 720px; margin: 8vh auto 0; }
+.offline { padding: 26px 30px; text-align: left; }
+.offline-h { font-size: clamp(32px, 5vw, 52px); color: var(--rock); margin: 4px 0 12px; }
+
+.offline a { color: var(--rock); font-weight: 700; }

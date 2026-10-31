@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -25,6 +26,19 @@ LIVE_MSG = "Live mode not yet available"
 
 app = FastAPI(title="OrbitGuard API")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
+
+# Cross-origin access for a separately hosted front end (e.g. Vercel). Default: none, so same-origin only.
+_ORIGINS = [o.strip().rstrip("/") for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+if _ORIGINS:
+    app.add_middleware(CORSMiddleware, allow_origins=_ORIGINS, allow_methods=["GET", "POST"], allow_headers=["Content-Type"])
+
+
+@app.get("/api/health")
+def health():
+    d = _scored("test")
+    return {"ok": d is not None, "dataset_generated_utc": d.get("generated_utc") if d else None,
+            "model_version": (d.get("model") or {}).get("version") if d else None}
+
 _cache: dict[str, tuple[float, dict]] = {}
 
 

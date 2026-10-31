@@ -179,7 +179,7 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
     setErr(false);
     api.event(id, dataset).then(setEv).catch(() => setErr(true));
     setBrief(null);
-    fetch(`${(import.meta.env.VITE_API_BASE as string | undefined) ?? ""}/api/events/${id}/brief?dataset=${dataset}`).then((r) => r.json()).then(setBrief).catch(() => {});
+    api.brief(id, dataset).then(setBrief).catch(() => {});
   }, [id, dataset]);
 
   useEffect(() => {

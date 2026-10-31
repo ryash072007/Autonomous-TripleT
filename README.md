@@ -235,6 +235,38 @@ byte-identical across runs, so the file hashes can differ while the predictions 
 Optional: `ANTHROPIC_API_KEY` for LLM briefs, and `SPACETRACK_USER` / `SPACETRACK_PASS` for live mode. See
 `.env.example`.
 
+## Deploy
+
+The front end is a static Vite build (Vercel). The API is FastAPI on your own machine, reached through a Cloudflare
+Tunnel. The front end finds it through `VITE_API_BASE`, so the two can live on different domains.
+
+1. **Backend on a PC.** In the repo: `python -m pip install -e .`, then create `.env` (see `.env.example`):
+
+   ```
+   ALLOWED_ORIGINS=https://<your-project>.vercel.app,https://<your-custom-domain>
+   ```
+
+   and run `python scripts/serve.py` (port 8000). `GET /api/health` returns `{ok, dataset_generated_utc,
+   model_version}`. Without `ALLOWED_ORIGINS` the API only answers same-origin requests.
+2. **Cloudflare Tunnel** (needs a domain on Cloudflare):
+
+   ```bash
+   cloudflared tunnel login
+   cloudflared tunnel create orbitguard
+   cloudflared tunnel route dns orbitguard api.<your-domain>
+   cloudflared tunnel run --url http://localhost:8000 orbitguard
+   ```
+
+   For a quick try-out without a domain, `cloudflared tunnel --url http://localhost:8000` prints a temporary
+   `https://<random>.trycloudflare.com` address.
+3. **Vercel.** Import the GitHub repo, set **Root Directory** to `web`, add the environment variable
+   `VITE_API_BASE=https://api.<your-domain>` (no trailing slash), and deploy. `web/vercel.json` already sets the build
+   command, the `dist` output, the SPA rewrite and long cache headers for `/assets`. Add the custom domain under
+   Project, Domains (the free Hobby plan supports this). Remember to put that domain in `ALLOWED_ORIGINS`.
+4. **Notes.** The audit log is written to `artifacts/audit.jsonl` on the PC, not on Vercel. Live mode
+   (`SPACETRACK_*`) and LLM briefs (`ANTHROPIC_API_KEY`) read `.env` on the PC. If the PC or the tunnel is down, the
+   landing page still loads and says the live data is offline; the console shows a retry button.
+
 ## Submission files
 
 - [submission/test_predictions.csv](submission/test_predictions.csv): one row per test CDM (`row` = 0-based row in

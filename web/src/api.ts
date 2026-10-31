@@ -116,12 +116,19 @@ export interface EvidenceResp {
   files: { file: string; name: string; content: unknown }[];
 }
 
-const BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? "";
+export const BASE = ((import.meta.env.VITE_API_BASE as string | undefined) ?? "").replace(/\/$/, "");
 
-async function req<T>(path: string, init?: RequestInit): Promise<T> {
-  const r = await fetch(BASE + path, init);
-  if (!r.ok) throw new Error(`${r.status} ${path}`);
-  return r.json() as Promise<T>;
+/** All API calls go through here, so VITE_API_BASE applies everywhere and a dead backend fails after the timeout. */
+async function req<T>(path: string, init?: RequestInit, timeoutMs = 30000): Promise<T> {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const r = await fetch(BASE + path, { ...init, signal: ctl.signal });
+    if (!r.ok) throw new Error(`${r.status} ${path}`);
+    return (await r.json()) as T;
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 const q = (o: Record<string, string | number | undefined | null>) => {
@@ -132,7 +139,9 @@ const q = (o: Record<string, string | number | undefined | null>) => {
 };
 
 export const api = {
-  summary: (dataset: Dataset) => req<Summary>("/api/summary" + q({ dataset })),
+  summary: (dataset: Dataset) => req<Summary>("/api/summary" + q({ dataset }), undefined, 8000),
+  brief: (id: number, dataset: Dataset) =>
+    req<{ text: string; source: string; fallback_reason: string | null }>(`/api/events/${id}/brief` + q({ dataset })),
   events: (dataset: Dataset, tier?: number | null, object_type?: string | null, fields?: string) =>
     req<{ events: EventLight[]; message: string | null }>("/api/events" + q({ dataset, tier, object_type, fields })),
   event: (id: number, dataset: Dataset) => req<EventFull>(`/api/events/${id}` + q({ dataset })),

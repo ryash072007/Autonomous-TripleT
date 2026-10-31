@@ -30,6 +30,7 @@ export default function App() {
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [apiErr, setApiErr] = useState(false);
+  const [reload, setReload] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [mobileDetail, setMobileDetail] = useState(false);
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
@@ -57,7 +58,7 @@ export default function App() {
         setMessage(e.message ?? s.message);
       })
       .catch(() => setApiErr(true));
-  }, [dataset]);
+  }, [dataset, reload]);
 
   useEffect(() => {
     if (view === "landing" || fullFor === dataset) return;
@@ -72,7 +73,7 @@ export default function App() {
       })
       .catch(() => setApiErr(true))
       .finally(() => setLoading(false));
-  }, [view, dataset, fullFor]);
+  }, [view, dataset, fullFor, reload]);
 
 
   const open = useCallback((id?: number) => {
@@ -124,15 +125,7 @@ export default function App() {
     api.demo().then((d) => { setDemo(d); setDemoStep(Math.min(d.items.length, +m[1]) - 1); }).catch(() => {});
   }, []);
 
-  if (apiErr)
-    return (
-      <div className="page" style={{ padding: 32 }}>
-        <h2>OrbitGuard</h2>
-        <p>Cannot reach the API. Start it with <code>python scripts/serve.py</code>, or set VITE_API_BASE.</p>
-      </div>
-    );
-
-  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={0} windowCount={0} onOpen={open} />;
+  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={0} windowCount={0} onOpen={open} offline={apiErr} />;
 
   const key = demo?.items[demoStep]?.key;
   return (
@@ -162,7 +155,18 @@ export default function App() {
         </div>
       )}
 
-      <main className={"main" + (mobileDetail ? " show-detail" : "")}>
+      {apiErr && (
+        <main className="main offline-main">
+          <div className="card offline">
+            <div className="label">Backend offline</div>
+            <h2 className="display offline-h">CANNOT REACH THE DATA SERVER</h2>
+            <p>The console needs the OrbitGuard API, and it is not answering right now. It may be restarting, or the host machine may be off.</p>
+            <p className="small dim">The full walkthrough, with screenshots, is in the <a href="https://github.com/ryash072007/Autonomous-TripleT#readme" target="_blank" rel="noreferrer">README</a>.</p>
+            <button className="btn primary" onClick={() => { setApiErr(false); setReload((n) => n + 1); }}>Retry</button>
+          </div>
+        </main>
+      )}
+      <main className={"main" + (mobileDetail ? " show-detail" : "")} style={apiErr ? { display: "none" } : undefined}>
         {demo && view === "queue" && <div className="spot-dim" />}
         {view === "queue" && (
           <>
