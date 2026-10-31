@@ -1,0 +1,1 @@
+{"question": "What inspection interval and corrective action did the FAA require in the 1996 airworthiness directive on Cessna 172 series airplanes concerning cracks in the seat rail attachment structure?", "config": {"make": "Cessna", "model": "172", "cofa_date": null, "serial": null, "part_numbers": []}}

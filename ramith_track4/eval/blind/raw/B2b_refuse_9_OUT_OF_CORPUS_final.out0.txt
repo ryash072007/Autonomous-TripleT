@@ -1,0 +1,1 @@
+{"question": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing spar fitting cracking, and is that AD currently in force with a compliance deadline I need to meet?", "config": {"make": "Boeing", "model": "737-800", "cofa_date": null, "serial": null, "part_numbers": []}}

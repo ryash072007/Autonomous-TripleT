@@ -1,0 +1,430 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 160 (Thursday, August 21, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 160 (Thursday, August 21, 2025)]
+[Proposed Rules]
+[Pages 40784-40786]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-15982]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-2260; Project Identifier MCAI-2025-00043-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Gulfstream Aerospace LP (Type 
+Certificate Previously Held by Israel Aircraft Industries, Ltd.) 
+Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all Gulfstream Aerospace LP Model Gulfstream 100, Astra SPX, and 
+1125 Westwind Astra airplanes. This proposed AD was prompted by a 
+determination that new airworthiness limitations are necessary. This 
+proposed AD would require revising the existing maintenance or 
+inspection program, as applicable, to incorporate new airworthiness 
+limitations. The FAA is proposing this AD to address the unsafe 
+condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by October 6, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-2260; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Civil Aviation Authority of Israel (CAAI) material 
+identified in this proposed AD, contact CAAI, P.O. Box 1101, Golan 
+Street, Airport City, 70100, Israel; telephone 972-3-9774665; fax 972-
+3-9774592; email <a href="/cdn-cgi/l/email-protection#54353d2414393b207a333b227a3d38"><span class="__cf_email__" data-cfemail="73121a03331e1c075d141c055d1a1f">[email&#160;protected]</span></a>. You may find this material on the CAAI 
+website at gov.il/en/pages/israeli-airworthiness-directives. It is also 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-2260.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Trevor Carlton, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: 404-474-5597; email: <a href="/cdn-cgi/l/email-protection#1f6b6d7a69706d316f317c7e6d736b70715f797e7e31787069"><span class="__cf_email__" data-cfemail="53272136253c217d237d3032213f273c3d133532327d343c25">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-2260; 
+Project Identifier MCAI-2025-00043-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Trevor Carlton, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, 
+Suite 410, Westbury, NY 11590; phone: 404-474-5597; email: 
+<a href="/cdn-cgi/l/email-protection#a8dcdacddec7da86d886cbc9dac4dcc7c6e8cec9c986cfc7de"><span class="__cf_email__" data-cfemail="bacec8dfccd5c894ca94d9dbc8d6ced5d4fadcdbdb94ddd5cc">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The CAAI, which is the aviation authority for Israel, has issued 
+CAAI AD ISR I-32-25-01-7, dated January 13, 2025 (CAAI AD ISR I-32-25-
+01-7) (also referred to as the MCAI), to correct an unsafe condition 
+for all Gulfstream Aerospace LP Model Gulfstream 100, Astra SPX, and 
+1125 Westwind Astra airplanes. The MCAI states an in-service failure of 
+the nose landing gear (NLG) actuator-to-strut attachment pin was 
+reported.
+    The FAA has determined that new airworthiness limitations are 
+necessary for NLG actuator-to-strut attachment pins, part numbers (P/
+Ns) 2247.0500.007 and 2247.0500.008. The FAA is proposing this AD to 
+prevent failure of the NLG actuator-to-strut attachment pin. The unsafe 
+condition, if not addressed, could result in failure of the NLG to 
+retract and lock after take-off or extend and lock before landing. You 
+may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under Docket 
+No. FAA-2025-2260.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed CAAI AD ISR I-32-25-01-7, which specifies new 
+airworthiness limitations for safe life limits of the NLG actuator-to-
+strut attachment pins, P/Ns 2247.0500.007 and 2247.0500.008. This 
+material is reasonably available because the
+
+[[Page 40785]]
+
+interested parties have access to it through their normal course of 
+business or by the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop in other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require revising the existing maintenance or 
+inspection program, as applicable, to incorporate new airworthiness 
+limitations, which are specified in CAAI AD ISR I-32-25-01-7 described 
+previously, as incorporated by reference. Any differences with CAAI AD 
+ISR I-32-25-01-7 are identified as exceptions in the regulatory text of 
+this proposed AD.
+    This proposed AD would require revisions to certain operator 
+maintenance documents to include new actions (e.g., inspections). 
+Compliance with these actions is required by 14 CFR 91.403(c). For 
+airplanes that have been previously modified, altered, or repaired in 
+the areas addressed by this proposed AD, the operator may not be able 
+to accomplish the actions described in the revisions. In this 
+situation, to comply with Sec.  91.403(c), the operator must request 
+approval for an alternative method of compliance (AMOC) according to 
+paragraph (j)(1) of this proposed AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate CAAI AD ISR I-32-25-01-7 by reference in 
+the FAA final rule. This proposed AD would, therefore, require 
+compliance with CAAI AD ISR I-32-25-01-7 through that incorporation, 
+except for any differences identified as exceptions in the regulatory 
+text of this proposed AD. Material required by CAAI AD ISR I-32-25-01-7 
+for compliance will be available at <a href="http://regulations.gov">regulations.gov</a> by searching for 
+and locating Docket No. FAA-2025-2260 after the FAA final rule is 
+published.
+
+Airworthiness Limitation ADs Using the New Process
+
+    The FAA's process of incorporating by reference MCAI ADs as the 
+primary source of information for compliance with corresponding FAA ADs 
+has been limited to certain MCAI ADs (primarily those with service 
+bulletins as the primary source of information for accomplishing the 
+actions required by the FAA AD). However, the FAA is now expanding the 
+process to include MCAI ADs that require a change to airworthiness 
+limitation documents, such as airworthiness limitation sections.
+    For these ADs that incorporate by reference an MCAI AD that changes 
+airworthiness limitations, the FAA requirements are unchanged. 
+Operators must revise the existing maintenance or inspection program, 
+as applicable, to incorporate the information specified in the new 
+airworthiness limitation document. The airworthiness limitations must 
+be followed according to 14 CFR 91.403(c) and 91.409(e).
+    The previous format of the airworthiness limitation ADs included a 
+paragraph that specified that alternative actions (e.g., inspections) 
+or intervals may be used unless the actions and intervals are approved 
+as an AMOC in accordance with the procedures specified in the AMOC 
+paragraph under ``Additional AD Provisions.'' This new format includes 
+a ``Provisions for Alternative Actions and Intervals'' paragraph that 
+does not specifically refer to AMOCs, but operators may still request 
+an AMOC to use an alternative action or interval.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 86 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+    The FAA has determined that revising the existing maintenance or 
+inspection program takes an average of 90 work-hours per operator, 
+although the agency recognizes that this number may vary from operator 
+to operator. Since operators incorporate maintenance or inspection 
+program changes for their affected fleet(s), the FAA has determined 
+that a per-operator estimate is more accurate than a per-airplane 
+estimate. Therefore, the agency estimates the average total cost per 
+operator to be $7,650 (90 work-hours x $85 per work-hour).
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA has determined that this proposed AD would not have 
+federalism implications under Executive Order 13132. This proposed AD 
+would not have a substantial direct effect on the States, on the 
+relationship between the national government and the States, or on the 
+distribution of power and responsibilities among the various levels of 
+government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+[[Page 40786]]
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Gulfstream Aerospace LP (Type Certificate Previously Held by Israel 
+Aircraft Industries, Ltd.): Docket No. FAA-2025-2260; Project 
+Identifier MCAI-2025-00043-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by October 6, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to all Gulfstream Aerospace LP Model Gulfstream 
+100, Astra SPX, and 1125 Westwind Astra airplanes, certificated in 
+any category.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 32, Landing 
+gear.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a determination that new airworthiness 
+limitations are necessary. The FAA is issuing this AD to prevent 
+failure of the nose landing gear (NLG) actuator-to-strut attachment 
+pin. The unsafe condition, if not addressed, could result in failure 
+of the NLG to retract and lock after take-off or extend and lock 
+before landing.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraph (h) of this AD: Comply with all 
+required actions and compliance times specified in, and in 
+accordance with, CAAI AD ISR I-32-25-01-7, dated January 13, 2025 
+(CAAI AD ISR I-32-25-01-7).
+
+(h) Exceptions to CAAI AD ISR I-32-25-01-7
+
+    (1) Where CAAI AD ISR I-32-25-01-7 refers to its effective date, 
+this AD requires using the effective date of this AD.
+    (2) The initial compliance time for doing the tasks specified in 
+the Action paragraph of CAAI AD ISR I-32-25-01-7 is at the 
+applicable discard interval specified in the material referenced in 
+the Action paragraph of CAAI AD ISR I-32-25-01-7, or within 3 months 
+after the effective date of this AD, whichever occurs later.
+    (3) Where the Action paragraph of CAAI AD ISR I-32-25-01-7 
+specifies ``to incorporate AMM Revision 26'', this AD requires 
+replacing that text with ``revise the existing maintenance or 
+inspection program, as applicable, by incorporating the information 
+in the Nose Landing Gear Actuator Attachment Pin--Life Limit (Scrap) 
+tasks for SHL part numbers 2247.0500.007 and 2247.0500.008''.
+    (4) Where the Action paragraph of CAAI AD ISR I-32-25-01-7 
+specifies ``to incorporate AMM Revision 32'', this AD requires 
+replacing that text with ``revise the existing maintenance or 
+inspection program, as applicable, by incorporating the information 
+in the NLG Actuator Attachment Pin--Life Limit (Scrap) tasks for SHL 
+part numbers 2247.0500.007 and 2247.0500.008''.
+
+(i) Provisions for Alternative Actions and Intervals
+
+    After the existing maintenance or inspection program has been 
+revised as required by paragraph (g) of this AD, no alternative 
+actions (e.g., inspections) and intervals are allowed unless they 
+are approved as specified in the provisions of paragraph (j)(1) of 
+this AD.
+
+(j) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, 
+International Validation Branch, FAA, has the authority to approve 
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or responsible Flight Standards Office, as 
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (k) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#c6878b898586a0a7a7e8a1a9b0"><span class="__cf_email__" data-cfemail="5b1a1614181b3d3a3a753c342d">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, International 
+Validation Branch, FAA; or CAAI; or CAAI's authorized Designee. If 
+approved by the CAAI Designee, the approval must include the 
+Designee's authorized signature.
+
+(k) Additional Information
+
+    (1) For more information about this AD, contact Trevor Carlton, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: 404-474-5597; email: 
+<a href="/cdn-cgi/l/email-protection#c0b4b2a5b6afb2eeb0eea3a1b2acb4afae80a6a1a1eea7afb6"><span class="__cf_email__" data-cfemail="e4909681928b96ca94ca87859688908b8aa4828585ca838b92">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Civil Aviation Authority of Israel (CAAI) AD ISR I-32-25-01-
+7, dated January 13, 2025.
+    (ii) [Reserved]
+    (3) For CAAI material identified in this AD, contact Civil 
+Aviation Authority of Israel (CAAI), P.O. Box 1101, Golan Street, 
+Airport City, 70100, Israel; telephone 972-3-9774665; fax 972-3-
+9774592; email <a href="/cdn-cgi/l/email-protection#d9b8b0a999b4b6adf7beb6aff7b0b5"><span class="__cf_email__" data-cfemail="10717960507d7f643e777f663e797c">[email&#160;protected]</span></a>. You may find this material on the 
+CAAI website at gov.il/en/pages/israeli-airworthiness-directives.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#fc9a8ed295928f8c999f88959392bc929d8e9dd29b938a"><span class="__cf_email__" data-cfemail="2442560a4d4a57544147504d4b4a644a4556450a434b52">[email&#160;protected]</span></a>.
+
+    Issued on August 18, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-15982 Filed 8-20-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,544 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 183 (Wednesday, September 24, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 183 (Wednesday, September 24, 2025)]
+[Proposed Rules]
+[Pages 45924-45928]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-18463]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-2552; Project Identifier MCAI-2025-00623-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus SAS Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+[[Page 45925]]
+
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2025-03-07, which applies to certain Airbus SAS Model A318, A319, and 
+A320 series airplanes, and Model A321-111, -112, -131, -211, -212, -
+213, -231, -232, -251N, -252N, -253N, -271N, -272N, -251NX, -252NX, -
+253NX, -271NX, and -272NX airplanes. AD 2025-03-07 requires revising 
+the existing maintenance or inspection program, as applicable, to 
+incorporate new or more restrictive airworthiness limitations. Since 
+the FAA issued AD 2025-03-07, the FAA has determined that new or more 
+restrictive airworthiness limitations are necessary. This proposed AD 
+would continue to require certain actions in AD 2025-03-07 and would 
+require revising the existing maintenance or inspection program, as 
+applicable, to incorporate new or more restrictive airworthiness 
+limitations, and would expand the applicability. The FAA is proposing 
+this AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by November 
+10, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-2552; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; telephone +49 221 8999 000; email 
+<a href="/cdn-cgi/l/email-protection#3b7a7f487b5e5a485a155e4e49544b5a155e4e"><span class="__cf_email__" data-cfemail="5415102714313527357a3121263b24357a3121">[email&#160;protected]</span></a>. You may find this material on the EASA website at 
+ad.easa.europa.eu. It is also available at <a href="http://regulations.gov">regulations.gov</a> under Docket 
+No. FAA-2025-2552.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Tak Kobayashi, Aviation Safety 
+Engineer, FAA, 2200 South 216th Street, Des Moines, WA 98198; phone: 
+206-231-3553; email: <a href="/cdn-cgi/l/email-protection#1e6a7f757f76776d7f3075717c7f677f6d76775e787f7f30797168"><span class="__cf_email__" data-cfemail="dda9bcb6bcb5b4aebcf3b6b2bfbca4bcaeb5b49dbbbcbcf3bab2ab">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-2552; 
+Project Identifier MCAI-2025-00623-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Tak 
+Kobayashi, Aviation Safety Engineer, FAA, 2200 South 216th Street, Des 
+Moines, WA 98198; phone: 206-231-3553; email: 
+<a href="/cdn-cgi/l/email-protection#cabeaba1aba2a3b9abe4a1a5a8abb3abb9a2a38aacababe4ada5bc"><span class="__cf_email__" data-cfemail="097d68626861607a682762666b6870687a6160496f6868276e667f">[email&#160;protected]</span></a>. Any commentary that the FAA receives that 
+is not specifically designated as CBI will be placed in the public 
+docket for this rulemaking.
+
+Background
+
+    The FAA issued AD 2025-03-07, Amendment 39-22955 (90 FR 9592, 
+February 14, 2025) (AD 2025-03-07), for certain Airbus SAS Model A318, 
+A319, and A320 series airplanes, and Model A321-111, -112, -131, -211, 
+-212, -213, -231, -232, -251N, -252N, -253N, -271N, -272N, -251NX, -
+252NX, -253NX, -271NX, and -272NX airplanes. AD 2025-03-07 was prompted 
+by an MCAI originated by EASA, which is the Technical Agent for the 
+Member States of the European Union. EASA issued AD 2024-0047, dated 
+February 19, 2024 (EASA AD 2024-0047) (which corresponds to FAA AD 
+2025-03-07), to correct an unsafe condition.
+    AD 2025-03-07 requires revising the existing maintenance or 
+inspection program, as applicable, to incorporate additional new or 
+more restrictive airworthiness limitations. The FAA issued AD 2025-03-
+07 to address the potential of ignition sources inside fuel tanks, 
+which, in combination with flammable fuel vapors, could result in a 
+fuel tank explosion and consequent loss of the airplane.
+
+Actions Since AD 2025-03-07 Was Issued
+
+    Since the FAA issued AD 2025-03-07, EASA superseded AD 2024-0047 
+and issued EASA AD 2025-0033, dated February 10, 2025 (EASA AD 2025-
+0033) (also referred to as the MCAI), for all Airbus SAS Model A318 
+series airplanes; Model A319 series airplanes; Model A320-211, -212, -
+214, -215, -216, -231, -232, -233, -251N, -252N, -253N, -271N, -272N, 
+and -273N airplanes; and Model A321-111, -112, -131, -211, -212, -213, 
+-231, -232, -251N, -252N, -253N, -271N, -272N, -251NX, -252NX, -253NX, 
+-253NY, -271NX, and -272NX airplanes. Model A320-215 airplanes are not 
+certificated by the FAA and are not included on the U.S. type 
+certificate data sheet; this proposed AD therefore does not include 
+those airplanes in the applicability. The MCAI states that new or more 
+restrictive airworthiness limitations have been developed.
+    Airplanes with an original airworthiness certificate or original 
+export certificate of airworthiness issued after November 4, 2024, must 
+comply with the airworthiness
+
+[[Page 45926]]
+
+limitations specified as part of the approved type design and 
+referenced on the type certificate data sheet; this proposed AD 
+therefore does not include those airplanes in the applicability.
+    The FAA is proposing this AD to address the potential of ignition 
+sources inside fuel tanks, which, in combination with flammable fuel 
+vapors, could result in a fuel tank explosion and consequent loss of 
+the airplane. You may examine the MCAI in the AD docket at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-2552.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2025-0033. This material specifies new or 
+more restrictive airworthiness limitations for airplane structures and 
+safe life limits.
+    This proposed AD would also require EASA AD 2024-0047, which the 
+Director of the Federal Register approved for incorporation by 
+reference as of March 21, 2025 (90 FR 9592, February 14, 2025).
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop in other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would retain certain requirements of AD 2025-03-
+07. This proposed AD would also require revising the existing 
+maintenance or inspection program, as applicable, to incorporate 
+additional new or more restrictive airworthiness limitations, which are 
+specified in EASA AD 2025-0033 already described, as proposed for 
+incorporation by reference. Any differences with EASA AD 2025-0033 are 
+identified as exceptions in the regulatory text of this proposed AD.
+    This proposed AD would require revisions to certain operator 
+maintenance documents to include new actions (e.g., inspections) and 
+Critical Design Configuration Control Limitations (CDCCLs). Compliance 
+with these actions and CDCCLs is required by 14 CFR 91.403(c). For 
+airplanes that have been previously modified, altered, or repaired in 
+the areas addressed by this proposed AD, the operator may not be able 
+to accomplish the actions described in the revisions. In this 
+situation, to comply with 14 CFR 91.403(c), the operator must request 
+approval for an alternative method of compliance (AMOC) according to 
+paragraph (m)(1) of this proposed AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to retain the incorporation by reference (IBR) of EASA AD 
+2024-0047 and incorporate EASA AD 2025-0033 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2024-0047 and EASA AD 2025-0033 through that incorporation, 
+except for any differences identified as exceptions in the regulatory 
+text of this proposed AD. Using common terms that are the same as the 
+heading of a particular section in EASA AD 2024-0047 and EASA AD 2025-
+0033 does not mean that operators need comply only with that section. 
+For example, where the AD requirement refers to ``all required actions 
+and compliance times,'' compliance with this proposed AD requirement is 
+not limited to the section titled ``Required Action(s) and Compliance 
+Time(s)'' in EASA AD 2024-0047 and EASA AD 2025-0033. Material required 
+by EASA AD 2024-0047 and EASA AD 2025-0033 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> by searching for and locating Docket No. 
+FAA-2025-2552 after the FAA final rule is published.
+
+Airworthiness Limitation ADs Using the New Process
+
+    The FAA's process of incorporating by reference MCAI ADs as the 
+primary source of information for compliance with corresponding FAA ADs 
+has been limited to certain MCAI ADs (primarily those with service 
+bulletins as the primary source of information for accomplishing the 
+actions required by the FAA AD). However, the FAA is now expanding the 
+process to include MCAI ADs that require a change to airworthiness 
+limitation documents, such as airworthiness limitation sections.
+    For these ADs that incorporate by reference an MCAI AD that changes 
+airworthiness limitations, the FAA requirements are unchanged. 
+Operators must revise the existing maintenance or inspection program, 
+as applicable, to incorporate the information specified in the new 
+airworthiness limitation document. The airworthiness limitations must 
+be followed according to 14 CFR 91.403(c) and 91.409(e).
+    The previous format of the airworthiness limitation ADs included a 
+paragraph that specified that no alternative actions (e.g., 
+inspections), intervals, or CDCCLs may be used unless the actions, 
+intervals, and CDCCLs are approved as an AMOC in accordance with the 
+procedures specified in the AMOCs paragraph under ``Additional AD 
+Provisions.'' This new format includes a ``New Provisions for 
+Alternative Actions, Intervals, and CDCCLs'' paragraph that does not 
+specifically refer to AMOCs, but operators may still request an AMOC to 
+use an alternative action, interval, or CDCCL.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 1,945 airplanes of U.S. registry. The FAA estimates the 
+following costs to comply with this proposed AD:
+    The FAA estimates the total cost per operator for the retained 
+actions from AD 2025-03-07 to be $7,650 (90 work-hours x $85 per work-
+hour).
+    The FAA has determined that revising the existing maintenance or 
+inspection program takes an average of 90 work-hours per operator, 
+although the agency recognizes that this number may vary from operator 
+to operator. Since operators incorporate maintenance or inspection 
+program changes for their affected fleet(s), the FAA has determined 
+that a per-operator estimate is more accurate than a per-airplane 
+estimate.
+    The FAA estimates the total cost per operator for the new proposed 
+actions to be $7,650 (90 work-hours x $85 per work-hour).
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in
+
+[[Page 45927]]
+
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive (AD) 2025-03-07, Amendment 39-22955 
+(90 FR 9592, February 14, 2025); and
+0
+b. Adding the following new AD:
+
+Airbus SAS: Docket No. FAA-2025-2552; Project Identifier MCAI-2025-
+00623-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by November 10, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2025-03-07, Amendment 39-22955 (90 FR 9592, 
+February 14, 2025) (AD 2025-03-07).
+
+(c) Applicability
+
+    This AD applies to Airbus SAS airplanes identified in paragraphs 
+(c)(1) through (4) of this AD, certificated in any category, with an 
+original airworthiness certificate or original export certificate of 
+airworthiness issued on or before November 4, 2024.
+    (1) Model A318-111, -112, -121, and -122 airplanes.
+    (2) Model A319-111, -112, -113, -114, -115, -131, -132, -133, -
+151N, -153N, -171N, and -173N airplanes.
+    (3) Model A320-211, -212, -214, -216, -231, -232, -233, -251N, -
+252N, -253N, -271N, -272N, and -273N airplanes.
+    (4) Model A321-111, -112, -131, -211, -212, -213, -231, -232, -
+251N, -252N, -253N, -271N, -272N, -251NX, -252NX, -253NX, -253NY, -
+271NX, and -272NX airplanes.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 05, Time Limits/
+Maintenance Checks.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a determination that new or more 
+restrictive airworthiness limitations are necessary. The FAA is 
+issuing this AD to address the potential of ignition sources inside 
+fuel tanks, which, in combination with flammable fuel vapors, could 
+result in a fuel tank explosion and consequent loss of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Retained Revision of the Existing Maintenance or Inspection 
+Program, With a New Terminating Action
+
+    This paragraph restates the requirements of paragraph (i) of AD 
+2025-03-07, with a new terminating action. For airplanes with an 
+original airworthiness certificate or original export certificate of 
+airworthiness issued on or before November 6, 2023: Except as 
+specified in paragraph (h) of this AD: Comply with all required 
+actions and compliance times specified in, and in accordance with, 
+European Union Aviation Safety Agency (EASA) AD 2024-0047, dated 
+February 19, 2024 (EASA AD 2024-0047). Accomplishing the revision of 
+the existing maintenance or inspection program required by paragraph 
+(j) of this AD terminates the requirements of this paragraph.
+
+(h) Retained Exceptions to EASA AD 2024-0047, With No Changes
+
+    This paragraph restates the requirements of paragraph (j) of AD 
+2025-03-07, with no changes.
+    (1) This AD does not adopt the requirements specified in 
+paragraphs (1) and (2) of EASA AD 2024-0047.
+    (2) Paragraph (3) of EASA AD 2024-0047 specifies revising ``the 
+AMP'' within 12 months after its effective date, but this AD 
+requires revising the existing maintenance or inspection program, as 
+applicable, within 90 days after March 21, 2025 (the effective date 
+of AD 2025-03-07).
+    (3) The initial compliance time for doing the tasks specified in 
+paragraph (3) of EASA AD 2024-0047 is at the applicable 
+``limitations'' and ``associated thresholds'' as incorporated by the 
+requirements of paragraph (3) of EASA AD 2024-0047, or within 90 
+days after March 21, 2025 (the effective date of AD 2025-03-07), 
+whichever occurs later.
+    (4) This AD does not adopt the provisions specified in 
+paragraphs (4) and (5) of EASA AD 2024-0047.
+    (5) This AD does not adopt the ``Remarks'' section of EASA AD 
+2024-0047.
+
+(i) Retained Restrictions on Alternative Actions, Intervals, and 
+Critical Design Configuration Control Limitations (CDCCLs), With a New 
+Exception
+
+    This paragraph restates the requirements of paragraph (k) of AD 
+2025-03-07, with a new exception. Except as required by paragraph 
+(j) of this AD, after the existing maintenance or inspection program 
+has been revised as required by paragraph (g) of this AD, no 
+alternative actions (e.g., inspections), intervals, and CDCCLs are 
+allowed unless they are approved as specified in the provisions of 
+the ``Ref. Publications'' section of EASA AD 2024-0047.
+
+(j) New Revision of the Existing Maintenance or Inspection Program
+
+    Except as specified in paragraph (k) of this AD: Comply with all 
+required actions and compliance times specified in, and in 
+accordance with, EASA AD 2025-0033, dated February 10, 2025 (EASA AD 
+2025-0033). Accomplishing the revision of the existing maintenance 
+or inspection program required by this paragraph terminates the 
+requirements of paragraph (g) of this AD.
+
+(k) New Exceptions to EASA AD 2025-0033
+
+    (1) This AD does not adopt the requirements specified in 
+paragraphs (1) and (2) of EASA AD 2025-0033.
+    (2) Paragraph (3) of EASA AD 2025-0033 specifies revising ``the 
+approved AMP,'' within 12 months after its effective date, but this 
+AD requires revising the existing maintenance or inspection program, 
+as applicable, within 90 days after the effective date of this AD.
+    (3) The initial compliance time for doing the tasks specified in 
+paragraph (3) of EASA AD 2025-0033 is at the applicable 
+``limitations'' and ``associated thresholds'' as incorporated by the 
+requirements of paragraph (3) of EASA AD 2025-0033, or within 90 
+days after the effective date of this AD, whichever occurs later.
+    (4) This AD does not adopt the provisions specified in 
+paragraphs (4) and (5) of EASA AD 2025-0033.
+    (5) This AD does not adopt the ``Remarks'' section of EASA AD 
+2025-0033.
+
+(l) New Provisions for Alternative Actions, Intervals, and CDCCLs
+
+    After the existing maintenance or inspection program has been 
+revised as required by paragraph (j) of this AD, no
+
+[[Page 45928]]
+
+alternative actions (e.g., inspections), intervals, and CDCCLs are 
+allowed unless they are approved as specified in the provisions of 
+the ``Ref. Publications'' section of EASA AD 2025-0033.
+
+(m) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, AIR-
+520, Continued Operational Safety Branch, FAA, has the authority to 
+approve AMOCs for this AD, if requested using the procedures found 
+in 14 CFR 39.19. In accordance with 14 CFR 39.19, send your request 
+to your principal inspector or responsible Flight Standards Office, 
+as appropriate. If sending information directly to the manager of 
+the Continued Operational Safety Branch, send it to the attention of 
+the person identified in paragraph (n) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#46070b09050620272768212930"><span class="__cf_email__" data-cfemail="b8f9f5f7fbf8ded9d996dfd7ce">[email&#160;protected]</span></a>.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, AIR-520, 
+Continued Operational Safety Branch, FAA; or EASA; or Airbus SAS's 
+EASA Design Organization Approval (DOA). If approved by the DOA, the 
+approval must include the DOA-authorized signature.
+
+(n) Additional Information
+
+    For more information about this AD, contact Tak Kobayashi, 
+Aviation Safety Engineer, FAA, 2200 South 216th Street, Des Moines, 
+WA 98198; phone: 206-231-3553; email: <a href="/cdn-cgi/l/email-protection#3044515b51585943511e5b5f52514951435859705651511e575f46"><span class="__cf_email__" data-cfemail="e692878d878e8f9587c88d8984879f87958e8fa6808787c8818990">[email&#160;protected]</span></a>.
+
+(o) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (3) The following material was approved for IBR on [DATE 35 DAYS 
+AFTER PUBLICATION OF THE FINAL RULE].
+    (i) European Union Aviation Safety Agency (EASA) AD 2025-0033, 
+dated February 10, 2025.
+    (ii) [Reserved]
+    (4) The following material was approved for IBR on March 21, 
+2025 (90 FR 9592, February 14, 2025).
+    (i) EASA AD 2024-0047, dated February 19, 2024.
+    (ii) [Reserved]
+    (5) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; telephone +49 221 
+8999 000; email <a href="/cdn-cgi/l/email-protection#acede8dfecc9cddfcd82c9d9dec3dccd82c9d9"><span class="__cf_email__" data-cfemail="4d0c093e0d282c3e2c6328383f223d2c632838">[email&#160;protected]</span></a>. You may find this material on 
+the EASA website at ad.easa.europa.eu.
+    (6) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (7) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#5c3a2e7235322f2c393f283533321c323d2e3d723b332a"><span class="__cf_email__" data-cfemail="ff998dd196918c8f9a9c8b969091bf919e8d9ed1989089">[email&#160;protected]</span></a>.
+
+    Issued on September 19, 2025.
+Peter A. White,
+Deputy Director, Integrated Certificate Management Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-18463 Filed 9-23-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

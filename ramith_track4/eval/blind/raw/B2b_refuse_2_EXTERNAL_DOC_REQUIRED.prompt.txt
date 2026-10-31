@@ -1,0 +1,8 @@
+We are testing a question-answering tool over a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026. The tool should REFUSE to answer some questions.
+TASK: write ONE realistic question that asks for the content of the foreign-authority AD or manufacturer bulletin that the context notice refers to, which is not in the collection.
+CONTEXT NOTICE TITLE: Airworthiness Directives; The Boeing Company Airplanes
+CONTEXT APPLICABILITY: This AD applies to The Boeing Company Model 787-8, 787-9, and 
+787-10 airplanes, certificated in any category, as identified in 
+Boeing Alert Requirements Bulletin B787-81205-SB230041-00 RB, Issue 
+002, dated September 14, 2020.
+Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

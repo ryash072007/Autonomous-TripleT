@@ -1,0 +1,1 @@
+{"question": "What is the proposed AD for Airbus A350-941 and A350-1041 airplanes requiring HMCA modification, AFM revision, and replacement of standard EDP-06 hydraulic engine driven pumps after pump failures?"}

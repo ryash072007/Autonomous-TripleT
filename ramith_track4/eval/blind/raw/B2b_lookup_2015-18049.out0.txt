@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for MBB-BK 117C-2 helicopters requiring inspection of the hoist control pendant wiring harness for chafing and installation of a protection sleeve to prevent uncommanded hoist release?"}

@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-600/-700/-800 airplanes requiring inspection of nacelle support fitting fasteners at the lower wing skin because only one washer was installed instead of two?"}

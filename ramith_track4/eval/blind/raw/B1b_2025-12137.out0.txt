@@ -1,0 +1,5 @@
+The applicability paragraph reads: "This AD applies to Leonardo S.p.a. Model AW169 helicopters, certificated in any category." The only condition is the model, so a DOES_NOT_APPLY configuration can be built from a different model. An example is a Leonardo AW139, which is not listed. Whether the float assemblies are affected is a matter for the EASA AD requirements, not for applicability.
+
+```json
+{"feasible":true,"config":{"make":"Leonardo S.p.a.","model":"AW139","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"DOES_NOT_APPLY","gold_reason":"MODEL_NOT_LISTED","evidence_quote":"This AD applies to Leonardo S.p.a. Model AW169 helicopters, certificated in any category.","notes":"Applicability is limited to the AW169 model, so an AW139 clearly falls outside it."}
+```

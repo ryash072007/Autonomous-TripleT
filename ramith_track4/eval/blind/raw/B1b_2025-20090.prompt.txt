@@ -1,0 +1,465 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 220 (Tuesday, November 18, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 220 (Tuesday, November 18, 2025)]
+[Proposed Rules]
+[Pages 51602-51605]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-20090]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-3436; Project Identifier MCAI-2024-00314-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Bell Textron Canada Limited Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Bell Textron Canada Limited (Bell) Model 407 helicopters. 
+This proposed AD was prompted by a report of a fractured pilot cyclic 
+stick tube and subsequent findings of other pilot cyclic stick tubes 
+with fatigue cracking. This proposed AD would require repetitively 
+inspecting the pilot cyclic stick tube assembly for a crack and, 
+depending on the results, repairing or replacing the pilot cyclic stick 
+tube assembly. The FAA is proposing this AD to address the unsafe 
+condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by January 2, 2026.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3436; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Transport Canada material identified in this proposed 
+AD, contact Transport Canada, Transport Canada National Aircraft 
+Certification, 159 Cleopatra Drive, Nepean, Ontario, K1A 0N5, Canada; 
+phone: (888) 663-3639; email: <a href="/cdn-cgi/l/email-protection#b1c5d29fd0d8c3c6dec3c5d9d8dfd4c2c2d5d8c3d4d2c5d8c7d4c29cd2dedfc2d8d6dfd4c2d5d4dfd0c7d8d6d0d3d8ddd8c5d49f8dd091d9c3d4d78c" mailto:TC@tc.gc.ca"><span class="__cf_email__" data-cfemail="94c0d7d4e0f7baf3f7baf7f5">[email&#160;protected]</span></a>">tc.airworthinessdirectives-consignesdenavigabilite.<a href="/cdn-cgi/l/email-protection#9cc8dfdce8ffb2fbffb2fffd"><span class="__cf_email__" data-cfemail="9dc9dedde9feb3fafeb3fefc">[email&#160;protected]</span></a></a>; website: tc.canada.ca/en/aviation. 
+You may find the Transport Canada material on the Transport Canada 
+website at tc.canada.ca/en/aviation.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Alexis Whitaker, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (516) 228-7309; email: <a href="/cdn-cgi/l/email-protection#46272a233e2f35682c68312e2f32272d23340620272768212930"><span class="__cf_email__" data-cfemail="e6878a839e8f95c88cc8918e8f92878d8394a6808787c8818990">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-3436; 
+Project Identifier MCAI-2024-00314-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Alexis Whitaker, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, 
+Suite 410, Westbury, NY 11590. Any commentary that the FAA receives 
+which is not specifically designated as CBI will be placed in the 
+public docket for this rulemaking.
+
+Background
+
+    Transport Canada, which is the aviation authority for Canada, has 
+issued Transport Canada AD CF-2024-18, dated May 29, 2024 (Transport 
+Canada AD CF-2024-18) (also referred to as the MCAI), to correct an 
+unsafe condition on Bell Model 407 helicopters, serial numbers 53000 
+through 53900, 53911 through 53999, 54000 through 54166, 54300 through 
+54800, 54805 through 54999, 56300 through 56305, and 56311 through 
+56315, installed with a pilot cyclic stick tube assembly part number 
+(P/N) 206-001-342-101 or 206-001-342-101FM. The MCAI states that Bell 
+received a report that a pilot cyclic stick tube assembly having P/N 
+206-001-342-101 fractured at the lower end of the tube near the upper 
+slotted area where it is held in place in the pivot assembly. 
+Examination of the fractured pilot cyclic stick tube and subsequent 
+findings of other cracked pilot cyclic stick tubes revealed fatigue 
+cracking. Further investigation identified the root cause of the pilot 
+cyclic stick tube cracking as the application of excessive force to the 
+cyclic stick during the freedom of movement of the controls and cyclic 
+centering light operation check as part of the interior and prestart 
+check, which resulted in elevated stress at the slotted area and was 
+aggravated by the high stress concentration design feature of the upper 
+slotted area.
+    This condition, if not detected and corrected, could lead to an in-
+flight
+
+[[Page 51603]]
+
+failure of the pilot cyclic stick tube and consequent loss of control 
+of the helicopter.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3436.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed Transport Canada AD CF-2024-18, which specifies 
+procedures for revising the applicable Bell 407 rotorcraft flight 
+manual (RFM) Normal Procedures section to limit the allowable freedom 
+of movement during interior and prestart checks for certain serial-
+numbered helicopters (Group 1 helicopters). Transport Canada AD CF-
+2024-18 also specifies procedures for inspecting the pilot cyclic stick 
+tube assembly for cracks and replacing or repairing and reidentifying 
+any cracked pilot cyclic stick tube assembly for certain serial-
+numbered helicopters (Group 2 helicopters). If, as a result of an 
+inspection, a pilot cyclic stick tube assembly is repaired rather than 
+replaced, Transport Canada AD CF-2024-18 further specifies procedures 
+for repetitive inspections of the repaired pilot cyclic stick tube 
+assembly and replacement within 24 months after the repair.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+(CAA) of another country and are approved for operation in the United 
+States. Pursuant to the FAA's bilateral agreement with this State of 
+Design Authority, that authority has notified the FAA of the unsafe 
+condition described in the MCAI referenced above. The FAA is issuing 
+this NPRM after determining that the unsafe condition described 
+previously is likely to exist or develop on other products of the same 
+type design.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some CAA ADs as the primary 
+source of information for compliance with requirements for 
+corresponding FAA ADs. The FAA has been coordinating this process with 
+manufacturers and CAAs. As a result, the FAA proposes to incorporate 
+Transport Canada AD CF-2024-18 by reference in the FAA final rule. This 
+proposed AD would, therefore, require compliance with Transport Canada 
+AD CF-2024-18 in its entirety through that incorporation, except for 
+any differences identified as exceptions in the regulatory text of this 
+proposed AD. Material referenced in Transport Canada AD CF-2024-18 for 
+compliance will be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-
+2025-3436 after the FAA final rule is published.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in Transport Canada AD CF-2024-18, described previously, as 
+incorporated by reference, except for any differences identified as 
+exceptions in the regulatory text of this AD. See ``Differences Between 
+this Proposed AD and the MCAI'' for a discussion of the general 
+differences included in this proposed AD.
+
+Differences Between This Proposed AD and the MCAI
+
+    The MCAI only applies to helicopter serial numbers 53000 through 
+53900, 53911 through 53999, 54000 through 54166, 54300 through 54800, 
+54805 through 54999, 56300 through 56305, and 56311 through 56315, 
+whereas this proposed AD would apply to all serial numbered Model 407 
+helicopters with cyclic stick tube assembly part number (P/N) 206-001-
+342-101 or P/N 206-001-342-101FM installed.
+    The MCAI specifies procedures for revising the applicable Bell 407 
+RFM Normal Procedures section for certain serial-numbered helicopters 
+to limit the allowable freedom of movement during interior and prestart 
+checks, whereas this proposed AD does not because the full sweep for 
+freedom of movement is necessary to clear icing and detect any jamming 
+or binding during the pre-start check.
+    This proposed AD would also add a repetitive inspection for pilot 
+cyclic stick tube assemblies that have accumulated 3,600 or more hours 
+time-in-service, at intervals not to exceed every 300 hours time-in-
+service or 6 months, whichever occurs first. This is from a 
+determination that a pilot cyclic control stick could experience high 
+loading during hydraulic-off training and other emergency procedure 
+situations. This inspection is not part of the MCAI.
+
+Interim Action
+
+    The FAA considers that this proposed AD would be an interim action. 
+If final action is later identified, the FAA might consider further 
+rulemaking.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 944 helicopters of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                          Cost per
+              Action                      Labor cost        Parts cost    product      Cost on U.S.  operators
+----------------------------------------------------------------------------------------------------------------
+Inspect pilot cyclic stick tube     Up to 4 work-hours x            $0         $340  Up to $320,960.
+ assembly.                           $85 per hour = $340.
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary repairs 
+that would be required based on the results of the proposed inspection. 
+The agency has no way of determining the number of helicopters that 
+might need these repairs:
+
+                           On-Condition Costs
+------------------------------------------------------------------------
+                                                               Cost per
+            Action                Labor Cost     Parts Cost    product
+------------------------------------------------------------------------
+Repair pilot cyclic stick      6 work-hours x            $0         $510
+ tube assembly.                 $85 per hour =
+                                $510.
+Repetitively inspect pilot     2 work-hours               0          170
+ cyclic stick tube assembly.    (per
+                                inspection) x
+                                $85 per hour =
+                                $170.
+Replace pilot cyclic stick     2 work-hours x         1,544        1,714
+ tube assembly.                 $85 per hour =
+                                $170.
+------------------------------------------------------------------------
+
+
+[[Page 51604]]
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Bell Textron Canada Limited: Docket No. FAA-2025-3436; Project 
+Identifier MCAI-2024-00314-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by January 2, 2026.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Bell Textron Canada Limited Model 407 
+helicopters, certificated in any category, with a pilot cyclic stick 
+tube assembly part number (P/N) 206-001-342-101 or P/N 206-001-342-
+101FM installed.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6710, Main Rotor 
+Control.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of a fractured pilot cyclic 
+stick tube and subsequent findings of other pilot cyclic stick tubes 
+with fatigue cracking. The FAA is issuing this AD to detect and 
+correct a crack in the pilot cyclic stick tube which, if not 
+addressed, could lead to an in-flight failure of the pilot cyclic 
+stick tube and consequent loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    (1) Except as specified in paragraphs (h) and (i) of this AD: 
+Comply with all required actions and compliance times specified in, 
+and in accordance with, Transport Canada AD CF-2024-18, dated May 
+29, 2024 (Transport Canada AD CF-2024-18).
+    (2) For a pilot cyclic stick tube assembly that has accumulated 
+3,600 or more hours time-in-service if, after complying with 
+paragraph (g)(1) no cracks are identified, thereafter, at intervals 
+not to exceed 300 hours time-in-service or 6 months, whichever 
+occurs first, perform a detailed inspection of the pilot cyclic 
+stick tube assembly in accordance with Part II paragraph A. of 
+Transport Canada AD CF-2024-18.
+
+(h) Exceptions to Transport Canada AD CF-2024-18
+
+    (1) Where Transport Canada AD CF-2024-18 refers to its effective 
+date, this AD requires using the effective date of this AD.
+    (2) Where Transport Canada AD CF-2024-18 requires compliance in 
+terms of air time, this AD requires using hours time-in-service.
+    (3) This AD does not adopt Part I, Rotorcraft Flight Manual 
+(RFM) Revision--Applicable to Group 1 Helicopters, of Transport 
+Canada AD CF-2024-18.
+    (4) Where Transport Canada AD CF-2024-18 states ``Part II--
+Inspection and Replacement or Repair of Cyclic Stick Tube Assembly--
+Applicable to Group 2 Helicopters'', this AD requires replacing that 
+text with ``Part II--Inspection and Replacement or Repair of Cyclic 
+Stick Tube Assembly--All Helicopters.''
+
+(i) No Reporting Requirement
+
+    Although the material referenced in Transport Canada AD CF-2024-
+18 specifies to submit certain information to the manufacturer, this 
+AD does not include that requirement.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (k) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#d594989a9695b3b4b4fbb2baa3"><span class="__cf_email__" data-cfemail="e7a6aaa8a4a7818686c9808891">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(k) Additional Information
+
+    For more information about this AD, contact Alexis Whitaker, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (516) 228-7309; email: 
+<a href="/cdn-cgi/l/email-protection#72131e170a1b015c185c051a1b0613191700321413135c151d04"><span class="__cf_email__" data-cfemail="1879747d60716b3672366f70716c79737d6a587e7979367f776e">[email&#160;protected]</span></a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) Transport Canada AD CF-2024-18, dated May 29, 2024.
+    (ii) [Reserved]
+    (3) For Transport Canada material identified in this AD, contact 
+Transport Canada, Transport Canada National Aircraft Certification, 
+159 Cleopatra Drive, Nepean, Ontario, K1A 0N5, Canada; phone: (888) 
+663-3639; email: <a href="/cdn-cgi/l/email-protection#3e4a5d105f574c49514c4a5657505b4d4d5a574c5b5d4a57485b4d135d51504d5759505b4d5a5b505f4857595f5c5752574a5b10025f1e564c5b5803" mailto:TC@tc.gc.ca"><span class="__cf_email__" data-cfemail="b7e3f4f7c3d499d0d499d4d6">[email&#160;protected]</span></a>">tc.airworthinessdirectives-consignesdenavigabilite.<a href="/cdn-cgi/l/email-protection#386c7b784c5b165f5b165b59"><span class="__cf_email__" data-cfemail="5105121125327f36327f3230">[email&#160;protected]</span></a></a>; website: tc.canada.ca/en/
+aviation. You may find the Transport Canada material on the 
+Transport Canada website at tc.canada.ca/en/aviation.
+    (4) You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of 
+this material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#3b5d49155255484b5e584f5254557b555a495a155c544d"><span class="__cf_email__" data-cfemail="3f594d1156514c4f5a5c4b5650517f515e4d5e11585049">[email&#160;protected]</span></a>.
+
+
+[[Page 51605]]
+
+
+    Issued on October 17, 2025.
+Christopher R. Parker,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-20090 Filed 11-17-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

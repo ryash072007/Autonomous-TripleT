@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; The Boeing Company Airplanes
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) for certain The Boeing Company Model 737 -300, -400, and -500 series airplanes. This proposed AD was prompted by reports of nuisance stick shaker activation while accelerating to cruise speed at the top of a climb due to frozen angle of airflow (AOA) sensor vanes. This proposed AD would require installing new external case heaters (ECHs) on the left and right AOA sensors, performing repetitive functional tests and applicable corrective actions, and accomplishing applicable concurrent actions. The FAA is proposing this AD to address the unsafe condition on these products.

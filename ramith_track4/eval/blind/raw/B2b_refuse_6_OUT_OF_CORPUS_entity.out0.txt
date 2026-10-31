@@ -1,0 +1,1 @@
+{"question": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 concerning inspection of the wing spar attach fittings, and what is the compliance deadline?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

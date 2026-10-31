@@ -1,0 +1,567 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 57 (Wednesday, March 26, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 57 (Wednesday, March 26, 2025)]
+[Proposed Rules]
+[Pages 13709-13716]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-05026]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0477; Project Identifier MCAI-2024-00422-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Bombardier, Inc., Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Bombardier, Inc., Model BD-700-1A10 and BD-700-1A11 
+airplanes. This proposed AD was prompted by a report that incorrect 
+information was found in certain calculation tables in a section of the 
+airplane flight manual (AFM) that addresses certain slat-flap 
+conditions. This proposed AD would require revising the Non-Normal 
+Procedures section of the existing AFM to provide the flightcrew with 
+corrected procedures to use in certain slat-flap conditions. The FAA is 
+proposing this AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by May 12, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket
+
+[[Page 13710]]
+
+No. FAA-2025-0477; or in person at Docket Operations between 9 a.m. and 
+5 p.m., Monday through Friday, except Federal holidays. The AD docket 
+contains this NPRM, the mandatory continuing airworthiness information 
+(MCAI), any comments received, and other information. The street 
+address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Bombardier material identified in this proposed AD, 
+contact Bombardier Business Aircraft Customer Response Center, 400 
+C[ocirc]te-Vertu Road West, Dorval, Qu[eacute]bec H4S 1Y9, Canada; 
+telephone 514-855-2999; email <a href="/cdn-cgi/l/email-protection#b0d1d39ec9c5dcf0d1d5c2df9e8cd190d8c2d5d68d" http: bombardier.com">bombardier.com</a>">ac.yul@aero.<a href="http://bombardier.com">bombardier.com</a></a>; website 
+<a href="http://bombardier.com">bombardier.com</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Gabriel Kim, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; telephone 516-
+228-7300; email <a href="/cdn-cgi/l/email-protection#fac3d79b8c89d794839b9995d7999589ba9c9b9bd49d958c"><span class="__cf_email__" data-cfemail="af9682ced9dc82c1d6ceccc082ccc0dcefc9cece81c8c0d9">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0477; 
+Project Identifier MCAI-2024-00422-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Gabriel Kim, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 
+410, Westbury, NY 11590; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#9ea7b3ffe8edb3f0e7fffdf1b3fdf1eddef8ffffb0f9f1e8"><span class="__cf_email__" data-cfemail="3a03175b4c491754435b5955175955497a5c5b5b145d554c">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    Transport Canada, which is the aviation authority for Canada, has 
+issued Transport Canada AD CF-2024-27, dated July 24, 2024 (Transport 
+Canada AD CF-2024-27) (also referred to as the MCAI), to correct an 
+unsafe condition on certain Bombardier, Inc., Model BD-700-1A10 and BD-
+700-1A11 airplanes. The MCAI states that incorrect approach speed 
+adders and landing distance factors were discovered in the AFM tables 
+for the SLAT-FLAP FAIL (Caution) Crew Alerting System (CAS) message and 
+the jammed or inoperative slat/flap control lever (SFCL) non-normal 
+procedures. The incorrect speed adders and landing distance factors 
+present a potentially unsafe condition due to the shortfall between the 
+actual performance and the approved performance.
+    The FAA is proposing this AD to address incorrect speed adders and 
+landing distance factors in AFM tables. The unsafe condition, if not 
+addressed, could lead to increased workload for the flightcrew, 
+possible stick shaker activation (stall warning) due to a need to 
+increase speed beyond the published AFM speed adder, and increased 
+landing distance beyond published non-normal landing distance factors.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0477.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed the following Bombardier material. This material 
+describes procedures to address certain slat-flap conditions (i.e., 
+Slat-flap fail (Caution) CAS message, or a jammed or inoperative SFCL). 
+These documents are distinct since they apply to different 
+configurations and different airplane models.
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global Express AFM, Publication No. CSP 700-1, Revision 119, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global Express 
+AFM, Publication No. CSP 700-1, use Document Identification No. GL 700 
+AFM-1.)
+    <bullet> Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet (which includes Jammed or Inoperative Slat/Flap 
+Control Lever procedure and Slat-Flap Fail procedures); Bombardier 
+Global Express AFM, Publication No. CSP 700-1, Revision 119, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global Express 
+AFM, Publication No. CSP 700-1, use Document Identification No. GL 700 
+AFM-1.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global Express AFM, Publication No. CSP 700-1A, Revision 119, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global Express 
+AFM, Publication No. CSP 700-1A, use Document Identification No. GL 700 
+AFM-1A.)
+    <bullet> Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet (which includes Jammed or Inoperative Slat/Flap 
+Control Lever procedure and Slat-Flap Fail procedures), Bombardier 
+Global Express AFM, Publication No. CSP 700-1A, Revision 119, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global Express 
+AFM, Publication No. CSP 700-1A, use Document Identification No. GL 700 
+AFM-1A.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global 6000 AFM, Publication No. CSP 700-1V, Revision 49, dated May 22, 
+2024. (For obtaining the procedures for Bombardier Global 6000 AFM, 
+Publication No. CSP 700-1V, use Document Identification No. GL 6000 
+AFM.)
+    <bullet> Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--
+
+[[Page 13711]]
+
+Operations at Airport Elevations above 10,000 feet (which includes 
+Jammed or Inoperative Slat/Flap Control Lever procedure and Slat-Flap 
+Fail procedures), Bombardier Global 6000 AFM, Publication No. CSP 700-
+1V, Revision 49, dated May 22, 2024. (For obtaining the procedures for 
+Bombardier Global 6000 AFM, Publication No. CSP 700-1V, use Document 
+Identification No. GL 6000 AFM.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global 6500 AFM, Publication No. CSP 700-6500-1, Revision 21, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global 6500 AFM, 
+Publication No. CSP 700-6500-1, use Document Identification No. GL 6500 
+AFM.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure) Bombardier 
+Global 5000 AFM, Publication No. CSP 700-5000-1 AFM, Revision 80, dated 
+May 22, 2024. (For obtaining the procedures for Bombardier Global 5000 
+AFM, Publication No. CSP 700-5000-1, use Document Identification No. GL 
+5000 AFM.)
+    <bullet> Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet (which includes Jammed or Inoperative Slat/Flap 
+Control Lever procedure and Slat-Flap Fail procedures), Bombardier 
+Global 5000 AFM, Publication No. CSP 700-5000-1 AFM, Revision 80, dated 
+May 22, 2024. (For obtaining the procedures for Bombardier Global 5000 
+AFM, Publication No. CSP 700-5000-1, use Document Identification No. GL 
+5000 AFM.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global 5000 Featuring Global Vision Flight Deck AFM, Publication No. 
+CSP 700-5000-1V, Revision 49, dated May 22, 2024. (For obtaining the 
+procedures for Bombardier Global 5000 Featuring Global Vision Flight 
+Deck AFM, Publication No. CSP 700-5000-1V, use Document Identification 
+No. GL 5000 GVFD AFM.)
+    <bullet> Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet (which includes Jammed or Inoperative Slat/Flap 
+Control Lever procedure and Slat-Flap Fail procedures), Bombardier 
+Global 5000 Featuring Global Vision Flight Deck AFM, Publication No. 
+CSP 700-5000-1V, Revision 49, dated May 22, 2024. (For obtaining the 
+procedures for Bombardier Global 5000 Featuring Global Vision Flight 
+Deck AFM, Publication No. CSP 700-5000-1V, use Document Identification 
+No. GL 5000 GVFD AFM.)
+    <bullet> Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures (which includes the Jammed or Inoperative Slat/Flap Control 
+Lever Procedure and Slat-Flap Fail (Caution) procedure), Bombardier 
+Global 5500 AFM, Publication No. CSP 700-5500-1, Revision 21, dated May 
+22, 2024. (For obtaining the procedures for Bombardier Global 5500 AFM, 
+Publication No. CSP 700-5500-1, use Document Identification No. GL 5500 
+AFM.)
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in the MCAI and 
+material referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require revising the existing AFM to correct 
+table information in procedures to address certain slat-flap conditions 
+(Slat-flap fail (Caution) CAS message, or a jammed or inoperative 
+SFCL).
+
+Compliance With AFM Revisions
+
+    Transport Canada AD CF-2024-27 requires operators to ``advise all 
+flight crews'' of revisions to the AFM, and thereafter to ``operate the 
+aeroplane accordingly.'' However, this proposed AD would not 
+specifically require those actions as those actions are already 
+required by FAA regulations. FAA regulations require operators furnish 
+to pilots any changes to the AFM (for example, 14 CFR 121.137), and to 
+ensure the pilots are familiar with the AFM (for example, 14 CFR 
+91.505). As with any other flightcrew training requirement, training on 
+the updated AFM content is tracked by the operators and recorded in 
+each pilot's training record, which is available for the FAA to review. 
+FAA regulations also require pilots to follow the procedures in the 
+existing AFM including all updates. 14 CFR 91.9 requires that any 
+person operating a civil aircraft must comply with the operating 
+limitations specified in the AFM. Therefore, including a requirement in 
+this proposed AD to operate the airplane according to the revised AFM 
+would be redundant and unnecessary.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 476 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                                                                                     Cost per      Cost on U.S.
+                  Labor cost                               Parts cost                 product        operators
+----------------------------------------------------------------------------------------------------------------
+1 work-hour x $85 per hour = $85..............  None............................             $85         $40,460
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA
+
+[[Page 13712]]
+
+with promoting safe flight of civil aircraft in air commerce by 
+prescribing regulations for practices, methods, and procedures the 
+Administrator finds necessary for safety in air commerce. This 
+regulation is within the scope of that authority because it addresses 
+an unsafe condition that is likely to exist or develop on products 
+identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Bombardier, Inc.: Docket No. FAA-2025-0477; Project Identifier MCAI-
+2024-00422-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by May 12, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Bombardier, Inc., Model BD-700-1A10, and BD-
+700-1A11 airplanes, certificated in any category, having serial 
+number 9002 through 60086 inclusive, 60088 through 60091 inclusive, 
+60098, 60100, 60105, 60107, and 60111.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 27, Flight 
+Controls.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report that incorrect information was 
+found in certain calculation tables in a section of the airplane 
+flight manual (AFM) that addresses certain slat-flap conditions. The 
+FAA is issuing this AD to address incorrect speed adders and landing 
+distance factors in AFM tables. The unsafe condition, if not 
+addressed, could lead to increased workload for the flightcrew, 
+possible stick shaker activation (stall warning) due to a need to 
+increase speed beyond the published AFM speed adder, and increase 
+landing distance beyond published non-normal landing distance 
+factors.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Revision of Existing AFM
+
+    Within 30 days after the effective date of this AD, revise the 
+existing AFM to incorporate the information in the applicable 
+sections of the applicable AFMs identified in table 1 to paragraph 
+(g) of this AD.
+
+Table 1 to Paragraph (g)--AFM References
+
+BILLING CODE 4910-13-P
+[GRAPHIC] [TIFF OMITTED] TP26MR25.000
+
+
+[[Page 13713]]
+
+
+[GRAPHIC] [TIFF OMITTED] TP26MR25.001
+
+
+[[Page 13714]]
+
+
+[GRAPHIC] [TIFF OMITTED] TP26MR25.002
+
+
+[[Page 13715]]
+
+
+[GRAPHIC] [TIFF OMITTED] TP26MR25.003
+
+BILLING CODE 4910-13-C
+
+(h) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, 
+International Validation Branch, FAA, has the authority to approve 
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or responsible Flight Standards Office, as 
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (i) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#efaea2a0acaf898e8ec1888099"><span class="__cf_email__" data-cfemail="82c3cfcdc1c2e4e3e3ace5edf4">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, International 
+Validation Branch, FAA; or Transport Canada; or Bombardier's 
+Transport Canada Design Approval Organization (DAO). If approved by 
+the DAO, the approval must include the DAO-authorized signature.
+
+(i) Additional Information
+
+    For more information about this AD, contact Gabriel Kim, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#3e07135f484d1350475f5d51135d514d7e585f5f10595148"><span class="__cf_email__" data-cfemail="a89185c9dedb85c6d1c9cbc785cbc7dbe8cec9c986cfc7de">[email&#160;protected]</span></a>.
+
+(j) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global Express AFM, Publication No. CSP 700-
+1, Revision 119, dated May 22, 2024.
+    Note 1 to paragraph (j)(2)(i): For obtaining the procedure 
+specified in paragraph (j)(2)(i) and (viii) of this AD for 
+Bombardier Global Express AFM, Publication No. CSP 700-1, use 
+Document Identification No. GL 700 AFM-1.
+    (ii) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures Bombardier Global Express AFM, Publication No. CSP 700-
+1A, Revision 119, dated May 22, 2024.
+    Note 2 to paragraph (j)(2)(ii): For obtaining the procedures 
+specified in paragraph (j)(2)(ii) and (vix) of this AD for 
+Bombardier Global Express AFM, Publication No. CSP 700-1A, use 
+Document Identification No. GL 700 AFM-1A.
+    (iii) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global 6000 AFM, Publication No. CSP 700-1V, 
+Revision 49, dated May 22, 2024.
+    Note 3 to paragraph (j)(2)(iii): For obtaining the procedures 
+specified in paragraphs (j)(2)(iii) and (x) of this AD for 
+Bombardier Global 6000 AFM, Publication No. CSP 700-1V, use Document 
+Identification No. GL 6000 AFM.
+    (iv) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global 6500 AFM, Publication No. CSP 700-
+6500-1, Revision 21, dated May 22, 2024.
+    Note 4 to paragraph (j)(2)(iv): For obtaining the procedures 
+specified in paragraph (j)(2)(iv) of this AD for Bombardier Global 
+6500 AFM, Publication No. CSP 700-6500-1, use Document 
+Identification No. GL 6500 AFM.
+    (v) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global 5000 AFM, Publication No. CSP 700-
+5000-1 AFM, Revision 80, dated May 22, 2024.
+    Note 5 to paragraph (j)(2)(v): For obtaining the procedures 
+specified in paragraphs (j)(2)(v) and (xi) of this AD for Bombardier 
+Global 5000 AFM, Publication No. CSP 700-5000-1, use Document 
+Identification No. GL 5000 AFM.
+
+[[Page 13716]]
+
+    (vi) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global 5000 Featuring Global Vision Flight 
+Deck AFM, Publication No. CSP 700-5000-1V, Revision 49, dated May 
+22, 2024.
+    Note 6 to paragraph (j)(2)(vi): For obtaining the procedures 
+specified in paragraphs (j)(2)(vi) and (xii) of this AD for 
+Bombardier Global 5000 Featuring Global Vision Flight Deck AFM, 
+Publication No. CSP 700-5000-1V, use Document Identification No. GL 
+5000 GVFD AFM.
+    (vii) Section 05-10 Flight Controls, Chapter 5--Non-Normal 
+Procedures, Bombardier Global 5500 AFM, Publication No. CSP 700-
+5500-1, Revision 21, dated May 22, 2024.
+    Note 7 to paragraph (j)(2)(vii): For obtaining the procedures 
+specified in paragraph (j)(2)(vii) of this AD for Bombardier Global 
+5500 AFM, Publication No. CSP 700-5500-1, use Document 
+Identification No. GL 5500 AFM.
+    (viii) Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet, Bombardier Global Express AFM, Publication No. 
+CSP 700-1, Revision 119, dated May 22, 2024.
+    (ix) Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet, Bombardier Global Express AFM, Publication No. 
+CSP 700-1A, Revision 119, dated May 22, 2024.
+    (x) Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet, Bombardier Global 6000 AFM, Publication No. CSP 
+700-1V, Revision 49, dated May 22, 2024.
+    (xi) Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet, Bombardier Global 5000 AFM, Publication No. CSP 
+700-5000-1 AFM, Revision 80, dated May 22, 2024.
+    (xii) Landing Distance Factors subsection, Non-Normal Procedure 
+section, Chapter 7--Supplement 20--Operations at Airport Elevations 
+above 10,000 feet, Bombardier Global 5000 Featuring Global Vision 
+Flight Deck AFM, Publication No. CSP 700-5000-1V, Revision 49, dated 
+May 22, 2024.
+    (3) For material identified in this AD, contact Bombardier 
+Business Aircraft Customer Response Center, 400 C[ocirc]te-Vertu 
+Road West, Dorval, Qu[eacute]bec H4S 1Y9, Canada; telephone 514-855-
+2999; email <a href="/cdn-cgi/l/email-protection#4120226f38342d012024332e6f7d2061293324277c" http: bombardier.com">bombardier.com</a>">ac.yul@aero.<a href="http://bombardier.com">bombardier.com</a></a>; website <a href="http://bombardier.com">bombardier.com</a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a>, or email <a href="/cdn-cgi/l/email-protection#4422366a2d2a37342127302d2b2a042a2536256a232b32"><span class="__cf_email__" data-cfemail="c8aebae6a1a6bbb8adabbca1a7a688a6a9baa9e6afa7be">[email&#160;protected]</span></a>.
+
+    Issued on March 19, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-05026 Filed 3-25-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

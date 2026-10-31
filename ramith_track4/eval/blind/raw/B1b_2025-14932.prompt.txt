@@ -1,0 +1,574 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 149 (Wednesday, August 6, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 149 (Wednesday, August 6, 2025)]
+[Proposed Rules]
+[Pages 37810-37814]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-14932]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-1729; Project Identifier MCAI-2024-00568-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Dassault Aviation Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2022-12-10, which applies to certain Dassault Aviation Model FALCON 7X 
+airplanes. AD 2022-12-10 requires revising the existing airplane flight 
+manual (AFM) to provide emergency procedures for inconsistent or 
+unreliable flight data, emergency and abnormal operations procedures 
+for the generic input/output (GEN I/O) internal module failure, and 
+emergency procedures for additional information. AD 2022-12-10 also 
+requires revising the existing minimum equipment list (MEL) for the 
+multi-function probe heating, air data, and inertial reference systems. 
+Since the FAA issued AD 2022-12-10, the manufacturer developed 
+modifications that fix a weak point in the avionics architecture. This 
+proposed AD would continue to require the actions in AD 2022-12-10 and 
+would remove certain airplanes from the applicability. This proposed AD 
+would also require modification of the avionics system and related 
+revisions to the existing AFM and MEL. The FAA is proposing this AD to 
+address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by September 
+22, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1729; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; telephone +49 221 8999 000; email 
+<a href="/cdn-cgi/l/email-protection#7d3c390e3d181c0e1c5318080f120d1c531808"><span class="__cf_email__" data-cfemail="d29396a192b7b3a1b3fcb7a7a0bda2b3fcb7a7">[email&#160;protected]</span></a>. You may find this material on the EASA website at 
+ad.easa.europa.eu. It is also available at <a href="http://regulations.gov">regulations.gov</a> under Docket 
+No. FAA-2025-1729.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: William Reisenauer, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: 516-228-7301; email: <a href="/cdn-cgi/l/email-protection#efd6c2aeb9bcc2aea6bdc2adaeaca0c2aca0bcaf898e8ec1888099"><span class="__cf_email__" data-cfemail="ae9783eff8fd83efe7fc83ecefede183ede1fdeec8cfcf80c9c1d8">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-1729; 
+Project Identifier MCAI-2024-00568-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt
+
+[[Page 37811]]
+
+from public disclosure. If your comments responsive to this NPRM 
+contain commercial or financial information that is customarily treated 
+as private, that you actually treat as private, and that is relevant or 
+responsive to this NPRM, it is important that you clearly designate the 
+submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this NPRM. Submissions containing CBI should be 
+sent to William Reisenauer, Aviation Safety Engineer, FAA, 1600 Stewart 
+Avenue, Suite 410, Westbury, NY 11590; phone: 516-228-7301; email: <a href="/cdn-cgi/l/email-protection#93aabed2c5c0bed2dac1bed1d2d0dcbed0dcc0d3f5f2f2bdf4fce5"><span class="__cf_email__" data-cfemail="2d14006c7b7e006c647f006f6c6e62006e627e6d4b4c4c034a425b">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The FAA issued AD 2022-12-10, Amendment 39-22082 (87 FR 45246, July 
+28, 2022) (AD 2022-12-10), for all Dassault Aviation Model FALCON 7X 
+airplanes, except airplanes having Dassault modification M2091 embodied 
+in production. AD 2022-12-10 was prompted by an MCAI originated by 
+EASA, which is the Technical Agent for the Member States of the 
+European Union. EASA issued AD 2021-0197, dated August 23, 2021 (EASA 
+AD 2021-0197), to correct an unsafe condition on all Dassault Aviation 
+Model FALCON 7X airplanes. EASA AD 2021-0197 states a weak point in the 
+Falcon 7X ``EASy'' avionics architecture that, coupled with theoretical 
+GEN I/O card failure, may lead to misleading data on display units.
+    AD 2022-12-10 requires revising the existing AFM to provide 
+emergency procedures for inconsistent or unreliable flight data and 
+emergency and abnormal operations procedures for the GEN I/O internal 
+module failure and revising the operator's existing FAA-approved MEL 
+items for the multi-function probe heating, air data, and inertial 
+reference systems. AD 2022-12-10 also requires revising the existing 
+AFM to incorporate additional information in the emergency procedures. 
+The FAA issued AD 2022-12-10 to address misleading data on display 
+units. The unsafe condition, if not addressed, could reduce safety 
+margins and lead to increased pilot workload and consequent reduced 
+controllability of the airplane.
+
+Actions Since AD 2022-12-10 Was Issued
+
+    The preamble to AD 2022-12-10 specifies that the FAA considers that 
+AD ``interim action'' and that the FAA might consider further 
+rulemaking if a final action is identified. The manufacturer has since 
+developed modifications (i.e., software upgrades) that fix a weak point 
+in the avionics architecture to address the unsafe condition. The FAA 
+has determined that the modifications and related AFM and MEL revisions 
+should be required.
+    Since the FAA issued AD 2022-12-10, EASA superseded EASA AD 2021-
+0197 with EASA AD 2022-0145, dated July 12, 2022 (EASA AD 2022-0145). 
+EASA AD 2022-0145 was issued to retain the requirements of EASA AD 
+2021-0197, exclude airplanes on which Dassault modification M2091 was 
+embodied in production, and require airplane serial numbers (S/Ns) 402 
+and subsequent with the ``EASy III--2nd CERT'' or ``EASy III--3rd 
+CERT'' standard to upgrade the avionics architecture to the ``EASY 
+III--4th CERT'' standard (modification M2091).
+    EASA AD 2022-0145, in turn, was superseded by EASA AD 2023-0003, 
+dated January 6, 2023 (EASA AD 2023-0003). EASA AD 2023-0003 was issued 
+to retain the requirements of EASA AD 2022-0145, exclude airplanes on 
+which Dassault modification M2096 or M2097 was embodied in production, 
+and require airplane S/Ns 2 through 400 inclusive to upgrade the 
+avionics architecture to the ``EASy II--5th CERT'' standard 
+(modification M2096 or M2097, as applicable).
+    EASA subsequently revised AD 2023-0003 with EASA AD 2023-0003R1, 
+dated September 26, 2024 (EASA AD 2023-0003R1) (also referred to as the 
+MCAI), to correct an unsafe condition for all Dassault Aviation Model 
+FALCON 7X airplanes, except airplanes on which Dassault modification 
+M2055, M2059, M2091, M2096, or M2097 was embodied in production. Since 
+EASA AD 2023-0003 was issued, Dassault developed modifications M2055 
+(for airplane S/Ns 2 through 400 inclusive) and M2059 (for airplane S/
+Ns 402 and subsequent) that upgrade the avionics architecture to the 
+``EASy IV'' standard and issued Dassault Service Bulletin 7X-600, dated 
+November 7, 2022; Dassault Service Bulletin 7X-601, April 24, 2023; and 
+Dassault Service Bulletin 7X-602, June 3, 2023; as applicable, to 
+provide in-service modification instructions. Accordingly, EASA AD 
+2023-0003R1 excludes airplanes on which modifications M2055 or M2059 
+was embodied in production and allows incorporation of those 
+modifications in service as an optional method of compliance for 
+modifications M2091, M2096, or M2097, as applicable.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1729.
+
+Explanation of Retained Requirements
+
+    Although this proposed AD does not explicitly restate the 
+requirements of AD 2022-12-10, this proposed AD would retain all of the 
+requirements of AD 2022-12-10. Those requirements are referenced in 
+EASA AD 2023-0003R1, which, in turn, is referenced in paragraph (g) of 
+this proposed AD.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    EASA AD 2023-0003R1 specifies revising the existing AFM to provide 
+emergency procedures for inconsistent or unreliable flight data and 
+emergency and abnormal operations procedures for the GEN I/O internal 
+module failure; existing FAA-approved MEL items for the multi-function 
+probe heating, air data, and inertial reference systems and modular 
+avionic unit (MAU) #1B; and operational suitability manual--flight crew 
+(OSM-FC). This material also specifies procedures for modifying the 
+avionics system and incorporating related AFM and MEL revisions.
+    This material also describes optional procedures for modifying the 
+avionics architecture to the ``EASy IV'' standard, revising the 
+existing AFM to incorporate revision 6 or revision 25, as applicable, 
+and revising the existing FAA-approved MEL to incorporate revision 16. 
+Accomplishing the optional modification and AFM revision is an 
+acceptable method of compliance for the applicable modification that 
+upgrades the avionics architecture to ``EASy III--4th CERT'' or ``EASy 
+II--5th CERT'' and related AFM revision. In addition, accomplishing the 
+optional MEL revision is an acceptable method of compliance for the 
+corresponding revisions to MEL items for the multi-function probe 
+heating, air data, and inertial reference systems and MAU #1B.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation
+
+[[Page 37812]]
+
+in the United States. Pursuant to the FAA's bilateral agreement with 
+this State of Design Authority, that authority has notified the FAA of 
+the unsafe condition described in the MCAI referenced above. The FAA is 
+issuing this NPRM after determining that the unsafe condition described 
+previously is likely to exist or develop in other products of the same 
+type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in EASA AD 2023-0003R1 described previously, except for any differences 
+identified as exceptions in the regulatory text of this proposed AD. 
+See ``Differences Between This Proposed AD and the MCAI'' for a 
+discussion of the general differences included in this proposed AD.
+
+Compliance With AFM and MEL Revisions
+
+    EASA AD 2023-0003R1 requires operators to ``inform all flight 
+crews'' of revisions to the AFM and MEL, and thereafter to ``operate 
+the aeroplane accordingly.'' However, this proposed AD would not 
+specifically require those actions as those actions are already 
+required by FAA regulations. FAA regulations require that operators 
+furnish to pilots any changes to the AFM (for example, 14 CFR 121.137) 
+and to ensure the pilots are familiar with the AFM (for example, 14 CFR 
+91.505). As with any other flightcrew training requirement, training on 
+the updated AFM content is tracked by the operators and recorded in 
+each pilot's training record, which is available for the FAA to review. 
+FAA regulations also require pilots to follow the procedures in the 
+existing AFM including all updates. Section 91.9 requires that any 
+person operating a civil aircraft must comply with the operating 
+limitations specified in the AFM. FAA regulations (14 CFR 
+121.628(a)(2)) require operators to provide pilots with access to all 
+the information contained in the operator's MEL. Furthermore, 14 CFR 
+121.628(a)(5) requires airplanes to be operated under all applicable 
+conditions and limitations contained in the operator's MEL. Therefore, 
+including a requirement in this proposed AD to operate the airplane 
+according to the revised AFM and MEL would be redundant and 
+unnecessary.
+
+Differences Between This Proposed AD and the MCAI
+
+    EASA AD 2023-0003R1 requires operators to implement the 
+instructions of Dassault Falcon 7X Falcon 8X OSM-FC DGT148654, Revision 
+6, dated July 2, 2021, or later approved revisions, and to inform all 
+flightcrews of the AFM revision and ensure each pilot has performed the 
+training and operates the airplane accordingly. This proposed AD would 
+not require those specifics actions because the Dassault Falcon 7X 
+Falcon 8X OSM-FC is not an FAA-approved document and therefore 
+operators might not have that document as part of their training 
+program. However, the FAA reviewed Dassault Falcon 7X Falcon 8X OSM-FC, 
+Revision 6, and determined the information for Training Areas of 
+Special Emphasis for Pilots (TASEp) Tp-118-EZII is necessary for 
+flightcrew awareness and must be included in the AFM. Therefore, this 
+proposed AD would require revising the Emergency Procedures section of 
+the existing AFM to incorporate the information for TASEp Tp-118-EZII.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2023-0003R1 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2023-0003R1 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2023-0003R1 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2023-
+0003R1. Material required by EASA AD 2023-0003R1 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-1729 after the 
+FAA final rule is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 160 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                                                                                       Cost per    Cost on U.S.
+                  Action                            Labor cost           Parts cost    product       operators
+----------------------------------------------------------------------------------------------------------------
+Retained actions from AD 2022-12-10 (MEL   2 work-hours x $85 per hour           $0         $170         $27,200
+ and AFM revisions).                        = $170.
+New proposed actions (modification and     10 work-hours x $85 per              * 0          850         136,000
+ AFM and MEL revisions).                    hour = $850.
+----------------------------------------------------------------------------------------------------------------
+* The FAA has received no definitive data on which to base the cost estimates for the parts specified in this
+  proposed AD.
+
+
+                  Estimated Costs for Optional Actions
+------------------------------------------------------------------------
+           Labor cost                 Parts cost       Cost per product
+------------------------------------------------------------------------
+Up to 302 work-hours x $85 per    Up to $782,394....            $808,064
+ hour = $25,670.
+------------------------------------------------------------------------
+
+    According to the manufacturer, some or all of the costs of this 
+proposed AD may be covered under warranty, thereby reducing the cost 
+impact on affected individuals. The FAA does not control warranty 
+coverage for affected individuals. As a result, the FAA has included 
+all known costs in the cost estimate.
+
+[[Page 37813]]
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive (AD) 2022-12-10, Amendment 39-22082 
+(87 FR 45246, July 28, 2022); and
+0
+b. Adding the following new AD:
+
+Dassault Aviation: Docket No. FAA-2025-1729; Project Identifier 
+MCAI-2024-00568-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by September 22, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2022-12-10, Amendment 39-22082 (87 FR 45246, 
+July 28, 2022) (AD 2022-12-10).
+
+(c) Applicability
+
+    This AD applies to Dassault Aviation Model FALCON 7X airplanes, 
+certificated in any category, as identified in European Union 
+Aviation Safety Agency (EASA) AD 2023-0003R1, dated September 26, 
+2024 (EASA AD 2023-0003R1).
+    Note 1 to paragraph (c): Model FALCON 7X airplanes with Dassault 
+modification M1000 incorporated are commonly referred to as ``Model 
+FALCON 8X'' as a marketing designation.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 34, Navigation.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of a weak point identified in 
+the Falcon 7X ``EASy'' avionics architecture, which, coupled with 
+theoretical generic input/output (I/O) card failure, could lead to 
+misleading data on display units and by development of modifications 
+that fix that weak point in the avionics architecture. The FAA is 
+issuing this AD to address misleading data on display units. The 
+unsafe condition, if not addressed, could reduce safety margins and 
+lead to increased pilot workload, possibly resulting in reduced 
+controllability of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, EASA AD 2023-0003R1.
+
+(h) Exceptions to EASA AD 2023-0003R1
+
+    (1) Where EASA AD 2023-0003R1 refers to September 6, 2021 (the 
+effective of EASA AD 2021-0197), this AD requires using September 1, 
+2022 (the effective date of AD 2022-12-10).
+    (2) Where EASA AD 2023-0003R1 refers to July 26, 2022 (the 
+effective date of EASA AD 2022-0145, dated July 12, 2022), and 
+January 20, 2023 (the effective date of EASA AD 2023-0003, dated 
+January 6, 2023), this AD requires using the effective date of this 
+AD.
+    (3) Where paragraph (1) of EASA AD 2023-0003R1 requires 
+operators to ``inform all flight crews, and, thereafter, ensure that 
+each pilot has performed the training and operates the aeroplane 
+accordingly,'' and paragraph (2.2) of EASA AD 2023-0003R1 requires 
+operators to ``inform all flight crews, and, thereafter, operate the 
+aeroplane accordingly,'' this AD does not require those actions as 
+those actions are already required by existing FAA operating 
+regulations (see 14 CFR 91.9, 91.505, 121.137, and 121.628(a)(2) and 
+(5)).
+    (4) Where paragraph (1.3) of EASA AD 2023-0003R1 specifies to 
+``Implement the instructions of the MMEL-CP'', this AD requires 
+replacing that text with ``Revise the operator's existing FAA-
+approved minimum equipment list (MEL) to incorporate that 
+information (``the MMEL-CP'' as specified in EASA AD 2023-0003R1)''.
+    (5) Paragraph (1.4) of EASA AD 2023-0003R1 does not apply to 
+this AD.
+    (6) This AD does not adopt the ``Remarks'' section of EASA AD 
+2023-0003R1.
+
+(i) Airplane Flight Manual (AFM) Revision
+
+    Within 2 months after September 1, 2022 (the effective date of 
+AD 2022-12-10), revise the applicable existing AFM to incorporate 
+the information specified in figure 1 to paragraph (i) of this AD 
+after sub-sub-section 2-200-70, Emergency Procedures, ADS with IRS 
+miscompare, of sub-section 2-200, Emergency Procedures, of Section 
+2--Emergency Procedures.
+
+Figure 1 to Paragraph (i)--Training Areas of Special Emphasis for Pilot 
+(TASEp) Tp-118-EZII Info for AFM
+
+[[Page 37814]]
+
+[GRAPHIC] [TIFF OMITTED] TP06AU25.003
+
+(j) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2023-0003R1 
+specifies to submit certain information to the manufacturer, this AD 
+does not include that requirement.
+
+(k) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, 
+International Validation Branch, FAA, has the authority to approve 
+AMOCs for this AD, if requested using the procedures found in 14 CFR 
+39.19. In accordance with 14 CFR 39.19, send your request to your 
+principal inspector or responsible Flight Standards Office, as 
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (l) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#acede1e3efeccacdcd82cbc3da"><span class="__cf_email__" data-cfemail="783935373b381e1919561f170e">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, International 
+Validation Branch, FAA; or EASA; or Dassault Aviation's EASA Design 
+Organization Approval (DOA). If approved by the DOA, the approval 
+must include the DOA-authorized signature.
+
+(l) Additional Information
+
+    For more information about this AD, contact William Reisenauer, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: 516-228-7301; email: <a href="/cdn-cgi/l/email-protection#764f5b3720255b373f245b343735395b3539253610171758111900"><span class="__cf_email__" data-cfemail="89b0a4c8dfdaa4c8c0dba4cbc8cac6a4cac6dac9efe8e8a7eee6ff">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2023-0003R1, 
+dated September 26, 2024.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; telephone +49 221 
+8999 000; email <a href="/cdn-cgi/l/email-protection#18595c6b587d796b79367d6d6a776879367d6d"><span class="__cf_email__" data-cfemail="ebaaaf98ab8e8a988ac58e9e99849b8ac58e9e">[email&#160;protected]</span></a>. You may find this material on 
+the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#6402164a0d0a17140107100d0b0a240a0516054a030b12"><span class="__cf_email__" data-cfemail="2244500c4b4c51524741564b4d4c624c4350430c454d54">[email&#160;protected]</span></a>.
+
+    Issued on August 1, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-14932 Filed 8-5-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

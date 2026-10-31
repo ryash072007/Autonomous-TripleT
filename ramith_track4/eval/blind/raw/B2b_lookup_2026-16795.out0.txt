@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-300, -400, and -500 airplanes requiring new external case heaters on the angle of attack sensors because of nuisance stick shaker activation from frozen AOA vanes?"}

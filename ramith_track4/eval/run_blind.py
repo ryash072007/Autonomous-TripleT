@@ -54,7 +54,9 @@ def git_commit():
 
 def check_frozen():
     txt = (ROOT / "DECISIONS.md").read_text(encoding="utf-8")
-    for name in ("blind_B1.jsonl", "blind_B2.jsonl"):
+    for name in ("blind_B1.jsonl", "blind_B2.jsonl", "blind_B1b.jsonl", "blind_B2b.jsonl"):
+        if not (ROOT / "eval" / "blind" / name).exists():
+            continue
         h = sha(ROOT / "eval" / "blind" / name)
         if h not in txt:
             sys.exit(f"REFUSED: {name} hash {h[:12]} is not the frozen hash recorded in DECISIONS.md")
@@ -64,11 +66,11 @@ def load(setname):
     if setname == "v1test":
         rows = [json.loads(l) for l in open(ROOT / "eval" / "testset_v1.jsonl", encoding="utf-8")]
         return [dict(x, set="v1test") for x in rows if x["split"] == "test"]
-    if setname == "b2":
+    if setname in ("b2", "b2b"):
         out = []
-        for l in open(ROOT / "eval" / "blind" / "blind_B2.jsonl", encoding="utf-8"):
+        for l in open(ROOT / "eval" / "blind" / ("blind_B2.jsonl" if setname == "b2" else "blind_B2b.jsonl"), encoding="utf-8"):
             x = json.loads(l)
-            x["set"] = "b2"
+            x["set"] = setname
             x["gold_refusal"] = REFUSE_MAP.get(x.get("refusal_category"))
             out.append(x)
         return out
@@ -153,9 +155,9 @@ def summarise(rows, answers, name):
     return s
 
 
-def run_b1(system):
-    items = [json.loads(l) for l in open(ROOT / "eval" / "blind" / "blind_B1.jsonl", encoding="utf-8")]
-    docs = {d["doc_id"]: d for d in (json.loads(l) for l in open(ROOT / "eval" / "blind" / "fresh_docs.jsonl", encoding="utf-8"))}
+def run_b1(system, suffix=""):
+    items = [json.loads(l) for l in open(ROOT / "eval" / "blind" / f"blind_B1{suffix}.jsonl", encoding="utf-8")]
+    docs = {d["doc_id"]: d for d in (json.loads(l) for l in open(ROOT / "eval" / "blind" / f"fresh_docs{suffix}.jsonl", encoding="utf-8"))}
     rows = []
     for it in items:
         an = it["annotation"]
@@ -206,10 +208,10 @@ def main():
     for sname in sets:
         for sy in systems:
             key = f"{sname}/{sy}"
-            if sname == "b1":
+            if sname in ("b1", "b1b"):
                 if sy not in ("full", "naive_summary"):
                     continue
-                summ, rows = run_b1("full" if sy == "full" else "naive")
+                summ, rows = run_b1("full" if sy == "full" else "naive", "b" if sname == "b1b" else "")
                 results[key] = {"summary": summ, "rows": rows}
             else:
                 items = load(sname)

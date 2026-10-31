@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Rolls-Royce AE 3007A1/3 and AE3007A1P turbofan engines that raises the cyclic life limit on compressor cone shafts P/N 23070729 to address low-cycle fatigue and uncontained engine failure?"}

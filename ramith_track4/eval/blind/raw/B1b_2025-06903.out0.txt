@@ -1,0 +1,9 @@
+The applicability paragraph covers all GEAC Model M601D-11, M601E-11, M601E-11A, M601E-11AS, M601E-11S, and M601F engines. It sets no serial, date, or part-number limits and has no exclusions. Any configuration is therefore either a listed model (APPLIES) or an unlisted one (DOES_NOT_APPLY).
+
+Applicability does not depend on anything unstated or on an external document. EASA AD 2024-0194 is incorporated for the required actions and compliance times, not to define which engines are affected. A CANNOT_DETERMINE configuration is therefore not feasible.
+
+One possible angle is an ambiguous model designation, such as an owner who only knows "M601". That would be an unrealistic input rather than a gap in the notice, so I did not use it.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "AMBIGUOUS_SCOPE", "evidence_quote": "This AD applies to GE Aviation Czech s.r.o. (GEAC) (type certificate previously held by WALTER Engines a.s., Walter a.s., and MOTORLET a.s.) Model M601D-11, M601E-11, M601E-11A, M601E-11AS, M601E-11S, and M601F engines.", "notes": "Applicability is by model only, with no serial, date, part-number or exclusion conditions, and the EASA AD is not needed to determine applicability, so any realistic configuration resolves to APPLIES or DOES_NOT_APPLY."}
+```

@@ -1,0 +1,1 @@
+{"feasible": false, "question": "", "config": {"make": "The Boeing Company", "model": "787-8/787-9/787-10", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "EXTERNAL_DOC_REQUIRED"}

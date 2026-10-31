@@ -1,0 +1,1 @@
+{"question": "Is there a proposed airworthiness directive that applies to the Airbus 737-800 for fatigue cracking in the wing front spar, and what inspection interval does it propose?", "config": {"make": "Airbus", "model": "737-800", "cofa_date": null, "serial": null, "part_numbers": []}}

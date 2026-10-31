@@ -1,0 +1,585 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 27 (Tuesday, February 11, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 27 (Tuesday, February 11, 2025)]
+[Proposed Rules]
+[Pages 9293-9300]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-02239]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2024-0230; Project Identifier AD-2023-01064-A,Q,T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Various Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Supplemental notice of proposed rulemaking (SNPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA is revising a notice of proposed rulemaking (NPRM) 
+that applied to all airplanes with certain Pacific Scientific Company 
+rotary buckle assemblies (buckles) installed. This action revises the 
+NPRM by expanding the applicability and updating the referenced 
+material. As an option to the actions proposed by this SNPRM, this 
+SNPRM would allow removing the male side from the lap of the restraint 
+system assembly and installing a placard stating that use of the seat 
+is prohibited; use of that crewmember seat or passenger seat would then 
+be prohibited until the actions proposed by this SNPRM are accomplished 
+and the male side from the lap of the restraint system assembly is 
+reinstalled. The NPRM was prompted by a report of a manufacturing 
+defect in the screws used inside the buckle; this SNPRM is prompted by 
+the discovery that additional screws are affected by the unsafe 
+condition. The FAA is proposing this airworthiness directive (AD) to 
+address the unsafe condition on these products. Since these actions 
+would impose an additional burden over that in the NPRM, the FAA is 
+requesting comments on this SNPRM.
+
+[[Page 9294]]
+
+
+DATES: The FAA must receive comments on this SNPRM by March 28, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2024-0230; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this SNPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Parker Meggitt material identified in this AD, contact 
+Parker Meggitt Services, 1785 Voyager Avenue, Simi Valley, CA 93063; 
+phone: 877-666-0712; email: <a href="/cdn-cgi/l/email-protection#1044757378436560607f6264507d7577777964643e737f7d"><span class="__cf_email__" data-cfemail="6d39080e053e181d1d021f192d00080a0a041919430e0200">[email&#160;protected]</span></a>; website: 
+<a href="http://meggitt.com/services_and_support/customer_experience/update-on-buckle-assembly-service-bulletins">meggitt.com/services_and_support/customer_experience/update-on-buckle-assembly-service-bulletins</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th Street, 
+Des Moines, WA. For information on the availability of this material at 
+the FAA, call 206-231-3195. It is also available at <a href="http://regulations.gov">regulations.gov</a> 
+under Docket No. FAA-2024-0230.
+
+FOR FURTHER INFORMATION CONTACT: David Kim, Aviation Safety Engineer, 
+FAA, 3960 Paramount Boulevard, Lakewood, CA 90712; phone: 562-627-5274; 
+email: <a href="/cdn-cgi/l/email-protection#4004213629246e0b292d002621216e272f36"><span class="__cf_email__" data-cfemail="723613041b165c391b1f321413135c151d04">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2024-0230; 
+Project Identifier AD 2023-01064-A,Q,T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may again revise this proposal because of those 
+comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this proposed AD.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this SNPRM contain 
+commercial or financial information that is customarily treated as 
+private, that you actually treat as private, and that is relevant or 
+responsive to this SNPRM, it is important that you clearly designate 
+the submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this SNPRM. Submissions containing CBI should 
+be sent to David Kim, Aviation Safety Engineer, FAA, 3960 Paramount 
+Boulevard, Lakewood, CA 90712; phone: 562-627-5274; email: 
+<a href="/cdn-cgi/l/email-protection#793d180f101d57321014391f1818571e160f"><span class="__cf_email__" data-cfemail="91d5f0e7f8f5bfdaf8fcd1f7f0f0bff6fee7">[email&#160;protected]</span></a>. Any commentary that the FAA receives that is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued an NPRM to amend 14 CFR part 39 by adding an AD that 
+would apply to all airplanes with a Pacific Scientific Company buckle 
+part number (P/N) 1111475 (all dash numbers) or P/N 1111548-01 
+installed, if the buckle was manufactured between January 2012 and 
+September 2012 inclusive or has an unknown date of manufacture (DOM). 
+The NPRM published in the Federal Register on February 29, 2024 (89 FR 
+14783). The NPRM was prompted by a report of a 2012 manufacturing 
+defect in the screws used inside Pacific Scientific Company buckle P/N 
+1111475 (all dash numbers) and P/N 1111548-01. The screws used to 
+fasten the load plate to the body of the buckle were found to be 
+susceptible to hydrogen embrittlement due to improper baking during the 
+electroplating process. This condition leads the screwhead to separate 
+from the body of the screw when under load, which could result in the 
+buckle failing to restrain the occupant to the seat. This condition was 
+identified in screw Lots 348601-A and 348994-A, which were manufactured 
+between January 2012 and September 2012, and were the first two lots of 
+screws received by Pacific Scientific Company from a new supplier.
+    In the NPRM for airplanes with the identified buckle, the FAA 
+proposed to require inspecting each buckle screw for cracked, loose, 
+and missing screw heads and, depending on the results, replacing the 
+buckle or inspecting each screw to determine if any screw has a Torx 
+head. Depending on the results of that screw inspection, the NPRM 
+proposed to require reassembling the buckle (if necessary) and 
+reidentifying it with ``INS. A'' or replacing each Torx head screw with 
+a hex head screw, reassembling the buckle, and reidentifying the buckle 
+with ``MOD. A.'' If a screw head broke off during disassembly, the NPRM 
+proposed to require replacing the buckle with an airworthy buckle. 
+Lastly, the NPRM proposed to prohibit installing an identified buckle 
+unless it was marked with ``MOD. A'' or ``INS. A.''
+
+Actions Since the NPRM Was Issued
+
+    Since the FAA issued the NPRM, further review by the manufacturer 
+revealed that an additional lot of screws, Lot 358764-A, is also 
+affected by the same unsafe condition, which expands the DOM to April 
+2013 inclusive. These same part-numbered buckles may also be installed 
+in helicopters; the FAA published separate rulemaking, AD 2024-20-04, 
+Amendment 39-22863 (89 FR 85040, October 25, 2024) (AD 2024-20-04), to 
+address all helicopters with a Pacific Scientific Company buckle P/N 
+1111475 (all dash numbers) or P/N 1111548-01 having a DOM between 
+January 2012 and April 2013 inclusive, or an unknown DOM installed.
+    Parker Meggitt also revised Service Bulletin (SB) 1111475-25-001-
+2023 and SB 1111548-25-001-2023, each Revision 001 and dated December 
+1, 2023 (SB 1111475-25-001-2023 Rev 001 and SB 1111548-25-001-2023 Rev 
+001), to SB 1111475-25-001-2023 and SB 1111548-25-001-2023, each 
+Revision 002 and dated April 1, 2024 (SB 1111475-25-001-2023 Rev 002 
+and SB 1111548-25-001-2023 Rev 002). SB 1111475-25-001-2023 Rev 002 and 
+SB 1111548-25-001-2023 Rev 002 specify the same procedures as SB 
+1111475-25-001-2023 Rev 001 and SB 1111548-25-001-2023 Rev 001, except 
+SB 1111475-25-001-2023 Rev 002 and SB 1111548-
+
+[[Page 9295]]
+
+25-001-2023 Rev 002 expand the applicability, update material and 
+tooling information, add and clarify certain Accomplishment 
+Instructions procedures, and update figures. A paragraph was added to 
+this proposed AD to provide credit if certain actions were accomplished 
+using SB 1111475-25-001-2023 Rev 001 and SB 1111548-25-001-2023 Rev 
+001.
+    The subject matter has been updated to reflect both the Air 
+Transport Assoction (ATA) and Joint Aircraft System Component (JASC) 
+Codes.
+    Additionally, based on comments received on AD 2024-01-11 
+questioning if the AD was a rotorcraft or appliance AD, the FAA has 
+updated the project ID by adding the letters ``A'' and ``T'' to show 
+the project types for this proposed action as small airplane and 
+transport airplane in addition to the letter ``Q'' which signifies that 
+the product type is appliance.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products.
+
+Comments to the NPRM
+
+    The FAA received comments from nine commenters, including Air 
+Canada, Airbus Atlantic, Airbus SAS, American Airlines, Boeing, Collins 
+Aerospace, Delta Air Lines, Inc., Qatar Airways, and Southwest 
+Airlines. The following presents the comments received on the NPRM and 
+the FAA's response to each relevant comment.
+
+Request for Clarification of the Applicability and Compliance Time
+
+    Air Canada, Collins Aerospace, and Qatar Airways requested 
+clarification regarding the applicability and proposed AD compliance 
+time. Commenters requested clarification regarding the proposed 
+inspections and if the AD would require inspecting all buckles despite 
+the DOM and if compliance with this AD would start with checking the 
+applicability or by inspecting the screws.
+    The FAA acknowledges these comments and infers concern that some 
+buckles may be repaired or replaced unnecessarily due to the date of 
+manufacture not being legible. Applicable part-numbered buckles with an 
+illegible or missing DOM, including those that may have never been 
+marked, are considered as having an unknown DOM for the purposes of 
+this proposed AD and would be required to comply with the proposed AD 
+requirements. Additionally, the proposed compliance time to accomplish 
+the inspections is within 12 months after the AD's effective date; only 
+if, as a result of the inspections, it is determined that a Torx head 
+screw is installed, is replacing each Torx head screw is required 
+before further flight. The DOM marking was added to buckle P/N 1111475 
+(all dash numbers) after the initial 2012 investigation while buckle P/
+N 1111548-01 has always been marked with the DOM. Additionally, part 
+marking preservation and reidentification is the responsibility of 
+operators. As regards to if the applicability applies to all buckles, 
+the proposed AD has limited the applicibilty to certain buckles with a 
+DOM between January 2012 and April 2013 or if the DOM is not legible.
+
+Requests Regarding the Magnet Used for the Magnet Test
+
+    Southwest Airlines stated that the magnetism strength of the magnet 
+is the representative physical quantity to determine if each screw has 
+a Torx head or hex head in the magnet test. Airbus Atlantic and 
+Southwest Airlines asked if Meggitt would provide more precise 
+information concerning the magnet, particularly its magnetism strength. 
+In addition, Airbus Atlantic requested that Meggitt specify the magnet 
+as a special tool within the applicable Service Bulletin and provide 
+the magnet to operators. Southwest Airlines commented that different 
+magnets could lead to erroneous results.
+    The FAA agrees that information regarding the magnet used for the 
+magnet test is beneficial for accomplishing the proposed inspections. 
+Since the NPRM was issued, SB 1111475-25-001-2023 Rev 001 has been 
+revised to Rev 002, to incorporate various changes, including the 
+addition of a website link to magnet P/N 5862K104 under the Material 
+Information, paragraph G.--Special Tooling. The website at this link 
+provides various magnet specification information. SB 1111475-25-001-
+2023 Rev 002 also recommends certain magnet dimensions and explains 
+that a magnet that is strong enough to not slip off the buckle suffices 
+for the purposes of the magnet test. The FAA does not agree that the 
+use of different magnets could lead to erroneous results. If a magnet 
+is not strong enough, the procedures require that a different 
+inspection method is used. Regarding the request for Meggitt to provide 
+a magnet, the FAA does not have the authority to require a manufacturer 
+to send any tooling to an operator.
+
+Request for Clarification for Using the Magnet
+
+    Airbus SAS requested additional guidance for using the magnet and 
+commented that during the magnet test to inspect for the type of screw, 
+the magnet must be in the hands of the person in charge of the 
+inspection at all times and not in proximity of any aircraft system.
+    The FAA agrees that a magnet should not be in proximity to any 
+aircraft system because magnets can cause damage to those systems. This 
+is reasonably understood to be standard maintenance practice. We 
+disagree with the statement that the magnet needs to always be in the 
+hands of the person performing the inspections. No changes are made to 
+this SNPRM as a result of this comment.
+
+Request for Clarification of the Torque Values and Tools Required
+
+    Airbus SAS requested clarification of the tools and the specified 
+torque values required to complete the proposed actions. Airbus SAS 
+state that torque values and dimensions of the thin metal stock should 
+be provided.
+    The FAA agrees and SB 1111475-25-001-2023 Rev 001, as well as SB 
+1111548-25-001-2023 Rev 001, were revised to Rev 002, to incorporate 
+various changes, including the torque values, dimensions of the thin 
+metal stock, and magnet specifications. The FAA has updated this SNPRM 
+to reference revision 002 of the service bulletins.
+
+Request for Clarification of the Disassembly Inspection
+
+    Airbus SAS states a concern with foreign object debris inside the 
+flight deck and proposes that any opening of the rotational buckle be 
+done outside of the aircraft, in-shop, or in any facility approved by 
+the suppler for this task.
+    The FAA disagrees that the task must be performed outside the 
+aircraft. These comments do not correct any proposed actions in the 
+NPRM, and it is reasonably understood to be standard maintenance 
+practices to maintain a clean workspace and proper tool containment to 
+prevent foreign object debris. No changes were made to this SNPRM.
+
+Request for Clarification of the Visual Inspection
+
+    Airbus SAS commented that the risk of operator error in determining 
+the screw head type based on the method described in the SB can be 
+questioned due to limited visual access to the screws. Therefore, the 
+proposed AD should emphasize that in case of any doubt, the operator 
+shall confirm head types using either method #1 or method #3 (outside 
+aircraft only).
+    The FAA disagrees with this comment. The FAA concluded the
+
+[[Page 9296]]
+
+methods described in the SBs are appropriate for inspection of the 
+screws. No changes are made in this SNPRM.
+
+Request for Clarification of the Applicability
+
+    American Airlines requested clarification regarding affected parts. 
+They asked whether the FAA thinks there is a concern that any buckle 
+with the applicable P/Ns may have had affected screws installed during 
+repair and therefore all buckles with the affected part numbers must be 
+inspected for screw installation and not DOM. American Airlines further 
+states that they repair their associated restraint assemblies and they 
+believe there may be a possibility of affected screws being installed 
+on belts manufactured before or after the DOM provided in the 
+applicability of the proposed AD and service information, though Parker 
+Meggitt communicated to American Airlines that none of the lots of 
+screws were shipped out individually as subcomponent spares orders and 
+that screw replacement is uncommon.
+    The FAA is not aware of any non-conforming screws installed in any 
+buckle assemblies other than those identified in the applicability of 
+this SNPRM. Accordingly, the FAA determines there is insufficient data 
+at this time to support further expanding the applicability above what 
+is proposed in this SNPRM. However, should additional information 
+reveal otherwise, the FAA may consider further rulemaking to expand the 
+applicability.
+
+Request To Reidentify Buckles With ``INS A''
+
+    American Airlines commented that in the NPRM, paragraph 
+2.(g)(2)(ii) does not offer the same options as paragraph 
+2.(g)(1)(ii)(A) and (B) to determine if there are Torx head screws and 
+reassemble the buckle if there are none. American Airlines requests 
+that instructions similar to paragraph 2.(g)(1)(ii)(A) and (B) be added 
+to paragraph 2.(g)(2)(ii) to allow the buckle to be reassembled and 
+reidentified with ``INS. A'' if no Torx head screws are discovered. 
+Parker Meggitt has communicated that SB 1111548-25-001-2023 will be 
+revised with instructions to reidentify the buckle with ``INS. A'' if 
+no Torx head screws are discovered.
+    The FAA agrees, SB 1111548-25-001-2023 was revised to include 
+additional steps to mark the buckle with ``INS A'' if the correct 
+screws were installed and the FAA has revised this SNPRM accordingly.
+
+Request To Use Later-Approved Service Bulletins
+
+    American Airlines requests that the use of future revisions of the 
+service bulletin to comply with the proposed AD be allowed.
+    The FAA disagrees with the commenter's request. The FAA may not 
+refer to any document that does not yet exist in an AD. In general 
+terms, the FAA is required by Office of the Federal Register (OFR) 
+regulations for approval of materials incorporated by reference, as 
+specified in 1 CFR 51.1(f), to either publish the service document 
+contents as part of the actual AD language; or submit the service 
+document to the OFR for approval as referenced material, in which case 
+the FAA may only refer to such material in the text of an AD. The AD 
+may refer to the service document only if the OFR approved it for 
+incorporation by reference.
+    To allow operators to use later revisions of the referenced 
+document (issued after publication of the AD), the FAA must either 
+supersede the AD to reference specific later revisions, or operators 
+must request approval to use later revisions as an alternative method 
+of compliance (AMOC) under the provisions of paragraph (j) of this 
+proposed AD. No changes are made in this SNPRM.
+
+Request To Clarify Spare Parts
+
+    American Airlines stated that there are no actions for spare parts 
+except that no affected parts should be installed after the effective 
+date of the proposed AD. American Airlines requests that the FAA 
+clarify if it was intentional that spare parts owned by the airline do 
+not require inspection by the effective date.
+    The FAA position is that spare buckles that have not been inspected 
+or repaired are considered unairworthy and must not be installed on 
+aircraft. Paragraph (h) of this proposed AD prohibits installing any 
+affected buckle unless it is inspected or modified and the 12 month 
+compliance time does not apply to spare parts. To the extent that spare 
+parts may not be available to replace parts that fail the inspection 
+requirements of this proposd AD, the FAA cannot base AD actions on 
+parts availablilty. While every effort is made to avoid grounding 
+aircraft, the FAA must address the unsafe condition. No changes are 
+made in this SNPRM.
+
+Request To Change the Buckle Part Number
+
+    Airbus Atlantic, American Airlines, and Southwest Airlines 
+requested that the design approval holder change the P/N of the buckle 
+after completing the inspection or repair. The three commenters 
+requested that newly-manufactured buckles be marked with a new P/N, 
+``INS.A'', or a secondary method of markingto easily distinguish 
+between potentially suspect buckles with Torx head and AD-compliant 
+parts that have stainless steel hex heads. The commenters are concerned 
+that lack of a differentiating P/N to suspect buckles will drive higher 
+compliance risk to the operators. In addition, the commenters request 
+changing to a more durable label on the P/N 1111475 series buckles 
+because the current label with the part number and DOM wears 
+prematurely, making the markings unreadable, and potentially increasing 
+the number of inspections.
+    The FAA acknowledges that the manufacturer introducing a new P/N 
+for newly-manufactured parts is ideal; however, the FAA cannot mandate 
+a company to change a P/N for an article. Applicable part-numbered 
+buckles with an illegible or missing DOM, including those that may have 
+never been marked, are considered as having an unknown DOM for the 
+purposes of this proposed AD and would be required to comply with the 
+proposed AD actions. The DOM marking was added to buckle P/N 1111475 
+(all dash numbers) after the initial 2012 investigation while buckle P/
+N 1111548-01 has always been marked with the DOM. Additionally, part 
+marking preservation and reidentification is the responsibility of 
+operators. No changes are made in this SNPRM.
+
+Request To Clarify the Proposed AD's Applicabilty
+
+    Boeing requested that the proposed AD's applicability include the 
+DOM. Boeing states that, as writtern, paragraph (g) of the proposed AD 
+could be confused to mean that all part-numbered buckles, regardless of 
+DOM, would require an in-depth inspection and repair, or replacement.
+    The FAA disagrees with this request because the applicability, as 
+written, clearly specifies that AD applies to airplanes with specific 
+part-numbered buckles with specific dates of manufacture or an unknown 
+DOM; this SNPRM contains no changes in regard to the comment.
+
+Request To Clarify the Installation Prohibition
+
+    Boeing requested the applicability be changed to account for 
+buckles installed on airplanes manufactured after the date specified in 
+the applicability. Boeing requested that airplanes with an original 
+manufacture date after issuance of this proposed AD be exempt from the
+
+[[Page 9297]]
+
+proposed required actions but still be required to comply with 
+installation prohibition; Boeing stated that these airplanes would not 
+have the suspected buckles installed.
+    The FAA agrees, this proposed AD is for all airplanes with a 
+certain buckle installed. Aircraft manufactured after April 2013 might 
+not have the affected buckles installed, but an affected buckle might 
+have been installed after delivery. Therefore, all aircraft must comply 
+with the installation prohibition paragraph and not install an affected 
+buckle. No changes are made in this SNPRM.
+
+Request to a Define Airworthy
+
+    Collins Aerospace requested a definition be added to the proposed 
+AD to define an ``airworthy'' buckle as a buckle with a known DOM to be 
+outside of DOM or repaired buckle that is within the DOM and includes 
+the ``MOD. A'' etching.
+    The FAA disagrees that a definition of airworthy is needed and made 
+no changes to this SNPRM in that regard.
+
+Request to a Clarify Repairing a Buckle
+
+    Collins Aerospace and Delta Air Lines both requested that the FAA 
+specifiy where a buckle can be repaired and questioned whether the 
+buckle can be repaired instead of replaced. Delta Air Lines also 
+requested that the statement ``except you are not required to return 
+any parts to Parker Meggitt'' in paragraph (g)(1)(B) of the proposed AD 
+be similarly added to paragraph (g)(1)(i) and (g)(2)(i) of the proposed 
+AD.
+    The FAA determination is that a repaired buckle is an airworthy 
+buckle. The Differences Between this Proposed AD and the Referenced 
+Material section also clarifies that this proposed AD would not require 
+returning the buckle to Parker Meggitt. Although the service 
+information requires returning buckles to Parker Meggitt, this proposed 
+AD would not have this requirement because the FAA does not have the 
+authority to direct operators to return defective components to the 
+manufacturer in this proposed AD. If an operator chooses to return a 
+damaged buckle to Parker Meggitt for repair as the proposed AD would 
+not prohibit an operator from doing so. Operators may also request 
+approval of any specific actions, including any specific corrective 
+actions, as an AMOC under the provisions of paragraph (j) of this 
+proposed AD. No changes in this regard are made in this SNPRM.
+
+Request To Update the Number of Affected Buckles and Date of 
+Manufacture
+
+    Collins Aerospace requested that the number of affected buckles be 
+updated in the Cost of Compliance and the DOM be changed in the 
+applicability because the DOM has increased from September 2012 to 
+April 2013.
+    The FAA agrees and has included an updated number for the affected 
+population and has changed DOM in the applicability from September 2012 
+to April 2013.
+
+Request To Include Link to Service Bulletin in Required Actions
+
+    Collins Aerospace requested a link to the service bulletin be 
+provided in the required actions if a bulletin is referenced.
+    The FAA disagrees as links to referenced material are not provided 
+in the required actions. The ADDRESSES section, as well as paragraph 
+(l) of this AD, Material Incorporated by Reference, provide 
+availability information for the service bulletins, including the 
+website requested by Collins Aerospace. This material is also available 
+to interested parties through their normal course of business. No 
+changes are made in this SNPRM.
+
+Request To Extend the Compliance Time
+
+    American Airlines, Delta Air Lines, and Qatar Airways requested an 
+extension of the compliance time ranging from 18-36 months due to spare 
+lead times, maintenance program intervals, and fleet size.
+    The FAA disagrees; the proposed 12-month compliance time was 
+determined after factoring an estimated 12-month processing time before 
+issuance of the final rule of this proposed AD and evaluating risks. 
+According to the manufacturer, an ample number of spare parts and 
+screws are in stock and will be available to modify the U.S. fleet 
+within the proposed compliance time. To the extent that spare parts may 
+not be available to replace parts that fail the inspection requirements 
+of this proposd AD, the FAA cannot base AD actions on parts 
+availablilty. While every effort is made to avoid grounding aircraft, 
+the FAA must address the unsafe condition. The FAA did not make any 
+changes to this SNPRM as a result of this comment.
+
+Request To Replace the Buckle Instead of Complying With the AD
+
+    American Airlines, Delta Air Lines, and Southwest Airlines 
+requested an option to replace the buckle with an airworthy buckle 
+instead of inspecting and repairing it. Southwest Airlines requested 
+clarification of the FAA's position regarding deactivating non-
+operational seats per their approved MEL (Minimum Equipment List).
+    The FAA agrees to clarify. It is understood that when an affected 
+buckle is replaced with an airworthy buckle the AD no longer applies 
+per the applicability paragraph. The FAA infers that Southwest Airlines 
+is requesting the FAA change the AD to allow deactivating and 
+placarding observer and flight attendant seats with affected parts as 
+``inoperative''. The FAA agrees with the commenter's request and has 
+added an optional action for the proposed AD requirements. This AD 
+would allow, for a crewmember seat or passenger seat with a restraint 
+system with an affected buckle installed, removing the male side from 
+the lap of the restraint system assembly and fabricating and installing 
+a placard on the seat stating that use of the seat is prohibited. Use 
+of that crewmember seat or passenger seat would then be prohibited 
+until the actions proposed by this SNPRM are accomplished and the male 
+side from the lap of the restraint system assembly is reinstalled.
+
+FAA's Determination
+
+    The FAA is proposing this AD after determining the unsafe condition 
+described previously is likely to exist or develop in other products of 
+the same type design. Certain changes described above expand the scope 
+of the NPRM. As a result, it is necessary to reopen the comment period 
+to provide additional opportunity for the public to comment on this 
+SNPRM.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed SB 1111475-25-001-2023 Rev 002 for buckle P/N 
+1111475 and SB 1111548-25-001-2023 Rev 002 for buckle P/N 1111548-01. 
+This material specifies procedures for inspecting the buckle for any 
+missing or loose screw heads and, depending on the results, replacing 
+the buckle and sending the removed buckle to Parker Meggitt for repair 
+or replacement. If after that first inspection, all of the screw heads 
+are intact, this material specifies procedures for inspecting the 
+buckle for any Torx head screws (alloy steel) and, depending on the 
+results, allowing the buckle assembly to remain in-service temporarily, 
+replacing any Torx head screws (alloy steel) with new hex head screws 
+(stainless steel), and checking the functionality of the buckle. This 
+material also specifies procedures for removing a buckle from a 
+restraint system, installing a buckle on a restraint system, and 
+returning buckles to Parker
+
+[[Page 9298]]
+
+Meggitt. If the buckle passes the specified inspections or is modified 
+by replacing Torx head screws (alloy steel) with new hex head screws 
+(stainless steel) screws, this material specifies procedures for 
+reidentifying the back of the buckle.
+    The buckle may be included as a component of a different part-
+numbered restraint system assembly. This material identifies known 
+affected restraint system assembly P/Ns.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESS

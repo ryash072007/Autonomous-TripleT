@@ -1,0 +1,1 @@
+{"question": "What specific inspection steps, compliance times, and corrective actions are specified in Boeing Alert Requirements Bulletin B787-81205-SB230041-00 RB, Issue 002, dated September 14, 2020, and how do they differ from Issue 001?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}
