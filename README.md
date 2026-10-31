@@ -8,6 +8,59 @@ Autonomous SG 2026 (Acacia Hackathon Society x NUS Product Club) · AI & Aerospa
 > at closest approach with a calibrated miss-rate guarantee, and hands uncertain events to the analyst. The
 > analyst decides.
 
+![OrbitGuard landing: every light in the sky is a real close approach from the test set](docs/screenshots/landing.png)
+
+## Headline result: the official evaluation
+
+The organisers' task: predict each event's **final tier** using only CDMs at least 2 days before closest approach,
+evaluated on an **80/20 split of `train_data` by `event_id`**. The split is seeded and its holdout ids are saved
+([`official_holdout_ids.json`](artifacts/evidence/official_holdout_ids.json)). Labels come from the organisers'
+`challenge1_event_labels.xlsx`, which agrees with our own on all 13,154 events. Evidence:
+[`official_holdout.json`](artifacts/evidence/official_holdout.json).
+
+**20% holdout, 2,389 usable events (167 end Critical), scored once:**
+
+| | Critical recall | Critical precision | Macro-F1 | Alerts / 100 events |
+| --- | --- | --- | --- | --- |
+| **OrbitGuard** | **0.952** (159 of 167) | 0.479 | 0.706 | 33.8 |
+| Persistence (tier of the last CDM ≥ 2 d out) | 0.820 | **0.830** | **0.877** | 26.0 |
+| `max_risk_estimate` rule at 2 d | 0.832 | 0.777 | 0.740 | 43.0 |
+
+Confusion matrix, OrbitGuard (rows = true, columns = predicted):
+
+| | → Safe | → Elevated | → Critical |
+| --- | --- | --- | --- |
+| **Safe** | 1,540 | 211 | 39 |
+| **Elevated** | 40 | 258 | 134 |
+| **Critical** | **1** | 7 | 159 |
+
+- **What we trade.** We find 159 of 167 events that end Critical; persistence finds 137. The price is precision:
+  OrbitGuard raises more Critical flags, so persistence wins on macro-F1. We chose recall on Critical deliberately,
+  because a missed collision costs far more than a review, and we control the extra flags with abstention and a
+  cost-aware decision layer (below).
+- **Only 1 of 167** Critical events was called Safe.
+- **Calibrated uncertainty.** Conformal tier sets, calibrated on the 80%, miss 3.6% of Critical events on the
+  holdout (target ≤ 5%) and hand 19.8% of events to the analyst.
+- **Spread across folds.** 5-fold grouped CV gives Critical recall 0.965 ± 0.021 (persistence 0.866 ± 0.032).
+- **Harder subset.** On the holdout events whose final CDM is within a day of closest approach (how the test set
+  was built), Critical recall is 0.955 vs persistence 0.764.
+
+## The console
+
+| | |
+| --- | --- |
+| ![Event page: tier, recommendation, your call, orbits, trend and confidence](docs/screenshots/queue-event.png) | ![If they collide: debris from a simulated breakup and the satellites it could reach](docs/screenshots/collide.png) |
+| **Event page.** Tier, the rule that fired, the recommendation and *your call*. Orbits, trend and how sure the model is. | **If they collide.** A simulated breakup: debris fragments, and the active satellites they could reach over 7 days. |
+| ![Next 24 hours: events sliding toward closest approach](docs/screenshots/next24.png) | ![Insights: fleet by altitude, Pc rank vs harm rank](docs/screenshots/insights.png) |
+| **Next 24 hours.** The warnings view. Events slide toward closest approach as the replay clock runs. | **Insights.** Crowding by altitude, how tiers change after T−2 d, calibration, and Pc rank vs harm rank. |
+| ![Results: every number with its evidence file](docs/screenshots/results.png) | ![Guided tour welcome](docs/screenshots/tour.png) |
+| **Results.** Every number is read from an evidence file, and the file path is shown. Failure cases included. | **Guided tour.** Four stops: a clear Critical, one caught early, where it fails, and a costly collision. |
+
+**Live mode** reads Space-Track's public CDM feed (emergency-reportable conjunctions only) and tiers it by rule,
+because the public feed does not carry the model's inputs.
+
+![Live mode on Space-Track public CDMs](docs/screenshots/live.png)
+
 ## The problem
 
 **User.** A conjunction-assessment analyst on a LEO operator's flight-dynamics team. For every close approach
@@ -32,9 +85,9 @@ From the problem statement, implemented once in [ca_triage/tiers.py](ca_triage/t
 
 | Tier | Rule |
 | --- | --- |
-| Critical (manoeuvre required) | Pc ≥ 10⁻⁴, or miss distance < 1.0 km |
-| Elevated | 10⁻⁶ ≤ Pc < 10⁻⁴, or 1.0 km ≤ miss distance ≤ 5.0 km |
-| Safe | Pc < 10⁻⁶ and miss distance > 5.0 km |
+| Critical (manoeuvre required) | Pc ≥ 10⁻⁴ (risk ≥ −4.0), or miss distance < 1,000 m |
+| Elevated | Not Critical, and 10⁻⁶ ≤ Pc < 10⁻⁴ or 1,000 m ≤ miss distance ≤ 5,000 m |
+| Safe | Pc < 10⁻⁶ and miss distance > 5,000 m |
 
 ## What it does
 
@@ -66,7 +119,12 @@ wrote. The two one-shot test scores (`task_a_test.json`, `task_b_test.json`) and
 commit stamp from when they were measured, because re-running them would mean scoring the test set again. The history was tidied before
 publishing, so those three stamps name pre-publication commits; their generated times sit in each file. The console's Results page reads the same files and shows the source path under each figure.
 
-### Per-CDM tier, organiser test set (24,484 CDMs, scored once) · [`task_a_test.json`](artifacts/evidence/task_a_test.json)
+### Supporting result: per-CDM tier on the test CDMs (24,484 CDMs, scored once)
+
+The organisers note that tiers can be read straight from `risk`, so this is not the challenge. We report it because the
+model does not see `risk` and has to estimate the Pc branch from the allowed columns.
+
+Evidence: [`task_a_test.json`](artifacts/evidence/task_a_test.json)
 
 | | OrbitGuard | Baseline B0 (rule on `max_risk_estimate`) |
 | --- | --- | --- |
@@ -99,7 +157,8 @@ and we report that as is.
 persistence; missed Critical 0.22 vs 1.19 per 100 events; but **17.8 manoeuvres per 100 vs 6.8**, plus 11.1 analyst
 reviews per 100. We trade more manoeuvres for fewer misses; the slider shows the trade at other cost ratios.
 
-**ESA's released test labels, scored once after freezing** ([`task_b_test.json`](artifacts/evidence/task_b_test.json)).
+**Extra check: ESA's publicly released test labels** (not provided by the organisers, who use `test_data` for demo
+predictions only), **scored once after freezing** ([`task_b_test.json`](artifacts/evidence/task_b_test.json)).
 Only the Pc branch can be scored (the final miss distance is not released), and only 17 test events end with
 Pc ≥ 10⁻⁴, so every interval is wide:
 
@@ -188,6 +247,14 @@ allowed columns: `event_id, time_to_tca, miss_distance, relative_speed, relative
 c_sigma_r, t_sigma_r, max_risk_estimate, F10, AP`. `risk` (log10 Pc) is the label only. The globe draws orbits from
 the CDMs' orbital elements (`*_j2k_sma/ecc/inc`, `*_h_apo/per`): **display only**, never a model input, and a test
 checks it ([tests/test_features.py](tests/test_features.py)).
+The organisers allow other columns if explained. We use them only for display and consequence:
+- Orbital elements (`*_j2k_sma/ecc/inc`, `*_h_apo/per`) draw the orbits.
+- Radar cross-section and area-to-mass (`*_rcs_estimate`, `*_cd_area_over_mass`) give the mass proxies in the
+  debris model.
+
+Units: miss distance and relative position in metres, relative speed in m/s, `time_to_tca` in days. `event_id`
+restarts in each file, so train and test are never joined on it. Official per-event labels come from
+`challenge1_event_labels.xlsx` (fetched by `scripts/fetch_data.py`).
 
 ## Limitations
 
