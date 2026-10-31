@@ -1,0 +1,1 @@
+{"question": "What inspection interval does the proposed airworthiness directive specify for the wing-to-body fairing attachment fittings on the Airbus 737-800?", "config": {"make": "Airbus", "model": "737-800", "cofa_date": null, "serial": null, "part_numbers": []}}

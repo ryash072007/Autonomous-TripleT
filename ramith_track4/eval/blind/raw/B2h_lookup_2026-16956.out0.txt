@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Rolls-Royce Trent 7000-72 and 7000-72C engines requiring repeated borescope inspections of HPT blades for axial cracking and removing the reduced life limit?"}

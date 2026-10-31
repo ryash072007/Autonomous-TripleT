@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; Vulcanair S.p.A. Airplanes
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) for certain Vulcanair S.p.A. Model P.68 and P.68B airplanes. This proposed AD was prompted by a report of fuel starvation that resulted in an uncommanded in-flight engine shutdown. This proposed AD would require, for certain airplanes, modification of the fuel level indicator and, for all airplanes, calibration of the fuel level indicator, installation of new quantity and warning placards, and updating the aircraft flight manual (AFM) and the aircraft maintenance manual (AMM). The FAA is proposing this AD to address the unsafe condition on these products.

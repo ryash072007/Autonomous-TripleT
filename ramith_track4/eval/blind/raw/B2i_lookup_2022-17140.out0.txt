@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Bell 407 helicopters that supersedes earlier ADs on life limits, crosstube RIN counts, and tailboom cracks, and requires updated airworthiness limitations in the maintenance manual after a fatigue crack was found in the tailboom lower skin?"}

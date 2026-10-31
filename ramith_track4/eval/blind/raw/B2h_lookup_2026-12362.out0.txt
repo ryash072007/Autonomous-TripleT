@@ -1,0 +1,1 @@
+{"question": "What is the proposed AD for Airbus Helicopters AS355 series helicopters about tail rotor drive fan wheels and impeller second stage that were incorrectly identified in production, requiring serial number checks and borescope inspection?"}

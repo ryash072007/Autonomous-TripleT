@@ -1,0 +1,1 @@
+{"question": "What specific unsafe condition, required corrective actions, and compliance times does EASA AD 2025-0169, dated July 31, 2025, specify for the Airbus A330 and A340 airplanes, and which Airbus service bulletins does it reference?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

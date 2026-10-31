@@ -1,0 +1,1 @@
+{"question": "What is the estimated per-airplane labor cost in U.S. dollars, and how many total work-hours does the FAA estimate for the detailed inspection of the girt bar fitting safety hook on each affected Airbus A350 airplane?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

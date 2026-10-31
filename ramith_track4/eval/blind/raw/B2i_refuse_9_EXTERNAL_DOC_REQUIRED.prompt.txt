@@ -1,0 +1,11 @@
+We are testing a question-answering tool over a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026. The tool should REFUSE to answer some questions.
+TASK: write ONE realistic question that asks for the content of the foreign-authority AD or manufacturer bulletin that the context notice refers to, which is not in the collection.
+CONTEXT NOTICE TITLE: Airworthiness Directives; Airbus SAS Airplanes
+CONTEXT APPLICABILITY: This AD applies to Airbus SAS airplanes specified in paragraphs 
+(c)(1) and (2) of this AD, certificated in any category, as 
+identified in European Union Aviation Safety Agency (EASA) AD 2025-
+0169, dated July 31, 2025 (EASA AD 2025-0169).
+    (1) Model A330-201, -202, -203, -223, -223F, -243, -243F, -301, 
+-302, -303, -321, -322, -323, -341, -342, -343, and -941 airplanes.
+    (2) Model A340-211, -212, -213, -311, -312, and -313 airplanes.
+Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

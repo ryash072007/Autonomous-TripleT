@@ -43,7 +43,8 @@ CASES = [
     ("FAA-2009-1028@2009-10-28", dict(make="Gulfstream", model="Gulfstream G150", serial="210"), "APPLIES", "SERIAL_IN_RANGE"),
     ("FAA-2009-1028@2009-10-28", dict(make="Gulfstream", model="Gulfstream G150", serial="300"), "DOES_NOT_APPLY", "SERIAL_OUT_OF_RANGE"),
     ("FAA-2009-1028@2009-10-28", dict(make="Gulfstream", model="Gulfstream G150"), "CANNOT_DETERMINE", "INPUT_MISSING_SERIAL"),
-    ("FAA-2006-26691@2007-02-15", dict(make="Reims", model="F406", serial="F406-0091"), "CANNOT_DETERMINE", "AMBIGUOUS_SCOPE"),   # range + extra S/N: restraint
+    ("FAA-2006-26691@2007-02-15", dict(make="Reims", model="F406", serial="F406-0091"), "APPLIES", "SERIAL_IN_RANGE"),   # "F406-0001 through F406-0089 and F406- 0091": the wrapped extra S/N is read
+    ("FAA-2006-26691@2007-02-15", dict(make="Reims", model="F406", serial="F406-0090"), "DOES_NOT_APPLY", "SERIAL_OUT_OF_RANGE"),
     ("2000-NM-120-AD@2005-01-21", dict(make="Embraer", model="EMB-120"), "CANNOT_DETERMINE", "AMBIGUOUS_SCOPE"),                    # "that are required by 14 CFR 135 ..."
     ("2001-NM-40-AD@2002-01-02", dict(make="Boeing", model="747-400"), "CANNOT_DETERMINE", "EXTERNAL_DOC_REQUIRED"),                 # "747 series" + "as listed in" bulletin
     ("FAA-2002-13744@2008-07-30", dict(make="Robinson", model="R22"), "CANNOT_DETERMINE", "NOT_PART_39"),
@@ -84,3 +85,14 @@ def test_comment_extension_does_not_replace_the_proposal():
 
 def test_r1_docket_folds_into_base():
     assert "FAA-2022-1308" in GRAPH and len(GRAPH["FAA-2022-1308"]) >= 1
+
+
+def test_regressions_from_blind_sets_and_fuzzing():
+    from applicability import _serial_in_ranges
+    from extract import model_in_text
+    assert not model_in_text("King Air 350", "Model PC-6/350 airplanes")          # a bare numeric tail must not match inside a longer designator
+    assert model_in_text("DHC-8-402", "Model DHC-8-401 and -402 airplanes")        # abbreviated list under a dashed base
+    assert model_in_text("747-8F", "Model 747-8 series airplanes")                  # series covers its variants
+    assert not model_in_text("747-400", "Model 747-8 series airplanes")
+    assert model_in_text("P-180 Avanti II", "Model P-180 airplanes")                # marketing suffix after the designation
+    assert not _serial_in_ranges("in", [{"lo": "A-1", "hi": "Z-9"}])               # a word is not a serial number

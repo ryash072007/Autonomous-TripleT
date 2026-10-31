@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Leonardo A119 and AW119 MKII helicopters requiring repetitive inspections of the collective stick torque tube assembly, with replacement by an improved part as terminating action?"}

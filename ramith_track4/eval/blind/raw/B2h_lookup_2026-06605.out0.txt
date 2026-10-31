@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Pilatus PC-6 series airplanes that revises the airworthiness limitations section with new, more restrictive limits, including eddy current inspections of the wing-to-fuselage fittings?"}

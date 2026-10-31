@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-600/700/800/900 airplanes requiring replacement of passenger service unit video monitors that lack secondary retention lanyards after monitors detached during a hard landing?"}

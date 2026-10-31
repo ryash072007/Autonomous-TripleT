@@ -1,0 +1,1 @@
+{"question": "What inspections are proposed for the ball pivot and yaw actuator on EC135 and EC635 helicopters after a broken control rod caused loss of tail rotor control?"}

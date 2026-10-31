@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Airbus A330-243, -243F, -841 and -941 airplanes that supersedes the earlier AFM and MEL revisions for dual loss of RMP data synchronization and now requires a modification?"}

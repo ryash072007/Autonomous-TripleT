@@ -1,0 +1,1 @@
+{"question": "Has the FAA issued a proposed airworthiness directive for the Airbus 737-800 addressing cracking in the wing-to-body fairing support structure, and what inspection interval does it propose?", "config": {"make": "Airbus", "model": "737-800", "cofa_date": null, "serial": null, "part_numbers": []}}

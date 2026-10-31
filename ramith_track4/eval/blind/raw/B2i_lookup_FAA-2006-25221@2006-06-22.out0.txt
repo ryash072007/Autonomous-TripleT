@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring inspection of electrical wire bundles in the wing leading and trailing edges on Airbus A300, A310, and A300-600 airplanes to prevent a fuel tank ignition source?"}

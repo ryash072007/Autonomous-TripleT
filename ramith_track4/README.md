@@ -23,7 +23,7 @@ python src/build_corpus.py      # merges fetched text + text embedded in the spr
 python src/coverage_patterns.py # coverage report -> data/processed/coverage_report.md
 python src/build_records.py     # structured applicability + revision graph
 python -m uvicorn api:app --app-dir src --port 8000      # open http://127.0.0.1:8000
-python -m pytest tests -q       # 46 tests
+python -m pytest tests -q       # 48 tests
 ```
 Source data: `data/raw/ad_nprm.xlsx` (the organisers' spreadsheet, copied unchanged). Full text comes from the public Federal Register API (no key needed).
 
@@ -67,6 +67,8 @@ Baselines on the same questions: plain BM25 ties on lookup/revision (those quest
 - **Fresh blind documents after these fixes:** set f (first pass, before the last two fixes) engine 20/23 = 87.0%; set g (frozen before it was run, system `b75633c`) engine **20/20**, reason codes 19/20. That is 20 documents: a small sample, not proof of perfection, and the annotator is itself inconsistent on 'as identified in an EASA AD' notices. Numbers on the older sets (B1-B2e) after these fixes are contaminated and are not reported as accuracy.
 - **Free-text path on fresh questions (sets B2f and B2g, 71 questions, first pass, system `b75633c`):** 67/71 = 94.4% end to end, 0% unsupported quotes; lookup 23/24, applicability 13/15, revision 12/12, refusal recall 19/20, refusal precision 15/16. Three of the four misses were general refusal-rule bugs, fixed afterwards (`DECISIONS.md` #36), so those two sets are now contaminated; the fourth is the annotator disagreeing with the outside-document policy. Small sample, one annotator.
 
+- **Second round of fresh questions (B2h/B2i, 74 questions, first pass):** 69/74 = 93.2%, 0% unsupported quotes. It found a silent error (a bare family name such as 'Airbus A330' was answered DOES_NOT_APPLY), a withdrawal notice the docket status missed, and one more refusal phrasing; all fixed (`DECISIONS.md` #38). It also showed that the free-text path had been reading stale precomputed records; they were rebuilt, which exposed and closed a further bug (a serial number read as the word 'in'). After the rebuild the nine free-text sets give 318/327 correct, but those sets were fixed against, so only the first-pass figures above count as measurements. 48 tests pass.
+
 ### Where it fails, and how the user would know
 - **Over-caution (most common):** says CANNOT_DETERMINE where the annotator said APPLIES (a note under (c) that mentions "with ...", an exclusion scoped to a different model, "-XX" wildcard part numbers). The reason code and quoted clause are shown.
 - **Silent wrong "applies" (rare, most dangerous):** found once on blind data — a certificate-date condition missed because the Federal Register text wraps lines mid-phrase (fixed afterwards). Nothing on the card flags such a miss; the quoted applicability paragraph is always displayed beside the verdict so a qualified person can read the real condition.
@@ -80,4 +82,4 @@ Baselines on the same questions: plain BM25 ties on lookup/revision (those quest
 - Corpus = proposed rules (NPRMs) only; it cannot say whether a final AD exists.
 
 ## Layout
-`src/` system · `ui/` single-page UI · `tests/` 46 tests · `eval/` test sets, blind-set generators, baselines, runners, results · `DECISIONS.md` every decision incl. failures · `STATUS.md` gate log · `CONTROL_PROMPT.md` build plan.
+`src/` system · `ui/` single-page UI · `tests/` 48 tests · `eval/` test sets, blind-set generators, baselines, runners, results · `DECISIONS.md` every decision incl. failures · `STATUS.md` gate log · `CONTROL_PROMPT.md` build plan.

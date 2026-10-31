@@ -1,0 +1,24 @@
+We are testing a question-answering tool over a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026. The tool should REFUSE to answer some questions.
+TASK: write ONE realistic question that asks for the content of the foreign-authority AD or manufacturer bulletin that the context notice refers to, which is not in the collection.
+CONTEXT NOTICE TITLE: Airworthiness Directives; Various Helicopters
+CONTEXT APPLICABILITY: This AD applies to the helicopters listed in paragraphs (c)(1) 
+through (5) of this AD, certificated in any category, with a tail 
+rotor blade (TRB) part number (P/N) 70101-31000 (all dash numbers) 
+installed.
+    (1) Model EH-60A helicopters; type certificate holders include, 
+but are not limited to, Delta Enterprise, LLC; Heliqwest 
+International Inc.; Pickering Aviation, Inc.; and Sixtyhawk TC, LLC.
+    (2) Model HH-60L helicopters; type certificate holders include, 
+but are not limited to, Capitol Helicopters Inc.; Central Copters 
+Inc.; and Sixtyhawk TC, LLC.
+    (3) Sikorsky Aircraft Corporation Model S-70, S-70A, S-70C, S-
+70C(M), S-70C(M1), and S-70M helicopters.
+    (4) Model UH-60A helicopters; type certificate holders include, 
+but are not limited to, ACE Aeronautics, LLC.; Air Resources 
+Helicopters Inc.; Billings Flying Service Inc.; Blackhawk Mission 
+Equipment; Capitol Helicopters Inc.; Carson Helicopters, Inc.; Delta 
+Enterprise, LLC; H-60, LLC; Hallux Aerospace, LLC.; Heliqwest 
+International Inc.; High Performance Helicopters Corp.; Northwest 
+Rotorcraft LLC; Pickering Aviation, Inc.; PJ Helicopters Inc.; 
+Reeder Flying Service Inc.; Sixtyhawk TC, LLC; Skydance Bl
+Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

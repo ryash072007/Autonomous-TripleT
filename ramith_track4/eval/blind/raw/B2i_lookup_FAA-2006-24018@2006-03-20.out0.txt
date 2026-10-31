@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Pacific Aerospace 750XL airplanes requiring inspection of wiring insulation near the electrical plugs in the cockpit center console for abrasion and arcing?"}

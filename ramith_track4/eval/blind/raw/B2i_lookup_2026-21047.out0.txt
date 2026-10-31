@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Airbus A318, A319, A320 and A321 airplanes requiring replacement of door evacuation slides because the inflation hose connector can fracture and the slide fails to inflate?"}

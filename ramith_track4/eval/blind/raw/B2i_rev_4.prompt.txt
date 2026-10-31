@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2024-1884 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2025-02069 issued 2025-01-28: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to supersede Airworthiness Directive (AD) 2023-08-04, which applies to certain The Boeing Company Model 787-8, 787-9, and 787-10 airplanes. The NPRM was prompted by reports of a loss of water pressure during flight and water leaks that affected multiple pieces of electronic equipment, and by the discovery that some clamshell couplings did not | spreadsheet note: Withdraws FAA AD NPRM FAA-2024-1884

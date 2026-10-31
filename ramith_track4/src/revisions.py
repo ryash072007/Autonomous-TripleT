@@ -6,7 +6,7 @@ import re
 from collections import defaultdict
 
 EVENT_RULES = [  # first match wins
-    ("withdrawal", re.compile(r"\bis withdrawing\b|\bNPRM is withdrawn\b|\bwithdraws?\b.{0,40}\bNPRM\b", re.I | re.S)),
+    ("withdrawal", re.compile(r"\bis withdrawing\b|\bNPRM is withdrawn\b|\bwithdraws?\b[^.]{0,120}\b(?:NPRMs?|notices?\s+of\s+proposed\s+rulemaking)\b", re.I | re.S)),
     ("revised_nprm", re.compile(r"\bis revising (?:a|the) notice of proposed rulemaking\b|\bSNPRM\b|supplemental notice of proposed rulemaking|\bis revising an NPRM\b", re.I)),
     ("comment_extension", re.compile(r"extension of the comment period|extend(?:s|ing) the comment period|comment period (?:is )?(?:extended|reopened)", re.I)),
     ("reopened", re.compile(r"\breopen", re.I)),
@@ -18,6 +18,8 @@ R1_RE = re.compile(r"R\d$")
 
 def classify(rec: dict) -> str:
     text = (rec["summary"] or "") + " " + (rec.get("comments") or "")
+    if re.search(r"\bWithdrawal\b", rec.get("subject") or ""):      # "Airworthiness Directives; Withdrawal -- Cessna ..." (some summaries are empty or plural)
+        return "withdrawal"
     for name, rx in EVENT_RULES:
         if rx.search(text):
             return name

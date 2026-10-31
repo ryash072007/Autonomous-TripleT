@@ -56,6 +56,8 @@ def _to_int(s):
 
 
 def _serial_in_ranges(serial, ranges):
+    if not re.search(r"\d", str(serial)):      # "in" from "serial number in front of me" is not a serial number
+        return False
     s = _to_int(serial)
     for r in ranges:
         lo, hi = _to_int(r["lo"]), _to_int(r["hi"])
@@ -101,9 +103,13 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
         matched = list(groups)
     if not matched and appl.get("model_agnostic"):
         matched = list(groups)           # "applies to all airplanes ... with part X installed": nothing to match a model against
-    if not matched and cfg.variant_unknown and sec:
-        sq = re.sub(r"[^A-Z0-9]", "", rec["text"][sec["char_start"]:sec["char_end"]].upper())
-        if any(st in sq for st in re.findall(r"[A-Z]{1,4}\d{2,4}", re.sub(r"[^A-Z0-9/]", "", cfg.model.upper()))):
+    # a bare family ("Airbus A330", "747") when the notice lists variants of it (A330-243, 747-400): the variant decides, so this is not "not listed"
+    family_only = bool(cfg.model) and re.fullmatch(r"[A-Z]{0,4}\d{2,4}", re.sub(r"[^A-Z0-9]", "", cfg.model.upper())) is not None
+    if not matched and (cfg.variant_unknown or family_only) and sec:
+        sec_up = re.sub(r"\s+", " ", rec["text"][sec["char_start"]:sec["char_end"]].upper())
+        stems = re.findall(r"[A-Z]{0,4}\d{2,4}", re.sub(r"[^A-Z0-9/]", "", cfg.model.upper()))
+        # the stem must head a variant in the paragraph ("A330-243", "EC135P1"), not sit inside a longer designator ("PC-6/350")
+        if any(re.search(r"(?<![A-Z0-9/.-])" + re.escape(st) + r"(?=[-A-Z0-9])", sec_up) for st in stems):
             return _mk(rec, CANNOT, ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "model", [sec_ev],
                        f"The family of {cfg.model} is named in the applicability paragraph but the variant is unknown; applicability depends on the variant.")
     if not matched:

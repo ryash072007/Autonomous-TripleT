@@ -1,0 +1,14 @@
+Below is the applicability paragraph of one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: write a natural question from an aircraft owner/engineer asking whether a proposed AD applies to their aircraft, with the configuration stated inside the question text, so that the correct determination for THIS notice is APPLIES. Identify the notice by describing what it is about (the problem or the AD it supersedes), NOT by docket, Federal Register or AD number. If impossible, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "question": "...", "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "...", "gold_reason": "<code>"}
+
+TITLE: Airworthiness Directives; Airbus Helicopters
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 2026-10-16, which applies to all Airbus Helicopters Model AS355E, AS355F, AS355F1, AS355F2, AS355N, and AS355NP helicopters. AD 2026-10- 16 requires revising the airworthiness limitations section (ALS) of the existing maintenance manual (MM) or instructions for continued airworthiness (ICA) and the existing approved maintenance or inspection program, as applicable. Since the FAA issued AD 2026-10-16, a determination was made that new or more restrictive airworthiness limitations and maintenance tasks are necessary. This proposed AD would require incorporating these airworthiness limitations into the ALS of the existing MM or ICA and the existing approved maintenance or inspection program, as applicable. The FAA is proposing this AD to address the unsafe condition on these products.
+APPLICABILITY PARAGRAPH:
+This AD applies to all Airbus Helicopters Model AS355E, AS355F, 
+AS355F1, AS355F2, AS355N, and AS355NP helicopters, certificated in 
+any category.

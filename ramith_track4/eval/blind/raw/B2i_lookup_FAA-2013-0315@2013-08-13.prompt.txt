@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; GROB-WERKE Airplanes
+SUMMARY: This document withdraws a notice of proposed rulemaking (NPRM) that would have applied to GROB-WERKE GMBH & CO KG Model G 115E airplanes. The proposed airworthiness directive (AD) would have required a one-time inspection to verify correct cable routing behind the LH cockpit instrument panel and, depending on findings, correction and replacement of damaged parts. Since issuance of the NPRM, the FAA has re-evaluated this airworthiness concern and determined that the airplanes affected are not type certificated in the United States. This withdrawal does not prevent the FAA from initiating future rulemaking on this subject.

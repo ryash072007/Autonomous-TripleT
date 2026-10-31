@@ -2233,7 +2233,7 @@
   {
    "doc_id": "95-NM-215-AD@2010-05-04",
    "date": "2010-05-04",
-   "event": "revised_nprm",
+   "event": "withdrawal",
    "docket_raw": "95-NM-215-AD"
   }
  ],
@@ -2323,7 +2323,7 @@
   {
    "doc_id": "2000-NM-120-AD@2008-01-15",
    "date": "2008-01-15",
-   "event": "unknown",
+   "event": "withdrawal",
    "docket_raw": "2000-NM-120-AD"
   }
  ],
@@ -2939,7 +2939,7 @@
   {
    "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-05-18",
    "date": "2004-05-18",
-   "event": "nprm",
+   "event": "withdrawal",
    "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
   }
  ],
@@ -2971,7 +2971,7 @@
   {
    "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-05-18",
    "date": "2004-05-18",
-   "event": "nprm",
+   "event": "withdrawal",
    "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
   }
  ],
@@ -2999,7 +2999,7 @@
   {
    "doc_id": "2002-NM-219-AD@2004-04-20",
    "date": "2004-04-20",
-   "event": "revised_nprm",
+   "event": "withdrawal",
    "docket_raw": "2002-NM-219-AD"
   }
  ],

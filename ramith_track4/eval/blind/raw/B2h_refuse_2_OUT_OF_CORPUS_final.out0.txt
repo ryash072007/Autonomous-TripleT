@@ -1,0 +1,1 @@
+{"question": "Has the FAA issued a final airworthiness directive that is now in force for the Boeing 737-800 wing front spar inspection described in the proposed rule, and if so, what is the AD number and effective date?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring a one-time eddy current inspection of the lower main wing spar bolt holes for fatigue cracks on Piper PA-28 and PA-32 airplanes after a wing separation?"}

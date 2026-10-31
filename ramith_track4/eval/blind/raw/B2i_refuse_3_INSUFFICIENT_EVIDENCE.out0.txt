@@ -1,0 +1,1 @@
+{"question": "What was the estimated total cost to U.S. operators, and the per-airplane labor cost in work-hours, for the maintenance program revision that the withdrawn NPRM would have required for Boeing Model 757 airplanes?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,1 @@
+{"question": "What was the compliance deadline for the inspection of the elevator trim tab actuator required by the FAA airworthiness directive issued in 1994 for Cessna 172 series airplanes?", "config": {"make": "Cessna", "model": "172", "cofa_date": null, "serial": null, "part_numbers": []}}

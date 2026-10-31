@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2024-1475 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2024-11214 issued 2024-09-19: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to adopt a new airworthiness directive (AD) that would have applied to all Airbus SAS Model A319-111, -112, -113, -114, -115, -131, -132, and -133 airplanes; Model A320-211, -212, -214, -216, -231, -232, and -233 airplanes; and Model A321-111, -112, -131, -211, -212, - 213, -231, -232, and -271N airplanes. The NPRM was prompted by a determina | spreadsheet note: None

@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Piaggio P-180 airplanes requiring repetitive eddy current inspections for corrosion and cracks around fasteners on the main wing lower skin reinforcement doublers?"}

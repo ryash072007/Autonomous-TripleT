@@ -13,7 +13,7 @@ AD_NUM_RE = re.compile(r"\b(?:19|20)\d{2}-\d{2}-\d{2}\b")
 FR_DOC_RE = re.compile(r"\b(?:19|20)\d{2}-\d{4,6}\b")
 ISO_DATE_RE = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 LONG_DATE_RE = re.compile(rf"\b({MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})\b", re.I)
-SERIAL_RE = re.compile(r"\b(?:serial(?:\s+number)?|s/n|msn)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9-]{1,})", re.I)
+SERIAL_RE = re.compile(r"\b(?:serial(?:\s+number)?|s/n|msn)\s*(?:no\.?|#|:)?\s*((?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{1,})", re.I)
 PN_RE = re.compile(r"\b(?:part\s+number|p/n)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9./-]{3,})", re.I)
 MODEL_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])((?:[A-Z][A-Za-z]{2,9}\s)?(?:[A-Za-z]{1,4}[-. ]?){0,2}\d{1,4}[A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*(?:\s[A-Z]-\d{1,2})?)(?![A-Za-z0-9])")
 GENERIC_LEAD = {"model", "models", "type", "series", "variant", "version", "the", "a", "an", "my", "our", "its"}
@@ -42,7 +42,8 @@ EXT_SUBJECT_RE = re.compile(
     r"\bwhat\b[^?]{0,60}\b(?:does|do)\s+(?:the\s+)?(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)\b|"
     r"\b(?:EASA|TCCA|ANAC|CASA)\s+AD\s+[\w-]+[^?]{0,80}\b(?:say|specif\w+|require\w*|state\w*)\b|"
     r"\bwhat\b[^?]{0,140}\b(?:does|do)\s+(?:the|that|this)\s+(?:(?:service|alert|requirements?)\s+)*(?:bulletin|SB|service\s+information)\s+(?:specify|require|say|state|contain|describe)\w*|"
-    r"\b(?:procedures|compliance\s+times?|requirements|actions|instructions|corrective\s+actions)\b[^?]{0,80}\b(?:given|specified|stated|contained|described|listed|set\s+out)\s+in\s+the\s+(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)", re.I)
+    r"\b(?:procedures|compliance\s+times?|requirements|actions|instructions|corrective\s+actions)\b[^?]{0,80}\b(?:given|specified|stated|contained|described|listed|set\s+out)\s+in\s+the\s+(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)|"
+    r"\bwhat\b[^?]{0,60}\b(?:do|does)\s+(?:that|the|this)\s+(?:(?:service|alert|requirements?)\s+)*(?:bulletin|SB)(?:'?s)?\b[^?]{0,60}\b(?:actions?|procedures?|instructions?|requirements?|compliance)\b", re.I)
 # estimated cost / labour / work-hour questions: the figures sit in the notice's "Costs of Compliance" table, which this tool does not extract
 COST_Q_RE = re.compile(
     r"\b(?:labou?r|parts|total|estimated)\s+costs?\b|\bper[- ](?:helicopter|airplane|aircraft|engine|product)\s+cost\b|\bcosts?\s+(?:to|for|of)\s+(?:comply|compliance|(?:U\.?S\.?\s+)?operators)\b|"
