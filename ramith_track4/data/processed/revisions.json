@@ -1,0 +1,3244 @@
+{
+ "FAA-2026-11814": [
+  {
+   "doc_id": "2026-21387",
+   "date": "2026-10-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11814"
+  }
+ ],
+ "FAA-2026-11811": [
+  {
+   "doc_id": "2026-21298",
+   "date": "2026-10-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11811"
+  }
+ ],
+ "FAA-2026-11813": [
+  {
+   "doc_id": "2026-21334",
+   "date": "2026-10-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11813"
+  }
+ ],
+ "FAA-2026-11812": [
+  {
+   "doc_id": "2026-21123",
+   "date": "2026-10-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11812"
+  }
+ ],
+ "FAA-2026-11808": [
+  {
+   "doc_id": "2026-21012",
+   "date": "2026-10-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11808"
+  }
+ ],
+ "FAA-2026-11809": [
+  {
+   "doc_id": "2026-21008",
+   "date": "2026-10-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11809"
+  }
+ ],
+ "FAA-2026-11810": [
+  {
+   "doc_id": "2026-21047",
+   "date": "2026-10-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11810"
+  }
+ ],
+ "FAA-2026-11806": [
+  {
+   "doc_id": "2026-20885",
+   "date": "2026-10-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11806"
+  }
+ ],
+ "FAA-2026-11807": [
+  {
+   "doc_id": "2026-20930",
+   "date": "2026-10-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11807"
+  }
+ ],
+ "FAA-2026-11803": [
+  {
+   "doc_id": "2026-20700",
+   "date": "2026-10-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11803"
+  }
+ ],
+ "FAA-2026-1338": [
+  {
+   "doc_id": "2026-03747",
+   "date": "2026-02-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1338"
+  },
+  {
+   "doc_id": "2026-20543",
+   "date": "2026-10-05",
+   "event": "revised_nprm",
+   "docket_raw": "FAA-2026-1338"
+  }
+ ],
+ "FAA-2026-11799": [
+  {
+   "doc_id": "2026-20677",
+   "date": "2026-10-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11799"
+  }
+ ],
+ "FAA-2025-0204": [
+  {
+   "doc_id": "2026-21009",
+   "date": "2026-10-05",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2025-0204"
+  }
+ ],
+ "FAA-2026-11802": [
+  {
+   "doc_id": "2026-20701",
+   "date": "2026-10-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11802"
+  }
+ ],
+ "FAA-2026-11800": [
+  {
+   "doc_id": "2026-20411",
+   "date": "2026-10-01",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11800"
+  }
+ ],
+ "FAA-2026-11798": [
+  {
+   "doc_id": "2026-20393",
+   "date": "2026-09-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11798"
+  }
+ ],
+ "FAA-2026-11796": [
+  {
+   "doc_id": "2026-20076",
+   "date": "2026-09-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11796"
+  }
+ ],
+ "FAA-2026-11794": [
+  {
+   "doc_id": "2026-19972",
+   "date": "2026-09-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11794"
+  }
+ ],
+ "FAA-2026-11791": [
+  {
+   "doc_id": "2026-19970",
+   "date": "2026-09-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11791"
+  }
+ ],
+ "FAA-2026-11795": [
+  {
+   "doc_id": "2026-19987",
+   "date": "2026-09-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11795"
+  }
+ ],
+ "FAA-2026-11793": [
+  {
+   "doc_id": "2026-19960",
+   "date": "2026-09-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11793"
+  }
+ ],
+ "FAA-2026-11792": [
+  {
+   "doc_id": "2026-19971",
+   "date": "2026-09-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11792"
+  }
+ ],
+ "FAA-2026-11790": [
+  {
+   "doc_id": "2026-19890",
+   "date": "2026-09-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11790"
+  }
+ ],
+ "FAA-2026-11788": [
+  {
+   "doc_id": "2026-19892",
+   "date": "2026-09-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11788"
+  }
+ ],
+ "FAA-2026-11787": [
+  {
+   "doc_id": "2026-19729",
+   "date": "2026-09-23",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11787"
+  }
+ ],
+ "FAA-2025-2277": [
+  {
+   "doc_id": "2025-17246",
+   "date": "2025-09-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-2277"
+  },
+  {
+   "doc_id": "2026-19561",
+   "date": "2026-09-21",
+   "event": "revised_nprm",
+   "docket_raw": "FAA-2025-2277"
+  }
+ ],
+ "FAA-2026-8818": [
+  {
+   "doc_id": "2026-19411",
+   "date": "2026-09-18",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8818"
+  }
+ ],
+ "FAA-2026-8809": [
+  {
+   "doc_id": "2026-19355",
+   "date": "2026-09-18",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8809"
+  }
+ ],
+ "FAA-2026-11783": [
+  {
+   "doc_id": "2026-19345",
+   "date": "2026-09-16",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-11783"
+  }
+ ],
+ "FAA-2026-8817": [
+  {
+   "doc_id": "2026-19343",
+   "date": "2026-09-16",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8817"
+  }
+ ],
+ "FAA-2026-8807": [
+  {
+   "doc_id": "2026-19360",
+   "date": "2026-09-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8807"
+  }
+ ],
+ "FAA-2026-8816": [
+  {
+   "doc_id": "2026-19094",
+   "date": "2026-09-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8816"
+  }
+ ],
+ "FAA-2026-8811": [
+  {
+   "doc_id": "2026-19255",
+   "date": "2026-09-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8811"
+  }
+ ],
+ "FAA-2026-8812": [
+  {
+   "doc_id": "2026-19090",
+   "date": "2026-09-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8812"
+  }
+ ],
+ "FAA-2026-8813": [
+  {
+   "doc_id": "2026-19089",
+   "date": "2026-09-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8813"
+  }
+ ],
+ "FAA-2026-8810": [
+  {
+   "doc_id": "2026-18956",
+   "date": "2026-09-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8810"
+  }
+ ],
+ "FAA-2026-8804": [
+  {
+   "doc_id": "2026-18796",
+   "date": "2026-09-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8804"
+  }
+ ],
+ "FAA-2026-8802": [
+  {
+   "doc_id": "2026-18850",
+   "date": "2026-09-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8802"
+  }
+ ],
+ "FAA-2026-8803": [
+  {
+   "doc_id": "2026-18752",
+   "date": "2026-09-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8803"
+  }
+ ],
+ "FAA-2026-8805": [
+  {
+   "doc_id": "2026-18749",
+   "date": "2026-09-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8805"
+  }
+ ],
+ "FAA-2026-8808": [
+  {
+   "doc_id": "2026-18746",
+   "date": "2026-09-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8808"
+  }
+ ],
+ "FAA-2026-8806": [
+  {
+   "doc_id": "2026-18575",
+   "date": "2026-09-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8806"
+  }
+ ],
+ "FAA-2026-8801": [
+  {
+   "doc_id": "2026-18520",
+   "date": "2026-09-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8801"
+  }
+ ],
+ "FAA-2026-8796": [
+  {
+   "doc_id": "2026-18522",
+   "date": "2026-09-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8796"
+  }
+ ],
+ "FAA-2026-8798": [
+  {
+   "doc_id": "2026-18468",
+   "date": "2026-09-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8798"
+  }
+ ],
+ "FAA-2026-8799": [
+  {
+   "doc_id": "2026-18372",
+   "date": "2026-09-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8799"
+  }
+ ],
+ "FAA-2026-8800": [
+  {
+   "doc_id": "2026-18375",
+   "date": "2026-09-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8800"
+  }
+ ],
+ "FAA-2026-8797": [
+  {
+   "doc_id": "2026-18376",
+   "date": "2026-09-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8797"
+  }
+ ],
+ "FAA-2026-8795": [
+  {
+   "doc_id": "2026-18072",
+   "date": "2026-08-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8795"
+  }
+ ],
+ "FAA-2026-8794": [
+  {
+   "doc_id": "2026-17967",
+   "date": "2026-08-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8794"
+  }
+ ],
+ "FAA-2026-8790": [
+  {
+   "doc_id": "2026-17840",
+   "date": "2026-08-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8790"
+  }
+ ],
+ "FAA-2026-8791": [
+  {
+   "doc_id": "2026-17609",
+   "date": "2026-08-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8791"
+  }
+ ],
+ "FAA-2026-8786": [
+  {
+   "doc_id": "2026-17209",
+   "date": "2026-08-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8786"
+  }
+ ],
+ "FAA-2026-8783": [
+  {
+   "doc_id": "2026-16956",
+   "date": "2026-08-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8783"
+  }
+ ],
+ "FAA-2026-8784": [
+  {
+   "doc_id": "2026-17056",
+   "date": "2026-08-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8784"
+  }
+ ],
+ "FAA-2026-8785": [
+  {
+   "doc_id": "2026-16961",
+   "date": "2026-08-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8785"
+  }
+ ],
+ "FAA-2026-8782": [
+  {
+   "doc_id": "2026-16874",
+   "date": "2026-08-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8782"
+  }
+ ],
+ "FAA-2026-8781": [
+  {
+   "doc_id": "2026-16705",
+   "date": "2026-08-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8781"
+  }
+ ],
+ "FAA-2026-8779": [
+  {
+   "doc_id": "2026-16566",
+   "date": "2026-08-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8779"
+  }
+ ],
+ "FAA-2026-7237": [
+  {
+   "doc_id": "2026-16795",
+   "date": "2026-08-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7237"
+  }
+ ],
+ "FAA-2026-8780": [
+  {
+   "doc_id": "2026-16567",
+   "date": "2026-08-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-8780"
+  }
+ ],
+ "FAA-2026-7240": [
+  {
+   "doc_id": "2026-16502",
+   "date": "2026-08-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7240"
+  }
+ ],
+ "FAA-2026-7239": [
+  {
+   "doc_id": "2026-16640",
+   "date": "2026-08-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7239"
+  }
+ ],
+ "FAA-2026-7234": [
+  {
+   "doc_id": "2026-16389",
+   "date": "2026-08-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7234"
+  }
+ ],
+ "FAA-2026-7233": [
+  {
+   "doc_id": "2026-16157",
+   "date": "2026-07-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7233"
+  }
+ ],
+ "FAA-2026-7230": [
+  {
+   "doc_id": "2026-15374",
+   "date": "2026-07-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7230"
+  }
+ ],
+ "FAA-2026-7232": [
+  {
+   "doc_id": "2026-15532",
+   "date": "2026-07-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7232"
+  }
+ ],
+ "FAA-2026-7231": [
+  {
+   "doc_id": "2026-15283",
+   "date": "2026-07-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7231"
+  }
+ ],
+ "FAA-2026-7229": [
+  {
+   "doc_id": "2026-15073",
+   "date": "2026-07-22",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7229"
+  }
+ ],
+ "FAA-2026-7228": [
+  {
+   "doc_id": "2026-15072",
+   "date": "2026-07-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7228"
+  }
+ ],
+ "FAA-2026-7227": [
+  {
+   "doc_id": "2026-14881",
+   "date": "2026-07-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7227"
+  }
+ ],
+ "FAA-2026-7226": [
+  {
+   "doc_id": "2026-14886",
+   "date": "2026-07-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7226"
+  }
+ ],
+ "FAA-2026-7225": [
+  {
+   "doc_id": "2026-14882",
+   "date": "2026-07-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7225"
+  }
+ ],
+ "FAA-2026-7219": [
+  {
+   "doc_id": "2026-14281",
+   "date": "2026-07-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7219"
+  }
+ ],
+ "FAA-2026-7221": [
+  {
+   "doc_id": "2026-14300",
+   "date": "2026-07-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7221"
+  }
+ ],
+ "FAA-2026-7220": [
+  {
+   "doc_id": "2026-14238",
+   "date": "2026-07-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7220"
+  }
+ ],
+ "FAA-2026-7212": [
+  {
+   "doc_id": "2026-14108",
+   "date": "2026-07-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7212"
+  }
+ ],
+ "FAA-2026-7215": [
+  {
+   "doc_id": "2026-13869",
+   "date": "2026-07-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7215"
+  }
+ ],
+ "FAA-2026-7213": [
+  {
+   "doc_id": "2026-13978",
+   "date": "2026-07-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7213"
+  }
+ ],
+ "FAA-2025-5394": [
+  {
+   "doc_id": "2025-23613",
+   "date": "2025-12-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-5394"
+  },
+  {
+   "doc_id": "2026-13781",
+   "date": "2026-07-02",
+   "event": "revised_nprm",
+   "docket_raw": "FAA-2025-5394"
+  }
+ ],
+ "FAA-2026-7209": [
+  {
+   "doc_id": "2026-13541",
+   "date": "2026-06-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-7209"
+  }
+ ],
+ "FAA-2026-4664": [
+  {
+   "doc_id": "2026-13368",
+   "date": "2026-06-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4664"
+  }
+ ],
+ "FAA-2026-4666": [
+  {
+   "doc_id": "2026-13365",
+   "date": "2026-06-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4666"
+  }
+ ],
+ "FAA-2026-4668": [
+  {
+   "doc_id": "2026-13129",
+   "date": "2026-06-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4668"
+  }
+ ],
+ "FAA-2026-4669": [
+  {
+   "doc_id": "2026-13023",
+   "date": "2026-06-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4669"
+  }
+ ],
+ "FAA-2026-4656": [
+  {
+   "doc_id": "2026-13034",
+   "date": "2026-06-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4656"
+  }
+ ],
+ "FAA-2026-4657": [
+  {
+   "doc_id": "2026-12362",
+   "date": "2026-06-16",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4657"
+  }
+ ],
+ "FAA-2026-4653": [
+  {
+   "doc_id": "2026-11472",
+   "date": "2026-06-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4653"
+  }
+ ],
+ "FAA-2026-4649": [
+  {
+   "doc_id": "2026-11218",
+   "date": "2026-06-02",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4649"
+  }
+ ],
+ "FAA-2026-4651": [
+  {
+   "doc_id": "2026-11085",
+   "date": "2026-05-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4651"
+  }
+ ],
+ "FAA-2026-4648": [
+  {
+   "doc_id": "2026-10902",
+   "date": "2026-05-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4648"
+  }
+ ],
+ "FAA-2025-2541": [
+  {
+   "doc_id": "2026-10781",
+   "date": "2026-05-27",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2025-2541"
+  }
+ ],
+ "FAA-2026-4643": [
+  {
+   "doc_id": "2026-10408",
+   "date": "2026-05-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4643"
+  }
+ ],
+ "FAA-2026-4642": [
+  {
+   "doc_id": "2026-10382",
+   "date": "2026-05-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4642"
+  }
+ ],
+ "FAA-2026-4634": [
+  {
+   "doc_id": "2026-09381",
+   "date": "2026-05-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4634"
+  }
+ ],
+ "FAA-2026-4633": [
+  {
+   "doc_id": "2026-09574",
+   "date": "2026-05-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4633"
+  }
+ ],
+ "FAA-2026-4631": [
+  {
+   "doc_id": "2026-09077",
+   "date": "2026-05-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4631"
+  }
+ ],
+ "FAA-2026-4630": [
+  {
+   "doc_id": "2026-09037",
+   "date": "2026-05-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-4630"
+  }
+ ],
+ "FAA-2026-3876": [
+  {
+   "doc_id": "2026-08385",
+   "date": "2026-04-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3876"
+  }
+ ],
+ "FAA-2026-3870": [
+  {
+   "doc_id": "2026-08322",
+   "date": "2026-04-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3870"
+  }
+ ],
+ "FAA-2026-3875": [
+  {
+   "doc_id": "2026-08549",
+   "date": "2026-04-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3875"
+  }
+ ],
+ "FAA-2026-3868": [
+  {
+   "doc_id": "2026-08154",
+   "date": "2026-04-23",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3868"
+  }
+ ],
+ "FAA-2026-3865": [
+  {
+   "doc_id": "2026-07931",
+   "date": "2026-04-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3865"
+  }
+ ],
+ "FAA-2026-3863": [
+  {
+   "doc_id": "2026-07937",
+   "date": "2026-04-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3863"
+  }
+ ],
+ "FAA-2026-3487": [
+  {
+   "doc_id": "2026-07334",
+   "date": "2026-04-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3487"
+  }
+ ],
+ "FAA-2026-3483": [
+  {
+   "doc_id": "2026-07218",
+   "date": "2026-04-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3483"
+  }
+ ],
+ "FAA-2026-3474": [
+  {
+   "doc_id": "2026-06605",
+   "date": "2026-03-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3474"
+  }
+ ],
+ "FAA-2026-3469": [
+  {
+   "doc_id": "2026-06471",
+   "date": "2026-03-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3469"
+  }
+ ],
+ "FAA-2026-3471": [
+  {
+   "doc_id": "2026-06691",
+   "date": "2026-03-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-3471"
+  }
+ ],
+ "FAA-2026-2730": [
+  {
+   "doc_id": "2026-06385",
+   "date": "2026-03-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2730"
+  }
+ ],
+ "FAA-2026-2729": [
+  {
+   "doc_id": "2026-06085",
+   "date": "2026-03-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2729"
+  }
+ ],
+ "FAA-2026-2723": [
+  {
+   "doc_id": "2026-06459",
+   "date": "2026-03-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2723"
+  }
+ ],
+ "FAA-2026-2726": [
+  {
+   "doc_id": "2026-06067",
+   "date": "2026-03-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2726"
+  }
+ ],
+ "FAA-2026-2725": [
+  {
+   "doc_id": "2026-05843",
+   "date": "2026-03-23",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2725"
+  }
+ ],
+ "FAA-2026-2721": [
+  {
+   "doc_id": "2026-05699",
+   "date": "2026-03-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2721"
+  }
+ ],
+ "FAA-2026-2716": [
+  {
+   "doc_id": "2026-05597",
+   "date": "2026-03-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2716"
+  }
+ ],
+ "FAA-2026-2713": [
+  {
+   "doc_id": "2026-05223",
+   "date": "2026-03-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2713"
+  }
+ ],
+ "FAA-2026-2712": [
+  {
+   "doc_id": "2026-05327",
+   "date": "2026-03-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2712"
+  }
+ ],
+ "FAA-2026-2289": [
+  {
+   "doc_id": "2026-04239",
+   "date": "2026-02-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-2289"
+  }
+ ],
+ "FAA-2026-1339": [
+  {
+   "doc_id": "2026-03782",
+   "date": "2026-02-23",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1339"
+  }
+ ],
+ "FAA-2026-1335": [
+  {
+   "doc_id": "2026-03704",
+   "date": "2026-02-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1335"
+  }
+ ],
+ "FAA-2026-1331": [
+  {
+   "doc_id": "2026-03389",
+   "date": "2026-02-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1331"
+  }
+ ],
+ "FAA-2026-1322": [
+  {
+   "doc_id": "2026-03612",
+   "date": "2026-02-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1322"
+  }
+ ],
+ "FAA-2026-1330": [
+  {
+   "doc_id": "2026-03390",
+   "date": "2026-02-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1330"
+  }
+ ],
+ "FAA-2026-1328": [
+  {
+   "doc_id": "2026-03037",
+   "date": "2026-02-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1328"
+  }
+ ],
+ "FAA-2026-1326": [
+  {
+   "doc_id": "2026-02923",
+   "date": "2026-02-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-1326"
+  }
+ ],
+ "FAA-2026-0745": [
+  {
+   "doc_id": "2026-02736",
+   "date": "2026-02-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-0745"
+  }
+ ],
+ "FAA-2026-0741": [
+  {
+   "doc_id": "2026-02420",
+   "date": "2026-01-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-0741"
+  }
+ ],
+ "FAA-2026-0735": [
+  {
+   "doc_id": "2026-01928",
+   "date": "2026-01-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-0735"
+  }
+ ],
+ "FAA-2025-5403": [
+  {
+   "doc_id": "2026-00842",
+   "date": "2026-01-13",
+   "event": "correction",
+   "docket_raw": "FAA-2025-5403"
+  }
+ ],
+ "FAA-2026-0010": [
+  {
+   "doc_id": "2026-00409",
+   "date": "2026-01-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2026-0010"
+  }
+ ],
+ "FAA-2025-5401": [
+  {
+   "doc_id": "2025-24233",
+   "date": "2025-12-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-5401"
+  }
+ ],
+ "FAA-2025-5042": [
+  {
+   "doc_id": "2025-22106",
+   "date": "2025-12-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-5042"
+  }
+ ],
+ "FAA-2025-3438": [
+  {
+   "doc_id": "2025-20085",
+   "date": "2025-11-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3438"
+  }
+ ],
+ "FAA-2025-3998": [
+  {
+   "doc_id": "2025-20089",
+   "date": "2025-11-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3998"
+  }
+ ],
+ "FAA-2025-3997": [
+  {
+   "doc_id": "2025-20013",
+   "date": "2025-11-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3997"
+  }
+ ],
+ "FAA-2025-3991": [
+  {
+   "doc_id": "2025-20092",
+   "date": "2025-10-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3991"
+  }
+ ],
+ "FAA-2025-3990": [
+  {
+   "doc_id": "2025-20084",
+   "date": "2025-10-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3990"
+  }
+ ],
+ "FAA-2025-3429": [
+  {
+   "doc_id": "2025-20061",
+   "date": "2025-10-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-3429"
+  }
+ ],
+ "FAA-2025-0199_S": [
+  {
+   "doc_id": "2025-18606",
+   "date": "2025-09-23",
+   "event": "revised_nprm",
+   "docket_raw": "FAA-2025-0199_S"
+  }
+ ],
+ "FAA-2025-2548": [
+  {
+   "doc_id": "2025-18833",
+   "date": "2025-09-16",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-2548"
+  }
+ ],
+ "FAA-2025-1367": [
+  {
+   "doc_id": "2025-13920",
+   "date": "2025-07-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-1367"
+  }
+ ],
+ "FAA-2025-1718": [
+  {
+   "doc_id": "2025-13714",
+   "date": "2025-07-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-1718"
+  }
+ ],
+ "FAA-2025-0341": [
+  {
+   "doc_id": "2025-11665",
+   "date": "2025-06-18",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2025-0341"
+  }
+ ],
+ "FAA-2025-1105": [
+  {
+   "doc_id": "2025-11032",
+   "date": "2025-06-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-1105"
+  }
+ ],
+ "FAA-2025-0919": [
+  {
+   "doc_id": "2025-09770",
+   "date": "2025-05-23",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0919"
+  }
+ ],
+ "FAA-2025-0747": [
+  {
+   "doc_id": "2025-07753",
+   "date": "2025-04-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0747"
+  }
+ ],
+ "FAA-2025-0469": [
+  {
+   "doc_id": "2025-06274",
+   "date": "2025-03-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0469"
+  }
+ ],
+ "FAA-2025-0349": [
+  {
+   "doc_id": "2025-06157",
+   "date": "2025-03-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0349"
+  }
+ ],
+ "FAA-2024-1884": [
+  {
+   "doc_id": "2025-02069",
+   "date": "2025-01-28",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2024-1884"
+  }
+ ],
+ "FAA-2025-0003": [
+  {
+   "doc_id": "2025-00826",
+   "date": "2025-01-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0003"
+  }
+ ],
+ "FAA-2025-0004": [
+  {
+   "doc_id": "2025-00825",
+   "date": "2025-01-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2025-0004"
+  }
+ ],
+ "FAA-2024-2716": [
+  {
+   "doc_id": "2024-31348",
+   "date": "2024-12-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2024-2716"
+  }
+ ],
+ "FAA-2024-2142": [
+  {
+   "doc_id": "2024-21652",
+   "date": "2024-09-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2024-2142"
+  },
+  {
+   "doc_id": "2024-25883",
+   "date": "2024-11-01",
+   "event": "comment_extension",
+   "docket_raw": "FAA-2024-2142"
+  }
+ ],
+ "FAA-2024-1475": [
+  {
+   "doc_id": "2024-11214",
+   "date": "2024-09-19",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2024-1475"
+  }
+ ],
+ "FAA-2024-2143": [
+  {
+   "doc_id": "2024-21209",
+   "date": "2024-09-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2024-2143"
+  }
+ ],
+ "FAA-2022-0876": [
+  {
+   "doc_id": "2022-20442",
+   "date": "2024-03-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2022-0876"
+  }
+ ],
+ "FAA-2023-2237": [
+  {
+   "doc_id": "2023-28703",
+   "date": "2023-12-21",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2023-2237"
+  }
+ ],
+ "FAA-2023-1211": [
+  {
+   "doc_id": "2023-26090",
+   "date": "2023-11-20",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2023-1211"
+  }
+ ],
+ "FAA-2022-1401": [
+  {
+   "doc_id": "2023-12695",
+   "date": "2023-06-08",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2022-1401"
+  }
+ ],
+ "FAA Rules 95-CE-35-AD": [
+  {
+   "doc_id": "2022-23170",
+   "date": "2022-10-20",
+   "event": "withdrawal",
+   "docket_raw": "FAA Rules 95-CE-35-AD"
+  }
+ ],
+ "FAA-2022-1308": [
+  {
+   "doc_id": "R1-2022-23012",
+   "date": "2022-10-17",
+   "event": "correction",
+   "docket_raw": "FAA-2022-1308R1"
+  }
+ ],
+ "FAA-2022-1303": [
+  {
+   "doc_id": "R1-2022-22698",
+   "date": "2022-10-13",
+   "event": "correction",
+   "docket_raw": "FAA-2022-1303R1"
+  }
+ ],
+ "FAA-2022-1296": [
+  {
+   "doc_id": "R1-2022-22047",
+   "date": "2022-10-03",
+   "event": "correction",
+   "docket_raw": "FAA-2022-1296R1"
+  }
+ ],
+ "FAA-2022-0992": [
+  {
+   "doc_id": "2022-17140",
+   "date": "2022-08-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2022-0992"
+  }
+ ],
+ "FAA-2021-1017": [
+  {
+   "doc_id": "2022-07871",
+   "date": "2022-04-07",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2021-1017"
+  }
+ ],
+ "FAA 2022-0460": [
+  {
+   "doc_id": "2022-07887",
+   "date": "2022-04-07",
+   "event": "nprm",
+   "docket_raw": "FAA 2022-0460"
+  }
+ ],
+ "FAA-2022-0222": [
+  {
+   "doc_id": "2022-02072",
+   "date": "2022-01-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2022-0222"
+  }
+ ],
+ "FAA-2021-1078": [
+  {
+   "doc_id": "R1-2021-28089",
+   "date": "2021-12-16",
+   "event": "nprm",
+   "docket_raw": "FAA-2021-1078R1"
+  }
+ ],
+ "FAA-2018-0440": [
+  {
+   "doc_id": "2018-10585",
+   "date": "2021-10-22",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2018-0440"
+  }
+ ],
+ "FAA-2010-0427": [
+  {
+   "doc_id": "FAA-2010-0427@2010-04-14",
+   "date": "2010-04-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2010-0427"
+  },
+  {
+   "doc_id": "2021-21050",
+   "date": "2021-09-23",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2010-0427"
+  }
+ ],
+ "FAA-2021-0255": [
+  {
+   "doc_id": "2021-07164",
+   "date": "2021-03-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2021-0255"
+  },
+  {
+   "doc_id": "2021-07164",
+   "date": "2021-08-31",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2021-0255"
+  }
+ ],
+ "FAA-2021-0298": [
+  {
+   "doc_id": "2021-07564",
+   "date": "2021-04-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2021-0298"
+  },
+  {
+   "doc_id": "2021-07564",
+   "date": "2021-08-19",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2021-0298"
+  }
+ ],
+ "FAA-2018-0689": [
+  {
+   "doc_id": "2018-15964",
+   "date": "2018-07-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2018-0689"
+  },
+  {
+   "doc_id": "2018-15964",
+   "date": "2021-07-21",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2018-0689"
+  }
+ ],
+ "FAA-2020-0713": [
+  {
+   "doc_id": "2020-16211",
+   "date": "2020-07-22",
+   "event": "nprm",
+   "docket_raw": "FAA-2020-0713"
+  },
+  {
+   "doc_id": "2020-16211",
+   "date": "2021-07-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2020-0713"
+  }
+ ],
+ "FAA-2018-0422": [
+  {
+   "doc_id": "2018-12886",
+   "date": "2018-05-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2018-0422"
+  },
+  {
+   "doc_id": "2018-12886",
+   "date": "2021-06-18",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2018-0422"
+  }
+ ],
+ "FAA-2020-0089": [
+  {
+   "doc_id": "2020-02016",
+   "date": "2020-01-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2020-0089"
+  },
+  {
+   "doc_id": "2020-02016",
+   "date": "2021-06-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2020-0089"
+  }
+ ],
+ "FAA-2020-0994": [
+  {
+   "doc_id": "2021-03483",
+   "date": "2021-01-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2020-0994"
+  },
+  {
+   "doc_id": "2021-03483",
+   "date": "2021-05-28",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2020-0994"
+  }
+ ],
+ "FAA-2020-0985": [
+  {
+   "doc_id": "2020-24766",
+   "date": "2020-11-02",
+   "event": "nprm",
+   "docket_raw": "FAA-2020-0985"
+  },
+  {
+   "doc_id": "2020-24766",
+   "date": "2021-03-25",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2020-0985"
+  }
+ ],
+ "FAA-2007-0373": [
+  {
+   "doc_id": "FAA-2007-0373@2007-11-28",
+   "date": "2007-11-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-0373"
+  },
+  {
+   "doc_id": "2021-05219",
+   "date": "2021-03-08",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2007-0373"
+  }
+ ],
+ "FAA-2011-0449": [
+  {
+   "doc_id": "FAA-2011-0449@2011-01-31",
+   "date": "2011-01-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0449"
+  },
+  {
+   "doc_id": "2021-04508",
+   "date": "2021-02-26",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0449"
+  }
+ ],
+ "FAA-2007-27495": [
+  {
+   "doc_id": "FAA-2007-27495@2007-02-26",
+   "date": "2007-02-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-27495"
+  },
+  {
+   "doc_id": "2021-04235",
+   "date": "2021-02-24",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2007-27495"
+  }
+ ],
+ "FAA-2021-0103": [
+  {
+   "doc_id": "2021-03814",
+   "date": "2021-02-19",
+   "event": "nprm",
+   "docket_raw": "FAA-2021-0103"
+  }
+ ],
+ "FAA-2005-21679": [
+  {
+   "doc_id": "FAA-2005-21679@2005-06-20",
+   "date": "2005-06-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-21679"
+  },
+  {
+   "doc_id": "2021-03655",
+   "date": "2021-02-04",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-21679"
+  }
+ ],
+ "FAA-2010-0720": [
+  {
+   "doc_id": "FAA-2010-0720@2010-07-13",
+   "date": "2010-07-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2010-0720"
+  },
+  {
+   "doc_id": "2021-05194",
+   "date": "2021-01-25",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2010-0720"
+  }
+ ],
+ "FAA-2013-0751": [
+  {
+   "doc_id": "FAA-2013-0751@2013-08-21",
+   "date": "2013-08-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0751"
+  },
+  {
+   "doc_id": "2021-03661",
+   "date": "2021-01-21",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0751"
+  }
+ ],
+ "90-CE-35-AD": [
+  {
+   "doc_id": "2021-01771",
+   "date": "2021-01-20",
+   "event": "withdrawal",
+   "docket_raw": "90-CE-35-AD"
+  }
+ ],
+ "FAA-2011-0099": [
+  {
+   "doc_id": "FAA-2011-0099@2011-01-27",
+   "date": "2011-01-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0099"
+  },
+  {
+   "doc_id": "2021-01623",
+   "date": "2021-01-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0099"
+  }
+ ],
+ "FAA-2019-0576": [
+  {
+   "doc_id": "2019-16815",
+   "date": "2019-07-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2019-0576"
+  },
+  {
+   "doc_id": "2020-23166",
+   "date": "2020-10-07",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2019-0576"
+  }
+ ],
+ "FAA-2017-0492": [
+  {
+   "doc_id": "2017-11174",
+   "date": "2017-05-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2017-0492"
+  },
+  {
+   "doc_id": "2020-11848",
+   "date": "2020-05-28",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2017-0492"
+  }
+ ],
+ "FAA-2018-0548": [
+  {
+   "doc_id": "2018-13335",
+   "date": "2018-06-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2018-0548"
+  },
+  {
+   "doc_id": "2020-09113",
+   "date": "2020-04-23",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2018-0548"
+  }
+ ],
+ "FAA-2018-0547": [
+  {
+   "doc_id": "2018-13477",
+   "date": "2018-06-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2018-0547"
+  },
+  {
+   "doc_id": "2019-18517",
+   "date": "2019-08-22",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2018-0547"
+  }
+ ],
+ "FAA-2019-0021": [
+  {
+   "doc_id": "2019-02933",
+   "date": "2019-02-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2019-0021"
+  },
+  {
+   "doc_id": "2019-16127",
+   "date": "2019-07-23",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2019-0021"
+  }
+ ],
+ "FAA-2019-0518": [
+  {
+   "doc_id": "2019-14901",
+   "date": "2019-06-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2019-0518"
+  }
+ ],
+ "FAA-2017-0812": [
+  {
+   "doc_id": "2017-19760",
+   "date": "2017-09-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2017-0812"
+  },
+  {
+   "doc_id": "2019-09742",
+   "date": "2019-05-03",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2017-0812"
+  }
+ ],
+ "FAA-2016-9139": [
+  {
+   "doc_id": "2016-22182",
+   "date": "2016-09-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2016-9139"
+  },
+  {
+   "doc_id": "2019-03397",
+   "date": "2019-02-19",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2016-9139"
+  }
+ ],
+ "FAA-2017-0313": [
+  {
+   "doc_id": "2017-17828",
+   "date": "2017-08-18",
+   "event": "nprm",
+   "docket_raw": "FAA-2017-0313"
+  },
+  {
+   "doc_id": "2018-20715",
+   "date": "2018-09-17",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2017-0313"
+  }
+ ],
+ "FAA-2016-6417": [
+  {
+   "doc_id": "2016-10735",
+   "date": "2016-04-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2016-6417"
+  },
+  {
+   "doc_id": "2017-16775",
+   "date": "2017-08-02",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2016-6417"
+  }
+ ],
+ "FAA-2015-3657": [
+  {
+   "doc_id": "2015-21689",
+   "date": "2015-08-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2015-3657"
+  },
+  {
+   "doc_id": "2016-27639",
+   "date": "2016-11-02",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2015-3657"
+  }
+ ],
+ "FAA-2019-9184": [
+  {
+   "doc_id": "2016-23938",
+   "date": "2016-09-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2019-9184"
+  }
+ ],
+ "FAA-2011-0254": [
+  {
+   "doc_id": "FAA-2011-0254@2011-03-14",
+   "date": "2011-03-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0254"
+  },
+  {
+   "doc_id": "2016-03693",
+   "date": "2016-02-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0254"
+  }
+ ],
+ "FAA-2015-1014": [
+  {
+   "doc_id": "2015-13743",
+   "date": "2015-05-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2015-1014"
+  },
+  {
+   "doc_id": "2015-30010",
+   "date": "2015-11-20",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2015-1014"
+  }
+ ],
+ "FAA-2013-0627": [
+  {
+   "doc_id": "FAA-2013-0627@2013-07-12",
+   "date": "2013-07-12",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0627"
+  },
+  {
+   "doc_id": "2015-21247",
+   "date": "2015-08-20",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0627"
+  }
+ ],
+ "FAA-2015-2994": [
+  {
+   "doc_id": "2015-18049",
+   "date": "2015-07-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2015-2994"
+  }
+ ],
+ "FAA-2015-0909": [
+  {
+   "doc_id": "2015-14993",
+   "date": "2015-06-10",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2015-0909"
+  }
+ ],
+ "FAA-2015-0868": [
+  {
+   "doc_id": "2015-09535",
+   "date": "2015-04-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2015-0868"
+  }
+ ],
+ "FAA-2015-0827": [
+  {
+   "doc_id": "2015-08463",
+   "date": "2015-04-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2015-0827"
+  }
+ ],
+ "FAA-2012-1319": [
+  {
+   "doc_id": "FAA-2012-1319@2013-01-17",
+   "date": "2013-01-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-1319"
+  },
+  {
+   "doc_id": "2014-30911",
+   "date": "2014-12-22",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-1319"
+  }
+ ],
+ "FAA-2014-0923": [
+  {
+   "doc_id": "2014-29234",
+   "date": "2014-12-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2014-0923"
+  }
+ ],
+ "FAA-2013-0742": [
+  {
+   "doc_id": "FAA-2013-0742@2013-08-14",
+   "date": "2013-08-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0742"
+  },
+  {
+   "doc_id": "2014-15139",
+   "date": "2014-06-19",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0742"
+  }
+ ],
+ "FAA-2013-0541": [
+  {
+   "doc_id": "FAA-2013-0541@2013-06-14",
+   "date": "2013-06-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0541"
+  },
+  {
+   "doc_id": "2014-12258",
+   "date": "2014-05-16",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0541"
+  }
+ ],
+ "FAA-2013-0629": [
+  {
+   "doc_id": "FAA-2013-0629@2013-07-21",
+   "date": "2013-07-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0629"
+  },
+  {
+   "doc_id": "2014-04890",
+   "date": "2014-02-19",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0629"
+  }
+ ],
+ "FAA-2014-0012": [
+  {
+   "doc_id": "2014-02522",
+   "date": "2014-01-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2014-0012"
+  }
+ ],
+ "FAA-2005-21236": [
+  {
+   "doc_id": "FAA-2005-21236@2005-05-09",
+   "date": "2005-05-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-21236"
+  },
+  {
+   "doc_id": "FAA-2005-21236@2013-09-30",
+   "date": "2013-09-30",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-21236"
+  }
+ ],
+ "FAA-2013-0972": [
+  {
+   "doc_id": "FAA-2013-0972@2013-09-24",
+   "date": "2013-09-24",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0972"
+  }
+ ],
+ "FAA-2012-0859": [
+  {
+   "doc_id": "FAA-2012-0859@2012-08-17",
+   "date": "2012-08-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-0859"
+  },
+  {
+   "doc_id": "FAA-2012-0859@2013-09-05",
+   "date": "2013-09-05",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-0859"
+  }
+ ],
+ "FAA-2013-0315": [
+  {
+   "doc_id": "FAA-2013-0315@2013-04-02",
+   "date": "2013-04-02",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0315"
+  },
+  {
+   "doc_id": "FAA-2013-0315@2013-08-13",
+   "date": "2013-08-13",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0315"
+  }
+ ],
+ "FAA-2013-0056": [
+  {
+   "doc_id": "FAA-2013-0056@2013-01-29",
+   "date": "2013-01-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0056"
+  },
+  {
+   "doc_id": "FAA-2013-0056@2013-07-15",
+   "date": "2013-07-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2013-0056"
+  }
+ ],
+ "FAA-2012-0805": [
+  {
+   "doc_id": "FAA-2012-0805@2012-07-31",
+   "date": "2012-07-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-0805"
+  },
+  {
+   "doc_id": "FAA-2012-0805@2013-06-13",
+   "date": "2013-06-13",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-0805"
+  }
+ ],
+ "FAA-2012-0756": [
+  {
+   "doc_id": "FAA-2012-0756@2012-07-13",
+   "date": "2012-07-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-0756"
+  },
+  {
+   "doc_id": "FAA-2012-0756@2013-05-01",
+   "date": "2013-05-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-0756"
+  }
+ ],
+ "FAA-2011-0153": [
+  {
+   "doc_id": "FAA-2011-0153@2011-02-22",
+   "date": "2011-02-22",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0153"
+  },
+  {
+   "doc_id": "FAA-2011-0153@2013-02-01",
+   "date": "2013-02-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0153"
+  }
+ ],
+ "FAA-2011-0034": [
+  {
+   "doc_id": "FAA-2011-0034@2011-01-25",
+   "date": "2011-01-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0034"
+  },
+  {
+   "doc_id": "FAA-2011-0034@2013-02-01",
+   "date": "2013-02-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0034"
+  }
+ ],
+ "FAA-2011-0033": [
+  {
+   "doc_id": "FAA-2011-0033@2011-01-25",
+   "date": "2011-01-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0033"
+  },
+  {
+   "doc_id": "FAA-2011-0033@2011-04-28",
+   "date": "2011-04-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0033"
+  },
+  {
+   "doc_id": "FAA-2011-0033@2013-02-01",
+   "date": "2013-02-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0033"
+  }
+ ],
+ "FAA-2010-0678": [
+  {
+   "doc_id": "FAA-2010-0678@2010-06-29",
+   "date": "2010-06-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2010-0678"
+  },
+  {
+   "doc_id": "FAA-2010-0678@2013-02-01",
+   "date": "2013-02-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2010-0678"
+  }
+ ],
+ "FAA-2012-0962": [
+  {
+   "doc_id": "FAA-2012-0962@2012-09-05",
+   "date": "2012-09-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-0962"
+  },
+  {
+   "doc_id": "FAA-2012-0962@2013-01-14",
+   "date": "2013-01-14",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-0962"
+  }
+ ],
+ "FAA-2013-0021": [
+  {
+   "doc_id": "FAA-2013-0021@2013-01-09",
+   "date": "2013-01-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2013-0021"
+  }
+ ],
+ "FAA-2012-18033": [
+  {
+   "doc_id": "FAA-2012-18033@2012-12-31",
+   "date": "2012-12-31",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-18033"
+  }
+ ],
+ "FAA-2012-0495": [
+  {
+   "doc_id": "FAA-2012-0495@2012-05-18",
+   "date": "2012-05-18",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-0495"
+  },
+  {
+   "doc_id": "FAA-2012-0495@2012-10-14",
+   "date": "2012-10-14",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2012-0495"
+  }
+ ],
+ "FAA-2011-0158": [
+  {
+   "doc_id": "FAA-2011-0158@2011-03-04",
+   "date": "2011-03-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0158"
+  },
+  {
+   "doc_id": "FAA-2011-0158@2012-07-31",
+   "date": "2012-07-31",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0158"
+  }
+ ],
+ "FAA-2011-0222": [
+  {
+   "doc_id": "FAA-2011-0222@2011-03-08",
+   "date": "2011-03-08",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0222"
+  },
+  {
+   "doc_id": "FAA-2011-0222@2012-06-12",
+   "date": "2012-06-12",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2011-0222"
+  }
+ ],
+ "FAA-2012-1324": [
+  {
+   "doc_id": "FAA-2012-1324@2011-12-14",
+   "date": "2011-12-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2012-1324"
+  }
+ ],
+ "FAA-2009-0555-W": [
+  {
+   "doc_id": "FAA-2009-0555-W@2011-07-22",
+   "date": "2011-07-22",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2009-0555-W"
+  }
+ ],
+ "FAA-2011-0596": [
+  {
+   "doc_id": "FAA-2011-0596@2011-06-03",
+   "date": "2011-06-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2011-0596"
+  }
+ ],
+ "FAA-2007-27715": [
+  {
+   "doc_id": "FAA-2007-27715@2007-03-21",
+   "date": "2007-03-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-27715"
+  },
+  {
+   "doc_id": "FAA-2007-27715@2007-08-02",
+   "date": "2007-08-02",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-27715"
+  },
+  {
+   "doc_id": "FAA-2007-27715@2008-06-13",
+   "date": "2008-06-13",
+   "event": "revised_nprm",
+   "docket_raw": "FAA-2007-27715"
+  },
+  {
+   "doc_id": "FAA-2007-27715@2011-05-06",
+   "date": "2011-05-06",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2007-27715"
+  }
+ ],
+ "90-NM-267-AD": [
+  {
+   "doc_id": "90-NM-267-AD@2010-12-27",
+   "date": "2010-12-27",
+   "event": "withdrawal",
+   "docket_raw": "90-NM-267-AD"
+  }
+ ],
+ "FAA-2009-1028": [
+  {
+   "doc_id": "FAA-2009-1028@2009-10-28",
+   "date": "2009-10-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2009-1028"
+  },
+  {
+   "doc_id": "FAA-2009-1028@2010-05-14",
+   "date": "2010-05-14",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2009-1028"
+  }
+ ],
+ "95-NM-215-AD": [
+  {
+   "doc_id": "95-NM-215-AD@2001-07-02",
+   "date": "2001-07-02",
+   "event": "nprm",
+   "docket_raw": "95-NM-215-AD"
+  },
+  {
+   "doc_id": "95-NM-215-AD@2010-05-04",
+   "date": "2010-05-04",
+   "event": "revised_nprm",
+   "docket_raw": "95-NM-215-AD"
+  }
+ ],
+ "FAA-2009-0559": [
+  {
+   "doc_id": "E9-14356",
+   "date": "2009-06-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2009-0559"
+  }
+ ],
+ "2002-NM-12-AD": [
+  {
+   "doc_id": "2002-NM-12-AD@2002-05-10",
+   "date": "2002-05-10",
+   "event": "nprm",
+   "docket_raw": "2002-NM-12-AD"
+  },
+  {
+   "doc_id": "2002-NM-12-AD@2006-05-15",
+   "date": "2006-05-15",
+   "event": "nprm",
+   "docket_raw": "2002-NM-12-AD"
+  },
+  {
+   "doc_id": "2002-NM-12-AD@2008-12-18",
+   "date": "2008-12-18",
+   "event": "revised_nprm",
+   "docket_raw": "2002-NM-12-AD"
+  }
+ ],
+ "FAA-2007-0242": [
+  {
+   "doc_id": "FAA-2007-0242@2008-02-15",
+   "date": "2008-02-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-0242"
+  },
+  {
+   "doc_id": "FAA-2007-0242@2008-10-01",
+   "date": "2008-10-01",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2007-0242"
+  }
+ ],
+ "FAA-2002-13744": [
+  {
+   "doc_id": "FAA-2002-13744@2008-07-30",
+   "date": "2008-07-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2002-13744"
+  }
+ ],
+ "2001-NM-237-AD": [
+  {
+   "doc_id": "2001-NM-237-AD@2003-11-17",
+   "date": "2003-11-17",
+   "event": "nprm",
+   "docket_raw": "2001-NM-237-AD"
+  },
+  {
+   "doc_id": "2001-NM-237-AD@2008-06-05",
+   "date": "2008-06-05",
+   "event": "nprm",
+   "docket_raw": "2001-NM-237-AD"
+  }
+ ],
+ "2000-NM-120-AD": [
+  {
+   "doc_id": "2000-NM-120-AD@2001-04-20",
+   "date": "2001-04-20",
+   "event": "nprm",
+   "docket_raw": "2000-NM-120-AD"
+  },
+  {
+   "doc_id": "2000-NM-120-AD@2003-03-13",
+   "date": "2003-03-13",
+   "event": "nprm",
+   "docket_raw": "2000-NM-120-AD"
+  },
+  {
+   "doc_id": "2000-NM-120-AD@2005-01-21",
+   "date": "2005-01-21",
+   "event": "nprm",
+   "docket_raw": "2000-NM-120-AD"
+  },
+  {
+   "doc_id": "2000-NM-120-AD@2008-01-15",
+   "date": "2008-01-15",
+   "event": "unknown",
+   "docket_raw": "2000-NM-120-AD"
+  }
+ ],
+ "2002-NM-260-AD": [
+  {
+   "doc_id": "2002-NM-260-AD@2004-01-29",
+   "date": "2004-01-29",
+   "event": "nprm",
+   "docket_raw": "2002-NM-260-AD"
+  },
+  {
+   "doc_id": "2002-NM-260-AD@2007-12-14",
+   "date": "2007-12-14",
+   "event": "withdrawal",
+   "docket_raw": "2002-NM-260-AD"
+  }
+ ],
+ "2001-NM-40-AD": [
+  {
+   "doc_id": "2001-NM-40-AD@2002-01-02",
+   "date": "2002-01-02",
+   "event": "nprm",
+   "docket_raw": "2001-NM-40-AD"
+  },
+  {
+   "doc_id": "2001-NM-40-AD@2007-11-07",
+   "date": "2007-11-07",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-40-AD"
+  }
+ ],
+ "FAA-2004-18583": [
+  {
+   "doc_id": "FAA-2004-18583@2004-06-30",
+   "date": "2004-06-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-18583"
+  },
+  {
+   "doc_id": "FAA-2004-18583@2007-09-07",
+   "date": "2007-09-07",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-18583"
+  }
+ ],
+ "FAA-2007-27269": [
+  {
+   "doc_id": "FAA-2007-27269@2007-02-07",
+   "date": "2007-02-07",
+   "event": "nprm",
+   "docket_raw": "FAA-2007-27269"
+  },
+  {
+   "doc_id": "FAA-2007-27269@2007-07-15",
+   "date": "2007-07-15",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2007-27269"
+  }
+ ],
+ "2003-NM-67-AD": [
+  {
+   "doc_id": "2003-NM-67-AD@2004-03-02",
+   "date": "2004-03-02",
+   "event": "nprm",
+   "docket_raw": "2003-NM-67-AD"
+  },
+  {
+   "doc_id": "2003-NM-67-AD@2007-06-13",
+   "date": "2007-06-13",
+   "event": "withdrawal",
+   "docket_raw": "2003-NM-67-AD"
+  }
+ ],
+ "FAA-2006-26691": [
+  {
+   "doc_id": "FAA-2006-26691@2007-02-15",
+   "date": "2007-02-15",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-26691"
+  }
+ ],
+ "FAA-2006-26219": [
+  {
+   "doc_id": "FAA-2006-26219@2006-10-26",
+   "date": "2006-10-26",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-26219"
+  }
+ ],
+ "FAA-2005-22806": [
+  {
+   "doc_id": "FAA-2005-22806@2005-10-21",
+   "date": "2005-10-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-22806"
+  },
+  {
+   "doc_id": "FAA-2005-22806@2006-09-29",
+   "date": "2006-09-29",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-22806"
+  }
+ ],
+ "FAA-2006-25688": [
+  {
+   "doc_id": "FAA-2006-25688@2006-09-11",
+   "date": "2006-09-11",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-25688"
+  }
+ ],
+ "98-NM-200-AD": [
+  {
+   "doc_id": "98-NM-200-AD@2006-09-01",
+   "date": "2006-09-01",
+   "event": "withdrawal",
+   "docket_raw": "98-NM-200-AD"
+  }
+ ],
+ "FAA-2006-22518": [
+  {
+   "doc_id": "FAA-2006-22518@2006-07-27",
+   "date": "2006-07-27",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-22518"
+  }
+ ],
+ "FAA-2006-24788": [
+  {
+   "doc_id": "FAA-2006-24788@2006-05-09",
+   "date": "2006-05-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-24788"
+  },
+  {
+   "doc_id": "FAA-2006-24788@2006-07-27",
+   "date": "2006-07-27",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2006-24788"
+  }
+ ],
+ "FAA-2005-23007": [
+  {
+   "doc_id": "FAA-2005-23007@2005-11-09",
+   "date": "2005-11-09",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-23007"
+  },
+  {
+   "doc_id": "FAA-2005-23007@2006-07-14",
+   "date": "2006-07-14",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-23007"
+  }
+ ],
+ "FAA-2006-25221": [
+  {
+   "doc_id": "FAA-2006-25221@2006-06-22",
+   "date": "2006-06-22",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-25221"
+  }
+ ],
+ "FAA-2006-23739": [
+  {
+   "doc_id": "FAA-2006-23739@2006-01-25",
+   "date": "2006-01-25",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-23739"
+  },
+  {
+   "doc_id": "FAA-2006-23739@2006-06-21",
+   "date": "2006-06-21",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-23739"
+  }
+ ],
+ "2004-SW-16-AD": [
+  {
+   "doc_id": "2004-SW-16-AD@2005-02-02",
+   "date": "2005-02-02",
+   "event": "nprm",
+   "docket_raw": "2004-SW-16-AD"
+  },
+  {
+   "doc_id": "2004-SW-16-AD@2006-06-09",
+   "date": "2006-06-09",
+   "event": "withdrawal",
+   "docket_raw": "2004-SW-16-AD"
+  }
+ ],
+ "FAA-2005-19676": [
+  {
+   "doc_id": "FAA-2005-19676@2006-05-18",
+   "date": "2006-05-18",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-19676"
+  }
+ ],
+ "FAA-2006-23673": [
+  {
+   "doc_id": "FAA-2006-23673@2006-01-17",
+   "date": "2006-01-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-23673"
+  },
+  {
+   "doc_id": "FAA-2006-23673@2006-04-28",
+   "date": "2006-04-28",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2006-23673"
+  }
+ ],
+ "FAA-2005-23249": [
+  {
+   "doc_id": "FAA-2005-23249@2005-12-02",
+   "date": "2005-12-02",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-23249"
+  },
+  {
+   "doc_id": "FAA-2005-23249@2006-03-31",
+   "date": "2006-03-31",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-23249"
+  }
+ ],
+ "FAA-2004-19157": [
+  {
+   "doc_id": "FAA-2004-19157@2004-09-24",
+   "date": "2004-09-24",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19157"
+  },
+  {
+   "doc_id": "FAA-2004-19157@2006-03-30",
+   "date": "2006-03-30",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-19157"
+  }
+ ],
+ "FAA-2006-24018": [
+  {
+   "doc_id": "FAA-2006-24018@2006-03-20",
+   "date": "2006-03-20",
+   "event": "nprm",
+   "docket_raw": "FAA-2006-24018"
+  }
+ ],
+ "FAA-2004-19930": [
+  {
+   "doc_id": "FAA-2004-19930@2004-12-17",
+   "date": "2004-12-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19930"
+  },
+  {
+   "doc_id": "FAA-2004-19930@2006-03-13",
+   "date": "2006-03-13",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-19930"
+  }
+ ],
+ "FAA-2005-20691": [
+  {
+   "doc_id": "FAA-2005-20691@2005-03-14",
+   "date": "2005-03-14",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-20691"
+  },
+  {
+   "doc_id": "FAA-2005-20691@2006-01-24",
+   "date": "2006-01-24",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-20691"
+  }
+ ],
+ "FAA-2005-21880": [
+  {
+   "doc_id": "FAA-2005-21880@2005-07-13",
+   "date": "2005-07-13",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-21880"
+  },
+  {
+   "doc_id": "FAA-2005-21880@2005-12-06",
+   "date": "2005-12-06",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-21880"
+  }
+ ],
+ "97-NM-78-AD": [
+  {
+   "doc_id": "97-NM-78-AD@2005-09-29",
+   "date": "2005-09-29",
+   "event": "withdrawal",
+   "docket_raw": "97-NM-78-AD"
+  }
+ ],
+ "FAA-2005-20403": [
+  {
+   "doc_id": "FAA-2005-20403@2005-09-06",
+   "date": "2005-09-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-20403"
+  }
+ ],
+ "FAA-2005-20402": [
+  {
+   "doc_id": "FAA-2005-20402@2005-09-06",
+   "date": "2005-09-06",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-20402"
+  }
+ ],
+ "2003-NE-31-AD": [
+  {
+   "doc_id": "2003-NE-31-AD@2003-10-03",
+   "date": "2003-10-03",
+   "event": "nprm",
+   "docket_raw": "2003-NE-31-AD"
+  },
+  {
+   "doc_id": "2003-NE-31-AD@2005-08-09",
+   "date": "2005-08-09",
+   "event": "withdrawal",
+   "docket_raw": "2003-NE-31-AD"
+  }
+ ],
+ "2001-NM-152-AD": [
+  {
+   "doc_id": "2001-NM-152-AD@2003-01-23",
+   "date": "2003-01-23",
+   "event": "nprm",
+   "docket_raw": "2001-NM-152-AD"
+  },
+  {
+   "doc_id": "2001-NM-152-AD@2005-05-27",
+   "date": "2005-05-27",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-152-AD"
+  }
+ ],
+ "FAA-2005-20349": [
+  {
+   "doc_id": "FAA-2005-20349@2005-02-03",
+   "date": "2005-02-03",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-20349"
+  },
+  {
+   "doc_id": "FAA-2005-20349@2005-05-26",
+   "date": "2005-05-26",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-20349"
+  }
+ ],
+ "FAA-2004-19565": [
+  {
+   "doc_id": "FAA-2004-19565@2004-11-01",
+   "date": "2004-11-01",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19565"
+  },
+  {
+   "doc_id": "FAA-2004-19565@2005-05-23",
+   "date": "2005-05-23",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-19565"
+  }
+ ],
+ "FAA-2005-20501": [
+  {
+   "doc_id": "FAA-2005-20501@2005-02-28",
+   "date": "2005-02-28",
+   "event": "nprm",
+   "docket_raw": "FAA-2005-20501"
+  },
+  {
+   "doc_id": "FAA-2005-20501@2005-05-23",
+   "date": "2005-05-23",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2005-20501"
+  }
+ ],
+ "2002-NM-352-AD": [
+  {
+   "doc_id": "2002-NM-352-AD@2003-12-10",
+   "date": "2003-12-10",
+   "event": "nprm",
+   "docket_raw": "2002-NM-352-AD"
+  },
+  {
+   "doc_id": "2002-NM-352-AD@2005-04-11",
+   "date": "2005-04-11",
+   "event": "withdrawal",
+   "docket_raw": "2002-NM-352-AD"
+  }
+ ],
+ "FAA-2004-19563": [
+  {
+   "doc_id": "FAA-2004-19563@2004-11-01",
+   "date": "2004-11-01",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19563"
+  },
+  {
+   "doc_id": "FAA-2004-19563@2005-03-31",
+   "date": "2005-03-31",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-19563"
+  }
+ ],
+ "FAA-2004-19473": [
+  {
+   "doc_id": "FAA-2004-19473@2005-03-17",
+   "date": "2005-03-17",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19473"
+  }
+ ],
+ "2002-NM-306-AD": [
+  {
+   "doc_id": "2002-NM-306-AD@2003-09-15",
+   "date": "2003-09-15",
+   "event": "nprm",
+   "docket_raw": "2002-NM-306-AD"
+  },
+  {
+   "doc_id": "2002-NM-306-AD@2005-03-14",
+   "date": "2005-03-14",
+   "event": "withdrawal",
+   "docket_raw": "2002-NM-306-AD"
+  }
+ ],
+ "FAA-2004-19564": [
+  {
+   "doc_id": "FAA-2004-19564@2004-11-01",
+   "date": "2004-11-01",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19564"
+  },
+  {
+   "doc_id": "FAA-2004-19564@2005-03-07",
+   "date": "2005-03-07",
+   "event": "withdrawal",
+   "docket_raw": "FAA-2004-19564"
+  }
+ ],
+ "2000-NM-168-AD": [
+  {
+   "doc_id": "2000-NM-168-AD@2003-10-24",
+   "date": "2003-10-24",
+   "event": "nprm",
+   "docket_raw": "2000-NM-168-AD"
+  },
+  {
+   "doc_id": "2000-NM-168-AD@2005-01-03",
+   "date": "2005-01-03",
+   "event": "withdrawal",
+   "docket_raw": "2000-NM-168-AD"
+  }
+ ],
+ "FAA-2004-19682": [
+  {
+   "doc_id": "FAA-2004-19682@2004-11-10",
+   "date": "2004-11-10",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19682"
+  }
+ ],
+ "2003-NM-04-AD": [
+  {
+   "doc_id": "2003-NM-04-AD@2003-03-11",
+   "date": "2003-03-11",
+   "event": "nprm",
+   "docket_raw": "2003-NM-04-AD"
+  },
+  {
+   "doc_id": "2003-NM-04-AD@2004-10-21",
+   "date": "2004-10-21",
+   "event": "withdrawal",
+   "docket_raw": "2003-NM-04-AD"
+  }
+ ],
+ "FAA-2004-19089": [
+  {
+   "doc_id": "FAA-2004-19089@2004-10-05",
+   "date": "2004-10-05",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19089"
+  }
+ ],
+ "90-CE-55-AD": [
+  {
+   "doc_id": "90-CE-55-AD@2004-10-04",
+   "date": "2004-10-04",
+   "event": "withdrawal",
+   "docket_raw": "90-CE-55-AD"
+  }
+ ],
+ "FAA-2004-19119": [
+  {
+   "doc_id": "FAA-2004-19119@2004-09-29",
+   "date": "2004-09-29",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-19119"
+  }
+ ],
+ "2002-NM-257-AD": [
+  {
+   "doc_id": "2002-NM-257-AD@2004-06-09",
+   "date": "2004-06-09",
+   "event": "nprm",
+   "docket_raw": "2002-NM-257-AD"
+  },
+  {
+   "doc_id": "2002-NM-257-AD@2004-09-20",
+   "date": "2004-09-20",
+   "event": "withdrawal",
+   "docket_raw": "2002-NM-257-AD"
+  }
+ ],
+ "2003-NM-66-AD": [
+  {
+   "doc_id": "2003-NM-66-AD@2004-01-16",
+   "date": "2004-01-16",
+   "event": "nprm",
+   "docket_raw": "2003-NM-66-AD"
+  },
+  {
+   "doc_id": "2003-NM-66-AD@2004-09-16",
+   "date": "2004-09-16",
+   "event": "withdrawal",
+   "docket_raw": "2003-NM-66-AD"
+  }
+ ],
+ "2003-NM-119-AD": [
+  {
+   "doc_id": "2003-NM-119-AD@2004-01-09",
+   "date": "2004-01-09",
+   "event": "nprm",
+   "docket_raw": "2003-NM-119-AD"
+  },
+  {
+   "doc_id": "2003-NM-119-AD@2004-08-20",
+   "date": "2004-08-20",
+   "event": "withdrawal",
+   "docket_raw": "2003-NM-119-AD"
+  }
+ ],
+ "FAA-2004-18788": [
+  {
+   "doc_id": "FAA-2004-18788@2004-07-30",
+   "date": "2004-07-30",
+   "event": "nprm",
+   "docket_raw": "FAA-2004-18788"
+  }
+ ],
+ "2002-NM-224-AD": [
+  {
+   "doc_id": "2002-NM-224-AD@2004-03-10",
+   "date": "2004-03-10",
+   "event": "nprm",
+   "docket_raw": "2002-NM-224-AD"
+  },
+  {
+   "doc_id": "2002-NM-224-AD@2004-07-13",
+   "date": "2004-07-13",
+   "event": "withdrawal",
+   "docket_raw": "2002-NM-224-AD"
+  }
+ ],
+ "2001-NM-364-AD": [
+  {
+   "doc_id": "2001-NM-364-AD@2002-08-19",
+   "date": "2002-08-19",
+   "event": "nprm",
+   "docket_raw": "2001-NM-364-AD"
+  },
+  {
+   "doc_id": "2001-NM-364-AD@2004-06-24",
+   "date": "2004-06-24",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-364-AD"
+  }
+ ],
+ "2002-CE-05-AD": [
+  {
+   "doc_id": "2002-CE-05-AD@2003-05-09",
+   "date": "2003-05-09",
+   "event": "nprm",
+   "docket_raw": "2002-CE-05-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD@2003-07-28",
+   "date": "2003-07-28",
+   "event": "nprm",
+   "docket_raw": "2002-CE-05-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD@2003-09-26",
+   "date": "2003-09-26",
+   "event": "reopened",
+   "docket_raw": "2002-CE-05-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-01-15",
+   "date": "2004-01-15",
+   "event": "reopened",
+   "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-05-18",
+   "date": "2004-05-18",
+   "event": "nprm",
+   "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
+  }
+ ],
+ "2002-CE-57-AD": [
+  {
+   "doc_id": "2002-CE-57-AD@2003-05-09",
+   "date": "2003-05-09",
+   "event": "nprm",
+   "docket_raw": "2002-CE-57-AD"
+  },
+  {
+   "doc_id": "2002-CE-57-AD@2003-07-28",
+   "date": "2003-07-28",
+   "event": "nprm",
+   "docket_raw": "2002-CE-57-AD"
+  },
+  {
+   "doc_id": "2002-CE-57-AD@2003-09-26",
+   "date": "2003-09-26",
+   "event": "reopened",
+   "docket_raw": "2002-CE-57-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-01-15",
+   "date": "2004-01-15",
+   "event": "reopened",
+   "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
+  },
+  {
+   "doc_id": "2002-CE-05-AD, 2002-CE-57-AD@2004-05-18",
+   "date": "2004-05-18",
+   "event": "nprm",
+   "docket_raw": "2002-CE-05-AD, 2002-CE-57-AD"
+  }
+ ],
+ "2000-NM-124-AD": [
+  {
+   "doc_id": "2000-NM-124-AD@2004-05-05",
+   "date": "2004-05-05",
+   "event": "withdrawal",
+   "docket_raw": "2000-NM-124-AD"
+  }
+ ],
+ "2002-NM-219-AD": [
+  {
+   "doc_id": "2002-NM-219-AD@2003-02-26",
+   "date": "2003-02-26",
+   "event": "nprm",
+   "docket_raw": "2002-NM-219-AD"
+  },
+  {
+   "doc_id": "2002-NM-219-AD@2003-10-29",
+   "date": "2003-10-29",
+   "event": "nprm",
+   "docket_raw": "2002-NM-219-AD"
+  },
+  {
+   "doc_id": "2002-NM-219-AD@2004-04-20",
+   "date": "2004-04-20",
+   "event": "revised_nprm",
+   "docket_raw": "2002-NM-219-AD"
+  }
+ ],
+ "98-NM-11-AD": [
+  {
+   "doc_id": "98-NM-11-AD@2003-06-26",
+   "date": "2003-06-26",
+   "event": "nprm",
+   "docket_raw": "98-NM-11-AD"
+  },
+  {
+   "doc_id": "98-NM-11-AD@2004-04-15",
+   "date": "2004-04-15",
+   "event": "withdrawal",
+   "docket_raw": "98-NM-11-AD"
+  }
+ ],
+ "2001-SW-33-AD": [
+  {
+   "doc_id": "2001-SW-33-AD@2002-12-09",
+   "date": "2002-12-09",
+   "event": "nprm",
+   "docket_raw": "2001-SW-33-AD"
+  },
+  {
+   "doc_id": "2001-SW-33-AD@2004-03-04",
+   "date": "2004-03-04",
+   "event": "nprm",
+   "docket_raw": "2001-SW-33-AD"
+  }
+ ],
+ "FAA-2003-16645": [
+  {
+   "doc_id": "FAA-2003-16645@2003-12-04",
+   "date": "2003-12-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2003-16645"
+  }
+ ],
+ "FAA-2003-16646": [
+  {
+   "doc_id": "FAA-2003-16646@2003-12-04",
+   "date": "2003-12-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2003-16646"
+  }
+ ],
+ "FAA-2003-16647": [
+  {
+   "doc_id": "FAA-2003-16647@2003-12-04",
+   "date": "2003-12-04",
+   "event": "nprm",
+   "docket_raw": "FAA-2003-16647"
+  }
+ ],
+ "86-ANE-12-AD": [
+  {
+   "doc_id": "86-ANE-12-AD@2003-11-20",
+   "date": "2003-11-20",
+   "event": "withdrawal",
+   "docket_raw": "86-ANE-12-AD"
+  }
+ ],
+ "2002-NM-09-AD": [
+  {
+   "doc_id": "2002-NM-09-AD@2003-09-12",
+   "date": "2003-09-12",
+   "event": "nprm",
+   "docket_raw": "2002-NM-09-AD"
+  }
+ ],
+ "2000-NM-192-AD": [
+  {
+   "doc_id": "2000-NM-192-AD@2003-08-29",
+   "date": "2003-08-29",
+   "event": "withdrawal",
+   "docket_raw": "2000-NM-192-AD"
+  }
+ ],
+ "2003-CE-05-AD-W": [
+  {
+   "doc_id": "2003-CE-05-AD-W@2003-08-25",
+   "date": "2003-08-25",
+   "event": "withdrawal",
+   "docket_raw": "2003-CE-05-AD-W"
+  }
+ ],
+ "2001-NM-30-AD": [
+  {
+   "doc_id": "2001-NM-30-AD@2002-06-12",
+   "date": "2002-06-12",
+   "event": "nprm",
+   "docket_raw": "2001-NM-30-AD"
+  },
+  {
+   "doc_id": "2001-NM-30-AD@2003-05-27",
+   "date": "2003-05-27",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-30-AD"
+  }
+ ],
+ "2003-CE-05-AD": [
+  {
+   "doc_id": "2003-CE-05-AD@2003-02-28",
+   "date": "2003-02-28",
+   "event": "nprm",
+   "docket_raw": "2003-CE-05-AD"
+  }
+ ],
+ "2002-SW-31-AD": [
+  {
+   "doc_id": "2002-SW-31-AD@2003-02-06",
+   "date": "2003-02-06",
+   "event": "nprm",
+   "docket_raw": "2002-SW-31-AD"
+  }
+ ],
+ "2002-CE-27-AD-W": [
+  {
+   "doc_id": "2002-CE-27-AD-W@2002-12-17",
+   "date": "2002-12-17",
+   "event": "withdrawal",
+   "docket_raw": "2002-CE-27-AD-W"
+  }
+ ],
+ "2000-SW-38-AD-W": [
+  {
+   "doc_id": "2000-SW-38-AD-W@2002-09-19",
+   "date": "2002-09-19",
+   "event": "withdrawal",
+   "docket_raw": "2000-SW-38-AD-W"
+  }
+ ],
+ "2001-NM-93-AD": [
+  {
+   "doc_id": "2001-NM-93-AD@2001-10-23",
+   "date": "2001-10-23",
+   "event": "nprm",
+   "docket_raw": "2001-NM-93-AD"
+  },
+  {
+   "doc_id": "2001-NM-93-AD@2002-07-11",
+   "date": "2002-07-11",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-93-AD"
+  }
+ ],
+ "88-NM-145-AD": [
+  {
+   "doc_id": "88-NM-145-AD@2002-03-28",
+   "date": "2002-03-28",
+   "event": "withdrawal",
+   "docket_raw": "88-NM-145-AD"
+  }
+ ],
+ "2001-NM-149-AD": [
+  {
+   "doc_id": "2001-NM-149-AD@2001-08-24",
+   "date": "2001-08-24",
+   "event": "nprm",
+   "docket_raw": "2001-NM-149-AD"
+  },
+  {
+   "doc_id": "2001-NM-149-AD@2002-03-28",
+   "date": "2002-03-28",
+   "event": "withdrawal",
+   "docket_raw": "2001-NM-149-AD"
+  }
+ ],
+ "98-CE-57-AD": [
+  {
+   "doc_id": "98-CE-57-AD@2001-12-11",
+   "date": "2001-12-11",
+   "event": "withdrawal",
+   "docket_raw": "98-CE-57-AD"
+  }
+ ],
+ "98-NM-36-AD": [
+  {
+   "doc_id": "98-NM-36-AD@2001-10-02",
+   "date": "2001-10-02",
+   "event": "withdrawal",
+   "docket_raw": "98-NM-36-AD"
+  }
+ ],
+ "98-NM-353-AD": [
+  {
+   "doc_id": "98-NM-353-AD@2001-08-20",
+   "date": "2001-08-20",
+   "event": "withdrawal",
+   "docket_raw": "98-NM-353-AD"
+  }
+ ],
+ "99-NE-47-AD": [
+  {
+   "doc_id": "99-NE-47-AD@2001-08-16",
+   "date": "2001-08-16",
+   "event": "withdrawal",
+   "docket_raw": "99-NE-47-AD"
+  }
+ ],
+ "99-NM-132-AD": [
+  {
+   "doc_id": "99-NM-132-AD@2001-07-26",
+   "date": "2001-07-26",
+   "event": "withdrawal",
+   "docket_raw": "99-NM-132-AD"
+  }
+ ],
+ "2000-NM-27-AD": [
+  {
+   "doc_id": "2000-NM-27-AD@2001-07-10",
+   "date": "2001-07-10",
+   "event": "withdrawal",
+   "docket_raw": "2000-NM-27-AD"
+  }
+ ],
+ "90-ANE-25-AD": [
+  {
+   "doc_id": "90-ANE-25-AD@2001-06-14",
+   "date": "2001-06-14",
+   "event": "withdrawal",
+   "docket_raw": "90-ANE-25-AD"
+  }
+ ],
+ "99-NE-46": [
+  {
+   "doc_id": "99-NE-46@2001-05-18",
+   "date": "2001-05-18",
+   "event": "nprm",
+   "docket_raw": "99-NE-46"
+  }
+ ],
+ "97-ANE-59-AD": [
+  {
+   "doc_id": "97-ANE-59-AD@2001-05-10",
+   "date": "2001-05-10",
+   "event": "withdrawal",
+   "docket_raw": "97-ANE-59-AD"
+  }
+ ]
+}
