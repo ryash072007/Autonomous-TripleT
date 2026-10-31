@@ -53,6 +53,57 @@ def results():
     return JSONResponse(json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"available": False})
 
 
+class EvalReq(BaseModel):
+    doc_id: str
+    config: dict | None = None
+
+
+@app.get("/directives")
+def directives():
+    """Real corpus records for the sidebar stream (no synthetic data)."""
+    out = []
+    for r, a in C.pairs:
+        sec = a.get("section")
+        st = latest_status(C.graph, r["docket"])
+        text = (r["text"][sec["char_start"]:sec["char_end"]] if sec and r.get("text") else (r["summary"] or ""))
+        out.append({"doc_id": r["doc_id"], "docket": r["docket"], "title": r["subject"], "make": r["make_norm"], "issue_date": r["issue_date"],
+                    "status": st["status"], "latest": (st["latest"]["doc_id"] if st.get("latest") else r["doc_id"]) == r["doc_id"],
+                    "withdrawn": r["is_withdrawal"], "has_text": r["text"] is not None, "scope": a.get("scope"),
+                    "snippet": " ".join(text.split())[:170], "citation": r["citation"],
+                    "flags": {"serial": bool(a.get("serial_ranges") or a.get("serial_unparsed")),
+                              "external": any("of this AD" not in e["name"] for e in a.get("external_refs", [])),
+                              "pn": any(g.get("pn_required") for g in a.get("groups", [])), "cutoff": bool(a.get("cofa_cutoff"))}})
+    out.sort(key=lambda d: d["issue_date"] or "", reverse=True)
+    return out
+
+
+@app.post("/evaluate")
+def evaluate(req: EvalReq):
+    """Run the existing deterministic engine on ONE chosen notice and explain it condition by condition."""
+    from applicability import AircraftConfig, explain, verdict as engine_verdict
+    from ingest import norm_make
+    rec = C.rec.get(req.doc_id)
+    if not rec:
+        raise HTTPException(404, "unknown document")
+    c = {k: v for k, v in (req.config or {}).items() if v not in (None, "", [])}
+    pns = c.get("part_numbers") or []
+    if isinstance(pns, str):
+        pns = [x.strip() for x in pns.split(",") if x.strip()]
+    cfg = AircraftConfig(make=norm_make(c["make"]) if c.get("make") else None, model=c.get("model"), serial=c.get("serial"),
+                         cofa_date=c.get("cofa_date"), part_numbers=pns)
+    v = engine_verdict(rec, C.appl[req.doc_id], cfg)
+    st = latest_status(C.graph, rec["docket"])
+    return {"doc_id": req.doc_id, "verdict": v.as_dict(), "conditions": explain(rec, C.appl[req.doc_id], cfg, v),
+            "status": st["status"], "latest_doc_id": st["latest"]["doc_id"] if st.get("latest") else req.doc_id,
+            "revision_trail": [{"doc_id": e["doc_id"], "date": e["date"], "event": e["event"]} for e in st["trail"]],
+            "config_used": {"make": cfg.make, "model": cfg.model, "cofa_date": cfg.cofa_date, "serial": cfg.serial, "part_numbers": cfg.part_numbers}}
+
+
+@app.get("/console")
+def console():
+    return FileResponse(ROOT / "ui" / "console.html")
+
+
 @app.get("/health")
 def health():
     return {"ok": True, "chunks": len(C.chunks), "docs": len(C.rec), "index_build_s": round(C.build_seconds, 2)}
@@ -60,4 +111,10 @@ def health():
 
 @app.get("/")
 def index():
+    return FileResponse(ROOT / "ui" / "console.html")
+
+
+@app.get("/classic")
+def classic():
+    """The earlier single-page UI, kept for comparison and as a fallback."""
     return FileResponse(ROOT / "ui" / "index.html")

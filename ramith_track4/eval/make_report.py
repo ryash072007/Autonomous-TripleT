@@ -145,8 +145,32 @@ def main():
             "- **Not handled:** serial ranges are per document not per model group; informal model names that differ from the notice ('King Air 350' vs 'Model B300'); "
             "applicability defined in outside documents (by design: refused or CANNOT_DETERMINE).",
             "- **Refusal codes** are right only about 70-90% of the time even when the refusal itself is right.", ""]
+    # ---- structured data for the UI dashboard (the same loaded numbers; nothing new is computed beyond sums) ----
+    data = {"sets": [], "pooled": {}, "final": {}, "baselines": [], "v1": {}, "rows_e": [], "rows_b1e": []}
+    for name, f, k1, k2 in SETS:
+        d = load(f)
+        b1 = d["results"][f"{k1}/full"]["rows"]
+        b2 = d["results"][f"{k2}/full"]["rows"]
+        refused = [x for x in b2 if x["refused"]]
+        data["sets"].append({"name": name, "src_hash": d["meta"]["src_hash"], "engine": [sum(x["ok"] for x in b1), len(b1)],
+                             **{c: list(cat(b2, c)) for c in ("lookup", "applicability", "revision", "refuse")},
+                             "refusal_right": [sum(1 for x in refused if x["category"] == "refuse"), len(refused)]})
+    data["pooled"] = {"engine": pooled_b1, **pooled_b2, "refusal_precision": [ref_tp, ref_n]}
+    data["final"] = {"engine": e1, "b2": es}
+    for key, v in bf["results"].items():
+        sn, sy = key.split("/")
+        if sn.startswith("b2"):
+            data["baselines"].append({"set": sn, "system": sy, **{k: v["summary"][k]["pct"] for k in ("lookup", "applicability", "revision")},
+                                      "refuse_recall": v["summary"]["refusal"]["recall"], "refuse_precision": v["summary"]["refusal"]["precision"],
+                                      "cited_not_in_corpus": v["summary"].get("llm_cited_ids", {}).get("pct_not_in_corpus")})
+    for sy in ("full", "naive_summary", "fulltext_bm25", "llm_only", "llm_forced"):
+        v = v1["results"].get(f"v1test/{sy}")
+        if v:
+            data["v1"][sy] = {**{k: v["summary"][k]["pct"] for k in ("lookup", "applicability", "revision")}, "refuse_recall": v["summary"]["refusal"]["recall"]}
+    data["rows_e"] = [{"id": r["id"], "category": r["category"], "ok": r["ok"], "detail": r["detail"], "query": r["query"]} for r in e["results"]["b2e/full"]["rows"]]
+    data["rows_b1e"] = [{"id": r["id"], "gold": r["gold"], "got": r["got"], "ok": r["ok"], "gold_reason": r["gold_reason"], "got_reason": r["got_reason"]} for r in e["results"]["b1e/full"]["rows"]]
     (R / "REPORT.md").write_text("\n".join(out) + "\n", encoding="utf-8")
-    (R / "latest.json").write_text(json.dumps({"markdown": "\n".join(out)}, ensure_ascii=False), encoding="utf-8")
+    (R / "latest.json").write_text(json.dumps({"markdown": "\n".join(out), "data": data}, ensure_ascii=False), encoding="utf-8")
     print("\n".join(out))
 
 

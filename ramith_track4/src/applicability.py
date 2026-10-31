@@ -181,3 +181,56 @@ def config_contradiction(cfg: AircraftConfig, model_index: dict):
     if makes and norm_make(cfg.make) not in makes:
         return f"{cfg.model} appears in the corpus only under {', '.join(sorted(makes))}, not {cfg.make}."
     return None
+
+
+def explain(rec: dict, appl: dict, cfg: AircraftConfig, v: Verdict) -> list:
+    """Per-condition breakdown for the UI. Derived ONLY from the verdict the engine already produced (same codes, same stopping point);
+    conditions the engine never reached are NOT_EVALUATED. Adds no new decision logic."""
+    codes, main, rule = set(v.reason_codes), v.main_reason, v.rule_fired
+    sec = appl.get("section")
+    sec_span = (sec["char_start"], sec["char_end"]) if sec else None
+    out = []
+
+    def add(cid, label, required, provided, state, span=None):
+        quote = rec["text"][span[0]:span[1]] if (span and rec.get("text")) else None
+        out.append({"id": cid, "label": label, "required": required, "provided": provided, "state": state,
+                    "span": list(span) if span else None, "quote": (quote[:600] if quote else None)})
+
+    if rec["is_withdrawal"]:
+        add("withdrawn", "Notice is an active proposal", "A withdrawal notice proposes nothing", None, "FAIL")
+        return out
+    if appl.get("scope") == "none":
+        add("text", "Applicability text available", "The full applicability paragraph", None, "UNKNOWN")
+        return out
+    state_model = "PASS" if "MODEL_LISTED" in codes else "FAIL" if "MODEL_NOT_LISTED" in codes else "UNKNOWN" if "INPUT_MISSING_MODEL" in codes else "NOT_EVALUATED"
+    add("model", "Aircraft model", "Model named in the applicability paragraph", cfg.model, state_model, sec_span)
+    groups = appl.get("groups") or []
+    if any(g.get("pn_required") for g in groups):
+        pns = sorted({p for g in groups for p in g.get("part_numbers", [])})[:6]
+        st = "PASS" if "PN_INSTALLED" in codes else "FAIL" if "PN_NOT_INSTALLED" in codes else "UNKNOWN" if ("INPUT_MISSING_PN" in codes or rule == "part_number") else "NOT_EVALUATED"
+        add("part_number", "Installed part number", "One of: " + (", ".join(pns) if pns else "(list not readable)"), ", ".join(cfg.part_numbers) or None, st, sec_span)
+    cut = appl.get("cofa_cutoff")
+    if cut:
+        rel = {"CERT_DATE_BEFORE_CUTOFF", "CERT_DATE_AFTER_CUTOFF"} & codes
+        if rel and not (v.verdict == "DOES_NOT_APPLY" and main in rel):
+            st = "PASS"
+        elif rel:
+            st = "FAIL"
+        elif "INPUT_MISSING_CERT_DATE" in codes:
+            st = "UNKNOWN"
+        else:
+            st = "NOT_EVALUATED"
+        add("cert_date", "Original certificate of airworthiness date", f"Issued {cut['direction']} {cut['date']}", cfg.cofa_date, st, tuple(cut["span"]))
+    if appl.get("serial_ranges") or appl.get("serial_unparsed"):
+        st = "PASS" if "SERIAL_IN_RANGE" in codes else "FAIL" if "SERIAL_OUT_OF_RANGE" in codes else "UNKNOWN" if ("INPUT_MISSING_SERIAL" in codes or rule == "serial") else "NOT_EVALUATED"
+        rng = appl.get("serial_ranges") or []
+        add("serial", "Serial number", ("Within: " + "; ".join(f"{r['lo']}–{r['hi']}" for r in rng[:4])) if rng else "A serial condition the tool could not read reliably", cfg.serial,
+            st, tuple(rng[0]["span"]) if rng else sec_span)
+    if appl.get("exclusions"):
+        add("exclusion", "Exclusions", "Aircraft meeting an exclusion are outside the AD", None, "UNKNOWN" if "EXCLUSION_UNVERIFIABLE" in codes else "NOT_EVALUATED", tuple(appl["exclusions"][0]["span"]))
+    if appl.get("other_conditions"):
+        add("other", "Configuration clause", "A condition the tool does not evaluate (e.g. equipped with ...)", None, "UNKNOWN" if rule == "other_condition" else "NOT_EVALUATED", tuple(appl["other_conditions"][0]["span"]))
+    ext = [e for e in appl.get("external_refs", []) if "of this AD" not in e["name"]]
+    if ext:
+        add("external", "Outside document", ext[0]["name"][:140], None, "UNKNOWN" if "EXTERNAL_DOC_REQUIRED" in codes else "NOT_EVALUATED", tuple(ext[0]["span"]))
+    return out
