@@ -11,7 +11,10 @@ type View = "landing" | "queue" | "next24" | "evidence";
 const SPEEDS = [0.1, 0.25, 0.5, 1];
 
 export default function App() {
-  const [view, setView] = useState<View>("landing");
+  const [view, setView] = useState<View>(() => {
+    const h = window.location.hash.slice(1);
+    return h === "queue" || h === "next24" || h === "evidence" ? h : "landing";
+  });
   const [dataset, setDataset] = useState<Dataset>("test");
   const [summary, setSummary] = useState<Summary | null>(null);
   const [events, setEvents] = useState<EventLight[]>([]);
@@ -41,7 +44,7 @@ export default function App() {
         setEvents(e.events);
         setMessage(e.message ?? s.message);
         setSelected((cur) => (cur != null && e.events.some((x) => x.event_id === cur) ? cur : e.events[0]?.event_id ?? null));
-        setElapsed(Math.max(0, s.min_time_to_tca - 1));
+        setElapsed(Math.max(0, s.min_time_to_tca - 0.9));
       })
       .catch(() => setApiErr(true))
       .finally(() => setLoading(false));

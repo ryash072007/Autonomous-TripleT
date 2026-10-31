@@ -14,11 +14,24 @@ function hash(n: number) {
 function sampleSky(events: EventLight[]) {
   const crit = events.filter((e) => e.tier === 2);
   const rest = events.filter((e) => e.tier !== 2);
-  const room = Math.max(0, 400 - crit.length);
-  const step = Math.max(1, rest.length / Math.max(room, 1));
+  const room = 60;
+  const step = Math.max(1, rest.length / room);
   const picked: EventLight[] = [];
   for (let i = 0; i < rest.length && picked.length < room; i += step) picked.push(rest[Math.floor(i)]);
   return [...crit, ...picked];
+}
+
+/** Position in % of the sky, rejecting the no-fly ellipse behind the title, subtitle, hook and CTA. */
+function skyPos(id: number) {
+  const narrow = window.innerWidth < 700;
+  const rx = narrow ? 80 : 36, cy = narrow ? 30 : 38, ry = narrow ? 26 : 30;
+  for (let k = 0; k < 12; k++) {
+    const x = 2 + hash(id + k * 131) * 96;
+    const y = 3 + hash(id + 7919 + k * 977) * 55;
+    const dx = (x - 50) / rx, dy = (y - cy) / ry;
+    if (dx * dx + dy * dy > 1) return { x, y };
+  }
+  return { x: 2 + hash(id) * 96, y: narrow ? 52 + hash(id + 1) * 8 : 3 + hash(id + 1) * 6 };
 }
 
 interface Props {
@@ -41,17 +54,19 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
 
       <div className="sky-lights">
         {sky.map((e) => {
-          const h1 = hash(e.event_id), h2 = hash(e.event_id + 7919), h3 = hash(e.event_id + 104729);
+          const { x, y } = skyPos(e.event_id);
+          const h3 = hash(e.event_id + 104729), h4 = hash(e.event_id + 55);
           return (
             <button
               key={e.event_id}
-              className={"light" + (e.tier === 2 ? " crit" : "")}
+              className={"light t" + e.tier}
               style={{
-                left: `${2 + h1 * 94}%`,
-                top: `${4 + h2 * 52}%`,
-                ["--dx" as string]: `${(h3 - 0.5) * 9}vw`,
-                animationDuration: `${50 + h3 * 70}s`,
-                animationDelay: `${-h1 * 60}s`,
+                left: `${x}%`,
+                top: `${y}%`,
+                ["--dx" as string]: `${(h3 - 0.5) * 7}vw`,
+                ["--dy" as string]: `${(h4 - 0.5) * 5}vh`,
+                animationDuration: `${70 + h3 * 80}s, ${40 + h4 * 50}s`,
+                animationDelay: `${-h4 * 60}s, ${-h3 * 40}s`,
               }}
               aria-label={`Event ${e.event_id}, ${TIER_NAMES[e.tier]}`}
               onMouseEnter={(ev) => setTip({ e, x: ev.clientX, y: ev.clientY })}
@@ -63,7 +78,7 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
               onBlur={() => setTip(null)}
               onClick={() => onOpen(e.event_id)}
             >
-              <TierIcon tier={e.tier} size={e.tier === 2 ? 13 : 10} />
+              <span className="dot" />
             </button>
           );
         })}
@@ -89,10 +104,12 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
 
       <div className="hero">
         <h1>ORBITGUARD</h1>
-        <svg className="arc-rule" viewBox="0 0 600 24" aria-hidden="true">
-          <path d="M0 18 H250 M350 18 H600" stroke="var(--ink-soft)" strokeWidth="1.2" fill="none" />
-          <path d="M250 18 Q300 -4 350 18" stroke="var(--ink-soft)" strokeWidth="1.2" fill="none" />
-          <circle cx="300" cy="7" r="2.6" fill="var(--ink-soft)" />
+        <svg className="arc-rule" viewBox="0 0 600 34" aria-hidden="true">
+          <g fill="none" stroke="#fff" strokeLinecap="round">
+            <path d="M20 28 H215 M385 28 H580" strokeWidth="1.4" opacity="0.75" />
+            <path d="M215 28 Q300 -8 385 28" strokeWidth="2.6" />
+          </g>
+          <path d="M300 4 L302.2 10.4 L309 11 L303.6 14.8 L305.4 21.5 L300 17.6 L294.6 21.5 L296.4 14.8 L291 11 L297.8 10.4 Z" fill="#fff" />
         </svg>
         <div className="subtitle">COLLISION&nbsp;&nbsp;TRIAGE</div>
         <p className="hook">
@@ -119,8 +136,9 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
 
       <div className="land-foot mono">
         <span>
-          replay clock {summary ? fmtClock(remaining) : "--"} · {windowCount} event{windowCount === 1 ? "" : "s"} in the 24 h
-          window
+          {summary?.model
+            ? `Model: ${summary.model.name.replace(/\s*\(.*\)/, "")} · scored ${(summary.generated_utc ?? "").slice(0, 10)} · ${summary.dataset} dataset`
+            : "Loading model info..."}
         </span>
         <span>Data: ESA CAC (CC BY 4.0)</span>
       </div>
@@ -147,7 +165,7 @@ function HowItWorks({ onClose, onOpen }: { onClose: () => void; onOpen: () => vo
         <p>{steps[i].p}</p>
         {i === 0 && (
           <p className="fact">
-            Why the 2-day mark matters: in exploratory analysis of the training data, 99 of 551 events that end Critical
+            <TierIcon tier={2} size={14} /> Why the 2-day mark matters: in exploratory analysis of the training data, 99 of 551 events that end Critical
             looked fine at T-2 days (exploratory figure from docs/PLAN.md; not yet from an evidence file).
           </p>
         )}

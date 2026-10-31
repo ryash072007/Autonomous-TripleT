@@ -48,13 +48,13 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .hero > * { pointer-events: auto; }
 .hero h1 {
   font-family: var(--font-display); font-weight: 700; color: #fff; line-height: 0.9;
-  font-size: clamp(56px, 15vw, 210px); letter-spacing: 0.12em; margin-right: -0.12em;
+  font-size: clamp(52px, 12vw, 170px); letter-spacing: 0.02em; margin: 0;
   text-shadow: 0 2px 0 rgba(90, 58, 51, 0.18), 0 6px 30px rgba(147, 97, 79, 0.35);
   pointer-events: none;
 }
-.arc-rule { width: min(560px, 80vw); height: 22px; display: block; margin: 8px auto 0; }
-.subtitle { font-family: var(--font-ui); letter-spacing: 0.5em; font-weight: 600; color: var(--ink-soft); font-size: clamp(12px, 1.6vw, 17px); margin-top: 2px; }
-.hook { font-size: clamp(15px, 2vw, 22px); margin: 28px 0 22px; color: var(--rock); }
+.arc-rule { width: min(460px, 80vw); height: 30px; display: block; margin: 10px auto 0; filter: drop-shadow(0 1px 2px rgba(90,58,51,.3)); }
+.subtitle { font-family: var(--font-ui); letter-spacing: 0.42em; font-weight: 600; color: var(--ink-soft); font-size: clamp(11px, 1.5vw, 16px); margin-top: 2px; }
+.hook { font-size: clamp(15px, 2vw, 22px); margin: 22px auto 20px; max-width: 34em; text-wrap: balance; color: var(--rock); }
 .hook b { font-family: var(--font-display); font-size: 1.5em; font-weight: 700; letter-spacing: 0.02em; }
 .cta-row { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; }
 .cta {
@@ -74,34 +74,42 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 
 .sky-lights { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
 .light {
-  position: absolute; pointer-events: auto; background: none; border: 0; padding: 7px; margin: -7px 0 0 -7px; line-height: 0;
-  animation: drift 80s ease-in-out infinite alternate; opacity: 0.85;
+  position: absolute; pointer-events: auto; background: none; border: 0; padding: 0; width: 24px; height: 24px; margin: -12px 0 0 -12px;
+  display: grid; place-items: center;
+  animation: drift-x 100s ease-in-out infinite alternate, drift-y 60s ease-in-out infinite alternate;
 }
-.light:hover, .light:focus-visible { opacity: 1; transform: scale(1.5); }
-.light.crit svg { animation: pulse 3.2s ease-in-out infinite; }
-@keyframes drift { from { transform: translateX(0); } to { transform: translateX(var(--dx)); } }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+.light .dot { display: block; border-radius: 50%; transition: transform 0.15s; }
+.light.t0 .dot { width: 2px; height: 2px; background: #fff6ea; opacity: 0.6; }
+.light.t1 .dot { width: 2.5px; height: 2.5px; background: var(--elevated); opacity: 0.75; }
+.light.t2 .dot { width: 2.5px; height: 2.5px; background: var(--critical); opacity: 0.75; box-shadow: 0 0 6px 2px rgba(176, 48, 42, 0.45); animation: glow 5s ease-in-out infinite; }
+.light:hover .dot, .light:focus-visible .dot { transform: scale(3); opacity: 1; }
+@keyframes drift-x { from { translate: 0 0; } to { translate: var(--dx) 0; } }
+@keyframes drift-y { from { transform: translateY(0); } to { transform: translateY(var(--dy)); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 5px 1px rgba(176, 48, 42, 0.3); } 50% { box-shadow: 0 0 9px 3px rgba(176, 48, 42, 0.55); } }
 .sky-tip {
   position: fixed; z-index: 20; background: var(--paper); border: 1px solid var(--ridge-far); border-radius: 8px;
   padding: 6px 10px; font-size: 12px; box-shadow: 0 4px 18px rgba(90, 58, 51, 0.25); pointer-events: none;
 }
 
-.ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 40vh; z-index: 5; pointer-events: none; }
+.ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 42vh; z-index: 5; pointer-events: none; }
 .ridge { position: absolute; bottom: 0; left: -3%; width: 106%; height: 100%; }
-.ridge.far { animation: par 120s ease-in-out infinite alternate; }
-.ridge.mid { animation: par 90s ease-in-out infinite alternate-reverse; height: 86%; }
-.ridge.near { animation: par 70s ease-in-out infinite alternate; height: 72%; }
-@keyframes par { from { transform: translateX(-1.4%); } to { transform: translateX(1.4%); } }
+.ridge.L0 { height: 90%; animation: par 140s ease-in-out infinite alternate; }
+.ridge.L1 { height: 78%; animation: par 110s ease-in-out infinite alternate-reverse; }
+.ridge.L2 { height: 62%; animation: par 90s ease-in-out infinite alternate; }
+.ridge.L3 { height: 46%; animation: par 70s ease-in-out infinite alternate-reverse; }
+.ridge.mound { left: 4%; width: clamp(340px, 56vw, 900px); height: 36vh; }
+@keyframes par { from { transform: translateX(-1.2%); } to { transform: translateX(1.2%); } }
 .land-foot {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; justify-content: space-between; gap: 12px;
-  padding: 10px 18px; color: #f8e4cf; background: linear-gradient(0deg, rgba(90, 58, 51, 0.55), transparent); flex-wrap: wrap;
+  padding: 10px 18px; font-size: 11px; color: #f8e4cf; background: linear-gradient(0deg, rgba(90, 58, 51, 0.55), transparent); flex-wrap: wrap;
 }
 
 .overlay { position: fixed; inset: 0; z-index: 30; background: rgba(90, 58, 51, 0.45); display: grid; place-items: center; padding: 16px; }
 .card { background: var(--paper); border: 1px solid var(--ridge-far); border-radius: 12px; padding: 14px 16px; }
 .how { max-width: 520px; width: 100%; padding: 24px; }
 .how h2 { margin: 6px 0 10px; font-size: 36px; }
-.how .fact { background: var(--haze); border-left: 3px solid var(--critical); padding: 8px 12px; font-size: 13px; }
+.how .fact { background: var(--haze); border: 1px solid var(--ridge-far); border-radius: 8px; padding: 8px 12px; font-size: 13px; }
+.how .fact svg { vertical-align: -2px; margin-right: 4px; }
 .how-actions { display: flex; gap: 10px; align-items: center; margin-top: 16px; }
 
 .btn { background: var(--paper); border: 1px solid var(--ridge-mid); border-radius: 8px; padding: 6px 14px; font-weight: 600; }
@@ -122,7 +130,7 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .seg button.on { background: var(--rock); color: var(--paper); }
 .tabs { display: flex; gap: 2px; }
 .tabs button { border-radius: 6px; color: var(--ink-soft); }
-.tabs button.on { background: var(--haze); color: var(--rock); box-shadow: inset 0 -2px 0 var(--rock); }
+.tabs button.on { background: var(--haze); color: var(--rock); outline: 1px solid var(--ridge-mid); }
 .clock { display: flex; align-items: center; gap: 8px; }
 .clock input[type="range"] { width: 120px; accent-color: var(--rock); }
 .clock select { font: inherit; background: var(--paper); border: 1px solid var(--ridge-far); border-radius: 6px; }
@@ -144,7 +152,7 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .q-foot { padding: 6px 12px; color: var(--ink-soft); border-top: 1px solid var(--ridge-far); }
 .row { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid #f0dccb; padding: 7px 12px; content-visibility: auto; contain-intrinsic-size: 52px; }
 .row:hover { background: var(--haze); }
-.row.sel { background: #f4d3bc; box-shadow: inset 3px 0 0 var(--rock); }
+.row.sel { background: #f4d3bc; outline: 1px solid var(--ridge-mid); outline-offset: -1px; }
 .r1 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .r2 { display: flex; justify-content: space-between; color: var(--ink-soft); margin-top: 2px; }
 .tier-badge { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 12px; }
@@ -197,7 +205,8 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .tbl tr.danger { background: rgba(176, 48, 42, 0.07); }
 .demo-bar { position: fixed; left: 16px; bottom: 54px; width: min(400px, calc(100vw - 32px)); z-index: 15; box-shadow: 0 8px 28px rgba(90, 58, 51, 0.35); }
 .demo-actions { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
-.ridge-strip { position: fixed; left: 0; bottom: 0; width: 100%; height: 44px; z-index: 1; pointer-events: none; }
+.ridge-strip { position: fixed; left: 0; bottom: 0; width: 100%; height: 44px; z-index: 0; pointer-events: none; }
+.main { position: relative; z-index: 1; }
 
 @media (max-width: 860px) {
   .main { grid-template-columns: 1fr; }
@@ -212,6 +221,6 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
   .topbar { gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sat-drift, .light, .light.crit svg, .ridge { animation: none !important; }
+  .sat-drift, .light, .light .dot, .ridge { animation: none !important; }
   .cta, .light { transition: none; }
 }

@@ -3,6 +3,8 @@ import { DemoResp, EvidenceResp, WindowResp, api } from "./api";
 import { TierBadge, Term, fmtClock, fmtMiss, fmtPc } from "./ui";
 
 export function Next24({ win, clockLabel, onOpen }: { win: WindowResp | null; clockLabel: string; onOpen: (id: number) => void }) {
+  const [onlyDanger, setOnlyDanger] = useState(true);
+  const rows = win ? win.events.filter((e) => !onlyDanger || e.dangerous) : [];
   return (
     <div className="page">
       <h2>Next 24 h</h2>
@@ -14,7 +16,8 @@ export function Next24({ win, clockLabel, onOpen }: { win: WindowResp | null; cl
       {win && (
         <>
           <p>
-            <b>{win.n}</b> events in the window, <b className="crit-text">{win.n_dangerous}</b> dangerous.
+            <b>{win.n}</b> events in the window, <b className="crit-text">{win.n_dangerous}</b> dangerous.{" "}
+            <label><input type="checkbox" checked={onlyDanger} onChange={(e) => setOnlyDanger(e.target.checked)} /> Dangerous only</label>
           </p>
           <table className="tbl">
             <thead>
@@ -23,8 +26,8 @@ export function Next24({ win, clockLabel, onOpen }: { win: WindowResp | null; cl
               </tr>
             </thead>
             <tbody>
-              {win.events.length === 0 && <tr><td colSpan={6} className="dim">Nothing enters the 24 h window at this clock time.</td></tr>}
-              {win.events.map((e) => (
+              {rows.length === 0 && <tr><td colSpan={6} className="dim">Nothing enters the 24 h window at this clock time.</td></tr>}
+              {rows.map((e) => (
                 <tr key={e.event_id} className={e.dangerous ? "danger" : ""} onClick={() => onOpen(e.event_id)}>
                   <td className="mono">{((e.remaining_days ?? 0) * 24).toFixed(1)} h</td>
                   <td><TierBadge tier={e.tier} /></td>

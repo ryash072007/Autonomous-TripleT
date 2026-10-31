@@ -36,7 +36,7 @@ function Timeline({ ev }: { ev: EventFull }) {
             <CartesianGrid stroke="var(--ridge-far)" strokeOpacity={0.5} />
             <XAxis {...common} />
             <YAxis domain={[rLo, rHi]} allowDataOverflow stroke="var(--ink-soft)" fontSize={11} width={34}
-              tickFormatter={(v: number) => v.toFixed(0)} />
+              ticks={[-12, -10, -8, -6, -4].filter((t) => t > rLo && t < rHi)} tickFormatter={(v: number) => v.toFixed(0)} />
             <ReferenceLine x={2} stroke="var(--rock)" strokeDasharray="4 3" label={{ value: "T-2 d", fontSize: 10, fill: "var(--rock)", position: "top" }} />
             <Tooltip formatter={(v: number) => v.toFixed(2)} labelFormatter={(l: number) => fmtTtca(l)} />
             <Legend wrapperStyle={{ fontSize: 11 }} />
