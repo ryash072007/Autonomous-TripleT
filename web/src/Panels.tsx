@@ -115,7 +115,7 @@ const DEMO_TITLES: Record<string, string> = {
   worst_consequence: "Low Pc, but if they collide...",
 };
 const DEMO_LOOK: Record<string, string> = {
-  clear_critical: "Look at: the headline sentence and the rule that fired.",
+  clear_critical: "Look at: the headline and the decision row under it. Your decision is logged with a tamper-evident hash, and the tool never acts on its own.",
   caught_early: "Look at: HOW SURE, the forecast bar. The latest update alone would not have raised this.",
   model_wrong: "Look at: HOW SURE, the plain-language flags and the Not sure line.",
   worst_consequence: "Look at: IF THEY COLLIDE. The debris simulation plays by itself.",

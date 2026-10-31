@@ -78,11 +78,18 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
   const [on, setOn] = useState(false);
   const [logT, setLogT] = useState(0); // 0..1 across 1 h .. 7 d (log scale)
   const [play, setPlay] = useState(false);
+  const [aff, setAff] = useState<[number, number]>([0, 0]);
   const raf = useRef(0);
   const hours = STOPS[0] * Math.pow(STOPS[3] / STOPS[0], logT);
 
   useEffect(() => { setOn(false); setPlay(false); setLogT(0); }, [ev.event_id]);
-  useEffect(() => { if (autoPlay && cloud && od) { setOn(true); setLogT(0); setPlay(true); } }, [autoPlay, ev.event_id]);
+  useEffect(() => {
+    if (autoPlay && cloud && od) {
+      const m = /simt=([\d.]+)/.exec(window.location.hash); // screenshot helper: freeze the scrubber at a given fraction
+      setOn(true);
+      if (m) { setLogT(+m[1]); setPlay(false); } else { setLogT(0); setPlay(true); }
+    }
+  }, [autoPlay, ev.event_id]);
   useEffect(() => {
     if (!play) return;
     let last = performance.now();
@@ -115,9 +122,17 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
         <div className="collide-sim">
           {on && od && cloud ? (
             <>
-              <Suspense fallback={<div className="empty">Loading globe...</div>}>
-                <Globe kind="collide" id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} cloud={cloud} hours={hours} fleet={fleet} height={340} />
-              </Suspense>
+              <div className="sim-wrap"><Suspense fallback={<div className="empty">Loading globe...</div>}>
+                <Globe kind="collide" onAffected={(n, t) => setAff([n, t])} id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} cloud={cloud} hours={hours} fleet={fleet} height={340} />
+              </Suspense></div>
+              <div className="sim-legend" aria-label="Legend">
+                <div className="sim-count"><b className="num">{aff[0]}</b> of {aff[1]} satellites potentially affected</div>
+                <div><i className="lg ember" /> Debris fragments</div>
+                <div><i className="lg ours" /> Our satellite</div>
+                <div><i className="lg other" /> The other object</div>
+                <div><i className="lg calm" /> Satellites in the band, not affected</div>
+                <div><i className="lg hot" /> Potentially affected</div>
+              </div>
               <div className="scrub">
                 <button className="icon-btn" onClick={() => { if (logT >= 1) setLogT(0); setPlay((p) => !p); }} aria-label={play ? "Pause" : "Play"}>{play ? "❚❚" : "▶"}</button>
                 <input type="range" min={0} max={1} step={0.002} value={logT} onChange={(e) => { setPlay(false); setLogT(+e.target.value); }} aria-label="Time after collision" />
@@ -141,7 +156,7 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
         </div>
       </div>
       <p className="small dim">
-        A model with stated assumptions: simplified NASA breakup model, masses estimated from radar size, two-body spread without drag. {c?.assumptions ?? ""}
+        A model with stated assumptions: simplified NASA breakup model, masses estimated from radar size, two-body spread without drag; very large offsets are compressed so the cloud fits on the globe. {c?.assumptions ?? ""}
         Red points are a sample of the fragments (about {cloud ? Math.round((c?.fragments ?? 0) / (cloud.offsets[0]?.length || 1)) : 0} fragments each); faint points are other test events in the affected altitude band, shown for illustration.
       </p>
     </div>

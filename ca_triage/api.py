@@ -217,7 +217,7 @@ def insights():
 
 class AuditIn(BaseModel):
     event_id: int
-    action: Literal["Accept", "Escalate", "Dismiss"]
+    action: Literal["Accept", "Escalate", "Dismiss", "Override"]
     note: str = ""
 
 

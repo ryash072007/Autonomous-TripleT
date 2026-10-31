@@ -61,41 +61,57 @@ function Trend({ ev }: { ev: EventFull }) {
   );
 }
 
-function DecisionBar({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
+function DecisionRow({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
   const [note, setNote] = useState("");
   const [trail, setTrail] = useState<AuditRec[]>([]);
   const [ok, setOk] = useState(true);
   const [err, setErr] = useState("");
   const [done, setDone] = useState<string | null>(null);
+  const [showTrail, setShowTrail] = useState(false);
   const load = () => api.audit(ev.event_id).then((r) => { setTrail(r.records); setOk(r.chain_ok); }).catch(() => {});
-  useEffect(() => { setNote(""); setErr(""); setDone(null); load(); }, [ev.event_id]);
-  const act = async (a: string) => {
-    try { await api.postAudit(ev.event_id, a, note, dataset); setNote(""); setErr(""); setDone(a); load(); }
+  useEffect(() => { setNote(""); setErr(""); setDone(null); setShowTrail(false); load(); }, [ev.event_id]);
+  const act = async (action: string, text: string, label: string) => {
+    try { await api.postAudit(ev.event_id, action, [text, note].filter(Boolean).join(": "), dataset); setNote(""); setErr(""); setDone(label); load(); }
     catch { setErr("Could not write the audit record."); }
   };
+  const rec = ev.recommendation;
+  const decided = rec === "Act" || rec === "Dismiss";
+  const other = rec === "Act" ? "Dismiss" : "Act";
   return (
-    <div className="decision-bar">
-      <div className="decision-in">
-        <span className="label">YOUR DECISION</span>
-        <input type="text" placeholder="Note (optional)" value={note} maxLength={500} onChange={(e) => setNote(e.target.value)} aria-label="Decision note" />
-        <button className="btn primary" onClick={() => act("Accept")}>Accept</button>
-        <button className="btn warn" onClick={() => act("Escalate")}>Escalate</button>
-        <button className="btn" onClick={() => act("Dismiss")}>Dismiss</button>
-        <details className="trail-d">
-          <summary>{trail.length} on record{done ? `, last: ${done}` : ""}</summary>
-          <div className="trail-pop card">
-            {err && <div className="err">{err}</div>}
-            <ol className="trail">
-              {trail.length === 0 && <li className="dim">No actions recorded for this event.</li>}
-              {trail.map((r) => (
-                <li key={r.seq}><b>{r.action}</b> <span className="dim small">{r.ts.replace("T", " ").replace("Z", " UTC")}</span>
-                  {r.note && <span> "{r.note}"</span>}<span className="mono hash" title={`prev ${r.prev_hash}`}>{r.hash.slice(0, 8)}</span></li>
-              ))}
-            </ol>
-            <div className="dim small">Hash chain {ok ? "verified" : "BROKEN"}; each record hashes the one before it.</div>
-          </div>
-        </details>
+    <div className="decision-row" title="Your decision is logged with a tamper-evident hash chain; the tool never acts on its own">
+      <div className="decision-line">
+        <span className="decision-q">OrbitGuard recommends: <b>{rec ?? "no recommendation"}</b>. <b>Your call:</b></span>
+        {decided ? (
+          <>
+            <button className="btn primary" onClick={() => act("Accept", `agreed with ${rec}`, "Agree")}>Agree</button>
+            <button className="btn warn" onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
+            <button className="btn" onClick={() => act("Override", `override ${rec} to ${other}`, `Override to ${other}`)}>Override → {other}</button>
+          </>
+        ) : (
+          <>
+            <button className="btn primary" onClick={() => act("Accept", "decided Act", "Act")}>Act</button>
+            <button className="btn warn" onClick={() => act("Escalate", "escalated", "Escalate")}>Escalate</button>
+            <button className="btn" onClick={() => act("Dismiss", "decided Dismiss", "Dismiss")}>Dismiss</button>
+          </>
+        )}
+        <input type="text" placeholder="Note (optional)" value={note} maxLength={400} onChange={(e) => setNote(e.target.value)} aria-label="Decision note" />
       </div>
+      <button className="link-btn small trail-toggle" onClick={() => setShowTrail((x) => !x)} aria-expanded={showTrail}>
+        {trail.length} decision{trail.length === 1 ? "" : "s"} on record {showTrail ? "▾" : "▸"}{done ? ` · just logged: ${done}` : ""}
+      </button>
+      {err && <div className="err">{err}</div>}
+      {showTrail && (
+        <div className="trail-inline">
+          <ol className="trail">
+            {trail.length === 0 && <li className="dim">No decisions recorded for this event.</li>}
+            {trail.map((r) => (
+              <li key={r.seq}><b>{r.action}</b> <span className="dim small">{r.ts.replace("T", " ").replace("Z", " UTC")}</span>
+                {r.note && <span> "{r.note}"</span>}<span className="mono hash" title={`prev ${r.prev_hash}`}>{r.hash.slice(0, 8)}</span></li>
+            ))}
+          </ol>
+          <div className="dim small">Hash chain {ok ? "verified" : "BROKEN"}: each record hashes the one before it, so edits are detectable.</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -142,6 +158,7 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
           <RecChip rec={ev.recommendation} reason={ev.recommendation_reason} />
         </div>
         <p className="hero-sentence">{sentence}</p>
+        <DecisionRow ev={ev} dataset={dataset} />
         <p className="small dim">
           {ev.names ? `${ev.names.t} × ${ev.names.c} · ` : ""}{ev.c_object_type.toLowerCase()} · {ev.n_cdms} <Term k="CDM">updates</Term> · <Term k="TCA" /> in {L.time_to_tca.toFixed(2)} days
           {ev.recommendation_reason ? ` · ${ev.recommendation_reason}` : ""}
@@ -219,8 +236,6 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
           <WhatIf ev={ev} note={sensNote ?? null} />
         </div>
       </details>
-      <div style={{ height: 70 }} />
-      <DecisionBar ev={ev} dataset={dataset} />
     </section>
   );
 }

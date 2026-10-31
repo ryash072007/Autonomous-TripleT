@@ -1,0 +1,23 @@
+/* Simulation legend and decision row */
+.collide-sim { position: relative; }
+.sim-wrap { position: relative; }
+.sim-legend {
+  position: absolute; top: 10px; left: 10px; z-index: 3; display: grid; gap: 3px; font-size: 11px; line-height: 1.25;
+  background: rgba(255, 248, 241, 0.92); border: 1px solid rgba(192, 141, 120, 0.3); border-radius: 12px; padding: 8px 10px; pointer-events: none;
+}
+.sim-count { font-size: 12px; margin-bottom: 3px; }
+.sim-count b { font-family: var(--font-display); font-size: 22px; color: var(--critical); }
+.lg { display: inline-block; width: 11px; height: 11px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; box-sizing: border-box; }
+.lg.ember { width: 9px; height: 9px; margin: 0 7px 0 1px; background: var(--critical); }
+.lg.ours { background: var(--rock); border: 2px solid #fff; outline: 1px solid var(--rock); }
+.lg.other { background: var(--elevated); border: 2px solid var(--rock); }
+.lg.calm { width: 7px; height: 7px; margin: 0 8px 0 2px; background: rgba(91, 95, 143, 0.35); }
+.lg.hot { background: #fff; border: 2px solid var(--critical); }
+
+.decision-row { margin: 12px 0 8px; padding: 10px 12px; border-radius: 14px; background: rgba(248, 228, 207, 0.55); }
+.decision-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.decision-q { margin-right: 4px; }
+.decision-line input[type="text"] { flex: 1; min-width: 150px; border: 1px solid rgba(192, 141, 120, 0.4); border-radius: 10px; padding: 6px 10px; font: inherit; background: #fff; }
+.trail-toggle { margin-top: 4px; padding: 2px 0; }
+.trail-inline { margin-top: 6px; }
+.main { padding-bottom: 70px; }

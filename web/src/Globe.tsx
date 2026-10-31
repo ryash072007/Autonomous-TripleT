@@ -68,6 +68,23 @@ function dotTexture() {
   return new THREE.CanvasTexture(c);
 }
 
+function markerTexture(fill: string, outline: string) {
+  const c = document.createElement("canvas");
+  c.width = c.height = 64;
+  const g = c.getContext("2d")!;
+  g.beginPath(); g.arc(32, 32, 26, 0, 7); g.fillStyle = outline; g.fill();
+  g.beginPath(); g.arc(32, 32, 19, 0, 7); g.fillStyle = fill; g.fill();
+  return new THREE.CanvasTexture(c);
+}
+
+function haloTexture() {
+  const c = document.createElement("canvas");
+  c.width = c.height = 64;
+  const g = c.getContext("2d")!;
+  g.beginPath(); g.arc(32, 32, 27, 0, 7); g.lineWidth = 6; g.strokeStyle = "#B0302A"; g.stroke();
+  return new THREE.CanvasTexture(c);
+}
+
 function hash(n: number) {
   let x = (n + 1) * 2654435761;
   x ^= x >>> 15; x = Math.imul(x, 2246822519); x ^= x >>> 13;
@@ -103,7 +120,7 @@ function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) 
 
 type Props =
   | { kind: "event"; id: number; t: Orb; c: Orb; tier: number; height?: number }
-  | { kind: "collide"; id: number; t: Orb; c: Orb; tier: number; cloud: { t_hours: number[]; offsets: (number[] | null)[][]; band: [number, number] | null }; hours: number; fleet: EventLight[]; height?: number }
+  | { kind: "collide"; onAffected?: (n: number, total: number) => void; id: number; t: Orb; c: Orb; tier: number; cloud: { t_hours: number[]; offsets: (number[] | null)[][]; band: [number, number] | null }; hours: number; fleet: EventLight[]; height?: number }
   | { kind: "fleet"; events: EventLight[]; onPick: (id: number) => void; height?: number };
 
 export function orbAlt(o: { h_apo_km?: number; h_per_km?: number; sma_km: number }) {
@@ -114,6 +131,7 @@ export default function Globe(props: Props) {
   const host = useRef<HTMLDivElement>(null);
   const [tip, setTip] = useState<{ id: number; tier: number; alt: number; x: number; y: number } | null>(null);
   const [fail, setFail] = useState(false);
+  const [lab, setLab] = useState<{ text: string; x: number; y: number } | null>(null);
   const propsRef = useRef(props);
   propsRef.current = props;
   const key = props.kind === "event" ? `e${props.id}` : props.kind === "collide" ? `c${props.id}` : `f${props.events.length}`;
@@ -167,7 +185,9 @@ export default function Globe(props: Props) {
     const lines: THREE.Object3D[] = [];
 
     let frag: { geo: THREE.BufferGeometry; pos: Float32Array; p: THREE.Vector3; b: { n: THREE.Vector3; q: THREE.Vector3 }; r: number; n: number; times: number[]; off: (number[] | null)[][] } | null = null;
-    let satPts: { geo: THREE.BufferGeometry; col: Float32Array; exposed: boolean[] } | null = null;
+    let satPts: { sp: Float32Array; n: number; calm: { g: THREE.BufferGeometry; m: THREE.PointsMaterial }; hot: { g: THREE.BufferGeometry; m: THREE.PointsMaterial }; core: { g: THREE.BufferGeometry; m: THREE.PointsMaterial } } | null = null;
+    let markers: { v: THREE.Vector3; text: string }[] = [];
+    let lastCount = -1;
 
     if (props.kind === "event" || props.kind === "collide") {
       earth.rotation.y = hash(props.id) * Math.PI * 2;
@@ -182,8 +202,8 @@ export default function Globe(props: Props) {
         disposables.push(g, m);
         lines.push(l);
       };
-      mk(props.t, 1, 0x5b5f8f);
-      mk(props.c, -1, 0x5a3a33);
+      mk(props.t, 1, 0x5a3a33);
+      mk(props.c, -1, 0xc77a12);
       const col = new THREE.Color(TIER_HEX[props.tier]);
       const rp = radius((orbAlt(props.t) + orbAlt(props.c)) / 2);
       const sg = new THREE.SphereGeometry(0.03, 16, 12);
@@ -206,35 +226,60 @@ export default function Globe(props: Props) {
         const geo = new THREE.BufferGeometry();
         const pos = new Float32Array(N * 3);
         geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-        const fm = new THREE.PointsMaterial({ color: 0xb0302a, size: 3.2, sizeAttenuation: false, map: tex, alphaTest: 0.4, transparent: true, opacity: 0.9 });
+        const fm = new THREE.PointsMaterial({ color: 0xb0302a, size: 6.5, sizeAttenuation: false, map: tex, alphaTest: 0.4, transparent: true, opacity: 0.9 });
         const fp = new THREE.Points(geo, fm);
         fp.frustumCulled = false;
         root.add(fp);
         disposables.push(geo, fm);
+        geo.userData.mat = fm;
         frag = { geo, pos, p, b: bT, r: radius((orbAlt(props.t) + orbAlt(props.c)) / 2), n: N, times: cl.t_hours, off: cl.offsets };
 
-        // satellites in the affected altitude band (other test events), faint; exposed ones light up after ~a day
+        // markers for our satellite and the other object, placed on their own rings shortly before the conjunction
+        const bC = ringBasis(p, props.c.inc_deg, -1);
+        const mkMarker = (b: { q: THREE.Vector3 }, o: Orb, phase: number, tx: THREE.Texture, size: number) => {
+          const r = radius(orbAlt(o));
+          const v = p.clone().multiplyScalar(Math.cos(phase)).add(b.q.clone().multiplyScalar(Math.sin(phase))).multiplyScalar(r);
+          const g = new THREE.BufferGeometry().setFromPoints([v]);
+          const m = new THREE.PointsMaterial({ size, sizeAttenuation: false, map: tx, alphaTest: 0.3, transparent: true, depthTest: false });
+          const pt = new THREE.Points(g, m);
+          pt.renderOrder = 5;
+          root.add(pt);
+          disposables.push(g, m, tx);
+          return v;
+        };
+        markers = [
+          { v: mkMarker(bT, props.t, -0.22, markerTexture("#5A3A33", "#FFFFFF"), 21), text: "Our satellite" },
+          { v: mkMarker(bC, props.c, 0.22, markerTexture("#C77A12", "#5A3A33"), 21), text: "The other object" },
+        ];
+
+        // satellites in the affected altitude band (other test events)
         const alt0 = (orbAlt(props.t) + orbAlt(props.c)) / 2;
         const lo = cl.band ? cl.band[0] : alt0 - 150, hi = cl.band ? cl.band[1] : alt0 + 150;
         const sats = props.fleet.filter((e) => e.orbit_display && orbAlt(e.orbit_display.t) >= lo && orbAlt(e.orbit_display.t) <= hi && e.event_id !== props.id).slice(0, 300);
-        const sp = new Float32Array(sats.length * 3), sc = new Float32Array(sats.length * 3);
-        const exposed: boolean[] = [];
-        const incT = Math.min(props.t.inc_deg, 180 - props.t.inc_deg);
+        const sp = new Float32Array(sats.length * 3);
         sats.forEach((e, i) => {
           const od = e.orbit_display!;
           const inc = Math.min(od.t.inc_deg, 180 - od.t.inc_deg);
           const lat2 = Math.sin(hash(e.event_id + 11) * Math.PI * 2) * inc * (Math.PI / 180), lon2 = hash(e.event_id) * Math.PI * 2;
           const rr = radius(orbAlt(od.t));
           sp.set([rr * Math.cos(lat2) * Math.sin(lon2), rr * Math.sin(lat2), rr * Math.cos(lat2) * Math.cos(lon2)], i * 3);
-          exposed.push(Math.abs(inc - incT) < 20);
         });
-        const sg2 = new THREE.BufferGeometry();
-        sg2.setAttribute("position", new THREE.BufferAttribute(sp, 3));
-        sg2.setAttribute("color", new THREE.BufferAttribute(sc, 3));
-        const sm2 = new THREE.PointsMaterial({ vertexColors: true, size: 4, sizeAttenuation: false, map: tex, alphaTest: 0.3, transparent: true });
-        root.add(new THREE.Points(sg2, sm2));
-        disposables.push(sg2, sm2);
-        satPts = { geo: sg2, col: sc, exposed };
+        const mkSet = (color: number, size: number, opacity: number, map: THREE.Texture) => {
+          const g = new THREE.BufferGeometry();
+          g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(sats.length * 3), 3));
+          const m = new THREE.PointsMaterial({ color, size, sizeAttenuation: false, map, alphaTest: 0.2, transparent: true, opacity });
+          const pt = new THREE.Points(g, m);
+          pt.frustumCulled = false;
+          root.add(pt);
+          disposables.push(g, m);
+          return { g, m, pt };
+        };
+        const halo = haloTexture();
+        disposables.push(halo);
+        const calm = mkSet(0x5b5f8f, 3.6, 0.35, tex);
+        const hot = mkSet(0xb0302a, 13, 0.95, halo);
+        const core = mkSet(0xffffff, 5.2, 1, tex);
+        satPts = { sp, n: sats.length, calm, hot, core };
       }
     } else {
       root.rotation.x = 0.3;
@@ -294,6 +339,18 @@ export default function Globe(props: Props) {
         setTip(null);
         return;
       }
+      if (markers.length) {
+        let found: { text: string; x: number; y: number } | null = null;
+        for (const mk of markers) {
+          const v = mk.v.clone();
+          root.localToWorld(v);
+          v.project(camera);
+          const sx = ((v.x + 1) / 2) * rect.width, sy = ((1 - v.y) / 2) * rect.height;
+          if (Math.hypot(sx - (e.clientX - rect.left), sy - (e.clientY - rect.top)) < 16) found = { text: mk.text, x: sx, y: sy };
+        }
+        setLab(found);
+        return;
+      }
       if (!fleetPts.length) return;
       ray.setFromCamera(new THREE.Vector2(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1), camera);
       let best: { id: number; tier: number; dist: number; alt: number } | null = null;
@@ -337,18 +394,41 @@ export default function Globe(props: Props) {
           const o = o1 && o0 ? [o0[0] + (o1[0] - o0[0]) * w, o0[1] + (o1[1] - o0[1]) * w, o0[2] + (o1[2] - o0[2]) * w] : o1 ?? o0;
           if (!o) { f.pos[i * 3] = f.pos[i * 3 + 1] = f.pos[i * 3 + 2] = 1e4; continue; }
           const ca = Math.cos(o[0]), sa = Math.sin(o[0]);
-          const rr = f.r + (o[1] * EXAG) / RE, cross = (o[2] * EXAG) / RE;
+          const sq = (v: number, k: number) => k * Math.tanh(v / k); // compress far outliers so the cloud stays on screen
+          const rr = f.r + (sq(o[1], 450) * EXAG) / RE, cross = (sq(o[2], 700) * EXAG) / RE;
           f.pos[i * 3] = f.p.x * ca * rr + f.b.q.x * sa * rr + f.b.n.x * cross;
           f.pos[i * 3 + 1] = f.p.y * ca * rr + f.b.q.y * sa * rr + f.b.n.y * cross;
           f.pos[i * 3 + 2] = f.p.z * ca * rr + f.b.q.z * sa * rr + f.b.n.z * cross;
         }
         (f.geo.attributes.position as THREE.BufferAttribute).needsUpdate = true;
+        // fade the ember fragments as time passes
+        const fm = frag.geo.userData.mat as THREE.PointsMaterial | undefined;
+        if (fm) fm.opacity = 0.95 - 0.4 * Math.min(1, Math.log(hrs) / Math.log(168));
         if (satPts) {
-          const lit = hrs >= 20;
-          satPts.exposed.forEach((ex, i) => {
-            satPts!.col.set(ex && lit ? [0.78, 0.48, 0.07] : [0.75, 0.55, 0.47], i * 3);
-          });
-          (satPts.geo.attributes.color as THREE.BufferAttribute).needsUpdate = true;
+          // a satellite is potentially affected when a sampled fragment passes within reach of it at this time
+          const R2 = 0.11 * 0.11;
+          let na = 0, nu = 0;
+          const A = (satPts.hot.g.attributes.position as THREE.BufferAttribute).array as Float32Array;
+          const U = (satPts.calm.g.attributes.position as THREE.BufferAttribute).array as Float32Array;
+          for (let i = 0; i < satPts.n; i++) {
+            const x = satPts.sp[i * 3], y = satPts.sp[i * 3 + 1], z = satPts.sp[i * 3 + 2];
+            let hit = false;
+            for (let j = 0; j < frag.n && !hit; j++) {
+              const dx = frag.pos[j * 3] - x, dy = frag.pos[j * 3 + 1] - y, dz = frag.pos[j * 3 + 2] - z;
+              if (dx * dx + dy * dy + dz * dz < R2) hit = true;
+            }
+            const T = hit ? A : U;
+            const k = hit ? na++ : nu++;
+            T[k * 3] = x; T[k * 3 + 1] = y; T[k * 3 + 2] = z;
+          }
+          satPts.hot.g.setDrawRange(0, na); satPts.core.g.setDrawRange(0, na); satPts.calm.g.setDrawRange(0, nu);
+          (satPts.core.g.attributes.position as THREE.BufferAttribute).array.set(A.subarray(0, na * 3));
+          (satPts.hot.g.attributes.position as THREE.BufferAttribute).needsUpdate = true;
+          (satPts.core.g.attributes.position as THREE.BufferAttribute).needsUpdate = true;
+          (satPts.calm.g.attributes.position as THREE.BufferAttribute).needsUpdate = true;
+          satPts.hot.m.size = reduce ? 13 : 13 + 3 * Math.sin(t * 3.2);
+          satPts.hot.m.opacity = reduce ? 0.95 : 0.7 + 0.3 * (0.5 + 0.5 * Math.sin(t * 3.2));
+          if (na !== lastCount) { lastCount = na; (propsRef.current as { onAffected?: (n: number, t: number) => void }).onAffected?.(na, satPts.n); }
         }
       }
       if (pulse && pulseRing) {
@@ -376,6 +456,9 @@ export default function Globe(props: Props) {
   return (
     <div className="globe-wrap" style={{ height: props.height ?? 340 }}>
       <div ref={host} className="globe" />
+      {lab && (
+        <div className="sky-tip" style={{ position: "absolute", left: Math.min(lab.x + 12, 200), top: lab.y + 12 }}><b>{lab.text}</b></div>
+      )}
       {tip && (
         <div className="sky-tip" style={{ position: "absolute", left: Math.min(tip.x + 10, 220), top: tip.y + 10 }}>
           <b>{["Safe", "Elevated", "Critical"][tip.tier]}</b> · event {tip.id}
