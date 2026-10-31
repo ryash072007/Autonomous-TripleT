@@ -1,0 +1,404 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 32 (Wednesday, February 19, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 32 (Wednesday, February 19, 2025)]
+[Proposed Rules]
+[Pages 9876-9878]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-02748]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0206; Project Identifier MCAI-2024-00525-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Canada Limited Partnership (Type 
+Certificate Previously Held by C Series Aircraft Limited Partnership 
+(CSALP); Bombardier, Inc.) Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Airbus Canada Limited Partnership Model BD-500-1A10 and BD-
+500-1A11 airplanes. This proposed AD was prompted by an investigation 
+that showed a change in the feed-through connector O-ring material at a 
+certain frame increased the electrical bonding resistance due to the 
+current torque specification being inadequate. This proposed AD would 
+require electrical bonding tests between the feed-through connectors 
+and the forward side of the bulkhead at a certain frame, and the 
+installation of two electrical bonding plates of connectors, as 
+applicable, as specified in a Transport Canada AD, which is proposed 
+for incorporation by reference (IBR). The FAA is proposing this AD to 
+address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by April 7, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0206; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Transport Canada material identified in this proposed 
+AD, contact Transport Canada, Transport Canada National Aircraft 
+Certification, 159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; 
+telephone 888-663-3639; email <a href="/cdn-cgi/l/email-protection#9bcfd8b5daf2e9ecf4e9eff3f2f5fee8e8dff2e9fef8eff2edfee8b6d8f4f5e8f2fcf5fee8fffef5faedf2fcfaf9f2f7f2effeb5cfd8dbeff8b5fcf8b5f8fa"><span class="__cf_email__" data-cfemail="194d5a3758706b6e766b6d7170777c6a6a5d706b7c7a6d706f7c6a345a76776a707e777c6a7d7c77786f707e787b7075706d7c374d5a596d7a377e7a377a78">[email&#160;protected]</span></a>; website tc.canada.ca/en/aviation. 
+It is also available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0206.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Steven Dzierzynski, Aviation Safety 
+Engineer, FAA, 2200 South 216th St., Des Moines, WA 98198; telephone 
+516-228-7300; email <a href="/cdn-cgi/l/email-protection#8ab3a7ebfcf9a7e4f3ebe9e5a7e9e5f9caecebeba4ede5fc"><span class="__cf_email__" data-cfemail="a89185c9dedb85c6d1c9cbc785cbc7dbe8cec9c986cfc7de">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0206; 
+Project Identifier MCAI-2024-00525-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each
+
+[[Page 9877]]
+
+substantive verbal contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Steven Dzierzynski, Aviation Safety Engineer, FAA, 2200 South 216th 
+St., Des Moines, WA 91898; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#9fa6b2fee9ecb2f1e6fefcf0b2fcf0ecdff9fefeb1f8f0e9"><span class="__cf_email__" data-cfemail="d7eefab6a1a4fab9aeb6b4b8fab4b8a497b1b6b6f9b0b8a1">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    Transport Canada, which is the aviation authority for Canada, has 
+issued Transport Canada AD CF-2024-32, dated September 11, 2024 
+(Transport Canada AD CF-2024-32) (also referred to as the MCAI), to 
+correct an unsafe condition for certain Airbus Canada Limited 
+Partnership Model BD-500-1A10 and BD-500-1A11 airplanes. The MCAI 
+states an Airbus Canada Limited Partnership investigation revealed a 
+change in the feed-through connector O-ring material at frame (FR) 51 
+increased the electrical bonding resistance due to the current torque 
+specification being inadequate, which may lead to electrical bonding 
+levels which exceed allowable design limits, leaving the aircraft more 
+susceptible to electromagnetic interference (EMI), high-intensity 
+radiated fields (HIRF) and lightning strikes. The FAA is proposing this 
+AD to address the unsafe condition on these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0206.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    Transport Canada AD CF-2024-32 specifies procedures for electrical 
+bonding tests to determine the resistance between the feed-through 
+connectors and the forward side of the bulkhead at FR 51, and the 
+installation of two electrical bonding plates if any connectors have 
+more than the specified resistance. This material is reasonably 
+available because the interested parties have access to it through 
+their normal course of business or by the means identified in the 
+ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in the MCAI 
+referenced above. The FAA is issuing this NPRM after determining that 
+the unsafe condition described previously is likely to exist or develop 
+in other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in Transport Canada AD CF-2024-32 described previously, except for any 
+differences identified as exceptions in the regulatory text of this 
+proposed AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate Transport Canada AD CF-2024-32 by reference 
+in the FAA final rule. This proposed AD would, therefore, require 
+compliance with Transport Canada AD CF-2024-32 in its entirety through 
+that incorporation, except for any differences identified as exceptions 
+in the regulatory text of this proposed AD. Material required by 
+Transport Canada AD CF-2024-32 for compliance will be available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0206 after the FAA final rule 
+is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 36 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                     Labor cost                       Parts cost     Cost per product    Cost on U.S. operators
+----------------------------------------------------------------------------------------------------------------
+23 work-hours x $85 per hour = $1,955..............           $0               $1,955                   $70,380
+----------------------------------------------------------------------------------------------------------------
+
+
+                 Estimated Costs of On-Condition Actions
+------------------------------------------------------------------------
+           Labor cost                 Parts cost       Cost per product
+------------------------------------------------------------------------
+Up to 20 work-hours x $85 per     Up to $10,936 per   Up to $12,636 per
+ hour = $1,700 per connector.      connector.          connector.
+------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+[[Page 9878]]
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(f), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus Canada Limited Partnership (Type Certificate Previously Held 
+by C Series Aircraft Limited Partnership (CSALP); Bombardier, Inc.): 
+Docket No. FAA-2025-0206; Project Identifier MCAI-2024-00525-T.
+
+ (a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by April 7, 2025.
+
+ (b) Affected ADs
+
+    None.
+
+ (c) Applicability
+
+    This AD applies to Airbus Canada Limited Partnership (Type 
+Certificate previously held by C Series Aircraft Limited Partnership 
+(CSALP); Bombardier, Inc.) Model BD-500-1A10 and BD-500-1A11 
+airplanes, certificated in any category, as identified in Transport 
+Canada AD CF-2024-32, dated September 11, 2024 (Transport Canada AD 
+CF-2024-32).
+
+ (d) Subject
+
+    Air Transport Association (ATA) of America Code 92, Electrical 
+system installation.
+
+ (e) Unsafe Condition
+
+    This AD was prompted by an investigation that showed a change in 
+the feed-through connector O-ring material at frame (FR) 51 
+increased the electrical bonding resistance due to the current 
+torque specification being inadequate. The FAA is issuing this AD to 
+address the unsafe condition, which if not addressed, could result 
+in airplane susceptibility to electromagnetic interference (EMI), 
+high-intensity radiated fields (HIRF) and lightning strikes.
+
+ (f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+ (g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with Transport Canada AD CF-2024-32.
+
+ (h) Exception to Transport Canada AD CF-2024-32
+
+    (1) Where Transport Canada AD CF-2024-32 refers to its effective 
+date, this AD requires using the effective date of this AD.
+    (2) Where Transport Canada AD CF-2024-32 refers to hours air 
+time, this AD requires using flight hours.
+
+ (i) No Reporting Requirement
+
+    Although the material referenced in Transport Canada AD CF-2024-
+32 specifies to submit certain information to the manufacturer, this 
+AD does not include that requirement.
+
+ (j) Additional AD Provisions
+
+    The following provisions also apply to this AD:
+    (1) Alternative Methods of Compliance (AMOCs): The Manager, AIR-
+520, Continued Operational Safety Branch, FAA, has the authority to 
+approve AMOCs for this AD, if requested using the procedures found 
+in 14 CFR 39.19. In accordance with 14 CFR 39.19, send your request 
+to your principal inspector or responsible Flight Standards Office, 
+as appropriate. If sending information directly to the Manager, AIR-
+520, Continued Operational Safety Branch, FAA, send it to the 
+attention of the person identified in paragraph (k) of this AD and 
+email to: <a href="/cdn-cgi/l/email-protection#3475797b77745255551a535b42"><span class="__cf_email__" data-cfemail="4d0c00020e0d2b2c2c632a223b">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office.
+    (2) Contacting the Manufacturer: For any requirement in this AD 
+to obtain instructions from a manufacturer, the instructions must be 
+accomplished using a method approved by the Manager, AIR-520, 
+Continued Operational Safety Branch, FAA; or Transport Canada; or 
+Airbus Canada Limited Partnership's Transport Canada Design Approval 
+Organization (DAO). If approved by the DAO, the approval must 
+include the DAO-authorized signature.
+    (3) Required for Compliance (RC): Except as required by 
+paragraph (j)(2) of this AD, if any material contains procedures or 
+tests that are identified as RC, those procedures and tests must be 
+done to comply with this AD; any procedures or tests that are not 
+identified as RC are recommended. Those procedures and tests that 
+are not identified as RC may be deviated from using accepted methods 
+in accordance with the operator's maintenance or inspection program 
+without obtaining approval of an AMOC, provided the procedures and 
+tests identified as RC can be done and the airplane can be put back 
+in an airworthy condition. Any substitutions or changes to 
+procedures or tests identified as RC require approval of an AMOC.
+
+ (k) Additional Information
+
+    For more information about this AD, contact Steven Dzierzynski, 
+Aviation Safety Engineer, FAA, 2200 South 216th St., Des Moines, WA 
+98198; telephone 516-228-7300; email <a href="/cdn-cgi/l/email-protection#ba8397dbccc997d4c3dbd9d597d9d5c9fadcdbdb94ddd5cc"><span class="__cf_email__" data-cfemail="e3dace829590ce8d9a82808cce808c90a3858282cd848c95">[email&#160;protected]</span></a>.
+
+ (l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless this AD specifies otherwise.
+    (i) Transport Canada AD CF-2024-32, dated September 11, 2024.
+    (ii) [Reserved]
+    (3) For Transport Canada material identified in this AD, contact 
+Transport Canada, Transport Canada National Aircraft Certification, 
+159 Cleopatra Drive, Nepean, Ontario K1A 0N5, Canada; telephone 888-
+663-3639; email <a href="/cdn-cgi/l/email-protection#4d190e630c243f3a223f39252423283e3e09243f282e39243b283e600e22233e242a23283e2928232c3b242a2c2f242124392863190e0d392e632a2e632e2c"><span class="__cf_email__" data-cfemail="6430274a250d16130b16100c0d0a011717200d160107100d12011749270b0a170d030a011700010a05120d0305060d080d10014a30272410074a03074a0705">[email&#160;protected]</span></a>; website tc.canada.ca/en/
+aviation.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., 
+Des Moines, WA. For information on the availability of this material 
+at the FAA, call 206-231-3195.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#bcdace92d5d2cfccd9dfc8d5d3d2fcd2ddcedd92dbd3ca"><span class="__cf_email__" data-cfemail="2543570b4c4b56554046514c4a4b654b4457440b424a53">[email&#160;protected]</span></a>.
+
+    Issued on February 12, 2025.
+Suzanne Masterson,
+Deputy Director, Integrated Certificate Management Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-02748 Filed 2-18-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

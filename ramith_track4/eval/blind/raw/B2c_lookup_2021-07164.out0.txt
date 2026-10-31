@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 787-8, 787-9, and 787-10 airplanes requiring a tuning control panel software update because VHF radio frequencies swap between active and standby without flightcrew input?"}

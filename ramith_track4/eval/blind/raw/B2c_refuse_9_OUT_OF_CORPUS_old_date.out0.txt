@@ -1,0 +1,1 @@
+{"question": "What were the required inspection intervals and compliance times in the airworthiness directive issued in 1996 for Boeing 737 series airplanes concerning cracking in the fuselage lap joints?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

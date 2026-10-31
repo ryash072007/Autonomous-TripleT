@@ -54,9 +54,7 @@ def git_commit():
 
 def check_frozen():
     txt = (ROOT / "DECISIONS.md").read_text(encoding="utf-8")
-    for name in ("blind_B1.jsonl", "blind_B2.jsonl", "blind_B1b.jsonl", "blind_B2b.jsonl"):
-        if not (ROOT / "eval" / "blind" / name).exists():
-            continue
+    for name in sorted(q.name for q in (ROOT / "eval" / "blind").glob("blind_B*.jsonl")):
         h = sha(ROOT / "eval" / "blind" / name)
         if h not in txt:
             sys.exit(f"REFUSED: {name} hash {h[:12]} is not the frozen hash recorded in DECISIONS.md")
@@ -66,9 +64,9 @@ def load(setname):
     if setname == "v1test":
         rows = [json.loads(l) for l in open(ROOT / "eval" / "testset_v1.jsonl", encoding="utf-8")]
         return [dict(x, set="v1test") for x in rows if x["split"] == "test"]
-    if setname in ("b2", "b2b"):
+    if setname.startswith("b2"):
         out = []
-        for l in open(ROOT / "eval" / "blind" / ("blind_B2.jsonl" if setname == "b2" else "blind_B2b.jsonl"), encoding="utf-8"):
+        for l in open(ROOT / "eval" / "blind" / f"blind_B2{setname[2:]}.jsonl", encoding="utf-8"):
             x = json.loads(l)
             x["set"] = setname
             x["gold_refusal"] = REFUSE_MAP.get(x.get("refusal_category"))
@@ -208,10 +206,10 @@ def main():
     for sname in sets:
         for sy in systems:
             key = f"{sname}/{sy}"
-            if sname in ("b1", "b1b"):
+            if sname.startswith("b1"):
                 if sy not in ("full", "naive_summary"):
                     continue
-                summ, rows = run_b1("full" if sy == "full" else "naive", "b" if sname == "b1b" else "")
+                summ, rows = run_b1("full" if sy == "full" else "naive", sname[2:])
                 results[key] = {"summary": summ, "rows": rows}
             else:
                 items = load(sname)

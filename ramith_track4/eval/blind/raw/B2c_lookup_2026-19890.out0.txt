@@ -1,0 +1,1 @@
+{"question": "What inspections are proposed for the ball pivot, control rod, and yaw actuator on Airbus Helicopters Deutschland EC135 and EC635 helicopters, including repetitive ball pivot checks and reporting of results?"}

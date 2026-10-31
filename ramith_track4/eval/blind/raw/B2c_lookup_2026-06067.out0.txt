@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 737-600/-700/-800/-900ER airplanes about thrust reverser upper locking hydraulic actuator proximity sensor target adjustment that could falsely indicate the reverser is locked?"}

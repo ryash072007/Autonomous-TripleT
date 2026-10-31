@@ -1,0 +1,1 @@
+{"question": "Challenger 300 BD-100-1A10 proposed AD for cabin pressure safety valve sensing port blockage causing loss of pressurization, requiring inspection for RTV silicone, foam, or insulation debris"}

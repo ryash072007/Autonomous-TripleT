@@ -1,0 +1,1 @@
+{"feasible": false, "question": "", "config": {"make": "DG Aviation GmbH", "model": "DG-1000T", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "APPLIES", "gold_reason": "MODEL_LISTED"}

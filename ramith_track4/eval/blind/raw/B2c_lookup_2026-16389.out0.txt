@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Boeing 787-8, 787-9, and 787-10 airplanes that shortens compliance times for inspecting vertical fin tension bolt holes for corrosion and checking the sealant used on the bolts?"}

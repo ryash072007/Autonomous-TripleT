@@ -1,0 +1,5 @@
+The applicability paragraph covers all Airbus SAS Model A350-941 and -1041 airplanes, certificated in any category. It has no date, serial number, or part number conditions, and no exclusions. Whether the AD applies therefore depends only on the model, and the model is always stated. The EASA AD is referenced only for the required actions, not for applicability. A CANNOT_DETERMINE configuration is therefore not possible.
+
+```json
+{"feasible": false, "config": null, "gold_verdict": null, "gold_reason": null, "evidence_quote": "This AD applies to all Airbus SAS Model A350-941 and -1041 airplanes, certificated in any category.", "notes": "Applicability depends solely on model, which is always known; no date, serial, PN, or exclusion conditions, so the verdict is always APPLIES or DOES_NOT_APPLY."}
+```

@@ -1,0 +1,420 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 143 (Tuesday, July 29, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 143 (Tuesday, July 29, 2025)]
+[Proposed Rules]
+[Pages 35642-35645]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-14287]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-1364; Project Identifier AD-2024-00613-E]
+RIN 2120-AA64
+
+
+Airworthiness Directives; General Electric Company Engines
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain General Electric Company (GE) Model GE90-90B, GE90-94B, 
+GE90-110B1, and GE90-115B engines. This proposed AD was prompted by a 
+manufacturer investigation that revealed certain high-pressure turbine 
+(HPT) stage 1 and HPT stage 2 disks were manufactured from powder metal 
+material suspected to contain iron inclusion. This proposed AD would 
+require replacement of affected HPT stage 1 and HPT stage 2 disks with 
+parts eligible for installation. The FAA is proposing this AD to 
+address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by September 
+12, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1364; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For GE material identified in this proposed AD, contact 
+GE, 1 Neumann Way, Cincinnati, OH 45215; phone: (513) 552-3272; email: 
+<a href="/cdn-cgi/l/email-protection#e382958a82978a8c8dcd858f868697909693938c9197a3df82c38b918685de" http: ge.com">ge.com</a>">aviation.fleetsupport@<a href="http://ge.com">ge.com</a></a>; website: <a href="http://ge.com">ge.com</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Alexei Marqueen, Aviation Safety 
+Engineer, FAA, 2200 South 216th Street, Des Moines, WA 98198; phone: 
+(781) 238-7178; email: <a href="/cdn-cgi/l/email-protection#2c4d4049544945025802414d5e5d594949426c4a4d4d024b435a"><span class="__cf_email__" data-cfemail="b7d6dbd2cfd2de99c399dad6c5c6c2d2d2d9f7d1d6d699d0d8c1">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-1364; 
+Project Identifier AD-2024-00613-E'' at the beginning of your comments. 
+The most helpful comments reference a specific portion of the proposal, 
+explain the reason for any recommended change, and include supporting 
+data. The FAA will consider all comments received by the closing date 
+and may revise this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM
+
+[[Page 35643]]
+
+contain commercial or financial information that is customarily treated 
+as private, that you actually treat as private, and that is relevant or 
+responsive to this NPRM, it is important that you clearly designate the 
+submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this NPRM. Submissions containing CBI should be 
+sent to Alexei Marqueen, Aviation Safety Engineer, FAA, 2200 South 
+216th Street, Des Moines, WA 98198. Any commentary that the FAA 
+receives which is not specifically designated as CBI will be placed in 
+the public docket for this rulemaking.
+
+Background
+
+    The FAA was notified by the manufacturer of the detection of iron 
+inclusion in a turbine disk manufactured from the same powder metal 
+material used to manufacture certain HPT stage 1 and HPT stage 2 disks 
+for GE Model GE90-90B, GE90-94B, GE90-110B1, and GE90-115B engines. 
+Further investigation by the manufacturer determined that the iron 
+inclusion is attributed to deficiencies in the manufacturing process 
+and may cause reduced material properties and a lower fatigue life 
+capability, which may result in premature fracture and uncontained 
+failure. The manufacturer also informed the FAA that additional risk 
+assessments determined that there were no incidents of premature 
+fracture and uncontained failure associated with the discovery of this 
+iron inclusion material on these engines but concluded that replacement 
+of the affected HPT stage 1 and HPT stage 2 disks is necessary to 
+prevent any future failure events. The exposure of HPT stage 1 and HPT 
+stage 2 disks to iron inclusion, if not addressed, could result in 
+uncontained debris release, damage to the engine, and damage to the 
+airplane.
+
+FAA's Determination
+
+    The FAA is issuing this NPRM after determining that the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed GE GE90-100 Service Bulletin (SB) 72-0926, 
+Revision 01, dated December 22, 2023 (GE GE90-100 SB 72-0926, Revision 
+01). This material specifies the affected part numbers, serial numbers, 
+and cyclic removal thresholds for the HPT stage 1 and HPT stage 2 
+disks. This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require replacement of certain HPT stage 1 
+disks and HPT stage 2 disks with parts eligible for installation. Table 
+1 to paragraph (c) of this AD includes all part numbers and serial 
+numbers for affected HPT stage 1 disks that have been scrapped or that 
+have already been removed from GE Model GE90-90B and GE90-94B engines, 
+and certain part numbers and serial numbers for affected HPT stage 1 
+disks and HPT stage 2 disks that have been scrapped or that have 
+already been removed from GE Model GE90-110B1 and GE90-115B engines. GE 
+GE90 SB 72-1229, dated October 11, 2023, includes these part numbers 
+and serial numbers. Therefore, the part numbers and serial numbers for 
+affected HPT stage 1 disks listed in table 1 to paragraph (c) of this 
+AD take precedence over those listed in GE GE90 SB 72-1229, dated 
+October 11, 2023.
+
+Differences Between This Proposed AD and the Referenced Material
+
+    GE GE90-100 SB 72-0926, Revision 01 includes cyclic removal 
+thresholds for certain parts that have already been removed or scrapped 
+while this proposed AD requires those parts to be removed from service 
+and replaced before further flight.
+    GE GE90-100 SB 72-0926, Revision 01 uses the term ``high pressure 
+turbine rotor (HPTR),'' while this proposed AD uses the term ``high 
+pressure turbine (HPT).''
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect two engines installed on airplanes of U.S. registry. The FAA 
+estimates that one engine installed on an airplane of U.S. registry 
+would require replacement of the HPT stage 1 disk, and one engine 
+installed on an airplane of U.S. registry would require replacement of 
+the HPT stage 2 disk. The FAA estimates the following costs to comply 
+with this proposed AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                          Cost per  Cost on U.S.
+                Action                        Labor cost               Parts cost         product     operators
+----------------------------------------------------------------------------------------------------------------
+Replace HPT stage 1 disk.............  8 work-hours x $85 per   $932,136 (prorated)....   $932,816      $932,816
+                                        hour = $680.
+Replace HPT stage 2 disk.............  8 work-hours x $85 per   $186,406 (prorated)....    187,086       187,086
+                                        hour = $680.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities
+
+[[Page 35644]]
+
+under the criteria of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+General Electric Company: Docket No. FAA-2025-1364; Project 
+Identifier AD-2024-00613-E.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by September 12, 2025.
+
+ (b) Affected ADs
+
+    None.
+
+ (c) Applicability
+
+    This AD applies to the following General Electric Company (GE) 
+Model engines:
+    (1) GE90-90B and GE90-94B engines with a high pressure turbine 
+(HPT) stage 1 disk having a part number and serial number identified 
+in table 1 to paragraph (c) of this AD installed; and
+    (2) GE90-110B1 and GE90-115B engines with an HPT stage 1 disk or 
+HPT stage 2 disk having a part number and serial number identified 
+in table 1 to paragraph (c) of this AD or Table 1 or Table 2 of GE 
+GE90-100 Service Bulletin 72-0926, Revision 01, dated December 22, 
+2023 (GE GE90-100 SB 72-0926, Revision 01) installed.
+
+       Table 1 to Paragraph (c)--Affected HPT Stage 1 and 2 Disks
+------------------------------------------------------------------------
+          Part name                 Part No.             Serial No.
+------------------------------------------------------------------------
+HPT Stage 1 Disk............  1847M95G01..........  GWN05K5J
+HPT Stage 1 Disk............  1847M95G01..........  GWN05K5M
+HPT Stage 1 Disk............  1847M95G01..........  GWN05NP6
+HPT Stage 1 Disk............  1865M13G08..........  GWN10N9A
+HPT Stage 1 Disk............  1865M13G08..........  GWN0NJ92
+HPT Stage 1 Disk............  1865M13G08..........  GWN0NJ94
+HPT Stage 1 Disk............  1865M13G08..........  GWN0NK87
+HPT Stage 1 Disk............  1865M13G08..........  GWN0RJ4G
+HPT Stage 1 Disk............  1865M13G08..........  GWN0WPEC
+HPT Stage 2 Disk............  1865M14P04..........  TMT4RK67
+HPT Stage 2 Disk............  1865M14P04..........  TMT4RG10
+HPT Stage 2 Disk............  1865M14P04..........  TMT4RG11
+------------------------------------------------------------------------
+
+ (d) Subject
+
+    Joint Aircraft System Component (JASC) Code 7250, Turbine 
+Section.
+
+ (e) Unsafe Condition
+
+    This AD was prompted by a manufacturer investigation that 
+revealed certain HPT stage 1 disks and HPT stage 2 disks were 
+manufactured from powder metal material suspected to contain iron 
+inclusion. The FAA is issuing this AD to prevent premature fracture 
+and uncontained failure of the HPT stage 1 disks and HPT stage 2 
+disks. The unsafe condition, if not addressed, could result in 
+uncontained debris release, damage to the engine, and damage to the 
+airplane.
+
+ (f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+ (g) Required Actions
+
+    At the applicable times specified in paragraphs (g)(1) through 
+(3) of this AD, remove each affected HPT stage 1 disk and HPT stage 
+2 disk from service and replace with a part eligible for 
+installation.
+    (1) For HPT stage 1 disks and HPT stage 2 disks with a part 
+number and serial number identified in table 1 to paragraph (c) of 
+this AD, before further flight.
+    (2) For HPT stage 1 disks with a part number and serial number 
+identified in Table 1 of GE GE90-100 SB 72-0926, Revision 01, that 
+are not identified in table 1 to paragraph (c) of this AD, at the 
+next piece-part exposure or before exceeding 4,650 cycles since new 
+(CSN), whichever occurs first.
+    (3) For HPT stage 2 disks with a part number and serial number 
+identified in Table 2 of GE GE90-100 SB 72-0926, Revision 01, that 
+are not identified in table 1 to paragraph (c) of this AD, at the 
+next piece-part exposure or before exceeding 11,300 CSN, whichever 
+occurs first.
+
+ (h) Grace Period for HPT Stage 1 Disk Replacement
+
+    For affected HPT stage 1 disks having greater than 4,650 CSN on 
+the effective date of this AD, the replacement required by paragraph 
+(g)(2) of this AD may be deferred up to 50 flight cycles after the 
+effective date of this AD.
+
+ (i) Definitions
+
+    (1) For the purpose of this AD, a ``part eligible for 
+installation'' is any HPT stage 1 disk or HPT stage 2 disk having a 
+part number and serial number that is not identified in table 1 to 
+paragraph (c) of this AD or Table 1 or Table 2 of GE GE90-100 SB 72-
+0926, Revision 01.
+    (2) For the purpose of this AD, a ``piece-part exposure'' is 
+when the affected HPT stage 1 disk or HPT stage 2 disk is removed 
+from the engine and completely disassembled.
+
+ (j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, AIR-520 Continued Operational Safety Branch, 
+FAA, has the authority to approve AMOCs for this AD, if requested 
+using the procedures found in 14 CFR 39.19. In accordance with 14 
+CFR 39.19, send your request to your principal inspector or local 
+Flight Standards District Office, as appropriate. If sending 
+information directly to the manager of AIR-520 Continued Operational 
+Safety Branch, send it to the attention of the person identified in 
+paragraph (k) of this AD and email to: <a href="/cdn-cgi/l/email-protection#cf8e82808c8fa9aeaee1a8a0b9"><span class="__cf_email__" data-cfemail="80c1cdcfc3c0e6e1e1aee7eff6">[email&#160;protected]</span></a>. Before using 
+any approved AMOC, notify your appropriate principal inspector, or 
+lacking a principal inspector, the manager of the local flight 
+standards district office/certificate holding district office.
+
+ (k) Additional Information
+
+    For more information about this AD, contact Alexei Marqueen, 
+Aviation Safety Engineer, FAA, 2200 South 216th Street, Des Moines, 
+WA 98198; phone: (781) 238-7178; email: <a href="/cdn-cgi/l/email-protection#e48588819c818dca90ca898596959181818aa4828585ca838b92"><span class="__cf_email__" data-cfemail="70111c150815195e045e1d1102010515151e301611115e171f06">[email&#160;protected]</span></a>.
+
+ (l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+
+[[Page 35645]]
+
+    (i) GE GE90-100 Service Bulletin 72-0926, Revision 01, dated 
+December 22, 2023.
+    (ii) [Reserved]
+    (3) For GE material identified in this AD, contact General 
+Electric Company, 1 Neumann Way, Cincinnati, OH 45215; phone: (513) 
+552-3272; email: <a href="/cdn-cgi/l/email-protection#cfaeb9a6aebba6a0a1e1a9a3aaaabbbcbabfbfa0bdbb8ff3aeefa7bdaaa9f2" http: ge.com">ge.com</a>">aviation.fleetsupport@<a href="http://ge.com">ge.com</a></a>; website: <a href="http://ge.com">ge.com</a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 1200 District Avenue, 
+Burlington, MA 01803. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#187e6a3671766b687d7b6c7177765876796a79367f776e"><span class="__cf_email__" data-cfemail="6305114d0a0d10130600170a0c0d230d0211024d040c15">[email&#160;protected]</span></a>.
+
+    Issued on July 25, 2025.
+Peter A. White,
+Deputy Director, Integrated Certificate Management Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-14287 Filed 7-28-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

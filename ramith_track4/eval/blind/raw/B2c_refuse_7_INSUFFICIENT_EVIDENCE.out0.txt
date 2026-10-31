@@ -1,0 +1,1 @@
+{"question": "What is the estimated total cost to U.S. operators, and the per-helicopter labor cost in dollars, for revising the rotorcraft flight manual under this proposed AD?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

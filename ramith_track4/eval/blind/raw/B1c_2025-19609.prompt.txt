@@ -1,0 +1,616 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 201 (Tuesday, October 21, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 201 (Tuesday, October 21, 2025)]
+[Proposed Rules]
+[Pages 48414-48419]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-19609]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-3435; Project Identifier MCAI-2025-01602-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Bombardier, Inc., Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2025-17-12, which applies to all Bombardier, Inc., Model CL-600-1A11 
+(600) and CL-600-2A12 (601) airplanes, and certain Model CL-600-2B16 
+(601-3A, 601-3R, and 604 Variants) airplanes. AD 2025-17-12 requires
+
+[[Page 48415]]
+
+revising the existing maintenance or inspection program, as applicable, 
+to incorporate new or more restrictive airworthiness limitations. Since 
+the FAA issued AD 2025-17-12, the FAA has determined that certain 
+serial numbers for affected Model CL-600-2B16 (604 Variants) airplanes 
+are not included in the applicability of AD 2025-17-12. This proposed 
+AD would continue to require the actions specified in AD 2025-17-12 and 
+would add airplanes to the applicability. The FAA is proposing this AD 
+to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by November 20, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3435; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Bombardier material identified in this proposed AD, 
+contact Bombardier Business Aircraft Customer Response Center, 400 
+C[ocirc]te-Vertu Road West, Dorval, Qu[eacute]bec H4S 1Y9, Canada; 
+telephone 514-855-2999; email <a href="/cdn-cgi/l/email-protection#dbbab8f5a2aeb79bbabea9b4f5b9b4b6b9baa9bfb2bea9f5b8b4b6"><span class="__cf_email__" data-cfemail="59383a77202c3519383c2b36773b36343b382b3d303c2b773a3634">[email&#160;protected]</span></a>; website 
+<a href="https://my.bombardier.com/">https://my.bombardier.com/</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Brenda L. Buitrago, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: 516-228-7300; email: <a href="/cdn-cgi/l/email-protection#2e17034f585d0340574f4d41034d415d6e484f4f00494158"><span class="__cf_email__" data-cfemail="b1889cd0c7c29cdfc8d0d2de9cd2dec2f1d7d0d09fd6dec7">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-3435; 
+Project Identifier MCAI-2025-01602-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Brenda L. Buitrago, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, 
+Suite 410, Westbury, NY 11590; phone: 516-228-7300; email: <a href="/cdn-cgi/l/email-protection#d2ebffb3a4a1ffbcabb3b1bdffb1bda192b4b3b3fcb5bda4"><span class="__cf_email__" data-cfemail="dee7f3bfa8adf3b0a7bfbdb1f3bdb1ad9eb8bfbff0b9b1a8">[email&#160;protected]</span></a>. Any commentary that the FAA receives that is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued AD 2025-17-12, Amendment 39-23122 (90 FR 46330, 
+September 26, 2025) (AD 2025-17-12), for all Bombardier, Inc., Model 
+CL-600-1A11 (600) and CL-600-2A12 (601) airplanes, and certain Model 
+CL-600-2B16 (601-3A, 601-3R, and 604 Variants) airplanes. AD 2025-17-12 
+was prompted by an MCAI originated by Transport Canada, which is the 
+aviation authority for Canada. Transport Canada issued AD CF-2024-16, 
+dated May 23, 2024 (Transport Canada AD CF-2024-16), to correct an 
+unsafe condition.
+    AD 2025-17-12 requires revising the existing maintenance or 
+inspection program, as applicable, to incorporate new or more 
+restrictive airworthiness limitations. The FAA issued AD 2025-17-12 to 
+address new or more restrictive limitations. Failure to comply with 
+these new or more restrictive limitations could adversely affect the 
+continued airworthiness of the airplane.
+
+Actions Since AD 2025-17-12 Was Issued
+
+    Since the FAA issued AD 2025-17-12, the FAA has determined that 
+certain serial numbers for affected Model CL-600-2B16 (604 Variant) 
+airplanes are not included in the applicability of AD 2025-17-12. Table 
+1 to paragraph (g)(1) of AD 2025-17-12 and table 2 to paragraph (g)(2) 
+of AD 2025-17-12 identify the applicable airplanes for each document by 
+serial numbers. For Model CL-600-2B16 (604 Variant) airplanes, the 
+serial numbers start at 5301. However, paragraph (c)(2) of AD 2025-17-
+12 only identifies Model CL-600-2B16 (604 Variant) airplanes, serial 
+numbers (S/Ns) 6050 through 6192 inclusive. Therefore, the FAA is 
+revising the applicability of this proposed AD by adding Model CL-600-
+2B16 (604 Variant) airplanes, S/Ns 5301 through 5665 inclusive and S/Ns 
+5701 through 6049 inclusive. The FAA has removed references to those 
+serial numbers from table 1 to paragraph (g)(1) of this proposed AD and 
+table 2 to paragraph (g)(2) of this proposed AD and added actions for 
+those airplanes to paragraph (i) of this proposed AD.
+    The FAA has also determined that the last row of table 2 to 
+paragraph (g)(2) of AD 2025-17-12 inadvertently lists S/N 6193 instead 
+of S/N 6192. Airplanes having S/N 6193 and subsequent were delivered 
+with Bombardier Temporary Revision No. 5-2-5, dated October 16, 2023, 
+and must comply with the airworthiness limitations specified as part of 
+the approved type design. The FAA has revised table 2 to paragraph 
+(g)(2) of this proposed AD accordingly.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3435.
+
+[[Page 48416]]
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    This proposed AD would require the following Bombardier material, 
+which the Director of the Federal Register approved for incorporation 
+by reference as of October 31, 2025 (90 FR 46333, September 26, 2025):
+    <bullet> Section 5-10-00, ``Airworthiness Limitations,'' of 
+Bombardier Challenger 600 Time Limits/Maintenance Checks (TLMC), 
+Publication No. PSP 605, Revision 39, dated January 8, 2018. (For 
+obtaining these sections of Bombardier Challenger 600 TLMC, Publication 
+No. PSP 605, use Document Identification No. CH 600 TLMC.)
+    <bullet> Section 5-10-00, ``Airworthiness Limitations,'' of 
+Bombardier Challenger 601 TLMC, Publication No. PSP 601-5, Revision 46, 
+dated January 8, 2018. (For obtaining these sections of Bombardier 
+Challenger 601 TLMC, Publication No. PSP 601-5, use Document 
+Identification No. CH 601 TLMC.)
+    <bullet> Section 5-10-00, ``Airworthiness Limitations,'' of 
+Bombardier Challenger 601 TLMC, Publication No. PSP 601A-5, Revision 
+42, dated January 8, 2018. (For obtaining these sections of Bombardier 
+Challenger 601 TLMC, Publication No. PSP 601A-5, use Document 
+Identification No. CH 601 TLMC-1.)
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Challenger 604 TLMC, Publication No. CH 604 TLMC, Revision 33, dated 
+November 22, 2022. (The document identification number for ordering 
+Bombardier Challenger 604 TLMC, Publication No. CH 604 TLMC is 
+incorrectly identified as ``CH 600 TLMC'' on page 2 of the TLMC. For 
+obtaining Part 2 of Bombardier Challenger 604 TLMC, Publication No. CH 
+604 TLMC, use Document Identification No. CH 604 TLMC.)
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Challenger 605 TLMC, Publication No. CH 605 TLMC, Revision 22, dated 
+November 22, 2022.
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Challenger 650 TLMC, Publication No. CH 650 TLMC, Revision 9, dated 
+November 22, 2022.
+    <bullet> Temporary Revision No. 5-2-5, dated October 16, 2023, 
+which includes new Task 32-51-04-101*, ``Discard of the Nosewheel-
+Steering Control Potentiometer Coupling Setscrews, Part No. B0201102-2-
+220 (A/C 6194 and Subs or Post SB 650-32-007).''
+    <bullet> Temporary Revision No. 5-2-29, dated October 25, 2023, 
+which includes new Task 32-51-04-101*, ``Discard of the Nosewheel-
+Steering Control Potentiometer Coupling Setscrews, Part No. B0201102-2-
+220 (Post SB 605-32-010).''
+    <bullet> Temporary Revision No. 5-2-73, dated October 25, 2023, 
+which includes new Task 32-51-04-101*, ``Discard of the Nosewheel-
+Steering Control Potentiometer Coupling Setscrews, Part No. B0201102-2-
+220 (Post SB 604-32-033).''
+    <bullet> Temporary Revision No. TR 5-164, dated December 23, 2022, 
+which includes new Task 53-10-01-102*, ``Forward Pressure Bulkhead Cap 
+Angle--Aft Side.''
+    <bullet> Temporary Revision No. TR 5-165, dated October 25, 2023.
+    <bullet> Temporary Revision No. TR 5-268, dated December 23, 2022, 
+which includes new Task 53-10-01-103*, ``Forward Pressure Bulkhead Cap 
+Angle--Aft Side.''
+    <bullet> Temporary Revision No. TR 5-269, dated October 25, 2023.
+    <bullet> Temporary Revision No. TR 5-282, dated December 23, 2022, 
+which includes new Task 53-10-01-103*, ``Forward Pressure Bulkhead Cap 
+Angle--Aft Side.''
+    <bullet> Temporary Revision No. TR 5-283, dated October 25, 2023.
+    (The asterisk (or ``one star'') with the last three digits of the 
+task numbers listed above indicates that the task is an airworthiness 
+limitation task.)
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI and material referenced above. The FAA is issuing 
+this NPRM after determining that the unsafe condition described 
+previously is likely to exist or develop on other products of the same 
+type design.
+
+Proposed Requirements of This NPRM
+
+    This proposed AD would retain all of the requirements of AD 2025-
+17-12. This proposed AD would also add airplanes to the applicability.
+    This proposed AD would require revisions to certain operator 
+maintenance documents to include new actions (e.g., inspections). 
+Compliance with these actions is required by 14 CFR 91.403(c). For 
+airplanes that have been previously modified, altered, or repaired in 
+the areas addressed by this proposed AD, the operator may not be able 
+to accomplish the actions described in the revisions. In this 
+situation, to comply with 14 CFR 91.403(c), the operator must request 
+approval for an alternative method of compliance according to paragraph 
+(l)(1) of this proposed AD.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 427 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+    The FAA estimates the total cost per operator for the retained 
+actions from AD 2025-17-12 to be $7,650 (90 work-hours x $85 per work-
+hour).
+    The FAA has determined that revising the maintenance or inspection 
+program takes an average of 90 work-hours per operator, although the 
+agency recognizes that this number may vary from operator to operator. 
+Since operators incorporate maintenance or inspection program changes 
+for their affected fleet(s), the FAA has determined that a per-operator 
+estimate is more accurate than a per-airplane estimate. Therefore, the 
+FAA estimates the total cost per operator for the new proposed actions 
+to be $7,650 (90 work-hours x $85 per work-hour).
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or
+
+[[Page 48417]]
+
+on the distribution of power and responsibilities among the various 
+levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2025-17-12, Amendment 39-23122 (90 
+FR 46330, September 26, 2025); and
+0
+b. Adding the following new airworthiness directive:
+
+Bombardier, Inc.: Docket No. FAA-2025-3435; Project Identifier MCAI-
+2025-01602-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by November 20, 2025.
+
+ (b) Affected ADs
+
+    This AD replaces AD 2025-17-12, Amendment 39-23122 (90 FR 46330, 
+September 26, 2025) (AD 2025-17-12).
+
+ (c) Applicability
+
+    This AD applies to the Bombardier, Inc., airplanes identified in 
+paragraphs (c)(1) through (3) of this AD, certificated in any 
+category.
+    (1) All Model CL-600-1A11 (600), CL-600-2A12 (601), and CL-600-
+2B16 (601-3A and 601-3R Variants) airplanes.
+    (2) Model CL-600-2B16 (604 Variant) airplanes, serial numbers 
+(S/Ns) 5301 through 5665 inclusive and S/Ns 5701 through 6049 
+inclusive.
+    (3) Model CL-600-2B16 (604 Variant) airplanes, S/Ns 6050 through 
+6192 inclusive.
+
+ (d) Subject
+
+    Air Transport Association (ATA) of America Code 05, Time Limits/
+Maintenance Checks.
+
+ (e) Unsafe Condition
+
+    This AD was prompted by a determination that new or more 
+restrictive airworthiness limitations are necessary. The FAA is 
+issuing this AD to address new or more restrictive limitations. 
+Failure to comply with these new or more restrictive limitations 
+could adversely affect the continued airworthiness of the airplane.
+
+ (f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+ (g) Retained Revision of the Existing Maintenance or Inspection 
+Program for Certain Airplanes, With Removal of References to S/Ns 5301 
+Through 6049 Inclusive
+
+    This paragraph restates the requirements of paragraph (g) of AD 
+2025-17-12, with removal of references to S/Ns 5301 through 6049 
+inclusive. For airplanes identified in paragraphs (c)(1) and (3) of 
+this AD, comply with paragraphs (g)(1) and (2) of this AD.
+    (1) Within 90 days after October 31, 2025 (the effective date of 
+AD 2025-17-12), revise the existing maintenance or inspection 
+program, as applicable, to incorporate the information specified in 
+the applicable time limits/maintenance checks (TLMC) document 
+identified in table 1 to paragraph (g)(1) of this AD. The initial 
+compliance time for doing the tasks is at the time specified in the 
+applicable TLMC document identified in table 1 to paragraph (g)(1) 
+of this AD, or within 90 days after October 31, 2025, whichever 
+occurs later.
+
+               Table 1 to Paragraph (g)(1)--TLMC Documents
+------------------------------------------------------------------------
+                                 TLMC sections or
+     Applicable airplanes             parts            TLMC document
+------------------------------------------------------------------------
+Bombardier, Inc., Model CL-600- Section 5-10-00,   Bombardier Challenger
+ 1A11 (600) airplanes, serial    ``Airworthiness    600 TLMC,
+ numbers (S/Ns) 1004 through     Limitations,''     Publication No. PSP
+ 1085 inclusive.                                    605, Revision 39,
+                                                    January 8, 2018.\1\
+Bombardier, Inc., Model CL-600- Section 5-10-00,   Bombardier Challenger
+ 2A12 (601) airplanes, S/Ns      ``Airworthiness    601 TLMC,
+ 3001 through 3066 inclusive.    Limitations,''     Publication No. PSP
+                                                    601[dash]5, Revision
+                                                    46, January 8,
+                                                    2018.\2\
+Bombardier, Inc., Model CL-600- Section 5-10-00,   Bombardier Challenger
+ 2B16 (601-3A Variant)           ``Airworthiness    601 TLMC,
+ airplanes, S/Ns 5001 through    Limitations,''     Publication No. PSP
+ 5134 inclusive; and Model CL-                      601A-5, Revision 42,
+ 600-2B16 (601-3R Variant)                          January 8, 2018.\3\
+ airplanes, S/Ns 5135 through
+ 5194 inclusive.
+Bombardier, Inc., Model CL-600- Part 2,            Bombardier Challenger
+ 2B16 (604 Variant) airplanes,   ``Airworthiness    650 TLMC,
+ S/Ns 6050 through 6180          Limitations''.     Publication No. CH
+ inclusive.                                         650 TLMC, Revision
+                                                    9, November 22,
+                                                    2022.
+------------------------------------------------------------------------
+\1\ For obtaining these sections of Bombardier Challenger 600 TLMC,
+  Publication No. PSP 605, use Document Identification No. CH 600 TLMC.
+\2\ For obtaining these sections of Bombardier Challenger 601 TLMC,
+  Publication No. PSP 601-5, use Document Identification No. CH 601
+  TLMC.
+\3\ For obtaining these sections of Bombardier Challenger 601 TLMC,
+  Publication No. PSP 601A-5, use Document Identification No. CH 601
+  TLMC-1.
+
+    (2) Within 90 days after October 31, 2025 (the effective date of 
+AD 2025-17-12), revise the existing maintenance or inspection 
+program, as applicable, to incorporate the information specified in 
+the applicable temporary revisions (TRs) identified in table 2 to 
+paragraph (g)(2) of this AD. The initial compliance time for doing 
+the tasks is at the time specified in the applicable TR identified 
+in table 2 to paragraph (g)(2) of this AD, or within 90 days after 
+October 31, 2025, whichever occurs later.
+
+            Table 2 to Paragraph (g)(2)--Temporary Revisions
+------------------------------------------------------------------------
+                                                      Task No. and Title
+      Applicable airplanes                TR          or life limit Part
+                                                      No. (P/N) and name
+------------------------------------------------------------------------
+Bombardier, Inc., Model CL-600-   Bombardier          53-10-01-102*,
+ 1A11 (600) airplanes, S/Ns 1004   Temporary           Forward Pressure
+ through 1085 inclusive.           Revision No. TR     Bulkhead Cap
+                                   5[dash]164, dated   Angle--Aft Side.
+                                   December 23, 2022.
+Bombardier, Inc., Model CL-600-   Bombardier          B0201102-2-220,
+ 1A11 (600) airplanes, S/Ns 1004   Temporary           Rudder Pedal
+ through 1085 inclusive.           Revision No. TR     Potentiometer
+                                   5[dash]165, dated   Coupling
+                                   October 25, 2023.   Setscrews.
+Bombardier, Inc., Model CL-600-   Bombardier          53-10-01-103*,
+ 2A12 (601) airplanes, S/Ns 3001   Temporary           Forward Pressure
+ through 3066 inclusive.           Revision No. TR     Bulkhead Cap
+                                   5[dash]268, dated   Angle--Aft Side.
+                                   December 23, 2022.
+Bombardier, Inc., Model CL-600-   Bombardier          B0201102-2-220,
+ 2A12 (601) airplanes, S/Ns 3001   Temporary           Rudder Pedal
+ through 3066 inclusive.           Revision No. TR     Potentiometer
+                                   5[dash]269, dated   Coupling
+                                   October 25, 2023.   Setscrews.
+
+[[Page 48418]]
+
+ 
+Bombardier, Inc., Model CL-600-   Bombardier          53-10-01-103*,
+ 2B16 (601-3A Variant)             Temporary           Forward Pressure
+ airplanes, S/Ns 5001 through      Revision No. TR     Bulkhead Cap
+ 5134 inclusive; and Model CL-     5[dash]282, dated   Angle--Aft Side.
+ 600-2B16 (601-3R Variant)         December 23, 2022.
+ airplanes, S/Ns 5135 through
+ 5194 inclusive.
+Bombardier, Inc., Model CL-600-   Bombardier          B0201102-2-220,
+ 2B16 (601-3A Variant)             Temporary           Rudder Pedal
+ airplanes, S/Ns 5001 through      Revision No. TR     Potentiometer
+ 5134 inclusive; and Model CL-     5[dash]283, dated   Coupling
+ 600-2B16 (601-3R Variant)         October 25, 2023.   Setscrews.
+ airplanes, S/Ns 5135 through
+ 5194 inclusive.
+Bombardier, Inc., Model CL-600-   Bombardier          32-51-04-101*,
+ 2B16 (604 Variant) airplanes, S/  Temporary           Discard of the
+ Ns 6050 through 6192, inclusive.  Revision No.        Nosewheel-
+                                   5[dash]2-5, dated   Steering Control
+                                   October 16, 2023.   Potentiometer
+                                                       Coupling
+                                                       Setscrews, Part
+                                                       No. B0201102-2-
+                                                       220 (A/C 6194 and
+                                                       Subs or Post SB
+                                                       650-32-007).
+------------------------------------------------------------------------
+
+    Note 1 to table 2 to paragraph (g)(2): The asterisk (or ``one 
+star'') with the last three digits of the task numbers listed in 
+table 2 to paragraph (g)(2) of this AD indicates that the task is an 
+airworthiness limitation task.
+
+ (h) Retained No Alternative Actions and Intervals, With No Changes
+
+    This paragraph restates the requirements of paragraph (i) of AD 
+2025-17-12, with no changes. After the existing maintenance or 
+inspection program has been revised as required by paragraph (g) of 
+this AD, no alternative actions (e.g., inspections) or intervals may 
+be used unless the actions or intervals are approved as an 
+alternative method of compliance (AMOC) in accordance with the 
+procedures specified in paragraph (l)(1) of this AD
+
+ (i) New Revision of the Existing Maintenance or Inspection Program for 
+Certain Airplanes
+
+    For airplanes identified in paragraph (c)(2) of this AD: Comply 
+with paragraphs (i)(1) and (2) of this AD.
+    (1) Within 90 days after the effective date of this AD, revise 
+the existing maintenance or inspection program, as applicable, to 
+incorporate the information specified in the applicable TLMC 
+document identified in table 3 to paragraph (i)(1) of this AD. The 
+initial compliance time for doing the tasks is at the time specified 
+in the applicable TLMC document identified in table 3 to paragraph 
+(i)(1) of this AD, or within 90 days after the effective date of 
+this AD, whichever occurs later, except as provided by paragraph (j) 
+of this AD.
+
+               Table 3 to Paragraph (i)(1)--TLMC Documents
+------------------------------------------------------------------------
+                                 TLMC sections or
+     Applicable airplanes             parts            TLMC document
+------------------------------------------------------------------------
+Bombardier, Inc., Model CL-600- Part 2,            Bombardier Challenger
+ 2B16 (604 Variant) airplanes,   ``Airworthiness    604 TLMC,
+ S/Ns 5301 through 5665          Limitations''.     Publication No. CH
+ inclusive.                                         604 TLMC, Revision
+                                                    33, November 22,
+                                                    2022.\1\
+Bombardier, Inc., Model CL-600- Part 2,            Bombardier Challenger
+ 2B16 (604 Variant) airplanes,   ``Airworthiness    605 TLMC,
+ S/Ns 5701 through 6049          Limitations''.     Publication No. CH
+ inclusive.                                         605 TLMC, Revision
+                                                    22, November 22,
+                                                    2022.
+------------------------------------------------------------------------
+\1\ The document identification number for ordering Bombardier
+  Challenger 604 TLMC, Publication No. CH 604 TLMC is incorrectly
+  identified as ``CH 600 TLMC'' on page 2 of the TLMC. For obtaining
+  Part 2 of Bombardier Challenger 604 TLMC, Publication No. CH 604 TLMC,
+  use Document Identification No. CH 604 TLMC.
+
+    (2) Within 90 days after the effective date of this AD, revise 
+the existing maintenance or inspection program, as applicable, to 
+incorporate the information specified in the applicable TRs 
+identified in table 4 to paragraph (i)(2) of this AD. The initial 
+compliance time for doing the tasks is at the time specified in the 
+applicable TR identified in table 4 to paragraph (i)(2) of this AD, 
+or within 90 days after the effective date of this AD, whichever 
+occurs later.
+
+            Table 4 to Paragraph (i)(2)--Temporary Revisions
+------------------------------------------------------------------------
+                                                   Task No. and title or
+     Applicable airplanes               TR          life limit Part No.
+                                                       (P/N) and name
+------------------------------------------------------------------------
+Bombardier, Inc., Model CL-600- Bombardier         32-51-04-101*,
+ 2B16 (604 Variant) airplanes,   Temporary          Discard of the
+ S/Ns 5301 through 5665          Revision No.       Nosewheel-Steering
+ inclusive.                      5[dash]2-73,       Control
+                                 dated October      Potentiometer
+                                 25, 2023.          Coupling Setscrews,
+                                                    Part No. B0201102-2-
+                                                    220 (Post SB 604-32-
+                                                    033).
+Bombardier, Inc., Model CL-600- Bombardier         32-51-04-101*,
+ 2B16 (604 Variant) airplanes,   Temporary          Discard of the
+ S/Ns 5701 through 6049          Revision No.       Nosewheel-Steering
+ inclusive.                      5[dash]2-29,       Control
+                                 dated October      Potentiometer
+                                 25, 2023.          Coupling Setscrews,
+                                                    Part No. B0201102-2-
+                                                    220 (Post SB 605-32-
+                                                    010).
+------------------------------------------------------------------------
+
+    Note 2 to table 4 to paragraph (i)(2): The asterisk (or ``one 
+star'') with the last three digits of the task numbers listed in 
+table 4 to paragraph (i)(2) of this AD indicates that the task is an 
+airworthiness limitation task.
+
+ (j) Compliance Time Exception for a Certain Task
+
+    For airplanes identified in paragraph (c)(2) of this AD: The 
+initial compliance time for task 27-42-01-110, ``Special Detailed 
+Inspection of the Horizontal Stabilizer Trim Actuator (HSTA), P/N 
+604-92305-7 and Subs (Vendor P/N 8454-3 and Subs),'' of section 5-
+10-40, ``Certification Maintenance Requirements,'' of Part 2, 
+``Airworthiness Limitations,'' of Bombardier Challenger 604 TLMC, 
+Publication No. CH 604 TLMC, Revision 33, dated November 22, 2022; 
+or Bombardier Challenger 605 TLMC, Publication No

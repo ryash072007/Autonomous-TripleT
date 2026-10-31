@@ -25,7 +25,7 @@ from revisions import build_graph, latest_status  # noqa: E402
 
 MODEL = "claude-sonnet-5-5"
 TAG = sys.argv[2] if len(sys.argv) > 2 else ""
-SEED = 20261031 + 1 + (1000 if TAG else 0)
+SEED = 20261031 + 1 + (1000 * (ord(TAG[0]) - 96) if TAG else 0)
 RAW = ROOT / "eval" / "blind" / "raw"
 RAW.mkdir(parents=True, exist_ok=True)
 client = anthropic.Anthropic()

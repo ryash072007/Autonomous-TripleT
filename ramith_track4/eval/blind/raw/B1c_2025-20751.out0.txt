@@ -1,0 +1,7 @@
+The applicability paragraph reads: "This AD applies to Bell Textron Canada Limited Model 429 helicopters, certificated in any category, as identified in Transport Canada AD CF-2025-16." The only condition it states directly is the model, so a different model clearly fails. The background section adds serial and part-number limits, but the applicability paragraph relies on the Transport Canada AD for those. For a model that is not listed, the verdict is therefore DOES_NOT_APPLY.
+
+I chose a Bell 407, which is a different model from the 429, so the model condition fails.
+
+```json
+{"feasible": true, "config": {"make": "Bell Textron Canada Limited", "model": "407", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "DOES_NOT_APPLY", "gold_reason": "MODEL_NOT_LISTED", "evidence_quote": "This AD applies to Bell Textron Canada Limited Model 429 helicopters, certificated in any category, as identified in Transport Canada AD CF-2025-16, dated March 17, 2025 (Transport Canada AD CF-2025-16).", "notes": "A Bell 407 is not a Model 429, so the model condition clearly fails regardless of the external AD's serial/PN limits."}
+```

@@ -1,0 +1,525 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 22 (Tuesday, February 4, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 22 (Tuesday, February 4, 2025)]
+[Proposed Rules]
+[Pages 8915-8920]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-02035]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0016; Project Identifier MCAI-2023-01047-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Bombardier, Inc., Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Bombardier, Inc., Model BD-700-1A10 and BD-700-1A11 
+airplanes. This proposed AD was prompted by a determination that new or 
+more restrictive airworthiness limitations are necessary. This proposed 
+AD would require revising the existing maintenance or inspection 
+program, as applicable, to incorporate new or more restrictive 
+airworthiness limitations. The FAA is proposing this AD to address the 
+unsafe condition on these products.
+
+DATES: The FAA must receive comments on this proposed AD by March 21, 
+2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0016; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Bombardier material identified in this proposed AD, 
+contact Bombardier Business Aircraft Customer Response Center, 400 
+C[ocirc]te-Vertu Road West, Dorval, Qu[eacute]bec H4S 1Y9, Canada; 
+phone 514-855-2999; email <a href="/cdn-cgi/l/email-protection#ceafade0b7bba28eafabbca1e0f2afeea6bcaba8f3" http: bombardier.com">bombardier.com</a>">ac.yul@aero.<a href="http://bombardier.com">bombardier.com</a></a>; website 
+<a href="http://bombardier.com">bombardier.com</a>.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Mark Taylor, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: 516-
+228-7300; email: <a href="/cdn-cgi/l/email-protection#7b42561a0d085615021a1814561814083b1d1a1a551c140d"><span class="__cf_email__" data-cfemail="b48d99d5c2c799dacdd5d7db99d7dbc7f4d2d5d59ad3dbc2">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0016; 
+Project Identifier MCAI-2023-01047-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each
+
+[[Page 8916]]
+
+page of your submission containing CBI as ``PROPIN.'' The FAA will 
+treat such marked submissions as confidential under the FOIA, and they 
+will not be placed in the public docket of this NPRM. Submissions 
+containing CBI should be sent to Mark Taylor, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: 516-
+228-7300; email: <a href="/cdn-cgi/l/email-protection#94adb9f5e2e7b9faedf5f7fbb9f7fbe7d4f2f5f5baf3fbe2"><span class="__cf_email__" data-cfemail="7a43571b0c095714031b1915571915093a1c1b1b541d150c">[email&#160;protected]</span></a>. Any commentary that the FAA 
+receives which is not specifically designated as CBI will be placed in 
+the public docket for this rulemaking.
+
+Background
+
+    Transport Canada, which is the aviation authority for Canada, has 
+issued Transport Canada AD CF-2023-65, dated October 3, 2023 (Transport 
+Canada AD CF-2023-65) (also referred to after this as the MCAI), to 
+correct an unsafe condition for certain Bombardier, Inc., Model BD-700-
+1A10 and BD-700-1A11 airplanes. The MCAI states that new or more 
+restrictive airworthiness limitations have been developed.
+    The FAA is proposing this AD to address new or more restrictive 
+airworthiness limitations. Failure to adhere to the specified 
+airworthiness limitations could adversely affect the stability and 
+controllability of the airplane on landing and could result in damage 
+to the airplane. You may examine the MCAI in the AD docket at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0016.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed the following Bombardier documents:
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global Express Time Limits/Maintenance Checks (TLMC), Publication No. 
+BD-700 TLMC, Revision 35, dated December 19, 2023. (For obtaining this 
+part of Bombardier Global Express TLMC, Publication No. BD-700 TLMC, 
+use Document Identification No. GL 700 TLMC.)
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global Express XRS TLMC, Publication No. BD-700 XRS TLMC, Revision 22, 
+dated December 19, 2023. (For obtaining this part of Bombardier Global 
+Express XRS TLMC, Publication No. BD-700 XRS TLMC, use Document 
+Identification No. GL XRS TLMC.)
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global 6000 TLMC, Publication No. GL 6000 TLMC, Revision 16, dated 
+December 19, 2023.
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global 6500 TLMC, Publication No. GL 6500 TLMC, Revision 5, dated 
+December 19, 2023.
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global 5000 TLMC, Publication No. BD-700 TLMC, Revision 26, dated 
+December 19, 2023. (For obtaining this part of Bombardier Global 5000 
+TLMC, Publication No. BD-700 TLMC, use Document Identification No. GL 
+5000 TLMC.)
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global 5500 TLMC, Publication No. GL 5500 TLMC, Revision 5, dated 
+December 19, 2023.
+    <bullet> Part 2, ``Airworthiness Limitations,'' of Bombardier 
+Global 5000 TLMC, Publication No. GL 5000 GVFD TLMC, Revision 16, dated 
+December 19, 2023.
+    This material specifies new or more restrictive airworthiness 
+limitations for safe life limits (for certain main landing gear and 
+nose landing gear components) and certification maintenance 
+requirements (for the shock strut axle and service door, pitch trim 
+actuator, and nose landing gear shock-strut assembly to retraction-
+actuator main-fitting joint). These documents are distinct since they 
+apply to different airplane models in different configurations. This 
+material is reasonably available because the interested parties have 
+access to it through their normal course of business or by the means 
+identified in the ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, the 
+FAA has been notified of the unsafe condition described in the MCAI and 
+material referenced above. The FAA is proposing this AD because the FAA 
+evaluated all the relevant information and determined the unsafe 
+condition described previously is likely to exist or develop on other 
+products of the same type design.
+
+Proposed Requirements of This NPRM
+
+    This proposed AD would require revising the existing maintenance or 
+inspection program, as applicable, to incorporate new or more 
+restrictive airworthiness limitations.
+    This proposed AD would require revisions to certain operator 
+maintenance documents to include new actions (e.g., inspections). 
+Compliance with these actions is required by 14 CFR 91.403(c). For 
+airplanes that have been previously modified, altered, or repaired in 
+the areas addressed by this proposed AD, the operator may not be able 
+to accomplish the actions described in the revisions. In this 
+situation, to comply with 14 CFR 91.403(c), the operator must request 
+approval for an alternative method of compliance according to paragraph 
+(j)(1) of this proposed AD.
+
+Differences Between This Proposed AD and the MCAI
+
+    Although the applicability of Transport Canada AD CF-2023-65 
+includes Bombardier, Inc., Model BD-700-1A10 airplane having serial 
+number 9001, that airplane is not included on the U.S. type certificate 
+data sheet. Therefore, the applicability of this proposed AD does not 
+include that airplane.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 484 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+    The FAA has determined that revising the maintenance or inspection 
+program takes an average of 90 work-hours per operator, although the 
+agency recognizes that this number may vary from operator to operator. 
+Since operators incorporate maintenance or inspection program changes 
+for their affected fleet(s), the FAA has determined that a per-operator 
+estimate is more accurate than a per-airplane estimate. Therefore, the 
+agency estimates the average total cost per operator to be $7,650 (90 
+work-hours x $85 per work-hour).
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or
+
+[[Page 8917]]
+
+develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Bombardier, Inc.: Docket No. FAA-2025-0016; Project Identifier MCAI-
+2023-01047-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by March 21, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Bombardier, Inc., Model BD-700-1A10 and BD-
+700-1A11 airplanes, certificated in any category, having serial 
+numbers (S/Ns) 9002 through 9879 inclusive, 9998, and 60001 through 
+60065 inclusive.
+
+(d) Subject
+
+    Air Transport Association (ATA) of America Code 05, Time Limits/
+Maintenance Checks.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a determination that new or more 
+restrictive airworthiness limitations are necessary. The FAA is 
+issuing this AD to address new or more restrictive airworthiness 
+limitations. Failure to adhere to the specified airworthiness 
+limitations could adversely affect the stability and controllability 
+of the airplane on landing and could result in damage to the 
+airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Maintenance or Inspection Program Revision
+
+    Within 60 days after the effective date of this AD, revise the 
+existing maintenance or inspection program, as applicable, to 
+incorporate the information specified in the tasks identified in 
+table 1 to paragraph (g) of this AD, of Part 2, ``Airworthiness 
+Limitations,'' of the applicable time limits/maintenance checks 
+(TLMC) manual identified in table 2 of this AD. The initial 
+compliance time for doing the tasks is at the time specified in the 
+applicable TLMC manual identified in table 2 to paragraph (g) of 
+this AD, or within 60 days after the effective date of this AD, 
+whichever occurs later, except as provided by paragraph (h) of this 
+AD.
+
+                                 Table 1 to Paragraph (g)--New or Revised Tasks
+----------------------------------------------------------------------------------------------------------------
+  Applicable airplane model (marketing     Chapter 5 task
+              designation)                      No.                 Task title              Affected section
+----------------------------------------------------------------------------------------------------------------
+All airplanes..........................       27-41-09-107  Restoration of the Pitch   5-10-20, ``Time Limits--
+                                                             Trim Actuator, Part No.    Supplementary
+                                                             GT412-4001-7.              Limitations''.
+All airplanes except Model BD-700-1A10        32-11-17-106  Discard the Main Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (MLG) Side-Stay       (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Upper-Pin, Part No.        5[dash]10[dash]90,
+                                                             GM227-1725.                ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+All airplanes..........................       32-21-01-101  Discard the Nose Landing   5-10-10, ``Life Limits
+                                                             Gear (NLG) Shock Strut     (Structures),'' or
+                                                             Axle, Part No. 1286-0201/  5[dash]10[dash]90,
+                                                             -0203/-0204.               ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+All airplanes except Model BD-700-1A10        32-21-01-103  Discard the Nose Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Shock Strut     (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Main Fitting, Part No.     5[dash]10[dash]90,
+                                                             1286-0101/-0109.           ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+All airplanes except Model BD-700-1A10        32-21-01-107  Discard the Nose Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Shock Strut     (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Retraction Actuator        5[dash]10[dash]90,
+                                                             Bolt, Part No. 1285-0007/  ``Life Limits
+                                                             -0041.                     (Structures),'' as
+                                                                                        applicable.
+All airplanes except Model BD-700-1A10        32-21-01-108  Discard the Nose Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Shock Strut     (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Steering Actuator Bolt,    5[dash]10[dash]90,
+                                                             Part No. 1285-0010.        ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+All airplanes except Model BD-700-1A10        32-21-05-107  Discard the Nose Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Drag Brace      (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Forward Stabilizer Link,   5[dash]10[dash]90,
+                                                             Part No. 22580.            ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+All airplanes except Model BD-700-1A10        32-21-05-108  Discard the Nose Landing   5-10-10, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Drag Brace      (Structures),'' or
+ 700-1A11 (Global 5500) airplanes.                           Aft Stabilizer Link,       5[dash]10[dash]90,
+                                                             Part No. 22585.            ``Life Limits
+                                                                                        (Structures),'' as
+                                                                                        applicable.
+
+[[Page 8918]]
+
+ 
+All airplanes except Model BD-700-1A10        32-32-01-105  Discard the Main Landing   5-10-90, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (MLG) Retraction      (Structures)''.
+ 700-1A11 (Global 5500) airplanes.                           Actuator Assembly, Part
+                                                             No. 21600.
+All airplanes except Model BD-700-1A10        32-32-05-107  Discard the Main Landing   5-10-90, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (MLG) Uplock          (Structures)''.
+ 700-1A11 (Global 5500) airplanes.                           Assembly, Part No. 21900.
+All airplanes except Model BD-700-1A10        32-33-01-105  Discard the Nose Landing   5-10-90, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Retraction      (Structures)''.
+ 700-1A11 (Global 5500) airplanes.                           Actuator Assembly, Part
+                                                             No. 22400-101/-103.
+Model BD-700-1A10 (Global Express and         32-33-01-111  Restoration of the Nose    5-10-20, ``Time Limits--
+ Global Express XRS) airplanes.                              Landing Gear (NLG) Shock-  Supplementary
+                                                             Strut Assembly to          Limitations''.
+                                                             Retraction-Actuator Main-
+                                                             Fitting Joint (Post SB
+                                                             700-32-035 Part C).
+Model BD-700-1A10 (Global 6000)               32-33-01-111  Restoration of the Nose    5-10-20, ``Time Limits--
+ airplanes.                                                  Landing Gear (NLG) Shock-  Supplementary
+                                                             Strut Assembly to          Limitations''.
+                                                             Retraction-Actuator Main-
+                                                             Fitting Joint (A/C 9640
+                                                             and Subs or A/C Post SB
+                                                             700-32-6011 Part C).
+Model BD-700-1A10 (Global 6500)               32-33-01-111  Restoration of the Nose    5-10-20, ``Time Limits--
+ airplanes and Model BD-700-1A11                             Landing Gear (NLG) Shock-  Supplementary
+ (Global 5500) airplanes.                                    Strut Assembly to          Limitations''.
+                                                             Retraction-Actuator Main-
+                                                             Fitting Joint.
+Model BD-700-1A11 (Global 5000)               32-33-01-111  Restoration of the Nose    5-10-20, ``Time Limits--
+ airplanes.                                                  Landing Gear (NLG) Shock-  Supplementary
+                                                             Strut Assembly to          Limitations''.
+                                                             Retraction-Actuator Main-
+                                                             Fitting Joint (Post SB
+                                                             700-1A11-32-022 Part C).
+Model BD-700-1A11 (Global 5000                32-33-01-111  Restoration of the Nose    5-10-20, ``Time Limits--
+ featuring GVFD) airplanes.                                  Landing Gear (NLG) Shock-  Supplementary
+                                                             Strut Assembly to          Limitations''.
+                                                             Retraction-Actuator Main-
+                                                             Fitting Joint (A/C 9639
+                                                             and Subs or A/C Post SB
+                                                             700-32-5011 Part C).
+All airplanes except Model BD-700-1A10        32-33-05-106  Discard the Nose Landing   5-10-90, ``Life Limits
+ (Global 6500) airplanes and Model BD-                       Gear (NLG) Uplock          (Structures)''.
+ 700-1A11 (Global 5500) airplanes.                           Assembly, Part No. 22600-
+                                                             101/-103.
+Model BD-700-1A10 (Global Express and         32-33-01-112  Detailed Inspection of     5-10-20, ``Time Limits--
+ Global Express XRS) airplanes.                              the Nose Landing Gear      Supplementary
+                                                             (NLG) Shock-Strut          Limitations''.
+                                                             Assembly to Retraction-
+                                                             Actuator Main-Fitting
+                                                             Joint (Post SB 700-32-
+                                                             035 Part C).
+Model BD-700-1A10 (Global 6000)               32-33-01-112  Detailed Inspection of     5-10-20, ``Time Limits--
+ airplanes.                                                  the Nose Landing Gear      Supplementary
+                                                             (NLG) Shock-Strut          Limitations''.
+                                                             Assembly to Retraction-
+                                                             Actuator Main-Fitting
+                                                             Joint (A/C 9640 and Subs
+                                                             or A/C Post SB 700-32-
+                                                             6011 Part C).
+Model BD-700-1A10 (Global 6500)               32-33-01-112  Detailed Inspection of     5-10-20, ``Time Limits--
+ airplanes and Model BD-700-1A11                             the Nose Landing Gear      Supplementary
+ (Global 5500) airplanes.                                    (NLG) Shock-Strut          Limitations''.
+                                                             Assembly to Retraction-
+                                                             Actuator Main-Fitting
+                                                             Joint.
+Model BD-700-1A11 (Global 5000)               32-33-01-112  Detailed Inspection of     5-10-20, ``Time Limits--
+ airplanes.                                                  the Nose Landing Gear      Supplementary
+                                                             (NLG) Shock-Strut          Limitations''.
+                                                             Assembly to Retraction-
+                                                             Actuator Main-Fitting
+                                                             Joint (Post SB 700-1A11-
+                                                             32-022 Part C).
+Model BD-700-1A11 (Global 5000                32-33-01-112  Detailed Inspection of     5-10-20, ``Time Limits--
+ featuring GVFD) airplanes.                                  the Nose Landing Gear      Supplementary
+                                                             (NLG) Shock-Strut          Limitations''.
+                                                             Assembly to Retraction-
+                                                             Actuator Main-Fitting
+                                                             Joint (A/C 9639 and Subs
+                                                             or A/C Post SB 700-32-
+                                                             5011 Part C).
+Model BD-700-1A10 (Global Express,            53-20-00-122  Detailed Inspection of     5-10-30, ``Airworthiness
+ Global Express XRS, Global 6000, and                        the Machined Fittings      Limitation Items''.
+ Global 6500) airplanes.                                     and Skin Around the
+                                                             Service Door, FS295.00
+                                                             to FS310.00 and STR22R
+                                                             to STR24R.
+All Model BD-700-1A11 (Global 5000,           53-20-00-122  Detailed Inspection of     5-10-30, ``Airworthiness
+ Global 5500, and Global 5000 featuring                      the Machined Fittings      Limitation Items''.
+ GVFD) airplanes.                                            and Skin Around the
+                                                             Service Door,
+                                                             FS295.00+32.00 to
+                                                             FS310.00+32.00 and
+                                                             STR22R to STR24R.
+
+[[Page 8919]]
+
+ 
+Model BD-700-1A10 (Global Express,            53-20-00-140  Detailed Inspection of     5-10-50, ``High Altitude
+ Global Express XRS, Global 6000, and                        the External Skin Around   Special Conditions
+ Global 6500) airplanes.                                     the Service Door Cutout,   (HASC) Limitations''.
+                                                             FS295.00 to FS310.00 and
+                                                             STR22R to STR24R.
+Model BD-700-1A11 (Global 5000, Global        53-20-00-140  Detailed Inspection of     5-10-50, ``High Altitude
+ 5500, and Global 5000 featuring GVFD)                       the External Skin Around   Special Conditions
+ airplanes.                                                  the Service Door Cutout,   (HASC) Limitations''.
+                                                             FS295.00+32.00 to
+                                                             FS310.00+32.00 and
+                                                             STR22R to STR24R.
+----------------------------------------------------------------------------------------------------------------
+
+
+                                Table 2 to Paragraph (g)--Applicable TLMC Manual
+----------------------------------------------------------------------------------------------------------------
+      Airplane model (marketing
+            designation)                       Title              Revision                    Date
+----------------------------------------------------------------------------------------------------------------
+Model BD-700-1A10 (Global Express)..  Bombardier Global                    35  December 19, 2023.
+                                       Express TLMC,
+                                       Publication No. BD-700
+                                       TLMC \1\.
+Model BD-700-1A10 (Global Express     Bombardier Global                    22  December 19, 2023.
+ XRS).                                 Express XRS TLMC,
+                                       Publication No. BD-700
+                                       XRS TLMC \2\.
+Model BD-700-1A10 (Global 6000).....  Bombardier Global 6000               16  December 19, 2023.
+                                       TLMC, Publication No.
+                                       GL 6000 TLMC.
+Model BD-700-1A10 (Global 6500).....  Bombardier Global 6

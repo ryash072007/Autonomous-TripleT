@@ -17,7 +17,7 @@ from parse_sections import parse_document  # noqa: E402
 
 HEAD = {"User-Agent": "Autonomous-SG-2026-track4 (student hackathon project)"}
 TAG = sys.argv[1] if len(sys.argv) > 1 else ""
-SEED, N = 20261031 + (1000 if TAG else 0), 30
+SEED, N = 20261031 + (1000 * (ord(TAG[0]) - 96) if TAG else 0), 30
 URL = ("https://www.federalregister.gov/api/v1/documents.json?conditions[agencies][]=federal-aviation-administration"
        "&conditions[type][]=PRORULE&conditions[term]=%22airworthiness+directives%22"
        "&conditions[publication_date][gte]={a}&conditions[publication_date][lte]={b}&per_page=100&page={p}"

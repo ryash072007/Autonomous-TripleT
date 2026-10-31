@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring borescope inspections and replacement of the HPT inner stationary seal on CFM56-5B, -5C, and -7B engines because of honeycomb separation?"}

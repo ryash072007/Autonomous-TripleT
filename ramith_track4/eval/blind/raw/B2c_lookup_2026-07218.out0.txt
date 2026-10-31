@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring repetitive borescope inspections for corrosion on flight control rigid connecting links on Columbia Helicopters Model 234 and restricted category CH-47D helicopters?"}

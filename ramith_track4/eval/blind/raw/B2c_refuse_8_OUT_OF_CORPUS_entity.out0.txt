@@ -1,0 +1,1 @@
+{"question": "What does the proposed airworthiness directive say about the inspection interval for the wing spar attachment fittings on the Beechcraft King Air 350 turboprop, and what is the compliance deadline?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

@@ -1,0 +1,5 @@
+Below is one FAA proposed AD notice from a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question an engineer might type to find THIS notice by what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. Return JSON: {"question": "..."}
+
+TITLE: Airworthiness Directives; The Boeing Company Airplanes
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) for certain The Boeing Company Model 787-8 airplanes. This proposed AD was prompted by a report that large forward cargo door (LFCD) split frames may have been manufactured with a material that did not conform to type design. This proposed AD would require an inspection of the LFCD split frames for affected batch numbers and applicable on- condition actions. The FAA is proposing this AD to address the unsafe condition on these products.

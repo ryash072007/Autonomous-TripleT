@@ -1,0 +1,1 @@
+{"feasible": false, "question": "", "config": {"make": "Leonardo S.p.A.", "model": "A119 / AW119 MKII", "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "EXTERNAL_DOC_REQUIRED"}

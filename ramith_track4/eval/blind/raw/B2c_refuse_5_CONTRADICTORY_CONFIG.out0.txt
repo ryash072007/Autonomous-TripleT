@@ -1,0 +1,1 @@
+{"question": "What does the proposed airworthiness directive for the Boeing A320-214 require regarding inspection of the wing-to-fuselage attachment fittings, and what is the compliance time?", "config": {"make": "Boeing", "model": "A320-214", "cofa_date": null, "serial": null, "part_numbers": []}}

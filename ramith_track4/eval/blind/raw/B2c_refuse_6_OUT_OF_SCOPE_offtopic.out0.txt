@@ -1,0 +1,1 @@
+{"question": "What are the best months to travel to Iceland if I want to see the northern lights and avoid the biggest tourist crowds?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}
