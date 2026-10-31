@@ -227,7 +227,8 @@ export default function Results({ testIds, onOpen, anchor }: { testIds: Set<numb
   const ev: Record<string, Json> = Object.fromEntries(d.files.map((f) => [f.name, f.content]));
   return (
     <div className="page results">
-      <h2>Results</h2>
+      <div className="label">Collision triage</div>
+      <h2 className="display page-h">RESULTS</h2>
       <p className="dim">Every number is read from a JSON file under artifacts/evidence/; the source path is under each figure.</p>
       <section className="card"><h3>Per-CDM tier: model vs the B0 rule</h3><TaskA ev={ev} /></section>
       <section className="card"><h3>Forecasting the tier at closest approach</h3><TaskB ev={ev} /></section>

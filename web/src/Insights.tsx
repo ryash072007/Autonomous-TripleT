@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { EventLight, api } from "./api";
+import { HarmScatter } from "./Consequence";
 import { F10, Funnel, Obj, Reliability, Spaghetti, Strip, TC, TierFlow, sum } from "./InsightCharts";
 
 const Globe = lazy(() => import("./Globe"));
@@ -15,7 +16,8 @@ export default function Insights({ events, onOpen }: { events: EventLight[]; onO
   const typeRows = ot?.types ? (ot.types as string[]).map((t, i) => ({ object_type: t, counts: ot.counts[i] as number[] })) : [];
   return (
     <div className="page insights">
-      <h2>Insights</h2>
+      <div className="label">Collision triage</div>
+      <h2 className="display page-h">INSIGHTS</h2>
       <p className="dim">Every chart reads JSON written by a script; the source path is under each one.</p>
       <section className="card ins">
         <h3>The fleet, by altitude</h3>
@@ -51,6 +53,7 @@ export default function Insights({ events, onOpen }: { events: EventLight[]; onO
         <Spaghetti d={d} />
         <Reliability d={d} />
         <F10 d={d} />
+        <HarmScatter events={events} onOpen={onOpen} />
       </div>
     </div>
   );

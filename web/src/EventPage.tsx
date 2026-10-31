@@ -1,0 +1,226 @@
+import { Suspense, lazy, useEffect, useState } from "react";
+import {
+  CartesianGrid, ComposedChart, Legend, Line, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis,
+} from "recharts";
+import { AuditRec, Dataset, EventFull, EventLight, api } from "./api";
+import { CollidePanel } from "./Consequence";
+import { CostSlider, Geometry, WhatIf } from "./EventDetail";
+import {
+  ForecastFlag, RecChip, TIER_NAMES, TIER_VAR, Term, TierIcon, flagSentence, fmtMiss, fmtPc, fmtTtca, isThresholdFlag, sigmaUnusable,
+} from "./ui";
+
+const Globe = lazy(() => import("./Globe"));
+const BAND = { crit: "#B0302A", elev: "#C77A12", safe: "#2F7A68" };
+
+const FLAG_TEXT: Record<string, string> = {
+  covariance_fragile: "Collision probability is sensitive to uncertain covariance",
+  out_of_distribution: "Unusual event, unlike the training data",
+  short_history: "Few updates so far",
+  missing_sigma: "Uncertainty data missing",
+  rule_only: "Tiered by rule only",
+  pc_missing: "Collision probability not published",
+  emergency_reportable: "Space-Track emergency flag",
+};
+
+function Seg({ p }: { p: number[] }) {
+  return (
+    <div className="seg-bar" role="img" aria-label={p.map((v, i) => `${TIER_NAMES[i]} ${(v * 100).toFixed(0)}%`).join(", ")}>
+      {p.map((v, i) => (v > 0.004 ? (
+        <span key={i} style={{ width: `${v * 100}%`, background: TIER_VAR[i] }}>{v >= 0.1 ? `${TIER_NAMES[i]} ${(v * 100).toFixed(0)}%` : ""}</span>
+      ) : null))}
+    </div>
+  );
+}
+
+function Trend({ ev }: { ev: EventFull }) {
+  const cdms = ev.cdms;
+  const maxT = Math.max(...cdms.map((c) => c.time_to_tca), 2.5);
+  const risks = cdms.map((c) => c.max_risk_estimate);
+  const rLo = Math.max(-12, Math.min(...risks, -7)) - 0.5, rHi = Math.max(...risks, -3.5) + 0.5;
+  const misses = cdms.map((c) => c.miss_distance);
+  const mLo = Math.max(10, Math.min(...misses, 800) * 0.6), mHi = Math.max(...misses, 6000) * 1.3;
+  return (
+    <ResponsiveContainer width="100%" height={250}>
+      <ComposedChart data={cdms} margin={{ left: 0, right: 0, top: 8, bottom: 0 }}>
+        <ReferenceArea yAxisId="r" y1={-4} y2={rHi} fill={BAND.crit} fillOpacity={0.1} ifOverflow="hidden" />
+        <ReferenceArea yAxisId="r" y1={-6} y2={-4} fill={BAND.elev} fillOpacity={0.12} ifOverflow="hidden" />
+        <ReferenceArea yAxisId="r" y1={rLo} y2={-6} fill={BAND.safe} fillOpacity={0.1} ifOverflow="hidden" />
+        <CartesianGrid stroke="var(--ridge-far)" strokeOpacity={0.4} />
+        <XAxis type="number" dataKey="time_to_tca" reversed domain={[0, maxT]} tickFormatter={(v: number) => `-${v.toFixed(0)}d`} stroke="var(--ink-soft)" fontSize={11} />
+        <YAxis yAxisId="m" scale="log" domain={[mLo, mHi]} allowDataOverflow stroke="#5A3A33" fontSize={11} width={38}
+          ticks={[100, 1000, 5000, 10000, 100000].filter((t) => t > mLo && t < mHi)} tickFormatter={(v: number) => (v >= 1000 ? `${v / 1000}k` : `${v}`)} />
+        <YAxis yAxisId="r" orientation="right" domain={[rLo, rHi]} allowDataOverflow stroke="#5B5F8F" fontSize={11} width={30}
+          ticks={[-12, -10, -8, -6, -4].filter((t) => t > rLo && t < rHi)} />
+        <ReferenceLine yAxisId="m" x={2} stroke="var(--rock)" strokeDasharray="4 3" label={{ value: "T-2 d", fontSize: 10, fill: "var(--rock)", position: "top" }} />
+        <Tooltip formatter={(v: number, n: string) => (n.startsWith("Miss") ? fmtMiss(v) : v.toFixed(2))} labelFormatter={(l: number) => fmtTtca(l)} />
+        <Legend wrapperStyle={{ fontSize: 11 }} />
+        <Line yAxisId="m" dataKey="miss_distance" name="Miss distance (m, left)" stroke="#5A3A33" strokeWidth={2} dot={{ r: 2.5 }} isAnimationActive={false} />
+        <Line yAxisId="r" dataKey="max_risk_estimate" name="Pc (log10, right)" stroke="#5B5F8F" strokeWidth={2} dot={{ r: 2.5 }} isAnimationActive={false} />
+      </ComposedChart>
+    </ResponsiveContainer>
+  );
+}
+
+function DecisionBar({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
+  const [note, setNote] = useState("");
+  const [trail, setTrail] = useState<AuditRec[]>([]);
+  const [ok, setOk] = useState(true);
+  const [err, setErr] = useState("");
+  const [done, setDone] = useState<string | null>(null);
+  const load = () => api.audit(ev.event_id).then((r) => { setTrail(r.records); setOk(r.chain_ok); }).catch(() => {});
+  useEffect(() => { setNote(""); setErr(""); setDone(null); load(); }, [ev.event_id]);
+  const act = async (a: string) => {
+    try { await api.postAudit(ev.event_id, a, note, dataset); setNote(""); setErr(""); setDone(a); load(); }
+    catch { setErr("Could not write the audit record."); }
+  };
+  return (
+    <div className="decision-bar">
+      <div className="decision-in">
+        <span className="label">YOUR DECISION</span>
+        <input type="text" placeholder="Note (optional)" value={note} maxLength={500} onChange={(e) => setNote(e.target.value)} aria-label="Decision note" />
+        <button className="btn primary" onClick={() => act("Accept")}>Accept</button>
+        <button className="btn warn" onClick={() => act("Escalate")}>Escalate</button>
+        <button className="btn" onClick={() => act("Dismiss")}>Dismiss</button>
+        <details className="trail-d">
+          <summary>{trail.length} on record{done ? `, last: ${done}` : ""}</summary>
+          <div className="trail-pop card">
+            {err && <div className="err">{err}</div>}
+            <ol className="trail">
+              {trail.length === 0 && <li className="dim">No actions recorded for this event.</li>}
+              {trail.map((r) => (
+                <li key={r.seq}><b>{r.action}</b> <span className="dim small">{r.ts.replace("T", " ").replace("Z", " UTC")}</span>
+                  {r.note && <span> "{r.note}"</span>}<span className="mono hash" title={`prev ${r.prev_hash}`}>{r.hash.slice(0, 8)}</span></li>
+              ))}
+            </ol>
+            <div className="dim small">Hash chain {ok ? "verified" : "BROKEN"}; each record hashes the one before it.</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  );
+}
+
+export interface PageProps {
+  id: number | null; dataset: Dataset; modelName: string | null; onBack: () => void;
+  highlight?: "rule" | "forecast" | "flags" | "collide" | null;
+  sensNote?: string | null; forecastFlag?: ForecastFlag | null; fleet: EventLight[]; autoSim?: boolean;
+}
+
+export default function EventPage({ id, dataset, modelName, onBack, highlight, sensNote, forecastFlag, fleet, autoSim }: PageProps) {
+  const [ev, setEv] = useState<EventFull | null>(null);
+  const [brief, setBrief] = useState<{ text: string; source: string; fallback_reason: string | null } | null>(null);
+  const [err, setErr] = useState(false);
+  useEffect(() => {
+    if (id == null) return;
+    setErr(false);
+    api.event(id, dataset).then(setEv).catch(() => setErr(true));
+    setBrief(null);
+    fetch(`${(import.meta.env.VITE_API_BASE as string | undefined) ?? ""}/api/events/${id}/brief?dataset=${dataset}`).then((r) => r.json()).then(setBrief).catch(() => {});
+  }, [id, dataset]);
+
+  if (id == null) return <section className="detail"><div className="card empty">Pick an event from the list.</div></section>;
+  if (err) return <section className="detail"><button className="link-btn back" onClick={onBack}>← List</button><div className="card empty">Could not load event {id}.</div></section>;
+  if (!ev || ev.event_id !== id) return <section className="detail"><div className="card empty">Loading...</div></section>;
+
+  const L = ev.latest;
+  const uncertain = ev.abstain || ev.tier_set.length > 1;
+  const sentence = brief ? brief.text.split(/(?<=[a-z0-9)]\.)\s/)[0] : ev.rule;
+  const hl = (k: string) => (highlight === k ? " hl" : "");
+  const flags = [...ev.flags.map((f) => FLAG_TEXT[f] ?? f.replace(/_/g, " "))];
+  if (sigmaUnusable(L.c_sigma_r)) flags.unshift("Uncertainty data unusable");
+  const od = ev.orbit_display;
+
+  return (
+    <section className="detail">
+      <button className="link-btn back" onClick={onBack}>← List</button>
+
+      <div className={"card hero-card" + hl("rule")}>
+        <div className="label">Collision triage</div>
+        <div className="hero-row">
+          <h1 className="display hero-id">EVENT {ev.event_id}</h1>
+          <span className="display hero-tier" style={{ color: TIER_VAR[ev.tier] }}><TierIcon tier={ev.tier} size={34} /> {TIER_NAMES[ev.tier].toUpperCase()}</span>
+          <RecChip rec={ev.recommendation} reason={ev.recommendation_reason} />
+        </div>
+        <p className="hero-sentence">{sentence}</p>
+        <p className="small dim">
+          {ev.names ? `${ev.names.t} × ${ev.names.c} · ` : ""}{ev.c_object_type.toLowerCase()} · {ev.n_cdms} <Term k="CDM">updates</Term> · <Term k="TCA" /> in {L.time_to_tca.toFixed(2)} days
+          {ev.recommendation_reason ? ` · ${ev.recommendation_reason}` : ""}
+        </p>
+      </div>
+
+      <div className="tiles">
+        <div className="card tile">
+          <div className="label">Where</div>
+          {od ? (
+            <Suspense fallback={<div className="empty">Loading globe...</div>}>
+              <Globe kind="event" id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} height={250} />
+            </Suspense>
+          ) : <div className="dim small">pending data: no orbit data in the scored file.</div>}
+          <p className="small dim">Orbit height and tilt from the CDM, display only. The orbit orientation is not in the data, so both orbits are drawn through the conjunction point (pulsing).</p>
+        </div>
+        <div className="card tile">
+          <div className="label">Trend</div>
+          <Trend ev={ev} />
+          <p className="small dim">Miss distance and collision probability across updates. Shading shows the tier bands; the dashed line is 2 days before closest approach.</p>
+        </div>
+        <div className={"card tile" + hl("forecast") + hl("flags")}>
+          <div className="label">How sure</div>
+          {ev.p_tier ? (
+            <>
+              <div className="small dim">Now</div>
+              <Seg p={ev.p_tier} />
+            </>
+          ) : <div className="small dim">{ev.flags.includes("rule_only") ? "Public data lacks the model inputs, so this is tiered by the rule only." : "Rule only: no probabilities."}</div>}
+          <p className="sure-line">
+            {uncertain ? <><b>Not sure</b>: could be {ev.tier_set.map((t) => TIER_NAMES[t]).join(" or ")}. The analyst decides.</> : <><b>Confident</b> in {TIER_NAMES[ev.tier]} now.</>}
+          </p>
+          {ev.p_forecast && ev.forecast_tier_at_tca != null && (
+            <>
+              <div className="small dim">At closest approach <Term k="TCA" /> {isThresholdFlag(ev.forecast_tier_at_tca, ev.p_forecast) && <span className="fc-chip flag-soft">Critical flag</span>}</div>
+              <Seg p={ev.p_forecast} />
+              {isThresholdFlag(ev.forecast_tier_at_tca, ev.p_forecast) && <div className="small">{flagSentence(ev.p_forecast, forecastFlag)}</div>}
+            </>
+          )}
+          <div className="chips-row">
+            {flags.map((f) => <span key={f} className="flag">{f}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <div className={"card" + hl("collide")} id="collide">
+        <CollidePanel ev={ev} fleet={fleet} autoPlay={autoSim} />
+      </div>
+
+      <details className="card drawer">
+        <summary className="label">Specialist detail</summary>
+        <div className="drawer-body">
+          {brief && (
+            <div>
+              <h4 className="label">Full brief</h4>
+              <p className="brief">{brief.text}</p>
+              <span className={"flag " + (brief.source === "llm" ? "ok-flag" : "")}>
+                {brief.source === "llm" ? "Checked against computed facts" : `Template (${brief.fallback_reason ?? "no LLM"})`}
+              </span>
+            </div>
+          )}
+          <div className="telemetry">
+            <h4 className="label">Raw numbers (latest update)</h4>
+            <span><Term k="miss distance" /> {fmtMiss(L.miss_distance)}</span>
+            <span>max_risk_estimate {fmtPc(L.max_risk_estimate)}</span>
+            {L.relative_speed != null && <span>relative speed {(L.relative_speed / 1000).toFixed(1)} km/s</span>}
+            {L.c_sigma_r != null && <span>sigma r {L.c_sigma_r.toFixed(0)} m</span>}
+            {L.t_sigma_r != null && <span>sigma t {L.t_sigma_r.toFixed(1)} m</span>}
+            <span>{fmtTtca(L.time_to_tca)}</span>
+            <span>rule: {ev.rule}</span>
+            <span>source: {modelName ?? "unknown model"}</span>
+          </div>
+          <Geometry ev={ev} />
+          <CostSlider ev={ev} />
+          <WhatIf ev={ev} note={sensNote ?? null} />
+        </div>
+      </details>
+      <div style={{ height: 70 }} />
+      <DecisionBar ev={ev} dataset={dataset} />
+    </section>
+  );
+}

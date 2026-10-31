@@ -121,3 +121,39 @@ labels them "display only".
   a few rise late".
 - Reliability curve (calibration) for P(Critical), and the conformal α vs abstain vs miss curve.
 - Space weather: Critical rate by F10 bucket (only if the evidence shows an effect; otherwise say "no effect seen").
+
+
+## Console v2 (2026-10-31)
+
+The landing look now runs through the whole console, and the console is organised around the analyst's question
+("what should I do, and what happens if I am wrong?").
+
+- **Scenery everywhere.** The golden-hour gradient and the drifting tier lights sit fixed behind every page; the layered
+  ridges and the dish mound sit fixed at the bottom at about 14vh (`web/src/Backdrop.tsx`, reusing `Ridges`). Content is
+  translucent paper cards (about 88% alpha, backdrop blur, soft shadow, 18 px radius, hairline border only).
+- **Type.** Barlow Condensed for page and event headlines ("EVENT 1387" beside the tier word); letter-spaced Manrope
+  small caps for section labels ("COLLISION TRIAGE", "WHERE", "HOW SURE"). Monospace only for raw telemetry in the
+  specialist drawer. The top bar is transparent with a small landing-style wordmark; the replay clock moved to the
+  Next 24 h page.
+- **Queue by action.** Three collapsible sections with big counts: ACT NOW (Act), YOUR CALL (Analyst decides, Wait),
+  CLEARED (Dismiss). Without recommendations (live) it groups by tier. Cards: tier icon and word, id, time to TCA, miss
+  distance, a "debris risk: high" badge for the top 5% by harm rank. Sorted by expected harm when `consequence` exists,
+  else by time to TCA. Search by event id; `j`/`k` still move.
+- **Event page as a story.** (a) hero: huge id, tier, recommendation chip, the brief's first sentence; (b) three tiles:
+  WHERE (globe), TREND (miss distance and Pc on one chart, T-2 d line, tier bands), HOW SURE (segmented probability bars,
+  tier-set line, plain-language flag chips, the forecast-threshold sentence); (c) IF THEY COLLIDE; (d) a sticky decision
+  bar (Accept / Escalate / Dismiss + note, audit trail as an expander); (e) a collapsed SPECIALIST DETAIL drawer
+  (full brief, raw numbers, RTN geometry, cost slider, what-if and sensitivity).
+- **If they collide.** Stat cards read from `consequence` (fragments >= 10 cm, catastrophic, active satellites in the band,
+  30-day exposure, harm rank vs Pc rank). "Simulate collision" plays `consequence.debris_cloud` on the globe: 150 sample
+  fragments (phase, radial, cross-track offsets) interpolated between 0, 1, 6, 24 and 168 h with a log-time scrubber;
+  other test events inside the affected altitude band are faint points that light up after about a day. Labelled as a
+  model with stated assumptions (simplified NASA breakup model, masses from radar size, two-body spread, no drag). The
+  cloud exists only for the top events by harm and the demo events; others show the stats and say so. All field-name
+  mapping lives in `web/src/Consequence.tsx`.
+- **Insights.** Adds a Pc-rank vs harm-rank scatter (log axes) with off-diagonal events in red.
+- **Tour.** Starts by itself the first time the console opens (localStorage key `orbitguard_tour_done`; if storage is
+  blocked it runs once per page load). "Skip tour" ends it for good; "Guided tour" replays it. Steps come from
+  `artifacts/demo.json`; `worst_consequence` adds step 4 ("Low Pc, but if they collide") and auto-plays the simulation.
+  The card sits bottom-left, over the list and clear of the panel it points at. Hash options for screenshots:
+  `#queue&notour`, `&demo=N`, `&e=ID`, `&ds=live`.

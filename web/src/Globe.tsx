@@ -75,7 +75,7 @@ function hash(n: number) {
 }
 
 /** Unit vectors p (conjunction point) and the in-plane orbit ring through p for inclination inc, branch sign. */
-function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) {
+function ringBasis(p: THREE.Vector3, incDeg: number, sign: 1 | -1) {
   const lat = Math.asin(p.y);
   const inc = Math.min(incDeg, 180 - incDeg);
   const cosI = Math.cos((incDeg * Math.PI) / 180);
@@ -88,6 +88,11 @@ function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) 
   void inc;
   const n = u.clone().multiplyScalar(a).add(w.clone().multiplyScalar(b)).normalize();
   const q = new THREE.Vector3().crossVectors(n, p).normalize();
+  return { n, q };
+}
+
+function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) {
+  const { q } = ringBasis(p, incDeg, sign);
   const pts: THREE.Vector3[] = [];
   for (let i = 0; i <= 180; i++) {
     const t = (i / 180) * Math.PI * 2;
@@ -98,6 +103,7 @@ function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) 
 
 type Props =
   | { kind: "event"; id: number; t: Orb; c: Orb; tier: number; height?: number }
+  | { kind: "collide"; id: number; t: Orb; c: Orb; tier: number; cloud: { t_hours: number[]; offsets: (number[] | null)[][]; band: [number, number] | null }; hours: number; fleet: EventLight[]; height?: number }
   | { kind: "fleet"; events: EventLight[]; onPick: (id: number) => void; height?: number };
 
 export function orbAlt(o: { h_apo_km?: number; h_per_km?: number; sma_km: number }) {
@@ -110,7 +116,7 @@ export default function Globe(props: Props) {
   const [fail, setFail] = useState(false);
   const propsRef = useRef(props);
   propsRef.current = props;
-  const key = props.kind === "event" ? `e${props.id}` : `f${props.events.length}`;
+  const key = props.kind === "event" ? `e${props.id}` : props.kind === "collide" ? `c${props.id}` : `f${props.events.length}`;
 
   useEffect(() => {
     const el = host.current;
@@ -128,7 +134,7 @@ export default function Globe(props: Props) {
     renderer.domElement.style.display = "block";
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
-    camera.position.set(0, 0, props.kind === "event" ? 4.4 : 5.8);
+    camera.position.set(0, 0, props.kind === "event" || props.kind === "collide" ? 4.4 : 5.8);
     scene.add(new THREE.AmbientLight(0xffffff, 1.25));
     const sun = new THREE.DirectionalLight(0xffffff, 0.35);
     sun.position.set(-3, 2, 4);
@@ -160,7 +166,10 @@ export default function Globe(props: Props) {
     let fleetIds: number[][] = [];
     const lines: THREE.Object3D[] = [];
 
-    if (props.kind === "event") {
+    let frag: { geo: THREE.BufferGeometry; pos: Float32Array; p: THREE.Vector3; b: { n: THREE.Vector3; q: THREE.Vector3 }; r: number; n: number; times: number[]; off: (number[] | null)[][] } | null = null;
+    let satPts: { geo: THREE.BufferGeometry; col: Float32Array; exposed: boolean[] } | null = null;
+
+    if (props.kind === "event" || props.kind === "collide") {
       earth.rotation.y = hash(props.id) * Math.PI * 2;
       const incT = props.t.inc_deg, incC = props.c.inc_deg;
       const lat = (0.35 * Math.min(Math.min(incT, 180 - incT), Math.min(incC, 180 - incC)) * Math.PI) / 180;
@@ -189,6 +198,44 @@ export default function Globe(props: Props) {
       root.add(pulseRing);
       disposables.push(sg, sm, rg, rm);
       root.rotation.x = 0.25;
+
+      if (props.kind === "collide") {
+        const cl = props.cloud;
+        const N = cl.offsets[0]?.length ?? 0;
+        const bT = ringBasis(p, props.t.inc_deg, 1);
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array(N * 3);
+        geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        const fm = new THREE.PointsMaterial({ color: 0xb0302a, size: 3.2, sizeAttenuation: false, map: tex, alphaTest: 0.4, transparent: true, opacity: 0.9 });
+        const fp = new THREE.Points(geo, fm);
+        fp.frustumCulled = false;
+        root.add(fp);
+        disposables.push(geo, fm);
+        frag = { geo, pos, p, b: bT, r: radius((orbAlt(props.t) + orbAlt(props.c)) / 2), n: N, times: cl.t_hours, off: cl.offsets };
+
+        // satellites in the affected altitude band (other test events), faint; exposed ones light up after ~a day
+        const alt0 = (orbAlt(props.t) + orbAlt(props.c)) / 2;
+        const lo = cl.band ? cl.band[0] : alt0 - 150, hi = cl.band ? cl.band[1] : alt0 + 150;
+        const sats = props.fleet.filter((e) => e.orbit_display && orbAlt(e.orbit_display.t) >= lo && orbAlt(e.orbit_display.t) <= hi && e.event_id !== props.id).slice(0, 300);
+        const sp = new Float32Array(sats.length * 3), sc = new Float32Array(sats.length * 3);
+        const exposed: boolean[] = [];
+        const incT = Math.min(props.t.inc_deg, 180 - props.t.inc_deg);
+        sats.forEach((e, i) => {
+          const od = e.orbit_display!;
+          const inc = Math.min(od.t.inc_deg, 180 - od.t.inc_deg);
+          const lat2 = Math.sin(hash(e.event_id + 11) * Math.PI * 2) * inc * (Math.PI / 180), lon2 = hash(e.event_id) * Math.PI * 2;
+          const rr = radius(orbAlt(od.t));
+          sp.set([rr * Math.cos(lat2) * Math.sin(lon2), rr * Math.sin(lat2), rr * Math.cos(lat2) * Math.cos(lon2)], i * 3);
+          exposed.push(Math.abs(inc - incT) < 20);
+        });
+        const sg2 = new THREE.BufferGeometry();
+        sg2.setAttribute("position", new THREE.BufferAttribute(sp, 3));
+        sg2.setAttribute("color", new THREE.BufferAttribute(sc, 3));
+        const sm2 = new THREE.PointsMaterial({ vertexColors: true, size: 4, sizeAttenuation: false, map: tex, alphaTest: 0.3, transparent: true });
+        root.add(new THREE.Points(sg2, sm2));
+        disposables.push(sg2, sm2);
+        satPts = { geo: sg2, col: sc, exposed };
+      }
     } else {
       root.rotation.x = 0.3;
       const groups: { pos: number[]; ids: number[]; color: THREE.Color; size: number }[] = [
@@ -278,6 +325,32 @@ export default function Globe(props: Props) {
       raf = requestAnimationFrame(loop);
       const t = (performance.now() - t0) / 1000;
       if (!reduce && !dragging) root.rotation.y += 0.0016;
+      if (frag && props.kind === "collide") {
+        const hrs = (propsRef.current as { hours: number }).hours;
+        const f = frag;
+        const T = f.times;
+        let k = 0;
+        while (k < T.length - 2 && hrs > T[k + 1]) k++;
+        const w = Math.max(0, Math.min(1, (hrs - T[k]) / (T[k + 1] - T[k])));
+        for (let i = 0; i < f.n; i++) {
+          const o0 = f.off[k][i], o1 = f.off[k + 1][i];
+          const o = o1 && o0 ? [o0[0] + (o1[0] - o0[0]) * w, o0[1] + (o1[1] - o0[1]) * w, o0[2] + (o1[2] - o0[2]) * w] : o1 ?? o0;
+          if (!o) { f.pos[i * 3] = f.pos[i * 3 + 1] = f.pos[i * 3 + 2] = 1e4; continue; }
+          const ca = Math.cos(o[0]), sa = Math.sin(o[0]);
+          const rr = f.r + (o[1] * EXAG) / RE, cross = (o[2] * EXAG) / RE;
+          f.pos[i * 3] = f.p.x * ca * rr + f.b.q.x * sa * rr + f.b.n.x * cross;
+          f.pos[i * 3 + 1] = f.p.y * ca * rr + f.b.q.y * sa * rr + f.b.n.y * cross;
+          f.pos[i * 3 + 2] = f.p.z * ca * rr + f.b.q.z * sa * rr + f.b.n.z * cross;
+        }
+        (f.geo.attributes.position as THREE.BufferAttribute).needsUpdate = true;
+        if (satPts) {
+          const lit = hrs >= 20;
+          satPts.exposed.forEach((ex, i) => {
+            satPts!.col.set(ex && lit ? [0.78, 0.48, 0.07] : [0.75, 0.55, 0.47], i * 3);
+          });
+          (satPts.geo.attributes.color as THREE.BufferAttribute).needsUpdate = true;
+        }
+      }
       if (pulse && pulseRing) {
         const k = reduce ? 1 : 1 + 0.35 * Math.sin(t * 3);
         pulse.scale.setScalar(k);

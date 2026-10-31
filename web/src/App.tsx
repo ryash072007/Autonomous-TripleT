@@ -2,15 +2,22 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Dataset, DemoResp, EventLight, Summary, WindowResp, api } from "./api";
 import Landing from "./Landing";
 import Queue from "./Queue";
-import EventDetail from "./EventDetail";
-import { DemoBar, Next24, demoHighlight } from "./Panels";
+import EventPage from "./EventPage";
+import Backdrop from "./Backdrop";
+import { Clock, DemoBar, Next24, demoHighlight } from "./Panels";
 import Results from "./Results";
 import Insights from "./Insights";
-import { RidgeStrip } from "./Scene";
-import { TIER_NAMES, TierIcon, fmtClock } from "./ui";
+import { fmtClock } from "./ui";
 
 type View = "landing" | "queue" | "next24" | "insights" | "evidence";
-const SPEEDS = [0.1, 0.25, 0.5, 1];
+const TOUR_KEY = "orbitguard_tour_done";
+
+function tourDone(): boolean {
+  try { return window.localStorage.getItem(TOUR_KEY) === "1"; } catch { return false; }
+}
+function markTourDone() {
+  try { window.localStorage.setItem(TOUR_KEY, "1"); } catch { /* storage blocked: tour then shows once per page load */ }
+}
 
 export default function App() {
   const [view, setView] = useState<View>(() => {
@@ -25,10 +32,9 @@ export default function App() {
   const [apiErr, setApiErr] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const [mobileDetail, setMobileDetail] = useState(false);
-  const [tierFilter, setTierFilter] = useState<number | null>(null);
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
 
-  // Replay clock: elapsed days; an event's remaining time is latest.time_to_tca - elapsed.
+  // Replay clock (on the Next 24 h page): elapsed days; an event's remaining time is latest.time_to_tca - elapsed.
   const [elapsed, setElapsed] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(0.25);
@@ -37,9 +43,9 @@ export default function App() {
   const [demo, setDemo] = useState<DemoResp | null>(null);
   const [demoStep, setDemoStep] = useState(0);
   const [anchor, setAnchor] = useState<string | null>(null);
-
   const [sky, setSky] = useState<EventLight[]>([]);
   const [fullFor, setFullFor] = useState<Dataset | null>(null);
+  const tourTried = useRef(false);
 
   // First paint needs only the summary and a small sky sample, not the full event list.
   useEffect(() => {
@@ -87,7 +93,7 @@ export default function App() {
 
   const lastFetch = useRef(0);
   useEffect(() => {
-    if (!summary || view === "landing") return;
+    if (!summary || view !== "next24") return;
     const wait = Math.max(0, 250 - (Date.now() - lastFetch.current));
     const t = setTimeout(() => {
       lastFetch.current = Date.now();
@@ -96,10 +102,9 @@ export default function App() {
     return () => clearTimeout(t);
   }, [elapsed, dataset, summary, view]);
 
-  const clockLabel = fmtClock(clockMax - elapsed);
+  const clock: Clock = { elapsed, setElapsed, playing, setPlaying, speed, setSpeed, min: clockMin, max: clockMax, label: fmtClock(clockMax - elapsed) };
 
   const open = useCallback((id?: number) => {
-    setTierFilter(null);
     setTypeFilter(null);
     if (id != null) {
       setSelected(id);
@@ -108,25 +113,37 @@ export default function App() {
     setView("queue");
   }, []);
 
-  const shown = useMemo(
-    () => events.filter((e) => (tierFilter == null || e.tier === tierFilter) && (typeFilter == null || e.c_object_type === typeFilter)),
-    [events, tierFilter, typeFilter],
-  );
+  const shown = useMemo(() => events.filter((e) => typeFilter == null || e.c_object_type === typeFilter), [events, typeFilter]);
 
-  const startDemo = async () => {
+  const startTour = useCallback(async () => {
     try {
       const d = await api.demo();
       if (!d.items.length) return;
       setDemo(d);
       setDemoStep(0);
-      open(d.items[0].event_id);
+      setView("queue");
+      setMobileDetail(true);
     } catch {
-      /* demo unavailable */
+      /* tour unavailable */
     }
-  };
+  }, []);
+  const endTour = () => { setDemo(null); markTourDone(); };
+
+  // The tour starts by itself the first time the console opens, unless it was finished or skipped before.
   useEffect(() => {
-    if (demo && demo.items[demoStep]) open(demo.items[demoStep].event_id);
-  }, [demoStep]);
+    if (view === "landing" || tourTried.current) return;
+    tourTried.current = true;
+    if (window.location.hash.includes("notour") || window.location.hash.includes("demo=") || tourDone()) return;
+    startTour();
+  }, [view, startTour]);
+
+  useEffect(() => {
+    if (demo && demo.items[demoStep]) {
+      setSelected(demo.items[demoStep].event_id);
+      setMobileDetail(true);
+      setView("queue");
+    }
+  }, [demoStep, demo]);
 
   useEffect(() => {
     const m = /demo=(\d)/.exec(window.location.hash);
@@ -142,44 +159,26 @@ export default function App() {
       </div>
     );
 
-  if (view === "landing")
-    return (
-      <Landing summary={summary} events={sky} clockDays={elapsed} windowCount={win?.n ?? 0} onOpen={open} />
-    );
+  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={elapsed} windowCount={0} onOpen={open} />;
 
+  const key = demo?.items[demoStep]?.key;
   return (
     <div className="console">
+      <div className="sky-fixed" />
+      <Backdrop sky={sky} />
       <header className="topbar">
-        <button className="wordmark" onClick={() => setView("landing")} aria-label="Back to landing">
-          ORBITGUARD
-        </button>
+        <button className="wordmark" onClick={() => setView("landing")} aria-label="Back to landing">ORBITGUARD</button>
+        <nav className="tabs">
+          {([["queue", "Events"], ["next24", "Next 24 h"], ["insights", "Insights"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
+            <button key={v} className={view === v ? "on" : ""} onClick={() => setView(v)}>{l}</button>
+          ))}
+        </nav>
+        <span style={{ flex: 1 }} />
         <div className="seg" role="group" aria-label="Data source">
           <button className={dataset === "test" ? "on" : ""} onClick={() => setDataset("test")}>Test dataset</button>
           <button className={dataset === "live" ? "on" : ""} onClick={() => setDataset("live")}>Live</button>
         </div>
-        <nav className="tabs">
-          {([["queue", "Queue"], ["next24", "Next 24 h"], ["insights", "Insights"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
-            <button key={v} className={view === v ? "on" : ""} onClick={() => setView(v)}>{l}</button>
-          ))}
-        </nav>
-        <div className="clock mono" title="Replay clock: events enter the 24 h window as it advances">
-          <button className="icon-btn" onClick={() => setPlaying((p) => !p)} aria-label={playing ? "Pause replay" : "Play replay"}>
-            {playing ? "❚❚" : "▶"}
-          </button>
-          <input type="range" min={clockMin} max={clockMax} step={0.01} value={Math.min(Math.max(elapsed, clockMin), clockMax)}
-            onChange={(e) => setElapsed(+e.target.value)} aria-label="Replay clock" />
-          <span>{clockLabel}</span>
-          <select value={speed} onChange={(e) => setSpeed(+e.target.value)} aria-label="Replay speed">
-            {SPEEDS.map((s) => <option key={s} value={s}>{s} d/s</option>)}
-          </select>
-          <span className="win-count" title="Events inside the 24 h window">{win?.n ?? 0} in 24 h</span>
-        </div>
-        <div className="counts mono">
-          {[2, 1, 0].map((t) => (
-            <span key={t}><TierIcon tier={t} size={12} /> {summary?.counts[TIER_NAMES[t]] ?? 0}</span>
-          ))}
-        </div>
-        <button className="btn primary" onClick={startDemo}>Guided demo</button>
+        <button className="btn" onClick={startTour}>Guided tour</button>
       </header>
 
       {dataset === "live" && (
@@ -189,27 +188,21 @@ export default function App() {
           {events.length === 0 && message ? ` · ${message}` : ""}
         </div>
       )}
-      {dataset === "test" && summary && summary.model && (
-        <div className="banner soft mono">
-          Model: {summary.model.name} ({summary.model.version}) · scored {summary.generated_utc ?? "n/a"}
-          {!summary.has_model_probs && " · rule only: no tier probabilities or forecast yet"}
-        </div>
-      )}
 
       <main className={"main" + (mobileDetail ? " show-detail" : "")}>
         {view === "queue" && (
           <>
             <Queue events={shown} message={message} loading={loading} selected={selected}
               onSelect={(id) => { setSelected(id); setMobileDetail(true); }}
-              tierFilter={tierFilter} setTierFilter={setTierFilter} typeFilter={typeFilter} setTypeFilter={setTypeFilter}
-              types={summary?.object_types ?? []} forecastFlag={summary?.forecast_flag} counts={summary?.counts ?? {}} />
-            <EventDetail id={dataset === "live" && events.length === 0 ? null : selected} dataset={dataset}
-              modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} forecastFlag={summary?.forecast_flag} highlight={demo ? demoHighlight(demo.items[demoStep]?.key) : null} onBack={() => setMobileDetail(false)} />
+              typeFilter={typeFilter} setTypeFilter={setTypeFilter}
+              types={summary?.object_types ?? []} forecastFlag={summary?.forecast_flag} />
+            <EventPage id={dataset === "live" && events.length === 0 ? null : selected} dataset={dataset}
+              modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} forecastFlag={summary?.forecast_flag}
+              highlight={demo ? demoHighlight(key) : null} autoSim={key === "worst_consequence"} fleet={events}
+              onBack={() => setMobileDetail(false)} />
           </>
         )}
-        {view === "next24" && (
-          <Next24 win={win} clockLabel={clockLabel} onOpen={(id) => open(id)} />
-        )}
+        {view === "next24" && <Next24 win={win} clock={clock} onOpen={(id) => open(id)} />}
         {view === "insights" && <Insights events={events} onOpen={(id) => open(id)} />}
         {view === "evidence" && (
           <Results anchor={anchor} testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
@@ -217,10 +210,9 @@ export default function App() {
       </main>
 
       {demo && view === "queue" && (
-        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={() => setDemo(null)}
-          onFailures={() => { setDemo(null); setView("evidence"); setAnchor("where-it-fails"); }} />
+        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={endTour}
+          onFailures={() => { endTour(); setView("evidence"); setAnchor("where-it-fails"); }} />
       )}
-      <RidgeStrip />
     </div>
   );
 }

@@ -2,12 +2,30 @@ import { ReactNode, useState } from "react";
 import { DemoResp, EvidenceResp, WindowResp } from "./api";
 import { TierBadge, Term, fmtClock, fmtMiss, fmtPc } from "./ui";
 
-export function Next24({ win, clockLabel, onOpen }: { win: WindowResp | null; clockLabel: string; onOpen: (id: number) => void }) {
+export interface Clock {
+  elapsed: number; setElapsed: (n: number) => void; playing: boolean; setPlaying: (f: (p: boolean) => boolean) => void;
+  speed: number; setSpeed: (n: number) => void; min: number; max: number; label: string;
+}
+const SPEEDS = [0.1, 0.25, 0.5, 1];
+
+export function Next24({ win, clock, onOpen }: { win: WindowResp | null; clock: Clock; onOpen: (id: number) => void }) {
+  const clockLabel = clock.label;
   const [onlyDanger, setOnlyDanger] = useState(true);
   const rows = win ? win.events.filter((e) => !onlyDanger || e.dangerous) : [];
   return (
     <div className="page">
-      <h2>Next 24 h</h2>
+      <div className="label">Collision triage</div>
+      <h2 className="display page-h">NEXT 24 HOURS</h2>
+      <div className="card clock-card">
+        <button className="icon-btn" onClick={() => clock.setPlaying((p) => !p)} aria-label={clock.playing ? "Pause replay" : "Play replay"}>{clock.playing ? "❚❚" : "▶"}</button>
+        <input type="range" min={clock.min} max={clock.max} step={0.01} value={Math.min(Math.max(clock.elapsed, clock.min), clock.max)}
+          onChange={(e) => clock.setElapsed(+e.target.value)} aria-label="Replay clock" />
+        <b className="num">{clockLabel}</b>
+        <select value={clock.speed} onChange={(e) => clock.setSpeed(+e.target.value)} aria-label="Replay speed">
+          {SPEEDS.map((v) => <option key={v} value={v}>{v} d/s</option>)}
+        </select>
+        <span className="small dim">Replay clock: events enter the window as it advances.</span>
+      </div>
       <p className="dim">
         Events whose <Term k="TCA" /> falls within 24 h of the replay clock ({clockLabel}). Dangerous means Critical or inside
         1 km. Press play in the top bar to advance the clock.
@@ -94,14 +112,17 @@ const DEMO_TITLES: Record<string, string> = {
   clear_critical: "A clear Critical",
   caught_early: "Caught early",
   model_wrong: "Where the tool is least reliable",
+  worst_consequence: "Low Pc, but if they collide...",
 };
 const DEMO_LOOK: Record<string, string> = {
-  clear_critical: "Look at: the rule that fired, highlighted in the header.",
-  caught_early: "Look at: the forecast bars. The latest CDM alone would not have raised this.",
-  model_wrong: "Look at: the flags and the Analyst decides badge.",
+  clear_critical: "Look at: the headline sentence and the rule that fired.",
+  caught_early: "Look at: HOW SURE, the forecast bar. The latest update alone would not have raised this.",
+  model_wrong: "Look at: HOW SURE, the plain-language flags and the Not sure line.",
+  worst_consequence: "Look at: IF THEY COLLIDE. The debris simulation plays by itself.",
 };
-export const demoHighlight = (key?: string): "rule" | "forecast" | "flags" | null =>
-  key === "clear_critical" ? "rule" : key === "caught_early" ? "forecast" : key === "model_wrong" ? "flags" : null;
+export type Hl = "rule" | "forecast" | "flags" | "collide" | null;
+export const demoHighlight = (key?: string): Hl =>
+  key === "clear_critical" ? "rule" : key === "caught_early" ? "forecast" : key === "model_wrong" ? "flags" : key === "worst_consequence" ? "collide" : null;
 
 export function DemoBar({ step, setStep, demo, onExit, onFailures }: {
   step: number; setStep: (n: number) => void; demo: DemoResp | null; onExit: () => void; onFailures: () => void;
@@ -111,21 +132,20 @@ export function DemoBar({ step, setStep, demo, onExit, onFailures }: {
   if (!it) return null;
   const last = step + 1 >= demo.items.length;
   return (
-    <div className="demo-bar card" role="region" aria-label="Guided demo">
-      <div className="mono small dim">
-        Step {step + 1}/{demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}
-      </div>
-      <b>{DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ")}</b>: event #{it.event_id}
+    <div className="demo-bar card" role="region" aria-label="Guided tour">
+      <div className="label">Guided tour · step {step + 1} of {demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}</div>
+      <div className="display demo-title">{DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ")}</div>
+      <div className="small">Event #{it.event_id}</div>
       <div className="small demo-reason">{it.reason}</div>
       <div className="small dim">{DEMO_LOOK[it.key]}</div>
       {it.key === "model_wrong" && (
         <div className="small">
-          <b>This is the pattern the model fails on</b>: very large uncertainty or very few CDMs.{" "}
+          <b>This is the pattern the model fails on</b>: very large uncertainty or very few updates.{" "}
           <button className="link-btn" onClick={onFailures}>See Results: where it fails</button>
         </div>
       )}
       <div className="demo-actions">
-        <button className="link-btn" onClick={onExit}>Exit</button>
+        <button className="link-btn" onClick={onExit}>Skip tour</button>
         <span style={{ flex: 1 }} />
         <button className="btn" disabled={step === 0} onClick={() => setStep(step - 1)}>Back</button>
         <button className="btn primary" onClick={() => (last ? onExit() : setStep(step + 1))}>{last ? "Done" : "Next"}</button>

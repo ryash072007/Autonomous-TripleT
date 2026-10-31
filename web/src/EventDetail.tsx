@@ -9,7 +9,7 @@ import {
 
 const Globe = lazy(() => import("./Globe"));
 
-function EventGlobe({ ev }: { ev: EventFull }) {
+export function EventGlobe({ ev }: { ev: EventFull }) {
   const od = ev.orbit_display;
   return (
     <div>
@@ -27,7 +27,7 @@ function EventGlobe({ ev }: { ev: EventFull }) {
   );
 }
 
-function CostSlider({ ev }: { ev: EventFull }) {
+export function CostSlider({ ev }: { ev: EventFull }) {
   const [dec, setDec] = useState<{ ratios: number[]; default_ratio: number; rules: string } | null>(null);
   const [ratio, setRatio] = useState(100);
   useEffect(() => {
@@ -155,7 +155,7 @@ function Proj({ cdms, ax, ay, lx, ly }: { cdms: Cdm[]; ax: keyof Cdm; ay: keyof 
   );
 }
 
-function Geometry({ ev }: { ev: EventFull }) {
+export function Geometry({ ev }: { ev: EventFull }) {
   if (ev.latest.relative_position_t == null) return <div><h4>Encounter geometry</h4><div className="dim small">Not available: public CDMs do not publish the relative position.</div></div>;
   return (
     <div>
@@ -177,7 +177,7 @@ function Geometry({ ev }: { ev: EventFull }) {
   );
 }
 
-function WhatIf({ ev, note }: { ev: EventFull; note: string | null }) {
+export function WhatIf({ ev, note }: { ev: EventFull; note: string | null }) {
   const [miss, setMiss] = useState(ev.latest.miss_distance);
   const [risk, setRisk] = useState(ev.latest.max_risk_estimate);
   const [res, setRes] = useState<ScoreResp | null>(null);
@@ -302,7 +302,7 @@ function Brief({ id, dataset }: { id: number; dataset: Dataset }) {
   );
 }
 
-function Bars({ title, p }: { title: string; p: number[] }) {
+export function Bars({ title, p }: { title: string; p: number[] }) {
   return (
     <div className="bars">
       <div className="dim small">{title}</div>

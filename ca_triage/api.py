@@ -57,7 +57,11 @@ def _load(dataset: str) -> dict:
 
 
 def _light(e: dict) -> dict:
-    return {k: v for k, v in e.items() if k != "cdms"}
+    out = {k: v for k, v in e.items() if k not in ("cdms", "debris_cloud")}
+    c = out.get("consequence")
+    if c and c.get("debris_cloud") is not None:
+        out["consequence"] = {**{k: v for k, v in c.items() if k != "debris_cloud"}, "has_cloud": True}
+    return out
 
 
 def _sort_key(e: dict):
