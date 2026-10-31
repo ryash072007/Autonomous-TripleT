@@ -165,6 +165,8 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
     cfg = {**p["cfg"], **ui}
     if not cfg.get("model"):
         cfg["model"] = next((m for m in p["model_candidates"] if C.model_known(m)), None)
+    if not cfg.get("model") and p["intent"] == "applicability" and p["model_candidates"]:
+        cfg["model"] = p["model_candidates"][0]     # a model the corpus has never seen is still the user's model (-> not listed)
     p["cfg"] = {k_: v for k_, v in cfg.items() if v}
     flags = p["flags"]
 
@@ -200,6 +202,9 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
         if p["intent"] == "applicability" and not (cfg.get("make") or cfg.get("model")):
             return refusal("AMBIGUOUS_QUERY", "To check applicability the tool needs the aircraft make and model.",
                            "Give the make, model and (if relevant) certificate date, serial and part numbers.", p, t0)
+        if not (cfg.get("make") or cfg.get("model") or p["model_candidates"] or rare_query_tokens(C, query)):
+            return refusal("AMBIGUOUS_QUERY", "The question does not name an aircraft, engine, docket, AD or distinctive condition to search for.",
+                           "Give a make and model, a docket / AD number, or describe the unsafe condition.", p, t0)
         unk = unknown_entities(C, query)
         if unk and not cfg.get("model"):
             return refusal("OUT_OF_CORPUS", f"Nothing in the corpus mentions: {', '.join(unk)}.",

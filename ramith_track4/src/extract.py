@@ -73,7 +73,7 @@ def model_in_text(model: str, text: str) -> bool:
     toks = str(model).split()
     for i in range(1, len(toks)):
         tail = norm_model(" ".join(toks[i:]))
-        if re.search(r"\d", tail) and len(tail) >= 4:
+        if re.search(r"\d", tail) and len(tail) >= 3:
             cands.append(tail)
     for c in cands:
         if c in exp:
@@ -145,9 +145,8 @@ def extract_applicability(rec: dict) -> dict:
     for m in ASID_RE.finditer(raw):
         out["external_refs"].append({"name": re.sub(r"\s+", " ", m.group(1)).strip(), "span": list(_span(cs, m)), "quote": m.group(0)})
     scrub = re.sub(r"(?:all|any)\s+(?:manufacturer\s+)?serial\s+numbers|model\s+and\s+serial\s+number", "", raw, flags=re.I)
-    for m in SERIAL_RANGE_RE.finditer(raw):
-        out["serial_ranges"].append({"lo": m.group(1), "hi": m.group(2), "span": list(_span(cs, m))})
-    if not out["serial_ranges"]:
+    serial_clauses = []        # (start, end) in raw, blanked out of the residual-condition scan so "having serial number ..." is not a config clause
+    if True:
         # Blind-set finding: lists like "serial numbers (S/Ns) 1002, 1004 through 1234 inclusive, 3001 through 3012 inclusive, and 3016"
         for m in SERIAL_LIST_RE.finditer(raw):
             items = [i.strip() for i in re.split(r",\s*(?:and\s+)?|\s+and\s+", m.group(1)) if i.strip()]
@@ -164,6 +163,12 @@ def extract_applicability(rec: dict) -> dict:
                     break
             for lo, hi in parsed:
                 out["serial_ranges"].append({"lo": lo, "hi": hi, "span": list(_span(cs, m, 1))})
+            if parsed:
+                serial_clauses.append((m.start(), m.end(1)))
+    if not out["serial_ranges"]:
+        for m in SERIAL_RANGE_RE.finditer(raw):
+            out["serial_ranges"].append({"lo": m.group(1), "hi": m.group(2), "span": list(_span(cs, m))})
+            serial_clauses.append((m.start(), m.end()))
     # Restraint (audit: serial extraction 3/4 correct): anything beyond a clean range is "unparsed" -> CANNOT_DETERMINE.
     n_serial_mentions = len(re.findall(r"serial\s+numbers?|\bS/N\b|\bMSN\b|\bESN\b", scrub, re.I))
     out["serial_unparsed"] = n_serial_mentions > len(out["serial_ranges"])
@@ -178,6 +183,10 @@ def extract_applicability(rec: dict) -> dict:
     for x in out["exclusions"] + out["external_refs"]:
         a_, b_ = x["span"]
         resid = resid[: a_ - cs] + " " * (b_ - a_) + resid[b_ - cs:]
+    for a_, b_ in serial_clauses:       # a parsed serial clause (and its "having"/"with" lead-in) is handled by the serial rules
+        lead = re.search(r"\b(?:having|with)\s+(?:the\s+)?$", raw[:a_], re.I)
+        a2 = a_ - (len(lead.group(0)) if lead else 0)
+        resid = resid[:a2] + " " * (b_ - a2) + resid[b_:]
     resid = re.sub(r"certifi(?:cated|ed)\s+in\s+any\s+category|with\s+an?\s+(?=original)|model\s+and\s+serial\s+number", lambda m_: " " * len(m_.group(0)), resid, flags=re.I)
     out["other_conditions"] = []
     if not any(g["pn_required"] for g in out["groups"]):

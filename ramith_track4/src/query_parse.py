@@ -16,6 +16,8 @@ LONG_DATE_RE = re.compile(rf"\b({MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})\b", re.I)
 SERIAL_RE = re.compile(r"\b(?:serial(?:\s+number)?|s/n|msn)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9-]{1,})", re.I)
 PN_RE = re.compile(r"\b(?:part\s+number|p/n)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9./-]{3,})", re.I)
 MODEL_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])((?:[A-Z][A-Za-z]{2,9}\s)?(?:[A-Za-z]{1,4}[-. ]?){0,2}\d{1,4}[A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*(?:\s[A-Z]-\d{1,2})?)(?![A-Za-z0-9])")
+GENERIC_LEAD = {"model", "models", "type", "series", "variant", "version", "the", "a", "an", "my", "our", "its"}
+FAMILY_RE = re.compile(r"\b([A-Z]{1,4}[- ]?\d{2,4}[A-Z]?)\s+([A-Z][a-z]{2,9})\s+(\d{1,4}[A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*)")
 YEAR_CTX_RE = re.compile(
     r"(?:\b(?:from|in|before|since|dated|issued|during|circa|of|year|early|late|mid|until|prior\s+to)\s+|"
     r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+(?:\d{1,2},?\s+)?)((?:19|20)\d{2})\b", re.I)
@@ -80,16 +82,20 @@ def parse_query(q: str, known_makes=None) -> dict:
         cfg["part_numbers"] = pns
     # certificate date: ISO or "Month d, yyyy"
     dates = []
-    for y, mo, d in ISO_DATE_RE.findall(q):
+    # Blind-set finding: a date after "on or before / before / after ..." is the AD's cutoff being described, not the user's certificate date
+    q_dates = re.sub(rf"(?:on or before|before|on or after|after|prior to|until|no later than)\s+(?:(?:{MONTHS})\s+\d{{1,2}},?\s+\d{{4}}|\d{{4}}-\d{{2}}-\d{{2}})",
+                     " ", q, flags=re.I)
+    for y, mo, d in ISO_DATE_RE.findall(q_dates):
         dates.append(_iso(y, mo, d))
-    for mo, d, y in LONG_DATE_RE.findall(q):
+    for mo, d, y in LONG_DATE_RE.findall(q_dates):
         dates.append(_iso(y, datetime.strptime(mo[:3], "%b").month, d))
     dates = [d for d in dates if d]
     # an "AD number" like 2025-13-11 looks like an ISO date; only treat as a certificate date if near certificate wording
     cert_ctx = re.search(r"certificate|cofa|c of a|issued|dated|delivered|manufactured", q, re.I)
     ad_like = set(out["ad_numbers"])
     dates = [d for d in dates if d not in ad_like or cert_ctx]
-    if dates and cert_ctx:
+    negated = re.search(r"(?:don't|do not|doesn't|dont|not sure|unsure|unknown|can't|cannot|no idea|haven't|have not|without)[^.?]{0,90}(?:certificate|cofa|c of a|date)", q, re.I)
+    if dates and cert_ctx and not negated:
         cfg["cofa_date"] = dates[0]
 
     # model candidates: tokens with a digit, minus docket/AD/doc/date/PN/serial tokens and years
@@ -103,7 +109,7 @@ def parse_query(q: str, known_makes=None) -> dict:
         if " " in tok:                                   # drop a leading make word ("Bell 505") or question word ("Which 757")
             first, rest = tok.split(None, 1)
             cand_pos.setdefault(rest, mm.start(1) + len(first) + 1)
-            if first.lower() in QWORDS or first.islower() or any(re.search(pat, first, re.I) for pat, _ in MAKE_RULES):
+            if first.lower() in QWORDS or first.lower() in GENERIC_LEAD or first.islower() or any(re.search(pat, first, re.I) for pat, _ in MAKE_RULES):
                 tok = rest
             else:
                 cands.append(tok)       # unknown leading word: keep both "Vulcanair P.68" and the tail "P.68"; the corpus decides
@@ -114,7 +120,16 @@ def parse_query(q: str, known_makes=None) -> dict:
             continue
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", tok) or re.fullmatch(r"(?:part|ad)\s*\d+", tok, re.I):
             continue
+        if re.fullmatch(rf"(?:{MONTHS})\s+\d{{1,2}}", tok, re.I):     # "February 2" is a date, not a model
+            continue
         cands.append(tok)
+    # family + variant ("RB211 Trent 892-17"): merge, and drop shorter candidates that overlap the merged span
+    for fm in FAMILY_RE.finditer(masked):
+        tok = f"{fm.group(1)} {fm.group(2)} {fm.group(3)}"
+        s0, s1 = fm.start(1), fm.end(3)
+        cands = [c for c in cands if not (c in cand_pos and cand_pos[c] < s1 and cand_pos[c] + len(c) > s0)]
+        cands.append(tok)
+        cand_pos[tok] = s0
     # prefer the model the USER says they fly ("my aircraft is ...", "I operate ...") over a model that merely describes the AD
     def _prio(t):
         pos = cand_pos.get(t, cand_pos.get(t.split(None, 1)[-1], 0))
