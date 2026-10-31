@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -21,12 +22,15 @@ DIST = ROOT / "web" / "dist"
 LIVE_MSG = "Live mode not yet available"
 
 app = FastAPI(title="OrbitGuard API")
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 _cache: dict[str, tuple[float, dict]] = {}
 
 
 def _scored(dataset: str) -> dict | None:
     """Load artifacts/scored/{dataset}_events.json, reloading when the file changes."""
     p = ART / "scored" / f"{dataset}_events.json"
+    if not p.exists() and dataset == "live":
+        p = ART / "live_snapshot.json"  # committed fallback
     if not p.exists():
         return None
     m = p.stat().st_mtime
@@ -81,12 +85,28 @@ def summary(dataset: Literal["test", "live"] = "test"):
         "min_time_to_tca": min(ttc) if ttc else 0,
         "object_types": sorted({e["c_object_type"] for e in ev}),
         "message": d.get("message"),
+        "snapshot": d.get("snapshot"),
+        "sensitivity_note": d.get("sensitivity_note"),
     }
 
 
+def _sky(d: dict) -> list[dict]:
+    """Small sample for the landing: every Critical plus a sparse set of the rest, few fields."""
+    ev = d["events"]
+    rest = [e for e in ev if e["tier"] != 2]
+    step = max(1.0, len(rest) / 60)
+    pick = [e for e in ev if e["tier"] == 2] + [rest[int(i * step)] for i in range(min(60, int(len(rest) / step)))]
+    return [{"event_id": e["event_id"], "tier": e["tier"], "tier_name": e["tier_name"],
+             "c_object_type": e["c_object_type"], "latest": {"miss_distance": e["latest"]["miss_distance"]}}
+            for e in pick]
+
+
 @app.get("/api/events")
-def events(dataset: Literal["test", "live"] = "test", tier: int | None = None, object_type: str | None = None):
+def events(dataset: Literal["test", "live"] = "test", tier: int | None = None, object_type: str | None = None,
+           fields: str | None = None):
     d = _load(dataset)
+    if fields == "sky":
+        return {"dataset": dataset, "message": d.get("message"), "events": _sky(d)}
     out = [e for e in d["events"]
            if (tier is None or e["tier"] == tier) and (object_type is None or e["c_object_type"] == object_type)]
     out.sort(key=_sort_key)

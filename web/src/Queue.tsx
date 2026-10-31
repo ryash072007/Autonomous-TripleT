@@ -86,6 +86,7 @@ export default function Queue(p: Props) {
             <span className="r1">
               <TierBadge tier={e.tier} />
               <span className="mono id">#{e.event_id}</span>
+              {e.names && <span className="names">{e.names.t} × {e.names.c}</span>}
               {(e.abstain || e.tier_set.length > 1) && e.recommendation !== "Analyst decides" && <AbstainBadge />}
               <RecChip rec={e.recommendation} reason={e.recommendation_reason} />
               {sigmaUnusable(e.latest.c_sigma_r) && (

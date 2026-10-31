@@ -121,7 +121,7 @@ function Timeline({ ev }: { ev: EventFull }) {
 
 function Proj({ cdms, ax, ay, lx, ly }: { cdms: Cdm[]; ax: keyof Cdm; ay: keyof Cdm; lx: string; ly: string }) {
   const S = 220, c = S / 2;
-  const pts = cdms.map((m) => ({ x: m[ax] as number, y: m[ay] as number }));
+  const pts = cdms.filter((m) => m[ax] != null && m[ay] != null).map((m) => ({ x: m[ax] as number, y: m[ay] as number }));
   const last = pts[pts.length - 1];
   const range = Math.max(1200, ...pts.flatMap((p) => [Math.abs(p.x), Math.abs(p.y)])) * 1.2;
   const k = c / range;
@@ -156,6 +156,7 @@ function Proj({ cdms, ax, ay, lx, ly }: { cdms: Cdm[]; ax: keyof Cdm; ay: keyof 
 }
 
 function Geometry({ ev }: { ev: EventFull }) {
+  if (ev.latest.relative_position_t == null) return <div><h4>Encounter geometry</h4><div className="dim small">Not available: public CDMs do not publish the relative position.</div></div>;
   return (
     <div>
       <h4>
@@ -176,7 +177,7 @@ function Geometry({ ev }: { ev: EventFull }) {
   );
 }
 
-function WhatIf({ ev }: { ev: EventFull }) {
+function WhatIf({ ev, note }: { ev: EventFull; note: string | null }) {
   const [miss, setMiss] = useState(ev.latest.miss_distance);
   const [risk, setRisk] = useState(ev.latest.max_risk_estimate);
   const [res, setRes] = useState<ScoreResp | null>(null);
@@ -195,6 +196,20 @@ function WhatIf({ ev }: { ev: EventFull }) {
   return (
     <div>
       <h4>What if (re-scored live by the API, rule only for now)</h4>
+      {ev.sensitivity && (ev.sensitivity.down || ev.sensitivity.up) && (
+        <p className="sens">
+          <b>What would change the tier.</b>{" "}
+          {([["down", "drop to", ev.sensitivity.down], ["up", "rise to", ev.sensitivity.up]] as const).map(([k, verb, x]) =>
+            x ? (
+              <button key={k} className="sens-btn" title="Set the sliders to this value"
+                onClick={() => (x.feature === "miss_distance" ? setMiss(x.to) : setRisk(x.to))}>
+                Would {verb} {TIER_NAMES[x.tier]} if {x.feature === "miss_distance" ? `miss distance were ${Math.round(x.to).toLocaleString()} m instead of ${Math.round(x.from).toLocaleString()} m` : `max_risk_estimate were ${fmtPc(x.to)} instead of ${fmtPc(x.from)}`}.
+              </button>
+            ) : null,
+          )}
+          <span className="dim small"> {note ?? "Model sensitivity, not physics or cause."}</span>
+        </p>
+      )}
       <div className="whatif">
         <label>
           <span><Term k="miss distance" />: <b className="mono">{fmtMiss(miss)}</b></span>
@@ -302,8 +317,8 @@ function Bars({ title, p }: { title: string; p: number[] }) {
   );
 }
 
-export default function EventDetail({ id, dataset, modelName, onBack }: {
-  id: number | null; dataset: Dataset; modelName: string | null; onBack: () => void;
+export default function EventDetail({ id, dataset, modelName, onBack, highlight, sensNote }: {
+  sensNote?: string | null; id: number | null; dataset: Dataset; modelName: string | null; onBack: () => void; highlight?: "rule" | "forecast" | "flags" | null;
 }) {
   const [ev, setEv] = useState<EventFull | null>(null);
   const [err, setErr] = useState(false);
@@ -325,28 +340,28 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
     <section className="detail">
       <button className="link-btn back" onClick={onBack}>← Queue</button>
       <div className="card head">
-        <div className="head-top">
+        <div className={"head-top" + (highlight === "flags" ? " hl" : "")}>
           <TierBadge tier={ev.tier} big />
           {uncertain && <AbstainBadge title={`Tier set: ${ev.tier_set.map((t) => TIER_NAMES[t]).join(" / ")}`} />}
           {ev.recommendation && <span className="rec">Recommendation: <RecChip rec={ev.recommendation} reason={ev.recommendation_reason} /></span>}
-          <span className="mono dim">event #{ev.event_id} · {ev.c_object_type.toLowerCase()} · {ev.n_cdms} <Term k="CDM">CDMs</Term></span>
+          <span className="mono dim">{ev.cdm_id ? `CDM ${ev.cdm_id} · ` : ""}{ev.names ? `${ev.names.t} × ${ev.names.c} · ` : ""}event #{ev.event_id} · {ev.c_object_type.toLowerCase()} · {ev.n_cdms} <Term k="CDM">CDMs</Term></span>
         </div>
-        <p className="rule"><span className="dim">Rule that fired:</span> {ev.rule}</p>
+        <p className={"rule" + (highlight === "rule" ? " hl" : "")}><span className="dim">Rule that fired:</span> {ev.rule}</p>
         {ev.recommendation_reason && <p className="small dim">Why {ev.recommendation}: {ev.recommendation_reason}</p>}
-        {ev.flags.length > 0 && <p>{ev.flags.map((f) => <span key={f} className="flag">{f.replace(/_/g, " ")}</span>)}</p>}
+        {ev.flags.length > 0 && <p className={highlight === "flags" ? "hl" : ""}>{ev.flags.map((f) => <span key={f} className="flag">{f.replace(/_/g, " ")}</span>)}</p>}
         <div className="kv mono">
           <span><Term k="TCA" /> {fmtTtca(L.time_to_tca)}</span>
           <span><Term k="miss distance" /> {fmtMiss(L.miss_distance)}</span>
           <span>max_risk_estimate {fmtPc(L.max_risk_estimate)}</span>
-          <span>rel. speed {(L.relative_speed / 1000).toFixed(1)} km/s</span>
-          <span>sigma r <Sigma v={L.c_sigma_r} /> / t {L.t_sigma_r.toFixed(1)} m</span>
+          {L.relative_speed != null && <span>rel. speed {(L.relative_speed / 1000).toFixed(1)} km/s</span>}
+          {L.c_sigma_r != null && <span>sigma r <Sigma v={L.c_sigma_r} /> / t {L.t_sigma_r != null ? L.t_sigma_r.toFixed(1) : "n/a"} m</span>}
         </div>
-        <div className="probs">
+        <div className={"probs" + (highlight === "forecast" ? " hl" : "")}>
           {ev.p_tier ? <Bars title="Tier probabilities now" p={ev.p_tier} />
-            : <div className="dim small">No tier probabilities: this run uses the rule only.</div>}
+            : <div className="dim small">{ev.flags.includes("rule_only") ? "No tier probabilities: public CDMs lack the model inputs, tiered by the rule only." : "No tier probabilities: this run uses the rule only."}</div>}
           {ev.p_forecast && ev.forecast_tier_at_tca != null
             ? <Bars title={`Forecast tier at TCA: ${TIER_NAMES[ev.forecast_tier_at_tca]}`} p={ev.p_forecast} />
-            : <div className="dim small">No forecast of the tier at <Term k="TCA" /> yet.</div>}
+            : <div className="dim small">{ev.flags.includes("rule_only") ? "No forecast: public CDMs lack the model inputs." : <>No forecast of the tier at <Term k="TCA" /> yet.</>}</div>}
         </div>
         <div className="dim small">Source: {modelName ?? "unknown model"}. Output of a tool; the analyst decides.</div>
       </div>
@@ -355,7 +370,7 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
       <div className="card"><Timeline ev={{ ...ev, cdms }} /></div>
       <div className="card"><Geometry ev={ev} /></div>
       <div className="card"><CostSlider ev={ev} /></div>
-      <div className="card"><WhatIf ev={ev} /></div>
+      <div className="card"><WhatIf ev={ev} note={sensNote ?? null} /></div>
       <div className="card"><Actions ev={ev} dataset={dataset} /></div>
     </section>
   );

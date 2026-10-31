@@ -217,9 +217,12 @@ function Drift({ ev }: { ev: Record<string, Json> }) {
   );
 }
 
-export default function Results({ testIds, onOpen }: { testIds: Set<number>; onOpen: (id: number) => void }) {
+export default function Results({ testIds, onOpen, anchor }: { testIds: Set<number>; onOpen: (id: number) => void; anchor?: string | null }) {
   const [d, setD] = useState<EvidenceResp | null>(null);
   useEffect(() => { api.evidence().then(setD).catch(() => setD({ files: [] })); }, []);
+  useEffect(() => {
+    if (d && anchor) setTimeout(() => document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+  }, [d, anchor]);
   if (!d) return <div className="page"><div className="empty">Loading...</div></div>;
   const ev: Record<string, Json> = Object.fromEntries(d.files.map((f) => [f.name, f.content]));
   return (
@@ -228,7 +231,7 @@ export default function Results({ testIds, onOpen }: { testIds: Set<number>; onO
       <p className="dim">Every number is read from a JSON file under artifacts/evidence/; the source path is under each figure.</p>
       <section className="card"><h3>Per-CDM tier: model vs the B0 rule</h3><TaskA ev={ev} /></section>
       <section className="card"><h3>Forecasting the tier at closest approach</h3><TaskB ev={ev} /></section>
-      <section className="card"><h3>Where it fails</h3><Failures ev={ev} testIds={testIds} onOpen={onOpen} /></section>
+      <section className="card" id="where-it-fails"><h3>Where it fails</h3><Failures ev={ev} testIds={testIds} onOpen={onOpen} /></section>
       <section className="card"><h3>Knowing when it does not know (conformal sets)</h3><Conformal ev={ev} /></section>
       <section className="card"><h3>Train vs test drift</h3><Drift ev={ev} /></section>
       <details className="raw">

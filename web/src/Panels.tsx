@@ -95,25 +95,40 @@ const DEMO_TITLES: Record<string, string> = {
   caught_early: "Caught early",
   model_wrong: "Where the tool is least reliable",
 };
+const DEMO_LOOK: Record<string, string> = {
+  clear_critical: "Look at: the rule that fired, highlighted in the header.",
+  caught_early: "Look at: the forecast bars. The latest CDM alone would not have raised this.",
+  model_wrong: "Look at: the flags and the Analyst decides badge.",
+};
+export const demoHighlight = (key?: string): "rule" | "forecast" | "flags" | null =>
+  key === "clear_critical" ? "rule" : key === "caught_early" ? "forecast" : key === "model_wrong" ? "flags" : null;
 
-export function DemoBar({ step, setStep, demo, onExit }: { step: number; setStep: (n: number) => void; demo: DemoResp | null; onExit: () => void }) {
+export function DemoBar({ step, setStep, demo, onExit, onFailures }: {
+  step: number; setStep: (n: number) => void; demo: DemoResp | null; onExit: () => void; onFailures: () => void;
+}) {
   if (!demo) return null;
   const it = demo.items[step];
   if (!it) return null;
+  const last = step + 1 >= demo.items.length;
   return (
     <div className="demo-bar card" role="region" aria-label="Guided demo">
       <div className="mono small dim">
-        Guided demo {step + 1} / {demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}
+        Step {step + 1}/{demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}
       </div>
       <b>{DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ")}</b>: event #{it.event_id}
-      <div className="small">{it.reason}</div>
+      <div className="small demo-reason">{it.reason}</div>
+      <div className="small dim">{DEMO_LOOK[it.key]}</div>
+      {it.key === "model_wrong" && (
+        <div className="small">
+          <b>This is the pattern the model fails on</b>: very large uncertainty or very few CDMs.{" "}
+          <button className="link-btn" onClick={onFailures}>See Results: where it fails</button>
+        </div>
+      )}
       <div className="demo-actions">
         <button className="link-btn" onClick={onExit}>Exit</button>
         <span style={{ flex: 1 }} />
         <button className="btn" disabled={step === 0} onClick={() => setStep(step - 1)}>Back</button>
-        <button className="btn primary" onClick={() => (step + 1 < demo.items.length ? setStep(step + 1) : onExit())}>
-          {step + 1 < demo.items.length ? "Next" : "Done"}
-        </button>
+        <button className="btn primary" onClick={() => (last ? onExit() : setStep(step + 1))}>{last ? "Done" : "Next"}</button>
       </div>
     </div>
   );

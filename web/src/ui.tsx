@@ -65,8 +65,9 @@ export const fmtClock = (days: number) => {
 
 /** Radial sigma at or above 1e6 m is a placeholder, not a usable covariance. */
 export const SIGMA_SENTINEL = 1e6;
-export const sigmaUnusable = (v: number) => v >= SIGMA_SENTINEL;
-export function Sigma({ v }: { v: number }) {
+export const sigmaUnusable = (v: number | null | undefined) => v != null && v >= SIGMA_SENTINEL;
+export function Sigma({ v }: { v: number | null }) {
+  if (v == null) return <>n/a</>;
   if (!sigmaUnusable(v)) return <>{v.toFixed(0)} m</>;
   return (
     <span className="chip-warn" tabIndex={0}

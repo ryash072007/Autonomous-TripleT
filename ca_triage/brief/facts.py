@@ -22,11 +22,12 @@ def build_facts(e: dict) -> dict:
         "miss_distance_m": round(L["miss_distance"]),
         "miss_distance_km": round(L["miss_distance"] / 1000, 2),
         "max_risk_estimate_log10": round(L["max_risk_estimate"], 1),
-        "relative_speed_kms": round(L["relative_speed"] / 1000, 1),
         "abstain": bool(e.get("abstain")) or len(e.get("tier_set") or []) > 1,
         "tier_set": [TIERS[t] for t in e.get("tier_set") or []],
         "flags": list(e.get("flags") or []),
     }
+    if L.get("relative_speed") is not None:
+        f["relative_speed_kms"] = round(L["relative_speed"] / 1000, 1)
     if e.get("p_tier"):
         f["p_tier_pct"] = {TIERS[i]: round(p * 100) for i, p in enumerate(e["p_tier"])}
     if e.get("forecast_tier_at_tca") is not None:

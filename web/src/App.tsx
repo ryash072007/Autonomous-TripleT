@@ -3,7 +3,7 @@ import { Dataset, DemoResp, EventLight, Summary, WindowResp, api } from "./api";
 import Landing from "./Landing";
 import Queue from "./Queue";
 import EventDetail from "./EventDetail";
-import { DemoBar, Next24 } from "./Panels";
+import { DemoBar, Next24, demoHighlight } from "./Panels";
 import Results from "./Results";
 import Insights from "./Insights";
 import { RidgeStrip } from "./Scene";
@@ -17,7 +17,7 @@ export default function App() {
     const h = window.location.hash.slice(1).split("&")[0];
     return h === "queue" || h === "next24" || h === "insights" || h === "evidence" || h === "results" ? (h === "results" ? "evidence" : h) : "landing";
   });
-  const [dataset, setDataset] = useState<Dataset>("test");
+  const [dataset, setDataset] = useState<Dataset>(() => (window.location.hash.includes("ds=live") ? "live" : "test"));
   const [summary, setSummary] = useState<Summary | null>(null);
   const [events, setEvents] = useState<EventLight[]>([]);
   const [message, setMessage] = useState<string | null>(null);
@@ -36,22 +36,40 @@ export default function App() {
 
   const [demo, setDemo] = useState<DemoResp | null>(null);
   const [demoStep, setDemoStep] = useState(0);
+  const [anchor, setAnchor] = useState<string | null>(null);
 
+  const [sky, setSky] = useState<EventLight[]>([]);
+  const [fullFor, setFullFor] = useState<Dataset | null>(null);
+
+  // First paint needs only the summary and a small sky sample, not the full event list.
   useEffect(() => {
-    setLoading(true);
     setApiErr(false);
-    Promise.all([api.summary(dataset), api.events(dataset)])
+    setFullFor(null);
+    setEvents([]);
+    Promise.all([api.summary(dataset), api.events(dataset, null, null, "sky")])
       .then(([s, e]) => {
         setSummary(s);
-        setEvents(e.events);
+        setSky(e.events);
         setMessage(e.message ?? s.message);
-        setSelected((cur) => { const m = /e=(\d+)/.exec(window.location.hash); if (cur == null && m) return +m[1]; return cur; }) ;
-        setSelected((cur) => (cur != null && e.events.some((x) => x.event_id === cur) ? cur : e.events[0]?.event_id ?? null));
         setElapsed(Math.max(0, s.min_time_to_tca - 0.9));
+      })
+      .catch(() => setApiErr(true));
+  }, [dataset]);
+
+  useEffect(() => {
+    if (view === "landing" || fullFor === dataset) return;
+    setLoading(true);
+    api.events(dataset)
+      .then((e) => {
+        setEvents(e.events);
+        setFullFor(dataset);
+        setMessage((m) => e.message ?? m);
+        const m = /e=(\d+)/.exec(window.location.hash);
+        setSelected((cur) => (cur != null && e.events.some((x) => x.event_id === cur) ? cur : m ? +m[1] : e.events[0]?.event_id ?? null));
       })
       .catch(() => setApiErr(true))
       .finally(() => setLoading(false));
-  }, [dataset]);
+  }, [view, dataset, fullFor]);
 
   const clockMin = summary ? Math.max(0, summary.min_time_to_tca - 1) : 0;
   const clockMax = summary?.max_time_to_tca ?? 0;
@@ -69,14 +87,14 @@ export default function App() {
 
   const lastFetch = useRef(0);
   useEffect(() => {
-    if (!summary) return;
+    if (!summary || view === "landing") return;
     const wait = Math.max(0, 250 - (Date.now() - lastFetch.current));
     const t = setTimeout(() => {
       lastFetch.current = Date.now();
       api.window(elapsed, dataset).then(setWin).catch(() => {});
     }, wait);
     return () => clearTimeout(t);
-  }, [elapsed, dataset, summary]);
+  }, [elapsed, dataset, summary, view]);
 
   const clockLabel = fmtClock(clockMax - elapsed);
 
@@ -110,6 +128,12 @@ export default function App() {
     if (demo && demo.items[demoStep]) open(demo.items[demoStep].event_id);
   }, [demoStep]);
 
+  useEffect(() => {
+    const m = /demo=(\d)/.exec(window.location.hash);
+    if (!m) return;
+    api.demo().then((d) => { setDemo(d); setDemoStep(Math.min(d.items.length, +m[1]) - 1); }).catch(() => {});
+  }, []);
+
   if (apiErr)
     return (
       <div className="page" style={{ padding: 32 }}>
@@ -120,7 +144,7 @@ export default function App() {
 
   if (view === "landing")
     return (
-      <Landing summary={summary} events={events} clockDays={elapsed} windowCount={win?.n ?? 0} onOpen={open} />
+      <Landing summary={summary} events={sky} clockDays={elapsed} windowCount={win?.n ?? 0} onOpen={open} />
     );
 
   return (
@@ -160,8 +184,9 @@ export default function App() {
 
       {dataset === "live" && (
         <div className="banner">
-          Space-Track public CDMs, tiered by rule only, model inputs not published.
-          {summary?.generated_utc ? ` Snapshot ${summary.generated_utc}.` : ""} {message}
+          Space-Track public CDMs · tiered by rule only (model inputs not published)
+          {summary?.snapshot?.latest_cdm_created ? ` · snapshot ${summary.snapshot.latest_cdm_created} UTC` : summary?.generated_utc ? ` · snapshot ${summary.generated_utc}` : ""}
+          {events.length === 0 && message ? ` · ${message}` : ""}
         </div>
       )}
       {dataset === "test" && summary && summary.model && (
@@ -179,7 +204,7 @@ export default function App() {
               tierFilter={tierFilter} setTierFilter={setTierFilter} typeFilter={typeFilter} setTypeFilter={setTypeFilter}
               types={summary?.object_types ?? []} counts={summary?.counts ?? {}} />
             <EventDetail id={dataset === "live" && events.length === 0 ? null : selected} dataset={dataset}
-              modelName={summary?.model?.name ?? null} onBack={() => setMobileDetail(false)} />
+              modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} highlight={demo ? demoHighlight(demo.items[demoStep]?.key) : null} onBack={() => setMobileDetail(false)} />
           </>
         )}
         {view === "next24" && (
@@ -187,12 +212,13 @@ export default function App() {
         )}
         {view === "insights" && <Insights events={events} onOpen={(id) => open(id)} />}
         {view === "evidence" && (
-          <Results testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
+          <Results anchor={anchor} testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
         )}
       </main>
 
       {demo && view === "queue" && (
-        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={() => setDemo(null)} />
+        <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={() => setDemo(null)}
+          onFailures={() => { setDemo(null); setView("evidence"); setAnchor("where-it-fails"); }} />
       )}
       <RidgeStrip />
     </div>

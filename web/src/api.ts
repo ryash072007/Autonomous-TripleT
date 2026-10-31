@@ -5,14 +5,14 @@ export interface Latest {
   miss_distance: number;
   risk: number | null;
   max_risk_estimate: number;
-  relative_position_r: number;
-  relative_position_t: number;
-  relative_position_n: number;
-  relative_speed: number;
-  c_sigma_r: number;
-  t_sigma_r: number;
-  F10: number;
-  AP: number;
+  relative_position_r: number | null;
+  relative_position_t: number | null;
+  relative_position_n: number | null;
+  relative_speed: number | null;
+  c_sigma_r: number | null;
+  t_sigma_r: number | null;
+  F10?: number | null;
+  AP?: number | null;
 }
 
 export interface Cdm {
@@ -20,13 +20,15 @@ export interface Cdm {
   miss_distance: number;
   risk: number | null;
   max_risk_estimate: number;
-  relative_position_r: number;
-  relative_position_t: number;
-  relative_position_n: number;
-  relative_speed: number;
-  c_sigma_r: number;
-  t_sigma_r: number;
+  relative_position_r: number | null;
+  relative_position_t: number | null;
+  relative_position_n: number | null;
+  relative_speed: number | null;
+  c_sigma_r: number | null;
+  t_sigma_r: number | null;
 }
+
+export interface Sens { feature: string; from: number; to: number; tier: number }
 
 export interface OrbitD { sma_km: number; ecc: number; inc_deg: number; h_apo_km: number; h_per_km: number }
 
@@ -47,6 +49,10 @@ export interface EventLight {
   recommendation_reason?: string | null;
   orbit_display?: { t: OrbitD; c: OrbitD } | null;
   flags: string[];
+  sensitivity?: { down: Sens | null; up: Sens | null } | null;
+  names?: { t: string | null; c: string | null } | null;
+  cdm_id?: string;
+  created?: string;
   remaining_days?: number;
   dangerous?: boolean;
 }
@@ -68,6 +74,8 @@ export interface Summary {
   min_time_to_tca: number;
   object_types: string[];
   message: string | null;
+  sensitivity_note?: string | null;
+  snapshot?: { source: string; latest_cdm_created: string | null; n_cdms: number } | null;
 }
 
 export interface WindowResp {
@@ -124,8 +132,8 @@ const q = (o: Record<string, string | number | undefined | null>) => {
 
 export const api = {
   summary: (dataset: Dataset) => req<Summary>("/api/summary" + q({ dataset })),
-  events: (dataset: Dataset, tier?: number | null, object_type?: string | null) =>
-    req<{ events: EventLight[]; message: string | null }>("/api/events" + q({ dataset, tier, object_type })),
+  events: (dataset: Dataset, tier?: number | null, object_type?: string | null, fields?: string) =>
+    req<{ events: EventLight[]; message: string | null }>("/api/events" + q({ dataset, tier, object_type, fields })),
   event: (id: number, dataset: Dataset) => req<EventFull>(`/api/events/${id}` + q({ dataset })),
   window: (elapsed_days: number, dataset: Dataset) =>
     req<WindowResp>("/api/window" + q({ elapsed_days: elapsed_days.toFixed(3), dataset })),

@@ -258,3 +258,12 @@ details.raw summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .take { font-size: 14px; margin: 0 0 8px; }
 .card.ins h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 6px; }
 @media (max-width: 520px) { .ins-grid { grid-template-columns: 1fr; } }
+
+.names { color: var(--ink-soft); font-size: 11.5px; }
+.hl { outline: 2px solid var(--abstain); outline-offset: 4px; border-radius: 6px; background: rgba(91, 95, 143, 0.07); }
+.demo-reason { margin: 4px 0; }
+.demo-bar { max-height: 70vh; overflow-y: auto; }
+
+.sens { margin: 0 0 10px; }
+.sens-btn { display: block; text-align: left; background: none; border: 0; padding: 2px 0; color: var(--rock); text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+.sens-btn:hover { color: var(--abstain); }

@@ -7,8 +7,8 @@ def template_brief(f: dict) -> str:
     parts = [
         f"Event {f['event_id']} ({f['object_type']}) is {f['tier']} now: {f['rule']}.",
         f"Latest of {f['n_cdms']} CDMs, {f['time_to_tca_days']} days before closest approach: miss distance "
-        f"{f['miss_distance_km']} km, max risk estimate log10 Pc {f['max_risk_estimate_log10']}, "
-        f"relative speed {f['relative_speed_kms']} km/s.",
+        f"{f['miss_distance_km']} km, max risk estimate log10 Pc {f['max_risk_estimate_log10']}"
+        + (f", relative speed {f['relative_speed_kms']} km/s." if "relative_speed_kms" in f else "."),
     ]
     if "first_miss_distance_km" in f:
         parts.append(
@@ -25,7 +25,7 @@ def template_brief(f: dict) -> str:
         parts.append("The tool is not sure between " + " / ".join(f["tier_set"]) + ".")
     if f["flags"]:
         parts.append("Flags: " + ", ".join(x.replace("_", " ") for x in f["flags"]) + ".")
-    if f.get("recommendation"):
+    if f.get("recommendation") and f["recommendation"] != "Analyst decides":
         parts.append(f"Tool recommendation: {f['recommendation']}.")
     parts.append("Analyst decides.")
     return " ".join(parts)
