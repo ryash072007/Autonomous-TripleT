@@ -32,13 +32,23 @@ AVIATION_VOCAB = re.compile(
 JUDGEMENT_RE = re.compile(
     r"\b(?:is|are|am)\s+(?:my|our|the|this|that)\b[^?.]{0,60}\bairworthy\b|\bairworthy\b[^?.]{0,20}\?|"
     r"\b(?:safe|legal|ok|okay|permitted|allowed)\s+to\s+(?:fly|operate|dispatch|use|keep)|\bkeep\s+flying\b|\bsign[- ]?off\b|"
-    r"\breturn(?:ed)?\s+to\s+service\b|\b(?:am|are)\s+i\s+compl\w+|\bcan\s+i\s+(?:fly|dispatch)\b", re.I)
+    r"\breturn(?:ed)?\s+to\s+service\b|\b(?:am|are)\s+i\s+compl\w+|\bcan\s+i\s+(?:fly|dispatch)\b|"
+    r"\b(?:confirm|certify|guarantee|assure|verify)\b[^?.]{0,80}\b(?:airworthy|compliant|compliance|legal(?:ly)?|cleared|safe)\b|"
+    r"\b(?:fully|legally)\s+(?:compliant|cleared|permitted|allowed)\b|\bcleared\s+to\s+fly\b", re.I)
 FINAL_RE = re.compile(r"\b(?:final\s+(?:AD|rule|directive)|finali[sz]\w*|in\s+force|already\s+(?:in\s+effect|issued|published|adopted|final\w*)|became\s+(?:law|final)|"
                       r"currently\s+(?:in\s+effect|effective))\b", re.I)
 EXT_SUBJECT_RE = re.compile(
     r"\b(?:listed|included|identified|specified|covered|named)\s+in\s+(?:the\s+)?(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada|[\w .-]{0,40}\bbulletin)\b|"
     r"\bwhat\b[^?]{0,60}\b(?:does|do)\s+(?:the\s+)?(?:EASA|TCCA|ANAC|CASA|Transport\s+Canada)\b|"
-    r"\b(?:EASA|TCCA|ANAC|CASA)\s+AD\s+[\w-]+[^?]{0,80}\b(?:say|specif\w+|require\w*|state\w*)\b", re.I)
+    r"\b(?:EASA|TCCA|ANAC|CASA)\s+AD\s+[\w-]+[^?]{0,80}\b(?:say|specif\w+|require\w*|state\w*)\b|"
+    r"\bwhat\b[^?]{0,140}\b(?:does|do)\s+(?:the|that|this)\s+(?:(?:service|alert|requirements?)\s+)*(?:bulletin|SB|service\s+information)\s+(?:specify|require|say|state|contain|describe)\w*", re.I)
+# estimated cost / labour / work-hour questions: the figures sit in the notice's "Costs of Compliance" table, which this tool does not extract
+COST_Q_RE = re.compile(
+    r"\b(?:labou?r|parts|total|estimated)\s+costs?\b|\bper[- ](?:helicopter|airplane|aircraft|engine|product)\s+cost\b|\bcosts?\s+(?:to|for|of)\s+(?:comply|compliance|(?:U\.?S\.?\s+)?operators)\b|"
+    r"\bwork[- ]?hours?\b|\bhow\s+much\s+(?:will|would|does|do|is)\b[^?]{0,60}\bcost\b|\bin\s+dollars\b", re.I)
+UNKNOWN_VARIANT_RE = re.compile(
+    r"(?:don'?t|do not|doesn'?t|not)\s+(?:know|show|sure|say|specify|certain)[^.?]{0,100}\b(?:variant|model|version|dash)\b|"
+    r"\b(?:exact|specific)\s+(?:variant|model|version)[^.?]{0,25}\b(?:unknown|unclear|not\s+known)\b|\bunknown\s+(?:variant|model|version)\b|\bvariant\s+unknown\b", re.I)
 VALUE_Q_RE = re.compile(r"\b(?:exact|specific|numeric)\b[^?]{0,40}\b(?:value|number|figure|limit)\b|\b(?:torque|limit|threshold)\s+value\b", re.I)
 REVISION_RE = re.compile(r"\b(?:withdrawn|withdrew|withdraw|revised|revision|supplemental|re-?issued|latest|most recent|still\s+active|"
                          r"current\s+version|superseded|extended|extension|updated\s+(?:comment|deadline)|comment\s+(?:deadline|period|due)|"
@@ -103,6 +113,9 @@ def parse_query(q: str, known_makes=None) -> dict:
     if "serial" in cfg:
         block.add(cfg["serial"].upper())
     cands, cand_pos = [], {}
+    # the serial / part-number clauses and calendar dates are not model designations ("S/N 23327" must not yield "N 23327", nor "April 21")
+    for rx in (SERIAL_RE, PN_RE, LONG_DATE_RE, FOREIGN_AD_ID_RE):
+        masked = rx.sub(lambda m_: " " * len(m_.group(0)), masked)
     for mm in MODEL_TOKEN_RE.finditer(masked):
         tok = mm.group(1).strip()
         cand_pos.setdefault(tok, mm.start(1))
@@ -136,6 +149,13 @@ def parse_query(q: str, known_makes=None) -> dict:
         return (0 if OWN_CUE_RE.search(q[max(0, pos - 80):pos]) else 1, pos)
     cands = sorted(dict.fromkeys(cands), key=_prio)
     out["model_candidates"] = cands
+    # models the user says they fly, as opposed to models that only describe the AD ("... and would add the ASW-15B to the applicability")
+    out["own_models"] = [c for c in cands if _prio(c)[0] == 0]
+    # an explicit "Model X" names the formal designation and outranks a marketing name ("Global 7500 (Model BD-700-2A12)")
+    explicit = [c for c in out["own_models"] if re.search(r"\bModel\s+" + re.escape(c) + r"(?![A-Za-z0-9])", q)]
+    out["own_models"] = explicit + [c for c in out["own_models"] if c not in explicit]
+    if UNKNOWN_VARIANT_RE.search(q):
+        out["flags"].append("variant_unknown")
 
     ql = q.lower()
     weak_apply = re.search(r"\bcover(?:s|ed|ing)?\b", q, re.I) and (cands or re.search(r"\bmy\b", q, re.I) or "serial" in cfg or "cofa_date" in cfg)
@@ -147,12 +167,17 @@ def parse_query(q: str, known_makes=None) -> dict:
         out["intent"] = "applicability"
     if JUDGEMENT_RE.search(q):
         out["flags"].append("judgement")
-    if FINAL_RE.search(q):
+    # "is it still moving toward a final rule?" asks about the NPRM's status, not whether a final AD exists
+    if FINAL_RE.search(q) and not re.search(r"\b(?:toward|towards|pending|awaiting|moving|progress\w*|heading)\b[^?.]{0,25}\bfinal\b", q, re.I):
         out["flags"].append("final_rule")
-    if EXT_SUBJECT_RE.search(q) or (FOREIGN_AD_ID_RE.search(q) and out["intent"] != "applicability"
+    # a user who states their own aircraft and points at a bulletin wants a verdict (CANNOT_DETERMINE, bulletin quoted), not a refusal
+    own_given = bool(out["own_models"]) and out["intent"] == "applicability"
+    if (EXT_SUBJECT_RE.search(q) and not own_given) or (FOREIGN_AD_ID_RE.search(q) and out["intent"] != "applicability"
                                     and re.search(r"\b(?:what|which|explain|describe|summari[sz]e|list|how)\b", q, re.I)
                                     and not re.search(r"\bproposed\b|\bNPRM\b", q, re.I)):
         out["flags"].append("external_subject")
+    if COST_Q_RE.search(q):
+        out["flags"].append("cost_question")
     if VALUE_Q_RE.search(q):
         out["flags"].append("value_question")
     if not AVIATION_VOCAB.search(q) and not out["dockets"] and not out["ad_numbers"] and not cands:

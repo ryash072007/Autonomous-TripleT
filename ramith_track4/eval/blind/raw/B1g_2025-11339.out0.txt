@@ -1,0 +1,7 @@
+The applicability paragraph reads: "This AD applies to Airbus Helicopters Model AS350B3, EC130B4, and EC130T2 helicopters, certificated in any category." It has no date, serial number, part number or exclusion condition. Any listed model therefore APPLIES, and any other model DOES_NOT_APPLY. The applicability itself is never defined in an external document.
+
+The remaining question is whether some configuration could still make the verdict CANNOT_DETERMINE. The AD requires compliance with EASA AD 2023-0187R1, but that affects which actions are required, not whether the AD applies. A model-name ambiguity would be a stretch. For example, "AS350B3e" is not clearly the same as "AS350B3", but that would be an artificial case, and a rater would likely call it DOES_NOT_APPLY or APPLIES. A realistic owner config that a rater would agree is CANNOT_DETERMINE cannot be built from this applicability paragraph, so I set feasible=false.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "APPLIES", "gold_reason": "MODEL_LISTED", "evidence_quote": "This AD applies to Airbus Helicopters Model AS350B3, EC130B4, and EC130T2 helicopters, certificated in any category.", "notes": "Applicability depends only on model (any serial, any category, no date/PN conditions), so every config resolves to APPLIES or DOES_NOT_APPLY; CANNOT_DETERMINE is not constructible."}
+```

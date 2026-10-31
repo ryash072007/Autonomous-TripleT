@@ -1,0 +1,512 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 99 (Friday, May 23, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 99 (Friday, May 23, 2025)]
+[Proposed Rules]
+[Pages 22028-22031]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-09095]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0910; Project Identifier MCAI-2023-01167-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2020-06-13, which applies to certain Airbus Helicopters Model AS332C, 
+AS332C1, AS332L, and AS332L1 helicopters. AD 2020-06-13 requires 
+determining the accumulated hours time-in-service (TIS) of certain 
+part-numbered main gearbox (MGB) suspension bar rear attachment 
+fittings (fittings) and bolts and establishes reduced life limits. 
+Since the FAA issued AD 2020-06-13, it was determined that modifying 
+the MGB suspension bar fittings link and installing improved MGB 
+suspension bar fitting bolts are necessary. This proposed AD would 
+require modifying the MGB suspension bar link, installing newly-
+designed bolts, and prohibit installing certain parts. The FAA is 
+proposing this AD to address the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by July 7, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0910; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For EASA material identified in this proposed AD, contact 
+EASA, Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 
+8999 000; email: <a href="/cdn-cgi/l/email-protection#5c1d182f1c393d2f3d7239292e332c3d723929"><span class="__cf_email__" data-cfemail="49080d3a092c283a28672c3c3b263928672c3c">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find this material on the EASA website at ad.easa.europa.eu.
+
+[[Page 22029]]
+
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110. It is also available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0910.
+
+FOR FURTHER INFORMATION CONTACT: Camille Seay, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (817) 222-5149; email: <a href="/cdn-cgi/l/email-protection#91f2f0fcf8fdfdf4bffdbfe2f4f0e8d1f7f0f0bff6fee7"><span class="__cf_email__" data-cfemail="056664686c6969602b692b7660647c456364642b626a73">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-0910; 
+Project Identifier MCAI-2023-01167-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to 
+Camille Seay, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 
+410, Westbury, NY 11590. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The FAA issued AD 2020-06-13, Amendment 39-19882 (85 FR 19080, 
+April 6, 2020) (AD 2020-06-13), for Airbus Helicopters Model AS332C, 
+AS332C1, AS332L, and AS332L1 helicopters with an MGB suspension bar 
+right-hand (RH) side rear fitting part number (P/N) 330A22-2702-07 and 
+bolt P/N 330A22-0135-20, MGB suspension bar left-hand (LH) side rear 
+fitting P/N 330A22-2702-06 and bolt P/N 330A22-0135-20, or MGB 
+suspension bar front bolt P/N 330A22-0134-20 installed. AD 2020-06-13 
+was prompted by an MCAI originated by EASA, which is the Technical 
+Agent for the Member States of the European Union. EASA issued AD 2018-
+0260, dated December 3, 2018 (EASA AD 2018-0260), to address MGB 
+suspension bar fittings and bolts remaining in service beyond their 
+fatigue life. From review of reported Model EC 225 LP data, EASA 
+advised that the installation of the MGB upper deck fittings of the 
+three MGB suspension bars (front, RH side rear, and LH side rear) could 
+lead to tightening torque loss on the fittings' attachment screws 
+(bolts). Due to design similarities, Model AS 332 C, AS 332 C1, AS 332 
+L, and AS 332 L1 helicopters could also be affected by the same 
+installation condition.
+    AD 2020-06-13 requires determining the total hours TIS of the MGB 
+suspension bar RH side and LH side rear fittings, removing these 
+fittings and bolts from service based on the accumulated total hours 
+TIS and other conditions, and thereafter removing these fittings and 
+bolts from service within specific intervals. AD 2020-06-13 also 
+requires removing the front bolts from service during each major 
+inspection ``G.'' The FAA issued AD 2020-06-13 to prevent failure of an 
+MGB attachment assembly, detachment of an MGB suspension bar, and 
+consequent loss of helicopter control.
+
+Actions Since AD 2020-06-13 Was Issued
+
+    Since the FAA issued AD 2020-06-13, EASA superseded EASA AD 2018-
+0260 and issued EASA AD 2023-0194, dated November 8, 2023 (EASA AD 
+2023-0194), to address an unsafe condition on all Airbus Helicopters 
+Model AS 332 C, AS 332 C1, AS 332 L, and AS 332 L1 helicopters. EASA AD 
+2023-0194 stated that, following the loss of tightening torque of the 
+attachment screws of the upper deck fittings of the three MGB 
+suspension bars and previous interim action, Airbus Helicopters 
+developed modification (mod) 0728496 (for helicopters with machined 
+frames) and mod 0729200 (for helicopters with sheet metal frames), 
+which improve the link of the fittings of the MGB suspension bars and 
+include improved fitting screws. After EASA issued EASA AD 2023-0194, 
+EASA superseded EASA AD 2023-0194 with EASA AD 2023-0194R1 Revision 1, 
+dated March 19, 2025 (EASA AD 2023-0194R1) (also referred to as the 
+MCAI). The MCAI states that since EASA AD 2023-0194 was issued, a new 
+risk analysis determined the calendar time compliance time for the 
+modification can be extended. The MCAI further states that EASA AD 
+2023-0194R1 is considered to be an interim action. This condition, if 
+not addressed, could lead to structural failure of an MGB attachment 
+assembly, detachment of an MGB suspension bar, and consequent loss of 
+control of the helicopter.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products. You may examine the MCAI in the AD docket at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0910.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2023-0194R1, which specifies procedures 
+for determining the accumulated service life of the RH side and LH side 
+rear fittings of the MGB suspension bars and repetitively replacing the 
+RH side and LH side rear fittings and screws before exceeding 
+accumulated service life limits. As an alternative to the first 
+replacement of the RH side rear fittings and screws, if certain 
+conditions are met, EASA AD 2023-0194R1 allows measuring the tightening 
+torque, and depending on the measurement results, replacing affected 
+parts with serviceable parts within extended compliance times. EASA AD 
+2023-0194R1 also specifies procedures for replacing each MGB front 
+fitting screw at the next major inspection (G) and modifying the 
+helicopter to improve the link of the fittings of the MGB suspension 
+bar, which includes installing MGB fitting screws with an improved 
+design. EASA AD 2023-0194R1 prohibits installing certain parts on any 
+helicopter. Finally, EASA AD 2023-0194R1 specifies procedures for a 
+terminating action if the helicopter has been modified as defined in 
+EASA AD 2023-0194R1 and provides credit for certain previously 
+accomplished requirements.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course
+
+[[Page 22030]]
+
+of business or by the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would retain none of the requirements of AD 2020-
+06-13. This proposed AD would require accomplishing the actions 
+specified in EASA AD 2023-0194R1, described previously, as incorporated 
+by reference, except for any differences identified as exceptions in 
+the regulatory text of this proposed AD. See ``Differences Between this 
+AD and the MCAI'' for a discussion of the general differences included 
+in this AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2023-0194R1 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2023-0194R1 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2023-0194R1 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2023-
+0194R1. Material referenced in EASA AD 2023-0194R1 for compliance will 
+be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-0910 after 
+the FAA final rule is published.
+
+Differences Between This Proposed AD and the MCAI
+
+    Where the MCAI allows an option of an inspection of the torque 
+instead of replacement of the first MGB RH side rear fitting, which 
+includes different replacement compliance times based on the torque 
+inspection results, this proposed AD would not.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect eight helicopters of U.S. registry. Labor rates are estimated at 
+$85 per hour. Based on these numbers, the FAA estimates the following 
+costs to comply with this proposed AD.
+    Determining the total hours TIS of the rear MGB fittings would take 
+0.5 work-hour for an estimated cost of $43 per helicopter and $344 for 
+the U.S. fleet.
+    Replacing a RH rear MGB fitting and its set of four bolts would 
+take 8 work-hours and parts would cost $3,589 for an estimated cost of 
+$4,269 per helicopter and $34,152 for the U.S. fleet, per replacement 
+cycle.
+    Replacing a set of four LH rear MGB fitting bolts would take 4 
+work-hours and parts would cost $100 for an estimated cost of $440 per 
+helicopter and $3,520 for the U.S. fleet, per replacement cycle.
+    Replacing a LH rear MGB fitting would take 8 work-hours and parts 
+would cost $3,807 for an estimated cost of $4,487 per helicopter and 
+$35,896 for the U.S. fleet, per replacement cycle.
+    Replacing a set of front MGB fitting bolts (4 bolts per set) would 
+take about 8 work-hours and parts would cost $98 for an estimated cost 
+of $778 per helicopter and $6,224 for the U.S. fleet, per replacement 
+cycle.
+    Modifying the MGB suspension bar (LH side and RH side) would take 
+56 work-hours and parts would cost $115,509 for an estimated cost of 
+$120,269 per helicopter.
+    The extent of corrective action that may needed if there is damage, 
+a crack, or insufficient clearance found while modifying the MGB 
+suspension bar could vary significantly from helicopter to helicopter. 
+The FAA has no way of determining the cost to correct or repair each 
+helicopter or the number of helicopters that may require repair.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national Government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2020-06-13, Amendment 39-19882 (85 
+FR 19080, April 6, 2020); and
+0
+b. Adding the following new airworthiness directive:
+
+Airbus Helicopters: Docket No. FAA-2025-0910; Project Identifier 
+MCAI-2023-01167-R.
+
+[[Page 22031]]
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by July 7, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2020-06-13, Amendment 39-19882 (85 FR 19080, 
+April 6, 2020).
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model AS332C, AS332C1, 
+AS332L, and AS332L1 helicopters, certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 6330, Main rotor 
+transmission mount.
+
+(e) Unsafe Condition
+
+    This AD was prompted by tests and analyses performed by the 
+manufacturer. The FAA is issuing this AD to prevent fatigue failure 
+of the main gearbox (MGB) suspension bar attachment fittings and 
+bolts by remaining in service beyond their fatigue life. The unsafe 
+condition, if not addressed, could result in failure of an MGB 
+attachment assembly, detachment of an MGB suspension bar, and 
+consequent loss of control of the helicopter.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency AD 2023-
+0194R1, dated March 19, 2025 (EASA AD 2023-0194R1).
+
+    Note 1 to paragraph (g): EASA AD 2023-0194R1 and Airbus 
+Helicopters material that is referenced in EASA AD 2023-0194R1 refer 
+to MGB suspension bar attachment ``bolts'' as ``screws.''
+
+
+    Note 2 to paragraph (g): Table No. 1 of Airbus Helicopters Alert 
+Service Bulletin No. AS332-53.02.13, Revision 1, dated April 5, 
+2024, identifies the helicopter group configurations referenced in 
+EASA AD 2023-0194R1.
+
+(h) Exceptions to EASA AD 2023-0194R1
+
+    (1) Where EASA AD 2023-0194R1 requires compliance in terms of 
+flight hours, this AD requires using hours time-in-service.
+    (2) Where EASA AD 2023-0194R1 refers to its effective date, 
+December 17, 2018 (the effective date of EASA AD 2018-0260, dated 
+December 3, 2018), or November 22, 2023 (the effective date of EASA 
+AD 2023-0194, dated November 8, 2023), this AD requires using the 
+effective date of this AD.
+    (3) Where the material referenced in EASA AD 2023-0194R1 
+specifies discarding parts, this AD requires removing those parts 
+from service.
+    (4) This AD does not adopt paragraphs (3) through (5) of EASA AD 
+2023-0194R1.
+    (5) Where paragraphs (2) and (6) of EASA AD 2023-0194R1 state 
+``paragraph 3.B.3,'' this AD requires replacing that text with 
+``paragraphs 3.B.2. and 3.B.3.''
+    (6) Where the modification ASB, as defined and referenced in 
+EASA AD 2023-0194R1, specifies contacting Airbus Helicopters 
+Technical Support if there is visible damage, a crack, or 
+insufficient clearance after replacing hardware, this AD requires, 
+before further flight, accomplishing further action in accordance 
+with a method approved by the Manager, International Validation 
+Branch, FAA; EASA; or Airbus Helicopters' EASA Design Organization 
+Approval (DOA). If approved by the DOA, the approval must include 
+the DOA-authorized signature.
+    (7) Where the modification ASB, as defined and referenced in 
+EASA AD 2023-0194R1, specifies to keep parts after removing, for 
+this AD, keeping these parts is not required.
+    (8) Where the modification ASB, as defined and referenced in 
+EASA AD 2023-0194R1, specifies repairing X3855 frame drilling kit 
+(also identified as a Guide having part number X530P8102101 and 
+referred to as Item ``zz''), this AD prohibits using X3855 frame 
+drilling kit for the actions required by this AD if there is any 
+damage that consists of cracks, corrosion, lengthening or 
+deformation of the rods or arms, or excessive wear.
+    (9) Sections 11 through 14 in Appendix 4.A. of the modification 
+ASB, as defined and referenced in EASA AD 2023-0194R1, are not 
+required by this AD.
+    (10) This AD does not adopt the Remarks section of EASA AD 2023-
+0194R1.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in EASA AD 2023-0194R1 
+specifies to submit information to the manufacturer, this AD does 
+not require these actions.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or responsible Flight 
+Standards Office, as appropriate. If sending information directly to 
+the manager of the International Validation Branch, send it to the 
+attention of the person identified in paragraph (k)(1) of this AD 
+and email to: <a href="/cdn-cgi/l/email-protection#1b5a5654585b7d7a7a357c746d"><span class="__cf_email__" data-cfemail="99d8d4d6dad9fff8f8b7fef6ef">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the responsible Flight Standards Office.
+
+(k) Additional Information
+
+    (1) For more information about this AD, contact Camille Seay, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (817) 222-5149; email: 
+<a href="/cdn-cgi/l/email-protection#ea898b878386868fc486c4998f8b93aa8c8b8bc48d859c"><span class="__cf_email__" data-cfemail="ea898b878386868fc486c4998f8b93aa8c8b8bc48d859c">[email&#160;protected]</span></a>.
+    (2) For material identified in this AD that is not incorporated 
+by reference, contact Airbus Helicopters, 2701 North Forum Drive, 
+Grand Prairie, TX 75052; phone: (972) 641-0000 or (800) 232-0323; 
+fax: (972) 641-3775; website: <a href="http://airbus.com/en/products-services/helicopters/hcare-services/airbusworld">airbus.com/en/products-services/helicopters/hcare-services/airbusworld</a>.
+
+(l) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2023-0194R1, 
+dated March 19, 2025.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#befffacdfedbdfcddf90dbcbccd1cedf90dbcb"><span class="__cf_email__" data-cfemail="37767344775256445619524245584756195242">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find this material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at FAA, Office of the Regional 
+Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-321, Fort 
+Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#afc9dd81c6c1dcdfcaccdbc6c0c1efc1ceddce81c8c0d9"><span class="__cf_email__" data-cfemail="95f3e7bbfcfbe6e5f0f6e1fcfafbd5fbf4e7f4bbf2fae3">[email&#160;protected]</span></a>.
+
+    Issued on May 15, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-09095 Filed 5-22-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

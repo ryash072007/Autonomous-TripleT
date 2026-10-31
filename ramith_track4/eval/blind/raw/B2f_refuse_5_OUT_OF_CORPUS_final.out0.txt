@@ -1,0 +1,1 @@
+{"question": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing-to-body fairing bracket inspection, and is that AD currently in force with a set compliance deadline?", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

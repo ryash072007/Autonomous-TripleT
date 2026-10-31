@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD requiring replacement of elevator servo-controls on Airbus A330 airplanes once they reach their life limit because of cracks in the end caps and barrel causing hydraulic leakage?"}

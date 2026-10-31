@@ -22,6 +22,7 @@ class AircraftConfig:
     serial: str | None = None
     cofa_date: str | None = None            # ISO yyyy-mm-dd
     part_numbers: list = field(default_factory=list)
+    variant_unknown: bool = False           # the user knows the family ("EC135/EC635") but not which variant they have
 
 
 @dataclass
@@ -66,6 +67,18 @@ def _serial_in_ranges(serial, ranges):
     return False
 
 
+_EXT_CUE = re.compile(r"\b(?:EASA|European\s+Union|Transport\s+Canada|TCCA|ANAC|CASA|bulletin|service\s+(?:bulletin|information)|AD\s+\d|CF-\d)", re.I)
+
+
+def _is_external(name: str) -> bool:
+    """A reference is internal only when nothing after its last 'of this AD' points outside.
+    'specified in paragraphs (c)(1) through (4) of this AD, ..., as identified in EASA AD 2024-0147R1' is one captured phrase that
+    contains both an internal and an external reference; the external one must not be thrown away with the internal one."""
+    if "of this AD" not in name:
+        return True
+    return bool(_EXT_CUE.search(name.rsplit("of this AD", 1)[1]))
+
+
 def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
     sec = appl.get("section")
     sec_ev = _ev("applicability section", (sec["char_start"], sec["char_end"]) if sec else None, rec)
@@ -86,21 +99,31 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
     matched = [g for g in groups if model_in_text(cfg.model, g["text"])]
     if not matched and lead_text and model_in_text(cfg.model, lead_text):
         matched = list(groups)
+    if not matched and appl.get("model_agnostic"):
+        matched = list(groups)           # "applies to all airplanes ... with part X installed": nothing to match a model against
+    if not matched and cfg.variant_unknown and sec:
+        sq = re.sub(r"[^A-Z0-9]", "", rec["text"][sec["char_start"]:sec["char_end"]].upper())
+        if any(st in sq for st in re.findall(r"[A-Z]{1,4}\d{2,4}", re.sub(r"[^A-Z0-9/]", "", cfg.model.upper()))):
+            return _mk(rec, CANNOT, ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "model", [sec_ev],
+                       f"The family of {cfg.model} is named in the applicability paragraph but the variant is unknown; applicability depends on the variant.")
     if not matched:
         return _mk(rec, NOT_APPLY, ["MODEL_NOT_LISTED"], "MODEL_NOT_LISTED", "model", [sec_ev],
                    f"Model {cfg.model} is not named in the applicability paragraph.")
     codes, ev, main = ["MODEL_LISTED"], [sec_ev], "MODEL_LISTED"
+    # Applicability conditions are conjunctive: a condition that FAILS decides DOES_NOT_APPLY even when an earlier one could not be
+    # evaluated (missing input, unreadable clause). The first undecidable condition is remembered and returned only if nothing fails.
+    pending = None
 
     # --- part number (only if every matched group requires it) ---
     if all(g["pn_required"] for g in matched):
         pns = {p.upper() for g in matched for p in g["part_numbers"]}
         if not pns or any(g.get("pn_messy") for g in matched):
-            return _mk(rec, CANNOT, codes + ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "part_number", ev,
+            pending = pending or _mk(rec, CANNOT, codes + ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "part_number", ev,
                        "Applicability depends on an installed part number that could not be read reliably.")
-        if not cfg.part_numbers:
-            return _mk(rec, CANNOT, codes + ["INPUT_MISSING_PN"], "INPUT_MISSING_PN", "part_number", ev,
-                       "Applicability depends on an installed part number; none supplied.")
-        if {p.upper() for p in cfg.part_numbers} & pns:
+        elif not cfg.part_numbers:
+            pending = pending or _mk(rec, CANNOT, codes + ["INPUT_MISSING_PN"], "INPUT_MISSING_PN", "part_number", ev,
+                                     "Applicability depends on an installed part number; none supplied.")
+        elif {p.upper() for p in cfg.part_numbers} & pns:
             codes.append("PN_INSTALLED"); main = "PN_INSTALLED"
         else:
             return _mk(rec, NOT_APPLY, codes + ["PN_NOT_INSTALLED"], "PN_NOT_INSTALLED", "part_number", ev,
@@ -111,8 +134,10 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
     if cut and cut["date"]:
         cev = _ev("certificate-date condition", tuple(cut["span"]), rec)
         if not cfg.cofa_date:
-            return _mk(rec, CANNOT, codes + ["INPUT_MISSING_CERT_DATE"], "INPUT_MISSING_CERT_DATE", "cert_date", ev + [cev],
-                       "Applicability depends on the original certificate of airworthiness date; none supplied.")
+            pending = pending or _mk(rec, CANNOT, codes + ["INPUT_MISSING_CERT_DATE"], "INPUT_MISSING_CERT_DATE", "cert_date", ev + [cev],
+                                     "Applicability depends on the original certificate of airworthiness date; none supplied.")
+            cut = None
+    if cut and cut["date"]:
         d, c = date.fromisoformat(cfg.cofa_date), date.fromisoformat(cut["date"])
         rel_before = d <= c
         d_ok = {"on or before": d <= c, "before": d < c, "on or after": d >= c, "after": d > c}[cut["direction"]]
@@ -124,21 +149,40 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
 
     # --- serial ---
     if appl.get("serial_unparsed"):
-        return _mk(rec, CANNOT, codes + ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "serial", ev,
-                   "A serial-number condition is present but could not be read reliably; read the applicability paragraph.")
-    if appl.get("serial_ranges"):
-        sev = _ev("serial condition", tuple(appl["serial_ranges"][0]["span"]), rec)
+        pending = pending or _mk(rec, CANNOT, codes + ["AMBIGUOUS_SCOPE"], "AMBIGUOUS_SCOPE", "serial", ev,
+                                 "A serial-number condition is present but could not be read reliably; read the applicability paragraph.")
+        ranges = []                      # a partly-read serial clause must not be used to decide anything
+    else:
+        ranges = None
+    # serial ranges written under one (1)/(2) model group only constrain that group's models
+    on = {i for i, g in enumerate(groups) if any(g is m for m in matched)}
+    if ranges is None:
+        ranges = [r for r in appl.get("serial_ranges", []) if r.get("group") is None or r["group"] in on]
+    if ranges:
+        sev = _ev("serial condition", tuple(ranges[0]["span"]), rec)
         if not cfg.serial:
-            return _mk(rec, CANNOT, codes + ["INPUT_MISSING_SERIAL"], "INPUT_MISSING_SERIAL", "serial", ev + [sev],
-                       "Applicability depends on serial number; none supplied.")
-        if not _serial_in_ranges(cfg.serial, appl["serial_ranges"]):
+            pending = pending or _mk(rec, CANNOT, codes + ["INPUT_MISSING_SERIAL"], "INPUT_MISSING_SERIAL", "serial", ev + [sev],
+                                     "Applicability depends on serial number; none supplied.")
+        elif not _serial_in_ranges(cfg.serial, ranges):
             return _mk(rec, NOT_APPLY, codes + ["SERIAL_OUT_OF_RANGE"], "SERIAL_OUT_OF_RANGE", "serial", ev + [sev],
                        "Serial number is outside the stated range.")
-        codes.append("SERIAL_IN_RANGE"); main = "SERIAL_IN_RANGE"; ev.append(sev)
+        else:
+            codes.append("SERIAL_IN_RANGE"); main = "SERIAL_IN_RANGE"; ev.append(sev)
+    if pending:
+        return pending
 
     # --- exclusions ---
-    if appl.get("exclusions"):
-        x = appl["exclusions"][0]
+    # "except those equipped with X, and all Model B helicopters": the exception belongs to the models named before "and all";
+    # a user whose model appears only in the trailing "and all Model ..." part is not subject to it
+    def _scoped_away(q):
+        tail = re.search(r"\band\s+all\s+(?:[\w-]+\s+){0,3}Model", q["quote"])
+        if not tail or not model_in_text(cfg.model, q["quote"][tail.start():]):
+            return False
+        before = rec["text"][appl["section"]["char_start"]:q["span"][0]]
+        return not model_in_text(cfg.model, before) and not model_in_text(cfg.model, q["quote"][:tail.start()])
+    excl = [x for x in appl.get("exclusions", []) if not _scoped_away(x)]
+    if excl:
+        x = excl[0]
         return _mk(rec, CANNOT, codes + ["EXCLUSION_UNVERIFIABLE"], "EXCLUSION_UNVERIFIABLE", "exclusion", ev + [_ev("exclusion", tuple(x["span"]), rec)],
                    "The AD excludes aircraft meeting a condition (e.g. maintenance programme already revised); confirm yours does not.")
 
@@ -150,7 +194,7 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
 
     # --- external documents defining applicability ---
     # internal references only ("paragraphs (c)(1) and (2) of this AD"); "paragraph 1.A.1 of <Service Bulletin>" is EXTERNAL
-    ext = [e for e in appl.get("external_refs", []) if not re.search(r"\bof this AD\b", e["name"], re.I)]
+    ext = [e for e in appl.get("external_refs", []) if _is_external(e["name"])]
     if ext:
         return _mk(rec, CANNOT, codes + ["EXTERNAL_DOC_REQUIRED"], "EXTERNAL_DOC_REQUIRED", "external", ev + [_ev("external reference", tuple(ext[0]["span"]), rec)],
                    f"Applicability is defined by a document that is not in this corpus: {ext[0]['name'][:160]}")
@@ -181,3 +225,56 @@ def config_contradiction(cfg: AircraftConfig, model_index: dict):
     if makes and norm_make(cfg.make) not in makes:
         return f"{cfg.model} appears in the corpus only under {', '.join(sorted(makes))}, not {cfg.make}."
     return None
+
+
+def explain(rec: dict, appl: dict, cfg: AircraftConfig, v: Verdict) -> list:
+    """Per-condition breakdown for the UI. Derived ONLY from the verdict the engine already produced (same codes, same stopping point);
+    conditions the engine never reached are NOT_EVALUATED. Adds no new decision logic."""
+    codes, main, rule = set(v.reason_codes), v.main_reason, v.rule_fired
+    sec = appl.get("section")
+    sec_span = (sec["char_start"], sec["char_end"]) if sec else None
+    out = []
+
+    def add(cid, label, required, provided, state, span=None):
+        quote = rec["text"][span[0]:span[1]] if (span and rec.get("text")) else None
+        out.append({"id": cid, "label": label, "required": required, "provided": provided, "state": state,
+                    "span": list(span) if span else None, "quote": (quote[:600] if quote else None)})
+
+    if rec["is_withdrawal"]:
+        add("withdrawn", "Notice is an active proposal", "A withdrawal notice proposes nothing", None, "FAIL")
+        return out
+    if appl.get("scope") == "none":
+        add("text", "Applicability text available", "The full applicability paragraph", None, "UNKNOWN")
+        return out
+    state_model = "PASS" if "MODEL_LISTED" in codes else "FAIL" if "MODEL_NOT_LISTED" in codes else "UNKNOWN" if "INPUT_MISSING_MODEL" in codes else "NOT_EVALUATED"
+    add("model", "Aircraft model", "Model named in the applicability paragraph", cfg.model, state_model, sec_span)
+    groups = appl.get("groups") or []
+    if any(g.get("pn_required") for g in groups):
+        pns = sorted({p for g in groups for p in g.get("part_numbers", [])})[:6]
+        st = "PASS" if "PN_INSTALLED" in codes else "FAIL" if "PN_NOT_INSTALLED" in codes else "UNKNOWN" if ("INPUT_MISSING_PN" in codes or rule == "part_number") else "NOT_EVALUATED"
+        add("part_number", "Installed part number", "One of: " + (", ".join(pns) if pns else "(list not readable)"), ", ".join(cfg.part_numbers) or None, st, sec_span)
+    cut = appl.get("cofa_cutoff")
+    if cut:
+        rel = {"CERT_DATE_BEFORE_CUTOFF", "CERT_DATE_AFTER_CUTOFF"} & codes
+        if rel and not (v.verdict == "DOES_NOT_APPLY" and main in rel):
+            st = "PASS"
+        elif rel:
+            st = "FAIL"
+        elif "INPUT_MISSING_CERT_DATE" in codes:
+            st = "UNKNOWN"
+        else:
+            st = "NOT_EVALUATED"
+        add("cert_date", "Original certificate of airworthiness date", f"Issued {cut['direction']} {cut['date']}", cfg.cofa_date, st, tuple(cut["span"]))
+    if appl.get("serial_ranges") or appl.get("serial_unparsed"):
+        st = "PASS" if "SERIAL_IN_RANGE" in codes else "FAIL" if "SERIAL_OUT_OF_RANGE" in codes else "UNKNOWN" if ("INPUT_MISSING_SERIAL" in codes or rule == "serial") else "NOT_EVALUATED"
+        rng = appl.get("serial_ranges") or []
+        add("serial", "Serial number", ("Within: " + "; ".join(f"{r['lo']}–{r['hi']}" for r in rng[:4])) if rng else "A serial condition the tool could not read reliably", cfg.serial,
+            st, tuple(rng[0]["span"]) if rng else sec_span)
+    if appl.get("exclusions"):
+        add("exclusion", "Exclusions", "Aircraft meeting an exclusion are outside the AD", None, "UNKNOWN" if "EXCLUSION_UNVERIFIABLE" in codes else "NOT_EVALUATED", tuple(appl["exclusions"][0]["span"]))
+    if appl.get("other_conditions"):
+        add("other", "Configuration clause", "A condition the tool does not evaluate (e.g. equipped with ...)", None, "UNKNOWN" if rule == "other_condition" else "NOT_EVALUATED", tuple(appl["other_conditions"][0]["span"]))
+    ext = [e for e in appl.get("external_refs", []) if _is_external(e["name"])]
+    if ext:
+        add("external", "Outside document", ext[0]["name"][:140], None, "UNKNOWN" if "EXTERNAL_DOC_REQUIRED" in codes else "NOT_EVALUATED", tuple(ext[0]["span"]))
+    return out

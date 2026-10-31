@@ -1,0 +1,432 @@
+{
+ "meta": {
+  "timestamp": "20261031_143840",
+  "git_commit": "f730a3a",
+  "src_hash": "ab493762a74e",
+  "sets": [
+   "b1f"
+  ],
+  "systems": [
+   "full"
+  ],
+  "testset_v1_sha": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "B1_sha": "974ffd54bfa1f7d8cad1b6f03891c1221696a48ffcc952ac848c5e58a16f78f9",
+  "B2_sha": "3e37d24fa7333bc4b1662882ef6ac954b154eeaaf27f9c7f7f92c1129b0bc8c3"
+ },
+ "results": {
+  "b1f/full": {
+   "summary": {
+    "system": "full",
+    "n": 23,
+    "verdict_accuracy": 87.0,
+    "reason_accuracy": 87.0,
+    "confusion": {
+     "DOES_NOT_APPLY->DOES_NOT_APPLY": 10,
+     "CANNOT_DETERMINE->APPLIES": 1,
+     "APPLIES->APPLIES": 5,
+     "CANNOT_DETERMINE->CANNOT_DETERMINE": 5,
+     "APPLIES->CANNOT_DETERMINE": 1,
+     "CANNOT_DETERMINE->DOES_NOT_APPLY": 1
+    },
+    "per_gold": {
+     "APPLIES": 83.3,
+     "DOES_NOT_APPLY": 100.0,
+     "CANNOT_DETERMINE": 71.4
+    }
+   },
+   "rows": [
+    {
+     "id": "B1f-01",
+     "doc": "2025-17063",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters Deutschland GmbH",
+      "model": "MBB-BK 117 B-2",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-02",
+     "doc": "2025-05215",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": false,
+     "reason_ok": false,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A320-214",
+      "cofa_date": "2005-06-14",
+      "serial": "2540",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-03",
+     "doc": "2025-23719",
+     "gold": "APPLIES",
+     "gold_reason": "SERIAL_IN_RANGE",
+     "got": "APPLIES",
+     "got_reason": "SERIAL_IN_RANGE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Honda Aircraft Company LLC",
+      "model": "HA-420",
+      "cofa_date": null,
+      "serial": "42000180",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-04",
+     "doc": "2025-02932",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Pilatus Aircraft Ltd.",
+      "model": "PC-12/47E",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-05",
+     "doc": "2025-16012",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "AS350B2",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-09",
+     "doc": "2025-06123",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Boeing",
+      "model": "747-400",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-10",
+     "doc": "2025-06186",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "AS 350 B3",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-11",
+     "doc": "2025-18738",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "INPUT_MISSING_CERT_DATE",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "INPUT_MISSING_CERT_DATE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "ATR--GIE Avions de Transport R\u00e9gional",
+      "model": "ATR72-212A",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-12",
+     "doc": "2025-05842",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A350-941",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-17",
+     "doc": "2025-21409",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Schempp-Hirth Flugzeugbau GmbH",
+      "model": "Discus b",
+      "cofa_date": null,
+      "serial": "123",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-18",
+     "doc": "2025-09095",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "AS350B3",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-19",
+     "doc": "2025-07856",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A320-214",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-20",
+     "doc": "2025-08664",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A320-214",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-21",
+     "doc": "2025-18711",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Safran Helicopter Engines, S.A.",
+      "model": "Arriel 2E",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-22",
+     "doc": "2025-01458",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "General Electric Company",
+      "model": "CF34-8C5",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-23",
+     "doc": "2025-06367",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "MHI RJ Aviation ULC (Bombardier)",
+      "model": "CL-600-2D24",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-24",
+     "doc": "2025-20012",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "INPUT_MISSING_CERT_DATE",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "INPUT_MISSING_CERT_DATE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A320-232",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-25",
+     "doc": "2025-19082",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": false,
+     "reason_ok": false,
+     "config": {
+      "make": "Leonardo S.p.A. Helicopters",
+      "model": "A109E",
+      "cofa_date": null,
+      "serial": "11650",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-26",
+     "doc": "2025-10822",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "INPUT_MISSING_CERT_DATE",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "INPUT_MISSING_CERT_DATE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A330-343",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-27",
+     "doc": "2025-21434",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "H145",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-28",
+     "doc": "2025-20014",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "787-9",
+      "cofa_date": "2019-06-14",
+      "serial": "38412",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-29",
+     "doc": "2025-17033",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "INPUT_MISSING_SERIAL",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": false,
+     "reason_ok": false,
+     "config": {
+      "make": "Piaggio Aviation S.p.A.",
+      "model": "P-180 Avanti II",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1f-30",
+     "doc": "2025-08553",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Dassault Aviation",
+      "model": "FALCON 2000EX",
+      "cofa_date": "2009-06-15",
+      "serial": null,
+      "part_numbers": []
+     }
+    }
+   ]
+  }
+ }
+}

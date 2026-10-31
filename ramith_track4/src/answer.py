@@ -179,7 +179,11 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
         ui["make"] = norm_make(ui["make"])
     cfg = {**p["cfg"], **ui}
     if not cfg.get("model"):
-        cfg["model"] = next((m for m in p["model_candidates"] if C.model_known(m)), None)
+        own = p.get("own_models") or []
+        # the aircraft the user says they fly wins over models that merely describe the AD; among several, the formal designation the
+        # corpus knows ("Model BD-700-2A12") beats a marketing name ("Global 7500")
+        cfg["model"] = (next((m for m in own if C.model_known(m)), None) or (own[0] if own and p["intent"] == "applicability" else None)
+                        or next((m for m in p["model_candidates"] if C.model_known(m)), None))
     if not cfg.get("model") and p["intent"] == "applicability" and p["model_candidates"]:
         cfg["model"] = p["model_candidates"][0]     # a model the corpus has never seen is still the user's model (-> not listed)
     p["cfg"] = {k_: v for k_, v in cfg.items() if v}
@@ -192,6 +196,9 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
     if "judgement" in flags:
         return refusal("OUT_OF_SCOPE", "This tool does not decide airworthiness, safety or compliance. A qualified person must make that call from the source documents.",
                        "Ask which proposed ADs name your aircraft (with model, certificate date, part numbers) and review the quoted sources yourself.", p, t0)
+    if "cost_question" in flags:
+        return refusal("INSUFFICIENT_EVIDENCE", "Cost and work-hour estimates are in the notice's 'Costs of Compliance' table, which this tool does not extract or quote.",
+                       "Open the notice (search by docket or AD number) and read its 'Costs of Compliance' section.", p, t0)
     if "pre_2001" in flags:
         return refusal("OUT_OF_CORPUS", "The corpus contains NPRMs issued from April 2001 onward; nothing earlier is held.",
                        "Look the document up in the Federal Register archive directly.", p, t0)
@@ -296,7 +303,7 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
     cards = []
     if p["intent"] == "applicability":
         ac = AircraftConfig(make=cfg.get("make"), model=cfg.get("model"), serial=cfg.get("serial"), cofa_date=cfg.get("cofa_date"),
-                            part_numbers=cfg.get("part_numbers") or [])
+                            part_numbers=cfg.get("part_numbers") or [], variant_unknown="variant_unknown" in flags)
         for d in cand[:8]:
             v = engine_verdict(C.rec[d], C.appl[d], ac)
             cards.append(make_card(C, d, "applicability", qterms, verdict=v, chunk=chunk_for.get(d), score=score_for.get(d)))

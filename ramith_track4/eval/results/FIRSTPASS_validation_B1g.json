@@ -1,0 +1,378 @@
+{
+ "meta": {
+  "timestamp": "20261031_144437",
+  "git_commit": "b75633c",
+  "src_hash": "22efb3d9a6d0",
+  "sets": [
+   "b1g"
+  ],
+  "systems": [
+   "full"
+  ],
+  "testset_v1_sha": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "B1_sha": "974ffd54bfa1f7d8cad1b6f03891c1221696a48ffcc952ac848c5e58a16f78f9",
+  "B2_sha": "3e37d24fa7333bc4b1662882ef6ac954b154eeaaf27f9c7f7f92c1129b0bc8c3"
+ },
+ "results": {
+  "b1g/full": {
+   "summary": {
+    "system": "full",
+    "n": 20,
+    "verdict_accuracy": 100.0,
+    "reason_accuracy": 95.0,
+    "confusion": {
+     "DOES_NOT_APPLY->DOES_NOT_APPLY": 10,
+     "APPLIES->APPLIES": 8,
+     "CANNOT_DETERMINE->CANNOT_DETERMINE": 2
+    },
+    "per_gold": {
+     "APPLIES": 100.0,
+     "DOES_NOT_APPLY": 100.0,
+     "CANNOT_DETERMINE": 100.0
+    }
+   },
+   "rows": [
+    {
+     "id": "B1g-01",
+     "doc": "2025-01728",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "General Electric Company",
+      "model": "CF6-80C2B6",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-02",
+     "doc": "2025-21416",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Textron Aviation Inc. (Cessna)",
+      "model": "525A",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-03",
+     "doc": "2025-06070",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "SERIAL_OUT_OF_RANGE",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "SERIAL_OUT_OF_RANGE",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Honda Aircraft Company LLC",
+      "model": "HA-420",
+      "cofa_date": null,
+      "serial": "42000300",
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-04",
+     "doc": "2025-05489",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Canada Limited Partnership",
+      "model": "BD-500-1A11",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-05",
+     "doc": "2025-08331",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A300 B4-605R",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-07",
+     "doc": "2025-21093",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "737-800",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-08",
+     "doc": "2025-20011",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "CERT_DATE_BEFORE_CUTOFF",
+     "ok": true,
+     "reason_ok": false,
+     "config": {
+      "make": "Airbus SAS",
+      "model": "A320-232",
+      "cofa_date": "2009-06-15",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-09",
+     "doc": "2025-17781",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "747-400",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-10",
+     "doc": "2025-12369",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Bombardier, Inc.",
+      "model": "BD-100-1A10",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-12",
+     "doc": "2025-18805",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "De Havilland Aircraft of Canada Limited",
+      "model": "DHC-8-402",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-14",
+     "doc": "2025-20091",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters",
+      "model": "AS 350BB",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-16",
+     "doc": "2025-05700",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Embraer S.A.",
+      "model": "EMB-505",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-17",
+     "doc": "2025-06446",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus",
+      "model": "A330-343",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-20",
+     "doc": "2025-16619",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "CERT_DATE_AFTER_CUTOFF",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "CERT_DATE_AFTER_CUTOFF",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "ATR--GIE Avions de Transport R\u00e9gional",
+      "model": "ATR42-500",
+      "cofa_date": "2025-03-15",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-22",
+     "doc": "2025-17732",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Canada Limited Partnership",
+      "model": "A220-500",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-23",
+     "doc": "2025-05329",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "International Aero Engines, LLC",
+      "model": "PW1127G1-JM",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-26",
+     "doc": "2025-04951",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "777-300ER",
+      "cofa_date": "2012-06-14",
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-27",
+     "doc": "2025-15297",
+     "gold": "DOES_NOT_APPLY",
+     "gold_reason": "MODEL_NOT_LISTED",
+     "got": "DOES_NOT_APPLY",
+     "got_reason": "MODEL_NOT_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Bombardier Inc.",
+      "model": "CL-600-2B19",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-29",
+     "doc": "2025-12479",
+     "gold": "CANNOT_DETERMINE",
+     "gold_reason": "EXTERNAL_DOC_REQUIRED",
+     "got": "CANNOT_DETERMINE",
+     "got_reason": "EXTERNAL_DOC_REQUIRED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "The Boeing Company",
+      "model": "787-9",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    },
+    {
+     "id": "B1g-30",
+     "doc": "2025-20303",
+     "gold": "APPLIES",
+     "gold_reason": "MODEL_LISTED",
+     "got": "APPLIES",
+     "got_reason": "MODEL_LISTED",
+     "ok": true,
+     "reason_ok": true,
+     "config": {
+      "make": "Airbus Helicopters Deutschland GmbH",
+      "model": "EC135T2+",
+      "cofa_date": null,
+      "serial": null,
+      "part_numbers": []
+     }
+    }
+   ]
+  }
+ }
+}

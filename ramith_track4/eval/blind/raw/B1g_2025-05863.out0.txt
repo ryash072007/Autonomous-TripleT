@@ -1,0 +1,7 @@
+The applicability paragraph covers all Bombardier CL-600-2B16 (604 Variant) airplanes, certificated in any category. There are no date, serial, or part number conditions, so any listed model applies and any other model does not. Applicability never depends on missing information, an external document, or an exclusion. A CANNOT_DETERMINE configuration is therefore impossible to build from this notice alone.
+
+Paragraph (g) does depend on service bulletin incorporation, but that is a compliance condition and not part of applicability. Paragraph (h) is a parts prohibition that applies to any airplane.
+
+```json
+{"feasible": false, "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}, "gold_verdict": "CANNOT_DETERMINE", "gold_reason": "AMBIGUOUS_SCOPE", "evidence_quote": "This AD applies to all Bombardier, Inc., Model CL-600-2B16 (604 Variant) airplanes, certificated in any category.", "notes": "Applicability is model-only with no date, serial, or PN limits, so a stated model always gives APPLIES or DOES_NOT_APPLY. The service bulletin conditions in (g) affect compliance, not applicability."}
+```

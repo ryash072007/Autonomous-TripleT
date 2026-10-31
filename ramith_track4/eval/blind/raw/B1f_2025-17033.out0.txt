@@ -1,0 +1,9 @@
+I can build a CANNOT_DETERMINE case by leaving the serial number unstated.
+
+The applicability paragraph depends on manufacturer serial numbers: 1002, 1004 through 1234 inclusive, and 3001 through 3018 inclusive. It also requires the Model P-180, certificated in any category. If the owner knows the model (P-180 Avanti II) but the configuration gives no serial number, the serial condition cannot be checked. Serial numbers 1003 and 1235 through 3000 are excluded, so the missing serial makes the answer undeterminable rather than APPLIES.
+
+The hose part numbers appear only in the required-action paragraph (g), not in the applicability paragraph, so they do not affect the verdict. I left the part numbers empty.
+
+```json
+{"feasible":true,"config":{"make":"Piaggio Aviation S.p.A.","model":"P-180 Avanti II","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"CANNOT_DETERMINE","gold_reason":"INPUT_MISSING_SERIAL","evidence_quote":"This AD applies to Piaggio Aviation S.p.A. Model P-180 airplanes, manufacturer serial numbers 1002, 1004 through 1234 inclusive, and 3001 through 3018 inclusive, certificated in any category.","notes":"Model matches but the serial number is not stated; applicability turns on the serial ranges, which exclude 1003 and 1235-3000, so it cannot be resolved."}
+```

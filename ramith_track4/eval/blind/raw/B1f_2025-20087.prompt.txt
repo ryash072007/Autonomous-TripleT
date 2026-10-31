@@ -1,0 +1,445 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is APPLIES. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 220 (Tuesday, November 18, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 220 (Tuesday, November 18, 2025)]
+[Proposed Rules]
+[Pages 51607-51610]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-20087]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-3993; Project Identifier MCAI-2025-00630-A]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Embraer S.A. Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for certain Embraer S.A. (Embraer) Model EMB-505 airplanes. This 
+proposed AD was prompted by the possibility that some airplanes may 
+have invalid horizontal stabilizer (HS) backlash test results due to 
+the use of incorrect procedures. This proposed AD would require 
+inspecting the airplane's left-hand (LH) and right-hand (RH) HS 
+backlash and replacement, as applicable, of certain hinge point and 
+pitch trim actuator attachment parts and the pitch trim actuator. The 
+FAA is proposing this AD to address the unsafe condition on these 
+products.
+
+DATES: The FAA must receive comments on this NPRM by January 2, 2026.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3993; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For Ag[ecirc]ncia Nacional de Avia[ccedil][atilde]o Civil 
+(ANAC) material identified in this proposed AD, contact ANAC, 
+Continuing Airworthiness Technical Branch (GTAC), Rua Doutor Orlando 
+Feirabend Filho, 230--Centro Empresarial Aquarius--Torre B--Andares 14 
+a 18, Parque Residencial Aquarius, CEP 12.246-190--S[atilde]o 
+Jos[eacute] dos Campos--SP, Brazil; phone: 55 (12) 3203-6600; email: 
+<a href="/cdn-cgi/l/email-protection#97e7f6f4d7abf6b7ffe5f2f1aa" http: anac.gov">anac.gov</a>.br">pac@<a href="http://anac.gov">anac.gov</a>.br</a>; website: <a href="http://anac.gov">anac.gov</a>.br/en/. You may find this material 
+on the ANAC website at <a href="http://sistemas.anac.gov">sistemas.anac.gov</a>.br/certificacao/DA/DAE.asp.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 901 Locust, Kansas City, 
+MO 64106. For information on the availability of this material at the 
+FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Jim Rutherford, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (816) 329-4165; email: <a href="/cdn-cgi/l/email-protection#8ce6e5e1a2fef9f8e4e9feeae3fee8cceaededa2ebe3fa"><span class="__cf_email__" data-cfemail="49232024673b3c3d212c3b2f263b2d092f2828672e263f">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments using a method listed 
+under ADDRESSES. Include ``Docket No. FAA-2025-3993; Project Identifier 
+MCAI-2025-00630-A'' at the beginning of your comments. The most helpful 
+comments reference a specific portion of the proposal, explain the 
+reason for any recommended change, and include supporting data. The FAA 
+will consider all comments received by the closing date and may amend 
+this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt
+
+[[Page 51608]]
+
+from public disclosure. If your comments responsive to this NPRM 
+contain commercial or financial information that is customarily treated 
+as private, that you actually treat as private, and that is relevant or 
+responsive to this NPRM, it is important that you clearly designate the 
+submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this NPRM. Submissions containing CBI should be 
+sent to Jim Rutherford, Aviation Safety Engineer, FAA, 1600 Stewart 
+Avenue, Suite 410, Westbury, NY 11590. Any commentary that the FAA 
+receives which is not specifically designated as CBI will be placed in 
+the public docket for this rulemaking.
+
+Background
+
+    ANAC, which is the aviation authority for Brazil, has issued ANAC 
+AD 2025-04-01, dated April 15, 2025 (ANAC AD 2025-04-01) (also referred 
+to as the MCAI), to correct an unsafe condition on certain serial-
+numbered Embraer Model EMB-505 airplanes. The MCAI states that there is 
+a possibility of some airplanes having invalid HS backlash test results 
+due to the use of incorrect test procedures. The excessive backlash may 
+result in an aeroelastic phenomenon exposing the surrounding structure 
+and systems to unacceptable vibration levels and reduced 
+controllability of the airplane. To address this unsafe condition, the 
+MCAI specifies inspecting the airplane LH and RH HS backlash and 
+replacing, as applicable, the LH and RH hinge point attachment parts, 
+the LH or RH pitch trim actuator rod-end attachment parts, and the 
+pitch trim actuator.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-3993.
+
+Material Incorporated by Reference Under 1 CFR part 51
+
+    The FAA reviewed ANAC AD 2025-04-01, which specifies procedures for 
+inspecting the LH and RH HS backlash for correct values, and replacing, 
+as applicable, the LH and RH hinge point attachment parts, the LH or RH 
+pitch trim actuator rod-end attachment parts, and the pitch trim 
+actuator.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the civil aviation authority 
+of another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, that authority has notified the FAA of the unsafe condition 
+described in the MCAI referenced above. The FAA is issuing this NPRM 
+after determining that the unsafe condition described previously is 
+likely to exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in ANAC AD 2025-04-01 described previously, except for any differences 
+identified as exceptions in the regulatory text of this proposed AD. 
+See ``Differences Between this Proposed AD and the MCAI'' for a general 
+discussion of these differences.
+
+Differences Between This Proposed AD and the MCAI
+
+    The material specified in ANAC AD 2025-04-01 allows the use of 
+alternative or similar parts in place of the ones specified in the 
+kits, provided these alternative or similar parts are approved by 
+Embraer, but this proposed AD would require approval from either the 
+Manager, International Validation Branch, FAA; ANAC; or ANAC's 
+authorized Designee. If approved by the ANAC Designee, the approval 
+must include the Designee's authorized signature.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate ANAC AD 2025-04-01 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+ANAC AD 2025-04-01 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed. Material required by ANAC AD 2025-04-01 for compliance 
+will be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-3993 
+after the FAA final rule is published.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 50 airplanes of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                       Cost per    Cost on U.S.
+                Action                            Labor cost             Parts cost    product       operators
+----------------------------------------------------------------------------------------------------------------
+Inspect HS backlash...................  16 work-hours x $85 per hour =           $0       $1,360         $68,000
+                                         $1,360.
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary actions 
+that would be required based on the results of the proposed inspection. 
+The agency has no way of determining the number of airplanes that might 
+need these actions:
+
+                           On-Condition Costs
+------------------------------------------------------------------------
+                                                               Cost per
+            Action                Labor cost     Parts cost    product
+------------------------------------------------------------------------
+Replace horizontal to          17 work-hours x         $300       $1,745
+ vertical stabilizers LH        $85 per hour =
+ hinge point attachment parts.  $1,445.
+
+[[Page 51609]]
+
+ 
+Replace horizontal to          17 work-hours x          350        1,795
+ vertical stabilizers RH        85 per hour =
+ hinge point attachment parts.  1,445.
+Replace RH pitch trim          16 work-hours x          400        1,760
+ actuator rod-end attachment    85 per hour =
+ parts.                         1,360.
+Replace LH pitch trim          16 work-hours x          400        1,760
+ actuator rod-end attachment    85 per hour =
+ parts.                         1,360.
+Replace pitch trim actuator..  18 work-hours x        5,000        6,530
+                                85 per hour =
+                                1,530.
+------------------------------------------------------------------------
+
+    The FAA has included all known costs in its cost estimate. 
+According to the manufacturer, however, all of the costs of this 
+proposed AD may be covered under warranty, thereby reducing the cost 
+impact on affected operators.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Embraer S.A.: Docket No. FAA-2025-3993; Project Identifier MCAI-
+2025-00630-A.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by January 2, 2026.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Embraer S.A. Model EMB-505 airplanes, as 
+identified in Ag[ecirc]ncia Nacional de Avia[ccedil][atilde]o Civil 
+(ANAC) AD 2025-04-01, effective April 15, 2025 (ANAC AD 2025-04-01), 
+certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 2700, Flight Control 
+System.
+
+(e) Unsafe Condition
+
+    This AD was prompted by the discovery that some airplanes may 
+have invalid horizontal stabilizer (HS) backlash test results due to 
+incorrect procedures being performed. The FAA is issuing this AD to 
+address the unsafe condition. The unsafe condition, if not 
+addressed, could result in unacceptable vibration levels and reduced 
+controllability of the airplane.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    Except as specified in paragraphs (h) and (i) of this AD: Comply 
+with all required actions and compliance times specified in, and in 
+accordance with, ANAC AD 2025-04-01.
+
+(h) Exceptions to ANAC AD 2025-04-01
+
+    (1) Where ANAC AD 2025-04-01 refers to its effective date, this 
+AD requires using the effective date of this AD for both Group 1 and 
+Group 2 airplanes.
+    (2) Where the material specified in ANAC AD 2025-04-01 allows 
+the use of alternative or similar parts in place of the ones 
+specified in the kits, provided these alternative or similar parts 
+are approved by Embraer, this AD requires approval from either the 
+Manager, International Validation Branch, FAA; ANAC; or ANAC's 
+authorized Designee. If approved by the ANAC Designee, the approval 
+must include the Designee's authorized signature.
+    (3) Where ANAC AD 2025-04-01 refers to removal and replacement 
+of attachment parts and pitch trim actuators in paragraphs (b)(1), 
+(c)(1), (d)(1), (d)(2), (e)(1), (e)(2), and (f)(1), this AD 
+specifies accomplishing the removal and replacement in these 
+paragraphs in accordance with the appropriate procedures contained 
+in the material referenced in ANAC AD 2025-04-01.
+    (4) Where the material referenced in ANAC AD 2025-04-01 
+specifies discarding parts, this AD requires removing those parts 
+from service.
+    (5) This AD does not adopt paragraph (h) of ANAC AD 2025-04-01.
+
+(i) No Reporting Requirement
+
+    Although the material referenced in ANAC AD 2025-04-01 specifies 
+to submit information to the manufacturer, this AD does not require 
+that action.
+
+(j) Credit for Previous Actions
+
+    This paragraph provides credit for the actions required by 
+paragraph (g) of this AD, if those actions were performed before the 
+effective date of this AD using Embraer Service Bulletin No. 505-27-
+0034, dated September 19, 2024, or Embraer Service Bulletin No. 505-
+27-0034, Revision 01, dated October 04, 2024.
+
+(k) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as
+
+[[Page 51610]]
+
+appropriate. If sending information directly to the manager of the 
+International Validation Branch, send it to the attention of the 
+person identified in paragraph (l) of this AD and email to: 
+<a href="/cdn-cgi/l/email-protection#b6f7fbf9f5f6d0d7d798d1d9c0"><span class="__cf_email__" data-cfemail="88c9c5c7cbc8eee9e9a6efe7fe">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(l) Additional Information
+
+    For more information about this AD, contact Jim Rutherford, 
+Aviation Safety Engineer, FAA; phone: (816) 329-4165; email: 
+<a href="/cdn-cgi/l/email-protection#5a130c18741915091a3c3b3b743d352c"><span class="__cf_email__" data-cfemail="f0b9a6b2deb3bfa3b0969191de979f86">[email&#160;protected]</span></a>.
+
+(m) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) Ag[ecirc]ncia Nacional de Avia[ccedil][atilde]o Civil AD 
+2025-04-01, effective April 15, 2025.
+    (ii) [Reserved]
+    (3) For Embraer S.A. material identified in this AD, contact 
+Embraer S.A., Technical Publications Avenida Brigadeiro Faria Lima, 
+2170, S[atilde]o Jose dos Campos--SP, Brazil; phone: +551239275852; 
+email: <a href="/cdn-cgi/l/email-protection#d8bcb1abacaab1ba98bdb5baaab9bdaaf6bbb7b5f6baaa"><span class="__cf_email__" data-cfemail="284c415b5c5a414a684d454a5a494d5a064b4745064a5a">[email&#160;protected]</span></a>; website: <a href="https://www.flyembraer.com/irj/portal">https://www.flyembraer.com/irj/portal</a>.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 901 Locust, Kansas 
+City, MO 64106. For information on the availability of this material 
+at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#6d0b1f4304031e1d080e190402032d030c1f0c430a021b"><span class="__cf_email__" data-cfemail="3e584c1057504d4e5b5d4a5751507e505f4c5f10595148">[email&#160;protected]</span></a>.
+
+    Issued on October 24, 2025.
+Steven W. Thompson,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-20087 Filed 11-17-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

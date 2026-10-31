@@ -1,0 +1,1 @@
+{"question": "What inspection is proposed for Boeing 757-200 and 757-200CB fuselage lap splices to address widespread fatigue damage in the inner skin at the lower fastener row?"}

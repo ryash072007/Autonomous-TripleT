@@ -29,7 +29,7 @@ PN_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])(?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]
 AD_NUM_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{2}$")
 SERIAL_RANGE_RE = re.compile(r"serial\s+numbers?\s+([A-Z0-9-]+)\s+(?:through|to|-)\s+([A-Z0-9-]+)", re.I)
 SERIAL_LIST_RE = re.compile(
-    r"serial\s+numbers?\s*(?:\(\s*(?:S/Ns?|ESNs?|MSNs?)\s*\))?\s*:?\s*([^;]{3,400}?)(?=,?\s+(?:certificated|certified|with|that|on\s+which|installed)\b|[.;]|$)",
+    r"(?:serial\s+numbers?\s*(?:\(\s*(?:S/Ns?|ESNs?|MSNs?)\s*\))?|\bS/Ns|\bESNs|\bMSNs)\s*:?\s*([^;]{3,400}?)(?=,?\s+(?:certificated|certified|with|that|on\s+which|installed)\b|[.;]|$)",
     re.I | re.S)
 COND_RE = re.compile(
     r"\b(?:with|having|has|equipped|fitted|installed|delivered|manufactured|produced|that\s+(?:were|are|have|has)|"
@@ -50,6 +50,13 @@ def _clean(raw: str) -> str:
     return re.sub(r"\s+", " ", t)
 
 
+# "DHC-8-401 and -402", "CL-600-2B16, -2B19": the shared prefix is everything before the last dash of the first item
+EXPAND2_RE = re.compile(
+    r"\b([A-Z][A-Z0-9]*-\d+[A-Z]?)-([A-Z0-9][A-Za-z0-9/]*)((?:\s*,?\s*(?:and\s+|or\s+)?-\s?[A-Z0-9][A-Za-z0-9/]*)+)"
+)
+SUFFIX2_RE = re.compile(r"(?:^|[\s,])(?:(?:and|or)\s+)?-\s?([A-Z0-9][A-Za-z0-9/]*)")
+
+
 def expand_models(text: str) -> set:
     """Normalised model strings implied by the text, including dash-suffix list expansion."""
     t = _clean(text)
@@ -58,6 +65,11 @@ def expand_models(text: str) -> set:
         base, first, rest = m.group(1), m.group(2), m.group(3)
         out.add(norm_model(f"{base}-{first}"))
         for suf in SUFFIX_RE.findall(rest):
+            out.add(norm_model(f"{base}-{suf}"))
+    for m in EXPAND2_RE.finditer(t):
+        base, first, rest = m.group(1), m.group(2), m.group(3)
+        out.add(norm_model(f"{base}-{first}"))
+        for suf in SUFFIX2_RE.findall(rest):
             out.add(norm_model(f"{base}-{suf}"))
     return out
 
@@ -83,16 +95,29 @@ def model_in_text(model: str, text: str) -> bool:
         tail = norm_model(" ".join(toks[i:]))
         if re.search(r"\d", tail) and len(tail) >= 3:
             cands.append(tail)
+    # a marketing name after the designation ("P-180 Avanti II") must not stop the designation itself ("P-180") from matching
+    dig = [i for i, t in enumerate(toks) if re.search(r"\d", t)]
+    if dig and dig[-1] < len(toks) - 1:
+        head = norm_model(" ".join(toks[: dig[-1] + 1]))
+        if len(head) >= 3 and head not in cands:
+            cands.append(head)
     for c in cands:
         if c in exp:
             return True
         base = c.split("-")[0]
         # "Model 747 series" names every 747-xxx variant; require a bare base token followed by "series"
-        if "-" in c and re.search(r"(?<![A-Z0-9-])" + re.escape(base) + r"\s+series\b", hay, re.I):
+        # ... and "Model 747-8 series" names 747-8, 747-8F, 747-8I: every dash-prefix of the designation and its numeric stem may be the series
+        parts_ = c.split("-")
+        stems = {base} | {"-".join(parts_[:k]) for k in range(1, len(parts_))}
+        if re.match(r"\d+", parts_[-1]):
+            stems.add("-".join(parts_[:-1] + [re.match(r"\d+", parts_[-1]).group()]))
+        if "-" in c and any(re.search(r"(?<![A-Z0-9-])" + re.escape(st) + r"\s+series\b", hay, re.I) for st in stems):
             return True
         chars = [re.escape(ch) for ch in c if ch != "-"]
         # a longer designation continuing the same name ("BK117" inside "BK 117 D-2", "205A" inside "205A-1") is a different model
-        pat = r"(?<![A-Z0-9])" + r"[\s-]*".join(chars) + r"(?![A-Z0-9])(?!-[A-Z0-9])(?!\s?[A-Z]-\d)"
+        # a bare tail without a dash ("350" from "King Air 350") must not match inside a longer designator such as "PC-6/350"
+        lead = r"(?<![A-Z0-9/.-])" if (c != u and "-" not in c) else r"(?<![A-Z0-9])"
+        pat = lead + r"[\s-]*".join(chars) + r"(?![A-Z0-9])(?!-[A-Z0-9])(?!\s?[A-Z]-\d)"
         if re.search(pat, hay):
             return True
     return False
@@ -123,6 +148,8 @@ def extract_applicability(rec: dict) -> dict:
     }
     if re.search(r"\ball\b", raw[:200], re.I) and not re.search(r"as identified in", raw, re.I):
         out["scope"] = "all"
+    # "applies to all airplanes ... with part X installed": no make or model restricts it, so MODEL_NOT_LISTED would be wrong
+    out["model_agnostic"] = bool(re.search(r"applies\s+to\s+all\s+(?:airplanes|aircraft|helicopters|rotorcraft|engines|propellers)\b", raw))
 
     # groups: (c)(1), (c)(2)... or (1), (2)...; the lead text applies to every group
     marks = list(GROUP_RE.finditer(raw))
@@ -152,12 +179,20 @@ def extract_applicability(rec: dict) -> dict:
         out["exclusions"].append({"span": list(_span(cs, m)), "quote": m.group(0)})
     for m in ASID_RE.finditer(raw):
         out["external_refs"].append({"name": re.sub(r"\s+", " ", m.group(1)).strip(), "span": list(_span(cs, m)), "quote": m.group(0)})
+    def _group_of(pos):
+        """Index of the (1)/(2) group containing offset `pos` of the section, None when the notice has a single group."""
+        for gi, g_ in enumerate(out["groups"]):
+            if g_["char_start"] - cs <= pos < g_["char_end"] - cs:
+                return gi if len(out["groups"]) > 1 else None
+        return None
+
     scrub = re.sub(r"(?:all|any)\s+(?:manufacturer\s+)?serial\s+numbers|model\s+and\s+serial\s+number", "", raw, flags=re.I)
     serial_clauses = []        # (start, end) in raw, blanked out of the residual-condition scan so "having serial number ..." is not a config clause
     if True:
         # Blind-set finding: lists like "serial numbers (S/Ns) 1002, 1004 through 1234 inclusive, 3001 through 3012 inclusive, and 3016"
         for m in SERIAL_LIST_RE.finditer(raw):
-            items = [i.strip() for i in re.split(r",\s*(?:and\s+)?|\s+and\s+", m.group(1)) if i.strip()]
+            # the Federal Register wraps lines inside serial numbers ("560- 6296"); re-join before splitting
+            items = [i.strip() for i in re.split(r",\s*(?:and\s+)?|\s+and\s+", re.sub(r"(?<=[A-Z0-9])-\s+(?=[A-Z0-9])", "-", m.group(1))) if i.strip()]
             parsed = []
             for it in items:
                 r1 = re.fullmatch(r"(?:serial\s+numbers?\s+)?([A-Z0-9-]+)\s+(?:through|to)\s+([A-Z0-9-]+)(?:\s+inclusive)?", it, re.I)
@@ -170,12 +205,12 @@ def extract_applicability(rec: dict) -> dict:
                     parsed = []
                     break
             for lo, hi in parsed:
-                out["serial_ranges"].append({"lo": lo, "hi": hi, "span": list(_span(cs, m, 1))})
+                out["serial_ranges"].append({"lo": lo, "hi": hi, "span": list(_span(cs, m, 1)), "group": _group_of(m.start())})
             if parsed:
                 serial_clauses.append((m.start(), m.end(1)))
     if not out["serial_ranges"]:
         for m in SERIAL_RANGE_RE.finditer(raw):
-            out["serial_ranges"].append({"lo": m.group(1), "hi": m.group(2), "span": list(_span(cs, m))})
+            out["serial_ranges"].append({"lo": m.group(1), "hi": m.group(2), "span": list(_span(cs, m)), "group": _group_of(m.start())})
             serial_clauses.append((m.start(), m.end()))
     # Restraint (audit: serial extraction 3/4 correct): anything beyond a clean range is "unparsed" -> CANNOT_DETERMINE.
     n_serial_mentions = len(re.findall(r"serial\s+numbers?|\bS/N\b|\bMSN\b|\bESN\b", scrub, re.I))
@@ -195,6 +230,9 @@ def extract_applicability(rec: dict) -> dict:
         lead = re.search(r"\b(?:having|with)\s+(?:the\s+)?$", raw[:a_], re.I)
         a2 = a_ - (len(lead.group(0)) if lead else 0)
         resid = resid[:a2] + " " * (b_ - a2) + resid[b_:]
+    # "Note 1 to paragraph (c): ..." is explanatory (it restates model names, "helicopters with an EC135P3H designation are Model EC135P3"),
+    # not a condition; blank it out up to the next numbered group or the end of the section
+    resid = re.sub(r"Note\s+\d*\s*to\s+paragraph\s+\(c\)[^:]{0,40}:.*?(?=\n\s*\(\d{1,2}\)\s+[A-Z]|\Z)", lambda m_: " " * len(m_.group(0)), resid, flags=re.S)
     resid = re.sub(r"certifi(?:cated|ed)\s+in\s+any\s+category|with\s+an?\s+(?=original)|model\s+and\s+serial\s+number", lambda m_: " " * len(m_.group(0)), resid, flags=re.I)
     out["other_conditions"] = []
     if not any(g["pn_required"] for g in out["groups"]):

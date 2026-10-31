@@ -41,10 +41,38 @@ VERDICT_DEF = ("Verdict definitions, judged ONLY from the notice's applicability
 CORPUS_DESC = "a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026"
 
 
+# Spend meter. Real token counts from every response are appended to eval/results/api_spend.jsonl; the dollar figure is an ESTIMATE
+# at an assumed $3 / $15 per million input / output tokens (the real price may differ), and the run stops at API_CAP_USD.
+import os  # noqa: E402
+SPEND = ROOT / "eval" / "results" / "api_spend.jsonl"
+PRICE_IN, PRICE_OUT = 3.0, 15.0
+CAP_USD = float(os.environ.get("API_CAP_USD", "2.0"))
+
+
+def _spend():
+    if not SPEND.exists():
+        return 0.0
+    tot = 0.0
+    for line in SPEND.read_text(encoding="utf-8").splitlines():
+        u = json.loads(line)
+        tot += (u["in"] * PRICE_IN + u["out"] * PRICE_OUT) / 1e6
+    return tot
+
+
+def _log_usage(tag, r):
+    u = getattr(r, "usage", None)
+    with open(SPEND, "a", encoding="utf-8") as f:
+        f.write(json.dumps({"tag": tag, "in": getattr(u, "input_tokens", 0), "out": getattr(u, "output_tokens", 0)}) + chr(10))
+
+
 def call(tag, user, retries=2):
     (RAW / f"{tag}.prompt.txt").write_text(user, encoding="utf-8")
     for i in range(retries + 1):
+        spent = _spend()
+        if spent >= CAP_USD:
+            sys.exit(f"STOP: estimated spend ${spent:.2f} reached the cap ${CAP_USD:.2f} (set API_CAP_USD to change); no more calls")
         r = client.messages.create(model=MODEL, max_tokens=1500, system=SYSTEM, messages=[{"role": "user", "content": user}])
+        _log_usage(tag, r)
         txt = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
         (RAW / f"{tag}.out{i}.txt").write_text(txt, encoding="utf-8")
         m = re.search(r"\{.*\}", txt, re.S)

@@ -20,3 +20,15 @@
 20261031_125715 commit e0903c5 src_hash 768ec9cd65ca sets b1,b1b,b1c,b1d,b2,b2b,b2c,b2d systems full
 20261031_130302 commit b75366d src_hash 768ec9cd65ca sets b1e,b2e systems full
 20261031_130424 commit b75366d src_hash 768ec9cd65ca sets b1e,b2c,b2e systems naive_summary,fulltext_bm25,llm_only,llm_forced
+20261031_142129 commit 9385273 src_hash 3b4518478776 sets b1,b1b,b1c,b1d,b1e systems full
+20261031_142443 commit 9385273 src_hash adf0d17aa0d0 sets b1,b1b,b1c,b1d,b1e systems full
+20261031_142631 commit 9385273 src_hash ac8b7ea000a9 sets b1,b1b,b1c,b1d,b1e systems full
+20261031_142641 commit 9385273 src_hash 99a2f7dd311e sets b1,b1b,b1c,b1d,b1e systems full
+20261031_142927 commit 9385273 src_hash 78f4bcbc448b sets b2,b2b,b2c,b2d,b2e systems full
+20261031_143115 commit 9385273 src_hash fd1810011b0c sets b2,b2b,b2c,b2d,b2e systems full
+20261031_143240 commit 9385273 src_hash 9d876c78f338 sets b2,b2b,b2c,b2d,b2e systems full
+20261031_143336 commit 9385273 src_hash 9b4480bfe63d sets b2,b2b,b2c,b2d,b2e systems full
+20261031_143433 commit 9385273 src_hash ab493762a74e sets b1,b1b,b1c,b1d,b1e,b2,b2b,b2c,b2d,b2e systems full
+20261031_143840 commit f730a3a src_hash ab493762a74e sets b1f systems full
+20261031_143934 commit f730a3a src_hash 22efb3d9a6d0 sets b1,b1b,b1c,b1d,b1e,b1f systems full
+20261031_144437 commit b75633c src_hash 22efb3d9a6d0 sets b1g systems full

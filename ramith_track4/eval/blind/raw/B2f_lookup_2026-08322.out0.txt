@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Textron Aviation Model 408 airplanes that requires revising the airworthiness limitations section to add a detailed inspection of the horizontal stabilizer spar and change the serial effectivity for the vertical stabilizer spar inspection?"}

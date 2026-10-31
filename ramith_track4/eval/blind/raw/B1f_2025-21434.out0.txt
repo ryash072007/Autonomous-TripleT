@@ -1,0 +1,5 @@
+The applicability paragraph covers only Airbus Helicopters Model H160-B helicopters, in any category, with no date, serial, or part-number limits. A DOES_NOT_APPLY configuration is possible by choosing a different model, such as the H145, which is not listed. The notice's only applicability condition is the model, so a model that isn't H160-B clearly fails it.
+
+```json
+{"feasible":true,"config":{"make":"Airbus Helicopters","model":"H145","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"DOES_NOT_APPLY","gold_reason":"MODEL_NOT_LISTED","evidence_quote":"This AD applies to Airbus Helicopters Model H160-B helicopters, certificated in any category.","notes":"Applicability is limited to model H160-B with no other conditions; an H145 is not listed so the AD clearly does not apply."}
+```

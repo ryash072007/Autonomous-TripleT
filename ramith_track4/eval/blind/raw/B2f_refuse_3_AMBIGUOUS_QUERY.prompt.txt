@@ -1,0 +1,3 @@
+We are testing a question-answering tool over a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026. The tool should REFUSE to answer some questions.
+TASK: write ONE realistic question that is too vague to answer because it does not say which aircraft, engine or notice it means.
+Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}

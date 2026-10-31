@@ -1,0 +1,5 @@
+The applicability paragraph covers every Pilatus PC-24, in any category, with no limits on serial number, certificate date, or part number. Any PC-24 therefore gives APPLIES, and any other model gives DOES_NOT_APPLY. Applicability is also not defined by any external document, because EASA AD 2024-0240 is referenced only for the required actions. No realistic configuration yields CANNOT_DETERMINE, so feasible=false.
+
+```json
+{"feasible": false, "config": null, "gold_verdict": "APPLIES", "gold_reason": "MODEL_LISTED", "evidence_quote": "This AD applies to Pilatus Aircraft Ltd Model PC-24 airplanes, certificated in any category.", "notes": "Applicability depends only on model (all PC-24, any category, no serial/date/PN limits), so a CANNOT_DETERMINE configuration cannot be built; the EASA AD is referenced only for the required actions, not for applicability."}
+```

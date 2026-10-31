@@ -1,0 +1,7 @@
+The applicability paragraph covers only Pilatus Model PC-24 airplanes, certificated in any category, "as identified in EASA AD 2024-0181R1". A different Pilatus model, such as the PC-12, clearly fails the model condition. That makes DOES_NOT_APPLY achievable through MODEL_NOT_LISTED.
+
+<br>
+
+```json
+{"feasible":true,"config":{"make":"Pilatus Aircraft Ltd.","model":"PC-12/47E","cofa_date":null,"serial":null,"part_numbers":[]},"gold_verdict":"DOES_NOT_APPLY","gold_reason":"MODEL_NOT_LISTED","evidence_quote":"This AD applies to Pilatus Aircraft Ltd. Model PC-24 airplanes, certificated in any category, as identified in European Union Aviation Safety Agency (EASA) AD 2024-0181R1, dated September 24, 2024 (EASA AD 2024-0181R1).","notes":"A Pilatus PC-12 is not a PC-24, so the model condition clearly fails regardless of the EASA AD's contents."}
+```

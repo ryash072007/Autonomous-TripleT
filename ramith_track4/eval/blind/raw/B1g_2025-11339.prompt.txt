@@ -1,0 +1,485 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 117 (Friday, June 20, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 117 (Friday, June 20, 2025)]
+[Proposed Rules]
+[Pages 26225-26228]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-11339]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-1108; Project Identifier MCAI-2025-00428-R]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus Helicopters
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to supersede Airworthiness Directive (AD) 
+2020-24-07, which applies to certain Airbus Helicopters Model AS350B3, 
+EC130B4, and EC130T2 helicopters. AD 2020-24-07 requires modifying and 
+inspecting the pilot's and co-pilot's throttle twist grip (twist grip) 
+for proper operation. Since the FAA issued AD 2020-24-07, Airbus 
+Helicopters developed another modification of the twist grip and 
+additional corrective actions for helicopters already modified. This 
+proposed AD was prompted by reports of the engine remaining in idle 
+when the twist grip was turned from the ``IDLE'' mode to the ``FLIGHT'' 
+mode. This proposed AD would retain the actions required by AD 2020-24-
+07 and mandate an additional modification, which would constitute 
+terminating action for the repetitive inspections.
+
+[[Page 26226]]
+
+This proposed AD would also expand the helicopter applicability, 
+propose additional requirements for certain helicopters, and would 
+prohibit installing affected microswitches or an affected twist grip 
+with the affected microswitch. The FAA is proposing this AD to address 
+the unsafe condition on these products.
+
+DATES: The FAA must receive comments on this NPRM by August 4, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1108; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI) any comments received, and other information. The 
+street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; phone: +49 221 8999 000; email: 
+<a href="/cdn-cgi/l/email-protection#59181d2a193c382a38773c2c2b362938773c2c"><span class="__cf_email__" data-cfemail="f7b6b384b792968496d9928285988796d99282">[email&#160;protected]</span></a>; website: easa.europa.eu. You may find this material 
+on the EASA website at ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Office of the 
+Regional Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-
+321, Fort Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222-5110. It is also available at 
+<a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2025-1108.
+
+FOR FURTHER INFORMATION CONTACT: Zain Jamal, Aviation Safety Engineer, 
+FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; phone: (847) 
+294-7264; email: <a href="/cdn-cgi/l/email-protection#c9b3a8a0a7e7a3a8a4a8a589afa8a8e7aea6bf"><span class="__cf_email__" data-cfemail="f882999196d69299959994b89e9999d69f978e">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2025-1108; 
+Project Identifier MCAI-2025-00428-R'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend the proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Zain 
+Jamal, Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    The FAA issued AD 2020-24-07, Amendment 39-21337 (85 FR 78954, 
+December 8, 2020) (AD 2020-24-07), for Airbus Helicopters Model AS350B3 
+helicopters with an ARRIEL 2B1 engine with the two-channel Full 
+Authority Digital Engine Control (FADEC) and with new twist grip 
+modification (MOD) 073254 or with an ARRIEL 2D engine installed; Model 
+EC130B4 helicopters with an ARRIEL 2B1 engine with the two-channel 
+FADEC and with new twist grip MOD 073773 installed; and Model EC130T2 
+helicopters with an ARRIEL 2D engine installed. AD 2020-24-07 was 
+prompted by MCAI originated by EASA, which is the Technical Agent for 
+the Member States of the European Union. EASA issued EASA AD 2017-0059, 
+dated April 6, 2017 (EASA AD 2017-0059), to correct an unsafe condition 
+identified, as the microswitches in the engine ``IDLE''/``FLIGHT'' 
+control system could be affected by the corrosive effects of a salt-
+laden atmosphere.
+    AD 2020-24-07 requires repetitively inspecting the wiring, 
+performing an insulation test, inspecting the pilot and copilot twist 
+grip controls, and testing the pilot and copilot twist grip controls 
+for proper functioning. The FAA issued AD 2020-24-07 to prevent the 
+failure of one of the microswitches, 53Ka, 53Kb, or 65K, which can 
+prevent switching from ``IDLE'' mode to ``FLIGHT'' mode during 
+autorotation training making it impossible to recover from a practice 
+autorotation and compelling the pilot to continue the autorotation to 
+the ground. This condition could result in unintended touchdown to the 
+ground at a flight-idle power setting during a practice autorotation, 
+damage to the helicopter, and injury to occupants.
+
+Actions Since AD 2020-24-07 Was Issued
+
+    Since the FAA issued AD 2020-24-07, EASA superseded AD 2017-0059 
+and issued EASA AD 2023-0133, dated July 5, 2023 (EASA AD 2023-0133). 
+EASA AD 2023-0133 states that Airbus Helicopters developed MOD 074782, 
+introducing a new engine power control assembly with microswitches 
+53Ka, 53Kb and 65K, and mandating installation of a serviceable 
+assembly, while prohibiting installation of an affected microswitch on 
+any helicopter. EASA AD 2023-0133 also expands the applicability to all 
+serial numbers of Airbus Helicopters Model AS 350 B3, EC 130 B4, and EC 
+130 T2 helicopters. EASA then superseded AD 2023-0133 and issued EASA 
+AD 2023-0187, dated October 27, 2023 (EASA AD 2023-0187). EASA AD 2023-
+0187 states that errors were found in the modification installation 
+procedure and requires amending the modification instructions and 
+additional work for certain helicopters already modified. EASA then 
+superseded AD 2023-0187 and issued EASA AD 2023-0187R1, dated March 20, 
+2025 (EASA AD 2023-0187R1) (also referred to as the MCAI), to correct 
+an unsafe condition for all Airbus Helicopters Model AS 350 B3, EC 130 
+B4, and EC 130 T2 helicopters. The MCAI states that the salt-laden 
+atmospheric condition definition should be re-formulated, adjusting to 
+the less
+
+[[Page 26227]]
+
+restrictive description provided in the applicable aircraft maintenance 
+manual. The FAA did not issue an AD corresponding to EASA AD 2023-0133 
+and EASA AD 2023-0187.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-1108.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2023-0187R1, which specifies procedures 
+for modifying the twist grip operational logic on helicopters with MOD 
+074263 installed. EASA AD 2023-0187R1 also specifies procedures for 
+repetitively inspecting for no marks, residue, or corrosion and testing 
+the ``IDLE'' and ``FLIGHT'' controls on the pilot's and copilot's twist 
+grips on helicopters with MOD 074699 installed. Additionally, EASA AD 
+2023-0187R1, specifies procedures for installing MOD 074782 on 
+helicopters if an affected microswitch is installed, which would 
+constitute terminating action for the repetitive inspections. For those 
+helicopters with MOD 074782 installed, EASA AD 2023-0187R1 specifies 
+accomplishing a one-time inspection of the installation of the 
+microswitch assembly of the engine power control. EASA AD 2023-0187R1 
+also prohibits installing a microswitch having a part number (P/N) 
+T3933-3 or a twist grip containing a microswitch P/N T3933-3 on any 
+helicopter.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would retain all the requirements of AD 2020-24-
+07. This proposed AD would require installing new microswitches. This 
+proposed AD would also require accomplishing the actions specified in 
+the material already described, except for any differences identified 
+as exceptions in the regulatory text of this proposed AD. See 
+``Differences Between this Proposed AD and the MCAI'' for a discussion 
+of the general differences included in this AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2023-0187R1 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2023-0187R1 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Material referenced in EASA AD 2023-0187R1 for 
+compliance will be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-
+2025-1108 after the FAA final rule is published.
+
+Differences Between This Proposed AD and the MCAI
+
+    EASA AD 2023-0187R1 specifies the initial inspections within 10 
+flight hours or 7 days; this AD requires compliance before the next 
+autorotation training flight, 100 hours time-in-service, or 6 months, 
+whichever occurs first, as the unsafe condition only occurs when 
+transitioning the throttle in-flight from flight to idle and back to 
+flight, such as during a practice autorotation. Additionally, EASA AD 
+2023-0187R1 specifies installing Airbus Helicopters MOD 074263; this 
+proposed AD would not require the modification as it would not correct 
+the unsafe condition.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 856 helicopters of U.S. registry. Labor costs are estimated at 
+$85 per hour. Based on these numbers, the FAA estimates the following 
+costs to comply with this proposed AD.
+    Inspecting the wiring, performing an insulation test, inspecting 
+the pilot and copilot twist grip controls, and testing the pilot and 
+copilot twist grip controls required by MOD 074699 would take about 4 
+work-hours, for an estimated cost of $340 per helicopter and $291,040 
+for the U.S. fleet. Installing MOD 074782 would take about 4 work-
+hours, for an estimated cost of $340 per helicopter.
+    The FAA has included all known costs in its cost estimate. 
+According to the manufacturer, however, some of the costs of this 
+proposed AD may be covered under warranty, thereby reducing the cost 
+impact on affected operators.
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that the proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+[[Page 26228]]
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by:
+0
+a. Removing Airworthiness Directive 2020-24-07, Amendment 39-21337 (20 
+FR 19121, December 8, 2020); and
+0
+b. Adding the following new airworthiness directive:
+
+Airbus Helicopters: Docket No. FAA-2025-1108; Project Identifier 
+MCAI-2025-00428-R.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by August 4, 2025.
+
+(b) Affected ADs
+
+    This AD replaces AD 2020-24-07, Amendment 39-21337 (20 FR 19121, 
+December 8, 2020).
+
+(c) Applicability
+
+    This AD applies to Airbus Helicopters Model AS350B3, EC130B4, 
+and EC130T2 helicopters, certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 7600, Engine 
+Controls.
+
+(e) Unsafe Condition
+
+    This AD was prompted by reports of the of the engine remaining 
+in idle when the throttle twist grip was turned from the ``IDLE'' 
+mode to the ``FLIGHT'' mode. The FAA is issuing this AD to correct 
+the failure of one of the microswitches, 53Ka, 53Kb, or 65K which 
+can prevent the pilot from switching from ``IDLE'' mode to 
+``FLIGHT'' mode during autorotation training making it impossible to 
+recover from a practice autorotation and compelling the pilot to 
+continue the autorotation to the ground. This condition could result 
+in unintended touchdown to the ground at a flight-idle power setting 
+during a practice autorotation, damage to the helicopter, and injury 
+to occupants.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Requirements
+
+    Except as specified in paragraph (h) of this AD: Comply with all 
+required actions and compliance times specified in and in accordance 
+with European Union Aviation Safety Agency AD 2023-0187R1, dated 
+March 20, 2025 (EASA AD 2023-0187R1).
+
+(h) Exceptions to EASA AD 2023-0187R1
+
+    (1) Where EASA AD 2023-0187R1 refers to its effective date, 
+November 10, 2023 (the effective date of EASA AD 2023-0187, dated 
+October 27, 2023), or July 19, 2023 (the effective date of EASA AD 
+2023-0133, dated July 5, 2023), this AD requires using the effective 
+date of this AD.
+    (2) Where EASA AD 2023-0187R1 refers to April 13, 2017 (the 
+effective date of EASA AD 2017-0059, dated April 6, 2017), this AD 
+requires using January 30, 2019 (the effective date of AD 2018-26-
+02, Amendment 39-19532 (83 FR 66093, December 26, 2018)).
+    (3) Where EASA AD 2023-0187R1 refer to flight hours (FH), this 
+AD requires using hours time-in-service.
+    (4) This AD does not adopt paragraphs (1) and (2) of EASA AD 
+2023-0187R1.
+    (5) Instead of complying with the compliance times in Table 1 in 
+paragraph (3) of EASA AD 2023-0187R1, this AD requires the 
+helicopters identified under the Helicopters in Pre-MOD 074699 
+Configuration column to accomplish the actions required by paragraph 
+(3) of EASA AD 2023-0187R1 before the next practice autorotation, 
+within 100 hours time-in-service, or 6 months after January 12, 2021 
+(the effective date of AD 2020-24-07), whichever occurs first.
+    (6) Where Table 2 in paragraph (4), Table 3 in paragraph (7), 
+and Table 4 in paragraph (9) of EASA AD 2023-0187R1 states ``For 
+helicopters which operate or have operated in salt-laden atmospheric 
+conditions,'' this AD requires replacing that text with ``For 
+helicopters which operate or have operated in salt-laden atmospheric 
+conditions, or if it cannot be determined if a helicopter has been 
+operated in salt-laden atmospheric conditions.''
+    (7) Where paragraph (6) of EASA AD 2023-0187R1 states 
+``discrepancies are detected,'' this AD requires replacing that text 
+with ``marks, residue, corrosion, flaky varnish are detected; the 
+values of the insulation test are less than 10 megaOhms; the 
+microswitch closes in the ``IDLE'' position and does not open as 
+soon as the twist grip is turned to the ``FLIGHT'' position; or the 
+microswitch is open in the ``FLIGHT'' position and does not close as 
+soon as the twist grip is turned to the ``IDLE'' position''.
+    (8) Where paragraph (9) of EASA AD 2023-0187R1 states ``any 
+discrepancy,'' for purposes of this AD, discrepancy is defined as a 
+nut torque that is outside allowable torque limits, or clearance 
+between the support plate assembly and the washers that is not 
+within 01.mm to 0.3 mm.
+    (9) This AD does not adopt the ``Remarks'' section of EASA AD 
+2023-0187R1.
+
+(i) Alternative Methods of Compliance (AMOCs)
+
+    (1) The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the manager of the International Validation Branch, send 
+it to the attention of the person identified in paragraph (j) of 
+this AD and email to: <a href="/cdn-cgi/l/email-protection#d3929e9c9093b5b2b2fdb4bca5"><span class="__cf_email__" data-cfemail="3d7c70727e7d5b5c5c135a524b">[email&#160;protected]</span></a>.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+
+(j) Related Information
+
+    For more information about this AD, contact Zain Jamal, Aviation 
+Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 
+11590; phone: (847) 294-7264; email: <a href="/cdn-cgi/l/email-protection#5a203b333474303b373b361a3c3b3b743d352c"><span class="__cf_email__" data-cfemail="87fde6eee9a9ede6eae6ebc7e1e6e6a9e0e8f1">[email&#160;protected]</span></a>.
+
+(k) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference of the material listed in this paragraph 
+under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2023-0187R1, 
+dated March 20, 2025.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#28696c5b684d495b49064d5d5a475849064d5d"><span class="__cf_email__" data-cfemail="f1b0b582b194908290df9484839e8190df9484">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find this EASA material on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at FAA, Office of the Regional 
+Counsel, Southwest Region, 10101 Hillwood Parkway, Room 6N-321, Fort 
+Worth, TX 76177. For information on the availability of this 
+material at the FAA, call (817) 222 5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#1a7c68347374696a7f796e7375745a747b687b347d756c"><span class="__cf_email__" data-cfemail="b9dfcb97d0d7cac9dcdacdd0d6d7f9d7d8cbd897ded6cf">[email&#160;protected]</span></a>.
+
+    Issued on June 16, 2025.
+Paul R. Bernado,
+Acting Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-11339 Filed 6-18-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

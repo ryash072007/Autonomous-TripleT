@@ -1,0 +1,588 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is DOES_NOT_APPLY. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 86 (Tuesday, May 6, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 86 (Tuesday, May 6, 2025)]
+[Proposed Rules]
+[Pages 19160-19165]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-07856]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2024-2556; Project Identifier MCAI-2024-00247-T]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Airbus SAS Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Supplemental notice of proposed rulemaking (SNPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA is revising a notice of proposed rulemaking (NPRM) 
+that applied to certain Airbus SAS Model A300 series airplanes; Model 
+A300 B4-600, B4-600R, and F4-600R series airplanes, and Model A300 C4-
+605R Variant F airplanes (collectively called Model A300-600 series 
+airplanes); and Model A310 series airplanes. This action revises the 
+NPRM by adding airplanes to the applicability. The FAA is proposing 
+this airworthiness directive (AD) to address the unsafe condition on 
+these products. Since this action would impose an additional burden 
+over those in the NPRM, the FAA is requesting comments on this SNPRM.
+
+DATES: The FAA must receive comments on this SNPRM by June 20, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: 202-493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2024-2556; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains the NPRM, this SNPRM, the mandatory continuing 
+airworthiness information (MCAI), any comments received, and other 
+information. The street address for Docket Operations is listed above.
+    Material Incorporated by Reference:
+    <bullet> For European Union Aviation Safety Agency (EASA) material 
+identified in this proposed AD, contact EASA, Konrad-Adenauer-Ufer 3, 
+50668 Cologne, Germany; telephone +49 221 8999 000; email 
+<a href="/cdn-cgi/l/email-protection#9fdedbecdffafeecfeb1faeaedf0effeb1faea"><span class="__cf_email__" data-cfemail="f4b5b087b491958795da9181869b8495da9181">[email&#160;protected]</span></a>. You may find this material on the EASA website at 
+ad.easa.europa.eu. It is also available at <a href="http://regulations.gov">regulations.gov</a> under Docket 
+No. FAA-2024-2556.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 2200 South 216th St., Des 
+Moines, WA. For information on the availability of this material at the 
+FAA, call 206-231-3195.
+
+FOR FURTHER INFORMATION CONTACT: Courtney Tuck, Aviation Safety 
+Engineer, FAA, 2200 South 216th St., Des Moines, WA 98198; phone: 206-
+231-3986; email: <a href="/cdn-cgi/l/email-protection#47242832353329223e692c693332242c0721262669202831"><span class="__cf_email__" data-cfemail="a7c4c8d2d5d3c9c2de89cc89d3d2c4cce7c1c6c689c0c8d1">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under the ADDRESSES section. Include ``Docket No. FAA-2024-2556; 
+Project Identifier MCAI-2024-00247-T'' at the beginning of your 
+comments. The most helpful comments reference a specific portion of the 
+proposal, explain the reason for any recommended change, and include 
+supporting data. The FAA will consider all comments received by the 
+closing date and may amend this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this SNPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this SNPRM contain 
+commercial or financial information that is customarily treated as 
+private, that you actually treat as private, and that is relevant or 
+responsive to this SNPRM, it is important that you clearly designate 
+the submitted comments as CBI. Please mark each page of your submission 
+containing CBI as ``PROPIN.'' The FAA will treat such marked 
+submissions as confidential under the FOIA, and they will not be placed 
+in the public docket of this SNPRM. Submissions containing CBI should 
+be sent to Courtney Tuck, Aviation Safety Engineer, FAA, 2200 South 
+216th St., Des Moines, WA 98198; phone: 206-231-3986; email: 
+<a href="/cdn-cgi/l/email-protection#47242832353329223e692c693332242c0721262669202831"><span class="__cf_email__" data-cfemail="85e6eaf0f7f1ebe0fcabeeabf1f0e6eec5e3e4e4abe2eaf3">[email&#160;protected]</span></a>. Any commentary that the FAA receives which is 
+not specifically designated as CBI will be placed in the public docket 
+for this rulemaking.
+
+Background
+
+    The FAA issued an NPRM to amend 14 CFR part 39 by adding an AD that 
+would apply to certain Airbus SAS Model A300 series airplanes; Model 
+A300-600 series airplanes; and Model A310 series airplanes. The NPRM 
+published in the Federal Register on December 13, 2024 (89 FR 100926). 
+The NPRM was prompted by AD 2024-0092R1, dated July 10, 2024 (EASA AD 
+2024-0092R1) (also referred to as the MCAI), issued by EASA, which is 
+the Technical Agent for the Member States of the European Union. EASA 
+AD 2024-0092R1 states that investigations found cracks on the main deck 
+cargo door (MDCD) actuator bearing fitting caused by fatigue. There is 
+no unsafe condition during flight when the cargo door is fully closed, 
+latched, and locked. However, if not detected and corrected, this 
+cracking could lead to MDCD undamped free fall from the open position 
+during MDCD operations or during cargo loading/off-loading, resulting 
+in injury to people on the ground.
+    In the NPRM, the FAA proposed to require an operational limitation 
+to the MDCD opening angle, repetitive detailed visual inspections of 
+the MDCD actuator bearing fittings, and replacement if any cracks are 
+found.
+
+[[Page 19161]]
+
+Actions Since the NPRM Was Issued
+
+    Since the FAA issued the NPRM, the FAA has determined the 
+applicability of the proposed AD must be revised to add airplanes. The 
+applicability of EASA AD 2024-0092R1 includes airplanes modified in 
+accordance with EASA supplemental type certificate (STC) 10014779 (any 
+revision), EASA STC 10013945 (any revision), or EASA STC 10013960 (any 
+revision). The FAA has determined those EASA STCs correspond to FAA 
+STCs ST00177LA-D, STC ST00178LA-D, STC ST01431NY, and STC ST00100NY. 
+Therefore, the FAA has revised paragraph (c) of the proposed AD to also 
+include airplanes modified in accordance with the FAA STCs.
+    The FAA is proposing this AD to address the unsafe condition on 
+these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2024-2556.
+
+Comments
+
+    The FAA received comments from Air Line Pilots Association, 
+International (ALPA), who supported the NPRM without change. The FAA 
+also received comments from United Parcel Service (UPS Airlines), who 
+supported the NPRM and had an additional comment.
+    The FAA also received additional comments from FedEx Express. The 
+following presents the comments received on the NPRM and the FAA's 
+response to each comment.
+
+Request To Withdraw the NPRM
+
+    FedEx Express requested that the NPRM be withdrawn for several 
+reasons. First, FedEx Express requested that the NPRM be withdrawn 
+until Airbus has provided a modification to limit the MDCD operation to 
+70 degrees. FedEx Express stated the operational limitation requirement 
+will be difficult to monitor because door operators will not be 
+prohibited from opening the MDCD to 145 degrees as Airbus does not 
+provide any MDCD modifications to keep its 70-degree limitation. FedEx 
+Express stated it, and other airlines, do not monitor door positions 
+for cargo loading/unloading operations, and cargo loading personnel are 
+permitted to use both 70- and 145-degree positions. FedEx Express also 
+suggested that Airbus Alert Operators Transmission (AOT) A52W016-24, 
+Revision 01, dated July 1, 2024, be revised to include a modification 
+to limit the MDCD to 70 degrees so that FedEx Express and other 
+airlines would not mistakenly violate the proposed AD when released.
+    Second, FedEx Express requested the NPRM be withdrawn until Airbus 
+and the FAA provide a consistent wind speed operation for the MDCD. 
+FedEx Express stated that Airbus AOT A52W016-24, Revision 01, dated 
+July 1, 2024, specifies the MDCD cannot be operated at wind speeds 
+equal to or greater than 40 knots. However, FedEx Express noted that 
+Airbus aircraft maintenance manual (AMM) 52-36-00-00 permits the door 
+to be operated at 40 knot wind speeds and furthermore, if the nose or 
+tail of the airplane is put into the wind, the maximum wind speed can 
+be 50 knots. FedEx Express stated the AMM specifies the door cannot be 
+operated at wind speeds exceeding 60 knots, at which time the door must 
+be closed immediately. Based on this information, FedEx Express 
+concluded the documents have contradictory language and that differing 
+wind speed limits could cause a regulatory burden on the airlines when 
+following original equipment manufacturer standards. FedEx Express also 
+suggested that the documents be revised to reflect a consistent wind 
+speed operation on the MDCD.
+    Third, FedEx Express requested the NPRM be withdrawn until Airbus 
+has provided an additional inspection procedure so that FedEx Express 
+can detect cracks with more confidence. FedEx Express stated that the 
+proposed method of inspection (i.e., a detailed visual inspection) is 
+inadequate because it does not fully detect cracks in these fittings 
+unless the forward and aft support bearings are removed. FedEx Express 
+noted that the bearings have a housing assembly that covers the side of 
+the fitting lug holes where it starts to crack. FedEx Express also 
+suggested that Airbus AOT A52W016-24, Revision 01, dated July 1, 2024, 
+be revised to include another set of inspection procedures that would 
+require removing the MDCD door actuating mechanisms and bearings for 
+inspection access. FedEx Express stated that the new inspection can be 
+accomplished with an extended compliance time to schedule the airplane 
+in a heavy check environment with proper tooling and personnel.
+    Finally, FedEx Express requested the NPRM be withdrawn until Airbus 
+has provided a temporary repair procedure to bridge all airplanes with 
+crack findings at the next C-check opportunity. FedEx Express stated 
+Airbus informed operators it is studying an alternative temporary 
+repair when a crack is found on these fittings that will bridge the 
+airplane until its next C-check for fitting replacement. FedEx Express 
+noted this will help all operators mitigate the operational burden and 
+schedule the airplane to a suitable base location for fitting 
+replacements.
+    The FAA does not agree with the request to withdraw the NPRM. To 
+delay this proposed AD would be inappropriate, since the FAA has 
+determined that an unsafe condition exists and that the actions 
+required by this proposed AD must be conducted to ensure continued 
+safety.
+    Regarding the request to wait until a modification is developed to 
+limit the MDCD operation to 70 degrees, the FAA notes that Airbus is 
+not planning a modification to block the door at max 70 degrees. The 
+FAA points out that the MDCD opening/closing operation occurs as 
+follows (as described in AMM 52-36-00): When the door toggle switch is 
+pushed to the open position and held, the MDCD stops automatically at 
+the 70-degree opening position and the indicator light comes on. The 
+MDCD toggle switch needs to be released and pushed again to the open 
+position to open the door beyond 70 degrees up to 145 degrees. 
+Therefore, an inadvertent opening of the MDCD beyond a 70-degree 
+opening angle is unlikely. During normal closing, the MDCD initially 
+moves in the open direction for approximately 15 seconds so that the 
+catch hook of the door actuator is released, so the doors slightly open 
+above the 70-degree position. Then the MDCD moves automatically in the 
+closed direction. However, for the purposes of this proposed AD, this 
+short opening is not a deviation from the requirement to not open the 
+door above 70 degrees. In regards to the commenter's statement that 
+operators do not monitor door positions and that cargo loading 
+personnel are permitted to use both 70- and 145-degree positions, the 
+FAA notes that this proposed AD takes precedence over service 
+information that is not mandated by an AD and the operator's current 
+maintenance practices. In order to deviate from the requirements of the 
+proposed AD, operators may request approval of an alternative method of 
+compliance (AMOC) for the alternative actions under the provisions of 
+paragraph (j)(1) of this proposed AD.
+    Regarding the request to wait until Airbus and the FAA have 
+provided a consistent wind speed operation for the MDCD, the FAA 
+acknowledges the documents specify different winds speeds. However, the 
+AD takes precedence over service information that is not mandated by an 
+AD. The FAA concurs that the manufacturer should revise its service 
+information to align with the service information mandated by the 
+proposed AD. For
+
+[[Page 19162]]
+
+clarification, the manufacturer, not the FAA, revises service 
+information.
+    Regarding the request to wait until Airbus has provided an 
+additional inspection procedure, the FAA has determined that the 
+detailed visual inspection addresses the unsafe condition and is an 
+adequate means to detect a crack through the bearing fitting with no 
+need to remove forward and aft support bearings. The FAA notes that 
+even if there were a change to the inspection method, it would not 
+justify a change to the inspection compliance times. However, any 
+person may request approval of an AMOC for the inspection method or 
+compliance time under the provisions of paragraph (j)(1) of this 
+proposed AD.
+    Finally, regarding the request to wait until Airbus has provided a 
+temporary repair procedure, the temporary repair is being studied by 
+Airbus and stress computations are on-going. As such, the temporary 
+repair is not yet available. However, under the provisions of paragraph 
+(j)(1) of this proposed AD, the FAA will consider requests for approval 
+of an AMOC for a temporary repair or alternative repair if sufficient 
+data are submitted to substantiate that the repair would provide an 
+acceptable level of safety.
+
+Request for Addressing a Certain Condition
+
+    UPS Airlines requested that the proposed AD address the condition 
+if the door is inadvertently opened beyond the 70-degree position. UPS 
+Airlines stated that the proposed AD requires an operational limitation 
+to 70 degrees of the MDCD opening angle. UPS Airlines further stated 
+that Airbus AOT A52W016-24, Revision 01, dated July 1, 2024, allows 
+opening the MDCD to the 145-degree (full-open) position and that there 
+is no electrical or mechanical means to prevent the door from being 
+opened beyond the 70-degree position. UPS Airlines recommended that the 
+proposed AD specify actions if this happens and include a statement to 
+accomplish the inspection mandated by the proposed AD within 10 days. 
+UPS Airlines stated it currently inspects per Airbus AOT A52W016-24, 
+Revision 01, dated July 1, 2024, if the MDCD is inadvertently opened 
+beyond the 70-degree position, in addition to the normal 640 flight 
+cycle inspection interval.
+    The FAA disagrees with the request because Note 1 of EASA AD 2024-
+0092R1 allows for exceeding the 70-degree position for a short period. 
+However, in case the MDCD is opened beyond 70 degrees longer than a 
+short period or an operator wants to deviate from this AD and allow 
+opening the MDCD beyond 70 degrees, then the operator must request an 
+AMOC under the provisions of paragraph (j)(1) of this proposed AD. The 
+FAA has not changed this proposed AD in this regard.
+
+Request for Extending the Compliance Time for Multiple Reasons
+
+    FedEx Express requested that the compliance times be extended for 
+multiple reasons. First, FedEx Express requested an exception be added 
+to paragraph (h) of the proposed AD that extends the compliance times 
+due to this subject not being a safety of flight condition. FedEx 
+Express stated it is concerned the proposed short inspection compliance 
+times will place a great burden on the airlines, especially if a crack 
+is found. FedEx Express noted that the crack on these fittings will not 
+cause the door to fall because the MDCD door is supported with piano 
+hinges hinged to the fuselage and by a door actuating mechanism that 
+locks in the center. FedEx Express stated it has 45 Airbus airplanes 
+above 13,000 flight cycles since the MDCD was installed and has had no 
+adverse door operations observed with these airplanes. FedEx Express 
+recommended the initial and repetitive inspections be revised to 1,000 
+flight cycles. FedEx Express concluded this will minimize the 
+operational burden and allow scheduling the airplane to a suitable base 
+location for inspections, including replacement of MDCD crack bearing 
+fittings with proper tooling, workforce, and parts availability.
+    Second, FedEx Express requested extending the compliance time until 
+Airbus secures all the replacement MDCD bearing fittings. FedEx Express 
+stated the replacement of MDCD bearing fittings in case of findings 
+would require a large number of fittings in stock to support all FedEx 
+Express airplanes and other airlines affected by this proposed AD. 
+FedEx Express stated that Airbus does not have enough spares of these 
+fittings to support FedEx Express and other operators.
+    Finally, FedEx Express requested extending the compliance time 
+until Airbus ensures associated replacement parts are in stock. FedEx 
+Express stated it has concerns about associated parts availability upon 
+replacing these MDCD bearing fittings when a crack is found. FedEx 
+Express stated that Airbus has low stock of most of the door actuating 
+mechanism parts attached to these bearing fittings, which might also 
+require replacement, e.g., bearings, support housings, bolts etc. FedEx 
+Express stated these parts are not secured in stock and are difficult 
+to procure currently from Airbus. FedEx Express provided an example of 
+a bearing that has a lead time of 194 days. FedEx Express recommended 
+extending the compliance time to a heavy check threshold.
+    The FAA does not agree with the commenter's request to extend the 
+compliance time. Regarding the statement that there is not an unsafe 
+condition, the FAA notes that the commenter's reasoning that ``the 
+crack on these fittings will not cause the door to fall because the 
+MDCD door is supported with piano hinges hinged to the fuselage and by 
+a door actuating mechanism that locks in the center'' is not correct 
+because when the connection of the 2 bearing housings to the bearing 
+fittings is lost then the door moves down. The piano hinge does not 
+prevent the MDCD from moving down because it has only the function to 
+attach the door to the fuselage and allows a rotational motion. The 
+actuation mechanism is equipped with a catching hook, which is located 
+directly on the actuator. The function of the catching hook is only to 
+prevent the MDCD closing if no hydraulic pressure is present. If both 
+bearing housings detach from the bearing fittings there is nothing to 
+prevent the door from moving down and this could lead to an undamped 
+freefall of the MDCD in a worst case. Thus, as specified in this 
+proposed AD, an unsafe condition exists and must be addressed within 
+the compliance times specified in this proposed AD.
+    Regarding the availability of replacement bearing fittings, the FAA 
+has confirmed with Airbus that there is sufficient stock of bearing 
+fittings. Regarding the availability of associated replacement parts, 
+the FAA confirmed with Airbus that it is actively securing stock for 
+those parts. To the extent associated replacement parts may not exist 
+to replace parts that fail the inspection requirements of this AD, the 
+FAA cannot base its AD action on whether associated replacement parts 
+are available or can be produced. While every effort is made to avoid 
+grounding aircraft, the FAA must address the unsafe condition.
+    After considering the commenter's reasons, the FAA has determined 
+that the compliance time, as proposed, represents an appropriate 
+interval of time in which the required actions can be performed in a 
+timely manner within the affected fleet, while still maintaining an 
+adequate level of safety. However, under the provisions of paragraph 
+(j)(1) of this proposed AD, the FAA will consider requests for approval 
+of an extension of the compliance time if
+
+[[Page 19163]]
+
+sufficient data is submitted to substantiate that the new compliance 
+time would provide an acceptable level of safety. The FAA has not 
+changed this AD in this regard.
+
+Request for Extending the Compliance Time Due to Operational Costs
+
+    FedEx Express requested extending the compliance time because of 
+the operational burden it will bring on operators once a crack is 
+found. FedEx Express stated the 500 work-hours stated in Airbus AOT 
+A52W016-24, Revision 01, dated July 1, 2024, is only an Airbus estimate 
+based on the assumption that only MDCD fittings are replaced and does 
+not include any damaged parts attached to these fittings. FedEx Express 
+stated that the vendor maintenance reported that the work-hours exceed 
+more than 1,000 work-hours depending on the damaged parts affected 
+(e.g., bearings, housings, frames etc.). FedEx Express asked the FAA to 
+evaluate the works-hours.
+    The FAA notes that the 500 work-hours is an estimate for the 
+bearing fitting replacement, which is required by the proposed AD if 
+cracking is found. The cost information specified in the proposed AD 
+describes only the direct costs of the specific actions required by 
+this AD, i.e., inspecting and replacing bearing fittings if necessary. 
+Based on the best data available, the manufacturer provided the number 
+of work-hours necessary to do the required actions. The FAA recognizes 
+that, in doing the actions required by an AD, operators might incur 
+incidental costs in addition to the direct costs, such as replacing 
+parts associated with the bearing fitting. The cost analysis in AD 
+rulemaking actions, however, typically does not include incidental 
+costs. Those incidental costs might vary significantly among operators. 
+The FAA notes that Airbus is unable to provide or consider estimates on 
+associated parts that are not required to be removed that might be 
+damaged during replacement activities. In developing an appropriate 
+compliance time for this action, the FAA considered the recommendations 
+of the state of design authority, the urgency associated with the 
+subject unsafe condition, the availability of required parts, and the 
+practical aspect of accomplishing the required inspections within a 
+period of time that corresponds to the normal scheduled maintenance for 
+most affected operators.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    EASA AD 2024-0092R1 specifies procedures for an operational 
+limitation to the MDCD opening angle, repetitive detailed visual 
+inspections of the MDCD actuator bearing fittings, and replacement of 
+both MDCD actuator bearing fittings if any crack is found on any MDCD 
+actuator bearing fitting.
+    This material is reasonably available because the interested 
+parties have access to it through their normal course of business or by 
+the means identified in the ADDRESSES section.
+
+FAA's Determination
+
+    This product has been approved by the aviation authority of another 
+country and is approved for operation in the United States. Pursuant to 
+the FAA's bilateral agreement with this State of Design Authority, it 
+has notified the FAA of the unsafe condition described in the MCAI 
+referenced above. The FAA is issuing this SNPRM after determining that 
+the unsafe condition described previously is likely to exist or develop 
+in other products of the same type design.
+    Certain changes described above expand the scope of the NPRM. As a 
+result, it is necessary to reopen the comment period to provide 
+additional opportunity for the public to comment on this SNPRM.
+
+Proposed AD Requirements in This SNPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in EASA AD 2024-0092R1 described previously, except for any differences 
+identified as exceptions in the regulatory text of this proposed AD.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has been 
+coordinating this process with manufacturers and CAAs. As a result, the 
+FAA proposes to incorporate EASA AD 2024-0092R1 by reference in the FAA 
+final rule. This proposed AD would, therefore, require compliance with 
+EASA AD 2024-0092R1 in its entirety through that incorporation, except 
+for any differences identified as exceptions in the regulatory text of 
+this proposed AD. Using common terms that are the same as the heading 
+of a particular section in EASA AD 2024-0092R1 does not mean that 
+operators need comply only with that section. For example, where the AD 
+requirement refers to ``all required actions and compliance times,'' 
+compliance with this AD requirement is not limited to the section 
+titled ``Required Action(s) and Compliance Time(s)'' in EASA AD 2024-
+0092R1. Material required by EASA AD 2024-0092R1 for compliance will be 
+available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-2024-2556 after the 
+FAA final rule is published.
+
+Interim Action
+
+    The FAA considers that this proposed AD would be an interim action. 
+If final action is later identified, the FAA might consider further 
+rulemaking then.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 243 airplanes of U.S. registry. The FAA estimates the following 
+costs to comply with this proposed AD:
+
+                                      Estimated Costs for Required Actions
+----------------------------------------------------------------------------------------------------------------
+                    Labor cost                       Parts cost     Cost per product     Cost on U.S. operators
+----------------------------------------------------------------------------------------------------------------
+1 work-hour x $85 per hour = $85..................           $0                  $85                    $20,655
+----------------------------------------------------------------------------------------------------------------
+
+    The FAA estimates the following costs to do any necessary on-
+condition actions that would be required based on the results of any 
+required actions. The FAA has no way of determining the number of 
+airplanes that might need this on-condition action:
+
+[[Page 19164]]
+
+
+
+                 Estimated Costs of On-Condition Actions
+------------------------------------------------------------------------
+              Labor cost                Parts cost     Cost per product
+------------------------------------------------------------------------
+500 work-hours x $85 per hour =            $34,600              $77,100
+ $42,500.............................
+------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of that 
+authority because it addresses an unsafe condition that is likely to 
+exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13   [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Airbus SAS: Docket No. FAA-2024-2556; Project Identifier MCAI-2024-
+00247-T.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by June 20, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to the Airbus SAS airplanes identified in 
+paragraphs (c)(1) through (6) of this AD, certified in any category, 
+manufactured in freighter model configuration, or modified in 
+accordance with supplemental type certificate (STC) ST00177LA-D, STC 
+ST00178LA-D, STC ST01431NY, or STC ST00100NY.
+    (1) Model A300 B4-2C, B4-103, and B4-203 airplanes.
+    (2) Model A300 B4-601, B4-603, B4-620, and B4-622 airplanes.
+    (3

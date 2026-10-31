@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2015-0868 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2015-09535 issued 2015-04-15: The FAA is withdrawing a notice of proposed rulemaking (NPRM). The NPRM proposed a new airworthiness directive (AD) that had applied to certain Lycoming Engines (type certificate formerly held by Textron Lycoming) with Superior Air Parts, Inc. (SAP), piston pins installed. The NPRM had applied to those engines using SAP piston pins, part number (P/N) 13444-1. The proposed action would have required removal of defecti | spreadsheet note: None

@@ -1,0 +1,5 @@
+Below are all entries for one rulemaking docket FAA-2021-1017 in a collection of FAA proposed airworthiness directive notices (NPRMs, 14 CFR Part 39) issued between 2001 and 2026.
+TASK: write ONE natural question about the status of this proposal (for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). You may mention the docket number. Then state the correct answer from the entries.
+Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}
+
+- doc 2022-07871 issued 2022-04-07: The FAA is withdrawing a notice of proposed rulemaking (NPRM) that proposed to adopt a new airworthiness directive (AD) for all True Flight Holdings LLC Model AA-1, AA-1A, AA-1B, AA-1C, AA-5, AA-5A, and AA-5B airplanes. The NPRM was prompted by the report of an accident of an airplane with bondline corrosion and delamination of the horizontal stabilizers. The NPRM proposed to require inspecting the wings, fuselage, a | spreadsheet note: None

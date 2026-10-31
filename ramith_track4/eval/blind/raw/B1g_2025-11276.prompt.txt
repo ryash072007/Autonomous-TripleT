@@ -1,0 +1,408 @@
+Below is the full text of one FAA proposed airworthiness directive notice.
+
+Verdict definitions, judged ONLY from the notice's applicability paragraph(s): APPLIES = every stated applicability condition is satisfied by the configuration; DOES_NOT_APPLY = at least one condition clearly fails (model not listed, date outside the stated limit, part number not in the list, serial outside the range); CANNOT_DETERMINE = applicability depends on something the configuration does not state (e.g. original certificate date, part number, serial number, engine/STC fit) or is defined in a document not provided (a manufacturer bulletin, a foreign-authority AD), or has an exclusion that needs maintenance-programme information.
+
+TASK: invent a realistic aircraft configuration so that, according ONLY to this notice, the correct determination is CANNOT_DETERMINE. Config fields: make, model, cofa_date (original certificate of airworthiness date, YYYY-MM-DD, or null), serial (or null), part_numbers (list, possibly empty). Only include values a real owner would know. If it is impossible to build such a configuration from this notice, set feasible=false.
+Reason codes you may use: MODEL_LISTED, MODEL_NOT_LISTED, CERT_DATE_BEFORE_CUTOFF, CERT_DATE_AFTER_CUTOFF, PN_INSTALLED, PN_NOT_INSTALLED, SERIAL_IN_RANGE, SERIAL_OUT_OF_RANGE, EXCLUSION_UNVERIFIABLE, EXTERNAL_DOC_REQUIRED, INPUT_MISSING_CERT_DATE, INPUT_MISSING_SERIAL, INPUT_MISSING_PN, AMBIGUOUS_SCOPE.
+Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, "gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}
+
+NOTICE TEXT:
+<html>
+<head>
+<title>Federal Register, Volume 90 Issue 116 (Wednesday, June 18, 2025)</title>
+</head>
+<body><pre>
+[Federal Register Volume 90, Number 116 (Wednesday, June 18, 2025)]
+[Proposed Rules]
+[Pages 25909-25911]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2025-11276]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2025-0917; Project Identifier MCAI-2024-00740-A]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Pilatus Aircraft Ltd. Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Notice of proposed rulemaking (NPRM).
+
+-----------------------------------------------------------------------
+
+SUMMARY: The FAA proposes to adopt a new airworthiness directive (AD) 
+for all Pilatus Aircraft Ltd. (Pilatus) Model PC-24 airplanes. This 
+proposed AD was prompted by a report of an inaccurate flight director 
+calculation on approach. This proposed AD would require incorporating a 
+temporary revision into the existing airplane flight manual (AFM) for 
+the affected airplanes, which revises the Abnormal Procedures Section. 
+The FAA is proposing this AD to address the unsafe condition on these 
+products.
+
+DATES: The FAA must receive comments on this NPRM by August 4, 2025.
+
+ADDRESSES: You may send comments, using the procedures found in 14 CFR 
+11.43 and 11.45, by any of the following methods:
+    <bullet> Federal eRulemaking Portal: Go to <a href="http://regulations.gov">regulations.gov</a>. Follow 
+the instructions for submitting comments.
+    <bullet> Fax: (202) 493-2251.
+    <bullet> Mail: U.S. Department of Transportation, Docket 
+Operations, M-30, West Building Ground Floor, Room W12-140, 1200 New 
+Jersey Avenue SE, Washington, DC 20590.
+    <bullet> Hand Delivery: Deliver to Mail address above between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+    AD Docket: You may examine the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0917; or in person at Docket Operations between 9 
+a.m. and 5 p.m., Monday through Friday, except Federal holidays. The AD 
+docket contains this NPRM, the mandatory continuing airworthiness 
+information (MCAI), any comments received, and other information. The 
+street address for Docket Operations is listed above.
+
+Material Incorporated by Reference
+
+    <bullet> For European Union Aviation Agency (EASA) material 
+identified in this NPRM, contact EASA, Konrad-Adenauer-Ufer 3, 50668 
+Cologne, Germany; phone: +49 221 8999 000; email: <a href="/cdn-cgi/l/email-protection#4504013605202436246b2030372a35246b2030"><span class="__cf_email__" data-cfemail="8ccdc8ffcce9edffeda2e9f9fee3fceda2e9f9">[email&#160;protected]</span></a>; 
+website: easa.europa.eu. You may find this material on the EASA website 
+at ad.easa.europa.eu.
+    <bullet> You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 901 Locust, Kansas City, 
+MO 64106. For information on the availability of this material at the 
+FAA, call (817) 222-5110.
+
+FOR FURTHER INFORMATION CONTACT: Doug Rudolph, Aviation Safety 
+Engineer, FAA, 1600 Stewart Avenue, Suite 410, Westbury, NY 11590; 
+phone: (816) 329-4059; email: <a href="/cdn-cgi/l/email-protection#3d5952485a134f485952514d557d5b5c5c135a524b"><span class="__cf_email__" data-cfemail="eb8f849e8cc5999e8f84879b83ab8d8a8ac58c849d">[email&#160;protected]</span></a>.
+
+SUPPLEMENTARY INFORMATION:
+
+Comments Invited
+
+    The FAA invites you to send any written relevant data, views, or 
+arguments about this proposal. Send your comments to an address listed 
+under ADDRESSES. Include ``Docket No. FAA-2025-0917; Project Identifier 
+MCAI-2024-00740-A'' at the beginning of your comments. The most helpful 
+comments reference a specific portion of the proposal, explain the 
+reason for any recommended change, and include supporting data. The FAA 
+will consider all comments received by the closing date and may amend 
+this proposal because of those comments.
+    Except for Confidential Business Information (CBI) as described in 
+the following paragraph, and other information as described in 14 CFR 
+11.35, the FAA will post all comments received, without change, to 
+<a href="http://regulations.gov">regulations.gov</a>, including any personal information you provide. The 
+agency will also post a report summarizing each substantive verbal 
+contact received about this NPRM.
+
+Confidential Business Information
+
+    CBI is commercial or financial information that is both customarily 
+and actually treated as private by its owner. Under the Freedom of 
+Information Act (FOIA) (5 U.S.C. 552), CBI is exempt from public 
+disclosure. If your comments responsive to this NPRM contain commercial 
+or financial information that is customarily treated as private, that 
+you actually treat as private, and that is relevant or responsive to 
+this NPRM, it is important that you clearly designate the submitted 
+comments as CBI. Please mark each page of your submission containing 
+CBI as ``PROPIN.'' The FAA will treat such marked submissions as 
+confidential under the FOIA, and they will not be placed in the public 
+docket of this NPRM. Submissions containing CBI should be sent to Doug 
+Rudolph,
+
+[[Page 25910]]
+
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590. Any commentary that the FAA receives which is not 
+specifically designated as CBI will be placed in the public docket for 
+this rulemaking.
+
+Background
+
+    EASA, which is the Technical Agent for the Member States of the 
+European Union, has issued EASA AD 2024-0240, dated December 10, 2024 
+(EASA AD 2024-0240) (also referred to as the MCAI), to correct an 
+unsafe condition on Pilatus Model PC-24 airplanes, all manufacturer 
+serial numbers. The MCAI states there was a report of inaccurate flight 
+director calculation on approach with APEX Build 5.3 and below software 
+installed. Further investigation revealed that heading splits can cause 
+errors in the flight director calculation resulting in lateral offsets 
+to the desired approach course. The MCAI also states that the AD is 
+considered an interim action and further AD action may follow. This 
+condition, if not addressed, could result in increased pilot workload, 
+resulting in a reduction of the safety margins. The FAA is proposing 
+this AD to address the unsafe condition on these products.
+    You may examine the MCAI in the AD docket at <a href="http://regulations.gov">regulations.gov</a> under 
+Docket No. FAA-2025-0917.
+
+Material Incorporated by Reference Under 1 CFR Part 51
+
+    The FAA reviewed EASA AD 2024-0240, which specifies procedures for 
+incorporating Pilatus PC-24 AFM Temporary Revision 02371-075 (also 
+referred to as AFM-TR) into the AFM, which revises the Abnormal 
+Procedures Section. EASA AD 2024-0240 also specifies informing all 
+flight crews of the change, and, thereafter, operating the airplane 
+accordingly, and allows for the incorporation of a later AFM revision 
+that includes the same AFM amendment content. This material is 
+reasonably available because the interested parties have access to it 
+through their normal course of business or by the means identified in 
+the ADDRESSES section.
+
+FAA's Determination
+
+    These products have been approved by the aviation authority of 
+another country and are approved for operation in the United States. 
+Pursuant to the FAA's bilateral agreement with this State of Design 
+Authority, it has notified the FAA of the unsafe condition described in 
+the MCAI referenced above. The FAA is issuing this NPRM after 
+determining that the unsafe condition described previously is likely to 
+exist or develop on other products of the same type design.
+
+Proposed AD Requirements in This NPRM
+
+    This proposed AD would require accomplishing the actions specified 
+in the MCAI described previously, except for any differences identified 
+as exceptions in the regulatory text of this proposed AD. See 
+``Differences Between this AD and the MCAI'' for a discussion of the 
+general differences included in this AD. The owner/operator (pilot) 
+holding at least a private pilot certificate may revise the existing 
+AFM for your airplane and must enter compliance with the applicable 
+paragraph of this proposed AD into the airplane maintenance records in 
+accordance with 14 CFR 43.9(a) and 91.417(a)(2)(v). The pilot may 
+perform this action because it only involves revising the AFM. This 
+action could be performed equally well by a pilot or a mechanic. This 
+is an exception to the FAA's standard maintenance regulations.
+
+Explanation of Required Compliance Information
+
+    In the FAA's ongoing efforts to improve the efficiency of the AD 
+process, the FAA developed a process to use some civil aviation 
+authority (CAA) ADs as the primary source of information for compliance 
+with requirements for corresponding FAA ADs. The FAA has since 
+coordinated with other manufacturers and CAAs to use this process. As a 
+result, the FAA proposes to incorporate by reference EASA AD 2024-0240 
+in the FAA final rule. This proposed AD would, therefore, require 
+compliance with EASA AD 2024-0240 in its entirety through that 
+incorporation, except for any differences identified as exceptions in 
+the regulatory text of this proposed AD. Using common terms that are 
+the same as the heading of a particular section in the EASA AD does not 
+mean that operators need comply only with that section. For example, 
+where the AD requirement refers to ``all required actions and 
+compliance times,'' compliance with this AD requirement is not limited 
+to the section titled ``Required Action(s) and Compliance Time(s)'' in 
+EASA AD 2024-0240. Service information required by the EASA AD for 
+compliance will be available at <a href="http://regulations.gov">regulations.gov</a> under Docket No. FAA-
+2025-0917 after the FAA final rule is published.
+
+Differences Between This NPRM and the MCAI
+
+    EASA AD 2024-0240 includes requirements to ``inform all flight 
+crews and, thereafter, operate the [airplane] accordingly'', and this 
+proposed AD would not specifically require those actions because those 
+actions are already required by FAA regulations.
+
+Interim Action
+
+    The FAA considers that this proposed AD would be an interim action. 
+This unsafe condition is still under investigation by the manufacturer 
+and, depending on the results of that investigation, the FAA may 
+consider further rulemaking action.
+
+Costs of Compliance
+
+    The FAA estimates that this AD, if adopted as proposed, would 
+affect 150 airplanes of U.S. registry.
+    The FAA estimates the following costs to comply with this proposed 
+AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                    Cost per       Cost on U.S.
+              Action                        Labor cost            Parts cost        product         operators
+----------------------------------------------------------------------------------------------------------------
+Revise AFM........................  1 work-hour x $85 per                  $0              $85          $12,750
+                                     hour = $85.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII: Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    The FAA is issuing this rulemaking under the authority described in 
+Subtitle VII, Part A, Subpart III, Section 44701: General requirements. 
+Under that section, Congress charges the FAA with promoting safe flight 
+of civil aircraft in air commerce by prescribing regulations for 
+practices, methods, and procedures the Administrator finds necessary 
+for safety in air commerce. This regulation is within the scope of
+
+[[Page 25911]]
+
+that authority because it addresses an unsafe condition that is likely 
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+    The FAA determined that this proposed AD would not have federalism 
+implications under Executive Order 13132. This proposed AD would not 
+have a substantial direct effect on the States, on the relationship 
+between the national government and the States, or on the distribution 
+of power and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify this proposed 
+regulation:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Would not affect intrastate aviation in Alaska, and
+    (3) Would not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Incorporation by 
+reference, Safety.
+
+The Proposed Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA proposes to amend 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by adding the following new airworthiness 
+directive:
+
+Pilatus Aircraft Ltd.: Docket No. FAA-2025-0917; Project Identifier 
+MCAI-2024-00740-A.
+
+(a) Comments Due Date
+
+    The FAA must receive comments on this airworthiness directive 
+(AD) by August 4, 2025.
+
+(b) Affected ADs
+
+    None.
+
+(c) Applicability
+
+    This AD applies to Pilatus Aircraft Ltd Model PC-24 airplanes, 
+certificated in any category.
+
+(d) Subject
+
+    Joint Aircraft System Component (JASC) Code 3400, Navigation 
+System.
+
+(e) Unsafe Condition
+
+    This AD was prompted by a report of an inaccurate flight 
+director calculation on approach. The FAA is issuing this AD to 
+prevent heading splits that can cause errors in flight director 
+calculations resulting in lateral offsets to the desired approach 
+course. The unsafe condition, if not addressed, could result in an 
+increased pilot workload, resulting in a reduction of the safety 
+margins.
+
+(f) Compliance
+
+    Comply with this AD within the compliance times specified, 
+unless already done.
+
+(g) Required Actions
+
+    (1) Except as specified in paragraph (h) of this AD: Comply with 
+all required actions and compliance times specified in, and in 
+accordance with, European Union Aviation Safety Agency AD 2024-0240, 
+dated December 10, 2024 (EASA AD 2024-0240).
+    (2) The actions required by paragraph (g)(1) of this AD may be 
+performed by the owner/operator (pilot) holding at least a private 
+pilot certificate and must be entered into the aircraft records 
+showing compliance with this AD in accordance with 14 CFR 43.9(a) 
+and 91.417(a)(2)(v). The record must be maintained as required by 14 
+CFR 91.417, 121.380, or 135.439.
+
+(h) Exceptions to EASA AD 2024-0240
+
+    (1) Where EASA AD 2024-0240 refers to its effective date, this 
+AD requires using the effective date of this AD.
+    (2) Where paragraph (1) of EASA AD 2024-0240 specifies to 
+implement the AFM-TR, this AD requires revising the Abnormal 
+Procedures Section of the existing AFM for your airplane by 
+inserting a copy of the AFM-TR as defined in EASA AD 2024-0240.
+    (3) Where paragraph (1) of EASA AD 2024-0240 specifies to inform 
+all flight crews and, thereafter, operate the [airplane] 
+accordingly, this AD does not require those actions.
+    (4) This AD does not adopt the Remarks section of EASA AD 2024-
+0240.
+
+(i) Alternative Methods of Compliance (AMOCs)
+
+    The Manager, International Validation Branch, FAA, has the 
+authority to approve AMOCs for this AD, if requested using the 
+procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, 
+send your request to your principal inspector or local Flight 
+Standards District Office, as appropriate. If sending information 
+directly to the International Validation Branch, send it to the 
+attention of the person identified in paragraph (j) of this AD and 
+email to: <a href="/cdn-cgi/l/email-protection#0c4d41434f4c6a6d6d226b637a"><span class="__cf_email__" data-cfemail="edaca0a2aead8b8c8cc38a829b">[email&#160;protected]</span></a>. Before using any approved AMOC, notify your 
+appropriate principal inspector, or lacking a principal inspector, 
+the manager of the responsible Flight Standards Office/certificate 
+holding district office.
+
+(j) Additional Information
+
+    For more information about this AD, contact Doug Rudolph, 
+Aviation Safety Engineer, FAA, 1600 Stewart Avenue, Suite 410, 
+Westbury, NY 11590; phone: (816) 329-4059; email: 
+<a href="/cdn-cgi/l/email-protection#2f4b405a48015d5a4b40435f476f494e4e01484059"><span class="__cf_email__" data-cfemail="f1959e8496df8384959e9d8199b1979090df969e87">[email&#160;protected]</span></a>.
+
+(k) Material Incorporated by Reference
+
+    (1) The Director of the Federal Register approved the 
+incorporation by reference (IBR) of the material listed in this 
+paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+    (2) You must use this material as applicable to do the actions 
+required by this AD, unless the AD specifies otherwise.
+    (i) European Union Aviation Safety Agency (EASA) AD 2024-0240, 
+dated December 10, 2024.
+    (ii) [Reserved]
+    (3) For EASA material identified in this AD, contact EASA, 
+Konrad-Adenauer-Ufer 3, 50668 Cologne, Germany; phone: +49 221 8999 
+000; email: <a href="/cdn-cgi/l/email-protection#59181d2a193c382a38773c2c2b362938773c2c"><span class="__cf_email__" data-cfemail="7b3a3f083b1e1a081a551e0e09140b1a551e0e">[email&#160;protected]</span></a>; website: easa.europa.eu. You may 
+find this EASA AD on the EASA website at ad.easa.europa.eu.
+    (4) You may view this material at the FAA, Airworthiness 
+Products Section, Operational Safety Branch, 901 Locust, Kansas 
+City, MO 64106. For information on the availability of this material 
+at the FAA, call (817) 222-5110.
+    (5) You may view this material at the National Archives and 
+Records Administration (NARA). For information on the availability 
+of this material at NARA, visit <a href="http://www.archives.gov/federal-register/cfr/ibr-locations">www.archives.gov/federal-register/cfr/ibr-locations</a> or email <a href="/cdn-cgi/l/email-protection#5c3a2e7235322f2c393f283533321c323d2e3d723b332a"><span class="__cf_email__" data-cfemail="2e485c0047405d5e4b4d5a4741406e404f5c4f00494158">[email&#160;protected]</span></a>.
+
+    Issued on June 10, 2025.
+Christopher R. Parker,
+Acting Deputy Director, Compliance & Airworthiness Division, Aircraft 
+Certification Service.
+[FR Doc. 2025-11276 Filed 6-17-25; 8:45 am]
+BILLING CODE 4910-13-P
+
+
+</pre><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

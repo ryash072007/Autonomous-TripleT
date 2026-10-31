@@ -1,0 +1,1 @@
+{"question": "What was the compliance deadline for the inspection of the wing spar attach fittings required by the 1996 airworthiness directive on Cessna 172 airplanes, and were any alternative methods of compliance approved at that time?", "config": {"make": "Cessna", "model": "172", "cofa_date": null, "serial": null, "part_numbers": []}}

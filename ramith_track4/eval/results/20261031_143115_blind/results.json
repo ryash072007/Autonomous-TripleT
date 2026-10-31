@@ -1,0 +1,2064 @@
+{
+ "meta": {
+  "timestamp": "20261031_143115",
+  "git_commit": "9385273",
+  "src_hash": "fd1810011b0c",
+  "sets": [
+   "b2",
+   "b2b",
+   "b2c",
+   "b2d",
+   "b2e"
+  ],
+  "systems": [
+   "full"
+  ],
+  "testset_v1_sha": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "B1_sha": "974ffd54bfa1f7d8cad1b6f03891c1221696a48ffcc952ac848c5e58a16f78f9",
+  "B2_sha": "3e37d24fa7333bc4b1662882ef6ac954b154eeaaf27f9c7f7f92c1129b0bc8c3"
+ },
+ "results": {
+  "b2/full": {
+   "summary": {
+    "system": "full",
+    "n": 36,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 8,
+     "ok": 6,
+     "pct": 75.0,
+     "reason_accuracy": 75.0
+    },
+    "revision": {
+     "n": 6,
+     "ok": 6,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 100.0,
+     "recall": 100.0,
+     "code_accuracy": 90.0,
+     "n_refused": 10,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 92.3,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 24.3,
+     "p95": 222.4
+    }
+   },
+   "rows": [
+    {
+     "id": "B2-L01",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed AD for EMBRAER EMB-135 and EMB-145 airplanes requiring inspection of the glide slope antenna base and navigation system electrical connectors withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L02",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections and bolt replacements are proposed for the tailboom attachment structure on Bell 407 helicopters after more broken upper-left attachment bolts were reported?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L03",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed rule for Gulfstream G-1159 airplanes requiring repetitive inspections for corrosion or cracks in the wing attach fittings at FS 345 and FS 452 withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L04",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus Canada BD-500-1A10 and BD-500-1A11 airplanes requiring AFM changes for a persistent BLEED LEAK caution and replacement of failed pressure regulating shutoff valves?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L05",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What is the proposed AD for PW1500G and PW1900G geared turbofan engines requiring borescope inspections of HPC 1st, 2nd, and 3rd stage rotor rear rims for clashing with variable stator vanes, and replacement of the VSV bushing set?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L06",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed AD for EMBRAER EMB-145 airplanes requiring modification of the IC-600 integrated computer strap configuration to disable CAT II flight director operations withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L07",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Embraer EMB-545 and EMB-550 airplanes that requires a flight control computer software update and a new AFM revision to end the angle of attack limiter airspeed and approach restrictions?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L08",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring repetitive crack inspections of the intercostals behind the door stops and hinges at door 2 left and right on Boeing 757-200 airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L09",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspection and stud replacement is proposed for A350-941 and A350-1041 galleys forward of door 4 because of fractured lower attachment studs?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L10",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring modification of Rolls-Royce Trent XWB-75, XWB-79, XWB-79B and XWB-84 engines with an improved front bearing housing oil feed tube assembly because of low differential oil pressure readings?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L11",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed rule on DC-10 and MD-11 airplanes requiring more frequent inspections of the auxiliary hydraulic pump electric motors (resistance, continuity, rotation, and wiring) withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2-L12",
+     "set": "b2",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Dassault Falcon 7X, Falcon 900, 900EX, 2000 and 2000EX airplanes requiring modification or replacement of cabin seats because the seat track locking mechanism can jam and seats slide without passenger input?",
+     "rank": 1
+    },
+    {
+     "id": "B2-A01",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "The FAA has proposed an AD that would supersede an earlier AD requiring revisions to the airworthiness limitations section of the maintenance manual for certain Airbus Helicopters AS350 models, because new and more restrictive airworthiness limitations and maintenance tasks are now needed. I operate an Airbus Helicopters AS350B1 in the normal category. Does this proposed AD apply to my helicopter?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A02",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "I operate an Airbus Helicopters Deutschland MBB-BK 117 C-2 helicopter, standard category, serial number 9xxx. I'm looking at the proposed AD about fuel leakage after a survivable accident linked to the common cargo hook beam (CCHB), which requires modifying the CCHB and fuel system and adding structural reinforcement. Does this proposed AD apply to my helicopter?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A03",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "I operate a Bell 412EP helicopter with tail rotor blade assemblies P/N 212-010-750-107 installed. Does the proposed AD requiring recurring checks and inspections of the tail rotor blades, prompted by eight reports of tail rotor blade failures on Bell 204B, 205A, 205B, 210, 212 and 412-series helicopters, apply to my aircraft?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A04",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "The FAA has proposed an AD that would supersede the earlier AD requiring an airworthiness limitations section revision for Leonardo AW169 helicopters, because the earlier revision pointed to incorrect material. My aircraft is a Leonardo S.p.a. Model AW139 helicopter, serial number 31500, certificated in the transport category. Does this proposed AD apply to my helicopter?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A05",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "We operate a Boeing 737-8 (serial number 63456, line number 7890), and I'm trying to work out whether the proposed AD on possibly incorrectly installed elevator buss assembly bearings (including bearings installed without sealant during production) applies to us. We don't have a copy of the Boeing alert requirements bulletin that identifies the affected airplanes. Does the proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A06",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate a Boeing Model 737-600 (certificated in the transport category). I'm looking at the proposed AD for repetitive inspections of the fuselage crown skin panel assemblies for cracking from troughs along the chem-mill pocket edges, which references Boeing Special Attention Service Bulletin 737-53-1334. Does that proposed AD apply to my airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A07",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "We operate a Boeing 757-200 (certificated in the transport category) that has passenger service unit (PSU)-mounted video monitors installed in the cabin. Does the proposed AD about PSU-mounted video monitors detaching from the PSU rails during a hard landing, which would require replacing monitors lacking secondary retention lanyards, apply to our airplane?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2-A08",
+     "set": "b2",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "I operate a De Havilland Canada (formerly Bombardier) DHC-8-402 Q400, certificated in the transport category. I'm looking at the proposed AD that would require a detailed visual inspection of a bracket on the inboard surface of the wing tank rib, because fay, fillet and rivet dome sealing instructions were omitted and fuel could leak into the wing dry bay. Does it apply to my airplane? I don't have the serial number or the Transport Canada AD's list of affected airplanes in front of me.",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2-R01",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive under docket FAA-2012-0495, covering Gulfstream Galaxy and Gulfstream 200 brake wear indicating pins, still active, or has the FAA withdrawn it?"
+    },
+    {
+     "id": "B2-R02",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA's proposed airworthiness directive under docket 2003-NM-66-AD for EMBRAER EMB-145 series airplanes (the IC-600 integrated computer strap modification to disable CAT II operations with the flight director)? Is it still open for comment or was it withdrawn?"
+    },
+    {
+     "id": "B2-R03",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed AD under docket FAA-2007-0242 on clevis pin replacement for GE CF6-80C2 and CF6-80E1 engine thrust reversers still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2-R04",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "For docket FAA-2017-0812, the proposed AD on fuselage structure reinforcement for Airbus A330-200, A330-200 Freighter, and A330-300 airplanes because of widespread fatigue damage, is it still open for comment or has it been changed or withdrawn?"
+    },
+    {
+     "id": "B2-R05",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposal under docket FAA-2015-3657 to supersede AD 2007-25-08 for the Eurocopter SA-365/AS-365/SA-366/EC155 helicopters still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2-R06",
+     "set": "b2",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive under docket FAA-2016-6417 for Boeing DC-10, MD-10 and MD-11 airplanes (the fuel system NPRM) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2-X01",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the compliance deadline for the inspection required by the proposed AD, and does it apply to my airplane?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X02",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval and corrective action did the FAA's 1997 airworthiness directive require for cracking in the wing spar lower cap on Boeing 737-300 series airplanes?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X03",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "What specific inspections, corrective actions, and compliance times does Transport Canada AD CF-2025-39, dated August 7, 2025, require for Bombardier BD-700-2A12 airplanes, and which service bulletin does it reference?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X04",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What are some tips for finding cheap airline tickets for a summer vacation in Europe?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X05",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2007 Cessna 172S, serial number 172S10458, with the original Lycoming IO-360-L2A engine. I've read through the proposed AD notices about fuel selector valves and seat rail issues. Based on those notices, is my aircraft airworthy and legal to fly this weekend, or am I out of compliance with any of them?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X06",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "Does the FAA propose any airworthiness directive requiring repetitive inspections of the elevator trim system on the Boeing 172S?",
+     "code_ok": false
+    },
+    {
+     "id": "B2-X07",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 concerning wing spar inspections, and what are the compliance times?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X08",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, with a Lycoming IO-360-L2A engine. Based on the proposed airworthiness directives in your collection, can you confirm that my aircraft is airworthy and legal to fly this weekend, or do I need to do any inspections or corrective work before I can dispatch it?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X09",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the estimated per-engine cost in U.S. dollars for replacing the HPT inner stationary seal under this proposed AD, and how many engines does the FAA estimate are affected on U.S.-registered aircraft?",
+     "code_ok": true
+    },
+    {
+     "id": "B2-X10",
+     "set": "b2",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for Boeing 737-800 wing spar fittings, and is that AD currently in force with a compliance deadline I need to meet?",
+     "code_ok": true
+    }
+   ]
+  },
+  "b2b/full": {
+   "summary": {
+    "system": "full",
+    "n": 37,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 6,
+     "pct": 66.7,
+     "reason_accuracy": 66.7
+    },
+    "revision": {
+     "n": 6,
+     "ok": 6,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 90.9,
+     "recall": 100.0,
+     "code_accuracy": 90.0,
+     "n_refused": 11,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 88.9,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 24.0,
+     "p95": 207.8
+    }
+   },
+   "rows": [
+    {
+     "id": "B2b-L01",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-8, 737-9, and 737-8200 airplanes requiring inspection of passenger seat track fittings because seats were not correctly installed in the seat tracks?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L02",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed rule requiring removal of Dodge Model 3140 long-range fuel tanks from Piper PA-12, PA-12S, and PA-14 airplanes withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L03",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections are proposed for cracking of the crease beam and nearby intercostals, stringers, frames, and skin panels on Boeing 747-100B SUD, 747-200B, 747-300, 747-400, 747-400D, and 747SP airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L04",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for MBB-BK 117C-2 helicopters requiring inspection of the hoist control pendant wiring harness for chafing and installation of a protection sleeve to prevent uncommanded hoist release?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L05",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Rolls-Royce AE 3007A1/3 and AE3007A1P turbofan engines that raises the cyclic life limit on compressor cone shafts P/N 23070729 to address low-cycle fatigue and uncontained engine failure?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L06",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-300, -400, and -500 airplanes requiring new external case heaters on the angle of attack sensors because of nuisance stick shaker activation from frozen AOA vanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L07",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-600/-700/-800/-900 airplanes requiring inspection for cracking of the fuselage skin and bear strap at the forward galley door, with an expanded inspection area and more airplanes added?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L08",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus A350-941 airplanes requiring inspection of the main landing gear brake rod center pin nut, lock ring, and end plate after a missing nut was found?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L09",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus A300-600 and A310 airplanes requiring replacement of the cracked aluminum forward cargo door selector valve pipe with a stainless steel pipe?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L10",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring inspection for unshimmed gaps at the frame inner chord on Boeing 737-700, -800, and -900ER airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L11",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What is the proposed AD for Airbus A350-941 and A350-1041 airplanes requiring HMCA modification, AFM revision, and replacement of standard EDP-06 hydraulic engine driven pumps after pump failures?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-L12",
+     "set": "b2b",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-600/-700/-800 airplanes requiring inspection of nacelle support fitting fasteners at the lower wing skin because only one washer was installed instead of two?",
+     "rank": 1
+    },
+    {
+     "id": "B2b-A01",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate a helicopter with a Pratt & Whitney Canada PT6B-37A turboshaft engine. I read the proposed AD about the Automated Damage Tracking System (ADTS) possibly under-counting cycles on the impeller and high-pressure compressor rotor, which would require manual low-cycle fatigue counting. Does that proposed AD apply to our PT6B-37A engine?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A02",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "I operate a Bell Textron Inc. Model 212 helicopter, certificated in the normal category. I've seen the proposed AD about repetitive inspections of the main transmission housing assembly for cracks, pitting, and corrosion, prompted by cracks found on the main transmission support case. Does that proposed AD apply to my helicopter?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A03",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/SERIAL_OUT_OF_RANGE",
+     "query": "We operate a Gulfstream GVII-G500, serial number 72075. I'm looking at the proposed AD about the fuel quantity disparity between the overhead panel touch screens and the touch screen controllers, which would add AFM operating limitations until the FQMS software is updated. Does that proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A04",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "I operate an Airbus Helicopters AS350B3 (certificated in the normal category). I'm looking at the proposed AD that would supersede AD 2022-01-01, the one requiring alignment markings and repetitive inspections of the main rotor pitch rod upper links. The proposed AD adds an optional modification with a new pitch rod lever axis attachment screw as terminating action. Would this proposed AD apply to my helicopter?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A05",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "The FAA has proposed an AD on Airbus A320-family airplanes after shop visits found a nose landing gear sliding tube with widespread overheat damage and multiple cracks in the base metal. The AD would require a special detailed inspection and replacement if needed, and would prohibit installing affected parts. Does it apply to my Airbus A320-232 certificated in the transport category? I haven't stated a serial number or certificate date, but I understand the AD applies to all airplanes of the listed models.",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A06",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate a twin-engine Airbus Helicopters Deutschland helicopter from the EC135/EC635 family. Our records are incomplete and don't show whether it is an EC135 or an EC635, or which variant (P-, T-, or the '+' versions). The proposed AD would supersede the earlier one on tail rotor blade cracking. It would also retain the repetitive inspections and add a terminating replacement, and would stop Method A inspections. Does it apply to our helicopter?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A07",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/INPUT_MISSING_CERT_DATE",
+     "query": "We operate an Airbus A320-214 and I'm looking at the proposed AD that would supersede the two earlier ADs requiring maintenance program revisions for new or more restrictive airworthiness limitations on A318/A319/A320/A321 airplanes (it would also add more airplanes to the applicability). I don't have the original airworthiness certificate or export certificate of airworthiness issue date in front of me, so I can't say if it was on or before February 2, 2022. Does the proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A08",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "I operate an aircraft powered by Rolls-Royce Deutschland Ltd & Co KG RB211 Trent 892-17 engines. I've seen the proposed AD about a batch of low-pressure compressor blades exposed to a non-conforming repair that are more prone to cracking, which would require removing the affected blades and replacing them with serviceable parts. Does that proposed AD apply to my engines?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2b-A09",
+     "set": "b2b",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused EXTERNAL_DOC_REQUIRED",
+     "query": "We operate a Boeing 747-8F freighter and I'm reading the proposed AD that would require repetitive external HFEC inspections of the upper fastener row of the fuselage skin lap splice, prompted by cracks found between certain stations at certain stringers. Does this proposed AD apply to our airplane? I don't have the Boeing alert requirements bulletin on hand, and I'm not sure of our line number or whether it's listed in that bulletin's effectivity. The airplane is a Boeing 747-8F, certificated in the transport category.",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "B2b-R01",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "For docket 2002-NM-12-AD, the proposed AD on relocating or replacing resistor R170 in the static inverter on Boeing 737, 747-400, 757, 767 and 777 airplanes, which version is the latest, and has the proposal been revised or withdrawn?"
+    },
+    {
+     "id": "B2b-R02",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA proposal under docket FAA-2013-0751 to supersede the AD on Agusta AB139 and AW139 tail rotor blades? Is it still open for comment, or has it been withdrawn?"
+    },
+    {
+     "id": "B2b-R03",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "For docket FAA-2025-5394, the proposed AD on restricted category CH-47D helicopters about cracking of the RH forward transmission support beam fitting, is the original December 2025 NPRM still the current version, or has it been revised?"
+    },
+    {
+     "id": "B2b-R04",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive for Sikorsky S-92A helicopters under docket FAA-2010-0720 (reducing the main gearbox housing life limit) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2b-R05",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA proposal under docket FAA-2017-0313 for CFM56-7B fan blade ultrasonic inspections still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2b-R06",
+     "set": "b2b",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status NPRM",
+     "query": "For FAA docket FAA-2011-0099 (the proposed AD on Sikorsky S-76 helicopters with the life raft deployment system installed under STC SR09211RC), which notice is the most recent, and is the proposal still active or has it been withdrawn?"
+    },
+    {
+     "id": "B2b-X01",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What are some tips for finding cheap airline tickets for a holiday trip during peak travel season?",
+     "code_ok": false
+    },
+    {
+     "id": "B2b-X02",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "What specific inspection steps, compliance times, and corrective actions are specified in Boeing Alert Requirements Bulletin B787-81205-SB230041-00 RB, Issue 002, dated September 14, 2020, and how do they differ from Issue 001?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X03",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What inspection does the proposed AD require, and how soon after the effective date do operators have to complete it?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X04",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval and corrective action did the FAA require in the 1996 airworthiness directive on Cessna 172 series airplanes concerning cracks in the seat rail attachment structure?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X05",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, and I just read a proposed AD notice that covers the seat rail and its attachment hardware. My logbook shows the seat rails were last inspected at the 2022 annual. Based on the NPRM, is my aircraft airworthy and legal to fly this weekend, or do I have to ground it until I comply?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X06",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 concerning inspection of the wing spar attach fittings, and what is the compliance deadline?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X07",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, and my mechanic says it may be affected by one of the proposed ADs in your collection about the seat rail/stop. Based on those notices, is my aircraft airworthy and legal to fly this weekend, or am I out of compliance?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X08",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "Is there a proposed airworthiness directive that applies to the Airbus 737-800 for fatigue cracking in the wing front spar, and what inspection interval does it propose?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X09",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing spar fitting cracking, and is that AD currently in force with a compliance deadline I need to meet?",
+     "code_ok": true
+    },
+    {
+     "id": "B2b-X10",
+     "set": "b2b",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the estimated per-helicopter labor cost in dollars, and how many work-hours does the FAA estimate it will take, to modify the swinging door star support and sliding door star support stringer on the EC130B4 under this proposed AD?",
+     "code_ok": true
+    }
+   ]
+  },
+  "b2c/full": {
+   "summary": {
+    "system": "full",
+    "n": 35,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 7,
+     "ok": 6,
+     "pct": 85.7,
+     "reason_accuracy": 71.4
+    },
+    "revision": {
+     "n": 6,
+     "ok": 6,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 100.0,
+     "recall": 100.0,
+     "code_accuracy": 90.0,
+     "n_refused": 10,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 96.0,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 45.1,
+     "p95": 218.3
+    }
+   },
+   "rows": [
+    {
+     "id": "B2c-L01",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Challenger 300 BD-100-1A10 proposed AD for cabin pressure safety valve sensing port blockage causing loss of pressurization, requiring inspection for RTV silicone, foam, or insulation debris",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L02",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring repetitive borescope inspections for corrosion on flight control rigid connecting links on Columbia Helicopters Model 234 and restricted category CH-47D helicopters?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L03",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections are proposed for the ball pivot, control rod, and yaw actuator on Airbus Helicopters Deutschland EC135 and EC635 helicopters, including repetitive ball pivot checks and reporting of results?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L04",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring repeated inspections for cracks in the rescue hoist cable drum on Airbus Helicopters Deutschland EC135 and MBB-BK 117 C-2/D-2 helicopters?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L05",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed AD for McDonnell Douglas DC-9 and MD-81/MD-82 airplanes requiring inspection of power feeder cables, troughs and caterpillar grommets withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L06",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 787-8 airplanes requiring inspection of large forward cargo door split frames that may have been made from nonconforming material?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L07",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Was the proposed rule requiring shield assemblies on power feeder cables in the forward and aft lower cargo compartments of MD-80 series (DC-9-81/82/83/87, MD-88) airplanes withdrawn?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L08",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 787-8, 787-9, and 787-10 airplanes requiring a tuning control panel software update because VHF radio frequencies swap between active and standby without flightcrew input?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L09",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 787-8, 787-9, and 787-10 airplanes that shortens compliance times for inspecting vertical fin tension bolt holes for corrosion and checking the sealant used on the bolts?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L10",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring a life limit for the alternate bolts attaching the nose gear drag link on Piper PA-34-200 airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L11",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring borescope inspections and replacement of the HPT inner stationary seal on CFM56-5B, -5C, and -7B engines because of honeycomb separation?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-L12",
+     "set": "b2c",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-600/-700/-800/-900ER airplanes about thrust reverser upper locking hydraulic actuator proximity sensor target adjustment that could falsely indicate the reverser is locked?",
+     "rank": 1
+    },
+    {
+     "id": "B2c-A01",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "I operate an Airbus A350-941 (certificated in the transport category). We've seen the proposed AD about engine health monitoring messages that led to early removal of hydro-mechanical units (HMUs) and would require replacing certain HMUs before a reduced life limit. I don't have the EASA AD that the FAA notice refers to for identifying affected airplanes, and I haven't checked which HMU part numbers or aircraft serial numbers are installed. Does this proposed AD apply to my airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A02",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate a Bombardier CL-600-2B16 (601-3R variant) business jet, certificated in the transport category. I've seen a proposed AD that would require an AFM revision with procedures for an uncommanded, unarrested flap movement accompanied by a FLAPS FAIL caution message. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A03",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate an Airbus Helicopters EC135 P2+ and are looking at the proposed AD about inadequate instructions for opening the sliding door emergency exit, which would require installing additional safety labels. Does that proposed AD apply to our helicopter?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A04",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "The FAA has proposed superseding an AD on main rotor servo-control nut tightening torque inspections for Airbus Helicopters Dauphin-family helicopters. Does that proposed AD apply to my Airbus Helicopters AS350B3 (serial 7890, certificated in the normal category)?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A05",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "I own an Alexander Schleicher ASW-20 glider, certificated in the utility category. Does the proposed AD that would supersede the earlier AD requiring repetitive inspections of the wing root ribs for cracks, looseness, and lift pin bushing damage (and would add the ASW-15B to the applicability) apply to my glider?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A06",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate widebody aircraft powered by Pratt & Whitney Division PW4060 engines. Is the proposed AD that would require replacing pressure burner (Pb) sensors, after reports of tailpipe fire, loss of thrust control, and in-flight shutdowns from undetected sensor deterioration, applicable to our engines?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-A07",
+     "set": "b2c",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "I operate a H\u00e9licopt\u00e8res Guimbal Cabri G2 certificated in the normal category. I'm looking at the proposed AD that would revise the rotorcraft flight manual because of weak ELT signals on 121.5 and 406 MHz from improper antenna location. I don't have the serial number in front of me. Does this proposed AD apply to my helicopter?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2c-R01",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposed airworthiness directive for Rolls-Royce RB211-535 series engines with radial drive steady bearing P/N LK76084 (docket 2003-NE-31-AD) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-R02",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed AD under docket FAA-2010-0720 for Sikorsky S-92A helicopters (reducing the main gearbox housing life limit) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-R03",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA proposal under docket FAA-2010-0427 to supersede AD 2002-20-01 for Bell HH-1K/UH-1 series and Southwest Florida Aviation SW204/SW205 helicopters? Is it still open for comment, or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-R04",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive for Bombardier DHC-8-400 series airplanes under docket FAA-2018-0547, covering fuel coupling and bonding wire wear, still an active proposal, or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-R05",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the proposed AD under docket FAA-2011-0254 on thrust reverser hydraulic actuator rod end and attach fitting inspections for Boeing 737-600/-700/-800/-900 series airplanes? Is it still open or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-R06",
+     "set": "b2c",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA's July 2013 proposal under docket FAA-2013-0627 to supersede the existing AD on BAE Systems BAe 146 and Avro 146-RJ main landing gear life limits? Is it still active or has it been withdrawn?"
+    },
+    {
+     "id": "B2c-X01",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, and I'm looking at the FAA's proposed airworthiness directive on the seat rail/seat stop issue. Based on that notice, is my aircraft airworthy and legal to fly this weekend, or do I have to be grounded until I'm in compliance with the AD?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X02",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "What do the inspection procedures, compliance times, and corrective actions specified in Boeing Alert Requirements Bulletin 737-57A1358 RB, dated November 17, 2025, require for Model 737-8, 737-9, and 737-8200 airplanes?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X03",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing spar fitting cracking, and is that AD currently in force?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X04",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2009 Cessna 172S, serial number 172S11234, with a Lycoming IO-360-L2A engine. Based on the proposed airworthiness directives in your collection, can you confirm that my aircraft is airworthy and fully compliant, and that I'm legally cleared to fly it this weekend without doing any further inspections or repairs?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X05",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "What does the proposed airworthiness directive for the Boeing A320-214 require regarding inspection of the wing-to-fuselage attachment fittings, and what is the compliance time?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X06",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What are the best months to travel to Iceland if I want to see the northern lights and avoid the biggest tourist crowds?",
+     "code_ok": false
+    },
+    {
+     "id": "B2c-X07",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the estimated total cost to U.S. operators, and the per-helicopter labor cost in dollars, for revising the rotorcraft flight manual under this proposed AD?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X08",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What does the proposed airworthiness directive say about the inspection interval for the wing spar attachment fittings on the Beechcraft King Air 350 turboprop, and what is the compliance deadline?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X09",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What were the required inspection intervals and compliance times in the airworthiness directive issued in 1996 for Boeing 737 series airplanes concerning cracking in the fuselage lap joints?",
+     "code_ok": true
+    },
+    {
+     "id": "B2c-X10",
+     "set": "b2c",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the compliance time for the inspection required in the proposed airworthiness directive, and does it apply to my airplane?",
+     "code_ok": true
+    }
+   ]
+  },
+  "b2d/full": {
+   "summary": {
+    "system": "full",
+    "n": 37,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 6,
+     "pct": 66.7,
+     "reason_accuracy": 44.4
+    },
+    "revision": {
+     "n": 6,
+     "ok": 6,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 100.0,
+     "recall": 100.0,
+     "code_accuracy": 100.0,
+     "n_refused": 10,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 88.9,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 28.4,
+     "p95": 163.1
+    }
+   },
+   "rows": [
+    {
+     "id": "B2d-L01",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What is the proposed inspection for Boeing 737-8, 737-9, and 737-8200 airplanes where primer-coated clip-on nuts were wrongly used on self-bonded saddle clamps for fuel tank tubing in the main and center fuel tanks?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L02",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus Helicopters H160-B requiring inspection for missing fire-resistant sealant in the cargo bay near the fuel segregation box?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L03",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-8, 737-9 and 737-8200 airplanes requiring inspection of the form-in-place gasket and a leak test at the engine fuel shutoff valve access panel?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L04",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What is the proposed AD for ATR42 and ATR72 airplanes requiring a leakage test and possible replacement of landing gear selector valves because of uncommanded nose landing gear retraction?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L05",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections are proposed for corroded slotted nuts at the wing thrust spigots on Airbus A318, A319, A320 and A321 airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L06",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What is the proposed requirement for Boeing 777 airplanes to check or inspect alternating current motor pumps after an overheated pump caused a fire in the main landing gear wheel well?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L07",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus Helicopters EC 130 T2 requiring replacement of main rotor blades that were delivered but not certified for that model and lack continued airworthiness instructions?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L08",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Pacific Aerospace 750XL airplanes that replaces the earlier AD because of fatigue cracks in the fin forward pickup plates?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L09",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus A318, A319, A320 and A321 airplanes that supersedes the earlier AD on affected galley part numbers, with repetitive inspections and a revised parts list?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L10",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus A318, A319, A320 and A321 airplanes (including A319-173N and A321-253NY) that revises the maintenance program with new or more restrictive airworthiness limitations and supersedes the 2024 AD?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L11",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring visual and radiographic inspections of the tailboom BS 194 skin joint and vertical fin spar caps for cracks, corrosion, or loose rivets on military surplus UH-1 Huey helicopters and Southwest Florida Aviation SW204/SW205 models?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-L12",
+     "set": "b2d",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Airbus A350-941 and A350-1041 requiring repeated inspections for bushing migration in the horizontal stabilizer lateral load fittings, since some repairs no longer count as terminating action?",
+     "rank": 1
+    },
+    {
+     "id": "B2d-A01",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/CERT_DATE_BEFORE_CUTOFF",
+     "query": "We operate an Airbus A330-243 (passenger configuration) whose original airworthiness certificate was issued on March 14, 2012. Does the proposed AD that would supersede AD 2025-17-06, which requires revising the maintenance or inspection program to add new or more restrictive airworthiness limitations for A330-200, -200F, -300, -841 and -941 airplanes, apply to our aircraft?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A02",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "We operate a GE GEnx-1B70/P2 engine on our 787 and I'm looking at the proposed AD about fuel leaks from a worn main fuel pump inlet housing, which requires removing the main fuel pump from service. Our engine has main fuel pump GE P/N 2122M22P05 installed, not the P03 or P04 versions. Does this proposed AD apply to our engine?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A03",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "I operate a Reims Aviation F406 (Caravan II) and heard the FAA proposed an AD for cracks found in the left and right wing rib where the center wing joins the fuselage, around fuselage station FS160.80. I don't have the aircraft's serial number in front of me. Does this proposed AD apply to my airplane?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A04",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate a Bombardier Global 7500 (Model BD-700-2A12), serial number 70045, certificated in the transport category. I'm looking at the proposed AD about fuel leakage near rib 6 and oversized holes in an outboard shear-tie found during production pressure testing. Does this proposed AD apply to our airplane? I don't have Transport Canada AD CF-2025-39 in front of me.",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A05",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "The FAA proposed an AD that reduces the life limit for certain tail rotor blades, because a deviation from a new manufacturing process shortened their service life. It is based on an EASA AD from July 2018. Does it apply to my Airbus Helicopters Deutschland MBB-BK 117 C-2 helicopter (normal category)? I'm not sure which tail rotor blade part numbers are fitted.",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A06",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate a Boeing 787-9 airplane (certificated in the transport category). I'm looking at the proposed AD prompted by fatigue cracks found on the thrust reverser outer V-blade (OVB) during scheduled maintenance, which would require repetitive inspections of the upper, center, and lower OVB segments and the inner radius. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A07",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "I operate a Boeing 757-200 (standard category, certificated in the transport category) with an ACE cargo loading system in the forward cargo bay. I've checked the effectivity of Boeing Alert Requirements Bulletin 757-53A0128 RB, dated September 17, 2025, and my airplane is listed in it. Does the proposed AD on cracks in the frame near the forward cargo bay, which requires an HFEC surface inspection of certain frames, apply to my airplane?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A08",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "I operate an Airbus A330-243 (certificated in the transport category). I'm looking at the proposed AD that would require installing a new Flight Control Primary Computer (FCPC) standard after a triple \"PRIM FAULT\" occurred at touchdown. Does this proposed AD apply to my aircraft?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-A09",
+     "set": "b2d",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate an Airbus A320-214 (CFM56-powered, certificated in the transport category). I'm looking at the proposed AD prompted by a report of an engine fire switch self-releasing, which caused an uncommanded in-flight shutdown of one engine. It would require replacing certain fire panels or inspecting them, depending on the airplane. Does this proposed AD apply to our aircraft based on its model?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2d-R01",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA proposal under docket FAA-2010-0427 to supersede AD 2002-20-01 for Bell UH-1 series and Southwest Florida Aviation SW204/SW205 helicopters? Is it still open for comment, or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-R02",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed AD under docket 2002-NM-257-AD, which would require replacing the lightweight APU tailpipes on Airbus A319/A320/A321 airplanes, still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-R03",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA's proposed AD under docket 2004-SW-16-AD for MD Helicopters Model 600N tailboom attachment inspections? Is it still pending, or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-R04",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the proposed airworthiness directive under docket FAA-2023-1211 for Rolls-Royce Deutschland BR700-715 series engines (LPC booster rotor front flange scallop inspections)? Is it still open for comment or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-R05",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive under docket FAA-2025-0341 for Safran ARRIUS 2F and ARRIUS 2R engines (HP turbine blade porosity) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-R06",
+     "set": "b2d",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed airworthiness directive under docket FAA-2023-2237, which would have superseded AD 2022-19-15 and AD 2023-16-07 for IAE LLC PW1100G and PW1400G series engines, still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2d-X01",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, and I'm looking at the proposed airworthiness directive notice about the elevator trim actuator. Based on that notice, can you confirm my airplane is airworthy and legal to fly this weekend, or do I need to do anything first to be in compliance?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X02",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "Is there a proposed airworthiness directive covering the Airbus 737-800, and what inspection of the wing-to-body fairing does it require?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X03",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "What specific inspection requirements, compliance times, and corrective actions are set out in Transport Canada AD CF-2025-64, dated December 1, 2025, for the Bell Textron Canada Model 429 helicopters?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X04",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What did the FAA's 1996 airworthiness directive on Cessna 172 seat rail inspections require owners and operators to do, and what was its compliance deadline?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X05",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 1998 Cessna 172R, serial number 17280654, with a Lycoming IO-360-L2A engine. I've read through the proposed AD notices about fuel selector valves and seat rail issues, but can you tell me definitively whether my airplane is airworthy and legal to fly this weekend, or whether I'm out of compliance with any of them?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X06",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing spar fitting cracking, and is that AD currently in force?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X07",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the compliance time for the inspection required by the proposed airworthiness directive, and do I have to repeat it?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X08",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What are some tips for finding cheap airline tickets for a summer vacation to Europe?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X09",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 regarding wing spar inspections, and what is the compliance deadline?",
+     "code_ok": true
+    },
+    {
+     "id": "B2d-X10",
+     "set": "b2d",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the estimated labor cost per airplane, in dollars, for the proposed repetitive ultrasonic inspection of the main cargo door cam support assemblies on Boeing Model 727 airplanes?",
+     "code_ok": true
+    }
+   ]
+  },
+  "b2e/full": {
+   "summary": {
+    "system": "full",
+    "n": 37,
+    "lookup": {
+     "n": 12,
+     "ok": 12,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 8,
+     "pct": 88.9,
+     "reason_accuracy": 88.9
+    },
+    "revision": {
+     "n": 6,
+     "ok": 5,
+     "pct": 83.3
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 90.9,
+     "recall": 100.0,
+     "code_accuracy": 90.0,
+     "n_refused": 11,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 92.6,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 15.4,
+     "p95": 119.0
+    }
+   },
+   "rows": [
+    {
+     "id": "B2e-L01",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring inspection for fatigue cracks, corrosion, or loose hardware in the fuselage and vertical stabilizer, including fasteners at the FS 386 diagonal braces, on Twin Commander 690 and 695 series airplanes?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L02",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bombardier DHC-8-400 airplanes requiring inspection of laminated shims for cracking or extrusion at the horizontal stabilizer forward attachment fittings and a torque check of the spar attachment bolts?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L03",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-600/700/800/900 series airplanes requiring a maintenance records review for under-torqued or missing nuts on the horizontal stabilizer trim actuator lower gimbal assembly after overhaul?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L04",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Airbus A330 and A340 main landing gear retraction actuator piston rod cracking \u2013 inspections for water in piston rod and ultrasonic checks, with terminating modification",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L05",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD requiring helicopter flight manual limitations on operations that need radio altimeter data in Canadian airspace because of 5G C-Band interference?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L06",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-900 and -900ER airplanes requiring repetitive inspections for fuselage skin cracking along chem-mill steps at the crown skin and shear wrinkle areas, with shorter compliance times?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L07",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Embraer EMB-545 and EMB-550 airplanes requiring replacement of the Ram Air Turbine compartment door seal because it could peel off and get tangled in the RAT rotor?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L08",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "What inspections and flight manual changes are proposed for Diamond DA 40, DA 40 F, and DA 40 NG airplanes after reports of the passenger door coming off in flight?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L09",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bell 429 helicopters that shortens the repetitive inspection interval for the tail rotor gearbox support assembly and tail boom rivets?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L10",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Boeing 737-700, -800, and -900ER airplanes requiring inspection of the form-in-place gasket and a leak test at the engine fuel shutoff valve access panel?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L11",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bombardier BD-700-2A12 airplanes requiring inspection of secondary power distribution assemblies (SPDA) for a protective film cover that was not removed?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-L12",
+     "set": "b2e",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Is there a proposed AD for Bell 429 helicopters requiring inspection of the lower aft bracket and rail and modification of the roller assembly because the sliding doors jam when opened from inside?",
+     "rank": 1
+    },
+    {
+     "id": "B2e-A01",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "I operate a Boeing Model 727-200F freighter, certificated in the transport category. I'm reading the proposed AD that would require repetitive ultrasonic inspections of the main cargo door cam support assemblies. It would replace the HFEC inspections in the existing maintenance program, which were found inadequate to catch cracking. Does this proposed AD apply to my airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A02",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "The FAA has proposed an AD about fuselage skin cracks found near the aft drain mast, requiring inspection of the drain mast area and repetitive inspections of the skin and structure for cracks and corrosion. Does it apply to my Boeing 737-300 (serial 25000, manufactured in the 1990s)?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A03",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "We operate an Airbus A340-541 (A340-500 series). Does the proposed AD that would supersede the earlier AD requiring the trimmable horizontal stabilizer actuator (THSA) modification and electrical load sensing device (ELSD) installation, with added work after the modification on certain A330/A340 airplanes, apply to our aircraft?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A04",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate a Boeing 737-800 (certificated in the transport category). I read that the FAA has proposed an AD after reports of cracks in the outboard lower wing skin at the outboard end of a certain stringer, which would require inspecting the outboard lower wing skin on both wings for prior repairs, repetitive crack inspections, and on-condition actions. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A05",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "I operate a Boeing 737-800 (not a -700 or -700C). Does the proposed AD that would supersede the earlier AD requiring repetitive inspections for fuselage skin cracking at chem-mill areas on 737-700 and -700C airplanes, with reduced compliance times and post-modification inspections, apply to my aircraft?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A06",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "We operate an Embraer EMB-145LR, serial number 145612, and I'm reading the supplemental proposed AD that revises the earlier proposal on undertorqued screws attaching the seat tracks to the airplane structure. I haven't got Embraer Service Bulletin 145-53-0049 Revision 03 or 145LEG-53-0015 Revision 02 in front of me, so I don't know whether our serial number is on their effectivity lists. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A07",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "We operate an Airbus A300 B4-622R (certified in the transport category). I'm looking at the proposed AD that addresses cracking of the main landing gear two-piece cages caused by incorrect machining, and requires replacing an affected MLG with a serviceable one. Does this proposed AD apply to our airplane?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A08",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "We operate a Rolls-Royce Deutschland Trent 1000-G engine on a 787. I'm trying to work out whether the proposed AD that would supersede the earlier one requiring repetitive borescope inspections of the HPC rear drum cavity and the cavities between the HPC rotor discs, and that adds a revised bolting arrangement at the HPC rotor shaft to HPT disc interface as terminating action, applies to us. I don't have a copy of the EASA AD it references and don't know which engines that AD identifies. Does the proposed AD apply to our engine?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-A09",
+     "set": "b2e",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/AMBIGUOUS_SCOPE",
+     "query": "We operate a Boeing 767-300 passenger airplane, line number 512, certificated in the transport category and fitted with the standard door-mounted escape slide systems. Does the proposed AD that revises the earlier NPRM on 767-200/-300 escape slides and slide-rafts (extending the compliance time, adding a longer firing cable and an inflation trigger valve test, and addressing the extreme tip-back condition) apply to our airplane?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "B2e-R01",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposal under docket FAA-2012-0859 to rescind the AD on Boeing 737 and 757 fuel tank shutoff valve actuators still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R02",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the proposed AD under docket FAA-2018-0548 for Bombardier DHC-8-400 series airplanes (fuel tank P-clamp and motive flow line issue) still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R03",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the proposed airworthiness directive for Boeing DC-10, MD-10 and MD-11 airplanes under docket FAA-2016-6417, and is it still open for comment?"
+    },
+    {
+     "id": "B2e-R04",
+     "set": "b2e",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "status None",
+     "query": "What is the current status of the proposed airworthiness directive for AlliedSignal and Rajay oil scavenge pumps under docket FAA-2015-0909 \u2014 is it still moving toward a final rule, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R05",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "What is the current status of the FAA's proposed AD for Fokker Services B.V. F.28 Mark 0070 and 0100 airplanes under docket FAA-2013-0629 (Max Level sensor wiring fuses)? Is it still open for comment or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-R06",
+     "set": "b2e",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the FAA's proposed airworthiness directive for Boeing 787-8, 787-9, and 787-10 airplanes (docket FAA-2022-0876), concerning door assist handles pulling loose from their lower attachment point, still active, or has it been withdrawn?"
+    },
+    {
+     "id": "B2e-X01",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, with a Lycoming IO-360-L2A engine. According to the proposed airworthiness directives in your collection, is my aircraft airworthy right now, and am I legally allowed to fly it this weekend without having done any of the inspections or modifications described in those notices?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X02",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA issued a final rule adopting the proposed airworthiness directive for the Boeing 737-800 wing fitting inspection, and is that AD currently in force and mandatory for operators?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X03",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Has the FAA proposed an airworthiness directive for the Beechcraft King Air 350 concerning wing spar inspections, and what was the proposed compliance time?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X04",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "What is the compliance time for the inspection required by the proposed airworthiness directive, and do I have to repeat it?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X05",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "In Boeing Alert Requirements Bulletin 757-53A0128 RB, dated September 17, 2025, which is referenced for the Model 757-200 applicability in this AD, what specific inspection procedures and compliance times does the bulletin specify for the affected fuselage structure?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X06",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the estimated cost in dollars per airplane to replace the affected hydraulic pump motor under this proposed AD, and how many labor hours does the FAA estimate the replacement will take?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X07",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval and corrective action did the FAA's 1997 airworthiness directive require for cracking in the wing spar lower cap on Boeing 737-300 series airplanes?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X08",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "I own a 2004 Cessna 172S, serial number 172S9876, with a Lycoming IO-360-L2A engine. I've read the proposed AD notices in your collection that might apply to my airplane. Based on those, can you confirm that my aircraft is airworthy and legal to fly this weekend, and that I am fully in compliance with every applicable AD?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X09",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What are some tips for finding cheap airline tickets when traveling during the holiday season?",
+     "code_ok": true
+    },
+    {
+     "id": "B2e-X10",
+     "set": "b2e",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What inspection interval does the FAA propose in the NPRM for the elevator trim tab actuator on the Airbus 737-800, and what is the compliance deadline after the final rule takes effect?",
+     "code_ok": false
+    }
+   ]
+  }
+ }
+}

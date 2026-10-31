@@ -1,0 +1,1 @@
+{"question": "Is there a proposed AD for Bell 206L, 206L-1, 206L-3 and 206L-4 helicopters with an STC installed that had severe vertical vibration damaging the tail boom, requiring a VNE limit and flight manual supplement?"}
