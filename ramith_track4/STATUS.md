@@ -10,6 +10,6 @@
 | 1A Ingest | T+40 (11:43) | PASSED 11:19: 406/431 rows (94.2%) have text; Applicability parsed for 304 |
 | 1B Test set frozen | T+50 (11:53) | PASSED 11:12 (written by assistant, see DECISIONS #5) |
 | 2 Core logic | T+85 (12:28) | PASSED 11:28: 27 unit tests pass; extraction audit round D 15/15 (see eval/results/extraction_audit.md) |
-| 3 Retrieval + UI | T+125 (13:08) | pending |
+| 3 Retrieval + UI | T+125 (13:08) | PASSED 11:44: 46 tests pass; adhoc first-pass 21/24 and 13/15; p95 retrieval 3 ms |
 | 4 Evaluation | T+145 (13:28) | pending |
 | 5 Submit | T+165 (13:48) | pending |

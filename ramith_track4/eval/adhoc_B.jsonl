@@ -1,0 +1,15 @@
+{"id":"B01","query":"Which proposed AD concerns the EC130 T2 delivered before September 2024?","expect":{"type":"answer","doc_any":["2025-20092"]}}
+{"id":"B02","query":"NPRM about a center wing fuel tank on the Fokker F.28","expect":{"type":"answer","doc_any":["FAA-2013-0629@2013-07-21"]}}
+{"id":"B03","query":"Does the proposal for Cabri G2 helicopters apply to my serial number 1200?","expect":{"type":"answer","doc_any":["2026-09037"],"verdict":"CANNOT_DETERMINE"}}
+{"id":"B04","query":"Is my Reims F406 serial F406-0091 covered by the proposed rule?","expect":{"type":"answer","doc_any":["FAA-2006-26691@2007-02-15"],"verdict":"CANNOT_DETERMINE"}}
+{"id":"B05","query":"Will the 787 fan cowl AD affect my 787-9?","expect":{"type":"answer","doc_any":["2026-16157"],"verdict":"CANNOT_DETERMINE"}}
+{"id":"B06","query":"Does the AW139 STC SR04384NY proposal apply to me?","expect":{"type":"no_crash"}}
+{"id":"B07","query":"Has the Piper PA-28 wing spar proposal comment period been extended?","expect":{"type":"answer","doc_any":["2024-25883","2024-21652"]}}
+{"id":"B08","query":"Give me the unsafe condition for the Bell 429 AD that references Transport Canada CF-2025-60R1","expect":{"type":"answer","doc_any":["2026-14881"]}}
+{"id":"B09","query":"What part numbers does the Dowty propeller proposal cover?","expect":{"type":"answer","doc_any":["FAA-2011-0033@2011-04-28"]}}
+{"id":"B10","query":"Does a proposed AD affect the CFM56-7B26 engine?","expect":{"type":"answer","doc_any":["2026-15532"],"verdict":"APPLIES"}}
+{"id":"B11","query":"Please tell me whether it is ok to dispatch with an open NPRM item","expect":{"type":"refusal","code":"OUT_OF_SCOPE"}}
+{"id":"B12","query":"latest proposed AD for the ATR 72","expect":{"type":"no_crash"}}
+{"id":"B13","query":"Does the proposed AD in docket 2000-NM-120-AD apply to the EMB-120?","expect":{"type":"answer"}}
+{"id":"B14","query":"Who manufactures the Gulfstream G150?","expect":{"type":"no_crash"}}
+{"id":"B15","query":"which proposal replaces AD 2023-12-16?","expect":{"type":"answer","doc_any":["2026-14882"]}}

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AD Applicability Desk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --mute:#93a4b5; --ok:#3fb27f; --no:#e5675d; --unk:#e0a93b; --acc:#58a6ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif; }
+  header { padding:10px 16px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:baseline; }
+  header h1 { font-size:16px; margin:0; } header span { color:var(--mute); }
+  nav button { background:none; border:0; color:var(--mute); padding:6px 10px; cursor:pointer; font:inherit; border-bottom:2px solid transparent; }
+  nav button.on { color:var(--text); border-color:var(--acc); }
+  .banner { background:#2b2410; color:#f0d58a; padding:6px 16px; font-size:12px; border-bottom:1px solid #4a3d16; }
+  main { display:grid; grid-template-columns: 380px 1fr 340px; gap:0; height:calc(100vh - 92px); }
+  section { overflow:auto; padding:12px; border-right:1px solid var(--line); }
+  section:last-child { border-right:0; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--mute); margin:0 0 8px; }
+  label { display:block; color:var(--mute); font-size:12px; margin:8px 0 2px; }
+  input, textarea { width:100%; background:var(--panel); border:1px solid var(--line); color:var(--text); border-radius:6px; padding:7px; font:inherit; }
+  textarea { height:74px; resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  button.go { margin-top:10px; background:var(--acc); color:#04121f; border:0; border-radius:6px; padding:8px 14px; font-weight:600; cursor:pointer; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px; margin:10px 0; cursor:pointer; }
+  .card.sel { border-color:var(--acc); }
+  .card h3 { margin:0 0 4px; font-size:13px; }
+  .chip { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; margin-right:6px; }
+  .APPLIES { background:#12372a; color:var(--ok); } .DOES_NOT_APPLY { background:#3b1b19; color:var(--no); } .CANNOT_DETERMINE { background:#3a2e10; color:var(--unk); }
+  .st { background:#1c2b3a; color:var(--acc); }
+  .mute { color:var(--mute); font-size:12px; }
+  blockquote { margin:6px 0; padding:4px 8px; border-left:3px solid var(--line); color:#cfd9e3; font-size:12.5px; white-space:pre-wrap; max-height:150px; overflow:auto; }
+  .refuse { border:1px solid var(--unk); background:#241d0b; border-radius:8px; padding:12px; margin-top:12px; }
+  .refuse b { color:var(--unk); }
+  pre.src { white-space:pre-wrap; font:12.5px/1.5 ui-monospace,Consolas,monospace; margin:0; }
+  mark { background:#6b5a14; color:#fff; padding:0 1px; }
+  table { width:100%; border-collapse:collapse; font-size:12.5px; } td, th { text-align:left; padding:4px 6px; border-bottom:1px solid var(--line); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<header><h1>AD Applicability Desk</h1><span>FAA airworthiness directive NPRMs · quotes only, no generated text · the engineer decides</span>
+  <nav style="margin-left:auto"><button id="tabS" class="on">Search</button><button id="tabR">Results</button></nav></header>
+<div class="banner">PROPOSED RULES (NPRMs): not legally binding. This tool finds, quotes and checks applicability rules; it does not certify compliance or airworthiness.</div>
+
+<main id="search">
+  <section>
+    <h2>Question</h2>
+    <textarea id="q" placeholder="e.g. Does the latest proposed AD in docket FAA-2026-1338 apply to my A330-243?"></textarea>
+    <h2 style="margin-top:12px">Aircraft configuration (optional)</h2>
+    <div class="row"><div><label>Make</label><input id="make"></div><div><label>Model</label><input id="model"></div></div>
+    <div class="row"><div><label>Original CofA date</label><input id="cofa" placeholder="YYYY-MM-DD"></div><div><label>Serial number</label><input id="serial"></div></div>
+    <label>Installed part numbers (comma separated)</label><input id="pns">
+    <button class="go" id="go">Search</button>
+    <div id="meta" class="mute" style="margin-top:8px"></div>
+    <div id="cards"></div>
+  </section>
+  <section><h2>Source (highlighted quote)</h2><div id="srcmeta" class="mute"></div><pre class="src" id="src">Select a card, then a quote.</pre></section>
+  <section><h2>Why this verdict</h2><div id="trace" class="mute">Select a card.</div></section>
+</main>
+
+<main id="results" class="hidden" style="grid-template-columns:1fr"><section id="resbody"><h2>Evaluation results (frozen test set)</h2><div class="mute">Loading…</div></section></main>
+
+<script>
+const $ = id => document.getElementById(id);
+let lastAnswer = null, docCache = {};
+function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+
+$('tabS').onclick = () => { $('search').classList.remove('hidden'); $('results').classList.add('hidden'); $('tabS').classList.add('on'); $('tabR').classList.remove('on'); };
+$('tabR').onclick = async () => { $('search').classList.add('hidden'); $('results').classList.remove('hidden'); $('tabR').classList.add('on'); $('tabS').classList.remove('on'); loadResults(); };
+
+async function run(){
+  const config = { make:$('make').value, model:$('model').value, cofa_date:$('cofa').value, serial:$('serial').value, part_numbers:$('pns').value };
+  $('go').disabled = true; $('cards').textContent = '';
+  const r = await fetch('/query', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({query:$('q').value, config})});
+  lastAnswer = await r.json(); $('go').disabled = false; render(lastAnswer);
+}
+$('go').onclick = run;
+$('q').addEventListener('keydown', e => { if(e.key==='Enter' && (e.ctrlKey||e.metaKey)) run(); });
+
+function render(a){
+  const box = $('cards'); box.textContent = '';
+  const L = a.latency_ms || {};
+  $('meta').textContent = `retrieval ${L.retrieval ?? '-'} ms · total ${L.total ?? '-'} ms` + (a.config_used && Object.keys(a.config_used).length ? ' · config read: ' + JSON.stringify(a.config_used) : '');
+  if(a.type === 'refusal'){
+    const r = a.refusal, d = el('div','refuse');
+    d.appendChild(el('b', null, 'Cannot answer · ' + r.code)); d.appendChild(el('div', null, r.message));
+    d.appendChild(el('div','mute','To resolve: ' + r.what_would_resolve_it)); box.appendChild(d); return;
+  }
+  a.cards.forEach((c, i) => {
+    const d = el('div', 'card'); d.onclick = () => select(c, d);
+    d.appendChild(el('h3', null, `${c.title}`));
+    d.appendChild(el('div','mute', `${c.docket} · ${c.citation || ''} · issued ${c.issue_date || '?'}`));
+    const line = el('div'); line.style.margin = '6px 0';
+    if(c.verdict){ const v = el('span','chip '+c.verdict.verdict, c.verdict.verdict.replace(/_/g,' ')); line.appendChild(v); line.appendChild(el('span','mute', c.verdict.main_reason)); }
+    line.appendChild(el('span','chip st', c.status)); d.appendChild(line);
+    if(c.version_note) d.appendChild(el('div','mute','⚠ ' + c.version_note));
+    if(c.verdict) d.appendChild(el('div','mute', c.verdict.detail));
+    c.quotes.forEach(q => { const b = el('blockquote', null, q.text); b.title = `${q.label} · page ${q.page ?? '?'}`; b.onclick = ev => { ev.stopPropagation(); select(c, d, q); }; d.appendChild(b); });
+    d.appendChild(el('div','mute', c.banner)); box.appendChild(d);
+    if(i === 0) select(c, d);
+  });
+}
+
+async function select(c, node, quote){
+  document.querySelectorAll('.card').forEach(n => n.classList.remove('sel')); node.classList.add('sel');
+  let d = docCache[c.doc_id]; if(!d){ d = await (await fetch('/doc/' + encodeURIComponent(c.doc_id).replace(/%40/g,'@'))).json(); docCache[c.doc_id] = d; }
+  const q = quote || c.quotes[0];
+  const pre = $('src'); pre.textContent = '';
+  $('srcmeta').textContent = `${d.title} · ${d.citation} · text source: ${d.source}` + (d.is_summary_only ? ' · SUMMARY ONLY (full text not available)' : '');
+  const src = (q && q.field === 'summary') ? d.summary : d.text;
+  if(q){ pre.appendChild(document.createTextNode(src.slice(Math.max(0, q.char_start - 400), q.char_start)));
+         const m = document.createElement('mark'); m.textContent = src.slice(q.char_start, q.char_end); pre.appendChild(m);
+         pre.appendChild(document.createTextNode(src.slice(q.char_end, q.char_end + 600)));
+         m.scrollIntoView({block:'center'}); } else pre.textContent = src.slice(0, 3000);
+  trace(c);
+}
+
+function trace(c){
+  const t = $('trace'); t.textContent = '';
+  if(c.verdict){
+    const v = c.verdict; t.appendChild(el('div', null, 'Rule fired: ' + v.rule_fired));
+    t.appendChild(el('div', null, 'Reason codes: ' + v.reason_codes.join(', ')));
+    t.appendChild(el('div','mute', v.detail)); t.appendChild(el('div','mute','Decided by deterministic code, not a language model.'));
+  } else t.appendChild(el('div','mute','Lookup / status answer: quotes only.'));
+  t.appendChild(el('h2', null, '')).style.marginTop = '14px'; t.appendChild(el('div', null, `Docket ${c.docket}: status ${c.status}`));
+  if(c.comments_due) t.appendChild(el('div','mute','Comments due (spreadsheet): ' + c.comments_due));
+  if(c.spreadsheet_comment) t.appendChild(el('div','mute','Spreadsheet note: ' + c.spreadsheet_comment));
+  const tb = document.createElement('table'); tb.appendChild(Object.assign(document.createElement('tr'), {innerHTML:'<th>Date</th><th>Event</th><th>Doc</th>'}));
+  (c.revision_trail || []).sort((a,b)=>(a.date||'').localeCompare(b.date||'')).forEach(e => {
+    const r = document.createElement('tr'); [e.date, e.event, e.doc_id + (e.doc_id===c.latest_doc_id ? '  ← latest' : '')].forEach(x => r.appendChild(el('td', null, x||''))); tb.appendChild(r); });
+  t.appendChild(tb);
+}
+
+async function loadResults(){
+  const b = $('resbody'); const r = await (await fetch('/results')).json(); b.textContent = ''; b.appendChild(el('h2', null, 'Evaluation results'));
+  if(r.available === false){ b.appendChild(el('div','mute','No evaluation run has been saved yet.')); return; }
+  const pre = el('pre','src', JSON.stringify(r, null, 2)); b.appendChild(pre);
+}
+</script>
+</body>
+</html>

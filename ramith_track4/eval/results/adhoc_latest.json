@@ -1,0 +1,151 @@
+{
+ "pass": 24,
+ "total": 24,
+ "crashes": 0,
+ "rows": [
+  {
+   "id": "H01",
+   "ok": true,
+   "why": "",
+   "query": "any NPRM for the S-92A helicopter?"
+  },
+  {
+   "id": "H02",
+   "ok": true,
+   "why": "",
+   "query": "Falcon 7X spoiler unit replacement proposed rule"
+  },
+  {
+   "id": "H03",
+   "ok": true,
+   "why": "",
+   "query": "what does the Boeing 757 frame crack proposal require"
+  },
+  {
+   "id": "H04",
+   "ok": true,
+   "why": "",
+   "query": "Is the RB211 Trent 772B-60 LPC blade NPRM still alive?"
+  },
+  {
+   "id": "H05",
+   "ok": true,
+   "why": "",
+   "query": "Does the proposed AD for the H160-B apply to my Airbus Helicopters H160-B?"
+  },
+  {
+   "id": "H06",
+   "ok": true,
+   "why": "",
+   "query": "Does the proposal for the Vulcanair P.68 cover serial number 200?"
+  },
+  {
+   "id": "H07",
+   "ok": true,
+   "why": "",
+   "query": "Does the proposal for the Textron Aviation Model 408 apply to my aircraft, serial number 0100?"
+  },
+  {
+   "id": "H08",
+   "ok": true,
+   "why": "",
+   "query": "What did the FAA propose for the Dowty R212 propeller assemblies?"
+  },
+  {
+   "id": "H09",
+   "ok": true,
+   "why": "code AMBIGUOUS_QUERY",
+   "query": "Is there an AD for it?"
+  },
+  {
+   "id": "H10",
+   "ok": true,
+   "why": "code OUT_OF_SCOPE",
+   "query": "How do I renew my pilot licence?"
+  },
+  {
+   "id": "H11",
+   "ok": true,
+   "why": "code OUT_OF_SCOPE",
+   "query": "Can I sign off my 737-800 for return to service?"
+  },
+  {
+   "id": "H12",
+   "ok": true,
+   "why": "code OUT_OF_CORPUS",
+   "query": "Is there a proposed AD for the Cirrus SR22?"
+  },
+  {
+   "id": "H13",
+   "ok": true,
+   "why": "code OUT_OF_CORPUS",
+   "query": "Has the AD for the A330-841 fire extinguisher bottles been finalised?"
+  },
+  {
+   "id": "H14",
+   "ok": true,
+   "why": "",
+   "query": "proposed AD for Bombadier BD-700-2A12"
+  },
+  {
+   "id": "H15",
+   "ok": true,
+   "why": "code CONTRADICTORY_CONFIG",
+   "query": "Does the Falcon 7X NPRM apply to my Airbus Falcon 7X?"
+  },
+  {
+   "id": "H16",
+   "ok": true,
+   "why": "code EXTERNAL_DOC_REQUIRED",
+   "query": "What does EASA AD 2025-0183 say about the A350?"
+  },
+  {
+   "id": "H17",
+   "ok": true,
+   "why": "code OUT_OF_CORPUS",
+   "query": "AD from 1995 for the 727 rudder"
+  },
+  {
+   "id": "H18",
+   "ok": true,
+   "why": "code OUT_OF_CORPUS",
+   "query": "What is docket FAA-1999-9999 about?"
+  },
+  {
+   "id": "H19",
+   "ok": true,
+   "why": "",
+   "query": "   BELL 505   apply??  "
+  },
+  {
+   "id": "H20",
+   "ok": true,
+   "why": "",
+   "query": "all proposed ADs for the AW139"
+  },
+  {
+   "id": "H21",
+   "ok": true,
+   "why": "",
+   "query": "supersede AD 2009-04-13"
+  },
+  {
+   "id": "H22",
+   "ok": true,
+   "why": "",
+   "query": ""
+  },
+  {
+   "id": "H23",
+   "ok": true,
+   "why": "",
+   "query": "!!!???"
+  },
+  {
+   "id": "H24",
+   "ok": true,
+   "why": "",
+   "query": "Does the proposed AD for the Airbus A330-243 apply to my aircraft? (original CofA 12 March 2025)"
+  }
+ ]
+}

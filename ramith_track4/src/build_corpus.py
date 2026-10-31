@@ -50,6 +50,7 @@ def main():
             "cfr_part": r["CFR Part Reference"], "issue_date": r["issue_iso"],
             "citation": r["Citation"], "page_field": r["Page Number"], "start_page": sp,
             "comments": r["Comments"] if isinstance(r["Comments"], str) else None,
+            "comments_due": r["Comments Due Date"] if isinstance(r["Comments Due Date"], str) else None,
             "summary": summ, "source": source, "text": text, "sections": parsed["sections"],
             "has_reg_text": parsed["has_reg_text"], "is_withdrawal": is_wd,
         })
