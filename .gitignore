@@ -1,0 +1,24 @@
+# data (download with scripts/fetch_data.py)
+dataset/
+*.zip
+
+# generated; evidence JSON and the submission are committed on purpose
+artifacts/*
+!artifacts/evidence/
+*.joblib
+*.pkl
+
+# python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# secrets and local
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+.DS_Store
+*.log

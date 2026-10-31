@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ca-triage"
+version = "0.1.0"
+description = "Conjunction triage for satellite collision avoidance: Pc estimation, Safe/Elevated/Critical tiers, analyst dashboard"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scipy>=1.11",
+  "scikit-learn>=1.4",
+  "lightgbm>=4.3",
+  "joblib>=1.3",
+  "plotly>=5.20",
+  "streamlit>=1.35",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "gdown>=5"]
+llm = ["anthropic>=0.40"]
+
+[tool.setuptools.packages.find]
+include = ["ca_triage*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
