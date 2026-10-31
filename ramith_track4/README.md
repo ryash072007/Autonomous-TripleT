@@ -25,6 +25,7 @@ python src/build_records.py     # structured applicability + revision graph
 python -m uvicorn api:app --app-dir src --port 8000      # open http://127.0.0.1:8000
 python -m pytest tests -q       # 46 tests
 ```
+The UI is a React + TypeScript + Tailwind app in `frontend/`. The **built files are committed** (`frontend/dist`), so the command above is all you need. To modify the UI: `cd frontend && npm install && npm run dev` (dev server proxies the API on :8000), then `npm run build` to refresh `dist`. If `dist` is missing the server falls back to the earlier no-build console at `/console`.
 Source data: `data/raw/ad_nprm.xlsx` (the organisers' spreadsheet, copied unchanged). Full text comes from the public Federal Register API (no key needed).
 
 ## Demo queries (all verified)

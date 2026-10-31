@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/source-serif-4";
+
+/* ---------------------------------------------------------------- design tokens (single source of truth) */
+@theme {
+  --font-sans: "Inter Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, Consolas, monospace;
+  --font-read: "Source Serif 4 Variable", Georgia, serif;
+
+  --color-bg: #070c12;
+  --color-panel: #0d1520;
+  --color-panel2: #121d2a;
+  --color-panel3: #192738;
+  --color-line: #1c2b3b;
+  --color-line2: #2a4057;
+  --color-ink: #e7eef6;
+  --color-mute: #93a6ba;
+  --color-dim: #63788d;
+
+  --color-accent: #4da3ff;
+  --color-cyan: #38c6d8;
+  --color-red: #f0665e;
+  --color-green: #3fba90;
+  --color-amber: #e8ae43;
+
+  --animate-sweep: sweep 1.2s ease-in-out infinite;
+  @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(320%); } }
+}
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); font-size: 13.5px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow: hidden;
+}
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(110, 150, 190, .055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(110, 150, 190, .055) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+*:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; border-radius: 4px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-line2); border-radius: 8px; border: 2px solid var(--color-bg); }
+::-webkit-scrollbar-track { background: transparent; }
+mark.cite { background: rgba(255, 208, 90, .26); color: #fff3cf; border-bottom: 2px solid #e6b32e; padding: 1px 0; cursor: pointer; border-radius: 2px; }
+mark.cite[data-active="true"] { background: rgba(255, 208, 90, .42); box-shadow: 0 0 0 1px #e6b32e; }
+.markup { display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

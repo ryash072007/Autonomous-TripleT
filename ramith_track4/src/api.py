@@ -4,6 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from answer import answer, _vocab
@@ -109,9 +110,16 @@ def health():
     return {"ok": True, "chunks": len(C.chunks), "docs": len(C.rec), "index_build_s": round(C.build_seconds, 2)}
 
 
+DIST = ROOT / "frontend" / "dist"
+if (DIST / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=DIST / "assets"), name="assets")
+
+
 @app.get("/")
 def index():
-    return FileResponse(ROOT / "ui" / "console.html")
+    """The React app (frontend/dist, built with `npm run build`); falls back to the no-build console if it has not been built."""
+    built = DIST / "index.html"
+    return FileResponse(built if built.exists() else ROOT / "ui" / "console.html")
 
 
 @app.get("/classic")
