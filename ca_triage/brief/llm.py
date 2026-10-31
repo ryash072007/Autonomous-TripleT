@@ -23,10 +23,10 @@ def call_llm(facts: dict) -> str:
     import anthropic  # imported lazily: the app must start without it
 
     client = anthropic.Anthropic()
-    r = client.messages.create(
-        model=os.environ.get("BRIEF_MODEL", DEFAULT_MODEL),
-        max_tokens=300,
-        system=SYSTEM,
-        messages=[{"role": "user", "content": json.dumps(facts)}],
-    )
+    kw = dict(model=os.environ.get("BRIEF_MODEL", DEFAULT_MODEL), system=SYSTEM,
+              messages=[{"role": "user", "content": json.dumps(facts)}])
+    try:  # thinking tokens would eat the budget of a 120-word brief
+        r = client.messages.create(max_tokens=400, thinking={"type": "disabled"}, **kw)
+    except anthropic.BadRequestError:
+        r = client.messages.create(max_tokens=1500, **kw)
     return "".join(b.text for b in r.content if getattr(b, "type", "") == "text").strip()

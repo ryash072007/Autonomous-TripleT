@@ -1,6 +1,6 @@
 """Fetch Space-Track public CDMs once and write the live scored file.
 
-One login+query request per run (ajaxauth/login with `query`), no loops, User-Agent set, per Space-Track terms.
+One login and one query per run, no loops, User-Agent set, per Space-Track terms.
 Needs SPACETRACK_USER and SPACETRACK_PASS (environment or the repo's .env). Without them it prints a message and exits 0.
 `--fixture FILE` maps a local JSON file instead (for tests/dev); point --out at a scratch directory for that.
 """
@@ -8,6 +8,7 @@ Needs SPACETRACK_USER and SPACETRACK_PASS (environment or the repo's .env). With
 from __future__ import annotations
 
 import argparse
+import http.cookiejar
 import json
 import os
 import sys
@@ -21,14 +22,17 @@ from ca_triage.env import load_env  # noqa: E402
 from ca_triage.live import map_cdms  # noqa: E402
 
 LOGIN = "https://www.space-track.org/ajaxauth/login"
-QUERY = "https://www.space-track.org/basicspacedata/query/class/cdm_public/TCA/>now/orderby/TCA%20asc/format/json"
+QUERY = "https://www.space-track.org/basicspacedata/query/class/cdm_public/TCA/>now/orderby/TCA asc/limit/2000/format/json"
 UA = "OrbitGuard-hackathon/0.1 (single query per run; contact via GitHub repo)"
 
 
 def fetch(user: str, password: str) -> list[dict]:
-    body = urllib.parse.urlencode({"identity": user, "password": password, "query": QUERY}).encode()
-    req = urllib.request.Request(LOGIN, data=body, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=60) as r:
+    """Log in (session cookie), then run the one query."""
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    opener.addheaders = [("User-Agent", UA)]
+    opener.open(LOGIN, data=urllib.parse.urlencode({"identity": user, "password": password}).encode(), timeout=60)
+    with opener.open(urllib.parse.quote(QUERY, safe=":/>"), timeout=120) as r:
         return json.loads(r.read().decode("utf-8"))
 
 

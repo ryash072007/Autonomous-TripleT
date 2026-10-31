@@ -29,7 +29,7 @@ def _cdm(row: dict, now: datetime) -> dict:
     r = FLOOR if risk is None else risk
     return {
         "time_to_tca": (_dt(row["TCA"]) - now).total_seconds() / 86400,
-        "miss_distance": float(row["MIN_RNG"]) * 1000.0,
+        "miss_distance": float(row["MIN_RNG"]),  # Space-Track MIN_RNG is in metres
         "risk": risk,
         "max_risk_estimate": r,
         "relative_position_r": None, "relative_position_t": None, "relative_position_n": None,
@@ -44,7 +44,7 @@ def map_cdms(rows: list[dict], now: datetime | None = None) -> dict:
     groups: dict[tuple, list[dict]] = {}
     for row in rows:
         try:
-            key = (row["SAT_1_ID"], row["SAT_2_ID"], row["TCA"][:10])
+            key = (*sorted((row["SAT_1_ID"], row["SAT_2_ID"])), row["TCA"][:10])  # unordered pair
             float(row["MIN_RNG"])
             _dt(row["TCA"]), _dt(row["CREATED"])
         except (KeyError, ValueError, TypeError):

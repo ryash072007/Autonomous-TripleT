@@ -20,7 +20,7 @@ def test_template_without_key(monkeypatch):
 
 
 def test_wrong_number_falls_back():
-    b = make_brief(EVENT, llm_fn=lambda f: "Event 7 is Critical with miss distance 0.35 km. Analyst decides.")
+    b = make_brief(EVENT, llm_fn=lambda f: "Event 7 is Critical and the latest update gives a miss distance of 0.35 km, about two days before the closest approach. Analyst decides.")
     assert b["source"] == "template" and "0.35" in b["fallback_reason"]
 
 

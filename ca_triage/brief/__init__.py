@@ -21,6 +21,8 @@ def make_brief(event: dict, llm_fn: Callable[[dict], str] | None = None, forecas
     except Exception as exc:  # network, auth, rate limit: the app must still work
         return {"text": template_brief(facts), "source": "template",
                 "fallback_reason": f"LLM call failed ({type(exc).__name__})", "facts": facts}
+    if len(text.split()) < 15:  # an empty or truncated reply must not pass as a brief
+        return {"text": template_brief(facts), "source": "template", "fallback_reason": "LLM reply too short", "facts": facts}
     if not text.strip().endswith("Analyst decides."):
         text = text.rstrip() + " Analyst decides."
     bad = guard.check(text, facts)

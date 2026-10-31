@@ -19,7 +19,8 @@ def test_summary_and_events(client):
     assert len(ev) == s["total"] and "cdms" not in ev[0]
     assert ev[0]["tier"] >= ev[-1]["tier"]
     assert client.get(f"/api/events/{ev[0]['event_id']}").json()["cdms"]
-    assert client.get("/api/events?dataset=live").json()["events"] == []
+    live = client.get("/api/events?dataset=live").json()["events"]
+    assert all("rule_only" in e["flags"] for e in live)  # live is tiered by the rule only (empty without a snapshot)
 
 
 def test_score_and_window(client):

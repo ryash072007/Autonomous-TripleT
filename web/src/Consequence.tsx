@@ -125,7 +125,7 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
               <div className="sim-wrap"><Suspense fallback={<div className="empty">Loading globe...</div>}>
                 <Globe kind="collide" onAffected={(n, t) => setAff([n, t])} id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} cloud={cloud} hours={hours} fleet={fleet} height={340} />
               </Suspense></div>
-              <div className="sim-legend" aria-label="Legend">
+              <div className="sim-legend" aria-label="Legend" style={{ ["--ember" as string]: 0.95 - 0.4 * logT }}>
                 <div className="sim-count"><b className="num">{aff[0]}</b> of {aff[1]} satellites potentially affected</div>
                 <div><i className="lg ember" /> Debris fragments</div>
                 <div><i className="lg ours" /> Our satellite</div>

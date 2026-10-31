@@ -2,67 +2,6 @@ import { ReactNode, useState } from "react";
 import { DemoResp, EvidenceResp, WindowResp } from "./api";
 import { TierBadge, Term, fmtClock, fmtMiss, fmtPc } from "./ui";
 
-export interface Clock {
-  elapsed: number; setElapsed: (n: number) => void; playing: boolean; setPlaying: (f: (p: boolean) => boolean) => void;
-  speed: number; setSpeed: (n: number) => void; min: number; max: number; label: string;
-}
-const SPEEDS = [0.1, 0.25, 0.5, 1];
-
-export function Next24({ win, clock, onOpen }: { win: WindowResp | null; clock: Clock; onOpen: (id: number) => void }) {
-  const clockLabel = clock.label;
-  const [onlyDanger, setOnlyDanger] = useState(true);
-  const rows = win ? win.events.filter((e) => !onlyDanger || e.dangerous) : [];
-  return (
-    <div className="page">
-      <div className="label">Collision triage</div>
-      <h2 className="display page-h">NEXT 24 HOURS</h2>
-      <div className="card clock-card">
-        <button className="icon-btn" onClick={() => clock.setPlaying((p) => !p)} aria-label={clock.playing ? "Pause replay" : "Play replay"}>{clock.playing ? "❚❚" : "▶"}</button>
-        <input type="range" min={clock.min} max={clock.max} step={0.01} value={Math.min(Math.max(clock.elapsed, clock.min), clock.max)}
-          onChange={(e) => clock.setElapsed(+e.target.value)} aria-label="Replay clock" />
-        <b className="num">{clockLabel}</b>
-        <select value={clock.speed} onChange={(e) => clock.setSpeed(+e.target.value)} aria-label="Replay speed">
-          {SPEEDS.map((v) => <option key={v} value={v}>{v} d/s</option>)}
-        </select>
-        <span className="small dim">Replay clock: events enter the window as it advances.</span>
-      </div>
-      <p className="dim">
-        Events whose <Term k="TCA" /> falls within 24 h of the replay clock ({clockLabel}). Dangerous means Critical or inside
-        1 km. Press play in the top bar to advance the clock.
-      </p>
-      {!win && <div className="empty">Loading...</div>}
-      {win && (
-        <>
-          <p>
-            <b>{win.n}</b> events in the window, <b className="crit-text">{win.n_dangerous}</b> dangerous.{" "}
-            <label><input type="checkbox" checked={onlyDanger} onChange={(e) => setOnlyDanger(e.target.checked)} /> Dangerous only</label>
-          </p>
-          <table className="tbl">
-            <thead>
-              <tr>
-                <th>Remaining</th><th>Tier</th><th>Event</th><th>Miss</th><th>Pc</th><th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.length === 0 && <tr><td colSpan={6} className="dim">Nothing enters the 24 h window at this clock time.</td></tr>}
-              {rows.map((e) => (
-                <tr key={e.event_id} className={e.dangerous ? "danger" : ""} onClick={() => onOpen(e.event_id)}>
-                  <td className="mono">{((e.remaining_days ?? 0) * 24).toFixed(1)} h</td>
-                  <td><TierBadge tier={e.tier} /></td>
-                  <td className="mono">#{e.event_id}</td>
-                  <td className="mono">{fmtMiss(e.latest.miss_distance)}</td>
-                  <td className="mono">{fmtPc(e.latest.max_risk_estimate)}</td>
-                  <td>{e.dangerous && <span className="flag danger-flag">dangerous</span>}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
-    </div>
-  );
-}
-
 function Value({ v, depth = 0 }: { v: unknown; depth?: number }): ReactNode {
   if (v == null) return <span className="dim">null</span>;
   if (typeof v === "number") return <span className="mono">{Number.isInteger(v) ? v : +v.toPrecision(4)}</span>;
@@ -133,6 +72,7 @@ export function DemoBar({ step, setStep, demo, onExit, onFailures }: {
   const last = step + 1 >= demo.items.length;
   return (
     <div className="demo-bar card" role="region" aria-label="Guided tour">
+      <div className="tour-progress" aria-hidden="true"><i style={{ width: `${((step + 1) / demo.items.length) * 100}%` }} /></div>
       <div className="label">Guided tour · step {step + 1} of {demo.items.length} {demo.provisional && <span className="flag">provisional picks</span>}</div>
       <div className="display demo-title">{DEMO_TITLES[it.key] ?? it.key.replace(/_/g, " ")}</div>
       <div className="small">Event #{it.event_id}</div>

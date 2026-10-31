@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Dataset, DemoResp, EventLight, Summary, WindowResp, api } from "./api";
+import { Dataset, DemoResp, EventLight, Summary, api } from "./api";
 import Landing from "./Landing";
 import Queue from "./Queue";
 import EventPage from "./EventPage";
 import Backdrop from "./Backdrop";
-import { Clock, DemoBar, Next24, demoHighlight } from "./Panels";
+import { DemoBar, demoHighlight } from "./Panels";
+import Next24 from "./Next24";
 import Results from "./Results";
 import Insights from "./Insights";
-import { fmtClock } from "./ui";
 
 type View = "landing" | "queue" | "next24" | "insights" | "evidence";
 const TOUR_KEY = "orbitguard_tour_done";
@@ -34,11 +34,6 @@ export default function App() {
   const [mobileDetail, setMobileDetail] = useState(false);
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
 
-  // Replay clock (on the Next 24 h page): elapsed days; an event's remaining time is latest.time_to_tca - elapsed.
-  const [elapsed, setElapsed] = useState(1);
-  const [playing, setPlaying] = useState(false);
-  const [speed, setSpeed] = useState(0.25);
-  const [win, setWin] = useState<WindowResp | null>(null);
 
   const [demo, setDemo] = useState<DemoResp | null>(null);
   const [demoStep, setDemoStep] = useState(0);
@@ -46,6 +41,9 @@ export default function App() {
   const [sky, setSky] = useState<EventLight[]>([]);
   const [fullFor, setFullFor] = useState<Dataset | null>(null);
   const tourTried = useRef(false);
+  const [welcome, setWelcome] = useState(false);
+  const [attn, setAttn] = useState(false);
+  const pulse = () => { setAttn(true); window.setTimeout(() => setAttn(false), 10000); };
 
   // First paint needs only the summary and a small sky sample, not the full event list.
   useEffect(() => {
@@ -57,7 +55,6 @@ export default function App() {
         setSummary(s);
         setSky(e.events);
         setMessage(e.message ?? s.message);
-        setElapsed(Math.max(0, s.min_time_to_tca - 0.9));
       })
       .catch(() => setApiErr(true));
   }, [dataset]);
@@ -77,32 +74,6 @@ export default function App() {
       .finally(() => setLoading(false));
   }, [view, dataset, fullFor]);
 
-  const clockMin = summary ? Math.max(0, summary.min_time_to_tca - 1) : 0;
-  const clockMax = summary?.max_time_to_tca ?? 0;
-
-  useEffect(() => {
-    if (!playing || !summary) return;
-    const id = setInterval(() => {
-      setElapsed((x) => {
-        const n = x + speed * 0.1;
-        return n > clockMax ? clockMin : n;
-      });
-    }, 100);
-    return () => clearInterval(id);
-  }, [playing, speed, summary, clockMin, clockMax]);
-
-  const lastFetch = useRef(0);
-  useEffect(() => {
-    if (!summary || view !== "next24") return;
-    const wait = Math.max(0, 250 - (Date.now() - lastFetch.current));
-    const t = setTimeout(() => {
-      lastFetch.current = Date.now();
-      api.window(elapsed, dataset).then(setWin).catch(() => {});
-    }, wait);
-    return () => clearTimeout(t);
-  }, [elapsed, dataset, summary, view]);
-
-  const clock: Clock = { elapsed, setElapsed, playing, setPlaying, speed, setSpeed, min: clockMin, max: clockMax, label: fmtClock(clockMax - elapsed) };
 
   const open = useCallback((id?: number) => {
     setTypeFilter(null);
@@ -127,14 +98,16 @@ export default function App() {
       /* tour unavailable */
     }
   }, []);
-  const endTour = () => { setDemo(null); markTourDone(); };
+  const endTour = () => { setDemo(null); markTourDone(); pulse(); };
+  const explore = () => { setWelcome(false); markTourDone(); pulse(); };
+  const begin = () => { setWelcome(false); startTour(); };
 
   // The tour starts by itself the first time the console opens, unless it was finished or skipped before.
   useEffect(() => {
     if (view === "landing" || tourTried.current) return;
     tourTried.current = true;
     if (window.location.hash.includes("notour") || window.location.hash.includes("demo=") || tourDone()) return;
-    startTour();
+    setWelcome(true);
   }, [view, startTour]);
 
   useEffect(() => {
@@ -159,7 +132,7 @@ export default function App() {
       </div>
     );
 
-  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={elapsed} windowCount={0} onOpen={open} />;
+  if (view === "landing") return <Landing summary={summary} events={sky} clockDays={0} windowCount={0} onOpen={open} />;
 
   const key = demo?.items[demoStep]?.key;
   return (
@@ -178,18 +151,19 @@ export default function App() {
           <button className={dataset === "test" ? "on" : ""} onClick={() => setDataset("test")}>Test dataset</button>
           <button className={dataset === "live" ? "on" : ""} onClick={() => setDataset("live")}>Live</button>
         </div>
-        <button className="btn" onClick={startTour}>Guided tour</button>
+        <button className={"btn" + (attn ? " attn" : "")} onClick={startTour}>Guided tour</button>
       </header>
 
       {dataset === "live" && (
         <div className="banner">
-          Space-Track public CDMs · tiered by rule only (model inputs not published)
-          {summary?.snapshot?.latest_cdm_created ? ` · snapshot ${summary.snapshot.latest_cdm_created} UTC` : summary?.generated_utc ? ` · snapshot ${summary.generated_utc}` : ""}
+          Space-Track public feed: emergency-reportable conjunctions only, so all are high-risk by design · tiered by rule
+          {summary?.snapshot?.latest_cdm_created ? ` · snapshot ${summary.snapshot.latest_cdm_created.slice(0, 16)} UTC` : summary?.generated_utc ? ` · snapshot ${summary.generated_utc}` : ""}
           {events.length === 0 && message ? ` · ${message}` : ""}
         </div>
       )}
 
       <main className={"main" + (mobileDetail ? " show-detail" : "")}>
+        {demo && view === "queue" && <div className="spot-dim" />}
         {view === "queue" && (
           <>
             <Queue events={shown} message={message} loading={loading} selected={selected}
@@ -202,13 +176,26 @@ export default function App() {
               onBack={() => setMobileDetail(false)} />
           </>
         )}
-        {view === "next24" && <Next24 win={win} clock={clock} onOpen={(id) => open(id)} />}
+        {view === "next24" && <Next24 events={events} summary={summary} onOpen={(id) => open(id)} />}
         {view === "insights" && <Insights events={events} onOpen={(id) => open(id)} />}
         {view === "evidence" && (
           <Results anchor={anchor} testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
         )}
       </main>
 
+      {welcome && (
+        <div className="welcome-back" role="dialog" aria-modal="true" aria-label="Welcome">
+          <div className="card welcome">
+            <div className="label">Collision triage</div>
+            <h2 className="display welcome-h">New here? Take the 60-second tour</h2>
+            <div className="welcome-actions">
+              <button className="btn primary big" onClick={begin} autoFocus>Start tour</button>
+              <button className="btn big" onClick={explore}>Explore on my own</button>
+            </div>
+            <p className="small dim welcome-steps">Clear Critical → Caught early → Where it fails → If they collide</p>
+          </div>
+        </div>
+      )}
       {demo && view === "queue" && (
         <DemoBar step={demoStep} setStep={setDemoStep} demo={demo} onExit={endTour}
           onFailures={() => { endTour(); setView("evidence"); setAnchor("where-it-fails"); }} />

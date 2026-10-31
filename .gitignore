@@ -7,7 +7,7 @@ artifacts/*
 !artifacts/evidence/
 !artifacts/scored/
 !artifacts/demo.json
-!artifacts/live_snapshot.json
+
 *.joblib
 *.pkl
 
@@ -37,3 +37,5 @@ web/dist/
 CLAUDE.md
 docs/PLAN.md
 .impeccable/
+artifacts/live_snapshot.json
+artifacts/scored/live_events.json
