@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
-import { DemoResp, EvidenceResp, WindowResp, api } from "./api";
+import { ReactNode, useState } from "react";
+import { DemoResp, EvidenceResp, WindowResp } from "./api";
 import { TierBadge, Term, fmtClock, fmtMiss, fmtPc } from "./ui";
 
 export function Next24({ win, clockLabel, onOpen }: { win: WindowResp | null; clockLabel: string; onOpen: (id: number) => void }) {
@@ -76,22 +76,17 @@ function Value({ v, depth = 0 }: { v: unknown; depth?: number }): ReactNode {
   );
 }
 
-export function Evidence() {
-  const [d, setD] = useState<EvidenceResp | null>(null);
-  useEffect(() => { api.evidence().then(setD).catch(() => setD({ files: [] })); }, []);
+export function RawFiles({ d }: { d: EvidenceResp }) {
   return (
-    <div className="page">
-      <h2>Evidence</h2>
-      <p className="dim">Every number here is read from a JSON file under artifacts/evidence/ written by a script.</p>
-      {!d && <div className="empty">Loading...</div>}
-      {d && d.files.length === 0 && <div className="empty">No evidence files yet. They appear here once the evaluation scripts have run.</div>}
-      {d?.files.map((f) => (
+    <>
+      {d.files.length === 0 && <div className="empty">No evidence files yet.</div>}
+      {d.files.map((f) => (
         <div className="card" key={f.file}>
           <h3>{f.name} <span className="mono dim small">{f.file}</span></h3>
           <Value v={f.content} />
         </div>
       ))}
-    </div>
+    </>
   );
 }
 

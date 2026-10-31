@@ -44,36 +44,50 @@ function ridgePath(seed: number, w: number, h: number, base: number, amp: number
   return { d: `M0,${h} L${pts.join(" L")} L${w},${h} Z`, y };
 }
 
-/** Dark rocky foreground mound with a flat spot at dishX for the ground-station dish. */
-function moundPath(seed: number, w: number, h: number, cx: number, dishX: number) {
+/** Wide low rocky mound with a flat plateau at 26.7% of its width for the dish. Returns ridgeline path pieces. */
+function moundPath(seed: number, w: number, h: number) {
   const n = valueNoise(seed);
+  const dishX = w * 0.267;
   const raw = (x: number) => {
-    const bump = Math.exp(-(((x - cx) / (w * 0.3)) ** 2));
-    const edge = Math.max(0, Math.abs(x - w / 2) / (w / 2) - 0.6) / 0.4;
-    return h - 30 - (h - 90) * bump + (n(x / 14) - 0.5) * 26 * (0.4 + bump) + (n(x / 5) - 0.5) * 8 + 90 * edge * edge;
+    const t = x / w;
+    const hill = Math.exp(-(((t - 0.3) / 0.26) ** 2)) * 0.75 + Math.exp(-(((t - 0.68) / 0.2) ** 2)) * 0.45;
+    const edge = Math.pow(Math.max(0, Math.abs(t - 0.5) * 2 - 0.82) / 0.18, 2);
+    const jag = (1 - Math.abs(2 * n(x / 22) - 1)) * 14 + (n(x / 7) - 0.5) * 7;
+    return h - 14 - (h - 50) * hill - jag * (0.4 + hill) + 70 * edge;
   };
-  const flatY = raw(dishX);
+  const flat = raw(dishX);
   const y = (x: number) => {
     const d = Math.abs(x - dishX);
-    if (d < 38) return flatY;
-    if (d < 80) { const t = (d - 38) / 42; return flatY * (1 - t) + raw(x) * t; }
+    if (d < 26) return flat;
+    if (d < 60) { const t = (d - 26) / 34; return flat * (1 - t) + raw(x) * t; }
     return raw(x);
   };
-  const pts: string[] = [];
-  for (let x = 0; x <= w; x += 4) pts.push(`${x},${y(x).toFixed(1)}`);
-  return { d: `M0,${h} L${pts.join(" L")} L${w},${h} Z`, dishY: flatY };
+  const pts: [number, number][] = [];
+  for (let x = 0; x <= w; x += 4) pts.push([x, y(x)]);
+  const line = pts.map(([x, yy]) => `${x},${yy.toFixed(1)}`).join(" L");
+  const shade = pts.map(([x, yy]) => `${x},${(yy + 26 + (n(x / 30) * 14)).toFixed(1)}`).join(" L");
+  const facets = pts.filter((_, i) => i % 9 === 4).map(([x, yy]) => `M${x},${yy.toFixed(1)} l${(18 + n(x) * 30).toFixed(0)},${(40 + n(x + 3) * 30).toFixed(0)}`).join(" ");
+  return {
+    d: `M0,${h} L${line} L${w},${h} Z`,
+    shade: `M0,${h} L${shade} L${w},${h} Z`,
+    facets,
+    dishY: flat,
+  };
 }
 
 export function Dish({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} fill="none" stroke="var(--rock)" strokeWidth="3" strokeLinecap="round">
-      <path d="M-14 0 L0 -34 L14 0" />
-      <path d="M-18 0 H18" strokeWidth="4" />
-      <g transform="translate(0 -34) rotate(-38)">
-        <path d="M-34 -6 Q0 22 34 -6" fill="var(--rock)" stroke="none" opacity="0.92" />
-        <path d="M-34 -6 Q0 22 34 -6" />
-        <path d="M0 8 V-26 M-5 -26 H5" />
+    <g transform={`translate(${x} ${y}) scale(${s})`} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M-13 0 L-5 -36 H5 L13 0 Z" fill="#3E2722" />
+      <rect x="-16" y="-3" width="32" height="4" fill="#3E2722" />
+      <g transform="translate(0 -38) rotate(-38)">
+        <path d="M-28 -8 Q0 22 28 -8 Z" fill="#3E2722" />
+        <path d="M-28 -8 Q0 22 28 -8" fill="none" stroke="#7a5246" strokeWidth="1.6" />
+        <ellipse cx="0" cy="-8" rx="28" ry="5.5" fill="#8a5c4e" stroke="#3E2722" strokeWidth="1.5" />
+        <path d="M-26 -8 L0 -40 M26 -8 L0 -40" fill="none" stroke="#3E2722" strokeWidth="1.5" />
+        <rect x="-3.5" y="-45" width="7" height="7" rx="1.5" fill="#3E2722" />
       </g>
+      <circle cx="0" cy="-38" r="4" fill="#3E2722" />
     </g>
   );
 }
@@ -103,7 +117,7 @@ export function Ridges() {
       { id: "r3", top: "var(--ridge-near)", ...ridgePath(37, W, 300, 262, 95, 0.75, 4), op: 1 },
     ];
   }, []);
-  const mound = useMemo(() => moundPath(5, 640, 260, 250, 270), []);
+  const mound = useMemo(() => moundPath(5, 1000, 200), []);
   return (
     <div className="ridges" aria-hidden="true">
       {layers.map((l, i) => (
@@ -117,9 +131,19 @@ export function Ridges() {
           <path d={l.d} fill={`url(#${l.id})`} opacity={l.op} />
         </svg>
       ))}
-      <svg className="ridge mound" viewBox="0 0 640 260" preserveAspectRatio="xMidYMax meet">
-        <path d={mound.d} fill="var(--rock)" />
-        <Dish x={270} y={mound.dishY + 3} s={1.5} />
+      <svg className="mound" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="mg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#6A443A" />
+            <stop offset="1" stopColor="#5A3A33" />
+          </linearGradient>
+        </defs>
+        <path d={mound.d} fill="url(#mg)" />
+        <path d={mound.facets} stroke="rgba(255,225,200,0.10)" strokeWidth="2" fill="none" />
+        <path d={mound.shade} fill="#44292A" opacity="0.8" />
+      </svg>
+      <svg className="mound-dish" viewBox="-60 -110 120 120" aria-hidden="true">
+        <Dish x={0} y={0} s={1} />
       </svg>
     </div>
   );

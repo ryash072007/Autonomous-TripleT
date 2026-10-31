@@ -62,3 +62,16 @@ export const fmtClock = (days: number) => {
   const mm = mins % 60;
   return `T-${dd}d ${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
 };
+
+/** Radial sigma at or above 1e6 m is a placeholder, not a usable covariance. */
+export const SIGMA_SENTINEL = 1e6;
+export const sigmaUnusable = (v: number) => v >= SIGMA_SENTINEL;
+export function Sigma({ v }: { v: number }) {
+  if (!sigmaUnusable(v)) return <>{v.toFixed(0)} m</>;
+  return (
+    <span className="chip-warn" tabIndex={0}
+      data-tip="Reported as about 6.4e7 m (roughly ten Earth radii), a placeholder for 'no usable covariance'. The Pc from this CDM is not trustworthy.">
+      unusable (placeholder)
+    </span>
+  );
+}

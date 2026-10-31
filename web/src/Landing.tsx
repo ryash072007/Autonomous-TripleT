@@ -97,8 +97,8 @@ export default function Landing({ summary, events, clockDays, windowCount, onOpe
       </div>
 
       <div className="dish-mark" aria-hidden="true">
-        <svg width="34" height="34" viewBox="-24 -44 48 52">
-          <Dish x={0} y={0} s={0.9} />
+        <svg width="38" height="42" viewBox="-34 -82 68 86">
+          <Dish x={0} y={0} s={1} />
         </svg>
       </div>
 

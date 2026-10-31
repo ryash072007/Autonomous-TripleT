@@ -3,7 +3,8 @@ import { Dataset, DemoResp, EventLight, Summary, WindowResp, api } from "./api";
 import Landing from "./Landing";
 import Queue from "./Queue";
 import EventDetail from "./EventDetail";
-import { DemoBar, Evidence, Next24 } from "./Panels";
+import { DemoBar, Next24 } from "./Panels";
+import Results from "./Results";
 import { RidgeStrip } from "./Scene";
 import { TIER_NAMES, TierIcon, fmtClock } from "./ui";
 
@@ -12,8 +13,8 @@ const SPEEDS = [0.1, 0.25, 0.5, 1];
 
 export default function App() {
   const [view, setView] = useState<View>(() => {
-    const h = window.location.hash.slice(1);
-    return h === "queue" || h === "next24" || h === "evidence" ? h : "landing";
+    const h = window.location.hash.slice(1).split("&")[0];
+    return h === "queue" || h === "next24" || h === "evidence" || h === "results" ? (h === "results" ? "evidence" : h) : "landing";
   });
   const [dataset, setDataset] = useState<Dataset>("test");
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -43,6 +44,7 @@ export default function App() {
         setSummary(s);
         setEvents(e.events);
         setMessage(e.message ?? s.message);
+        setSelected((cur) => { const m = /e=(\d+)/.exec(window.location.hash); if (cur == null && m) return +m[1]; return cur; }) ;
         setSelected((cur) => (cur != null && e.events.some((x) => x.event_id === cur) ? cur : e.events[0]?.event_id ?? null));
         setElapsed(Math.max(0, s.min_time_to_tca - 0.9));
       })
@@ -131,7 +133,7 @@ export default function App() {
           <button className={dataset === "live" ? "on" : ""} onClick={() => setDataset("live")}>Live</button>
         </div>
         <nav className="tabs">
-          {([["queue", "Queue"], ["next24", "Next 24 h"], ["evidence", "Evidence"]] as [View, string][]).map(([v, l]) => (
+          {([["queue", "Queue"], ["next24", "Next 24 h"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
             <button key={v} className={view === v ? "on" : ""} onClick={() => setView(v)}>{l}</button>
           ))}
         </nav>
@@ -182,7 +184,9 @@ export default function App() {
         {view === "next24" && (
           <Next24 win={win} clockLabel={clockLabel} onOpen={(id) => open(id)} />
         )}
-        {view === "evidence" && <Evidence />}
+        {view === "evidence" && (
+          <Results testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
+        )}
       </main>
 
       {demo && view === "queue" && (

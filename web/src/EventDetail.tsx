@@ -4,7 +4,7 @@ import {
 } from "recharts";
 import { AuditRec, Cdm, Dataset, EventFull, ScoreResp, api } from "./api";
 import {
-  AbstainBadge, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
+  AbstainBadge, Sigma, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
 } from "./ui";
 
 const BAND = { crit: "#B0302A", elev: "#C77A12", safe: "#2F7A68" };
@@ -147,12 +147,12 @@ function WhatIf({ ev }: { ev: EventFull }) {
       <h4>What if (re-scored live by the API, rule only for now)</h4>
       <div className="whatif">
         <label>
-          <Term k="miss distance" />: <b className="mono">{fmtMiss(miss)}</b>
+          <span><Term k="miss distance" />: <b className="mono">{fmtMiss(miss)}</b></span>
           <input type="range" min={1} max={5} step={0.01} value={Math.log10(Math.max(10, miss))}
             onChange={(e) => setMiss(Math.pow(10, +e.target.value))} />
         </label>
         <label>
-          max_risk_estimate (log10 <Term k="Pc" />): <b className="mono">{risk.toFixed(1)}</b>
+          <span>max_risk_estimate (log10 <Term k="Pc" />): <b className="mono">{risk.toFixed(1)}</b></span>
           <input type="range" min={-20} max={-2} step={0.1} value={Math.max(-20, risk)}
             onChange={(e) => setRisk(+e.target.value)} />
         </label>
@@ -215,6 +215,28 @@ function Actions({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
   );
 }
 
+function Brief({ id, dataset }: { id: number; dataset: Dataset }) {
+  const [b, setB] = useState<{ text: string; source: string; fallback_reason: string | null } | null>(null);
+  useEffect(() => {
+    setB(null);
+    fetch(`${(import.meta.env.VITE_API_BASE as string | undefined) ?? ""}/api/events/${id}/brief?dataset=${dataset}`)
+      .then((r) => r.json()).then(setB).catch(() => setB(null));
+  }, [id, dataset]);
+  return (
+    <div>
+      <h4>Brief</h4>
+      {!b ? <div className="dim small">Loading...</div> : (
+        <>
+          <p className="brief">{b.text}</p>
+          <span className={"flag " + (b.source === "llm" ? "ok-flag" : "")}>
+            {b.source === "llm" ? "Checked against computed facts" : `Template (${b.fallback_reason ?? "no LLM"})`}
+          </span>
+        </>
+      )}
+    </div>
+  );
+}
+
 function Bars({ title, p }: { title: string; p: number[] }) {
   return (
     <div className="bars">
@@ -266,7 +288,7 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
           <span><Term k="miss distance" /> {fmtMiss(L.miss_distance)}</span>
           <span>max_risk_estimate {fmtPc(L.max_risk_estimate)}</span>
           <span>rel. speed {(L.relative_speed / 1000).toFixed(1)} km/s</span>
-          <span>sigma r {L.c_sigma_r.toFixed(0)} / {L.t_sigma_r.toFixed(1)} m</span>
+          <span>sigma r <Sigma v={L.c_sigma_r} /> / t {L.t_sigma_r.toFixed(1)} m</span>
         </div>
         <div className="probs">
           {ev.p_tier ? <Bars title="Tier probabilities now" p={ev.p_tier} />
@@ -277,6 +299,7 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
         </div>
         <div className="dim small">Source: {modelName ?? "unknown model"}. Output of a tool; the analyst decides.</div>
       </div>
+      <div className="card"><Brief id={ev.event_id} dataset={dataset} /></div>
       <div className="card"><Timeline ev={{ ...ev, cdms }} /></div>
       <div className="card"><Geometry ev={ev} /></div>
       <div className="card"><WhatIf ev={ev} /></div>

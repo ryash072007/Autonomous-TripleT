@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Literal
 
@@ -98,6 +99,23 @@ def event(event_id: int, dataset: Literal["test", "live"] = "test"):
     if e is None:
         raise HTTPException(404, "event not found")
     return e
+
+
+_brief_cache: dict[tuple, dict] = {}
+
+
+@app.get("/api/events/{event_id}/brief")
+def event_brief(event_id: int, dataset: Literal["test", "live"] = "test"):
+    from ca_triage.brief import make_brief  # lazy: keeps startup light
+
+    d = _load(dataset)
+    e = d["_by_id"].get(event_id)
+    if e is None:
+        raise HTTPException(404, "event not found")
+    key = (dataset, event_id, (d.get("model") or {}).get("version"), bool(os.environ.get("ANTHROPIC_API_KEY")))
+    if key not in _brief_cache:
+        _brief_cache[key] = make_brief(e)
+    return _brief_cache[key]
 
 
 @app.get("/api/window")
