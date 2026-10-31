@@ -13,10 +13,12 @@ from pathlib import Path
 FOLDER = "https://drive.google.com/drive/folders/14sDlmlyjWPHvGakadqK72GSDFUhuINvW"
 OUT = Path(__file__).resolve().parents[1] / "dataset"
 EXPECTED_BYTES = {"train_data.csv": 233_600_296, "test_data.csv": 35_303_060}
+# Organiser update (31 Oct 2026): official per-event final labels for train_data.
+LABELS_FOLDER = "https://drive.google.com/drive/folders/1nfBPWbxWb98szpabHc5n7mnAahZRHCNn"
 
 
 def main() -> int:
-    if all((OUT / n).exists() and (OUT / n).stat().st_size == s for n, s in EXPECTED_BYTES.items()):
+    if all((OUT / n).exists() and (OUT / n).stat().st_size == s for n, s in EXPECTED_BYTES.items()) and (OUT / "challenge1_event_labels.xlsx").exists():
         print(f"dataset already present in {OUT}")
         return 0
     try:
@@ -24,6 +26,8 @@ def main() -> int:
     except ImportError:
         subprocess.run([sys.executable, "-m", "pip", "install", "-q", "gdown"], check=True)
     subprocess.run([sys.executable, "-m", "gdown", FOLDER, "-O", str(OUT)], check=True)
+    if not (OUT / "challenge1_event_labels.xlsx").exists():
+        subprocess.run([sys.executable, "-m", "gdown", LABELS_FOLDER, "-O", str(OUT)], check=True)
     for name, size in EXPECTED_BYTES.items():
         got = (OUT / name).stat().st_size
         if got != size:
