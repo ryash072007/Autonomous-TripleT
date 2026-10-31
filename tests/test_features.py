@@ -34,3 +34,26 @@ def test_event_features_exclude_display_and_label():
     E = event_features(_frame())
     assert not any(k in c for c in E.columns for k in ("j2k", "h_apo", "h_per", "true_risk")) and "risk" not in E.columns
     assert set(ALLOWED_COLUMNS).isdisjoint(DISPLAY_COLUMNS)
+
+
+def test_consequence_columns_never_reach_models():
+    from pathlib import Path
+
+    from ca_triage import consequence
+    from ca_triage.data import ALLOWED_COLUMNS
+    banned = set(consequence.INPUT_COLUMNS) - {"event_id", "time_to_tca"}
+    assert banned.isdisjoint(ALLOWED_COLUMNS)
+    X, E = cdm_features(_frame()), event_features(_frame())
+    for c in list(X.columns) + list(E.columns):
+        assert not any(k in c for k in ("rcs", "area_over_mass", "mass_", "consequence", "harm", "exposure", "fragments"))
+    root = Path(__file__).resolve().parents[1]
+    for f in ("ca_triage/models.py", "ca_triage/data.py", "ca_triage/tiers.py", "ca_triage/evaluation.py", "ca_triage/ood.py", "scripts/train.py"):
+        assert "consequence" not in (root / f).read_text().lower(), f
+
+
+def test_breakup_basics():
+    from ca_triage.consequence import is_catastrophic, mass_estimate, n_fragments
+    assert is_catastrophic(5.0, 500.0, 12.0) and not is_catastrophic(0.01, 500.0, 0.5)
+    assert mass_estimate(float("nan"), 0.1, "ROCKET BODY", False) == (1500.0, "fallback:rocket body")
+    assert mass_estimate(1.0, 0.01, "DEBRIS", True)[1] == "rcs/area"
+    assert n_fragments(1000.0) > n_fragments(10.0) > 0

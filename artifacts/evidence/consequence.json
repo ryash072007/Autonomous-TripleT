@@ -1,0 +1,172 @@
+{
+ "generated_utc": "2026-10-31T04:13:17Z",
+ "git_commit": "9a93e85+dirty",
+ "command": "python scripts/consequence.py",
+ "data_sha256": {
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "DISPLAY_ONLY": "Consequence is for prioritisation and display. It is not an input to the tier model or the tier rule.",
+ "assumptions": [
+  "mass = rcs_estimate / cd_area_over_mass (factor 2-3 at best), clamped [0.05, 20000] kg, else fallback by object type",
+  "simplified NASA SBM, isotropic dv, circular orbit at the collision altitude, no drag/J2/re-entry",
+  "fragments phase-mixed over full spherical shells (ignores inclination confinement)",
+  "active satellites only (CelesTrak GP active), 10 m^2 cross-section, 10 km/s, 30 days",
+  "Pc = CDM max_risk_estimate (display only); loss of the two parents is not counted"
+ ],
+ "breakup_validation": [
+  {
+   "event": "Iridium 33 / Cosmos 2251 (2009-02-10)",
+   "ejected_mass_kg": 1460.0,
+   "predicted_ge10cm": 1211,
+   "catalogued_debris_all_time": 2372,
+   "still_on_orbit": 724,
+   "ratio_pred_over_catalogued": 0.51,
+   "inputs_note": "Iridium 33 ~560 kg + Cosmos 2251 ~900 kg, ~11.7 km/s",
+   "designator_prefixes": [
+    "1997-051",
+    "1993-036"
+   ]
+  },
+  {
+   "event": "Fengyun-1C ASAT (2007-01-11)",
+   "ejected_mass_kg": 1480.0,
+   "predicted_ge10cm": 1224,
+   "catalogued_debris_all_time": 3534,
+   "still_on_orbit": 2314,
+   "ratio_pred_over_catalogued": 0.35,
+   "inputs_note": "target ~880 kg + kill vehicle ~600 kg (uncertain), ~9 km/s",
+   "designator_prefixes": [
+    "1999-025"
+   ]
+  },
+  {
+   "event": "Cosmos 1408 ASAT (2021-11-15)",
+   "ejected_mass_kg": 1750.0,
+   "predicted_ge10cm": 1388,
+   "catalogued_debris_all_time": 1806,
+   "still_on_orbit": 4,
+   "ratio_pred_over_catalogued": 0.77,
+   "inputs_note": "target ~1750 kg; interceptor mass unknown, treated as catastrophic with M = target mass",
+   "designator_prefixes": [
+    "1982-092"
+   ]
+  }
+ ],
+ "breakup_validation_reading": "Order-of-magnitude check only; the catalogue is incomplete for >= 10 cm fragments and masses are approximate.",
+ "population_table": {
+  "source": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=json",
+  "kind": "CelesTrak GP active group, altitude from mean motion (circular orbit assumption)",
+  "retrieved_utc": "2026-10-31T04:09:22Z",
+  "n_objects": 16846,
+  "n_in_0_2000km": 16036,
+  "band_km": 25.0
+ },
+ "mass_source_counts": {
+  "target": {
+   "rcs/area": 2093,
+   "fallback:payload": 74
+  },
+  "chaser": {
+   "fallback:debris": 935,
+   "fallback:unknown": 614,
+   "rcs/area": 614,
+   "fallback:rocket body": 3,
+   "fallback:payload": 1
+  }
+ },
+ "catastrophic_share": 0.862,
+ "fragments_10cm_quantiles": {
+  "p5": 19.3,
+  "p25": 74.0,
+  "p50": 270.0,
+  "p75": 417.5,
+  "p95": 732.7,
+  "p99": 1653.0
+ },
+ "exposure_30d_quantiles": {
+  "p5": 0.002085,
+  "p25": 0.008993,
+  "p50": 0.02549,
+  "p75": 0.05685,
+  "p95": 0.1071,
+  "p99": 0.1929
+ },
+ "consequence_score_quantiles": {
+  "p5": 19.59,
+  "p25": 40.0,
+  "p50": 56.9,
+  "p75": 70.5,
+  "p95": 81.37,
+  "p99": 91.48
+ },
+ "pc_vs_harm": {
+  "n_events": 2167,
+  "spearman": 0.8648,
+  "top20_by_pc_moving_5_or_more_places_by_harm": 9,
+  "top20_moved_event_ids": [
+   1259,
+   891,
+   1984,
+   1832,
+   2091,
+   989,
+   1833,
+   1470,
+   1947
+  ],
+  "top5_harm_much_higher_than_pc_rank": [
+   {
+    "event_id": 1516,
+    "pc_rank": 301,
+    "harm_rank": 84,
+    "pc_display": 9.108e-06,
+    "fragments_10cm": 2090,
+    "active_sats_in_band": 1323,
+    "exposure_30d": 0.2235,
+    "collision_altitude_km": 683.8
+   },
+   {
+    "event_id": 92,
+    "pc_rank": 291,
+    "harm_rank": 98,
+    "pc_display": 1.007e-05,
+    "fragments_10cm": 1620,
+    "active_sats_in_band": 1323,
+    "exposure_30d": 0.1724,
+    "collision_altitude_km": 685.0
+   },
+   {
+    "event_id": 1007,
+    "pc_rank": 277,
+    "harm_rank": 95,
+    "pc_display": 1.064e-05,
+    "fragments_10cm": 1879,
+    "active_sats_in_band": 403,
+    "exposure_30d": 0.1697,
+    "collision_altitude_km": 777.4
+   },
+   {
+    "event_id": 1633,
+    "pc_rank": 247,
+    "harm_rank": 93,
+    "pc_display": 1.283e-05,
+    "fragments_10cm": 739,
+    "active_sats_in_band": 12870,
+    "exposure_30d": 0.142,
+    "collision_altitude_km": 448.8
+   },
+   {
+    "event_id": 190,
+    "pc_rank": 192,
+    "harm_rank": 72,
+    "pc_display": 1.893e-05,
+    "fragments_10cm": 1287,
+    "active_sats_in_band": 1323,
+    "exposure_30d": 0.137,
+    "collision_altitude_km": 685.0
+   }
+  ],
+  "selection": "among events with harm_rank <= 100, largest pc_rank - harm_rank"
+ }
+}

@@ -30,3 +30,4 @@ __pycache__/
 web/node_modules/
 web/dist/
 !artifacts/model_card.json
+!artifacts/population_by_altitude.json

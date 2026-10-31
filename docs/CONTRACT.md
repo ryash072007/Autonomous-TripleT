@@ -43,6 +43,17 @@ updating this file. Version bumps go in `schema_version`.
         "down": {"feature": "miss_distance", "from": 935.0, "to": 1025.5, "tier": 1},   // smallest single-input change that lowers the tier; null if none in range
         "up": null                       // same for raising it. Search: miss_distance x0.5..x2, max_risk_estimate +-2 (log10); "smallest" = |log2 factor| or |delta|/2
       },
+      "consequence": {                  // DISPLAY AND PRIORITISATION ONLY; never a model input (ca_triage/consequence.py lists the assumptions; top-level `consequence_note`)
+        "mass_t": 271.7, "mass_c": 10.0, "mass_source": {"t": "rcs/area", "c": "fallback:unknown"},   // kg; proxy = rcs_estimate / cd_area_over_mass, else fallback by object type
+        "catastrophic": true,           // simplified NASA breakup model, > 40 J/g
+        "fragments_10cm": 912,          // N(Lc >= 10 cm)
+        "collision_altitude_km": 792.5, "band_km": [675.0, 925.0], "active_sats_in_band": 438,   // CelesTrak active GP table, artifacts/population_by_altitude.json
+        "exposure_30d": 0.0228,         // expected fragment encounters with active satellites in 30 d (kinetic-gas proxy)
+        "consequence_score": 55.2,      // 0-100 log index of exposure_30d
+        "pc_display": 0.004, "expected_harm": 9.1e-5,   // Pc = max_risk_estimate (display); harm = Pc x exposure_30d
+        "pc_rank": 1, "harm_rank": 4,   // 1 = highest, among the 2,167 test events
+        "debris_cloud": null            // top ~90 events by harm/Pc and the demo events only: {"t_hours": [0,1,6,24,168], "offsets": [[[phase_rad, radial_km, cross_km] | null x150] per time]} (top-level `debris_cloud_note`)
+      },
       "orbit_display": {                // DISPLAY ONLY, from the latest CDM; never a model input (ca_triage/display.py)
         "t": {"sma_km": 7084.7, "ecc": 0.0037, "inc_deg": 98.2, "h_apo_km": 733.1, "h_per_km": 680.0},   // target
         "c": {"sma_km": 7082.3, "ecc": 0.0041, "inc_deg": 74.1, "h_apo_km": 733.2, "h_per_km": 675.1}    // chaser

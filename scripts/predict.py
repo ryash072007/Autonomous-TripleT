@@ -16,12 +16,16 @@ import pandas as pd
 
 sys.path.insert(0, __file__.rsplit("scripts", 1)[0] + "scripts")
 from decision import RATIOS, decide_one, gating_frame  # noqa: E402
+from consequence import cloud_for, event_consequences, latest_inputs  # noqa: E402
 from conformal import floor_sets, sets_ltt  # noqa: E402
 from score_baseline import CDM_FIELDS, LATEST_FIELDS, _clean  # noqa: E402
 
 from ca_triage.data import ROOT, load
 from ca_triage.evaluation import cv_summary, metrics, write_evidence
+CONS_NOTE = ("Display and prioritisation only, never a model input. Simplified NASA breakup model, isotropic dv, circular orbits, "
+             "mass proxy from rcs/area, active satellites only; see ca_triage/consequence.py")
 from ca_triage.sensitivity import NOTE as SENS_NOTE, sensitivity
+from ca_triage.consequence import CLOUD_NOTE, load_consequence_inputs
 from ca_triage.display import load_display_orbits, orbit_block
 from ca_triage.ood import ood_score
 from ca_triage.physics import fragility
@@ -100,6 +104,9 @@ def main() -> None:
     sens_list = sensitivity(ma, lat_pos.drop(columns=["_i"]), thr["a"]["t_critical"], thr["a"]["t_alert"], pred[lat_pos["_i"].to_numpy()])
     sens = dict(zip(lat_pos.event_id.to_numpy(), sens_list))
     disp = load_display_orbits("test")  # display only, never a model input
+    demo_path = ROOT / "artifacts/demo.json"
+    demo_ids = {v["event_id"] for v in json.loads(demo_path.read_text()).values()} if demo_path.exists() else set()
+    cons = event_consequences(latest_inputs(te, disp, load_consequence_inputs("test")))  # display only, never a model input
 
     # ---- artifacts/scored/test_events.json
     tes = te.assign(_i=np.arange(len(te))).sort_values(["event_id", "time_to_tca"], ascending=[True, False])
@@ -141,14 +148,16 @@ def main() -> None:
                                 "forecast_tier_set": [int(k) for k in np.where(SB[j])[0]], "time_to_tca_latest": round(float(last.time_to_tca), 3),
                                 "default_ratio": dcfg["default_ratio"], "wait_enabled": dcfg["wait_shipped"]},
             "sensitivity": sens[eid],
+            "consequence": {**cons[int(eid)], "debris_cloud": cloud_for(cons[int(eid)]["collision_altitude_km"]) if (
+                cons[int(eid)]["harm_rank"] <= 80 or cons[int(eid)]["pc_rank"] <= 40 or int(eid) in demo_ids) else None},
             "orbit_display": orbit_block(disp.iloc[i]),
             "flags": flags,
-            "cdms": [{k: _clean(r[k]) for k in CDM_FIELDS if k in r.index} for _, r in g.iterrows()],
+            "cdms": [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in ((k, _clean(r[k])) for k in CDM_FIELDS if k in r.index)} for _, r in g.iterrows()],
         })
     out = {"schema_version": 1, "dataset": "test",
            "model": {"name": "OrbitGuard LightGBM tiers (Task A per CDM, Task B forecast)", "version": card["version"],
                      "trained_utc": card["trained_utc"]},
-           "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "sensitivity_note": SENS_NOTE, "events": events}
+           "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "sensitivity_note": SENS_NOTE, "consequence_note": CONS_NOTE, "debris_cloud_note": CLOUD_NOTE, "events": events}
     path = ROOT / "artifacts/scored/test_events.json"
     path.write_text(json.dumps(out, separators=(",", ":")))
     print("abstain events", sum(e["abstain"] for e in events), "of", len(events), "forecast_abstain", sum(e["forecast_abstain"] for e in events),

@@ -24,3 +24,4 @@ fi
 $PY scripts/predict.py
 $PY scripts/demo.py
 $PY scripts/insights.py
+$PY scripts/consequence.py   # needs artifacts/population_by_altitude.json (committed); downloads SATCAT once for the breakup check
