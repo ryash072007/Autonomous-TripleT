@@ -56,6 +56,8 @@ Confusion matrix, OrbitGuard (rows = true, columns = predicted):
 | ![Results: every number with its evidence file](docs/screenshots/results.png) | ![Guided tour welcome](docs/screenshots/tour.png) |
 | **Results.** Every number is read from an evidence file, and the file path is shown. Failure cases included. | **Guided tour.** Four stops: a clear Critical, one caught early, where it fails, and a costly collision. |
 
+![Simulated breakup: the debris cloud smears along the orbit from 1 hour to 7 days](docs/screenshots/collision-sim.gif)
+
 **Live mode** reads Space-Track's public CDM feed (emergency-reportable conjunctions only) and tiers it by rule,
 because the public feed does not carry the model's inputs.
 

@@ -61,6 +61,54 @@ function Trend({ ev }: { ev: EventFull }) {
   );
 }
 
+const RTN_COL = { r: "#2E6FB5", t: "#5B3A9E", n: "#E0589B" }; // distinct from the tier colours
+
+function Trajectory({ ev }: { ev: EventFull }) {
+  const cdms = ev.cdms.filter((c) => c.relative_position_r != null);
+  if (!cdms.length) return <div className="small dim">Not available: public CDMs do not publish the relative position.</div>;
+  const maxT = Math.max(...cdms.map((c) => c.time_to_tca), 2.5);
+  return (
+    <ResponsiveContainer width="100%" height={250}>
+      <ComposedChart data={cdms} margin={{ left: 0, right: 8, top: 8, bottom: 0 }}>
+        <CartesianGrid stroke="var(--ridge-far)" strokeOpacity={0.4} />
+        <XAxis type="number" dataKey="time_to_tca" reversed domain={[0, maxT]} tickFormatter={(v: number) => `-${v.toFixed(0)}d`} stroke="var(--ink-soft)" fontSize={11} />
+        <YAxis stroke="var(--ink-soft)" fontSize={11} width={46} tickFormatter={(v: number) => (Math.abs(v) >= 1000 ? `${(v / 1000).toFixed(1)}k` : `${v}`)} />
+        <ReferenceLine x={2} stroke="var(--rock)" strokeDasharray="4 3" label={{ value: "T-2 d", fontSize: 10, fill: "var(--rock)", position: "top" }} />
+        <ReferenceLine y={0} stroke="var(--ridge-far)" />
+        <Tooltip formatter={(v: number) => `${v.toFixed(0)} m`} labelFormatter={(l: number) => fmtTtca(l)} />
+        <Legend wrapperStyle={{ fontSize: 11 }} />
+        <Line dataKey="relative_position_r" name="r (radial)" stroke={RTN_COL.r} strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
+        <Line dataKey="relative_position_t" name="t (along-track)" stroke={RTN_COL.t} strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
+        <Line dataKey="relative_position_n" name="n (cross-track)" stroke={RTN_COL.n} strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
+        <Line dataKey="miss_distance" name="miss distance" stroke="#5A3A33" strokeWidth={2.4} strokeDasharray="6 3" dot={false} isAnimationActive={false} />
+      </ComposedChart>
+    </ResponsiveContainer>
+  );
+}
+
+function TrendTile({ ev }: { ev: EventFull }) {
+  const [tab, setTab] = useState<"trend" | "traj">(() => (window.location.hash.includes("tab=traj") ? "traj" : "trend"));
+  return (
+    <div className="card tile">
+      <div className="tile-tabs">
+        <button className={"label tab" + (tab === "trend" ? " on" : "")} onClick={() => setTab("trend")}>Trend</button>
+        <button className={"label tab" + (tab === "traj" ? " on" : "")} onClick={() => setTab("traj")}>Trajectory</button>
+      </div>
+      {tab === "trend" ? (
+        <>
+          <Trend ev={ev} />
+          <p className="small dim">Miss distance and collision probability across updates. Shading shows the tier bands; the dashed line is 2 days before closest approach.</p>
+        </>
+      ) : (
+        <>
+          <Trajectory ev={ev} />
+          <p className="small dim">Relative position (r, t, n, in metres) and miss distance as reported in each CDM for the time of closest approach, plotted against time to closest approach. These are the CDM-reported values per update, not a propagated orbit.</p>
+        </>
+      )}
+    </div>
+  );
+}
+
 function DecisionRow({ ev, dataset }: { ev: EventFull; dataset: Dataset }) {
   const [note, setNote] = useState("");
   const [trail, setTrail] = useState<AuditRec[]>([]);
@@ -134,6 +182,10 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
     fetch(`${(import.meta.env.VITE_API_BASE as string | undefined) ?? ""}/api/events/${id}/brief?dataset=${dataset}`).then((r) => r.json()).then(setBrief).catch(() => {});
   }, [id, dataset]);
 
+  useEffect(() => {
+    if (ev && window.location.hash.includes("focus=collide")) window.setTimeout(() => document.getElementById("collide")?.scrollIntoView({ block: "start" }), 600);
+  }, [ev?.event_id]);
+
   if (id == null) return <section className="detail"><div className="card empty">Pick an event from the list.</div></section>;
   if (err) return <section className="detail"><button className="link-btn back" onClick={onBack}>← List</button><div className="card empty">Could not load event {id}.</div></section>;
   if (!ev || ev.event_id !== id) return <section className="detail"><div className="card empty">Loading...</div></section>;
@@ -173,13 +225,9 @@ export default function EventPage({ id, dataset, modelName, onBack, highlight, s
               <Globe kind="event" id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} height={250} />
             </Suspense>
           ) : <div className="dim small">pending data: no orbit data in the scored file.</div>}
-          <p className="small dim">Orbit height and tilt from the CDM, display only. The orbit orientation is not in the data, so both orbits are drawn through the conjunction point (pulsing).</p>
+          <p className="small dim">The orbit drawing uses the orbital-element columns in the CDMs (semi-major axis, eccentricity, inclination, apogee and perigee height). They are display only and never a model input. The orbit orientation (RAAN) is not in the data, so both orbits are drawn through the conjunction point (pulsing).</p>
         </div>
-        <div className="card tile">
-          <div className="label">Trend</div>
-          <Trend ev={ev} />
-          <p className="small dim">Miss distance and collision probability across updates. Shading shows the tier bands; the dashed line is 2 days before closest approach.</p>
-        </div>
+        <TrendTile ev={ev} />
         <div className={"card tile" + hl("forecast") + hl("flags")}>
           <div className="label">How sure</div>
           {ev.p_tier ? (

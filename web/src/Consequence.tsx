@@ -84,12 +84,12 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
 
   useEffect(() => { setOn(false); setPlay(false); setLogT(0); }, [ev.event_id]);
   useEffect(() => {
-    if (autoPlay && cloud && od) {
+    if ((autoPlay || /simt=/.test(window.location.hash)) && cloud && od) {
       const m = /simt=([\d.]+)/.exec(window.location.hash); // screenshot helper: freeze the scrubber at a given fraction
       setOn(true);
       if (m) { setLogT(+m[1]); setPlay(false); } else { setLogT(0); setPlay(true); }
     }
-  }, [autoPlay, ev.event_id]);
+  }, [autoPlay, ev.event_id, !!cloud]);
   useEffect(() => {
     if (!play) return;
     let last = performance.now();
@@ -156,7 +156,7 @@ export function CollidePanel({ ev, fleet, autoPlay }: { ev: EventFull; fleet: Ev
         </div>
       </div>
       <p className="small dim">
-        A model with stated assumptions: simplified NASA breakup model, masses estimated from radar size, two-body spread without drag; very large offsets are compressed so the cloud fits on the globe. {c?.assumptions ?? ""}
+        A model with stated assumptions: simplified NASA breakup model, masses estimated from radar size, linear relative-motion spread (Clohessy-Wiltshire) without drag; fragments kicked faster than 500 m/s are not drawn. {c?.assumptions ?? ""}
         Red points are a sample of the fragments (about {cloud ? Math.round((c?.fragments ?? 0) / (cloud.offsets[0]?.length || 1)) : 0} fragments each); faint points are other test events in the affected altitude band, shown for illustration.
       </p>
     </div>
