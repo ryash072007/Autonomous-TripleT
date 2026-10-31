@@ -12,4 +12,4 @@
 | 2 Core logic | T+85 (12:28) | PASSED 11:28: 27 unit tests pass; extraction audit round D 15/15 (see eval/results/extraction_audit.md) |
 | 3 Retrieval + UI | T+125 (13:08) | PASSED 11:44: 46 tests pass; adhoc first-pass 21/24 and 13/15; p95 retrieval 3 ms |
 | 4 Evaluation | T+145 (13:28) | PASSED 13:08: blind first-pass on five fresh sets, baselines, held-out v1 run once; see eval/results/REPORT.md |
-| 5 Submit | T+165 (13:48) | pending |
+| 5 Submit | T+165 (13:48) | READY 13:15: README + PITCH written; clean clone reproduces pipeline (229/229 docs, 46 tests) and server cold-starts; submission by Ramith pending |
