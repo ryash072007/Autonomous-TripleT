@@ -1,6 +1,6 @@
 """Serve the OrbitGuard API on http://localhost:8000 (API only by default).
 
-`--with-web` also builds (if needed) and serves the console at the same address, for local use.
+`--with-web` also builds (if needed) and serves the console at the same address. `--port N` picks the port.
 With FRONTEND_URL set in .env, / redirects to the hosted console.
 """
 
@@ -29,7 +29,9 @@ def main() -> None:
             subprocess.run([npm, "run", "build"], cwd=WEB, check=True)
     import uvicorn
 
-    uvicorn.run("ca_triage.api:app", host="0.0.0.0", port=8000)
+    args = sys.argv[1:]
+    port = int(args[args.index("--port") + 1]) if "--port" in args else 8000
+    uvicorn.run("ca_triage.api:app", host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
