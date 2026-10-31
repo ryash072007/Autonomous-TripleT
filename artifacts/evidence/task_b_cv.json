@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-31T03:32:03Z",
- "git_commit": "bc996ba+dirty",
+ "generated_utc": "2026-10-31T03:38:29Z",
+ "git_commit": "855b50d+dirty",
  "command": "python scripts/train.py cv-b",
  "data_sha256": {
   "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
@@ -731,7 +731,8 @@
    "critical_flags": 554,
    "critical_precision": 0.81949,
    "alerts_per_100": 26.22694,
-   "macro_f1": 0.87651
+   "macro_f1": 0.87651,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.3,
@@ -739,7 +740,8 @@
    "critical_flags": 627,
    "critical_precision": 0.75917,
    "alerts_per_100": 26.22694,
-   "macro_f1": 0.86893
+   "macro_f1": 0.86893,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.2,
@@ -747,7 +749,8 @@
    "critical_flags": 678,
    "critical_precision": 0.70796,
    "alerts_per_100": 26.239,
-   "macro_f1": 0.85618
+   "macro_f1": 0.85618,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.15,
@@ -755,7 +758,8 @@
    "critical_flags": 726,
    "critical_precision": 0.67355,
    "alerts_per_100": 26.25106,
-   "macro_f1": 0.84768
+   "macro_f1": 0.84768,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.1,
@@ -763,7 +767,8 @@
    "critical_flags": 792,
    "critical_precision": 0.62753,
    "alerts_per_100": 26.31135,
-   "macro_f1": 0.83448
+   "macro_f1": 0.83448,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.07,
@@ -771,7 +776,8 @@
    "critical_flags": 851,
    "critical_precision": 0.59459,
    "alerts_per_100": 26.34752,
-   "macro_f1": 0.82368
+   "macro_f1": 0.82368,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.05,
@@ -779,7 +785,8 @@
    "critical_flags": 904,
    "critical_precision": 0.56637,
    "alerts_per_100": 26.39576,
-   "macro_f1": 0.81325
+   "macro_f1": 0.81325,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.03,
@@ -787,7 +794,8 @@
    "critical_flags": 1028,
    "critical_precision": 0.50195,
    "alerts_per_100": 26.55251,
-   "macro_f1": 0.78391
+   "macro_f1": 0.78391,
+   "selected_on_oof": false
   },
   {
    "t_critical": 0.02,
@@ -795,7 +803,8 @@
    "critical_flags": 1170,
    "critical_precision": 0.44701,
    "alerts_per_100": 26.9625,
-   "macro_f1": 0.75593
+   "macro_f1": 0.75593,
+   "selected_on_oof": true
   }
  ],
  "alert_curve": [
@@ -839,5 +848,6 @@
    "alert_recall": 0.96845,
    "alerts_per_100": 36.41625
   }
- ]
+ ],
+ "selected_point_note": "The recall-first point (selected_on_oof = true) was chosen on the OOF predictions themselves (first grid threshold with OOF Critical recall >= 0.95, else the most permissive one, here 0.02 at 0.949), so its CV recall is by construction, not an independent estimate."
 }

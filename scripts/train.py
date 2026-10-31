@@ -157,6 +157,8 @@ def cv_b() -> None:
     # operating point: smallest flag count reaching persistence's Critical recall + 0.1 pp slack is not possible
     # if the model is worse; pick the threshold where Critical recall >= 0.95 (recall first) and report cost.
     tc = next((c["t_critical"] for c in curve if c["critical_recall"] is not None and c["critical_recall"] >= 0.95), curve[-1]["t_critical"])
+    for c in curve:
+        c["selected_on_oof"] = c["t_critical"] == tc
     ta_curve = []
     ta = 0.5
     for t in [0.5, 0.4, 0.3, 0.2, 0.15, 0.1, 0.07, 0.05]:
@@ -176,6 +178,9 @@ def cv_b() -> None:
         "b0_at_2d": cv_summary(y, b0_2d, f),
         "equal_budget": budget,
         "critical_curve": curve, "alert_curve": ta_curve,
+        "selected_point_note": ("The recall-first point (selected_on_oof = true) was chosen on the OOF predictions themselves (first grid threshold with "
+                                "OOF Critical recall >= 0.95, else the most permissive one, here 0.02 at 0.949), so its CV recall is by construction, "
+                                "not an independent estimate."),
     }
     print(write_evidence("task_b_cv.json", res))
     for k in ("model", "persistence_true_risk", "b0_at_2d"):
@@ -188,6 +193,20 @@ def cv_b() -> None:
 
 # ---- final fit --------------------------------------------------------------------------------
 
+def prediction_reference(ma, mb, X, Xb) -> dict:
+    """Probabilities on a fixed sample of rows. LightGBM pickles are not byte-reproducible across runs (n_jobs > 1), so a
+    frozen card also stores these to check that a retrained model is the same model to within 1e-6."""
+    ra = np.arange(0, len(X), 800)
+    rb = np.arange(0, len(Xb), 40)
+    return {"tolerance": 1e-6,
+            "task_a": {"rows": ra.tolist(), "p": np.round(ma.predict_proba(X.iloc[ra]), 8).tolist()},
+            "task_b": {"rows": rb.tolist(), "p": np.round(mb.predict_proba(Xb.iloc[rb]), 8).tolist()}}
+
+
+def same_predictions(ref: dict, new: dict) -> bool:
+    return all(np.abs(np.array(ref[k]["p"]) - np.array(new[k]["p"])).max() <= ref["tolerance"] for k in ("task_a", "task_b"))
+
+
 def final() -> None:
     import json
     tr = load("train")
@@ -199,8 +218,28 @@ def final() -> None:
     ma = lgb.LGBMClassifier(**LGB_A).fit(X, y, sample_weight=sample_weights(y))
     Xb, yb, _, _, _ = build_b(tr)
     mb = lgb.LGBMClassifier(**LGB_B).fit(Xb, yb, sample_weight=sample_weights(yb))
-    joblib.dump(ma, MODELS / "task_a.joblib")
-    joblib.dump(mb, MODELS / "task_b.joblib")
+    card_path = ROOT / "artifacts" / "model_card.json"
+    old = json.loads(card_path.read_text()) if card_path.exists() else {}
+    tmp = MODELS / "_new"
+    tmp.mkdir(exist_ok=True)
+    joblib.dump(ma, tmp / "task_a.joblib")
+    joblib.dump(mb, tmp / "task_b.joblib")
+    new_hash = {n: file_sha256_of(tmp / n) for n in ("task_a.joblib", "task_b.joblib")}
+    if old.get("frozen"):
+        want = {n: old.get("model_files_sha256", {}).get(n) for n in new_hash}
+        ref = old.get("prediction_reference")
+        equivalent = ref is not None and same_predictions(ref, prediction_reference(ma, mb, X, Xb))
+        if new_hash != want and equivalent:
+            print("retrained model bytes differ from the card but predictions match the frozen reference to 1e-6 (LightGBM pickles are not byte-reproducible)")
+        elif new_hash != want:
+            for f in tmp.iterdir():
+                f.unlink()
+            tmp.rmdir()
+            sys.exit(f"refusing to overwrite frozen models: retrained hashes {new_hash} differ from model_card.json {want}")
+    for n in new_hash:
+        (MODELS / n).write_bytes((tmp / n).read_bytes())
+        (tmp / n).unlink()
+    tmp.rmdir()
     thr = {"a": ev_a["thresholds"], "b": ev_b["thresholds"]}
     (MODELS / "thresholds.json").write_text(json.dumps(thr, indent=1))
     version = file_sha256_of(MODELS / "task_a.joblib")[:12] + "-" + file_sha256_of(MODELS / "task_b.joblib")[:12]
@@ -221,7 +260,10 @@ def final() -> None:
         "allowed_columns_only": True,
         "released_test_labels_opened": False,
     }
-    (ROOT / "artifacts" / "model_card.json").write_text(json.dumps(card, indent=1))
+    if old.get("frozen"):  # identical models: keep the frozen card (frozen, labels_opened and timestamps) untouched
+        print("frozen card left unchanged (retrained version label", version)
+        return
+    card_path.write_text(json.dumps(card, indent=1))
     print("models + model_card.json written; version", version)
 
 

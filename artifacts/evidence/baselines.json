@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-31T03:19:17Z",
- "git_commit": "44a68ee+dirty",
+ "generated_utc": "2026-10-31T03:38:07Z",
+ "git_commit": "855b50d+dirty",
  "command": "python scripts/evaluate.py",
  "data_sha256": {
   "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6"
@@ -581,6 +581,35 @@
   1604,
   551
  ],
+ "cdms_per_event": {
+  "train_all_events": {
+   "events": 13154,
+   "mean": 12.364,
+   "median": 13.0,
+   "max": 23
+  },
+  "train_test_like_events_before_2d_mark": {
+   "events": 8293,
+   "mean": 11.179,
+   "median": 14.0,
+   "max": 17
+  },
+  "test_events": {
+   "events": 2167,
+   "mean": 11.299,
+   "median": 14.0,
+   "max": 17
+  },
+  "note": "train_test_like counts only CDMs with time_to_tca >= 2 d, matching what the test set contains"
+ },
+ "persistence_false_critical": {
+  "critical_at_2d": 565,
+  "ending_lower": 113,
+  "ending_safe": 18,
+  "ending_elevated": 95,
+  "share_ending_lower": 0.2,
+  "definition": "events whose last CDM >= 2 d is Critical (observed risk and miss) but whose final CDM is Elevated or Safe"
+ },
  "task_b_persistence_true_risk": {
   "folds": {
    "critical_recall": {

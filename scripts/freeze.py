@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import sys
 import json
 import time
 
@@ -31,6 +32,14 @@ def main() -> None:
     card["physics_flag"] = {"assumption": "isotropic encounter-plane Gaussian, s = sqrt(c_sigma_r^2 + t_sigma_r^2), R = 10 m",
                             "evidence": "artifacts/evidence/fragility.json"}
     card["model_files_sha256"] = {p.name: sha(p) for p in sorted(M.glob("*")) if p.is_file()}
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import joblib
+    from train import build_b, prediction_reference
+    from ca_triage.data import load
+    from ca_triage.models import cdm_features
+    tr = load("train")
+    Xb = build_b(tr)[0]
+    card["prediction_reference"] = prediction_reference(joblib.load(M / "task_a.joblib"), joblib.load(M / "task_b.joblib"), cdm_features(tr), Xb)
     card["frozen_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     card["frozen_git_commit"] = git_commit()
     card["frozen"] = True

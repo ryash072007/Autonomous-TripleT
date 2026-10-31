@@ -41,6 +41,19 @@ def main() -> None:
     f = tb.index.to_series().map(fold_of_events(tr.event_id)).to_numpy()
     res["task_b_n_events"] = int(len(tb))
     res["task_b_label_counts"] = np.bincount(tb.y, minlength=3).tolist()
+    te = load("test", with_label=False)
+    n_all = tr.groupby("event_id").size()
+    n_early = tr[tr.event_id.isin(tb.index) & (tr.time_to_tca >= DECISION_CUTOFF_DAYS)].groupby("event_id").size()
+    n_test = te.groupby("event_id").size()
+    stat = lambda s: {"events": int(len(s)), "mean": round(float(s.mean()), 3), "median": float(s.median()), "max": int(s.max())}  # noqa: E731
+    res["cdms_per_event"] = {"train_all_events": stat(n_all), "train_test_like_events_before_2d_mark": stat(n_early), "test_events": stat(n_test),
+                             "note": "train_test_like counts only CDMs with time_to_tca >= 2 d, matching what the test set contains"}
+    crit2d = tb.persist == 2
+    res["persistence_false_critical"] = {
+        "critical_at_2d": int(crit2d.sum()), "ending_lower": int((crit2d & (tb.y < 2)).sum()),
+        "ending_safe": int((crit2d & (tb.y == 0)).sum()), "ending_elevated": int((crit2d & (tb.y == 1)).sum()),
+        "share_ending_lower": round(float((crit2d & (tb.y < 2)).sum() / crit2d.sum()), 5),
+        "definition": "events whose last CDM >= 2 d is Critical (observed risk and miss) but whose final CDM is Elevated or Safe"}
     res["task_b_persistence_true_risk"] = cv_summary(tb.y, tb.persist, f)
     res["task_b_b0_at_2d"] = cv_summary(tb.y, tb.b0, f)
     res["notes"] = ("persistence_true_risk uses the observed risk of the last CDM >= 2 d (an analyst reading Pc); "
