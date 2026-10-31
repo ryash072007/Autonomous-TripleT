@@ -51,6 +51,14 @@ export function Term({ k, children }: { k: keyof typeof GLOSSARY | string; child
   );
 }
 
+export interface ForecastFlag { t_critical: number; critical_recall_cv: number }
+/** Critical is forecast only because P(Critical) passed the alert threshold, not because it is the likeliest tier. */
+export const isThresholdFlag = (tier: number | null, p: number[] | null) =>
+  tier === 2 && !!p && p.indexOf(Math.max(...p)) !== 2;
+export const flagSentence = (p: number[], f?: ForecastFlag | null) =>
+  `Forecast: Critical flag. P(Critical at TCA) = ${(p[2] * 100).toFixed(1)}%` +
+  (f ? `, above the ${+(f.t_critical * 100).toFixed(1)}% alert threshold, which is set to catch about ${Math.round(f.critical_recall_cv * 100)}% of Critical events in CV.` : ", above the alert threshold.");
+
 export const fmtMiss = (m: number) => (m < 1000 ? `${m.toFixed(0)} m` : `${(m / 1000).toFixed(m < 10000 ? 2 : 1)} km`);
 export const fmtPc = (log10: number | null | undefined) =>
   log10 == null ? "n/a" : log10 <= -29.9 ? "<1e-30" : `1e${log10.toFixed(1)}`;

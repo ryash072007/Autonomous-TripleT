@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { EventLight } from "./api";
-import { AbstainBadge, RecChip, sigmaUnusable, TIER_NAMES, TIER_VAR, TierBadge, Term, fmtMiss, fmtPc, fmtTtca } from "./ui";
+import { flagSentence, isThresholdFlag, ForecastFlag, AbstainBadge, RecChip, sigmaUnusable, TIER_NAMES, TIER_VAR, TierBadge, Term, fmtMiss, fmtPc, fmtTtca } from "./ui";
 
 interface Props {
   events: EventLight[];
@@ -14,6 +14,7 @@ interface Props {
   setTypeFilter: (t: string | null) => void;
   types: string[];
   counts: Record<string, number>;
+  forecastFlag?: ForecastFlag | null;
 }
 
 export default function Queue(p: Props) {
@@ -82,6 +83,7 @@ export default function Queue(p: Props) {
             key={e.event_id}
             className={"row" + (e.event_id === p.selected ? " sel" : "")}
             onClick={() => p.onSelect(e.event_id)}
+            title={e.p_forecast && e.forecast_tier_at_tca === 2 ? (isThresholdFlag(2, e.p_forecast) ? flagSentence(e.p_forecast, p.forecastFlag) : `Forecast: Critical. P(Critical at TCA) = ${(e.p_forecast[2] * 100).toFixed(1)}%.`) : undefined}
           >
             <span className="r1">
               <TierBadge tier={e.tier} />

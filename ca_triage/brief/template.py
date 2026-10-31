@@ -18,7 +18,13 @@ def template_brief(f: dict) -> str:
     if "p_tier_pct" in f:
         p = ", ".join(f"{k} {v}%" for k, v in f["p_tier_pct"].items())
         parts.append(f"Model tier probabilities: {p}.")
-    if "forecast_tier_at_tca" in f:
+    if f.get("forecast_is_threshold_flag"):
+        s = f"Forecast: Critical flag. P(Critical at closest approach) = {f['p_forecast_critical_pct1']}%"
+        if "forecast_threshold_pct" in f:
+            s += (f", above the {f['forecast_threshold_pct']:g}% alert threshold, which is set to catch about "
+                  f"{f['forecast_threshold_recall_pct']}% of Critical events in cross-validation")
+        parts.append(s + ".")
+    elif "forecast_tier_at_tca" in f:
         p = ", ".join(f"{k} {v}%" for k, v in f.get("p_forecast_pct", {}).items())
         parts.append(f"Forecast tier at closest approach: {f['forecast_tier_at_tca']}" + (f" ({p})." if p else "."))
     if f["abstain"]:

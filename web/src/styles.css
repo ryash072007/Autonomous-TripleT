@@ -121,6 +121,9 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .btn:disabled { opacity: 0.4; cursor: default; }
 
 /* ---------- console ---------- */
+.fc-chip { display: inline-block; border-radius: 4px; padding: 0 7px; font-weight: 700; font-size: 11px; margin-right: 4px; border: 1px solid currentColor; }
+.fc-solid { background: var(--critical); border-color: var(--critical); color: #fff; }
+.flag-soft { background: transparent; color: var(--critical); border: 1px dashed var(--critical); }
 .console { min-height: 100dvh; display: flex; flex-direction: column; background: var(--haze); position: relative; }
 .topbar {
   display: flex; align-items: center; gap: 14px; padding: 8px 16px; flex-wrap: wrap;

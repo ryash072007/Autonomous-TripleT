@@ -4,7 +4,7 @@ import {
 } from "recharts";
 import { AuditRec, Cdm, Dataset, EventFull, ScoreResp, api } from "./api";
 import {
-  AbstainBadge, RecChip, Sigma, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
+  AbstainBadge, RecChip, Sigma, flagSentence, isThresholdFlag, ForecastFlag, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
 } from "./ui";
 
 const Globe = lazy(() => import("./Globe"));
@@ -317,8 +317,8 @@ function Bars({ title, p }: { title: string; p: number[] }) {
   );
 }
 
-export default function EventDetail({ id, dataset, modelName, onBack, highlight, sensNote }: {
-  sensNote?: string | null; id: number | null; dataset: Dataset; modelName: string | null; onBack: () => void; highlight?: "rule" | "forecast" | "flags" | null;
+export default function EventDetail({ id, dataset, modelName, onBack, highlight, sensNote, forecastFlag }: {
+  forecastFlag?: ForecastFlag | null; sensNote?: string | null; id: number | null; dataset: Dataset; modelName: string | null; onBack: () => void; highlight?: "rule" | "forecast" | "flags" | null;
 }) {
   const [ev, setEv] = useState<EventFull | null>(null);
   const [err, setErr] = useState(false);
@@ -360,7 +360,20 @@ export default function EventDetail({ id, dataset, modelName, onBack, highlight,
           {ev.p_tier ? <Bars title="Tier probabilities now" p={ev.p_tier} />
             : <div className="dim small">{ev.flags.includes("rule_only") ? "No tier probabilities: public CDMs lack the model inputs, tiered by the rule only." : "No tier probabilities: this run uses the rule only."}</div>}
           {ev.p_forecast && ev.forecast_tier_at_tca != null
-            ? <Bars title={`Forecast tier at TCA: ${TIER_NAMES[ev.forecast_tier_at_tca]}`} p={ev.p_forecast} />
+            ? <div>
+                {isThresholdFlag(ev.forecast_tier_at_tca, ev.p_forecast) ? (
+                  <>
+                    <div className="dim small"><span className="fc-chip flag-soft">Critical flag</span> Forecast tier at <Term k="TCA" /></div>
+                    <Bars title="" p={ev.p_forecast} />
+                    <div className="small">{flagSentence(ev.p_forecast, forecastFlag)}</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="dim small"><span className={"fc-chip " + (ev.forecast_tier_at_tca === 2 ? "fc-solid" : "")} style={ev.forecast_tier_at_tca === 2 ? undefined : { color: TIER_VAR[ev.forecast_tier_at_tca] }}>{TIER_NAMES[ev.forecast_tier_at_tca]}</span> Forecast tier at <Term k="TCA" /></div>
+                    <Bars title="" p={ev.p_forecast} />
+                  </>
+                )}
+              </div>
             : <div className="dim small">{ev.flags.includes("rule_only") ? "No forecast: public CDMs lack the model inputs." : <>No forecast of the tier at <Term k="TCA" /> yet.</>}</div>}
         </div>
         <div className="dim small">Source: {modelName ?? "unknown model"}. Output of a tool; the analyst decides.</div>

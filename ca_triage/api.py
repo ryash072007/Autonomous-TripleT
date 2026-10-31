@@ -87,6 +87,7 @@ def summary(dataset: Literal["test", "live"] = "test"):
         "message": d.get("message"),
         "snapshot": d.get("snapshot"),
         "sensitivity_note": d.get("sensitivity_note"),
+        "forecast_flag": _forecast_flag(),
     }
 
 
@@ -124,6 +125,20 @@ def event(event_id: int, dataset: Literal["test", "live"] = "test"):
 _brief_cache: dict[tuple, dict] = {}
 
 
+def _forecast_flag() -> dict | None:
+    """Task B alert threshold and its CV Critical recall, read from the evidence file (never hard-coded)."""
+    p = ART / "evidence" / "task_b_cv.json"
+    if not p.exists():
+        return None
+    try:
+        d = json.loads(p.read_text(encoding="utf-8"))
+        return {"t_critical": d["thresholds"]["t_critical"],
+                "critical_recall_cv": d["model"]["folds"]["critical_recall"]["mean"],
+                "source": "artifacts/evidence/task_b_cv.json"}
+    except (KeyError, json.JSONDecodeError):
+        return None
+
+
 @app.get("/api/events/{event_id}/brief")
 def event_brief(event_id: int, dataset: Literal["test", "live"] = "test"):
     from ca_triage.brief import make_brief  # lazy: keeps startup light
@@ -134,7 +149,7 @@ def event_brief(event_id: int, dataset: Literal["test", "live"] = "test"):
         raise HTTPException(404, "event not found")
     key = (dataset, event_id, (d.get("model") or {}).get("version"), bool(os.environ.get("ANTHROPIC_API_KEY")))
     if key not in _brief_cache:
-        _brief_cache[key] = make_brief(e)
+        _brief_cache[key] = make_brief(e, forecast_flag=_forecast_flag())
     return _brief_cache[key]
 
 

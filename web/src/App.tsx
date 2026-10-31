@@ -202,9 +202,9 @@ export default function App() {
             <Queue events={shown} message={message} loading={loading} selected={selected}
               onSelect={(id) => { setSelected(id); setMobileDetail(true); }}
               tierFilter={tierFilter} setTierFilter={setTierFilter} typeFilter={typeFilter} setTypeFilter={setTypeFilter}
-              types={summary?.object_types ?? []} counts={summary?.counts ?? {}} />
+              types={summary?.object_types ?? []} forecastFlag={summary?.forecast_flag} counts={summary?.counts ?? {}} />
             <EventDetail id={dataset === "live" && events.length === 0 ? null : selected} dataset={dataset}
-              modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} highlight={demo ? demoHighlight(demo.items[demoStep]?.key) : null} onBack={() => setMobileDetail(false)} />
+              modelName={summary?.model?.name ?? null} sensNote={summary?.sensitivity_note} forecastFlag={summary?.forecast_flag} highlight={demo ? demoHighlight(demo.items[demoStep]?.key) : null} onBack={() => setMobileDetail(false)} />
           </>
         )}
         {view === "next24" && (

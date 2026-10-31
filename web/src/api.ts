@@ -75,6 +75,7 @@ export interface Summary {
   object_types: string[];
   message: string | null;
   sensitivity_note?: string | null;
+  forecast_flag?: { t_critical: number; critical_recall_cv: number; source: string } | null;
   snapshot?: { source: string; latest_cdm_created: string | null; n_cdms: number } | null;
 }
 

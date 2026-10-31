@@ -8,9 +8,9 @@ from .llm import call_llm, llm_available
 from .template import template_brief
 
 
-def make_brief(event: dict, llm_fn: Callable[[dict], str] | None = None) -> dict:
+def make_brief(event: dict, llm_fn: Callable[[dict], str] | None = None, forecast_flag: dict | None = None) -> dict:
     """Brief for one event. llm_fn is injectable for tests; by default the LLM is used only if a key is set."""
-    facts = build_facts(event)
+    facts = build_facts(event, forecast_flag)
     fn = llm_fn
     if fn is None and llm_available():
         fn = call_llm

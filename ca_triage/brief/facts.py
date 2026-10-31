@@ -9,7 +9,7 @@ TIERS = ["Safe", "Elevated", "Critical"]
 THRESHOLD_NUMBERS = [1.0, 5.0, 1000.0, 5000.0, 1e-4, 1e-6, -4.0, -6.0, 4.0, 6.0, 2.0, 24.0]
 
 
-def build_facts(e: dict) -> dict:
+def build_facts(e: dict, forecast_flag: dict | None = None) -> dict:
     L = e["latest"]
     cdms = e.get("cdms") or []
     f: dict = {
@@ -33,7 +33,15 @@ def build_facts(e: dict) -> dict:
     if e.get("forecast_tier_at_tca") is not None:
         f["forecast_tier_at_tca"] = TIERS[e["forecast_tier_at_tca"]]
     if e.get("p_forecast"):
-        f["p_forecast_pct"] = {TIERS[i]: round(p * 100) for i, p in enumerate(e["p_forecast"])}
+        pf = e["p_forecast"]
+        f["p_forecast_pct"] = {TIERS[i]: round(p * 100) for i, p in enumerate(pf)}
+        # A threshold flag: Critical is forecast only because P(Critical) passed the alert threshold, not because it is the most likely tier.
+        if e.get("forecast_tier_at_tca") == 2 and pf.index(max(pf)) != 2:
+            f["forecast_is_threshold_flag"] = True
+            f["p_forecast_critical_pct1"] = round(pf[2] * 100, 1)
+            if forecast_flag:
+                f["forecast_threshold_pct"] = round(forecast_flag["t_critical"] * 100, 1)
+                f["forecast_threshold_recall_pct"] = round(forecast_flag["critical_recall_cv"] * 100)
     if e.get("recommendation"):
         f["recommendation"] = e["recommendation"]
     if len(cdms) >= 2:
