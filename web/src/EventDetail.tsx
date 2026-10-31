@@ -1,11 +1,61 @@
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import {
   CartesianGrid, Legend, Line, LineChart, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
 import { AuditRec, Cdm, Dataset, EventFull, ScoreResp, api } from "./api";
 import {
-  AbstainBadge, Sigma, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
+  AbstainBadge, RecChip, Sigma, TIER_NAMES, TIER_VAR, Term, TierBadge, fmtMiss, fmtPc, fmtTtca,
 } from "./ui";
+
+const Globe = lazy(() => import("./Globe"));
+
+function EventGlobe({ ev }: { ev: EventFull }) {
+  const od = ev.orbit_display;
+  return (
+    <div>
+      <h4>Orbits at the conjunction (display only)</h4>
+      {!od ? <div className="dim small">pending data: orbit_display is not in the scored file yet.</div> : (
+        <>
+          <Suspense fallback={<div className="empty">Loading globe...</div>}>
+            <Globe kind="event" id={ev.event_id} t={od.t} c={od.c} tier={ev.tier} />
+          </Suspense>
+          <div className="legend small"><i style={{ background: "#5B5F8F" }} /> our satellite, {od.t.h_per_km.toFixed(0)} to {od.t.h_apo_km.toFixed(0)} km, {od.t.inc_deg.toFixed(1)} deg &nbsp; <i style={{ background: "#5A3A33" }} /> other object, {od.c.h_per_km.toFixed(0)} to {od.c.h_apo_km.toFixed(0)} km, {od.c.inc_deg.toFixed(1)} deg</div>
+          <p className="dim small">Orbit altitude and inclination from the CDM (display only, not a model input). The orbit plane orientation (RAAN) is not in the data, so both orbits are drawn through the conjunction point. Orbits drawn as circles at mean altitude; altitude exaggerated 3x; drag to rotate.</p>
+        </>
+      )}
+    </div>
+  );
+}
+
+function CostSlider({ ev }: { ev: EventFull }) {
+  const [dec, setDec] = useState<{ ratios: number[]; default_ratio: number; rules: string } | null>(null);
+  const [ratio, setRatio] = useState(100);
+  useEffect(() => {
+    api.evidence().then((r) => {
+      const d = r.files.find((f) => f.name === "decision")?.content as typeof dec;
+      if (d) { setDec(d); setRatio(d.default_ratio); }
+    }).catch(() => {});
+  }, []);
+  const p = ev.p_forecast?.[2] ?? ev.p_tier?.[2];
+  if (!dec) return <div><h4>Cost of acting</h4><div className="dim small">pending data: artifacts/evidence/decision.json not written yet.</div></div>;
+  if (p == null) return <div><h4>Cost of acting</h4><div className="dim small">This event has no model probability (rule only), so there is no expected cost.</div></div>;
+  const ratios = dec.ratios, idx = Math.max(0, ratios.indexOf(ratio));
+  const miss = p * ratio;
+  return (
+    <div>
+      <h4>Cost of acting (decision rule from decision.json)</h4>
+      <label className="whatif">
+        <span>Cost of a missed collision / cost of a manoeuvre: <b className="mono">{ratio}x</b></span>
+        <input type="range" min={0} max={ratios.length - 1} step={1} value={idx} onChange={(e) => setRatio(ratios[+e.target.value])} />
+      </label>
+      <p>
+        P(Critical) {(p * 100).toFixed(1)}% x {ratio} = <b className="mono">{miss.toFixed(2)}</b> manoeuvre-costs of expected loss if you do nothing, against 1.00 for a manoeuvre:
+        {" "}<b>{miss >= 1 ? "manoeuvring is cheaper in expectation" : "waiting is cheaper in expectation"}</b>.
+      </p>
+      <div className="dim small">Rule: {dec.rules} Source: artifacts/evidence/decision.json</div>
+    </div>
+  );
+}
 
 const BAND = { crit: "#B0302A", elev: "#C77A12", safe: "#2F7A68" };
 
@@ -278,10 +328,11 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
         <div className="head-top">
           <TierBadge tier={ev.tier} big />
           {uncertain && <AbstainBadge title={`Tier set: ${ev.tier_set.map((t) => TIER_NAMES[t]).join(" / ")}`} />}
-          {ev.recommendation && <span className="rec">Recommendation: <b>{ev.recommendation}</b></span>}
+          {ev.recommendation && <span className="rec">Recommendation: <RecChip rec={ev.recommendation} reason={ev.recommendation_reason} /></span>}
           <span className="mono dim">event #{ev.event_id} · {ev.c_object_type.toLowerCase()} · {ev.n_cdms} <Term k="CDM">CDMs</Term></span>
         </div>
         <p className="rule"><span className="dim">Rule that fired:</span> {ev.rule}</p>
+        {ev.recommendation_reason && <p className="small dim">Why {ev.recommendation}: {ev.recommendation_reason}</p>}
         {ev.flags.length > 0 && <p>{ev.flags.map((f) => <span key={f} className="flag">{f.replace(/_/g, " ")}</span>)}</p>}
         <div className="kv mono">
           <span><Term k="TCA" /> {fmtTtca(L.time_to_tca)}</span>
@@ -300,8 +351,10 @@ export default function EventDetail({ id, dataset, modelName, onBack }: {
         <div className="dim small">Source: {modelName ?? "unknown model"}. Output of a tool; the analyst decides.</div>
       </div>
       <div className="card"><Brief id={ev.event_id} dataset={dataset} /></div>
+      <div className="card"><EventGlobe ev={ev} /></div>
       <div className="card"><Timeline ev={{ ...ev, cdms }} /></div>
       <div className="card"><Geometry ev={ev} /></div>
+      <div className="card"><CostSlider ev={ev} /></div>
       <div className="card"><WhatIf ev={ev} /></div>
       <div className="card"><Actions ev={ev} dataset={dataset} /></div>
     </section>

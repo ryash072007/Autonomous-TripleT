@@ -75,3 +75,13 @@ export function Sigma({ v }: { v: number }) {
     </span>
   );
 }
+
+const REC_CLASS: Record<string, string> = { Act: "rec-act", Wait: "rec-wait", Dismiss: "rec-dismiss", "Analyst decides": "rec-ad" };
+export function RecChip({ rec, reason }: { rec?: string | null; reason?: string | null }) {
+  if (!rec) return null;
+  return (
+    <span className={"rec-chip " + (REC_CLASS[rec] ?? "")} title={reason ?? undefined}>
+      {rec}
+    </span>
+  );
+}

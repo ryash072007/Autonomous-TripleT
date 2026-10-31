@@ -1,0 +1,314 @@
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { feature } from "topojson-client";
+import landTopo from "world-atlas/land-110m.json";
+import type { EventLight } from "./api";
+
+const RE = 6371;
+const EXAG = 3; // altitude exaggeration so shells are visible
+const radius = (altKm: number) => 1 + (EXAG * altKm) / RE;
+const TIER_HEX = ["#2F7A68", "#C77A12", "#B0302A"];
+
+export interface Orb { sma_km: number; ecc: number; inc_deg: number; h_apo_km?: number; h_per_km?: number }
+
+type Ring = number[][];
+let landCache: Float32Array | null = null;
+
+function inRing(x: number, y: number, ring: Ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+/** Sample a lat/lon grid and keep points on land (world-atlas 110m). Returns unit-sphere xyz. */
+function landPoints(): Float32Array {
+  if (landCache) return landCache;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const topo = landTopo as any;
+  const fc = feature(topo, topo.objects.land) as unknown as { features?: any[]; geometry?: any };
+  const geoms = fc.features ? fc.features.map((f) => f.geometry) : [fc.geometry];
+  const polys: { rings: Ring[]; box: number[] }[] = [];
+  for (const g of geoms) {
+    const ps: Ring[][] = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+    for (const rings of ps) {
+      let x0 = 180, x1 = -180, y0 = 90, y1 = -90;
+      for (const [x, y] of rings[0]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      polys.push({ rings, box: [x0, y0, x1, y1] });
+    }
+  }
+  const out: number[] = [];
+  const step = 2.4;
+  for (let lat = -88; lat <= 88; lat += step) {
+    const dl = step / Math.max(0.15, Math.cos((lat * Math.PI) / 180));
+    for (let lon = -180; lon < 180; lon += dl) {
+      let land = false;
+      for (const p of polys) {
+        const [x0, y0, x1, y1] = p.box;
+        if (lon < x0 || lon > x1 || lat < y0 || lat > y1) continue;
+        if (inRing(lon, lat, p.rings[0]) && !p.rings.slice(1).some((h) => inRing(lon, lat, h))) { land = true; break; }
+      }
+      if (land) {
+        const a = (lat * Math.PI) / 180, b = (lon * Math.PI) / 180;
+        out.push(Math.cos(a) * Math.sin(b), Math.sin(a), Math.cos(a) * Math.cos(b));
+      }
+    }
+  }
+  landCache = new Float32Array(out);
+  return landCache;
+}
+
+function dotTexture() {
+  const c = document.createElement("canvas");
+  c.width = c.height = 32;
+  const g = c.getContext("2d")!;
+  g.beginPath(); g.arc(16, 16, 14, 0, 7); g.fillStyle = "#fff"; g.fill();
+  return new THREE.CanvasTexture(c);
+}
+
+function hash(n: number) {
+  let x = (n + 1) * 2654435761;
+  x ^= x >>> 15; x = Math.imul(x, 2246822519); x ^= x >>> 13;
+  return ((x >>> 0) % 100000) / 100000;
+}
+
+/** Unit vectors p (conjunction point) and the in-plane orbit ring through p for inclination inc, branch sign. */
+function ringThrough(p: THREE.Vector3, incDeg: number, sign: 1 | -1, r: number) {
+  const lat = Math.asin(p.y);
+  const inc = Math.min(incDeg, 180 - incDeg);
+  const cosI = Math.cos((incDeg * Math.PI) / 180);
+  const north = new THREE.Vector3(0, 1, 0);
+  const u = north.clone().sub(p.clone().multiplyScalar(p.y)).normalize(); // north tangent at p
+  const w = new THREE.Vector3().crossVectors(p, u); // east tangent
+  const cl = Math.max(Math.cos(lat), 1e-3);
+  const a = Math.max(-1, Math.min(1, cosI / cl));
+  const b = sign * Math.sqrt(1 - a * a);
+  void inc;
+  const n = u.clone().multiplyScalar(a).add(w.clone().multiplyScalar(b)).normalize();
+  const q = new THREE.Vector3().crossVectors(n, p).normalize();
+  const pts: THREE.Vector3[] = [];
+  for (let i = 0; i <= 180; i++) {
+    const t = (i / 180) * Math.PI * 2;
+    pts.push(p.clone().multiplyScalar(Math.cos(t)).add(q.clone().multiplyScalar(Math.sin(t))).multiplyScalar(r));
+  }
+  return pts;
+}
+
+type Props =
+  | { kind: "event"; id: number; t: Orb; c: Orb; tier: number; height?: number }
+  | { kind: "fleet"; events: EventLight[]; onPick: (id: number) => void; height?: number };
+
+export function orbAlt(o: { h_apo_km?: number; h_per_km?: number; sma_km: number }) {
+  return o.h_apo_km != null && o.h_per_km != null ? (o.h_apo_km + o.h_per_km) / 2 : o.sma_km - RE;
+}
+
+export default function Globe(props: Props) {
+  const host = useRef<HTMLDivElement>(null);
+  const [tip, setTip] = useState<{ id: number; tier: number; alt: number; x: number; y: number } | null>(null);
+  const [fail, setFail] = useState(false);
+  const propsRef = useRef(props);
+  propsRef.current = props;
+  const key = props.kind === "event" ? `e${props.id}` : `f${props.events.length}`;
+
+  useEffect(() => {
+    const el = host.current;
+    if (!el) return;
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    } catch {
+      setFail(true);
+      return;
+    }
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+    el.appendChild(renderer.domElement);
+    renderer.domElement.style.display = "block";
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+    camera.position.set(0, 0, props.kind === "event" ? 4.4 : 5.8);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.25));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.35);
+    sun.position.set(-3, 2, 4);
+    scene.add(sun);
+
+    const root = new THREE.Group();
+    scene.add(root);
+    const earth = new THREE.Group();
+    root.add(earth);
+    earth.add(new THREE.Mesh(new THREE.SphereGeometry(0.995, 64, 48), new THREE.MeshBasicMaterial({ color: 0xf8e4cf })));
+    const tex = dotTexture();
+    const lp = new THREE.BufferGeometry();
+    lp.setAttribute("position", new THREE.BufferAttribute(landPoints(), 3));
+    earth.add(new THREE.Points(lp, new THREE.PointsMaterial({ color: 0xc08d78, size: 3.6, sizeAttenuation: false, map: tex, alphaTest: 0.4, transparent: true })));
+    const atmo = new THREE.Mesh(
+      new THREE.SphereGeometry(1.16, 48, 32),
+      new THREE.ShaderMaterial({
+        transparent: true, side: THREE.BackSide, depthWrite: false, blending: THREE.AdditiveBlending,
+        vertexShader: "varying vec3 n; void main(){ n = normalize(normalMatrix*normal); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
+        fragmentShader: "varying vec3 n; void main(){ float i = pow(0.72 - dot(n, vec3(0.0,0.0,1.0)), 3.0); gl_FragColor = vec4(1.0,0.74,0.55,1.0)*i*0.45; }",
+      }),
+    );
+    scene.add(atmo);
+
+    const disposables: { dispose(): void }[] = [tex, lp];
+    let pulse: THREE.Mesh | null = null;
+    let pulseRing: THREE.Mesh | null = null;
+    let fleetPts: THREE.Points[] = [];
+    let fleetIds: number[][] = [];
+    const lines: THREE.Object3D[] = [];
+
+    if (props.kind === "event") {
+      earth.rotation.y = hash(props.id) * Math.PI * 2;
+      const incT = props.t.inc_deg, incC = props.c.inc_deg;
+      const lat = (0.35 * Math.min(Math.min(incT, 180 - incT), Math.min(incC, 180 - incC)) * Math.PI) / 180;
+      const p = new THREE.Vector3(0, Math.sin(lat), Math.cos(lat));
+      const mk = (o: Orb, sign: 1 | -1, color: number) => {
+        const g = new THREE.BufferGeometry().setFromPoints(ringThrough(p, o.inc_deg, sign, radius(orbAlt(o))));
+        const m = new THREE.LineBasicMaterial({ color });
+        const l = new THREE.Line(g, m);
+        root.add(l);
+        disposables.push(g, m);
+        lines.push(l);
+      };
+      mk(props.t, 1, 0x5b5f8f);
+      mk(props.c, -1, 0x5a3a33);
+      const col = new THREE.Color(TIER_HEX[props.tier]);
+      const rp = radius((orbAlt(props.t) + orbAlt(props.c)) / 2);
+      const sg = new THREE.SphereGeometry(0.03, 16, 12);
+      const sm = new THREE.MeshBasicMaterial({ color: col });
+      pulse = new THREE.Mesh(sg, sm);
+      pulse.position.copy(p).multiplyScalar(rp);
+      root.add(pulse);
+      const rg = new THREE.RingGeometry(0.04, 0.05, 32);
+      const rm = new THREE.MeshBasicMaterial({ color: col, transparent: true, side: THREE.DoubleSide });
+      pulseRing = new THREE.Mesh(rg, rm);
+      pulseRing.position.copy(pulse.position);
+      root.add(pulseRing);
+      disposables.push(sg, sm, rg, rm);
+      root.rotation.x = 0.25;
+    } else {
+      root.rotation.x = 0.3;
+      const groups: { pos: number[]; ids: number[]; color: THREE.Color; size: number }[] = [
+        { pos: [], ids: [], color: new THREE.Color(TIER_HEX[0]), size: 3.2 },
+        { pos: [], ids: [], color: new THREE.Color(TIER_HEX[1]), size: 3.8 },
+        { pos: [], ids: [], color: new THREE.Color(TIER_HEX[2]), size: 6 },
+      ];
+      for (const e of props.events) {
+        const od = (e as unknown as { orbit_display?: { t: Orb } }).orbit_display;
+        if (!od) continue;
+        const inc = Math.min(od.t.inc_deg, 180 - od.t.inc_deg);
+        const lat = Math.sin(hash(e.event_id + 11) * Math.PI * 2) * inc * (Math.PI / 180);
+        const lon = hash(e.event_id) * Math.PI * 2;
+        const r = radius(orbAlt(od.t));
+        const g = groups[e.tier];
+        g.pos.push(r * Math.cos(lat) * Math.sin(lon), r * Math.sin(lat), r * Math.cos(lat) * Math.cos(lon));
+        g.ids.push(e.event_id);
+      }
+      for (const g of groups) {
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(g.pos), 3));
+        const m = new THREE.PointsMaterial({ color: g.color, size: g.size, sizeAttenuation: false, map: tex, alphaTest: 0.4, transparent: true });
+        const pts = new THREE.Points(geo, m);
+        root.add(pts);
+        fleetPts.push(pts);
+        fleetIds.push(g.ids);
+        disposables.push(geo, m);
+      }
+    }
+
+    const resize = () => {
+      const w = el.clientWidth, h = el.clientHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(el);
+
+    let dragging = false, moved = 0, lx = 0, ly = 0, hover: number | null = null;
+    const ray = new THREE.Raycaster();
+    ray.params.Points = { threshold: 0.025 };
+    const canvas = renderer.domElement;
+    canvas.style.touchAction = "none";
+    canvas.style.cursor = "grab";
+    const down = (e: PointerEvent) => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing"; };
+    const move = (e: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      if (dragging) {
+        const dx = e.clientX - lx, dy = e.clientY - ly;
+        moved += Math.abs(dx) + Math.abs(dy);
+        root.rotation.y += dx * 0.006;
+        root.rotation.x = Math.max(-1.2, Math.min(1.2, root.rotation.x + dy * 0.006));
+        lx = e.clientX; ly = e.clientY;
+        setTip(null);
+        return;
+      }
+      if (!fleetPts.length) return;
+      ray.setFromCamera(new THREE.Vector2(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1), camera);
+      let best: { id: number; tier: number; dist: number; alt: number } | null = null;
+      fleetPts.forEach((pts, ti) => {
+        for (const h of ray.intersectObject(pts)) {
+          // ignore points on the far side of the Earth
+          if (h.point.z < 0.15) continue;
+          if (!best || h.distance < best.dist) best = { id: fleetIds[ti][h.index ?? 0], tier: ti, dist: h.distance, alt: (h.point.length() - 1) * RE / EXAG };
+        }
+      });
+      hover = best ? (best as { id: number }).id : null;
+      canvas.style.cursor = hover != null ? "pointer" : "grab";
+      setTip(best ? { id: (best as { id: number }).id, tier: (best as { tier: number }).tier, alt: (best as { alt: number }).alt, x: e.clientX - rect.left, y: e.clientY - rect.top } : null);
+    };
+    const up = () => {
+      dragging = false;
+      canvas.style.cursor = "grab";
+      const pr = propsRef.current;
+      if (moved < 5 && hover != null && pr.kind === "fleet") pr.onPick(hover);
+    };
+    canvas.addEventListener("pointerdown", down);
+    canvas.addEventListener("pointermove", move);
+    canvas.addEventListener("pointerup", up);
+    canvas.addEventListener("pointerleave", () => setTip(null));
+
+    let raf = 0;
+    const t0 = performance.now();
+    const loop = () => {
+      raf = requestAnimationFrame(loop);
+      const t = (performance.now() - t0) / 1000;
+      if (!reduce && !dragging) root.rotation.y += 0.0016;
+      if (pulse && pulseRing) {
+        const k = reduce ? 1 : 1 + 0.35 * Math.sin(t * 3);
+        pulse.scale.setScalar(k);
+        const ph = reduce ? 0.5 : (t % 1.6) / 1.6;
+        pulseRing.scale.setScalar(1 + ph * 3);
+        (pulseRing.material as THREE.MeshBasicMaterial).opacity = 0.8 * (1 - ph);
+        pulseRing.lookAt(camera.position.clone().applyMatrix4(root.matrixWorld.clone().invert()));
+      }
+      renderer.render(scene, camera);
+    };
+    loop();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      disposables.forEach((d) => d.dispose());
+      renderer.dispose();
+      el.removeChild(renderer.domElement);
+    };
+  }, [key]);
+
+  if (fail) return <div className="empty">WebGL is not available in this browser.</div>;
+  return (
+    <div className="globe-wrap" style={{ height: props.height ?? 340 }}>
+      <div ref={host} className="globe" />
+      {tip && (
+        <div className="sky-tip" style={{ position: "absolute", left: Math.min(tip.x + 10, 220), top: tip.y + 10 }}>
+          <b>{["Safe", "Elevated", "Critical"][tip.tier]}</b> · event {tip.id}
+          <div className="mono dim">altitude {tip.alt.toFixed(0)} km</div>
+        </div>
+      )}
+    </div>
+  );
+}

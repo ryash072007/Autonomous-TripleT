@@ -245,3 +245,16 @@ h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .bar-row.wide { grid-template-columns: 170px 1fr 50px; }
 details.raw { margin: 18px 0; }
 details.raw summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+
+.globe-wrap { position: relative; width: 100%; border-radius: 10px; overflow: hidden; background: radial-gradient(circle at 50% 45%, var(--sky-mid), var(--sky-top)); }
+.globe { position: absolute; inset: 0; }
+.legend i { display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: 4px; border-radius: 2px; }
+.rec-chip { display: inline-block; border-radius: 4px; padding: 0 7px; font-size: 11px; font-weight: 700; border: 1px solid currentColor; cursor: help; }
+.rec-act { color: var(--critical); } .rec-wait { color: var(--elevated); } .rec-dismiss { color: var(--safe); } .rec-ad { color: var(--abstain); }
+
+.insights { max-width: 1280px; }
+.ins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 12px; }
+.ins-grid .card { margin: 0; }
+.take { font-size: 14px; margin: 0 0 8px; }
+.card.ins h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 6px; }
+@media (max-width: 520px) { .ins-grid { grid-template-columns: 1fr; } }

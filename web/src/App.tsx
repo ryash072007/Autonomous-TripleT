@@ -5,16 +5,17 @@ import Queue from "./Queue";
 import EventDetail from "./EventDetail";
 import { DemoBar, Next24 } from "./Panels";
 import Results from "./Results";
+import Insights from "./Insights";
 import { RidgeStrip } from "./Scene";
 import { TIER_NAMES, TierIcon, fmtClock } from "./ui";
 
-type View = "landing" | "queue" | "next24" | "evidence";
+type View = "landing" | "queue" | "next24" | "insights" | "evidence";
 const SPEEDS = [0.1, 0.25, 0.5, 1];
 
 export default function App() {
   const [view, setView] = useState<View>(() => {
     const h = window.location.hash.slice(1).split("&")[0];
-    return h === "queue" || h === "next24" || h === "evidence" || h === "results" ? (h === "results" ? "evidence" : h) : "landing";
+    return h === "queue" || h === "next24" || h === "insights" || h === "evidence" || h === "results" ? (h === "results" ? "evidence" : h) : "landing";
   });
   const [dataset, setDataset] = useState<Dataset>("test");
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -133,7 +134,7 @@ export default function App() {
           <button className={dataset === "live" ? "on" : ""} onClick={() => setDataset("live")}>Live</button>
         </div>
         <nav className="tabs">
-          {([["queue", "Queue"], ["next24", "Next 24 h"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
+          {([["queue", "Queue"], ["next24", "Next 24 h"], ["insights", "Insights"], ["evidence", "Results"]] as [View, string][]).map(([v, l]) => (
             <button key={v} className={view === v ? "on" : ""} onClick={() => setView(v)}>{l}</button>
           ))}
         </nav>
@@ -184,6 +185,7 @@ export default function App() {
         {view === "next24" && (
           <Next24 win={win} clockLabel={clockLabel} onOpen={(id) => open(id)} />
         )}
+        {view === "insights" && <Insights events={events} onOpen={(id) => open(id)} />}
         {view === "evidence" && (
           <Results testIds={new Set(events.map((e) => e.event_id))} onOpen={(id) => open(id)} />
         )}

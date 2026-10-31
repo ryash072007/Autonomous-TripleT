@@ -16,7 +16,7 @@ from ca_triage import storage
 from ca_triage.tiers import TIER_NAMES, Tier, rule_fired, tier as tier_fn
 
 ROOT = Path(__file__).resolve().parents[1]
-ART = ROOT / "artifacts"
+ART = Path(os.environ.get("ORBITGUARD_ARTIFACTS", ROOT / "artifacts"))
 DIST = ROOT / "web" / "dist"
 LIVE_MSG = "Live mode not yet available"
 
@@ -164,6 +164,14 @@ def evidence():
         except json.JSONDecodeError:
             continue
     return {"files": out}
+
+
+@app.get("/api/insights")
+def insights():
+    p = ART / "evidence" / "insights.json"
+    if not p.exists():
+        return {"available": False, "message": "pending data: artifacts/evidence/insights.json not written yet"}
+    return {"available": True, "file": "artifacts/evidence/insights.json", "content": json.loads(p.read_text(encoding="utf-8"))}
 
 
 class AuditIn(BaseModel):

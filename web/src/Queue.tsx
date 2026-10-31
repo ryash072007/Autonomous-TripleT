@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { EventLight } from "./api";
-import { AbstainBadge, sigmaUnusable, TIER_NAMES, TIER_VAR, TierBadge, Term, fmtMiss, fmtPc, fmtTtca } from "./ui";
+import { AbstainBadge, RecChip, sigmaUnusable, TIER_NAMES, TIER_VAR, TierBadge, Term, fmtMiss, fmtPc, fmtTtca } from "./ui";
 
 interface Props {
   events: EventLight[];
@@ -86,7 +86,8 @@ export default function Queue(p: Props) {
             <span className="r1">
               <TierBadge tier={e.tier} />
               <span className="mono id">#{e.event_id}</span>
-              {(e.abstain || e.tier_set.length > 1) && <AbstainBadge />}
+              {(e.abstain || e.tier_set.length > 1) && e.recommendation !== "Analyst decides" && <AbstainBadge />}
+              <RecChip rec={e.recommendation} reason={e.recommendation_reason} />
               {sigmaUnusable(e.latest.c_sigma_r) && (
                 <span className="chip-warn" title="Radial sigma is a placeholder: no usable covariance">no covariance</span>
               )}

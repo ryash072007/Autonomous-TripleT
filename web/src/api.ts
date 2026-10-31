@@ -28,6 +28,8 @@ export interface Cdm {
   t_sigma_r: number;
 }
 
+export interface OrbitD { sma_km: number; ecc: number; inc_deg: number; h_apo_km: number; h_per_km: number }
+
 export interface EventLight {
   event_id: number;
   c_object_type: string;
@@ -42,6 +44,8 @@ export interface EventLight {
   forecast_tier_at_tca: number | null;
   p_forecast: number[] | null;
   recommendation: string | null;
+  recommendation_reason?: string | null;
+  orbit_display?: { t: OrbitD; c: OrbitD } | null;
   flags: string[];
   remaining_days?: number;
   dangerous?: boolean;
@@ -131,6 +135,7 @@ export const api = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }),
+  insights: () => req<{ available: boolean; message?: string; file?: string; content?: Record<string, unknown> }>("/api/insights"),
   evidence: () => req<EvidenceResp>("/api/evidence"),
   demo: () => req<DemoResp>("/api/demo"),
   audit: (event_id?: number) =>
