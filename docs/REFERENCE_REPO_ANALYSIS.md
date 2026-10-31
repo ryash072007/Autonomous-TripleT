@@ -40,7 +40,8 @@ target, a narrower allowed feature set, and a lot of IBM-specific work that earn
   value here.
 - CelesTrak catalogue screening, burn planning, Bayesian optimisation, debris consequence model: impressive, but
   outside the allowed data and hard to finish in one day. At most a single "next step" line in the README.
-- The React frontend: Streamlit gets us a working, testable dashboard in hours.
+- OrbitGuard's React console wholesale: we reuse the stack (React + Vite) but rebuild the UI around the new
+  design (docs/DESIGN.md) and the tier workflow.
 
 ## Differences that change the approach
 

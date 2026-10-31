@@ -1,4 +1,4 @@
-# Autonomous-TripleT: conjunction triage for satellite collision avoidance
+# OrbitGuard: collision triage for satellite operators
 
 Autonomous SG 2026 (Acacia Hackathon Society x NUS Product Club) · AI & Aerospace track · **Airbus Challenge #1**
 
@@ -48,7 +48,7 @@ From the problem statement (NASA/SP-20205011318, ESA Space Debris Office practic
 python -m pip install -e ".[dev]"
 python scripts/fetch_data.py
 python -m pytest -q
-streamlit run app/dashboard.py
+python scripts/serve.py   # http://localhost:8000
 ```
 
 ## Data
