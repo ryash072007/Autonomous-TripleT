@@ -214,4 +214,4 @@ docs/        DESIGN, PITCH, CONTRACT, EXPERIMENTS, REFERENCE_REPO_ANALYSIS
 
 ## Team
 
-Team TripleT.
+Team TripleT: Raj Yash, Bhavya Puri, Aslan Shaukat Vaida, Ramith Vaid.
