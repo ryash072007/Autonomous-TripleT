@@ -220,12 +220,31 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
             chunk_for[d], score_for[d] = C.chunks[i], s
     else:
         allowed = None
-        if cfg.get("model"):
-            allowed = C.docs_naming_model(cfg["model"], cfg.get("make"))
-            if not allowed and p["intent"] == "applicability":
-                return refusal("OUT_OF_CORPUS", f"No proposed AD in the corpus names the model {cfg['model']}.",
-                               "Check the model designation, or there may be no NPRM for it in this corpus.", p, t0)
-        ranked, ret_ms = C.search(query, allowed_docs=allowed, k_docs=8 if p["intent"] == "applicability" else k, make=None if allowed else cfg.get("make"))
+        named = C.docs_naming_model(cfg["model"], cfg.get("make")) if cfg.get("model") else []
+        if p["intent"] == "applicability":
+            # Description first: the notice the user describes may NOT name their model (then the right answer is DOES_NOT_APPLY),
+            # so ranking must not be restricted to documents that name the model. Blind-set finding (B2-A04, A06).
+            ranked, ret_ms = C.search(query, k_docs=4, make=cfg.get("make"))
+            if not ranked or ranked[0][1] < T_LOW:
+                ranked, ret_ms = C.search(query, k_docs=4)            # the user's make may differ from the notice's (e.g. Agusta/Leonardo)
+            if named:
+                more, ms2 = C.search(query, allowed_docs=named, k_docs=6)
+                ret_ms += ms2
+                seen = {d for d, _, _ in ranked}
+                ranked = ranked + [x for x in more if x[0] not in seen]
+            ranked = ranked[:8]
+            weak = bool(ranked) and ranked[0][1] < T_LOW and not named
+            if not ranked or (weak and not any(t in set(tokenize(C.chunks[ranked[0][2]]["index"])) for t in rare_query_tokens(C, query))):
+                return refusal("OUT_OF_CORPUS", f"No proposed AD in the corpus names the model {cfg.get('model') or ''} or matches the description.".replace("model  ", "model "),
+                               "Check the model designation, or there may be no NPRM for it in this corpus.", p, t0, ret_ms)
+        else:
+            # no hard model filter for lookups: a question may list several models; BM25 sees the model tokens anyway
+            ranked, ret_ms = C.search(query, k_docs=k, make=cfg.get("make"))
+            if not ranked or ranked[0][1] < T_LOW:
+                r2, ms2 = C.search(query, k_docs=k)
+                ret_ms += ms2
+                if r2 and (not ranked or r2[0][1] > ranked[0][1]):
+                    ranked = r2
         rare = rare_query_tokens(C, query)
         rare_hit = bool(ranked) and any(t in set(tokenize(C.chunks[ranked[0][2]]["index"])) for t in rare)
         if not ranked or (p["intent"] == "lookup" and ranked[0][1] < T_LOW and not rare_hit):
@@ -267,8 +286,14 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
         for d in cand[:k if not anchors else 5]:
             cards.append(make_card(C, d, "lookup", qterms, chunk=chunk_for.get(d), score=score_for.get(d)))
     cards = [c for c in cards if c["quotes"] or c["verdict"]]
+    warnings = []
+    if cfg.get("model") and p["intent"] != "applicability" and cards:
+        named_in_any = any(model_in_text(cfg["model"], (C.rec[c["doc_id"]]["summary"] or "") + " " + (C.rec[c["doc_id"]]["subject"] or "") + " " +
+                                         (C.rec[c["doc_id"]]["text"] or "")[:6000]) for c in cards)
+        if not named_in_any:
+            warnings.append(f"The model '{cfg['model']}' is not named in any of the notices returned; these results may not concern it.")
     if not cards:
         return refusal("INSUFFICIENT_EVIDENCE", "No supporting passage survived verification.", "Rephrase the question.", p, t0, ret_ms)
     return {"type": "answer", "intent": p["intent"], "cards": cards, "refusal": None, "parsed": _public(p),
-            "config_used": p["cfg"], "n_candidates": len(cand),
+            "config_used": p["cfg"], "n_candidates": len(cand), "warnings": warnings,
             "latency_ms": {"retrieval": round(ret_ms, 1), "total": round((time.perf_counter() - t0) * 1000, 1)}}

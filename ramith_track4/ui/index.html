@@ -87,6 +87,7 @@ function render(a){
     d.appendChild(el('b', null, 'Cannot answer · ' + r.code)); d.appendChild(el('div', null, r.message));
     d.appendChild(el('div','mute','To resolve: ' + r.what_would_resolve_it)); box.appendChild(d); return;
   }
+  (a.warnings || []).forEach(w => { const d = el('div','refuse'); d.appendChild(el('b', null, 'Check: ')); d.appendChild(document.createTextNode(w)); box.appendChild(d); });
   a.cards.forEach((c, i) => {
     const d = el('div', 'card'); d.onclick = () => select(c, d);
     d.appendChild(el('h3', null, `${c.title}`));

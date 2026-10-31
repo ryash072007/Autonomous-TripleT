@@ -16,7 +16,8 @@ from build_records import load_docs  # noqa: E402
 from parse_sections import parse_document  # noqa: E402
 
 HEAD = {"User-Agent": "Autonomous-SG-2026-track4 (student hackathon project)"}
-SEED, N = 20261031, 30
+TAG = sys.argv[1] if len(sys.argv) > 1 else ""
+SEED, N = 20261031 + (1000 if TAG else 0), 30
 URL = ("https://www.federalregister.gov/api/v1/documents.json?conditions[agencies][]=federal-aviation-administration"
        "&conditions[type][]=PRORULE&conditions[term]=%22airworthiness+directives%22"
        "&conditions[publication_date][gte]={a}&conditions[publication_date][lte]={b}&per_page=100&page={p}"
@@ -36,6 +37,8 @@ def search(a, b):
 
 def main():
     have = {d["doc_number"] for d in load_docs() if d["doc_number"]}
+    for pf in (ROOT / "eval" / "blind").glob("fresh_docs*.jsonl"):       # never reuse a fresh document from an earlier set
+        have |= {json.loads(l)["doc_number"] for l in open(pf, encoding="utf-8")}
     pool = []
     for a, b in [("2025-01-01", "2025-12-31"), ("2026-10-20", "2026-10-31")]:
         pool += search(a, b)
@@ -61,7 +64,7 @@ def main():
                     "source": "fr_text", "text": text, "sections": parsed["sections"], "is_withdrawal": parsed["is_withdrawal"],
                     "make_norm": "", "models": [], "comments": None, "comments_due": None})
         time.sleep(0.3)
-    p = ROOT / "eval" / "blind" / "fresh_docs.jsonl"
+    p = ROOT / "eval" / "blind" / f"fresh_docs{TAG}.jsonl"
     with open(p, "w", encoding="utf-8", newline="\n") as f:
         for r in out:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

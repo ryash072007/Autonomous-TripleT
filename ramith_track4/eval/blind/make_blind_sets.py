@@ -24,7 +24,8 @@ from build_records import load_records  # noqa: E402
 from revisions import build_graph, latest_status  # noqa: E402
 
 MODEL = "claude-sonnet-5-5"
-SEED = 20261031 + 1
+TAG = sys.argv[2] if len(sys.argv) > 2 else ""
+SEED = 20261031 + 1 + (1000 if TAG else 0)
 RAW = ROOT / "eval" / "blind" / "raw"
 RAW.mkdir(parents=True, exist_ok=True)
 client = anthropic.Anthropic()
@@ -61,7 +62,7 @@ def sha(p):
 
 
 def b1():
-    docs = [json.loads(l) for l in open(ROOT / "eval" / "blind" / "fresh_docs.jsonl", encoding="utf-8")]
+    docs = [json.loads(l) for l in open(ROOT / "eval" / "blind" / f"fresh_docs{TAG}.jsonl", encoding="utf-8")]
     rng = random.Random(SEED)
     targets = (["APPLIES"] * 10 + ["DOES_NOT_APPLY"] * 10 + ["CANNOT_DETERMINE"] * 10)[: len(docs)]
     rng.shuffle(targets)
@@ -76,10 +77,10 @@ def b1():
              'Return JSON: {"feasible": bool, "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, '
              '"gold_verdict": "APPLIES|DOES_NOT_APPLY|CANNOT_DETERMINE", "gold_reason": "<code>", "evidence_quote": "<verbatim sentence from the notice>", "notes": "<one line>"}\n\n'
              f"NOTICE TEXT:\n{d['text'][:32000]}")
-        a = call(f"B1_{d['doc_id']}", u)
-        out.append({"id": f"B1-{len(out)+1:02d}", "doc_id": d["doc_id"], "target": tgt, "annotation": a})
+        a = call(f"B1{TAG}_{d['doc_id']}", u)
+        out.append({"id": f"B1{TAG}-{len(out)+1:02d}", "doc_id": d["doc_id"], "target": tgt, "annotation": a})
         print("B1", d["doc_id"], tgt, "->", (a or {}).get("gold_verdict"), (a or {}).get("gold_reason"), "feasible" if (a or {}).get("feasible") else "INFEASIBLE")
-    p = ROOT / "eval" / "blind" / "blind_B1.jsonl"
+    p = ROOT / "eval" / "blind" / f"blind_B1{TAG}.jsonl"
     p.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in out) + "\n", encoding="utf-8", newline="\n")
     return p
 
@@ -88,6 +89,9 @@ def b2():
     pairs = load_records()
     graph = build_graph([r for r, _ in pairs])
     gold_v1 = {d for l in open(ROOT / "eval" / "testset_v1.jsonl", encoding="utf-8") for d in json.loads(l)["gold_docs"]}
+    for pf in (ROOT / "eval" / "blind").glob("blind_B2*.jsonl"):       # never reuse documents from earlier blind sets
+        if pf.name != f"blind_B2{TAG}.jsonl":
+            gold_v1 |= {d for l in open(pf, encoding="utf-8") for d in json.loads(l).get("gold_docs", [])}
     rng = random.Random(SEED + 7)
 
     def is_latest(r):
@@ -103,9 +107,9 @@ def b2():
              "what it is about (the aircraft/engine type and the problem or action). Do NOT mention its docket number, Federal Register number or AD number. "
              'Return JSON: {"question": "..."}\n\n'
              f"TITLE: {r['subject']}\nSUMMARY: {r['summary']}\n")
-        a_ = call(f"B2_lookup_{r['doc_id']}", u)
+        a_ = call(f"B2{TAG}_lookup_{r['doc_id']}", u)
         if a_:
-            items.append({"id": f"B2-L{len(items)+1:02d}", "category": "lookup", "query": a_["question"], "gold_docs": [r["doc_id"]], "config": None})
+            items.append({"id": f"B2{TAG}-L{len(items)+1:02d}", "category": "lookup", "query": a_["question"], "gold_docs": [r["doc_id"]], "config": None})
     # ---- applicability 10
     app_pool = [(r, a) for r, a in elig[12:] if a["scope"] != "none"][:10]
     tg = ["APPLIES"] * 4 + ["DOES_NOT_APPLY"] * 3 + ["CANNOT_DETERMINE"] * 3
@@ -122,10 +126,10 @@ def b2():
              'Return JSON: {"feasible": bool, "question": "...", "config": {"make":..., "model":..., "cofa_date":..., "serial":..., "part_numbers":[...]}, '
              '"gold_verdict": "...", "gold_reason": "<code>"}\n\n'
              f"TITLE: {r['subject']}\nSUMMARY: {r['summary']}\nAPPLICABILITY PARAGRAPH:\n{app_txt[:3500]}")
-        a_ = call(f"B2_app_{r['doc_id']}", u)
+        a_ = call(f"B2{TAG}_app_{r['doc_id']}", u)
         if a_ and a_.get("feasible"):
             n_app += 1
-            items.append({"id": f"B2-A{n_app:02d}", "category": "applicability", "query": a_["question"], "gold_docs": [r["doc_id"]],
+            items.append({"id": f"B2{TAG}-A{n_app:02d}", "category": "applicability", "query": a_["question"], "gold_docs": [r["doc_id"]],
                           "config": None, "annotator_config": a_["config"], "gold_verdict": a_["gold_verdict"], "gold_reason": a_["gold_reason"], "target": tgt})
     # ---- revision 6
     multi = [k for k, ev in graph.items() if len(ev) >= 2 and not k.startswith(("FAA-2002", "2000", "2001"))]
@@ -143,9 +147,9 @@ def b2():
              "(for example: is it still active, was it revised or withdrawn, which is the latest version, what is the current comment deadline). "
              "You may mention the docket number. Then state the correct answer from the entries.\n"
              'Return JSON: {"question": "...", "gold_status": "<plain-language correct answer>", "gold_latest_doc": "<doc id of the latest entry>", "withdrawn": bool}\n\n' + lines)
-        a_ = call(f"B2_rev_{n}", u)
+        a_ = call(f"B2{TAG}_rev_{n}", u)
         if a_:
-            items.append({"id": f"B2-R{n:02d}", "category": "revision", "query": a_["question"], "gold_docs": [e["doc_id"] for e in evs],
+            items.append({"id": f"B2{TAG}-R{n:02d}", "category": "revision", "query": a_["question"], "gold_docs": [e["doc_id"] for e in evs],
                           "gold_status": a_["gold_status"], "gold_latest_doc": a_.get("gold_latest_doc"), "withdrawn": bool(a_.get("withdrawn")), "config": None})
     # ---- refuse 10
     makes = sorted({r["make_norm"] for r, _ in pairs if r["make_norm"]})
@@ -177,11 +181,11 @@ def b2():
         u = (f"We are testing a question-answering tool over {CORPUS_DESC}. The tool should REFUSE to answer some questions.\n"
              f"TASK: write ONE realistic question that {descr[c]}.{ctx}\n"
              'Return JSON: {"question": "...", "config": {"make": null, "model": null, "cofa_date": null, "serial": null, "part_numbers": []}}')
-        a_ = call(f"B2_refuse_{n}_{c}", u)
+        a_ = call(f"B2{TAG}_refuse_{n}_{c}", u)
         if a_:
-            items.append({"id": f"B2-X{n:02d}", "category": "refuse", "query": a_["question"], "gold_docs": [], "config": None,
+            items.append({"id": f"B2{TAG}-X{n:02d}", "category": "refuse", "query": a_["question"], "gold_docs": [], "config": None,
                           "annotator_config": a_.get("config"), "refusal_category": c})
-    p = ROOT / "eval" / "blind" / "blind_B2.jsonl"
+    p = ROOT / "eval" / "blind" / f"blind_B2{TAG}.jsonl"
     p.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in items) + "\n", encoding="utf-8", newline="\n")
     return p
 

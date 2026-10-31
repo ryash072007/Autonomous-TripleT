@@ -10,10 +10,11 @@ from parse_sections import get_section
 
 GROUP_RE = re.compile(r"(?:(?<=\s)|^)\((\d{1,2})\)\s+(?=[A-Z])")
 # "A330-201, -202, -203, -223, and -243"  /  "737-600, -700, -700C, -800"  /  "747-400 and -8"
+# Blind-set finding: lists can drop a dash mid-way ("-223, 223F, -243"); items after the first only need to start with a digit.
 EXPAND_RE = re.compile(
-    r"\b([A-Z0-9][A-Z0-9]*[A-Z]?\d*)-([A-Z0-9][A-Za-z0-9/]*)((?:\s*,?\s*(?:and\s+|or\s+)?-[A-Z0-9][A-Za-z0-9/]*)+)"
+    r"\b([A-Z0-9][A-Z0-9]*[A-Z]?\d*)-([A-Z0-9][A-Za-z0-9/]*)((?:\s*,?\s*(?:and\s+|or\s+)?-?\s?\d[A-Za-z0-9/]*)+)"
 )
-SUFFIX_RE = re.compile(r"-([A-Z0-9][A-Za-z0-9/]*)")
+SUFFIX_RE = re.compile(r"(?:^|[\s,])(?:(?:and|or)\s+)?-?\s?(\d[A-Za-z0-9/]*)")
 CUTOFF_RE = re.compile(
     r"original (?:airworthiness certificate|export certificate of airworthiness)[^.]{0,200}?"
     r"(on or before|before|on or after|after)\s+([A-Z][a-z]+ \d{1,2}, \d{4})",
@@ -25,6 +26,9 @@ PN_CLAUSE_RE = re.compile(r"(?:part number|P/N)[^.]*?(?:installed|\.)", re.I | r
 PN_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])(?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]{4,}(?![A-Za-z0-9])")
 AD_NUM_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{2}$")
 SERIAL_RANGE_RE = re.compile(r"serial\s+numbers?\s+([A-Z0-9-]+)\s+(?:through|to|-)\s+([A-Z0-9-]+)", re.I)
+SERIAL_LIST_RE = re.compile(
+    r"serial\s+numbers?\s*(?:\(\s*(?:S/Ns?|ESNs?|MSNs?)\s*\))?\s*:?\s*([^;]{3,400}?)(?=,?\s+(?:certificated|certified|with|that|on\s+which|installed)\b|[.;]|$)",
+    re.I | re.S)
 COND_RE = re.compile(
     r"\b(?:with|having|has|equipped|fitted|installed|delivered|manufactured|produced|that\s+(?:were|are|have|has)|"
     r"on\s+which|in\s+which|incorporating|modified|altered|operating|required\s+by|maintained)\b", re.I)
@@ -61,15 +65,29 @@ def model_in_text(model: str, text: str) -> bool:
     u = norm_model(model)
     if not u:
         return False
-    if u in expand_models(text):
-        return True
-    base = u.split("-")[0]
-    # "Model 747 series" names every 747-xxx variant; require a bare base token followed by "series"
-    if "-" in u and re.search(r"(?<![A-Z0-9-])" + re.escape(base) + r"\s+series\b", _clean(text).upper(), re.I):
-        return True
-    chars = [re.escape(c) for c in u if c != "-"]
-    pat = r"(?<![A-Z0-9])" + r"[\s-]*".join(chars) + r"(?![A-Z0-9])"
-    return re.search(pat, _clean(text).upper()) is not None
+    exp = expand_models(text)
+    hay = _clean(text).upper()
+    # Candidates: the full designation, plus its "tail" without a family prefix ("RB211 Trent 772B-60" -> "772B-60"),
+    # because notices list "Trent 768-60, 772-60, and 772B-60" once under a shared prefix.
+    cands = [u]
+    toks = str(model).split()
+    for i in range(1, len(toks)):
+        tail = norm_model(" ".join(toks[i:]))
+        if re.search(r"\d", tail) and len(tail) >= 4:
+            cands.append(tail)
+    for c in cands:
+        if c in exp:
+            return True
+        base = c.split("-")[0]
+        # "Model 747 series" names every 747-xxx variant; require a bare base token followed by "series"
+        if "-" in c and re.search(r"(?<![A-Z0-9-])" + re.escape(base) + r"\s+series\b", hay, re.I):
+            return True
+        chars = [re.escape(ch) for ch in c if ch != "-"]
+        # a longer designation continuing the same name ("BK117" inside "BK 117 D-2", "205A" inside "205A-1") is a different model
+        pat = r"(?<![A-Z0-9])" + r"[\s-]*".join(chars) + r"(?![A-Z0-9])(?!-[A-Z0-9])(?!\s?[A-Z]-\d)"
+        if re.search(pat, hay):
+            return True
+    return False
 
 
 def _span(cs: int, m: re.Match, g: int = 0):
@@ -129,6 +147,23 @@ def extract_applicability(rec: dict) -> dict:
     scrub = re.sub(r"(?:all|any)\s+(?:manufacturer\s+)?serial\s+numbers|model\s+and\s+serial\s+number", "", raw, flags=re.I)
     for m in SERIAL_RANGE_RE.finditer(raw):
         out["serial_ranges"].append({"lo": m.group(1), "hi": m.group(2), "span": list(_span(cs, m))})
+    if not out["serial_ranges"]:
+        # Blind-set finding: lists like "serial numbers (S/Ns) 1002, 1004 through 1234 inclusive, 3001 through 3012 inclusive, and 3016"
+        for m in SERIAL_LIST_RE.finditer(raw):
+            items = [i.strip() for i in re.split(r",\s*(?:and\s+)?|\s+and\s+", m.group(1)) if i.strip()]
+            parsed = []
+            for it in items:
+                r1 = re.fullmatch(r"(?:serial\s+numbers?\s+)?([A-Z0-9-]+)\s+(?:through|to)\s+([A-Z0-9-]+)(?:\s+inclusive)?", it, re.I)
+                r2 = re.fullmatch(r"(?:serial\s+numbers?\s+)?([A-Z0-9][A-Z0-9-]*)", it, re.I)
+                if r1:
+                    parsed.append((r1.group(1), r1.group(2)))
+                elif r2 and re.search(r"\d", r2.group(1)):
+                    parsed.append((r2.group(1), r2.group(1)))
+                else:
+                    parsed = []
+                    break
+            for lo, hi in parsed:
+                out["serial_ranges"].append({"lo": lo, "hi": hi, "span": list(_span(cs, m, 1))})
     # Restraint (audit: serial extraction 3/4 correct): anything beyond a clean range is "unparsed" -> CANNOT_DETERMINE.
     n_serial_mentions = len(re.findall(r"serial\s+numbers?|\bS/N\b|\bMSN\b|\bESN\b", scrub, re.I))
     out["serial_unparsed"] = n_serial_mentions > len(out["serial_ranges"])

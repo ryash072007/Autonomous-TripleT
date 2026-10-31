@@ -15,7 +15,12 @@ ISO_DATE_RE = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 LONG_DATE_RE = re.compile(rf"\b({MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})\b", re.I)
 SERIAL_RE = re.compile(r"\b(?:serial(?:\s+number)?|s/n|msn)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9-]{1,})", re.I)
 PN_RE = re.compile(r"\b(?:part\s+number|p/n)\s*(?:no\.?|#|:)?\s*([A-Z0-9][A-Z0-9./-]{3,})", re.I)
-MODEL_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])((?:[A-Z][A-Za-z]{2,9}\s)?(?:[A-Za-z]{1,4}[-. ]?)?\d{1,4}[A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*)(?![A-Za-z0-9])")
+MODEL_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])((?:[A-Z][A-Za-z]{2,9}\s)?(?:[A-Za-z]{1,4}[-. ]?){0,2}\d{1,4}[A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*(?:\s[A-Z]-\d{1,2})?)(?![A-Za-z0-9])")
+YEAR_CTX_RE = re.compile(
+    r"(?:\b(?:from|in|before|since|dated|issued|during|circa|of|year|early|late|mid|until|prior\s+to)\s+|"
+    r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+(?:\d{1,2},?\s+)?)((?:19|20)\d{2})\b", re.I)
+OWN_CUE_RE = re.compile(r"\b(?:my|our|i\s+(?:operate|have|fly|own)|we\s+(?:operate|have|fly|own)|aircraft\s+is|helicopter\s+is|airplane\s+is|operate|owner\s+of|flying)\b", re.I)
+FOREIGN_AD_ID_RE = re.compile(r"\b(?:EASA|Transport\s+Canada|TCCA|ANAC|CASA)\s+(?:AD|Airworthiness\s+Directive)\s+[A-Z0-9][A-Z0-9/-]*", re.I)
 QWORDS = set("which what does do is are any there tell show give find who how when where why can could would should will".split())
 
 AVIATION_VOCAB = re.compile(
@@ -56,13 +61,17 @@ def parse_query(q: str, known_makes=None) -> dict:
     masked = DOCKET_RE.sub(" ", q)
     out["fr_docs"] = [d for d in FR_DOC_RE.findall(masked) if d not in out["ad_numbers"]]
     # years are read only outside identifiers (docket "2000-NM-120-AD", AD "2025-13-11" and FR doc numbers contain years)
-    out["years"] = [int(y) for y in re.findall(r"\b((?:19|20)\d{2})\b", AD_NUM_RE.sub(" ", FR_DOC_RE.sub(" ", DOCKET_RE.sub(" ", q))))]
+    # Blind-set finding: "Falcon 2000" is not the year 2000, so a year only counts in a date context (from/in/before/since/... or a month).
+    _noid = AD_NUM_RE.sub(" ", FR_DOC_RE.sub(" ", DOCKET_RE.sub(" ", q)))
+    out["years"] = sorted({int(y) for y in re.findall(r"\b(19\d{2})\b", _noid)} | {int(y) for y in YEAR_CTX_RE.findall(_noid)})
+    # 19xx years always count; a bare "2000" only in a date context (Falcon 2000)
 
     cfg = out["cfg"]
-    for m in MAKE_RULES:
-        if re.search(m[0], q, re.I):
-            cfg["make"] = m[1]
-            break
+    # make = the one named FIRST in the sentence ("De Havilland Canada (formerly Bombardier)" is De Havilland, not Bombardier)
+    q_make = re.sub(r"\((?:formerly|previously|type certificate)[^)]*\)|previously held by[^,.;)]*|formerly[^,.;)]*", " ", q, flags=re.I)
+    hits = [(m_.start(), i, name) for i, (pat, name) in enumerate(MAKE_RULES) for m_ in [re.search(pat, q_make, re.I)] if m_]
+    if hits:
+        cfg["make"] = min(hits)[2]
     m = SERIAL_RE.search(q)
     if m:
         cfg["serial"] = m.group(1).strip(".,;")
@@ -87,12 +96,14 @@ def parse_query(q: str, known_makes=None) -> dict:
     block = set(out["ad_numbers"]) | set(out["fr_docs"]) | {p.upper() for p in pns} | set(dates)
     if "serial" in cfg:
         block.add(cfg["serial"].upper())
-    cands = []
+    cands, cand_pos = [], {}
     for mm in MODEL_TOKEN_RE.finditer(masked):
         tok = mm.group(1).strip()
+        cand_pos.setdefault(tok, mm.start(1))
         if " " in tok:                                   # drop a leading make word ("Bell 505") or question word ("Which 757")
             first, rest = tok.split(None, 1)
-            if first.lower() in QWORDS or any(re.search(pat, first, re.I) for pat, _ in MAKE_RULES):
+            cand_pos.setdefault(rest, mm.start(1) + len(first) + 1)
+            if first.lower() in QWORDS or first.islower() or any(re.search(pat, first, re.I) for pat, _ in MAKE_RULES):
                 tok = rest
             else:
                 cands.append(tok)       # unknown leading word: keep both "Vulcanair P.68" and the tail "P.68"; the corpus decides
@@ -104,6 +115,11 @@ def parse_query(q: str, known_makes=None) -> dict:
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", tok) or re.fullmatch(r"(?:part|ad)\s*\d+", tok, re.I):
             continue
         cands.append(tok)
+    # prefer the model the USER says they fly ("my aircraft is ...", "I operate ...") over a model that merely describes the AD
+    def _prio(t):
+        pos = cand_pos.get(t, cand_pos.get(t.split(None, 1)[-1], 0))
+        return (0 if OWN_CUE_RE.search(q[max(0, pos - 80):pos]) else 1, pos)
+    cands = sorted(dict.fromkeys(cands), key=_prio)
     out["model_candidates"] = cands
 
     ql = q.lower()
@@ -118,7 +134,9 @@ def parse_query(q: str, known_makes=None) -> dict:
         out["flags"].append("judgement")
     if FINAL_RE.search(q):
         out["flags"].append("final_rule")
-    if EXT_SUBJECT_RE.search(q):
+    if EXT_SUBJECT_RE.search(q) or (FOREIGN_AD_ID_RE.search(q) and out["intent"] != "applicability"
+                                    and re.search(r"\b(?:what|which|explain|describe|summari[sz]e|list|how)\b", q, re.I)
+                                    and not re.search(r"\bproposed\b|\bNPRM\b", q, re.I)):
         out["flags"].append("external_subject")
     if VALUE_Q_RE.search(q):
         out["flags"].append("value_question")
