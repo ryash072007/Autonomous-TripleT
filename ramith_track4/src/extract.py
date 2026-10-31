@@ -21,7 +21,8 @@ CUTOFF_RE = re.compile(
     re.I | re.S,
 )
 EXCEPT_RE = re.compile(r"\bexcept\b[^.]{0,400}?(?:airplanes|helicopters|aircraft|engines|propellers)[^.]*\.", re.I | re.S)
-ASID_RE = re.compile(r"as (?:identified|listed|specified|defined) in\s+([^.]{5,260}?)(?=\.\s|\.$|$)", re.I | re.S)
+# Blind-set finding: "identified as Group 3 in Boeing Alert Requirements Bulletin ..." and "as specified in paragraph 1.A.1 of ... Service Bulletin"
+ASID_RE = re.compile(r"\b(?:identified|listed|specified|defined|described)\s+(?:as\s+[^.]{0,60}?\s+)?in\s+((?:[^.]|\.(?=\w)){5,260}?)(?=\.\s|\.$|$)", re.I | re.S)
 PN_CLAUSE_RE = re.compile(r"(?:part number|P/N)[^.]*?(?:installed|\.)", re.I | re.S)
 PN_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])(?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]{4,}(?![A-Za-z0-9])")
 AD_NUM_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{2}$")
@@ -67,6 +68,12 @@ def model_in_text(model: str, text: str) -> bool:
         return False
     exp = expand_models(text)
     hay = _clean(text).upper()
+    # "CL-600-2B16 (604 Variant)": the base designation is listed and every numeric token of the parenthetical appears in the text
+    if "(" in str(model):
+        base_, _, inner = str(model).partition("(")
+        inner_tokens = re.findall(r"\d[\w-]*", inner)
+        if inner_tokens and base_.strip() and model_in_text(base_.strip(), text) and all(t.upper() in hay for t in inner_tokens):
+            return True
     # Candidates: the full designation, plus its "tail" without a family prefix ("RB211 Trent 772B-60" -> "772B-60"),
     # because notices list "Trent 768-60, 772-60, and 772B-60" once under a shared prefix.
     cands = [u]

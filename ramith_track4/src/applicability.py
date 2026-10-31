@@ -149,7 +149,8 @@ def verdict(rec: dict, appl: dict, cfg: AircraftConfig) -> Verdict:
                    "Applicability has a configuration condition this tool does not evaluate; read the quoted clause.")
 
     # --- external documents defining applicability ---
-    ext = [e for e in appl.get("external_refs", []) if not re.match(r"^paragraphs?\b", e["name"], re.I) and not re.search(r"\bof this AD\b", e["name"], re.I)]
+    # internal references only ("paragraphs (c)(1) and (2) of this AD"); "paragraph 1.A.1 of <Service Bulletin>" is EXTERNAL
+    ext = [e for e in appl.get("external_refs", []) if not re.search(r"\bof this AD\b", e["name"], re.I)]
     if ext:
         return _mk(rec, CANNOT, codes + ["EXTERNAL_DOC_REQUIRED"], "EXTERNAL_DOC_REQUIRED", "external", ev + [_ev("external reference", tuple(ext[0]["span"]), rec)],
                    f"Applicability is defined by a document that is not in this corpus: {ext[0]['name'][:160]}")

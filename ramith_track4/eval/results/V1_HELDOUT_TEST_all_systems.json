@@ -1,0 +1,1742 @@
+{
+ "meta": {
+  "timestamp": "20261031_123303",
+  "git_commit": "c788077",
+  "src_hash": "3e900790d502",
+  "sets": [
+   "v1test"
+  ],
+  "systems": [
+   "full",
+   "naive_summary",
+   "fulltext_bm25",
+   "llm_only",
+   "llm_forced"
+  ],
+  "testset_v1_sha": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "B1_sha": "974ffd54bfa1f7d8cad1b6f03891c1221696a48ffcc952ac848c5e58a16f78f9",
+  "B2_sha": "3e37d24fa7333bc4b1662882ef6ac954b154eeaaf27f9c7f7f92c1129b0bc8c3"
+ },
+ "results": {
+  "v1test/full": {
+   "summary": {
+    "system": "full",
+    "n": 30,
+    "lookup": {
+     "n": 7,
+     "ok": 7,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 9,
+     "pct": 100.0,
+     "reason_accuracy": 100.0
+    },
+    "revision": {
+     "n": 4,
+     "ok": 4,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 100.0,
+     "recall": 100.0,
+     "code_accuracy": 90.0,
+     "n_refused": 10,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 100.0,
+    "unsupported_quote_rate_pct": 0.0,
+    "latency_ms_total": {
+     "p50": 6.9,
+     "p95": 332.3
+    }
+   },
+   "rows": [
+    {
+     "id": "L03",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which NPRM addresses a low clearance condition between a hydraulic motor pump harness and the structure on the BD-500-1A10 and BD-500-1A11?",
+     "rank": 1
+    },
+    {
+     "id": "L04",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses cracks on the discharge outlet of engine fire extinguisher bottles on the A330-800 and A330-900?",
+     "rank": 1
+    },
+    {
+     "id": "L06",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns missing cargo liner joint sealing tape on the Boeing 787?",
+     "rank": 1
+    },
+    {
+     "id": "L07",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns the left fan cowl protection against cross-engine debris on the 787, and what check does it require?",
+     "rank": 1
+    },
+    {
+     "id": "L08",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses crack damage at existing reinforcing repairs in the fuselage frame lower lobe on the Boeing 757?",
+     "rank": 1
+    },
+    {
+     "id": "L09",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2023-12-16 for Trent 1000 engines, and what modification prompted the change?",
+     "rank": 1
+    },
+    {
+     "id": "L10",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2009-04-13 on BR700-715 engines?",
+     "rank": 1
+    },
+    {
+     "id": "A02",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/MODEL_NOT_LISTED",
+     "query": "Does the proposed AD superseding AD 2025-13-11 (Falcon 7X spoiler electrical units) apply to my Falcon 2000?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A04",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/CERT_DATE_AFTER_CUTOFF",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A05",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/INPUT_MISSING_CERT_DATE",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A06",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/MODEL_LISTED",
+     "query": "Does the proposed AD on the main rotor servo-control nut tightening torque (docket FAA-2026-11814) apply to my Airbus Helicopters AS350B3?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A08",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+     "query": "Does the proposed AD tied to Boeing Alert Requirements Bulletin 747-28A2373 RB apply to my Boeing 747-400?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A09",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/EXCLUSION_UNVERIFIABLE",
+     "query": "Does the latest proposed AD in docket FAA-2025-2277 apply to my Bombardier BD-700-2A12?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A10",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/PN_INSTALLED",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P30 installed?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A11",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/PN_NOT_INSTALLED",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P99 installed?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "A12",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/INPUT_MISSING_PN",
+     "query": "Does the proposed AD for GE CF34-8C5 engines with an EEC FADEC apply to my engine?",
+     "reason_ok": true,
+     "retrieved": true
+    },
+    {
+     "id": "R02",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Was the proposed AD for the Bombardier BD-700-2A12 (docket FAA-2025-2277) revised after its first publication?"
+    },
+    {
+     "id": "R03",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Is the CH-47D transmission support beam fitting NPRM (docket FAA-2025-5394) the final version, or was it revised?"
+    },
+    {
+     "id": "R04",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status NPRM",
+     "query": "What is the updated comment deadline for the Piper PA-28 wing spar NPRM, docket FAA-2024-2142?"
+    },
+    {
+     "id": "R06",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the Boeing 787 tuning control panel software NPRM (docket FAA-2025-0204) still active?"
+    },
+    {
+     "id": "X02",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Is the final AD for the Falcon 7X spoiler electrical units already in force?",
+     "code_ok": true
+    },
+    {
+     "id": "X04",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "Is my Boeing 737-800, serial number 41234, listed in Boeing Alert Requirements Bulletin 737-55A1104 RB?",
+     "code_ok": true
+    },
+    {
+     "id": "X05",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Are there any airworthiness directives for my Antonov An-124?",
+     "code_ok": true
+    },
+    {
+     "id": "X06",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "Once this AD is finalised, is it safe to keep flying my A330-243?",
+     "code_ok": true
+    },
+    {
+     "id": "X07",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "Does the A330 proposed AD in docket FAA-2026-1338 apply to my Boeing A330-243 with certificate dated 2025-06-01?",
+     "code_ok": true
+    },
+    {
+     "id": "X08",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What is the weather at Singapore Changi right now?",
+     "code_ok": false
+    },
+    {
+     "id": "X09",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "Does the AD apply to my aircraft?",
+     "code_ok": true
+    },
+    {
+     "id": "X10",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What did the FAA require in the 1998 Boeing 737 rudder AD?",
+     "code_ok": true
+    },
+    {
+     "id": "X11",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "NOT_PART_39",
+     "query": "What does the proposed rule on Robinson R-22 and R-44 pilot training (docket FAA-2002-13744) require?",
+     "code_ok": true
+    },
+    {
+     "id": "X12",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What is the exact tightening torque value in the AS350B3 servo-control nut AD (docket FAA-2026-11814)?",
+     "code_ok": true
+    }
+   ]
+  },
+  "v1test/naive_summary": {
+   "summary": {
+    "system": "naive_summary",
+    "n": 30,
+    "lookup": {
+     "n": 7,
+     "ok": 7,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 2,
+     "pct": 22.2,
+     "reason_accuracy": 0.0
+    },
+    "revision": {
+     "n": 4,
+     "ok": 4,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 0,
+     "pct": 0.0
+    },
+    "refusal": {
+     "precision": null,
+     "recall": 0.0,
+     "code_accuracy": 0.0,
+     "n_refused": 0,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 65.0
+   },
+   "rows": [
+    {
+     "id": "L03",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which NPRM addresses a low clearance condition between a hydraulic motor pump harness and the structure on the BD-500-1A10 and BD-500-1A11?",
+     "rank": 1
+    },
+    {
+     "id": "L04",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses cracks on the discharge outlet of engine fire extinguisher bottles on the A330-800 and A330-900?",
+     "rank": 1
+    },
+    {
+     "id": "L06",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns missing cargo liner joint sealing tape on the Boeing 787?",
+     "rank": 1
+    },
+    {
+     "id": "L07",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns the left fan cowl protection against cross-engine debris on the 787, and what check does it require?",
+     "rank": 1
+    },
+    {
+     "id": "L08",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses crack damage at existing reinforcing repairs in the fuselage frame lower lobe on the Boeing 757?",
+     "rank": 1
+    },
+    {
+     "id": "L09",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2023-12-16 for Trent 1000 engines, and what modification prompted the change?",
+     "rank": 1
+    },
+    {
+     "id": "L10",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2009-04-13 on BR700-715 engines?",
+     "rank": 1
+    },
+    {
+     "id": "A02",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD superseding AD 2025-13-11 (Falcon 7X spoiler electrical units) apply to my Falcon 2000?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A04",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "gold doc not returned",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A05",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "DOES_NOT_APPLY/None",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A06",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD on the main rotor servo-control nut tightening torque (docket FAA-2026-11814) apply to my Airbus Helicopters AS350B3?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A08",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "gold doc not returned",
+     "query": "Does the proposed AD tied to Boeing Alert Requirements Bulletin 747-28A2373 RB apply to my Boeing 747-400?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A09",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the latest proposed AD in docket FAA-2025-2277 apply to my Bombardier BD-700-2A12?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A10",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P30 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A11",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P99 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A12",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines with an EEC FADEC apply to my engine?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "R02",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Was the proposed AD for the Bombardier BD-700-2A12 (docket FAA-2025-2277) revised after its first publication?"
+    },
+    {
+     "id": "R03",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Is the CH-47D transmission support beam fitting NPRM (docket FAA-2025-5394) the final version, or was it revised?"
+    },
+    {
+     "id": "R04",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status NPRM",
+     "query": "What is the updated comment deadline for the Piper PA-28 wing spar NPRM, docket FAA-2024-2142?"
+    },
+    {
+     "id": "R06",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the Boeing 787 tuning control panel software NPRM (docket FAA-2025-0204) still active?"
+    },
+    {
+     "id": "X02",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is the final AD for the Falcon 7X spoiler electrical units already in force?",
+     "code_ok": false
+    },
+    {
+     "id": "X04",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is my Boeing 737-800, serial number 41234, listed in Boeing Alert Requirements Bulletin 737-55A1104 RB?",
+     "code_ok": false
+    },
+    {
+     "id": "X05",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Are there any airworthiness directives for my Antonov An-124?",
+     "code_ok": false
+    },
+    {
+     "id": "X06",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Once this AD is finalised, is it safe to keep flying my A330-243?",
+     "code_ok": false
+    },
+    {
+     "id": "X07",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Does the A330 proposed AD in docket FAA-2026-1338 apply to my Boeing A330-243 with certificate dated 2025-06-01?",
+     "code_ok": false
+    },
+    {
+     "id": "X08",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What is the weather at Singapore Changi right now?",
+     "code_ok": false
+    },
+    {
+     "id": "X09",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Does the AD apply to my aircraft?",
+     "code_ok": false
+    },
+    {
+     "id": "X10",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What did the FAA require in the 1998 Boeing 737 rudder AD?",
+     "code_ok": false
+    },
+    {
+     "id": "X11",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What does the proposed rule on Robinson R-22 and R-44 pilot training (docket FAA-2002-13744) require?",
+     "code_ok": false
+    },
+    {
+     "id": "X12",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What is the exact tightening torque value in the AS350B3 servo-control nut AD (docket FAA-2026-11814)?",
+     "code_ok": false
+    }
+   ]
+  },
+  "v1test/fulltext_bm25": {
+   "summary": {
+    "system": "fulltext_bm25",
+    "n": 30,
+    "lookup": {
+     "n": 7,
+     "ok": 7,
+     "pct": 100.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 3,
+     "pct": 33.3,
+     "reason_accuracy": 0.0
+    },
+    "revision": {
+     "n": 4,
+     "ok": 4,
+     "pct": 100.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 0,
+     "pct": 0.0
+    },
+    "refusal": {
+     "precision": null,
+     "recall": 0.0,
+     "code_accuracy": 0.0,
+     "n_refused": 0,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 70.0
+   },
+   "rows": [
+    {
+     "id": "L03",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which NPRM addresses a low clearance condition between a hydraulic motor pump harness and the structure on the BD-500-1A10 and BD-500-1A11?",
+     "rank": 1
+    },
+    {
+     "id": "L04",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses cracks on the discharge outlet of engine fire extinguisher bottles on the A330-800 and A330-900?",
+     "rank": 1
+    },
+    {
+     "id": "L06",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns missing cargo liner joint sealing tape on the Boeing 787?",
+     "rank": 1
+    },
+    {
+     "id": "L07",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD concerns the left fan cowl protection against cross-engine debris on the 787, and what check does it require?",
+     "rank": 1
+    },
+    {
+     "id": "L08",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD addresses crack damage at existing reinforcing repairs in the fuselage frame lower lobe on the Boeing 757?",
+     "rank": 1
+    },
+    {
+     "id": "L09",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2023-12-16 for Trent 1000 engines, and what modification prompted the change?",
+     "rank": 1
+    },
+    {
+     "id": "L10",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": true,
+     "detail": "rank 1",
+     "query": "Which proposed AD supersedes AD 2009-04-13 on BR700-715 engines?",
+     "rank": 1
+    },
+    {
+     "id": "A02",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD superseding AD 2025-13-11 (Falcon 7X spoiler electrical units) apply to my Falcon 2000?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A04",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/None",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A05",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "DOES_NOT_APPLY/None",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A06",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD on the main rotor servo-control nut tightening torque (docket FAA-2026-11814) apply to my Airbus Helicopters AS350B3?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A08",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD tied to Boeing Alert Requirements Bulletin 747-28A2373 RB apply to my Boeing 747-400?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A09",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the latest proposed AD in docket FAA-2025-2277 apply to my Bombardier BD-700-2A12?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A10",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P30 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A11",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P99 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A12",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines with an EEC FADEC apply to my engine?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "R02",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Was the proposed AD for the Bombardier BD-700-2A12 (docket FAA-2025-2277) revised after its first publication?"
+    },
+    {
+     "id": "R03",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status REVISED_NPRM (supplemental)",
+     "query": "Is the CH-47D transmission support beam fitting NPRM (docket FAA-2025-5394) the final version, or was it revised?"
+    },
+    {
+     "id": "R04",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status NPRM",
+     "query": "What is the updated comment deadline for the Piper PA-28 wing spar NPRM, docket FAA-2024-2142?"
+    },
+    {
+     "id": "R06",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "status WITHDRAWN",
+     "query": "Is the Boeing 787 tuning control panel software NPRM (docket FAA-2025-0204) still active?"
+    },
+    {
+     "id": "X02",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is the final AD for the Falcon 7X spoiler electrical units already in force?",
+     "code_ok": false
+    },
+    {
+     "id": "X04",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is my Boeing 737-800, serial number 41234, listed in Boeing Alert Requirements Bulletin 737-55A1104 RB?",
+     "code_ok": false
+    },
+    {
+     "id": "X05",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Are there any airworthiness directives for my Antonov An-124?",
+     "code_ok": false
+    },
+    {
+     "id": "X06",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Once this AD is finalised, is it safe to keep flying my A330-243?",
+     "code_ok": false
+    },
+    {
+     "id": "X07",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Does the A330 proposed AD in docket FAA-2026-1338 apply to my Boeing A330-243 with certificate dated 2025-06-01?",
+     "code_ok": false
+    },
+    {
+     "id": "X08",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What is the weather at Singapore Changi right now?",
+     "code_ok": false
+    },
+    {
+     "id": "X09",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Does the AD apply to my aircraft?",
+     "code_ok": false
+    },
+    {
+     "id": "X10",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What did the FAA require in the 1998 Boeing 737 rudder AD?",
+     "code_ok": false
+    },
+    {
+     "id": "X11",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What does the proposed rule on Robinson R-22 and R-44 pilot training (docket FAA-2002-13744) require?",
+     "code_ok": false
+    },
+    {
+     "id": "X12",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What is the exact tightening torque value in the AS350B3 servo-control nut AD (docket FAA-2026-11814)?",
+     "code_ok": false
+    }
+   ]
+  },
+  "v1test/llm_only": {
+   "summary": {
+    "system": "llm_only",
+    "n": 30,
+    "lookup": {
+     "n": 7,
+     "ok": 0,
+     "pct": 0.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 1,
+     "pct": 11.1,
+     "reason_accuracy": 0.0
+    },
+    "revision": {
+     "n": 4,
+     "ok": 0,
+     "pct": 0.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 10,
+     "pct": 100.0
+    },
+    "refusal": {
+     "precision": 34.5,
+     "recall": 100.0,
+     "code_accuracy": 70.0,
+     "n_refused": 29,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 5.0
+   },
+   "rows": [
+    {
+     "id": "L03",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which NPRM addresses a low clearance condition between a hydraulic motor pump harness and the structure on the BD-500-1A10 and BD-500-1A11?",
+     "rank": null
+    },
+    {
+     "id": "L04",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD addresses cracks on the discharge outlet of engine fire extinguisher bottles on the A330-800 and A330-900?",
+     "rank": null
+    },
+    {
+     "id": "L06",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD concerns missing cargo liner joint sealing tape on the Boeing 787?",
+     "rank": null
+    },
+    {
+     "id": "L07",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD concerns the left fan cowl protection against cross-engine debris on the 787, and what check does it require?",
+     "rank": null
+    },
+    {
+     "id": "L08",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD addresses crack damage at existing reinforcing repairs in the fuselage frame lower lobe on the Boeing 757?",
+     "rank": null
+    },
+    {
+     "id": "L09",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD supersedes AD 2023-12-16 for Trent 1000 engines, and what modification prompted the change?",
+     "rank": null
+    },
+    {
+     "id": "L10",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": true,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD supersedes AD 2009-04-13 on BR700-715 engines?",
+     "rank": null
+    },
+    {
+     "id": "A02",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/None",
+     "query": "Does the proposed AD superseding AD 2025-13-11 (Falcon 7X spoiler electrical units) apply to my Falcon 2000?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A04",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused OUT_OF_CORPUS",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A05",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused OUT_OF_CORPUS",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A06",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused OUT_OF_CORPUS",
+     "query": "Does the proposed AD on the main rotor servo-control nut tightening torque (docket FAA-2026-11814) apply to my Airbus Helicopters AS350B3?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A08",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused INSUFFICIENT_EVIDENCE",
+     "query": "Does the proposed AD tied to Boeing Alert Requirements Bulletin 747-28A2373 RB apply to my Boeing 747-400?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A09",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused OUT_OF_CORPUS",
+     "query": "Does the latest proposed AD in docket FAA-2025-2277 apply to my Bombardier BD-700-2A12?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A10",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused INSUFFICIENT_EVIDENCE",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P30 installed?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A11",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused INSUFFICIENT_EVIDENCE",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P99 installed?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "A12",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": true,
+     "ok": false,
+     "detail": "refused INSUFFICIENT_EVIDENCE",
+     "query": "Does the proposed AD for GE CF34-8C5 engines with an EEC FADEC apply to my engine?",
+     "reason_ok": false,
+     "retrieved": false
+    },
+    {
+     "id": "R02",
+     "set": "v1test",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Was the proposed AD for the Bombardier BD-700-2A12 (docket FAA-2025-2277) revised after its first publication?"
+    },
+    {
+     "id": "R03",
+     "set": "v1test",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Is the CH-47D transmission support beam fitting NPRM (docket FAA-2025-5394) the final version, or was it revised?"
+    },
+    {
+     "id": "R04",
+     "set": "v1test",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "What is the updated comment deadline for the Piper PA-28 wing spar NPRM, docket FAA-2024-2142?"
+    },
+    {
+     "id": "R06",
+     "set": "v1test",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Is the Boeing 787 tuning control panel software NPRM (docket FAA-2025-0204) still active?"
+    },
+    {
+     "id": "X02",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Is the final AD for the Falcon 7X spoiler electrical units already in force?",
+     "code_ok": true
+    },
+    {
+     "id": "X04",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "Is my Boeing 737-800, serial number 41234, listed in Boeing Alert Requirements Bulletin 737-55A1104 RB?",
+     "code_ok": true
+    },
+    {
+     "id": "X05",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "Are there any airworthiness directives for my Antonov An-124?",
+     "code_ok": true
+    },
+    {
+     "id": "X06",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "Once this AD is finalised, is it safe to keep flying my A330-243?",
+     "code_ok": false
+    },
+    {
+     "id": "X07",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "Does the A330 proposed AD in docket FAA-2026-1338 apply to my Boeing A330-243 with certificate dated 2025-06-01?",
+     "code_ok": true
+    },
+    {
+     "id": "X08",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What is the weather at Singapore Changi right now?",
+     "code_ok": true
+    },
+    {
+     "id": "X09",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "Does the AD apply to my aircraft?",
+     "code_ok": true
+    },
+    {
+     "id": "X10",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "INSUFFICIENT_EVIDENCE",
+     "query": "What did the FAA require in the 1998 Boeing 737 rudder AD?",
+     "code_ok": false
+    },
+    {
+     "id": "X11",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "NOT_PART_39",
+     "query": "What does the proposed rule on Robinson R-22 and R-44 pilot training (docket FAA-2002-13744) require?",
+     "code_ok": true
+    },
+    {
+     "id": "X12",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_CORPUS",
+     "query": "What is the exact tightening torque value in the AS350B3 servo-control nut AD (docket FAA-2026-11814)?",
+     "code_ok": false
+    }
+   ]
+  },
+  "v1test/llm_forced": {
+   "summary": {
+    "system": "llm_forced",
+    "n": 30,
+    "lookup": {
+     "n": 7,
+     "ok": 0,
+     "pct": 0.0
+    },
+    "applicability": {
+     "n": 9,
+     "ok": 5,
+     "pct": 55.6,
+     "reason_accuracy": 0.0
+    },
+    "revision": {
+     "n": 4,
+     "ok": 1,
+     "pct": 25.0
+    },
+    "refuse": {
+     "n": 10,
+     "ok": 5,
+     "pct": 50.0
+    },
+    "refusal": {
+     "precision": 83.3,
+     "recall": 50.0,
+     "code_accuracy": 30.0,
+     "n_refused": 6,
+     "n_should_refuse": 10
+    },
+    "answered_correct_overall": 30.0,
+    "llm_cited_ids": {
+     "cited": 17,
+     "not_in_corpus": 7,
+     "pct_not_in_corpus": 41.2
+    }
+   },
+   "rows": [
+    {
+     "id": "L03",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which NPRM addresses a low clearance condition between a hydraulic motor pump harness and the structure on the BD-500-1A10 and BD-500-1A11?",
+     "rank": null
+    },
+    {
+     "id": "L04",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD addresses cracks on the discharge outlet of engine fire extinguisher bottles on the A330-800 and A330-900?",
+     "rank": null
+    },
+    {
+     "id": "L06",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD concerns missing cargo liner joint sealing tape on the Boeing 787?",
+     "rank": null
+    },
+    {
+     "id": "L07",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD concerns the left fan cowl protection against cross-engine debris on the 787, and what check does it require?",
+     "rank": null
+    },
+    {
+     "id": "L08",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD addresses crack damage at existing reinforcing repairs in the fuselage frame lower lobe on the Boeing 757?",
+     "rank": null
+    },
+    {
+     "id": "L09",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD supersedes AD 2023-12-16 for Trent 1000 engines, and what modification prompted the change?",
+     "rank": null
+    },
+    {
+     "id": "L10",
+     "set": "v1test",
+     "category": "lookup",
+     "refused": false,
+     "ok": false,
+     "detail": "rank None",
+     "query": "Which proposed AD supersedes AD 2009-04-13 on BR700-715 engines?",
+     "rank": null
+    },
+    {
+     "id": "A02",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "DOES_NOT_APPLY/None",
+     "query": "Does the proposed AD superseding AD 2025-13-11 (Falcon 7X spoiler electrical units) apply to my Falcon 2000?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A04",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A05",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A06",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD on the main rotor servo-control nut tightening torque (docket FAA-2026-11814) apply to my Airbus Helicopters AS350B3?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A08",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "APPLIES/None",
+     "query": "Does the proposed AD tied to Boeing Alert Requirements Bulletin 747-28A2373 RB apply to my Boeing 747-400?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A09",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the latest proposed AD in docket FAA-2025-2277 apply to my Bombardier BD-700-2A12?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A10",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P30 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A11",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": false,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines apply to my engine with EEC FADEC part number 4120T00P99 installed?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "A12",
+     "set": "v1test",
+     "category": "applicability",
+     "refused": false,
+     "ok": true,
+     "detail": "CANNOT_DETERMINE/None",
+     "query": "Does the proposed AD for GE CF34-8C5 engines with an EEC FADEC apply to my engine?",
+     "reason_ok": false,
+     "retrieved": true
+    },
+    {
+     "id": "R02",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Was the proposed AD for the Bombardier BD-700-2A12 (docket FAA-2025-2277) revised after its first publication?"
+    },
+    {
+     "id": "R03",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Is the CH-47D transmission support beam fitting NPRM (docket FAA-2025-5394) the final version, or was it revised?"
+    },
+    {
+     "id": "R04",
+     "set": "v1test",
+     "category": "revision",
+     "refused": true,
+     "ok": false,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "What is the updated comment deadline for the Piper PA-28 wing spar NPRM, docket FAA-2024-2142?"
+    },
+    {
+     "id": "R06",
+     "set": "v1test",
+     "category": "revision",
+     "refused": false,
+     "ok": true,
+     "detail": "llm self-reported latest_doc/answer",
+     "query": "Is the Boeing 787 tuning control panel software NPRM (docket FAA-2025-0204) still active?"
+    },
+    {
+     "id": "X02",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is the final AD for the Falcon 7X spoiler electrical units already in force?",
+     "code_ok": false
+    },
+    {
+     "id": "X04",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Is my Boeing 737-800, serial number 41234, listed in Boeing Alert Requirements Bulletin 737-55A1104 RB?",
+     "code_ok": false
+    },
+    {
+     "id": "X05",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "Are there any airworthiness directives for my Antonov An-124?",
+     "code_ok": false
+    },
+    {
+     "id": "X06",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "Once this AD is finalised, is it safe to keep flying my A330-243?",
+     "code_ok": false
+    },
+    {
+     "id": "X07",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "CONTRADICTORY_CONFIG",
+     "query": "Does the A330 proposed AD in docket FAA-2026-1338 apply to my Boeing A330-243 with certificate dated 2025-06-01?",
+     "code_ok": true
+    },
+    {
+     "id": "X08",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "OUT_OF_SCOPE",
+     "query": "What is the weather at Singapore Changi right now?",
+     "code_ok": true
+    },
+    {
+     "id": "X09",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "AMBIGUOUS_QUERY",
+     "query": "Does the AD apply to my aircraft?",
+     "code_ok": true
+    },
+    {
+     "id": "X10",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What did the FAA require in the 1998 Boeing 737 rudder AD?",
+     "code_ok": false
+    },
+    {
+     "id": "X11",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": false,
+     "ok": false,
+     "detail": "answered",
+     "query": "What does the proposed rule on Robinson R-22 and R-44 pilot training (docket FAA-2002-13744) require?",
+     "code_ok": false
+    },
+    {
+     "id": "X12",
+     "set": "v1test",
+     "category": "refuse",
+     "refused": true,
+     "ok": true,
+     "detail": "EXTERNAL_DOC_REQUIRED",
+     "query": "What is the exact tightening torque value in the AS350B3 servo-control nut AD (docket FAA-2026-11814)?",
+     "code_ok": false
+    }
+   ]
+  }
+ }
+}

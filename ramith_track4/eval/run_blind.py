@@ -96,6 +96,14 @@ def score(t, a):
         row.update(ok=bool(v and v["verdict"] == t["gold_verdict"]), reason_ok=bool(v and v.get("main_reason") == t.get("gold_reason")),
                    retrieved=c is not None,
                    detail=(f"{v['verdict']}/{v.get('main_reason')}" if v else ("refused " + a["refusal"]["code"] if refused else "gold doc not returned")))
+    elif cat == "revision" and "llm" in a:
+        # an LLM baseline only gets credit for what the LLM itself said (it must not inherit status logic from our docket graph)
+        L = a["llm"]
+        gl = t.get("gold_latest_doc") or (gold[-1] if gold else None)
+        gs = (t.get("gold_status") or "").lower()
+        wd = bool(t.get("withdrawn")) or ("withdrawn" in gs and "no." in gs)
+        ok = (gl is not None and L.get("latest_doc") == gl) or (wd and "withdraw" in (L.get("answer") or "").lower())
+        row.update(ok=bool(ok), detail="llm self-reported latest_doc/answer")
     elif cat == "revision":
         c = cards[0] if cards else None
         trail = {e["doc_id"] for cc in cards for e in cc["revision_trail"]}
@@ -201,7 +209,7 @@ def main():
         f.write(f"{ts} commit {git_commit()} src_hash {code_hash()} sets {args.sets} systems {args.systems}\n")
     C = Corpus()
     _vocab(C)
-    sysmap = {"naive_summary": lambda: baselines.NaiveSummary(C), "fulltext_bm25": lambda: baselines.FulltextBM25(C), "llm_only": lambda: baselines.LLMOnly(C)}
+    sysmap = {"naive_summary": lambda: baselines.NaiveSummary(C), "fulltext_bm25": lambda: baselines.FulltextBM25(C), "llm_only": lambda: baselines.LLMOnly(C), "llm_forced": lambda: baselines.LLMOnly(C, force=True)}
     results = {}
     for sname in sets:
         for sy in systems:
@@ -217,7 +225,7 @@ def main():
                     answers = {t["id"]: answer(C, t["query"], t.get("config")) for t in items}
                 else:
                     system = sysmap[sy]()
-                    if sy == "llm_only":
+                    if sy in ("llm_only", "llm_forced"):
                         res = system.batch(items)
                         answers = {t["id"]: a for t, a in zip(items, res)}
                     else:

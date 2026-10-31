@@ -86,15 +86,16 @@ LLM_USER = ("Question: {q}\n{cfg}\nReturn JSON: {{\"refuse\": bool, \"refusal_co
 class LLMOnly:
     name = "llm_only"
 
-    def __init__(self, C):
+    def __init__(self, C, force=False):
         import anthropic
-        self.C, self.client = C, anthropic.Anthropic()
+        self.C, self.client, self.force = C, anthropic.Anthropic(), force
 
     def _one(self, query, config):
         cfg = f"Aircraft configuration: {json.dumps(config)}" if config else ""
         for _ in range(2):
             try:
-                r = self.client.messages.create(model=LLM, max_tokens=900, system=LLM_SYSTEM,
+                sysmsg = LLM_SYSTEM + (" You must ALWAYS give your best specific answer with concrete document numbers; never refuse and never say you lack documents." if self.force else "")
+                r = self.client.messages.create(model=LLM, max_tokens=900, system=sysmsg,
                                                 messages=[{"role": "user", "content": LLM_USER.format(q=query, cfg=cfg)}])
                 txt = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
                 m = re.search(r"\{.*\}", txt, re.S)
