@@ -19,7 +19,7 @@ from scipy.stats import spearmanr
 
 from ca_triage import SEED
 from ca_triage.consequence import (CATASTROPHIC_J_PER_G, ROOT, cloud_offsets, consequence_score, ejected_mass, exposure_for, is_catastrophic,
-                                   load_consequence_inputs, load_population, mass_estimate, n_fragments, post_kick_extent, standard_samples)
+                                   cloud_samples, load_consequence_inputs, load_population, mass_estimate, n_fragments, post_kick_extent, standard_samples)
 from ca_triage.data import load
 from ca_triage.display import load_display_orbits
 from ca_triage.evaluation import write_evidence
@@ -100,8 +100,8 @@ def event_consequences(latest: pd.DataFrame) -> dict[int, dict]:
 
 
 def cloud_for(alt_km: float) -> dict:
-    dv, dirs = standard_samples(150)
-    return cloud_offsets(alt_km, dv[:150], dirs[:150])
+    dv, dirs = cloud_samples(150)
+    return cloud_offsets(alt_km, dv, dirs)
 
 
 def q(x, ps=(5, 25, 50, 75, 95, 99)):
