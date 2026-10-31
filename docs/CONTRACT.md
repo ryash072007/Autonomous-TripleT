@@ -39,6 +39,10 @@ updating this file. Version bumps go in `schema_version`.
       "recommendation_by_ratio": {"10": "Act", "20": "Act", "50": "Act", "100": "Act", "200": "Act", "500": "Act", "1000": "Act"},
       "decision_inputs": {"p_critical_at_tca": 0.8, "p_change_next_cdm": 0.03, "forecast_tier_set": [2],
                           "time_to_tca_latest": 2.13, "default_ratio": 100, "wait_enabled": false},
+      "sensitivity": {                  // D6, MODEL sensitivity of the Task A tier, not physics and not causal (top-level `sensitivity_note`)
+        "down": {"feature": "miss_distance", "from": 935.0, "to": 1025.5, "tier": 1},   // smallest single-input change that lowers the tier; null if none in range
+        "up": null                       // same for raising it. Search: miss_distance x0.5..x2, max_risk_estimate +-2 (log10); "smallest" = |log2 factor| or |delta|/2
+      },
       "orbit_display": {                // DISPLAY ONLY, from the latest CDM; never a model input (ca_triage/display.py)
         "t": {"sma_km": 7084.7, "ecc": 0.0037, "inc_deg": 98.2, "h_apo_km": 733.1, "h_per_km": 680.0},   // target
         "c": {"sma_km": 7082.3, "ecc": 0.0041, "inc_deg": 74.1, "h_apo_km": 733.2, "h_per_km": 675.1}    // chaser

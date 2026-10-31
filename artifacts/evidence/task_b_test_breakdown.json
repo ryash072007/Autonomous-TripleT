@@ -1,0 +1,292 @@
+{
+ "generated_utc": "2026-10-31T03:33:13Z",
+ "git_commit": "1321761+dirty",
+ "command": "python scripts/test_breakdown.py",
+ "data_sha256": {
+  "train": "ba47ce80580d5d6ff523ddc1d724901dbdfb3a5afdc5e755f0ca2bcefe6e4eb6",
+  "test": "fc4110e979e7d569cb8aa819d450d29311e799115b2fe5b519b8a18eafa37323"
+ },
+ "seed": 42,
+ "POST_HOC": "Explains the released-label result after the fact. The model, thresholds and task_b_test.json were not changed by anything here.",
+ "scope": "Pc branch only (true_risk >= -4); the released file has no final miss distance",
+ "forecast_critical_total": 408,
+ "true_critical_total": 17,
+ "forecast_critical_by_reason": {
+  "latest_miss_lt_1km": {
+   "forecast_critical": 179,
+   "true_critical": 11,
+   "event_ids_true_critical": [
+    637,
+    645,
+    891,
+    1124,
+    1526,
+    1568,
+    1616,
+    1833,
+    1947,
+    1951,
+    2091
+   ],
+   "hit_rate": 0.06145
+  },
+  "other_forecast_only": {
+   "forecast_critical": 210,
+   "true_critical": 1,
+   "event_ids_true_critical": [
+    443
+   ],
+   "hit_rate": 0.00476
+  },
+  "latest_tier_critical_from_pc": {
+   "forecast_critical": 7,
+   "true_critical": 3,
+   "event_ids_true_critical": [
+    1719,
+    1792,
+    1832
+   ],
+   "hit_rate": 0.42857
+  },
+  "miss_collapse_trend": {
+   "forecast_critical": 12,
+   "true_critical": 0,
+   "event_ids_true_critical": [],
+   "hit_rate": 0.0
+  }
+ },
+ "group_definitions": {
+  "latest_miss_lt_1km": "latest CDM >= 2 d already has miss distance < 1 km (Critical by the miss branch, which true_risk cannot confirm)",
+  "latest_tier_critical_from_pc": "latest CDM tier is Critical through the model's Pc estimate while miss >= 1 km",
+  "miss_collapse_trend": "latest miss <= 0.5 x the first miss in the history and still falling, tier not Critical now",
+  "other_forecast_only": "forecast Critical with none of the above"
+ },
+ "true_critical_event_ids": [
+  107,
+  443,
+  637,
+  645,
+  801,
+  891,
+  1124,
+  1526,
+  1568,
+  1616,
+  1719,
+  1792,
+  1832,
+  1833,
+  1947,
+  1951,
+  2091
+ ],
+ "true_critical_not_in_forecast_critical_or_set": [
+  {
+   "event_id": 107,
+   "true_risk": -3.523,
+   "forecast_tier": 1,
+   "p_forecast": [
+    0.0026,
+    0.9905,
+    0.0068
+   ],
+   "forecast_tier_set": [
+    1
+   ],
+   "missed_by_forecast": true,
+   "missed_by_conformal_set": true,
+   "tier_now": 2,
+   "n_cdms": 14,
+   "abstain": true,
+   "recommendation": "Analyst decides",
+   "failure_modes_seen_in_cv": [],
+   "cdms_ge_2d": [
+    {
+     "tte": 6.700398,
+     "miss_m": 1356.0,
+     "max_risk_estimate": -3.749092,
+     "risk": -3.797512,
+     "c_sigma_r": 191.732089,
+     "t_sigma_r": 1.851879
+    },
+    {
+     "tte": 6.347586,
+     "miss_m": 1069.0,
+     "max_risk_estimate": -3.673459,
+     "risk": -3.750313,
+     "c_sigma_r": 191.546043,
+     "t_sigma_r": 2.11099
+    },
+    {
+     "tte": 6.008049,
+     "miss_m": 1069.0,
+     "max_risk_estimate": -3.675718,
+     "risk": -3.752272,
+     "c_sigma_r": 191.580929,
+     "t_sigma_r": 1.964026
+    },
+    {
+     "tte": 5.71879,
+     "miss_m": 1017.0,
+     "max_risk_estimate": -3.661344,
+     "risk": -3.743763,
+     "c_sigma_r": 191.533292,
+     "t_sigma_r": 1.966326
+    },
+    {
+     "tte": 5.433444,
+     "miss_m": 1305.0,
+     "max_risk_estimate": -3.517412,
+     "risk": -3.517412,
+     "c_sigma_r": 125.801887,
+     "t_sigma_r": 1.719864
+    },
+    {
+     "tte": 5.063281,
+     "miss_m": 1308.0,
+     "max_risk_estimate": -3.520569,
+     "risk": -3.520569,
+     "c_sigma_r": 125.816093,
+     "t_sigma_r": 1.827117
+    },
+    {
+     "tte": 4.680573,
+     "miss_m": 1302.0,
+     "max_risk_estimate": -3.518414,
+     "risk": -3.518414,
+     "c_sigma_r": 125.811761,
+     "t_sigma_r": 1.890526
+    },
+    {
+     "tte": 4.336707,
+     "miss_m": 1387.0,
+     "max_risk_estimate": -3.556581,
+     "risk": -3.558148,
+     "c_sigma_r": 125.84649,
+     "t_sigma_r": 1.858642
+    },
+    {
+     "tte": 4.032691,
+     "miss_m": 1377.0,
+     "max_risk_estimate": -3.552532,
+     "risk": -3.553774,
+     "c_sigma_r": 125.83656,
+     "t_sigma_r": 1.743416
+    },
+    {
+     "tte": 3.730076,
+     "miss_m": 1219.0,
+     "max_risk_estimate": -3.932557,
+     "risk": -3.935542,
+     "c_sigma_r": 295.975241,
+     "t_sigma_r": 1.648927
+    },
+    {
+     "tte": 3.333189,
+     "miss_m": 1215.0,
+     "max_risk_estimate": -3.931443,
+     "risk": -3.934794,
+     "c_sigma_r": 295.976518,
+     "t_sigma_r": 1.585025
+    },
+    {
+     "tte": 3.014393,
+     "miss_m": 1233.0,
+     "max_risk_estimate": -3.938171,
+     "risk": -3.941954,
+     "c_sigma_r": 295.982094,
+     "t_sigma_r": 1.643378
+    },
+    {
+     "tte": 2.753849,
+     "miss_m": 1220.0,
+     "max_risk_estimate": -3.932185,
+     "risk": -3.935542,
+     "c_sigma_r": 295.977624,
+     "t_sigma_r": 1.502029
+    },
+    {
+     "tte": 2.329717,
+     "miss_m": 1226.0,
+     "max_risk_estimate": -3.936291,
+     "risk": -3.93968,
+     "c_sigma_r": 295.97701,
+     "t_sigma_r": 1.364688
+    }
+   ]
+  },
+  {
+   "event_id": 801,
+   "true_risk": -3.958,
+   "forecast_tier": 0,
+   "p_forecast": [
+    0.92,
+    0.0754,
+    0.0047
+   ],
+   "forecast_tier_set": [
+    0
+   ],
+   "missed_by_forecast": true,
+   "missed_by_conformal_set": true,
+   "tier_now": 2,
+   "n_cdms": 6,
+   "abstain": true,
+   "recommendation": "Analyst decides",
+   "failure_modes_seen_in_cv": [
+    "far_miss_at_2d"
+   ],
+   "cdms_ge_2d": [
+    {
+     "tte": 3.849062,
+     "miss_m": 12412.0,
+     "max_risk_estimate": -3.9859,
+     "risk": -4.075152,
+     "c_sigma_r": 65.901548,
+     "t_sigma_r": 1.435415
+    },
+    {
+     "tte": 3.605639,
+     "miss_m": 10130.0,
+     "max_risk_estimate": -4.101659,
+     "risk": -4.336017,
+     "c_sigma_r": 39.236348,
+     "t_sigma_r": 6.122271
+    },
+    {
+     "tte": 3.244725,
+     "miss_m": 9478.0,
+     "max_risk_estimate": -4.06118,
+     "risk": -4.275396,
+     "c_sigma_r": 38.881795,
+     "t_sigma_r": 1.432618
+    },
+    {
+     "tte": 2.890038,
+     "miss_m": 9400.0,
+     "max_risk_estimate": -4.052959,
+     "risk": -4.252355,
+     "c_sigma_r": 38.622131,
+     "t_sigma_r": 3.971949
+    },
+    {
+     "tte": 2.534067,
+     "miss_m": 8163.0,
+     "max_risk_estimate": -3.983803,
+     "risk": -4.131591,
+     "c_sigma_r": 36.898862,
+     "t_sigma_r": 3.965342
+    },
+    {
+     "tte": 2.30585,
+     "miss_m": 7681.0,
+     "max_risk_estimate": -3.953505,
+     "risk": -4.080242,
+     "c_sigma_r": 36.521145,
+     "t_sigma_r": 4.066925
+    }
+   ]
+  }
+ ],
+ "reading_note": "Compare failure_modes_seen_in_cv with artifacts/evidence/failure_cases.json (late miss collapse, huge sigma, single CDM)."
+}

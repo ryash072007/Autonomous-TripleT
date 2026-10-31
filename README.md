@@ -104,6 +104,13 @@ Our forecast finds more of the dangerous events but with **very low precision on
 the label: many of our flags come from the miss-distance branch, which this file cannot score. Part of it is real:
 the model is tuned for recall. We did not retune after seeing these numbers.
 
+A post-hoc breakdown, with no changes to the model ([`task_b_test_breakdown.json`](artifacts/evidence/task_b_test_breakdown.json)):
+- 179 of the 408 flags already have a miss distance under 1 km at 2 days, so they are Critical by rule, but this
+  label cannot confirm them.
+- 7 are Critical by Pc at 2 days, and 3 of those were confirmed.
+- 210 are forecast-only flags from the recall-first threshold, and 1 of those hit.
+- The 2 Critical events we missed (107 and 801) were both routed to "Analyst decides", not dismissed.
+
 ## Where it fails
 
 From held-out folds ([`failure_cases.json`](artifacts/evidence/failure_cases.json)), shown in the console under

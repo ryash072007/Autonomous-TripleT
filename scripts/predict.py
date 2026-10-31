@@ -21,6 +21,7 @@ from score_baseline import CDM_FIELDS, LATEST_FIELDS, _clean  # noqa: E402
 
 from ca_triage.data import ROOT, load
 from ca_triage.evaluation import cv_summary, metrics, write_evidence
+from ca_triage.sensitivity import NOTE as SENS_NOTE, sensitivity
 from ca_triage.display import load_display_orbits, orbit_block
 from ca_triage.ood import ood_score
 from ca_triage.physics import fragility
@@ -95,6 +96,9 @@ def main() -> None:
     last_cdm = te.sort_values(["event_id", "time_to_tca"]).groupby("event_id").head(1)
     ood_flag = dict(zip(last_cdm.event_id, ood_score(ood["model"], last_cdm) > ood["threshold"]))
     frag = fragility(te)
+    lat_pos = te.assign(_i=np.arange(len(te))).sort_values(["event_id", "time_to_tca"]).groupby("event_id").head(1)
+    sens_list = sensitivity(ma, lat_pos.drop(columns=["_i"]), thr["a"]["t_critical"], thr["a"]["t_alert"], pred[lat_pos["_i"].to_numpy()])
+    sens = dict(zip(lat_pos.event_id.to_numpy(), sens_list))
     disp = load_display_orbits("test")  # display only, never a model input
 
     # ---- artifacts/scored/test_events.json
@@ -136,6 +140,7 @@ def main() -> None:
             "decision_inputs": {"p_critical_at_tca": round(float(PB[j, 2]), 4), "p_change_next_cdm": round(float(p_change[j]), 4),
                                 "forecast_tier_set": [int(k) for k in np.where(SB[j])[0]], "time_to_tca_latest": round(float(last.time_to_tca), 3),
                                 "default_ratio": dcfg["default_ratio"], "wait_enabled": dcfg["wait_shipped"]},
+            "sensitivity": sens[eid],
             "orbit_display": orbit_block(disp.iloc[i]),
             "flags": flags,
             "cdms": [{k: _clean(r[k]) for k in CDM_FIELDS if k in r.index} for _, r in g.iterrows()],
@@ -143,7 +148,7 @@ def main() -> None:
     out = {"schema_version": 1, "dataset": "test",
            "model": {"name": "OrbitGuard LightGBM tiers (Task A per CDM, Task B forecast)", "version": card["version"],
                      "trained_utc": card["trained_utc"]},
-           "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "events": events}
+           "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "sensitivity_note": SENS_NOTE, "events": events}
     path = ROOT / "artifacts/scored/test_events.json"
     path.write_text(json.dumps(out, separators=(",", ":")))
     print("abstain events", sum(e["abstain"] for e in events), "of", len(events), "forecast_abstain", sum(e["forecast_abstain"] for e in events),
