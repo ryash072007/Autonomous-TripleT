@@ -95,3 +95,29 @@ the bottom of the page keeps the scene.
 
 All scenery is procedural SVG (layered ridge paths, haze gradients, dish and satellite line art) drawn in code.
 No stock or NASA imagery, so no licensing questions and it stays sharp at any size.
+
+## Globe and visual insights (added 2026-10-31)
+
+**Display-only orbit data.** The globe uses `t_j2k_sma, t_j2k_ecc, t_j2k_inc, c_j2k_sma, c_j2k_ecc, c_j2k_inc,
+t_h_apo, t_h_per, c_h_apo, c_h_per` from the CDMs. These are **never model inputs** (the allowed-column rule is for
+the model); they only draw orbits. They live in a separate `orbit_display` block in the scored JSON, and the UI
+labels them "display only".
+
+**Globe** (three.js, warm palette, not a photo texture): a dotted-continent Earth (world-atlas TopoJSON points) in
+`--ridge-mid` on a `--haze` ocean with a soft atmosphere rim. Two views:
+1. **Event globe** (event detail): the two objects' orbit rings at their real altitude and inclination. The
+   right ascension of the ascending node isn't in the data, so both rings are drawn to pass through one
+   conjunction point. The caption says exactly that. The conjunction point pulses in the event's tier colour,
+   and a small inset shows the RTN miss geometry. Drag to rotate; slow auto-rotate otherwise.
+2. **Fleet globe** (Insights page and optional landing backdrop): every test event as a point on a shell at its
+   altitude, at a deterministic longitude, latitude bounded by inclination. Coloured by tier, sized by
+   1/time to TCA. It shows the LEO crowding by altitude band (most events cluster in the 500–900 km bands).
+
+**Insights page** (every chart reads JSON from the API, with source shown):
+- Workload funnel: CDMs → events → model alerts → "Analyst decides" → Act. Shows the reduction the tool gives.
+- Tier flow 2 days out → at TCA (Sankey or stacked bars), from train events: where persistence fails.
+- Altitude band × tier heat strip, and object type × tier bars.
+- Risk vs time to TCA spaghetti for a sample of events, plus the median band per final tier: "most events fade,
+  a few rise late".
+- Reliability curve (calibration) for P(Critical), and the conformal α vs abstain vs miss curve.
+- Space weather: Critical rate by F10 bucket (only if the evidence shows an effect; otherwise say "no effect seen").
