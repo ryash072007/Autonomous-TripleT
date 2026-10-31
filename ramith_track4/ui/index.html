@@ -4,140 +4,557 @@
 <meta charset="utf-8">
 <title>AD Applicability Desk</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <style>
-  :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --mute:#93a4b5; --ok:#3fb27f; --no:#e5675d; --unk:#e0a93b; --acc:#58a6ff; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif; }
-  header { padding:10px 16px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:baseline; }
-  header h1 { font-size:16px; margin:0; } header span { color:var(--mute); }
-  nav button { background:none; border:0; color:var(--mute); padding:6px 10px; cursor:pointer; font:inherit; border-bottom:2px solid transparent; }
-  nav button.on { color:var(--text); border-color:var(--acc); }
-  .banner { background:#2b2410; color:#f0d58a; padding:6px 16px; font-size:12px; border-bottom:1px solid #4a3d16; }
-  main { display:grid; grid-template-columns: 380px 1fr 340px; gap:0; height:calc(100vh - 92px); }
-  section { overflow:auto; padding:12px; border-right:1px solid var(--line); }
-  section:last-child { border-right:0; }
-  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--mute); margin:0 0 8px; }
-  label { display:block; color:var(--mute); font-size:12px; margin:8px 0 2px; }
-  input, textarea { width:100%; background:var(--panel); border:1px solid var(--line); color:var(--text); border-radius:6px; padding:7px; font:inherit; }
-  textarea { height:74px; resize:vertical; }
-  .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  button.go { margin-top:10px; background:var(--acc); color:#04121f; border:0; border-radius:6px; padding:8px 14px; font-weight:600; cursor:pointer; }
-  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px; margin:10px 0; cursor:pointer; }
-  .card.sel { border-color:var(--acc); }
-  .card h3 { margin:0 0 4px; font-size:13px; }
-  .chip { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; margin-right:6px; }
-  .APPLIES { background:#12372a; color:var(--ok); } .DOES_NOT_APPLY { background:#3b1b19; color:var(--no); } .CANNOT_DETERMINE { background:#3a2e10; color:var(--unk); }
-  .st { background:#1c2b3a; color:var(--acc); }
-  .mute { color:var(--mute); font-size:12px; }
-  blockquote { margin:6px 0; padding:4px 8px; border-left:3px solid var(--line); color:#cfd9e3; font-size:12.5px; white-space:pre-wrap; max-height:150px; overflow:auto; }
-  .refuse { border:1px solid var(--unk); background:#241d0b; border-radius:8px; padding:12px; margin-top:12px; }
-  .refuse b { color:var(--unk); }
-  pre.src { white-space:pre-wrap; font:12.5px/1.5 ui-monospace,Consolas,monospace; margin:0; }
-  mark { background:#6b5a14; color:#fff; padding:0 1px; }
-  table { width:100%; border-collapse:collapse; font-size:12.5px; } td, th { text-align:left; padding:4px 6px; border-bottom:1px solid var(--line); }
-  .hidden { display:none; }
+  /* ------------------------------------------------------------------ design tokens */
+  :root {
+    --font-ui: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-read: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+    --bg: #F4F6FA;  --surface: #FFFFFF;  --surface-2: #F1F4F9;  --surface-3: #E8EDF4;
+    --line: #D8DFEA;  --line-strong: #B4C0D1;
+    --text: #0F172A;  --text-2: #334155;  --text-3: #556579;
+    --navy: #1E3A5F;  --navy-700: #17304F;  --navy-50: #E8EEF6;
+    --blue: #2455C3;  --blue-50: #E8EFFC;
+    --applies-bg: #E4ECFB;  --applies-fg: #1B3F94;  --applies-line: #AFC4EE;
+    --no-bg: #ECEFF3;  --no-fg: #3A4656;  --no-line: #C5CDD8;
+    --unk-bg: #FFF3D1;  --unk-fg: #6E4300;  --unk-line: #E8CC85;
+    --danger: #B42318;  --danger-bg: #FDECEA;
+    --mark: #FFE08A;  --mark-line: #D9A400;
+
+    --r-sm: 4px;  --r-md: 6px;  --r-lg: 8px;
+    --sh-1: 0 1px 2px rgba(15,23,42,.06);
+    --sh-2: 0 2px 8px rgba(15,23,42,.08);
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+    --t-fast: 140ms; --t-med: 220ms; --ease: cubic-bezier(.2,.7,.2,1);
+    --header-h: 56px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 var(--font-ui); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100dvh; }
+  h1, h2, h3, h4, p { margin: 0; }
+  button, input, textarea { font: inherit; color: inherit; }
+  svg.i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: var(--r-sm); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skip { position: absolute; left: 8px; top: -48px; background: var(--navy); color: #fff; padding: 8px 12px; border-radius: var(--r-md); z-index: 100; transition: top var(--t-fast); }
+  .skip:focus { top: 8px; }
+  [hidden] { display: none !important; }
+
+  /* ------------------------------------------------------------------ header + notice */
+  .app-header { height: var(--header-h); background: var(--navy); color: #fff; display: flex; align-items: center; gap: var(--sp-5); padding: 0 var(--sp-5); flex: none; }
+  .brand { display: flex; align-items: center; gap: var(--sp-3); min-width: 0; }
+  .brand-mark { width: 32px; height: 32px; border-radius: var(--r-md); background: #fff; color: var(--navy); display: grid; place-items: center; }
+  .brand-mark svg { width: 20px; height: 20px; }
+  .brand-name { font-weight: 650; font-size: 15px; letter-spacing: .01em; line-height: 1.15; }
+  .brand-sub { font-size: 11.5px; color: #B9C8DC; line-height: 1.2; }
+  .nav { display: flex; gap: var(--sp-1); margin-left: var(--sp-4); height: 100%; }
+  .nav button { background: none; border: 0; color: #C5D2E4; padding: 0 var(--sp-4); height: 100%; cursor: pointer; font-weight: 500; border-bottom: 3px solid transparent; transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast); }
+  .nav button:hover { color: #fff; background: rgba(255,255,255,.06); }
+  .nav button[aria-current="page"] { color: #fff; border-bottom-color: #fff; }
+  .nav button:focus-visible { outline-color: #fff; outline-offset: -4px; }
+  .header-meta { margin-left: auto; display: flex; align-items: center; gap: var(--sp-3); font-size: 12px; color: #C5D2E4; white-space: nowrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; }
+  .notice { background: #FFF8E1; color: #5B4300; border-bottom: 1px solid #EBD79A; padding: 8px var(--sp-5); display: flex; gap: var(--sp-3); align-items: flex-start; font-size: 13px; flex: none; }
+  .notice svg { margin-top: 2px; color: #8A6400; }
+  .notice strong { font-weight: 650; }
+
+  /* ------------------------------------------------------------------ ask (search) */
+  .ask { background: var(--surface); border-bottom: 1px solid var(--line); padding: var(--sp-4) var(--sp-5); flex: none; }
+  .ask-inner { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--sp-3) var(--sp-4); align-items: start; }
+  .field label, .legend { display: block; font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 4px; letter-spacing: .01em; }
+  .field .opt { color: var(--text-3); font-weight: 400; }
+  textarea, input[type=text] { width: 100%; background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-md); padding: 8px 10px; transition: border-color var(--t-fast), box-shadow var(--t-fast); }
+  input[type=text] { height: 38px; }
+  textarea { resize: vertical; }
+  textarea::placeholder, input::placeholder { color: #7B8AA0; }
+  textarea:hover, input[type=text]:hover { border-color: #8EA0B8; }
+  textarea:focus, input[type=text]:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(36,85,195,.18); }
+  input[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
+  .q-box textarea { font-size: 16px; line-height: 1.45; min-height: 64px; padding: 12px 14px; border-width: 1.5px; box-shadow: var(--sh-1); }
+  .field-error { color: var(--danger); font-size: 12px; margin-top: 3px; min-height: 0; }
+  .actions { display: flex; flex-direction: column; gap: var(--sp-2); padding-top: 22px; min-width: 150px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 var(--sp-4); border-radius: var(--r-md); border: 1px solid transparent; font-weight: 600; cursor: pointer; transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast); }
+  .btn svg { width: 16px; height: 16px; }
+  .btn-primary { background: var(--navy); color: #fff; box-shadow: var(--sh-1); }
+  .btn-primary:hover:not(:disabled) { background: var(--navy-700); box-shadow: var(--sh-2); }
+  .btn-primary:active:not(:disabled) { transform: translateY(1px); }
+  .btn-ghost { background: var(--surface); color: var(--text-2); border-color: var(--line-strong); }
+  .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
+  .btn:disabled { opacity: .55; cursor: not-allowed; }
+  .btn-sm { height: 30px; padding: 0 10px; font-size: 12.5px; font-weight: 550; }
+  .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .config { grid-column: 1 / -1; }
+  .config summary { cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--text-2); list-style: none; display: inline-flex; align-items: center; gap: 6px; padding: 2px 0; }
+  .config summary::-webkit-details-marker { display: none; }
+  .config summary svg { transition: transform var(--t-fast); }
+  .config[open] summary svg { transform: rotate(90deg); }
+  .config-count { background: var(--navy-50); color: var(--navy); border-radius: 999px; padding: 0 8px; font-size: 11.5px; font-weight: 600; }
+  .config-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--sp-3); margin-top: var(--sp-3); }
+  .hint { font-size: 11.5px; color: var(--text-3); margin-top: 3px; }
+  .examples { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+  .examples .lbl { font-size: 12px; color: var(--text-3); margin-right: 2px; }
+  .chip-btn { background: var(--surface-2); border: 1px solid var(--line); color: var(--text-2); border-radius: 999px; padding: 4px 12px; font-size: 12.5px; cursor: pointer; transition: background var(--t-fast), border-color var(--t-fast); text-align: left; }
+  .chip-btn:hover { background: var(--navy-50); border-color: #9DB1CC; }
+
+  /* ------------------------------------------------------------------ workspace */
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .workspace { flex: 1; min-height: 0; display: grid; grid-template-columns: 340px minmax(0, 1fr) 390px; max-width: 1500px; width: 100%; margin: 0 auto; background: var(--surface); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .pane { min-height: 0; overflow: auto; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+  .pane:last-child { border-right: 0; }
+  .pane-head { position: sticky; top: 0; z-index: 2; background: rgba(255,255,255,.96); backdrop-filter: none; border-bottom: 1px solid var(--line); padding: var(--sp-3) var(--sp-4); display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); min-height: 46px; }
+  .pane-title { font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: .07em; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
+  .pane-sub { font-size: 12px; color: var(--text-3); }
+  .pane-body { padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-4); }
+  .pane-tabs { display: none; }
+
+
+  /* result list */
+  .results-list { display: flex; flex-direction: column; }
+  .result { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--line); border-left: 3px solid transparent; cursor: pointer; display: flex; flex-direction: column; gap: 6px; background: var(--surface); text-align: left; width: 100%; border-top: 0; border-right: 0; transition: background var(--t-fast), border-color var(--t-fast); }
+  .result:hover { background: var(--surface-2); }
+  .result[aria-selected="true"] { background: var(--navy-50); border-left-color: var(--navy); }
+  .result-title { font-weight: 600; font-size: 13.5px; line-height: 1.35; color: var(--text); }
+  .result-meta { font-size: 12px; color: var(--text-3); overflow-wrap: anywhere; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: var(--r-sm); font-size: 11.5px; font-weight: 650; letter-spacing: .02em; border: 1px solid transparent; white-space: nowrap; }
+  .badge svg { width: 13px; height: 13px; }
+  .v-APPLIES { background: var(--applies-bg); color: var(--applies-fg); border-color: var(--applies-line); }
+  .v-DOES_NOT_APPLY { background: var(--no-bg); color: var(--no-fg); border-color: var(--no-line); }
+  .v-CANNOT_DETERMINE { background: var(--unk-bg); color: var(--unk-fg); border-color: var(--unk-line); }
+  .b-status { background: var(--surface-3); color: var(--text-2); border-color: var(--line); font-weight: 600; }
+  .b-warn { background: var(--unk-bg); color: var(--unk-fg); border-color: var(--unk-line); }
+
+  /* evidence */
+  .evidence-col { flex: 1 0 auto; min-height: 0; padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-3); }
+  .doc-title { font-size: 14px; font-weight: 650; line-height: 1.35; }
+  .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-2) var(--sp-4); font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-3) var(--sp-4); }
+  .meta .wide { grid-column: 1 / -1; }
+  .markup { display: none; }
+  .meta .k { color: var(--text-3); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .meta .v { color: var(--text); overflow-wrap: anywhere; }
+  .meta .v.mono { font-family: var(--font-mono); font-size: 12px; }
+  .quote-nav { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+  .quote-tab { border: 1px solid var(--line-strong); background: var(--surface); border-radius: var(--r-md); padding: 4px 10px; font-size: 12.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); transition: background var(--t-fast), border-color var(--t-fast); }
+  .quote-tab:hover { background: var(--surface-2); }
+  .quote-tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .source-note { font-size: 12px; color: var(--text-3); display: flex; align-items: center; gap: 6px; }
+  .viewer { background: #FFFEFB; border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--sh-1); flex: 1 1 340px; min-height: 260px; overflow: auto; display: flex; flex-direction: column; position: relative; }
+  .viewer-head { position: sticky; top: 0; background: #FFFEFB; z-index: 1; padding: 8px var(--sp-4); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: var(--sp-3); font-size: 12px; color: var(--text-3); }
+  .viewer pre { margin: 0; padding: var(--sp-4) var(--sp-5); font: 15px/1.7 var(--font-read); white-space: pre-wrap; overflow-wrap: anywhere; max-width: 78ch; margin-inline: auto; color: #1B2433; }
+  mark.cite { background: var(--mark); color: inherit; padding: 1px 0; border-bottom: 2px solid var(--mark-line); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* verdict panel */
+  .verdict-hero { border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .verdict-hero.v-APPLIES { background: var(--applies-bg); border-color: var(--applies-line); }
+  .verdict-hero.v-DOES_NOT_APPLY { background: var(--no-bg); border-color: var(--no-line); }
+  .verdict-hero.v-CANNOT_DETERMINE { background: var(--unk-bg); border-color: var(--unk-line); }
+  .verdict-label { font-size: 19px; font-weight: 700; display: flex; align-items: center; gap: 10px; line-height: 1.2; }
+  .verdict-label svg { width: 22px; height: 22px; }
+  .v-APPLIES .verdict-label { color: var(--applies-fg); } .v-DOES_NOT_APPLY .verdict-label { color: var(--no-fg); } .v-CANNOT_DETERMINE .verdict-label { color: var(--unk-fg); }
+  .verdict-why { font-size: 13.5px; color: var(--text); }
+  .verdict-disclaimer { font-size: 12px; color: var(--text-2); border-top: 1px solid rgba(15,23,42,.12); padding-top: var(--sp-2); margin-top: var(--sp-1); }
+  .section-title { font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: .07em; color: var(--text-2); margin-bottom: var(--sp-2); display: flex; align-items: center; gap: 8px; }
+  .checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .checks li { display: grid; grid-template-columns: 20px minmax(0,1fr); gap: var(--sp-2); padding: 9px var(--sp-3); border-bottom: 1px solid var(--line); font-size: 13px; }
+  .checks li:last-child { border-bottom: 0; }
+  .checks .t { font-weight: 600; } .checks .d { color: var(--text-3); font-size: 12px; }
+  .c-pass svg { color: var(--applies-fg); } .c-fail svg { color: var(--no-fg); } .c-unk svg { color: var(--unk-fg); }
+  .evidence-item { border-left: 3px solid var(--line-strong); padding: 2px 0 2px var(--sp-3); }
+  .evidence-item .lab { font-size: 11.5px; font-weight: 650; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; }
+  .evidence-item blockquote { margin: 4px 0; font: 14px/1.55 var(--font-read); color: #1B2433; max-height: 7.5em; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .link-btn { background: none; border: 0; color: var(--blue); cursor: pointer; padding: 0; font-size: 12.5px; font-weight: 550; text-decoration: underline; text-underline-offset: 2px; }
+  .uncertain { background: var(--unk-bg); border: 1px solid var(--unk-line); border-radius: var(--r-md); padding: var(--sp-3); color: var(--unk-fg); font-size: 13px; }
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 4px; }
+  .timeline li { position: relative; padding: 0 0 var(--sp-3) var(--sp-4); border-left: 2px solid var(--line-strong); font-size: 12.5px; }
+  .timeline li::before { content: ""; position: absolute; left: -6px; top: 3px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--line-strong); }
+  .timeline li.latest { border-left-color: var(--navy); } .timeline li.latest::before { background: var(--navy); border-color: var(--navy); }
+  .timeline .ev { font-weight: 600; text-transform: capitalize; } .timeline .dt { color: var(--text-3); }
+  .status-card { border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-3) var(--sp-4); background: var(--surface-2); font-size: 13px; }
+
+  /* states */
+  .state { text-align: center; padding: var(--sp-6) var(--sp-5); color: var(--text-2); display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); }
+  .state .ic { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-3); color: var(--navy); display: grid; place-items: center; }
+  .state .ic svg { width: 22px; height: 22px; }
+  .state h3 { font-size: 15px; color: var(--text); }
+  .state p { max-width: 38ch; color: var(--text-3); font-size: 13px; }
+  .state.err .ic { background: var(--danger-bg); color: var(--danger); }
+  .refuse { border: 1px solid var(--unk-line); background: var(--unk-bg); color: var(--unk-fg); border-radius: var(--r-lg); padding: var(--sp-4); margin: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .refuse h3 { font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .refuse .code { font-family: var(--font-mono); font-size: 11.5px; background: rgba(255,255,255,.6); border-radius: var(--r-sm); padding: 1px 6px; }
+  .refuse .next { border-top: 1px solid rgba(110,67,0,.25); padding-top: var(--sp-2); font-size: 13px; }
+  .inline-note { margin: var(--sp-3) var(--sp-4) 0; background: var(--navy-50); border: 1px solid #C2D0E4; border-radius: var(--r-md); padding: 8px 12px; font-size: 12.5px; color: var(--navy); display: flex; gap: 8px; align-items: flex-start; }
+  .skeleton { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+  .sk { background: linear-gradient(90deg, var(--surface-3) 25%, #F6F8FB 50%, var(--surface-3) 75%); background-size: 200% 100%; border-radius: var(--r-sm); animation: shimmer 1.3s linear infinite; height: 12px; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+
+  /* report view */
+  #view-report { overflow: auto; flex: 1; }
+  .report { max-width: 980px; margin: 0 auto; padding: var(--sp-5); background: var(--surface); border-inline: 1px solid var(--line); min-height: 100%; }
+  .report h1 { font-size: 22px; margin-bottom: var(--sp-3); } .report h2 { font-size: 17px; margin: var(--sp-5) 0 var(--sp-2); padding-top: var(--sp-3); border-top: 1px solid var(--line); }
+  .report p, .report li { max-width: 80ch; color: var(--text-2); } .report ul { padding-left: 20px; }
+  .report code { font-family: var(--font-mono); font-size: 12px; background: var(--surface-3); padding: 1px 5px; border-radius: var(--r-sm); }
+  .table-wrap { overflow-x: auto; margin: var(--sp-3) 0; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .report table { border-collapse: collapse; width: 100%; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .report th, .report td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .report th { background: var(--surface-2); font-weight: 650; position: sticky; top: 0; }
+
+  /* ------------------------------------------------------------------ responsive */
+  @media (min-width: 1181px) { body { height: 100dvh; overflow: hidden; } }
+  @media (max-width: 1180px) {
+    .workspace { grid-template-columns: minmax(0, 1fr); border: 0; }
+    .pane { border-right: 0; display: none; }
+    .pane.is-active { display: flex; }
+    #pane-evidence { overflow: visible; } .viewer { flex: none; max-height: 62vh; }
+    .pane-tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--line); padding: 0 var(--sp-3); gap: var(--sp-1); position: sticky; top: 0; z-index: 3; }
+    .pane-tabs button { flex: 1; background: none; border: 0; border-bottom: 3px solid transparent; padding: 11px 6px; font-weight: 600; color: var(--text-3); cursor: pointer; }
+    .pane-tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--navy); }
+    .workspace { display: flex; flex-direction: column; } .workspace .pane { flex: 1; }
+    .config-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .app-header { padding: 0 var(--sp-3); gap: var(--sp-3); } .brand-sub, .header-meta, .nav .long { display: none; } .nav { margin-left: 0; } .brand-name { white-space: nowrap; font-size: 14px; } .nav button { padding: 0 var(--sp-3); }
+    .ask { padding: var(--sp-3); } .ask-inner { grid-template-columns: minmax(0, 1fr); } .actions { flex-direction: row; padding-top: 0; } .actions .btn { flex: 1; }
+    .config-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .notice { padding: 8px var(--sp-3); font-size: 12.5px; }
+    .viewer pre { padding: var(--sp-3); font-size: 14.5px; } .report { padding: var(--sp-3); }
+  }
+  @media (pointer: coarse) { .btn, .quote-tab, .chip-btn { min-height: 44px; } input[type=text] { height: 44px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
-<header><h1>AD Applicability Desk</h1><span>FAA airworthiness directive NPRMs · quotes only, no generated text · the engineer decides</span>
-  <nav style="margin-left:auto"><button id="tabS" class="on">Search</button><button id="tabR">Results</button></nav></header>
-<div class="banner">PROPOSED RULES (NPRMs): not legally binding. This tool finds, quotes and checks applicability rules; it does not certify compliance or airworthiness.</div>
+<a class="skip" href="#main">Skip to results</a>
 
-<main id="search">
-  <section>
-    <h2>Question</h2>
-    <textarea id="q" placeholder="e.g. Does the latest proposed AD in docket FAA-2026-1338 apply to my A330-243?"></textarea>
-    <h2 style="margin-top:12px">Aircraft configuration (optional)</h2>
-    <div class="row"><div><label>Make</label><input id="make"></div><div><label>Model</label><input id="model"></div></div>
-    <div class="row"><div><label>Original CofA date</label><input id="cofa" placeholder="YYYY-MM-DD"></div><div><label>Serial number</label><input id="serial"></div></div>
-    <label>Installed part numbers (comma separated)</label><input id="pns">
-    <button class="go" id="go">Search</button>
-    <div id="meta" class="mute" style="margin-top:8px"></div>
-    <div id="cards"></div>
-  </section>
-  <section><h2>Source (highlighted quote)</h2><div id="srcmeta" class="mute"></div><pre class="src" id="src">Select a card, then a quote.</pre></section>
-  <section><h2>Why this verdict</h2><div id="trace" class="mute">Select a card.</div></section>
+<header class="app-header">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+    <div><div class="brand-name">AD Applicability Desk</div><div class="brand-sub">FAA airworthiness directive research</div></div>
+  </div>
+  <nav class="nav" aria-label="Primary">
+    <button id="navSearch" aria-current="page">Search</button>
+    <button id="navReport">Results<span class="long"> &amp; evaluation</span></button>
+  </nav>
+  <div class="header-meta"><span class="pill"><svg class="i" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/></svg>Proposed rules (NPRMs) only</span></div>
+</header>
+<div class="notice" role="note">
+  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <div><strong>Decision support only.</strong> These are proposed rules and are not legally binding. This tool quotes sources and checks stated applicability conditions; it does not certify compliance or airworthiness. A qualified person must verify against the final AD.</div>
+</div>
+
+<section class="ask" aria-label="Ask a question">
+  <form class="ask-inner" id="form" novalidate>
+    <div class="field q-box">
+      <label for="q">Regulatory question</label>
+      <textarea id="q" rows="2" placeholder="e.g. Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243?" aria-describedby="qhint"></textarea>
+      <div class="hint" id="qhint">Describe the aircraft and the notice, or paste a docket or AD number. Press Ctrl+Enter to search.</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="go" type="submit"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span id="goLabel">Search</span></button>
+      <button class="btn btn-ghost" id="clear" type="button">Clear</button>
+    </div>
+    <details class="config" id="config">
+      <summary><svg class="i" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>Aircraft configuration <span class="opt" style="font-weight:400;color:var(--text-3)">(optional)</span> <span class="config-count" id="cfgCount" hidden></span></summary>
+      <div class="config-grid">
+        <div class="field"><label for="make">Make <span class="opt">optional</span></label><input type="text" id="make" autocomplete="off" placeholder="Airbus"></div>
+        <div class="field"><label for="model">Model <span class="opt">optional</span></label><input type="text" id="model" autocomplete="off" placeholder="A330-243"></div>
+        <div class="field"><label for="cofa">Original CofA date <span class="opt">optional</span></label><input type="text" id="cofa" inputmode="numeric" autocomplete="off" placeholder="YYYY-MM-DD" aria-describedby="cofaErr"><div class="field-error" id="cofaErr" role="alert"></div></div>
+        <div class="field"><label for="serial">Serial number <span class="opt">optional</span></label><input type="text" id="serial" autocomplete="off" placeholder="e.g. 1456"></div>
+        <div class="field"><label for="pns">Installed part numbers <span class="opt">optional</span></label><input type="text" id="pns" autocomplete="off" placeholder="comma separated"></div>
+      </div>
+    </details>
+    <div class="examples" id="examples" aria-label="Example questions"><span class="lbl">Try:</span></div>
+  </form>
+</section>
+
+<main id="main" tabindex="-1">
+  <div id="view-search" style="display:flex;flex-direction:column;flex:1;min-height:0">
+    <div class="pane-tabs" role="tablist" aria-label="Panels">
+      <button role="tab" id="tab-results" aria-selected="true" data-pane="pane-results">Results</button>
+      <button role="tab" id="tab-evidence" aria-selected="false" data-pane="pane-evidence">Source evidence</button>
+      <button role="tab" id="tab-verdict" aria-selected="false" data-pane="pane-verdict">Verdict &amp; reasoning</button>
+    </div>
+    <div class="workspace">
+      <section class="pane is-active" id="pane-results" aria-labelledby="h-results">
+        <div class="pane-head"><h2 class="pane-title" id="h-results">Results</h2><span class="pane-sub" id="resultsMeta" aria-live="polite"></span></div>
+        <div id="resultsBody"></div>
+      </section>
+      <section class="pane" id="pane-evidence" aria-labelledby="h-evidence">
+        <div class="pane-head"><h2 class="pane-title" id="h-evidence">Source evidence</h2><button class="btn btn-ghost btn-sm" id="copyCite" hidden><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy citation</span></button></div>
+        <div id="evidenceBody"></div>
+      </section>
+      <section class="pane" id="pane-verdict" aria-labelledby="h-verdict">
+        <div class="pane-head"><h2 class="pane-title" id="h-verdict">Verdict &amp; reasoning</h2></div>
+        <div id="verdictBody"></div>
+      </section>
+    </div>
+  </div>
+  <div id="view-report" hidden><article class="report" id="reportBody" aria-live="polite"></article></div>
 </main>
-
-<main id="results" class="hidden" style="grid-template-columns:1fr"><section id="resbody"><h2>Evaluation results (frozen test set)</h2><div class="mute">Loading…</div></section></main>
 
 <script>
 const $ = id => document.getElementById(id);
-let lastAnswer = null, docCache = {};
-function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+const ICONS = {
+  check: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  minus: '<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/>',
+  help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+  warn: '<path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/>',
+  info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  left: '<path d="m15 18-6-6 6-6"/>', right: '<path d="m9 18 6-6-6-6"/>',
+  file: '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  layers: '<path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>',
+  refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+};
+const icon = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+function html(tag, cls, inner) { const e = el(tag, cls); e.innerHTML = inner; return e; }
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-$('tabS').onclick = () => { $('search').classList.remove('hidden'); $('results').classList.add('hidden'); $('tabS').classList.add('on'); $('tabR').classList.remove('on'); };
-$('tabR').onclick = async () => { $('search').classList.add('hidden'); $('results').classList.remove('hidden'); $('tabR').classList.add('on'); $('tabS').classList.remove('on'); loadResults(); };
+const EXAMPLES = [
+  ['Falcon 7X — applies', 'I have a Dassault Falcon 7X. Does the proposed AD superseding AD 2025-13-11 apply to it?'],
+  ['A330-243 — certificate date', 'Does the latest proposed AD in docket FAA-2026-1338 apply to my Airbus A330-243, original certificate of airworthiness issued 2026-03-01?'],
+  ['Bell 505 — outside document', 'Does the proposed AD that references Transport Canada AD CF-2026-20R1 apply to my Bell 505 helicopter?'],
+  ['Revision status', 'Is the NPRM on RB211 Trent 768-60 low-pressure compressor blades (docket FAA-2025-2541) still active?'],
+];
+const VERDICT = {
+  APPLIES: { label: 'Applies', icon: 'check', why: 'Every applicability condition that could be checked is satisfied by the configuration you gave.' },
+  DOES_NOT_APPLY: { label: 'Does not apply', icon: 'minus', why: 'At least one stated applicability condition is clearly not met by the configuration you gave.' },
+  CANNOT_DETERMINE: { label: 'Cannot determine', icon: 'help', why: 'The notice’s applicability depends on something this tool cannot check or you did not provide.' },
+};
+const CODES = {
+  MODEL_LISTED: ['pass', 'Model is named in the applicability paragraph', ''],
+  MODEL_NOT_LISTED: ['fail', 'Model is not named in the applicability paragraph', 'The notice lists other models only.'],
+  CERT_DATE_BEFORE_CUTOFF: ['pass', 'Certificate date is on or before the notice’s cutoff', ''],
+  CERT_DATE_AFTER_CUTOFF: ['fail', 'Certificate date is after the notice’s cutoff', 'Compare the date condition quoted below.'],
+  PN_INSTALLED: ['pass', 'An installed part number matches the notice’s list', ''],
+  PN_NOT_INSTALLED: ['fail', 'None of the supplied part numbers is in the notice’s list', ''],
+  SERIAL_IN_RANGE: ['pass', 'Serial number is inside the stated range', ''],
+  SERIAL_OUT_OF_RANGE: ['fail', 'Serial number is outside the stated range', ''],
+  DOC_WITHDRAWN: ['fail', 'This notice withdraws a proposed AD', 'Nothing is proposed to apply.'],
+  EXCLUSION_UNVERIFIABLE: ['unk', 'The notice excludes aircraft meeting a condition you did not state', 'Confirm your aircraft does not meet the excluded condition.'],
+  EXTERNAL_DOC_REQUIRED: ['unk', 'Applicability is defined in a document outside this corpus', 'A foreign-authority AD or manufacturer bulletin is needed.'],
+  AMBIGUOUS_SCOPE: ['unk', 'The applicability text has a condition this tool does not evaluate', 'Read the quoted clause yourself.'],
+  INPUT_MISSING_CERT_DATE: ['unk', 'Certificate date not provided', 'The notice limits applicability by original certificate date.'],
+  INPUT_MISSING_SERIAL: ['unk', 'Serial number not provided', 'The notice limits applicability by serial number.'],
+  INPUT_MISSING_PN: ['unk', 'Installed part numbers not provided', 'The notice limits applicability by part number.'],
+  INPUT_MISSING_MODEL: ['unk', 'Aircraft model not provided', 'Add a model in the aircraft configuration.'],
+  SUMMARY_ONLY_COVERAGE: ['unk', 'Only the summary of this notice is available', 'The full applicability text was not obtained.'],
+  NOT_PART_39: ['unk', 'This is not an airworthiness directive (not Part 39)', ''],
+};
+const REFUSALS = { OUT_OF_SCOPE: 'Out of scope', OUT_OF_CORPUS: 'Not in this collection', EXTERNAL_DOC_REQUIRED: 'Needs an outside document', AMBIGUOUS_QUERY: 'Question is too vague', CONTRADICTORY_CONFIG: 'Make and model do not match', INSUFFICIENT_EVIDENCE: 'Not enough evidence', NOT_PART_39: 'Not an airworthiness directive' };
+const SOURCES = { fr_text: 'Federal Register full text', embedded: 'Regulatory text from the spreadsheet', summary: 'Spreadsheet summary only' };
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-async function run(){
-  const config = { make:$('make').value, model:$('model').value, cofa_date:$('cofa').value, serial:$('serial').value, part_numbers:$('pns').value };
-  $('go').disabled = true; $('cards').textContent = '';
-  const r = await fetch('/query', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({query:$('q').value, config})});
-  lastAnswer = await r.json(); $('go').disabled = false; render(lastAnswer);
+const state = { answer: null, cardIdx: 0, quoteIdx: 0, docs: {}, lastRequest: null };
+
+/* ---------------------------------------------------------------- panes (responsive tabs) */
+function showPane(id) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.toggle('is-active', p.id === id));
+  document.querySelectorAll('.pane-tabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.pane === id)));
 }
-$('go').onclick = run;
-$('q').addEventListener('keydown', e => { if(e.key==='Enter' && (e.ctrlKey||e.metaKey)) run(); });
+document.querySelectorAll('.pane-tabs button').forEach(b => b.onclick = () => showPane(b.dataset.pane));
 
-function render(a){
-  const box = $('cards'); box.textContent = '';
+/* ---------------------------------------------------------------- navigation */
+function showView(name) {
+  const search = name === 'search';
+  $('view-search').hidden = !search; $('view-report').hidden = search;
+  document.querySelector('.ask').hidden = !search;
+  $('navSearch').setAttribute('aria-current', search ? 'page' : 'false'); $('navReport').setAttribute('aria-current', search ? 'false' : 'page');
+  $('view-search').style.display = search ? 'flex' : 'none';
+  if (!search) loadReport();
+}
+$('navSearch').onclick = () => showView('search'); $('navReport').onclick = () => showView('report');
+
+/* ---------------------------------------------------------------- form */
+const examplesBox = $('examples');
+EXAMPLES.forEach(([lbl, q]) => { const b = el('button', 'chip-btn', lbl); b.type = 'button'; b.title = q; b.onclick = () => { $('q').value = q; $('q').focus(); }; examplesBox.appendChild(b); });
+$('config').open = innerHeight > 800 && innerWidth > 1180;
+function cfgValues() { return { make: $('make').value.trim(), model: $('model').value.trim(), cofa_date: $('cofa').value.trim(), serial: $('serial').value.trim(), part_numbers: $('pns').value.trim() }; }
+function updateCfgCount() { const n = Object.values(cfgValues()).filter(Boolean).length; $('cfgCount').hidden = !n; $('cfgCount').textContent = n + ' set'; }
+['make', 'model', 'cofa', 'serial', 'pns'].forEach(id => $(id).addEventListener('input', updateCfgCount));
+function validCofa() {
+  const v = $('cofa').value.trim(); const ok = !v || (/^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(Date.parse(v)));
+  $('cofa').setAttribute('aria-invalid', String(!ok)); $('cofaErr').textContent = ok ? '' : 'Use the format YYYY-MM-DD, for example 2025-06-01.'; return ok;
+}
+$('cofa').addEventListener('blur', validCofa);
+$('clear').onclick = () => { ['q', 'make', 'model', 'cofa', 'serial', 'pns'].forEach(i => $(i).value = ''); validCofa(); updateCfgCount(); state.answer = null; renderEmpty(); $('q').focus(); };
+$('q').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); run(); } });
+$('form').addEventListener('submit', e => { e.preventDefault(); run(); });
+
+/* ---------------------------------------------------------------- run */
+async function run() {
+  const q = $('q').value.trim();
+  if (!q) { $('q').focus(); $('qhint').textContent = 'Enter a question first.'; $('qhint').style.color = 'var(--danger)'; return; }
+  $('qhint').textContent = 'Describe the aircraft and the notice, or paste a docket or AD number. Press Ctrl+Enter to search.'; $('qhint').style.color = '';
+  if (!validCofa()) { $('config').open = true; $('cofa').focus(); return; }
+  const body = { query: q, config: cfgValues() };
+  state.lastRequest = body; setBusy(true);
+  try {
+    const r = await fetch('/query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error('The server answered ' + r.status);
+    state.answer = await r.json(); state.cardIdx = 0; state.quoteIdx = 0;
+    renderAnswer(); showPane('pane-results');
+  } catch (err) { renderError(err.message || 'Network error'); }
+  finally { setBusy(false); }
+}
+function setBusy(b) {
+  $('go').disabled = b; $('goLabel').textContent = b ? 'Searching…' : 'Search';
+  $('go').querySelector('svg, .spinner')?.remove(); $('go').insertAdjacentHTML('afterbegin', b ? '<span class="spinner" aria-hidden="true"></span>' : icon('search'));
+  $('resultsBody').setAttribute('aria-busy', String(b));
+  if (b) { const sk = el('div'); for (let i = 0; i < 3; i++) sk.appendChild(html('div', 'skeleton', '<div class="sk" style="width:35%"></div><div class="sk" style="width:90%;height:14px"></div><div class="sk" style="width:60%"></div>')); $('resultsBody').replaceChildren(sk); $('resultsMeta').textContent = 'Searching…'; }
+}
+
+/* ---------------------------------------------------------------- render: empty / error */
+function stateBlock(ic, title, text, cls, extra) {
+  const d = html('div', 'state ' + (cls || ''), `<div class="ic">${icon(ic)}</div><h3>${esc(title)}</h3><p>${esc(text)}</p>`); if (extra) d.appendChild(extra); return d;
+}
+function renderEmpty() {
+  $('resultsMeta').textContent = '';
+  $('resultsBody').replaceChildren(stateBlock('search', 'Ask about a proposed AD', 'Describe your aircraft and the notice, or use one of the example questions above. Every answer shows its source quotation.'));
+  $('evidenceBody').replaceChildren(stateBlock('file', 'No source selected', 'The notice text with the quoted passage highlighted appears here.'));
+  $('verdictBody').replaceChildren(stateBlock('layers', 'No verdict yet', 'The reasoning behind each applicability verdict appears here.'));
+  $('copyCite').hidden = true;
+}
+function renderError(msg) {
+  $('resultsMeta').textContent = '';
+  const retry = el('button', 'btn btn-ghost btn-sm'); retry.innerHTML = icon('refresh') + 'Try again'; retry.onclick = run;
+  const b = stateBlock('warn', 'The search could not be completed', msg + '. Check that the server is running, then try again.', 'err', retry); b.setAttribute('role', 'alert');
+  $('resultsBody').replaceChildren(b);
+}
+
+/* ---------------------------------------------------------------- render: answer */
+function renderAnswer() {
+  const a = state.answer, box = $('resultsBody'); box.replaceChildren();
   const L = a.latency_ms || {};
-  $('meta').textContent = `retrieval ${L.retrieval ?? '-'} ms · total ${L.total ?? '-'} ms` + (a.config_used && Object.keys(a.config_used).length ? ' · config read: ' + JSON.stringify(a.config_used) : '');
-  if(a.type === 'refusal'){
-    const r = a.refusal, d = el('div','refuse');
-    d.appendChild(el('b', null, 'Cannot answer · ' + r.code)); d.appendChild(el('div', null, r.message));
-    d.appendChild(el('div','mute','To resolve: ' + r.what_would_resolve_it)); box.appendChild(d); return;
+  if (a.type === 'refusal') {
+    const r = a.refusal; $('resultsMeta').textContent = 'No answer';
+    const d = html('div', 'refuse', `<h3>${icon('warn')} I can’t answer this</h3><div><span class="code">${esc(r.code)}</span> ${esc(REFUSALS[r.code] || '')}</div><p>${esc(r.message)}</p><div class="next"><strong>To resolve:</strong> ${esc(r.what_would_resolve_it)}</div>`);
+    d.setAttribute('role', 'status'); box.appendChild(d);
+    $('evidenceBody').replaceChildren(stateBlock('file', 'No source to show', 'The tool declined rather than guess, so there is no supporting passage.'));
+    $('verdictBody').replaceChildren(stateBlock('info', 'No verdict', 'Declining is a deliberate result. See the explanation under Results.'));
+    $('copyCite').hidden = true; return;
   }
-  (a.warnings || []).forEach(w => { const d = el('div','refuse'); d.appendChild(el('b', null, 'Check: ')); d.appendChild(document.createTextNode(w)); box.appendChild(d); });
+  $('resultsMeta').textContent = `${a.cards.length} notice${a.cards.length === 1 ? '' : 's'} · ${L.total ?? '-'} ms`;
+  (a.warnings || []).forEach(w => box.appendChild(html('div', 'inline-note', icon('info') + `<span>${esc(w)}</span>`)));
+  const list = el('div', 'results-list'); list.setAttribute('role', 'listbox'); list.setAttribute('aria-label', 'Retrieved notices');
   a.cards.forEach((c, i) => {
-    const d = el('div', 'card'); d.onclick = () => select(c, d);
-    d.appendChild(el('h3', null, `${c.title}`));
-    d.appendChild(el('div','mute', `${c.docket} · ${c.citation || ''} · issued ${c.issue_date || '?'}`));
-    const line = el('div'); line.style.margin = '6px 0';
-    if(c.verdict){ const v = el('span','chip '+c.verdict.verdict, c.verdict.verdict.replace(/_/g,' ')); line.appendChild(v); line.appendChild(el('span','mute', c.verdict.main_reason)); }
-    line.appendChild(el('span','chip st', c.status)); d.appendChild(line);
-    if(c.version_note) d.appendChild(el('div','mute','⚠ ' + c.version_note));
-    if(c.verdict) d.appendChild(el('div','mute', c.verdict.detail));
-    c.quotes.forEach(q => { const b = el('blockquote', null, q.text); b.title = `${q.label} · page ${q.page ?? '?'}`; b.onclick = ev => { ev.stopPropagation(); select(c, d, q); }; d.appendChild(b); });
-    d.appendChild(el('div','mute', c.banner)); box.appendChild(d);
-    if(i === 0) select(c, d);
+    const v = c.verdict ? VERDICT[c.verdict.verdict] : null;
+    const b = el('button', 'result'); b.type = 'button'; b.setAttribute('role', 'option'); b.setAttribute('aria-selected', String(i === state.cardIdx)); b.dataset.i = i;
+    let badges = '';
+    if (v) badges += `<span class="badge v-${c.verdict.verdict}">${icon(v.icon)}${v.label}</span>`;
+    badges += `<span class="badge b-status">${esc(c.status)}</span>`;
+    if (c.version_note) badges += `<span class="badge b-warn">${icon('warn')}Older version</span>`;
+    b.innerHTML = `<div class="row">${badges}</div><div class="result-title">${esc(c.title)}</div><div class="result-meta">${esc(c.docket)} · issued ${esc(c.issue_date || '?')}</div>`;
+    b.onclick = () => selectCard(i, true); list.appendChild(b);
   });
+  box.appendChild(list); selectCard(state.cardIdx, false);
+}
+function selectCard(i, userClick) {
+  state.cardIdx = i; state.quoteIdx = 0;
+  document.querySelectorAll('.result').forEach(b => b.setAttribute('aria-selected', String(Number(b.dataset.i) === i)));
+  const c = state.answer.cards[i]; renderEvidence(c); renderVerdict(c);
+  if (userClick && matchMedia('(max-width: 1180px)').matches) showPane('pane-verdict');
 }
 
-async function select(c, node, quote){
-  document.querySelectorAll('.card').forEach(n => n.classList.remove('sel')); node.classList.add('sel');
-  let d = docCache[c.doc_id]; if(!d){ d = await (await fetch('/doc/' + encodeURIComponent(c.doc_id).replace(/%40/g,'@'))).json(); docCache[c.doc_id] = d; }
-  const q = quote || c.quotes[0];
-  const pre = $('src'); pre.textContent = '';
-  $('srcmeta').textContent = `${d.title} · ${d.citation} · text source: ${d.source}` + (d.is_summary_only ? ' · SUMMARY ONLY (full text not available)' : '');
-  const src = (q && q.field === 'summary') ? d.summary : d.text;
-  if(q){ pre.appendChild(document.createTextNode(src.slice(Math.max(0, q.char_start - 400), q.char_start)));
-         const m = document.createElement('mark'); m.textContent = src.slice(q.char_start, q.char_end); pre.appendChild(m);
-         pre.appendChild(document.createTextNode(src.slice(q.char_end, q.char_end + 600)));
-         m.scrollIntoView({block:'center'}); } else pre.textContent = src.slice(0, 3000);
-  trace(c);
+/* ---------------------------------------------------------------- render: evidence */
+async function renderEvidence(c) {
+  const body = $('evidenceBody'); body.replaceChildren(); $('copyCite').hidden = false;
+  if (!c.quotes.length) { body.appendChild(stateBlock('file', 'No quotation for this notice', 'This answer is based on the notice’s status, not a quoted passage.')); $('copyCite').hidden = true; return; }
+  let d = state.docs[c.doc_id];
+  if (!d) {
+    body.appendChild(html('div', 'skeleton', '<div class="sk" style="width:50%"></div><div class="sk" style="width:95%;height:200px"></div>'));
+    try { d = state.docs[c.doc_id] = await (await fetch('/doc/' + encodeURIComponent(c.doc_id).replace(/%40/g, '@'))).json(); }
+    catch { body.replaceChildren(stateBlock('warn', 'Source could not be loaded', 'The notice text did not load. Try again.', 'err')); return; }
+    if (state.answer.cards[state.cardIdx] !== c) return;
+  }
+  body.replaceChildren();
+  const wrap = el('div', 'evidence-col');
+  const q = c.quotes[state.quoteIdx] || c.quotes[0];
+  wrap.appendChild(el('div', 'doc-title', c.title));
+  const meta = el('div', 'meta');
+  const passage = q.section === 'summary' ? 'Spreadsheet summary field' : (q.section ? 'Section ' + String(q.section).toUpperCase().replace(/_/g, ' ') + ' — ' + q.label : q.label);
+  [['Docket', c.docket, ''], ['Text source', SOURCES[d.source] || d.source, ''], ['Page', q.page ?? '—', 'mono'], ['Character span', q.char_start + '–' + q.char_end, 'mono'], ['Passage', passage, 'wide'], ['Citation', c.citation || '—', 'wide']]
+    .forEach(([k, v, cls]) => { const cell = el('div', cls === 'wide' ? 'wide' : ''); cell.appendChild(el('div', 'k', k)); cell.appendChild(el('div', 'v ' + (cls === 'mono' ? 'mono' : ''), String(v))); meta.appendChild(cell); });
+  wrap.appendChild(meta);
+  if (c.quotes.length > 1) {
+    const nav = el('div', 'quote-nav'); nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Quoted passages');
+    c.quotes.forEach((qq, j) => { const t = el('button', 'quote-tab'); t.type = 'button'; t.setAttribute('role', 'tab'); t.setAttribute('aria-selected', String(j === state.quoteIdx)); t.textContent = `Quote ${j + 1} · ${qq.label}`; t.onclick = () => { state.quoteIdx = j; renderEvidence(c); }; nav.appendChild(t); });
+    wrap.appendChild(nav);
+  }
+  if (d.is_summary_only || q.field === 'summary') wrap.appendChild(html('div', 'source-note', icon('info') + '<span>Highlighted text comes from the spreadsheet summary field, not the full notice.</span>'));
+  const src = q.field === 'summary' ? d.summary : d.text;
+  const viewer = el('div', 'viewer');
+  viewer.appendChild(html('div', 'viewer-head', `<span>${esc(d.citation || '')} · highlighted passage in yellow</span>`));
+  const pre = el('pre'); pre.setAttribute('tabindex', '0'); pre.setAttribute('aria-label', 'Notice text with the quoted passage highlighted');
+  // The stored Federal Register text starts with HTML wrapper tags; hide them visually (offsets still index the full stored text).
+  const wrapEnd = src.indexOf('<body><pre>'), hideTo = (wrapEnd >= 0 && wrapEnd + 11 <= q.char_start) ? wrapEnd + 11 : 0;
+  if (hideTo) { const h = el('span', 'markup', src.slice(0, hideTo)); h.setAttribute('aria-hidden', 'true'); pre.appendChild(h); }
+  pre.appendChild(document.createTextNode(src.slice(hideTo, q.char_start)));
+  const m = el('mark', 'cite', src.slice(q.char_start, q.char_end)); m.id = 'activeMark'; pre.appendChild(m);
+  pre.appendChild(document.createTextNode(src.slice(q.char_end)));
+  viewer.appendChild(pre); wrap.appendChild(viewer); body.appendChild(wrap);
+  $('copyCite').onclick = () => copyCite(c, q, d);
+  requestAnimationFrame(() => { const v = viewer; const top = m.offsetTop - v.clientHeight / 3; v.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' }); });
+}
+function copyCite(c, q, d) {
+  const s = `${c.title}; docket ${c.docket}; ${c.citation || ''}; ${q.section === 'summary' ? 'spreadsheet summary' : 'section ' + q.section}; page ${q.page ?? 'n/a'}; characters ${q.char_start}-${q.char_end}; proposed rule (NPRM), not legally binding.`;
+  const done = () => { const sp = $('copyCite').querySelector('span'); sp.textContent = 'Copied'; setTimeout(() => sp.textContent = 'Copy citation', 1600); };
+  (navigator.clipboard ? navigator.clipboard.writeText(s) : Promise.reject()).then(done).catch(() => { const t = el('textarea'); t.value = s; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch {} t.remove(); });
 }
 
-function trace(c){
-  const t = $('trace'); t.textContent = '';
-  if(c.verdict){
-    const v = c.verdict; t.appendChild(el('div', null, 'Rule fired: ' + v.rule_fired));
-    t.appendChild(el('div', null, 'Reason codes: ' + v.reason_codes.join(', ')));
-    t.appendChild(el('div','mute', v.detail)); t.appendChild(el('div','mute','Decided by deterministic code, not a language model.'));
-  } else t.appendChild(el('div','mute','Lookup / status answer: quotes only.'));
-  t.appendChild(el('h2', null, '')).style.marginTop = '14px'; t.appendChild(el('div', null, `Docket ${c.docket}: status ${c.status}`));
-  if(c.comments_due) t.appendChild(el('div','mute','Comments due (spreadsheet): ' + c.comments_due));
-  if(c.spreadsheet_comment) t.appendChild(el('div','mute','Spreadsheet note: ' + c.spreadsheet_comment));
-  const tb = document.createElement('table'); tb.appendChild(Object.assign(document.createElement('tr'), {innerHTML:'<th>Date</th><th>Event</th><th>Doc</th>'}));
-  (c.revision_trail || []).sort((a,b)=>(a.date||'').localeCompare(b.date||'')).forEach(e => {
-    const r = document.createElement('tr'); [e.date, e.event, e.doc_id + (e.doc_id===c.latest_doc_id ? '  ← latest' : '')].forEach(x => r.appendChild(el('td', null, x||''))); tb.appendChild(r); });
-  t.appendChild(tb);
+/* ---------------------------------------------------------------- render: verdict */
+function renderVerdict(c) {
+  const body = $('verdictBody'); body.replaceChildren(); const wrap = el('div', 'pane-body');
+  if (c.verdict) {
+    const vd = c.verdict, V = VERDICT[vd.verdict];
+    wrap.appendChild(html('div', 'verdict-hero v-' + vd.verdict, `<div class="verdict-label">${icon(V.icon)}<span>${V.label}</span></div><div class="verdict-why">${esc(vd.detail || V.why)}</div><div class="verdict-disclaimer">Decided by deterministic rules applied to the quoted text, not by a language model. This is decision support, not a compliance or airworthiness finding.</div>`));
+    const checks = el('ul', 'checks');
+    vd.reason_codes.forEach(code => { const [k, t, dd] = CODES[code] || ['unk', code, '']; const li = html('li', 'c-' + k, `${icon(k === 'pass' ? 'check' : k === 'fail' ? 'minus' : 'help')}<div><div class="t">${esc(t)}</div>${dd ? `<div class="d">${esc(dd)}</div>` : ''}</div>`); checks.appendChild(li); });
+    const s1 = el('div'); s1.appendChild(html('div', 'section-title', icon('layers') + 'Checks performed')); s1.appendChild(checks);
+    s1.appendChild(html('div', 'hint', 'Rule that fired: ' + esc(vd.rule_fired))); wrap.appendChild(s1);
+    if (vd.verdict === 'CANNOT_DETERMINE') wrap.appendChild(html('div', 'uncertain', `<strong>What is uncertain.</strong> ${esc(vd.detail)}`));
+  } else {
+    wrap.appendChild(html('div', 'status-card', `<strong>No applicability verdict for this question.</strong><div class="hint">Give an aircraft model (and certificate date, serial or part numbers if relevant) to get one. Showing what the notice says and its status.</div>`));
+  }
+  const ev = el('div'); ev.appendChild(html('div', 'section-title', icon('file') + 'Supporting evidence'));
+  if (!c.quotes.length) ev.appendChild(html('p', 'hint', 'No quotation was returned for this notice.'));
+  c.quotes.forEach((q, j) => { const it = el('div', 'evidence-item'); it.appendChild(el('div', 'lab', q.label)); it.appendChild(el('blockquote', '', q.text)); const b = el('button', 'link-btn', 'Show in source (page ' + (q.page ?? 'n/a') + ')'); b.type = 'button'; b.onclick = () => { state.quoteIdx = j; renderEvidence(c); if (matchMedia('(max-width:1180px)').matches) showPane('pane-evidence'); }; it.appendChild(b); ev.appendChild(it); });
+  wrap.appendChild(ev);
+  const st = el('div'); st.appendChild(html('div', 'section-title', icon('clock') + 'Status and revisions'));
+  st.appendChild(html('div', 'status-card', `<div class="row"><span class="badge b-status">${esc(c.status)}</span>${c.version_note ? `<span class="badge b-warn">${icon('warn')}Older version</span>` : ''}</div>${c.version_note ? `<p style="margin-top:6px">${esc(c.version_note)}</p>` : ''}${c.comments_due ? `<p class="hint">Comments due (spreadsheet): ${esc(c.comments_due)}</p>` : ''}${c.spreadsheet_comment ? `<p class="hint">Spreadsheet note: ${esc(c.spreadsheet_comment)}</p>` : ''}<p class="hint" style="margin-top:6px">${esc(c.banner)}</p>`));
+  const tl = el('ol', 'timeline'); tl.style.marginTop = '12px';
+  [...(c.revision_trail || [])].sort((x, y) => (x.date || '').localeCompare(y.date || '')).forEach(e => { const latest = e.doc_id === c.latest_doc_id; tl.appendChild(html('li', latest ? 'latest' : '', `<span class="ev">${esc((e.event || '').replace(/_/g, ' '))}</span> <span class="dt">${esc(e.date || '')}</span><div class="hint">${esc(e.doc_id)}${latest ? ' · latest version' : ''}</div>`)); });
+  st.appendChild(tl); wrap.appendChild(st); body.appendChild(wrap);
 }
 
-async function loadResults(){
-  const b = $('resbody'); const r = await (await fetch('/results')).json(); b.textContent = ''; b.appendChild(el('h2', null, 'Evaluation results'));
-  if(r.available === false){ b.appendChild(el('div','mute','No evaluation run has been saved yet.')); return; }
-  const pre = el('pre','src', r.markdown ? r.markdown : JSON.stringify(r, null, 2)); b.appendChild(pre);
+/* ---------------------------------------------------------------- report view */
+function inline(s) { return esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+function mdToHtml(md) {
+  const lines = md.split('\n'); let out = '', i = 0;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (/^#{1,3} /.test(l)) { const n = l.match(/^#+/)[0].length; out += `<h${n}>${inline(l.replace(/^#+ /, ''))}</h${n}>`; i++; }
+    else if (/^\|/.test(l)) { const rows = []; while (i < lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]); const cells = r => r.replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+      const head = cells(rows[0]), body = rows.slice(2).map(cells);
+      out += `<div class="table-wrap"><table><thead><tr>${head.map(h => `<th scope="col">${inline(h)}</th>`).join('')}</tr></thead><tbody>${body.map(r => `<tr>${r.map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
+    else if (/^- /.test(l)) { out += '<ul>'; while (i < lines.length && /^- /.test(lines[i])) out += `<li>${inline(lines[i++].slice(2))}</li>`; out += '</ul>'; }
+    else if (l.trim()) { out += `<p>${inline(l)}</p>`; i++; } else i++;
+  }
+  return out;
 }
+async function loadReport() {
+  const b = $('reportBody'); b.replaceChildren(html('div', 'skeleton', '<div class="sk" style="width:40%;height:20px"></div><div class="sk" style="width:90%"></div><div class="sk" style="width:80%"></div>'));
+  try {
+    const r = await (await fetch('/results')).json();
+    if (r.available === false) { b.replaceChildren(stateBlock('file', 'No evaluation saved yet', 'Run the evaluation scripts to generate the report.')); return; }
+    b.innerHTML = r.markdown ? mdToHtml(r.markdown) : '<pre>' + esc(JSON.stringify(r, null, 2)) + '</pre>';
+  } catch { b.replaceChildren(stateBlock('warn', 'The report could not be loaded', 'Check that the server is running, then reopen this tab.', 'err')); }
+}
+
+renderEmpty(); updateCfgCount();
 </script>
 </body>
 </html>
