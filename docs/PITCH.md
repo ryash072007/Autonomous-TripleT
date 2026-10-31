@@ -5,7 +5,7 @@ Speaker notes. The times are targets. Every number is from `artifacts/evidence/`
 ## 0:00–0:20 · The analyst (landing page on screen)
 
 "Meet a conjunction-assessment analyst at a satellite operator. Every close approach sends them a stream of
-warnings, about a dozen messages per event. About two days before closest approach they have to decide: plan a
+warnings: several messages per event. About two days before closest approach they have to decide: plan a
 manoeuvre, or not.
 Each light in this sky is a real close approach from the ESA test set. The red ones are Critical right now."
 
@@ -13,7 +13,7 @@ Each light in this sky is a real close approach from the ESA test set. The red o
 
 "Labelling one message is easy. Miss distance alone decides almost every tier. The hard part is the two-day
 decision. If you act on what you see at two days, you miss 99 of the 551 events that end Critical. In ESA's 2019
-competition on this data, only about 12 of 97 teams beat 'copy the latest message'."
+competition on this data, 'copy the latest message' was a hard baseline to beat."
 
 ## 0:50–1:50 · Demo (click "Open the queue", then "Guided demo")
 
@@ -33,8 +33,9 @@ template is shown instead. The model and the rules decide; the analyst signs."
 - "Per message, on the organisers' test set: same 100% Critical recall as the baseline rule, with false alarms on
   Safe messages down from 29% to 7%."
 - "Forecasting at two days: we tie the best simple baseline at equal budget. We don't claim to beat it. What we add
-  is a guarantee: at most 5% of Critical events missed, measured at 3.3% in held-out folds, and anything we're
-  unsure about goes to the analyst."
+  is a guarantee: at most 5% of Critical events missed, measured at 3.3% in held-out folds. On the real test labels
+  it missed 2 of 17, so that guarantee didn't fully hold, but neither event was dismissed. Both went to the
+  analyst."
 - "Against ESA's released labels, scored once: of 17 events that ended Critical, we dismissed none. The baseline
   missed 8. The price is precision. We flag far more events than it does, and the Results page says so."
 

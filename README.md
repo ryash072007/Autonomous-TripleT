@@ -11,7 +11,7 @@ Autonomous SG 2026 (Acacia Hackathon Society x NUS Product Club) · AI & Aerospa
 ## The problem
 
 **User.** A conjunction-assessment analyst on a LEO operator's flight-dynamics team. For every close approach
-they receive a stream of CDMs (about 12 per event in this dataset), and by roughly 2 days before the time of
+they receive a stream of CDMs (`cdms_per_event` in [`baselines.json`](artifacts/evidence/baselines.json)), and by roughly 2 days before the time of
 closest approach (TCA) they must decide whether to start manoeuvre planning.
 
 **Today.** Read each CDM, check Pc and miss distance against thresholds (NASA CARA, NASA/SP-20205011318; ESA
@@ -21,8 +21,10 @@ fade; a few get worse late.
 **What that costs, measured on the ESA Collision Avoidance Challenge data** (8,293 training events that look like
 the test set, [`baselines.json`](artifacts/evidence/baselines.json)):
 - Acting on the 2-day view ("persistence") misses **99 of 551** events that end Critical.
-- 113 events that look Critical at 2 days end lower: unnecessary manoeuvres.
-- In the 2019 ESA competition on this data, only about 12 of 97 teams beat "copy the latest CDM".
+- 113 events that look Critical at 2 days end lower (`persistence_false_critical`): unnecessary manoeuvres.
+- In the 2019 ESA competition on this data, "copy the latest CDM" was a hard baseline to beat: the winning
+  score was 0.556 against the baseline's 0.694 (Uriot et al., *Spacecraft collision avoidance challenge: design and
+  results of a machine learning competition*, arXiv:2008.03069).
 
 ## Risk tiers
 
@@ -73,18 +75,23 @@ wrote. The console's Results page reads the same files and shows the source path
 
 Same Critical recall, about three quarters fewer false alarms on Safe CDMs. 5-fold grouped CV agrees
 ([`task_a_cv.json`](artifacts/evidence/task_a_cv.json)). A physics Pc baseline (B1) is **stronger than B0** and beats
-us on macro-F1 (0.957 vs 0.949 in CV) with fewer alerts, but it misses 304 Critical CDMs where we miss 2
+us on macro-F1 (0.957 vs 0.949 in CV on CDMs ≥ 2 days out) with fewer alerts, but it misses 304 Critical CDMs
+where we miss 2
 ([`baselines.json`](artifacts/evidence/baselines.json)).
 
 ### Forecasting the tier at TCA (event level)
 
 **Cross-validation, 8,293 train events** ([`task_b_cv.json`](artifacts/evidence/task_b_cv.json)): at the same number of
 Critical flags, the model **ties persistence** (Critical recall 0.829 vs 0.820, inside the fold spread). It does
-not beat it. We ship a recall-first operating point instead (recall 0.951) and control the cost with abstention and
-the decision layer.
+not beat it. We ship a recall-first operating point instead (CV recall 0.951, which holds by construction because
+the threshold was chosen on the same out-of-fold predictions) and control the cost with abstention and the
+decision layer.
 
 **Guaranteed miss rate** ([`conformal.json`](artifacts/evidence/conformal.json)): at α = 0.05 the conformal sets miss
-**3.3%** of Critical events in held-out folds (target ≤ 5%), and hand **11.7%** of events to the analyst.
+**3.3%** of Critical events in held-out folds (target ≤ 5%), and hand **11.7%** of events to the analyst. On the
+released test labels the sets missed **2 of 17** Critical events (11.8%, a very wide interval with only 17 events),
+above the 5% target ([`task_b_test.json`](artifacts/evidence/task_b_test.json)). The guarantee did not hold on test,
+and we report that as is.
 
 **Decision layer, cost ratio 100** ([`decision.json`](artifacts/evidence/decision.json)): expected cost 0.40 vs 1.26 for
 persistence; missed Critical 0.22 vs 1.19 per 100 events; but **17.8 manoeuvres per 100 vs 6.8**, plus 11.1 analyst
@@ -109,7 +116,9 @@ A post-hoc breakdown, with no changes to the model ([`task_b_test_breakdown.json
   label cannot confirm them.
 - 7 are Critical by Pc at 2 days, and 3 of those were confirmed.
 - 210 are forecast-only flags from the recall-first threshold, and 1 of those hit.
-- The 2 Critical events we missed (107 and 801) were both routed to "Analyst decides", not dismissed.
+- The 2 Critical events outside the conformal set (107 and 801) were still not dismissed: the decision layer sent
+  both to "Analyst decides", because their current-CDM tier set was {Elevated, Critical} (the forecast sets alone
+  missed them).
 
 ## Where it fails
 
@@ -127,6 +136,8 @@ Results → Where it fails:
 Everything we tried and dropped is in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md).
 
 ## Run it
+
+Needs Python 3.11+ and Node 20+.
 
 ```bash
 python -m pip install -e ".[dev]"
@@ -157,7 +168,10 @@ checks it ([tests/test_features.py](tests/test_features.py)).
 ## Limitations
 
 - Only radial sigmas are available, so the physics Pc assumes an isotropic covariance and a 10 m hard-body radius.
-- Conformal guarantees assume test events resemble the calibration events; the drift audit shows a mild shift.
+- Conformal guarantees assume test events resemble the calibration events; the drift audit shows a mild shift, and
+  the test-set miss rate (2 of 17) was above target.
+- The conformal CV reuses out-of-fold scores from models that saw the evaluation fold, so the CV coverage is
+  slightly optimistic. The released-label test is the clean check.
 - The released test labels have no final miss distance and only 17 Critical events.
 - Live mode uses Space-Track public CDMs, which carry Pc and miss distance but not our other inputs, so live events
   are tiered by rule only.
