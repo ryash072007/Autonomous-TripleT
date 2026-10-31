@@ -284,7 +284,17 @@ def demo(dataset: Literal["test", "live"] = "test"):
     return _pick_demo(_load("test"))
 
 
-if DIST.exists():
+FRONTEND_URL = os.environ.get("FRONTEND_URL", "").strip()
+
+if FRONTEND_URL:
+    # API-only deployment: the console is hosted elsewhere (e.g. Vercel); send browsers there.
+    from fastapi.responses import RedirectResponse
+
+    @app.get("/", include_in_schema=False)
+    def to_frontend():
+        return RedirectResponse(FRONTEND_URL)
+
+elif DIST.exists():
     if (DIST / "assets").exists():
         app.mount("/assets", StaticFiles(directory=DIST / "assets"), name="assets")
 

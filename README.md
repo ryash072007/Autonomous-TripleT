@@ -244,7 +244,10 @@ Tunnel. The front end finds it through `VITE_API_BASE`, so the two can live on d
 
    ```
    ALLOWED_ORIGINS=https://<your-project>.vercel.app,https://<your-custom-domain>
+   FRONTEND_URL=https://<your-custom-domain>
    ```
+
+   With `FRONTEND_URL` set the PC serves the API only, and `/` redirects to the console on Vercel.
 
    and run `python scripts/serve.py` (port 8000). `GET /api/health` returns `{ok, dataset_generated_utc,
    model_version}`. Without `ALLOWED_ORIGINS` the API only answers same-origin requests.

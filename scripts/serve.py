@@ -1,4 +1,9 @@
-"""Build the web app if needed, then serve API + console on http://localhost:8000."""
+"""Serve the API (and, for local use, the console) on http://localhost:8000.
+
+With FRONTEND_URL set (e.g. in .env), only the API is served and / redirects to that URL.
+"""
+
+import os
 
 import shutil
 import subprocess
@@ -10,7 +15,10 @@ WEB = ROOT / "web"
 
 
 def main() -> None:
-    if not (WEB / "dist").exists():
+    from ca_triage.env import load_env
+
+    load_env()
+    if not os.environ.get("FRONTEND_URL") and not (WEB / "dist").exists():
         npm = shutil.which("npm")
         if npm is None:
             print("npm not found; serving API only", file=sys.stderr)
