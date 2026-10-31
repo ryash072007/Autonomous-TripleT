@@ -2,6 +2,8 @@
 
 Autonomous SG 2026 (Acacia Hackathon Society x NUS Product Club) · AI & Aerospace track · **Airbus Challenge #1**
 
+**Live demo: [og.ryash.dev](https://og.ryash.dev)** (if the team's backend is offline, it runs read-only from a bundled snapshot)
+
 > Classifying one conjunction message is easy. Knowing **two days before closest approach** which events will
 > still be dangerous, and knowing when you don't know, is the hard part. OrbitGuard reads conjunction data
 > messages (CDMs), sorts every event into **Safe / Elevated / Critical (manoeuvre required)**, forecasts the tier
