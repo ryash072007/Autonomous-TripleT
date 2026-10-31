@@ -88,6 +88,17 @@ def rare_query_tokens(C, q):
             and (re.search(r"\d", t) or t in caps or C._df.get(t, 0) <= 5)]
 
 
+def unknown_entity_ratio(C, q):
+    """(unknown capitalised words, total capitalised words) outside the first word, ignoring stop-words and common titles."""
+    from retrieve import STOPWORDS
+    words = re.findall(r"\b[A-Z][a-z]{2,}\b", q)
+    first = re.match(r"\s*(\w+)", q)
+    skip = {first.group(1).lower()} if first else set()
+    voc = _vocab(C)
+    words = [w for w in words if w.lower() not in skip and w.lower() not in STOPWORDS and w.lower() not in COMMON_CAPS]
+    return [w for w in words if w.lower() not in voc], len(words)
+
+
 def unknown_entities(C, q):
     words = re.findall(r"\b[A-Z][a-z]{2,}\b", q)
     first = re.match(r"\s*(\w+)", q)
@@ -159,6 +170,7 @@ def resolve_anchors(C, p):
 # ---------------- main entry ----------------
 def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
     t0 = time.perf_counter()
+    query = (query or "")[:2000]          # defensive cap: a pathological 50 KB query must not stall the regex layer
     p = parse_query(query)
     ui = {k_: v for k_, v in (config or {}).items() if v not in (None, "", [])}
     if isinstance(ui.get("part_numbers"), str):
@@ -208,8 +220,9 @@ def answer(C, query: str, config: dict | None = None, k: int = 3) -> dict:
         if not (cfg.get("make") or cfg.get("model") or p["model_candidates"] or rare_query_tokens(C, query)):
             return refusal("AMBIGUOUS_QUERY", "The question does not name an aircraft, engine, docket, AD or distinctive condition to search for.",
                            "Give a make and model, a docket / AD number, or describe the unsafe condition.", p, t0)
-        unk = unknown_entities(C, query)
-        if unk and not cfg.get("model"):
+        unk, n_caps = unknown_entity_ratio(C, query)
+        # unknown product words ("King" in "King Air 350") refuse even when a number was read as a model, unless that model IS in the corpus
+        if unk and len(unk) / max(n_caps, 1) >= 0.5:   # most capitalised product words appear nowhere in the corpus ("Beechcraft King Air"); a lone nickname does not trigger it
             return refusal("OUT_OF_CORPUS", f"Nothing in the corpus mentions: {', '.join(unk)}.",
                            "Check the spelling, or the product may have no NPRM in this corpus.", p, t0)
     bad = config_contradiction(AircraftConfig(make=cfg.get("make"), model=cfg.get("model")), C.model_index)

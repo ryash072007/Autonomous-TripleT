@@ -13,3 +13,8 @@
 20261031_123144 commit c788077 src_hash 3e900790d502 sets b2c systems llm_forced
 20261031_123303 commit c788077 src_hash 3e900790d502 sets v1test systems full,naive_summary,fulltext_bm25,llm_only,llm_forced
 20261031_123918 commit c788077 src_hash 00bbd1a9854a sets b1,b1b,b1c systems full
+20261031_124451 commit e0903c5 src_hash 00bbd1a9854a sets b1d,b2d systems full
+20261031_124735 commit e0903c5 src_hash 572a2d0ccfac sets b1,b1b,b1c,b1d,b2,b2b,b2c,b2d systems full
+20261031_124945 commit e0903c5 src_hash e9d6d5f5b1ab sets b2,b2b,b2c,b2d systems full
+20261031_125421 commit e0903c5 src_hash c38be35b87b3 sets b2,b2b,b2c,b2d systems full
+20261031_125715 commit e0903c5 src_hash 768ec9cd65ca sets b1,b1b,b1c,b1d,b2,b2b,b2c,b2d systems full

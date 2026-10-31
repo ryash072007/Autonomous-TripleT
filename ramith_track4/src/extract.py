@@ -16,14 +16,15 @@ EXPAND_RE = re.compile(
 )
 SUFFIX_RE = re.compile(r"(?:^|[\s,])(?:(?:and|or)\s+)?-?\s?(\d[A-Za-z0-9/]*)")
 CUTOFF_RE = re.compile(
-    r"original (?:airworthiness certificate|export certificate of airworthiness)[^.]{0,200}?"
-    r"(on or before|before|on or after|after)\s+([A-Z][a-z]+ \d{1,2}, \d{4})",
+    # \s+ everywhere: the Federal Register text wraps lines mid-phrase ("original \nairworthiness certificate")
+    r"original\s+(?:airworthiness\s+certificate|export\s+certificate\s+of\s+airworthiness)[^.]{0,200}?"
+    r"(on\s+or\s+before|before|on\s+or\s+after|after)\s+([A-Z][a-z]+\s+\d{1,2},\s+\d{4})",
     re.I | re.S,
 )
 EXCEPT_RE = re.compile(r"\bexcept\b[^.]{0,400}?(?:airplanes|helicopters|aircraft|engines|propellers)[^.]*\.", re.I | re.S)
 # Blind-set finding: "identified as Group 3 in Boeing Alert Requirements Bulletin ..." and "as specified in paragraph 1.A.1 of ... Service Bulletin"
 ASID_RE = re.compile(r"\b(?:identified|listed|specified|defined|described)\s+(?:as\s+[^.]{0,60}?\s+)?in\s+((?:[^.]|\.(?=\w)){5,260}?)(?=\.\s|\.$|$)", re.I | re.S)
-PN_CLAUSE_RE = re.compile(r"(?:part number|P/N)[^.]*?(?:installed|\.)", re.I | re.S)
+PN_CLAUSE_RE = re.compile(r"(?:part\s+number|P/N)[^.]*?(?:installed|\.)", re.I | re.S)
 PN_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])(?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]{4,}(?![A-Za-z0-9])")
 AD_NUM_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{2}$")
 SERIAL_RANGE_RE = re.compile(r"serial\s+numbers?\s+([A-Z0-9-]+)\s+(?:through|to|-)\s+([A-Z0-9-]+)", re.I)
@@ -145,7 +146,7 @@ def extract_applicability(rec: dict) -> dict:
 
     m = CUTOFF_RE.search(raw)
     if m:
-        out["cofa_cutoff"] = {"direction": m.group(1).lower(), "date": _parse_date(m.group(2)),
+        out["cofa_cutoff"] = {"direction": re.sub(r"\s+", " ", m.group(1).lower()), "date": _parse_date(re.sub(r"\s+", " ", m.group(2))),
                               "span": list(_span(cs, m)), "quote": m.group(0)}
     for m in EXCEPT_RE.finditer(raw):
         out["exclusions"].append({"span": list(_span(cs, m)), "quote": m.group(0)})

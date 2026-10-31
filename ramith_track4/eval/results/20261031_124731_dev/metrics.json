@@ -1,0 +1,146 @@
+{
+ "meta": {
+  "timestamp": "2026-10-31T12:47:31",
+  "git_commit": "e0903c5",
+  "testset_sha256": "3097beda9d7118d0cfbaf90ffb50f4945287fc1705cc426b56fa2f8ff9ed609b",
+  "split": "dev",
+  "final": false,
+  "system": "full"
+ },
+ "summary": {
+  "n": 10,
+  "lookup": {
+   "n": 3,
+   "ok": 3,
+   "pct": 100.0,
+   "recall_at_3": 100.0,
+   "mrr": 1.0
+  },
+  "applicability": {
+   "n": 3,
+   "ok": 3,
+   "pct": 100.0,
+   "verdict_accuracy": 100.0,
+   "reason_accuracy": 100.0
+  },
+  "revision": {
+   "n": 2,
+   "ok": 2,
+   "pct": 100.0
+  },
+  "refuse": {
+   "n": 2,
+   "ok": 2,
+   "pct": 100.0
+  },
+  "refusal": {
+   "precision": 100.0,
+   "recall": 100.0,
+   "code_accuracy": 100.0,
+   "n_refused": 2,
+   "n_should_refuse": 2
+  },
+  "unsupported_quote_rate": {
+   "dropped_before_filter": 0,
+   "kept": 26,
+   "pct": 0.0
+  },
+  "latency_ms_total": {
+   "p50": 77.9,
+   "p95": 626.7
+  }
+ },
+ "rows": [
+  {
+   "id": "L01",
+   "category": "lookup",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "rank 1",
+   "rank": 1
+  },
+  {
+   "id": "L02",
+   "category": "lookup",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "rank 1",
+   "rank": 1
+  },
+  {
+   "id": "L05",
+   "category": "lookup",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "rank 1",
+   "rank": 1
+  },
+  {
+   "id": "A01",
+   "category": "applicability",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "APPLIES/MODEL_LISTED",
+   "reason_ok": true,
+   "retrieved": true
+  },
+  {
+   "id": "A03",
+   "category": "applicability",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "APPLIES/CERT_DATE_BEFORE_CUTOFF",
+   "reason_ok": true,
+   "retrieved": true
+  },
+  {
+   "id": "A07",
+   "category": "applicability",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "CANNOT_DETERMINE/EXTERNAL_DOC_REQUIRED",
+   "reason_ok": true,
+   "retrieved": true
+  },
+  {
+   "id": "R01",
+   "category": "revision",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "status REVISED_NPRM (supplemental); trail_ok True"
+  },
+  {
+   "id": "R05",
+   "category": "revision",
+   "split": "dev",
+   "refused": false,
+   "ok": true,
+   "detail": "status WITHDRAWN; trail_ok True"
+  },
+  {
+   "id": "X01",
+   "category": "refuse",
+   "split": "dev",
+   "refused": true,
+   "ok": true,
+   "detail": "OUT_OF_SCOPE",
+   "code_ok": true
+  },
+  {
+   "id": "X03",
+   "category": "refuse",
+   "split": "dev",
+   "refused": true,
+   "ok": true,
+   "detail": "EXTERNAL_DOC_REQUIRED",
+   "code_ok": true
+  }
+ ]
+}
