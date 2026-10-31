@@ -1,0 +1,9 @@
+bm25s
+anthropic
+pandas
+openpyxl
+pydantic
+requests
+fastapi
+uvicorn
+pytest
